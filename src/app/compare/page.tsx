@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { Play, Activity, Wallet, Zap, ShieldAlert, BadgeCent, ChevronDown } from "lucide-react";
+import ispsData from "@/data/isps.json";
 
 export default function ComparePage() {
+  // Use first 5 ISPs for comparison to fit the design
+  const compareIsps = ispsData.slice(0, 5);
+
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground font-sans">
       {/* Page Header */}
@@ -27,29 +31,20 @@ export default function ComparePage() {
             <div className="flex items-end pb-3 pl-1 font-mono text-[0.65rem] text-text-dim tracking-[0.1em] uppercase">
               // ISP
             </div>
-            <div className="relative p-5 rounded-t-[16px] border border-cyan/30 border-b-0 bg-cyan/5 text-center">
-              <div className="absolute -top-[1px] left-1/2 -translate-x-1/2 px-3 py-[3px] bg-cyan text-black font-mono text-[0.58rem] font-bold tracking-[0.1em] rounded-b-lg whitespace-nowrap">
-                BEST PING
-              </div>
-              <div className="font-heading font-bold text-[0.95rem] mb-1">NURO 光</div>
-              <div className="font-mono text-[0.6rem] text-text-dim">FTTH / 独自回線</div>
-            </div>
-            <div className="relative p-5 rounded-t-[16px] border border-white/10 border-b-0 bg-white/5 text-center">
-              <div className="font-heading font-bold text-[0.95rem] mb-1">au ひかり</div>
-              <div className="font-mono text-[0.6rem] text-text-dim">FTTH / 独自回線</div>
-            </div>
-            <div className="relative p-5 rounded-t-[16px] border border-white/10 border-b-0 bg-white/5 text-center">
-              <div className="font-heading font-bold text-[0.95rem] mb-1">ドコモ光</div>
-              <div className="font-mono text-[0.6rem] text-text-dim">FTTH / NTT網</div>
-            </div>
-            <div className="relative p-5 rounded-t-[16px] border border-white/10 border-b-0 bg-white/5 text-center">
-              <div className="font-heading font-bold text-[0.95rem] mb-1">SoftBank 光</div>
-              <div className="font-mono text-[0.6rem] text-text-dim">FTTH / NTT網</div>
-            </div>
-            <div className="relative p-5 rounded-t-[16px] border border-white/10 border-b-0 bg-white/5 text-center">
-              <div className="font-heading font-bold text-[0.95rem] mb-1">フレッツ+IIJ</div>
-              <div className="font-mono text-[0.6rem] text-text-dim">FTTH / NTT網</div>
-            </div>
+            {compareIsps.map((isp, index) => {
+              const isBest = index === 0;
+              return (
+                <div key={isp.id} className={`relative p-5 rounded-t-[16px] border ${isBest ? 'border-cyan/30 bg-cyan/5' : 'border-white/10 bg-white/5'} border-b-0 text-center`}>
+                  {isBest && (
+                    <div className="absolute -top-[1px] left-1/2 -translate-x-1/2 px-3 py-[3px] bg-cyan text-black font-mono text-[0.58rem] font-bold tracking-[0.1em] rounded-b-lg whitespace-nowrap">
+                      BEST PING
+                    </div>
+                  )}
+                  <div className="font-heading font-bold text-[0.95rem] mb-1">{isp.name}</div>
+                  <div className="font-mono text-[0.6rem] text-text-dim">FTTH / {isp.type}</div>
+                </div>
+              );
+            })}
           </div>
 
           {/* Table Body */}
@@ -60,21 +55,15 @@ export default function ComparePage() {
               <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-text-muted">
                 <Activity className="w-3.5 h-3.5 opacity-50" /> 平均Ping値
               </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-cyan/20 bg-cyan/[0.03] text-center">
-                <span className="font-mono font-bold text-base text-emerald drop-shadow-[0_0_10px_rgba(0,230,118,0.4)]">8 ms</span>
-              </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-white/10 bg-white/[0.01] text-center">
-                <span className="font-mono font-bold text-base text-emerald drop-shadow-[0_0_10px_rgba(0,230,118,0.4)]">15 ms</span>
-              </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-white/10 bg-white/[0.01] text-center">
-                <span className="font-mono font-bold text-base text-cyan drop-shadow-[0_0_10px_rgba(0,229,255,0.3)]">20 ms</span>
-              </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-white/10 bg-white/[0.01] text-center">
-                <span className="font-mono font-bold text-base text-amber-500">22 ms</span>
-              </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-white/10 bg-white/[0.01] text-center">
-                <span className="font-mono font-bold text-base text-amber-500">28 ms</span>
-              </div>
+              {compareIsps.map((isp, index) => {
+                const isBest = index === 0;
+                const pingColor = isp.avg_ping_ms <= 15 ? 'text-emerald drop-shadow-[0_0_10px_rgba(0,230,118,0.4)]' : isp.avg_ping_ms <= 20 ? 'text-cyan drop-shadow-[0_0_10px_rgba(0,229,255,0.3)]' : 'text-amber-500';
+                return (
+                  <div key={isp.id} className={`flex items-center justify-center py-3.5 border-b border-white/5 border-x ${isBest ? 'border-cyan/20 bg-cyan/[0.03]' : 'border-white/10 bg-white/[0.01]'} text-center`}>
+                    <span className={`font-mono font-bold text-base ${pingColor}`}>{isp.avg_ping_ms} ms</span>
+                  </div>
+                );
+              })}
             </div>
 
             {/* Price */}
@@ -82,21 +71,14 @@ export default function ComparePage() {
               <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-text-muted">
                 <Wallet className="w-3.5 h-3.5 opacity-50" /> 実質月額
               </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-cyan/20 bg-cyan/[0.04] text-center">
-                <span className="font-mono font-bold text-[0.95rem] text-text">¥5,200</span>
-              </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-white/10 bg-white/[0.015] text-center">
-                <span className="font-mono font-bold text-[0.95rem] text-text">¥4,950</span>
-              </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-white/10 bg-white/[0.015] text-center">
-                <span className="font-mono font-bold text-[0.95rem] text-text">¥4,400</span>
-              </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-white/10 bg-white/[0.015] text-center">
-                <span className="font-mono font-bold text-[0.95rem] text-text">¥4,180</span>
-              </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-white/10 bg-white/[0.015] text-center">
-                <span className="font-mono font-bold text-[0.95rem] text-text">¥3,800</span>
-              </div>
+              {compareIsps.map((isp, index) => {
+                const isBest = index === 0;
+                return (
+                  <div key={isp.id} className={`flex items-center justify-center py-3.5 border-b border-white/5 border-x ${isBest ? 'border-cyan/20 bg-cyan/[0.04]' : 'border-white/10 bg-white/[0.015]'} text-center`}>
+                    <span className="font-mono font-bold text-[0.95rem] text-text">¥{isp.actual_monthly_fee_jpy.toLocaleString()}</span>
+                  </div>
+                );
+              })}
             </div>
 
             {/* Max speed */}
@@ -104,21 +86,14 @@ export default function ComparePage() {
               <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-text-muted">
                 <Zap className="w-3.5 h-3.5 opacity-50" /> 最大速度
               </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-cyan/20 bg-cyan/[0.03] text-center">
-                <span className="font-mono text-[0.85rem] text-cyan">10 Gbps</span>
-              </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-white/10 bg-white/[0.01] text-center">
-                <span className="font-mono text-[0.85rem] text-cyan">10 Gbps</span>
-              </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-white/10 bg-white/[0.01] text-center">
-                <span className="font-mono text-[0.85rem] text-cyan">1 Gbps</span>
-              </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-white/10 bg-white/[0.01] text-center">
-                <span className="font-mono text-[0.85rem] text-cyan">1 Gbps</span>
-              </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-white/10 bg-white/[0.01] text-center">
-                <span className="font-mono text-[0.85rem] text-cyan">1 Gbps</span>
-              </div>
+              {compareIsps.map((isp, index) => {
+                const isBest = index === 0;
+                return (
+                  <div key={isp.id} className={`flex items-center justify-center py-3.5 border-b border-white/5 border-x ${isBest ? 'border-cyan/20 bg-cyan/[0.03]' : 'border-white/10 bg-white/[0.01]'} text-center`}>
+                    <span className="font-mono text-[0.85rem] text-cyan">{isp.max_speed_gbps} Gbps</span>
+                  </div>
+                );
+              })}
             </div>
 
             {/* VDSL */}
@@ -126,87 +101,30 @@ export default function ComparePage() {
               <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-text-muted">
                 <ShieldAlert className="w-3.5 h-3.5 opacity-50" /> VDSL対応
               </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-cyan/20 bg-cyan/[0.04] text-center">
-                <span className="text-[1.1rem] text-red-400">✕</span>
-              </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-white/10 bg-white/[0.015] text-center">
-                <span className="text-[1.1rem] text-red-400">✕</span>
-              </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-white/10 bg-white/[0.015] text-center">
-                <span className="text-[1.1rem] text-emerald">✓</span>
-              </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-white/10 bg-white/[0.015] text-center">
-                <span className="text-[1.1rem] text-emerald">✓</span>
-              </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-white/10 bg-white/[0.015] text-center">
-                <span className="text-[1.1rem] text-emerald">✓</span>
-              </div>
+              {compareIsps.map((isp, index) => {
+                const isBest = index === 0;
+                return (
+                  <div key={isp.id} className={`flex items-center justify-center py-3.5 border-b border-white/5 border-x ${isBest ? 'border-cyan/20 bg-cyan/[0.04]' : 'border-white/10 bg-white/[0.015]'} text-center`}>
+                    <span className={`text-[1.1rem] ${isp.vdsl_support ? 'text-emerald' : 'text-red-400'}`}>{isp.vdsl_support ? '✓' : '✕'}</span>
+                  </div>
+                );
+              })}
             </div>
 
-            {/* docomo discount */}
+            {/* Discount (docomo/au/SB dynamically summarized or simplified. For simplicity, showing one row for mobile discount presence) */}
             <div className="contents group">
               <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-text-muted">
-                <BadgeCent className="w-3.5 h-3.5 opacity-50" /> docomo割引
+                <BadgeCent className="w-3.5 h-3.5 opacity-50" /> スマホセット割
               </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-cyan/20 bg-cyan/[0.03] text-center">
-                <span className="text-red-400">—</span>
-              </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-white/10 bg-white/[0.01] text-center">
-                <span className="text-red-400">—</span>
-              </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-white/10 bg-white/[0.01] text-center">
-                <span className="font-mono text-[0.8rem] text-emerald">¥1,100/月</span>
-              </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-white/10 bg-white/[0.01] text-center">
-                <span className="text-red-400">—</span>
-              </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-white/10 bg-white/[0.01] text-center">
-                <span className="text-red-400">—</span>
-              </div>
-            </div>
-
-            {/* au discount */}
-            <div className="contents group">
-              <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-text-muted">
-                <BadgeCent className="w-3.5 h-3.5 opacity-50" /> au割引
-              </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-cyan/20 bg-cyan/[0.04] text-center">
-                <span className="text-red-400">—</span>
-              </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-white/10 bg-white/[0.015] text-center">
-                <span className="font-mono text-[0.8rem] text-emerald">¥1,100/月</span>
-              </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-white/10 bg-white/[0.015] text-center">
-                <span className="text-red-400">—</span>
-              </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-white/10 bg-white/[0.015] text-center">
-                <span className="text-red-400">—</span>
-              </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-white/10 bg-white/[0.015] text-center">
-                <span className="text-red-400">—</span>
-              </div>
-            </div>
-
-            {/* SB discount */}
-            <div className="contents group">
-              <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-text-muted">
-                <BadgeCent className="w-3.5 h-3.5 opacity-50" /> SoftBank割引
-              </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-cyan/20 bg-cyan/[0.03] text-center">
-                <span className="font-mono text-[0.8rem] text-emerald">¥500/月</span>
-              </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-white/10 bg-white/[0.01] text-center">
-                <span className="text-red-400">—</span>
-              </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-white/10 bg-white/[0.01] text-center">
-                <span className="text-red-400">—</span>
-              </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-white/10 bg-white/[0.01] text-center">
-                <span className="font-mono text-[0.8rem] text-emerald">¥1,100/月</span>
-              </div>
-              <div className="flex items-center justify-center py-3.5 border-b border-white/5 border-x border-white/10 bg-white/[0.01] text-center">
-                <span className="text-red-400">—</span>
-              </div>
+              {compareIsps.map((isp, index) => {
+                const isBest = index === 0;
+                const discountText = isp.discounts.length > 0 ? isp.discounts.map(d => `${d.carrier}割`).join(', ') : '—';
+                return (
+                  <div key={isp.id} className={`flex items-center justify-center py-3.5 border-b border-white/5 border-x ${isBest ? 'border-cyan/20 bg-cyan/[0.03]' : 'border-white/10 bg-white/[0.01]'} text-center`}>
+                    <span className={`font-mono text-[0.8rem] ${isp.discounts.length > 0 ? 'text-emerald' : 'text-red-400'}`}>{discountText}</span>
+                  </div>
+                );
+              })}
             </div>
 
             {/* Score */}
@@ -214,46 +132,23 @@ export default function ComparePage() {
               <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/10 text-[0.8rem] font-medium text-text-muted">
                 <ChevronDown className="w-3.5 h-3.5 opacity-50" /> 総合スコア
               </div>
-              <div className="flex items-center justify-center py-4 px-2 border-b border-white/10 border-x border-cyan/20 bg-cyan/[0.04] text-center rounded-bl-none">
-                <div className="flex flex-col items-center gap-1 w-full px-2">
-                  <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
-                    <div className="h-full rounded-full bg-gradient-to-r from-cyan to-emerald" style={{ width: '94%' }}></div>
+              {compareIsps.map((isp, index) => {
+                const isBest = index === 0;
+                const scoreColor = isp.stability_score >= 90 ? 'cyan' : isp.stability_score >= 85 ? 'emerald' : isp.stability_score >= 80 ? 'purple-400' : 'amber-500';
+                const bgClass = scoreColor === 'cyan' ? 'bg-cyan' : scoreColor === 'emerald' ? 'bg-emerald' : scoreColor === 'purple-400' ? 'bg-purple-400' : 'bg-amber-500';
+                const textClass = scoreColor === 'cyan' ? 'text-cyan' : scoreColor === 'emerald' ? 'text-emerald' : scoreColor === 'purple-400' ? 'text-purple-400' : 'text-amber-500';
+                
+                return (
+                  <div key={isp.id} className={`flex items-center justify-center py-4 px-2 border-b border-white/10 border-x ${isBest ? 'border-cyan/20 bg-cyan/[0.04]' : 'border-white/10 bg-white/[0.015]'} text-center ${isBest ? 'rounded-bl-none' : index === 4 ? 'rounded-br-none' : ''}`}>
+                    <div className="flex flex-col items-center gap-1 w-full px-2">
+                      <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
+                        <div className={`h-full rounded-full ${bgClass}`} style={{ width: `${isp.stability_score}%` }}></div>
+                      </div>
+                      <span className={`font-mono text-[0.75rem] font-bold ${textClass}`}>{isp.stability_score}</span>
+                    </div>
                   </div>
-                  <span className="font-mono text-[0.75rem] font-bold text-cyan">94</span>
-                </div>
-              </div>
-              <div className="flex items-center justify-center py-4 px-2 border-b border-white/10 border-x border-white/10 bg-white/[0.015] text-center">
-                <div className="flex flex-col items-center gap-1 w-full px-2">
-                  <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
-                    <div className="h-full rounded-full bg-emerald" style={{ width: '88%' }}></div>
-                  </div>
-                  <span className="font-mono text-[0.75rem] font-bold text-emerald">88</span>
-                </div>
-              </div>
-              <div className="flex items-center justify-center py-4 px-2 border-b border-white/10 border-x border-white/10 bg-white/[0.015] text-center">
-                <div className="flex flex-col items-center gap-1 w-full px-2">
-                  <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
-                    <div className="h-full rounded-full bg-purple-400" style={{ width: '80%' }}></div>
-                  </div>
-                  <span className="font-mono text-[0.75rem] font-bold text-purple-400">80</span>
-                </div>
-              </div>
-              <div className="flex items-center justify-center py-4 px-2 border-b border-white/10 border-x border-white/10 bg-white/[0.015] text-center">
-                <div className="flex flex-col items-center gap-1 w-full px-2">
-                  <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
-                    <div className="h-full rounded-full bg-amber-500" style={{ width: '75%' }}></div>
-                  </div>
-                  <span className="font-mono text-[0.75rem] font-bold text-amber-500">75</span>
-                </div>
-              </div>
-              <div className="flex items-center justify-center py-4 px-2 border-b border-white/10 border-x border-white/10 bg-white/[0.015] text-center rounded-br-none">
-                <div className="flex flex-col items-center gap-1 w-full px-2">
-                  <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
-                    <div className="h-full rounded-full bg-white/30" style={{ width: '68%' }}></div>
-                  </div>
-                  <span className="font-mono text-[0.75rem] font-bold text-text-muted">68</span>
-                </div>
-              </div>
+                );
+              })}
             </div>
 
           </div>
@@ -261,31 +156,16 @@ export default function ComparePage() {
           {/* CTA Row */}
           <div className="grid grid-cols-[200px_repeat(5,1fr)] gap-x-2 mt-2">
             <div></div>
-            <div className="py-3 px-2 text-center">
-              <Link href="#" className="inline-flex w-full items-center justify-center gap-1 px-2 py-2.5 rounded-lg bg-cyan text-black font-heading font-bold text-[0.8rem] transition-all hover:-translate-y-px hover:shadow-[0_0_28px_rgba(0,229,255,0.4)]">
-                申し込む
-              </Link>
-            </div>
-            <div className="py-3 px-2 text-center">
-              <Link href="#" className="inline-flex w-full items-center justify-center gap-1 px-2 py-2.5 rounded-lg border border-white/10 bg-transparent text-text-muted font-heading font-bold text-[0.8rem] transition-all hover:border-cyan/30 hover:text-text hover:bg-cyan/5">
-                申し込む
-              </Link>
-            </div>
-            <div className="py-3 px-2 text-center">
-              <Link href="#" className="inline-flex w-full items-center justify-center gap-1 px-2 py-2.5 rounded-lg border border-white/10 bg-transparent text-text-muted font-heading font-bold text-[0.8rem] transition-all hover:border-cyan/30 hover:text-text hover:bg-cyan/5">
-                申し込む
-              </Link>
-            </div>
-            <div className="py-3 px-2 text-center">
-              <Link href="#" className="inline-flex w-full items-center justify-center gap-1 px-2 py-2.5 rounded-lg border border-white/10 bg-transparent text-text-muted font-heading font-bold text-[0.8rem] transition-all hover:border-cyan/30 hover:text-text hover:bg-cyan/5">
-                申し込む
-              </Link>
-            </div>
-            <div className="py-3 px-2 text-center">
-              <Link href="#" className="inline-flex w-full items-center justify-center gap-1 px-2 py-2.5 rounded-lg border border-white/10 bg-transparent text-text-muted font-heading font-bold text-[0.8rem] transition-all hover:border-cyan/30 hover:text-text hover:bg-cyan/5">
-                申し込む
-              </Link>
-            </div>
+            {compareIsps.map((isp, index) => {
+              const isBest = index === 0;
+              return (
+                <div key={isp.id} className="py-3 px-2 text-center">
+                  <Link href={isp.affiliateLink} className={`inline-flex w-full items-center justify-center gap-1 px-2 py-2.5 rounded-lg font-heading font-bold text-[0.8rem] transition-all ${isBest ? 'bg-cyan text-black hover:-translate-y-px hover:shadow-[0_0_28px_rgba(0,229,255,0.4)]' : 'border border-white/10 bg-transparent text-text-muted hover:border-cyan/30 hover:text-text hover:bg-cyan/5'}`}>
+                    申し込む
+                  </Link>
+                </div>
+              );
+            })}
           </div>
 
           <p className="text-[0.72rem] text-text-dim text-center mt-10 leading-[1.7]">

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Play, ChevronRight } from "lucide-react";
+import ispsData from "@/data/isps.json";
 
 export default function ProviderPage() {
   return (
@@ -23,153 +24,97 @@ export default function ProviderPage() {
       <div className="relative z-10 max-w-[1100px] mx-auto w-full px-4 sm:px-10 py-12 sm:py-16 pb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-          {/* NURO 光 */}
-          <div className="rounded-[24px] border border-cyan/25 bg-cyan/[0.03] overflow-hidden transition-all duration-300 hover:border-cyan/30 hover:-translate-y-1 hover:shadow-[0_24px_64px_rgba(0,0,0,0.4),0_0_30px_rgba(0,229,255,0.07)] animate-[fadeUp_0.5s_ease_both]">
-            <div className="p-7 sm:p-8 pb-6 border-b border-white/10 relative overflow-hidden">
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_100%_0%,rgba(0,229,255,0.1),transparent_60%)] pointer-events-none" />
-              
-              <div className="relative z-10 flex items-start justify-between gap-4 mb-4">
-                <div className="flex flex-col gap-1.5">
-                  <div className="font-heading text-[1.5rem] font-bold tracking-tight">NURO 光</div>
-                  <div className="text-[0.8rem] text-text-muted">ソニーネットワークコミュニケーションズ</div>
-                </div>
-                <div className="flex flex-col items-end gap-1.5">
-                  <span className="px-3 py-1 rounded-full bg-cyan text-black font-mono text-[0.6rem] font-bold tracking-[0.1em] whitespace-nowrap">BEST PING</span>
-                  <span className="px-3 py-1 rounded-full bg-red-500/10 text-red-400 border border-red-500/20 font-mono text-[0.6rem] font-bold tracking-[0.1em] whitespace-nowrap">VDSL 不可</span>
-                </div>
-              </div>
-
-              <div className="relative z-10 flex gap-6 flex-wrap mt-6">
-                <div className="flex flex-col gap-1">
-                  <span className="font-mono text-[0.6rem] text-text-dim tracking-[0.1em] uppercase">平均Ping</span>
-                  <span className="font-mono font-bold text-[1.3rem] leading-none text-emerald drop-shadow-[0_0_14px_rgba(0,230,118,0.4)]">8 ms</span>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <span className="font-mono text-[0.6rem] text-text-dim tracking-[0.1em] uppercase">実質月額</span>
-                  <span className="font-mono font-bold text-[1.3rem] leading-none text-text">¥5,200</span>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <span className="font-mono text-[0.6rem] text-text-dim tracking-[0.1em] uppercase">最大速度</span>
-                  <span className="font-mono font-bold text-[1.3rem] leading-none text-cyan drop-shadow-[0_0_14px_rgba(0,229,255,0.4)]">10 Gbps</span>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <span className="font-mono text-[0.6rem] text-text-dim tracking-[0.1em] uppercase">SB割引</span>
-                  <span className="font-mono font-bold text-[1.3rem] leading-none text-emerald drop-shadow-[0_0_14px_rgba(0,230,118,0.4)]">¥500</span>
-                </div>
-              </div>
-            </div>
+          {ispsData.map((isp, index) => {
+            const isFirst = index === 0;
+            const borderClass = isFirst ? 'border-cyan/25' : 'border-white/10';
+            const bgClass = isFirst ? 'bg-cyan/[0.03]' : 'bg-white/[0.035]';
+            const shadowClass = isFirst ? 'hover:shadow-[0_24px_64px_rgba(0,0,0,0.4),0_0_30px_rgba(0,229,255,0.07)]' : 'hover:shadow-[0_24px_64px_rgba(0,0,0,0.4),0_0_30px_rgba(255,255,255,0.05)]';
             
-            <div className="p-6 sm:p-8 pt-6 flex flex-col gap-5">
-              <p className="text-[0.875rem] text-text-muted leading-[1.75]">
-                NTT網を介さない独自の光ファイバーインフラにより、業界最低水準のPing値を実現。特に東京・大阪の都市部における安定性は他の追随を許さない。10Gbpsプランはゲーム・4K配信を同時にこなしても帯域不足にならない余裕がある。
-              </p>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="flex flex-col gap-2">
-                  <div className="font-mono text-[0.62rem] tracking-[0.12em] uppercase text-emerald mb-1">// メリット</div>
-                  <div className="flex items-start gap-2 text-[0.82rem] text-text-muted leading-[1.5]"><span className="w-1.5 h-1.5 rounded-full bg-emerald shrink-0 mt-1.5" />業界最低Ping値（平均8ms）</div>
-                  <div className="flex items-start gap-2 text-[0.82rem] text-text-muted leading-[1.5]"><span className="w-1.5 h-1.5 rounded-full bg-emerald shrink-0 mt-1.5" />独自回線で安定性が高い</div>
-                  <div className="flex items-start gap-2 text-[0.82rem] text-text-muted leading-[1.5]"><span className="w-1.5 h-1.5 rounded-full bg-emerald shrink-0 mt-1.5" />2G/10Gbpsプランあり</div>
-                  <div className="flex items-start gap-2 text-[0.82rem] text-text-muted leading-[1.5]"><span className="w-1.5 h-1.5 rounded-full bg-emerald shrink-0 mt-1.5" />SoftBankユーザーに割引</div>
-                </div>
-                <div className="flex flex-col gap-2">
-                  <div className="font-mono text-[0.62rem] tracking-[0.12em] uppercase text-red-400 mb-1">// デメリット</div>
-                  <div className="flex items-start gap-2 text-[0.82rem] text-text-muted leading-[1.5]"><span className="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-1.5" />VDSLマンション不可</div>
-                  <div className="flex items-start gap-2 text-[0.82rem] text-text-muted leading-[1.5]"><span className="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-1.5" />提供エリアがやや限定的</div>
-                  <div className="flex items-start gap-2 text-[0.82rem] text-text-muted leading-[1.5]"><span className="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-1.5" />工事に時間がかかる場合あり</div>
-                </div>
-              </div>
+            return (
+              <div key={isp.id} className={`rounded-[24px] border ${borderClass} ${bgClass} overflow-hidden transition-all duration-300 hover:border-cyan/30 hover:-translate-y-1 ${shadowClass} animate-[fadeUp_0.5s_ease_both]`} style={{ animationDelay: `${index * 100}ms` }}>
+                <div className="p-7 sm:p-8 pb-6 border-b border-white/10 relative overflow-hidden">
+                  {isFirst && (
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_100%_0%,rgba(0,229,255,0.1),transparent_60%)] pointer-events-none" />
+                  )}
+                  {!isFirst && (
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_100%_0%,rgba(255,255,255,0.03),transparent_60%)] pointer-events-none" />
+                  )}
+                  
+                  <div className="relative z-10 flex items-start justify-between gap-4 mb-4">
+                    <div className="flex flex-col gap-1.5">
+                      <div className="font-heading text-[1.5rem] font-bold tracking-tight">{isp.name}</div>
+                      <div className="text-[0.8rem] text-text-muted">{isp.providerName}</div>
+                    </div>
+                    <div className="flex flex-col items-end gap-1.5">
+                      {isp.badges.map(badge => (
+                        <span key={badge} className={`px-3 py-1 rounded-full font-mono text-[0.6rem] font-bold tracking-[0.1em] whitespace-nowrap ${isFirst ? 'bg-cyan text-black' : 'bg-cyan/10 text-cyan border border-cyan/25'}`}>{badge}</span>
+                      ))}
+                      {!isp.vdsl_support && (
+                        <span className="px-3 py-1 rounded-full bg-red-500/10 text-red-400 border border-red-500/20 font-mono text-[0.6rem] font-bold tracking-[0.1em] whitespace-nowrap">VDSL 不可</span>
+                      )}
+                    </div>
+                  </div>
 
-              <div className="flex flex-wrap gap-2 mt-2">
-                <span className="px-[11px] py-1 bg-cyan/10 border border-cyan/15 rounded-full text-[0.72rem] text-cyan font-medium">超低Ping</span>
-                <span className="px-[11px] py-1 bg-cyan/10 border border-cyan/15 rounded-full text-[0.72rem] text-cyan font-medium">独自回線</span>
-                <span className="px-[11px] py-1 bg-cyan/10 border border-cyan/15 rounded-full text-[0.72rem] text-cyan font-medium">10Gbps対応</span>
-                <span className="px-[11px] py-1 bg-cyan/10 border border-cyan/15 rounded-full text-[0.72rem] text-cyan font-medium">FPS最適</span>
-              </div>
+                  <div className="relative z-10 flex gap-6 flex-wrap mt-6">
+                    <div className="flex flex-col gap-1">
+                      <span className="font-mono text-[0.6rem] text-text-dim tracking-[0.1em] uppercase">平均Ping</span>
+                      <span className={`font-mono font-bold text-[1.3rem] leading-none ${isp.avg_ping_ms <= 15 ? 'text-emerald drop-shadow-[0_0_14px_rgba(0,230,118,0.4)]' : isp.avg_ping_ms <= 20 ? 'text-cyan' : 'text-amber-500'}`}>{isp.avg_ping_ms} ms</span>
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <span className="font-mono text-[0.6rem] text-text-dim tracking-[0.1em] uppercase">実質月額</span>
+                      <span className="font-mono font-bold text-[1.3rem] leading-none text-text">¥{isp.actual_monthly_fee_jpy.toLocaleString()}</span>
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <span className="font-mono text-[0.6rem] text-text-dim tracking-[0.1em] uppercase">最大速度</span>
+                      <span className={`font-mono font-bold text-[1.3rem] leading-none text-cyan ${isp.max_speed_gbps >= 10 ? 'drop-shadow-[0_0_14px_rgba(0,229,255,0.4)]' : ''}`}>{isp.max_speed_gbps} Gbps</span>
+                    </div>
+                    {isp.discounts.length > 0 && (
+                      <div className="flex flex-col gap-1">
+                        <span className="font-mono text-[0.6rem] text-text-dim tracking-[0.1em] uppercase">{isp.discounts[0].carrier}割</span>
+                        <span className="font-mono font-bold text-[1.3rem] leading-none text-emerald drop-shadow-[0_0_14px_rgba(0,230,118,0.4)]">¥{isp.discounts[0].amount.toLocaleString()}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+                
+                <div className="p-6 sm:p-8 pt-6 flex flex-col gap-5 h-full">
+                  <p className="text-[0.875rem] text-text-muted leading-[1.75]">
+                    {isp.description}
+                  </p>
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="flex flex-col gap-2">
+                      <div className="font-mono text-[0.62rem] tracking-[0.12em] uppercase text-emerald mb-1">// メリット</div>
+                      {isp.pros.map((pro, i) => (
+                        <div key={i} className="flex items-start gap-2 text-[0.82rem] text-text-muted leading-[1.5]"><span className="w-1.5 h-1.5 rounded-full bg-emerald shrink-0 mt-1.5" />{pro}</div>
+                      ))}
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <div className="font-mono text-[0.62rem] tracking-[0.12em] uppercase text-red-400 mb-1">// デメリット</div>
+                      {isp.cons.map((con, i) => (
+                        <div key={i} className="flex items-start gap-2 text-[0.82rem] text-text-muted leading-[1.5]"><span className="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-1.5" />{con}</div>
+                      ))}
+                    </div>
+                  </div>
 
-              <div className="flex flex-col sm:flex-row gap-2.5 mt-2">
-                <Link href="#" className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl bg-cyan text-black font-heading font-bold text-[0.875rem] transition-all hover:-translate-y-px hover:shadow-[0_0_32px_rgba(0,229,255,0.45)]">
-                  申し込む <ChevronRight className="w-3.5 h-3.5" />
-                </Link>
-                <Link href="/column/valorant-ping-guide" className="inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl border border-white/10 text-text-muted font-medium text-[0.825rem] transition-all hover:border-cyan/30 hover:text-text hover:bg-cyan/5">
-                  詳細コラムを読む
-                </Link>
-              </div>
-            </div>
-          </div>
+                  <div className="flex flex-wrap gap-2 mt-auto pt-4">
+                    {isp.tags.map(tag => (
+                      <span key={tag} className="px-[11px] py-1 bg-cyan/10 border border-cyan/15 rounded-full text-[0.72rem] text-cyan font-medium">{tag}</span>
+                    ))}
+                  </div>
 
-          {/* au ひかり */}
-          <div className="rounded-[24px] border border-white/10 bg-white/[0.035] overflow-hidden transition-all duration-300 hover:border-cyan/30 hover:-translate-y-1 hover:shadow-[0_24px_64px_rgba(0,0,0,0.4),0_0_30px_rgba(0,229,255,0.07)] animate-[fadeUp_0.5s_ease_both] animate-delay-[100ms]">
-            <div className="p-7 sm:p-8 pb-6 border-b border-white/10 relative overflow-hidden">
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_100%_0%,rgba(0,229,255,0.06),transparent_60%)] pointer-events-none" />
-              
-              <div className="relative z-10 flex items-start justify-between gap-4 mb-4">
-                <div className="flex flex-col gap-1.5">
-                  <div className="font-heading text-[1.5rem] font-bold tracking-tight">au ひかり</div>
-                  <div className="text-[0.8rem] text-text-muted">KDDI株式会社</div>
-                </div>
-                <div className="flex flex-col items-end gap-1.5">
-                  <span className="px-3 py-1 rounded-full bg-cyan/10 text-cyan border border-cyan/25 font-mono text-[0.6rem] font-bold tracking-[0.1em] whitespace-nowrap">au 割対応</span>
-                  <span className="px-3 py-1 rounded-full bg-red-500/10 text-red-400 border border-red-500/20 font-mono text-[0.6rem] font-bold tracking-[0.1em] whitespace-nowrap">VDSL 不可</span>
+                  <div className="flex flex-col sm:flex-row gap-2.5 mt-2">
+                    <Link href={isp.affiliateLink} className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl bg-cyan text-black font-heading font-bold text-[0.875rem] transition-all hover:-translate-y-px hover:shadow-[0_0_32px_rgba(0,229,255,0.45)]">
+                      申し込む <ChevronRight className="w-3.5 h-3.5" />
+                    </Link>
+                    <Link href="/column" className="inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl border border-white/10 text-text-muted font-medium text-[0.825rem] transition-all hover:border-cyan/30 hover:text-text hover:bg-cyan/5">
+                      関連コラムを読む
+                    </Link>
+                  </div>
                 </div>
               </div>
-
-              <div className="relative z-10 flex gap-6 flex-wrap mt-6">
-                <div className="flex flex-col gap-1">
-                  <span className="font-mono text-[0.6rem] text-text-dim tracking-[0.1em] uppercase">平均Ping</span>
-                  <span className="font-mono font-bold text-[1.3rem] leading-none text-emerald drop-shadow-[0_0_14px_rgba(0,230,118,0.4)]">15 ms</span>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <span className="font-mono text-[0.6rem] text-text-dim tracking-[0.1em] uppercase">実質月額</span>
-                  <span className="font-mono font-bold text-[1.3rem] leading-none text-text">¥4,950</span>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <span className="font-mono text-[0.6rem] text-text-dim tracking-[0.1em] uppercase">最大速度</span>
-                  <span className="font-mono font-bold text-[1.3rem] leading-none text-cyan drop-shadow-[0_0_14px_rgba(0,229,255,0.4)]">10 Gbps</span>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <span className="font-mono text-[0.6rem] text-text-dim tracking-[0.1em] uppercase">au割引</span>
-                  <span className="font-mono font-bold text-[1.3rem] leading-none text-emerald drop-shadow-[0_0_14px_rgba(0,230,118,0.4)]">¥1,100</span>
-                </div>
-              </div>
-            </div>
-            
-            <div className="p-6 sm:p-8 pt-6 flex flex-col gap-5">
-              <p className="text-[0.875rem] text-text-muted leading-[1.75]">
-                KDDIが展開する独自光回線。auスマホとのセット割で実質¥3,850〜と大幅に割安になる。Ping値もNURO光に次ぐ低水準で、戸建て住まいのauユーザーには最有力候補。
-              </p>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="flex flex-col gap-2">
-                  <div className="font-mono text-[0.62rem] tracking-[0.12em] uppercase text-emerald mb-1">// メリット</div>
-                  <div className="flex items-start gap-2 text-[0.82rem] text-text-muted leading-[1.5]"><span className="w-1.5 h-1.5 rounded-full bg-emerald shrink-0 mt-1.5" />auユーザーは大幅割引</div>
-                  <div className="flex items-start gap-2 text-[0.82rem] text-text-muted leading-[1.5]"><span className="w-1.5 h-1.5 rounded-full bg-emerald shrink-0 mt-1.5" />低Ping（平均15ms）</div>
-                  <div className="flex items-start gap-2 text-[0.82rem] text-text-muted leading-[1.5]"><span className="w-1.5 h-1.5 rounded-full bg-emerald shrink-0 mt-1.5" />10Gbpsプランあり</div>
-                </div>
-                <div className="flex flex-col gap-2">
-                  <div className="font-mono text-[0.62rem] tracking-[0.12em] uppercase text-red-400 mb-1">// デメリット</div>
-                  <div className="flex items-start gap-2 text-[0.82rem] text-text-muted leading-[1.5]"><span className="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-1.5" />VDSLマンション不可</div>
-                  <div className="flex items-start gap-2 text-[0.82rem] text-text-muted leading-[1.5]"><span className="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-1.5" />auユーザー以外は割引なし</div>
-                  <div className="flex items-start gap-2 text-[0.82rem] text-text-muted leading-[1.5]"><span className="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-1.5" />提供エリアに制限あり</div>
-                </div>
-              </div>
-
-              <div className="flex flex-wrap gap-2 mt-2">
-                <span className="px-[11px] py-1 bg-cyan/10 border border-cyan/15 rounded-full text-[0.72rem] text-cyan font-medium">低Ping</span>
-                <span className="px-[11px] py-1 bg-cyan/10 border border-cyan/15 rounded-full text-[0.72rem] text-cyan font-medium">au割対応</span>
-                <span className="px-[11px] py-1 bg-cyan/10 border border-cyan/15 rounded-full text-[0.72rem] text-cyan font-medium">戸建て向け</span>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-2.5 mt-2">
-                <Link href="#" className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl bg-cyan text-black font-heading font-bold text-[0.875rem] transition-all hover:-translate-y-px hover:shadow-[0_0_32px_rgba(0,229,255,0.45)]">
-                  申し込む <ChevronRight className="w-3.5 h-3.5" />
-                </Link>
-                <Link href="/column" className="inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl border border-white/10 text-text-muted font-medium text-[0.825rem] transition-all hover:border-cyan/30 hover:text-text hover:bg-cyan/5">
-                  詳細コラムを読む
-                </Link>
-              </div>
-            </div>
-          </div>
+            );
+          })}
 
         </div>
 

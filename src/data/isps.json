@@ -1,67 +1,168 @@
 [
   {
     "id": "nuro_hikari",
-    "name": "NURO光",
+    "name": "NURO 光",
+    "providerName": "ソニーネットワークコミュニケーションズ",
     "type": "独自回線",
-    "max_speed_gbps": 2.0,
-    "avg_ping_ms": 12.5,
+    "max_speed_gbps": 10.0,
+    "avg_ping_ms": 8.0,
     "avg_dl_speed_mbps": 500,
-    "stability_score": 90,
-    "actual_monthly_fee_jpy": 3950,
     "mobile_discount": ["softbank", "nuro_mobile"],
     "available_housing": ["house", "mansion_optical"],
-    "tags": ["FPS最強", "高額CB", "SoftBank割"]
+    "actual_monthly_fee_jpy": 5200,
+    "stability_score": 94,
+    "vdsl_support": false,
+    "discounts": [
+      { "carrier": "SoftBank", "amount": 1100, "name": "おうち割 光セット" },
+      { "carrier": "NUROモバイル", "amount": 792, "name": "NUROモバイルセット割" }
+    ],
+    "tags": ["超低Ping", "独自回線", "10Gbps対応", "FPS最適"],
+    "badges": ["BEST PING"],
+    "description": "NTT網を介さない独自の光ファイバーインフラにより、業界最低水準のPing値を実現。特に東京・大阪の都市部における安定性は他の追随を許さない。10Gbpsプランはゲーム・4K配信を同時にこなしても帯域不足にならない余裕がある。",
+    "pros": [
+      "業界最低Ping値（平均8ms）",
+      "独自回線で安定性が高い",
+      "2G/10Gbpsプランあり",
+      "SoftBankユーザーに割引"
+    ],
+    "cons": [
+      "VDSLマンション不可",
+      "提供エリアがやや限定的",
+      "工事に時間がかかる場合あり"
+    ],
+    "affiliateLink": "#",
+    "detailLink": "/provider"
   },
   {
     "id": "au_hikari",
-    "name": "auひかり",
+    "name": "au ひかり",
+    "providerName": "KDDI株式会社",
     "type": "独自回線",
-    "max_speed_gbps": 1.0,
-    "avg_ping_ms": 14.2,
+    "max_speed_gbps": 10.0,
+    "avg_ping_ms": 15.0,
     "avg_dl_speed_mbps": 480,
-    "stability_score": 88,
-    "actual_monthly_fee_jpy": 4100,
     "mobile_discount": ["au", "uq_mobile"],
     "available_housing": ["house", "mansion_optical"],
-    "tags": ["auユーザー必見", "独自回線で爆速"]
+    "actual_monthly_fee_jpy": 4950,
+    "stability_score": 88,
+    "vdsl_support": false,
+    "discounts": [
+      { "carrier": "au", "amount": 1100, "name": "auスマートバリュー" },
+      { "carrier": "UQモバイル", "amount": 1100, "name": "自宅セット割" }
+    ],
+    "tags": ["低Ping", "au割対応", "戸建て向け"],
+    "badges": ["au割"],
+    "description": "KDDIが展開する独自光回線。auスマホとのセット割で実質¥3,850〜と大幅に割安になる。Ping値もNURO光に次ぐ低水準で、戸建て住まいのauユーザーには最有力候補。",
+    "pros": [
+      "auユーザーは大幅割引",
+      "低Ping（平均15ms）",
+      "10Gbpsプランあり",
+      "独自回線による高い安定性"
+    ],
+    "cons": [
+      "VDSLマンション不可",
+      "auユーザー以外は割引なし",
+      "提供エリアに制限あり"
+    ],
+    "affiliateLink": "#",
+    "detailLink": "/provider"
   },
   {
     "id": "docomo_hikari",
-    "name": "ドコモ光 (GMOとくとくBB)",
+    "name": "ドコモ光",
+    "providerName": "NTTドコモ",
     "type": "コラボ光",
     "max_speed_gbps": 1.0,
-    "avg_ping_ms": 18.5,
+    "avg_ping_ms": 20.0,
     "avg_dl_speed_mbps": 320,
-    "stability_score": 80,
-    "actual_monthly_fee_jpy": 4400,
     "mobile_discount": ["docomo"],
     "available_housing": ["house", "mansion_optical", "mansion_vdsl"],
-    "tags": ["ドコモユーザー定番", "全国対応"]
+    "actual_monthly_fee_jpy": 4400,
+    "stability_score": 80,
+    "vdsl_support": true,
+    "discounts": [
+      { "carrier": "docomo", "amount": 1100, "name": "ドコモ光セット割" }
+    ],
+    "tags": ["VDSL対応", "docomo割", "全国対応", "安定性◎"],
+    "badges": ["docomo割"],
+    "description": "docomoユーザーなら最安クラス。VDSLマンションにも対応し、全国広いエリアで利用可能。平均Ping 20msは競技プレイにも十分な水準。",
+    "pros": [
+      "docomoスマホとセットで大幅割引",
+      "VDSLマンションでも契約可能",
+      "全国どこでも提供エリア",
+      "プロバイダを選べる自由度"
+    ],
+    "cons": [
+      "Ping値は独自回線に劣る",
+      "プロバイダ選びで速度が変わる",
+      "docomoユーザー以外は旨味が少ない"
+    ],
+    "affiliateLink": "#",
+    "detailLink": "/provider"
   },
   {
-    "id": "so_net_hikari",
-    "name": "So-net光プラス",
+    "id": "softbank_hikari",
+    "name": "SoftBank 光",
+    "providerName": "ソフトバンク株式会社",
     "type": "コラボ光",
     "max_speed_gbps": 1.0,
-    "avg_ping_ms": 19.0,
+    "avg_ping_ms": 22.0,
     "avg_dl_speed_mbps": 300,
-    "stability_score": 78,
-    "actual_monthly_fee_jpy": 3800,
-    "mobile_discount": ["au", "uq_mobile"],
+    "mobile_discount": ["softbank", "ymobile"],
     "available_housing": ["house", "mansion_optical", "mansion_vdsl"],
-    "tags": ["月額が安い", "au割"]
+    "actual_monthly_fee_jpy": 4180,
+    "stability_score": 75,
+    "vdsl_support": true,
+    "discounts": [
+      { "carrier": "SoftBank", "amount": 1100, "name": "おうち割 光セット" },
+      { "carrier": "Y!mobile", "amount": 1188, "name": "おうち割 光セット(A)" }
+    ],
+    "tags": ["VDSL対応", "SB割対応", "コスパ◎"],
+    "badges": ["SB割"],
+    "description": "SoftBank/Y!mobileユーザーなら実質¥3,080〜とトップクラスのコスパ。Ping値はやや高めだが、料金重視ユーザーには有力候補。",
+    "pros": [
+      "SoftBank/Y!mobileのセット割が強力",
+      "他社からの乗り換え違約金還元が豊富",
+      "VDSLマンションでも契約可能",
+      "IPv6高速ハイブリッドが無料"
+    ],
+    "cons": [
+      "オプション加入が必須（セット割時）",
+      "Ping値は上位陣には及ばない",
+      "サポートの混雑がやや目立つ"
+    ],
+    "affiliateLink": "#",
+    "detailLink": "/provider"
   },
   {
-    "id": "game_with_hikari",
-    "name": "GameWith光",
+    "id": "gamewith_hikari",
+    "name": "GameWith 光",
+    "providerName": "株式会社GameWith",
     "type": "専用帯域",
     "max_speed_gbps": 1.0,
     "avg_ping_ms": 11.0,
     "avg_dl_speed_mbps": 400,
-    "stability_score": 95,
-    "actual_monthly_fee_jpy": 5500,
     "mobile_discount": [],
     "available_housing": ["house", "mansion_optical", "mansion_vdsl"],
-    "tags": ["プロゲーマー仕様", "専用帯域", "ラグゼロ"]
+    "actual_monthly_fee_jpy": 5500,
+    "stability_score": 92,
+    "vdsl_support": true,
+    "discounts": [],
+    "tags": ["専用帯域", "プロゲーマー仕様", "ラグゼロ"],
+    "badges": ["GAMER専用"],
+    "description": "国内最大級のゲームメディア「GameWith」が提供する、ゲーマーのための専用光回線。専用帯域を確保しているため、夜間の混雑時でもラグが発生しにくい。",
+    "pros": [
+      "ゲーマー専用の帯域確保で混雑に強い",
+      "各ゲームサーバーへの直結ルーティング",
+      "VDSLマンションでも契約可能",
+      "解約違約金が無料"
+    ],
+    "cons": [
+      "スマホとのセット割引がない",
+      "月額料金がやや高め",
+      "10Gプランは提供エリアが限定的"
+    ],
+    "affiliateLink": "#",
+    "detailLink": "/provider"
   }
 ]
