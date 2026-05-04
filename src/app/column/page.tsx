@@ -7,23 +7,7 @@ export default async function ColumnList() {
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground font-sans">
-      {/* Header */}
-      <header className="sticky top-0 z-50 flex justify-between items-center px-4 sm:px-10 h-16 bg-[#050508]/75 backdrop-blur-xl border-b border-white/10">
-        <Link href="/" className="font-heading font-bold text-lg tracking-tighter text-text no-underline">
-          Gamer's <span className="text-cyan drop-shadow-[0_0_20px_rgba(0,229,255,0.6)]">Line</span>
-        </Link>
-        <nav className="flex items-center gap-4 sm:gap-8">
-          <Link href="#" className="hidden sm:block text-text-muted text-sm font-medium hover:text-text transition-colors">ランキング</Link>
-          <Link href="#" className="hidden sm:block text-text-muted text-sm font-medium hover:text-text transition-colors">比較する</Link>
-          <Link href="/column" className="hidden sm:block text-text text-sm font-medium transition-colors">コラム</Link>
-          
-          <Link href="/diagnosis" className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full border border-cyan/25 bg-cyan/10 text-cyan text-xs font-bold tracking-widest uppercase transition-all hover:bg-cyan/20 hover:shadow-[0_0_20px_rgba(0,229,255,0.2)] hover:border-cyan/50">
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan shadow-[0_0_8px_var(--cyan)] animate-[pulse-dot_2s_ease-in-out_infinite]"></span>
-            <span className="hidden sm:inline">無料診断</span>
-            <span className="sm:hidden">DIAGNOSIS</span>
-          </Link>
-        </nav>
-      </header>
+
 
       {/* Page Header */}
       <div className="relative z-10 px-4 sm:px-10 py-10 sm:py-[72px] max-w-[1100px] mx-auto w-full border-b border-white/10">
@@ -133,15 +117,7 @@ export default async function ColumnList() {
         </Link>
       </div>
 
-      {/* Footer */}
-      <footer className="relative z-10 flex flex-col sm:flex-row justify-between items-center gap-3 px-4 sm:px-10 py-7 sm:py-10 border-t border-white/10 text-center sm:text-left">
-        <Link href="/" className="font-heading font-bold text-base tracking-tighter text-text no-underline">
-          Gamer's <span className="text-cyan drop-shadow-[0_0_20px_rgba(0,229,255,0.6)]">Line</span>
-        </Link>
-        <p className="text-[0.75rem] text-text-dim">
-          © 2026 Gamer's Line. 掲載情報はアフィリエイトリンクを含む場合があります。
-        </p>
-      </footer>
+
     </div>
   );
 }
