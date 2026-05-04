@@ -3,8 +3,8 @@ import { Play, Activity, Wallet, Zap, ShieldAlert, BadgeCent, ChevronDown } from
 import ispsData from "@/data/isps.json";
 
 export default function ComparePage() {
-  // Use first 5 ISPs for comparison to fit the design
-  const compareIsps = ispsData.slice(0, 5);
+  // Use all ISPs
+  const compareIsps = ispsData;
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground font-sans">
@@ -27,7 +27,7 @@ export default function ComparePage() {
         <div className="min-w-[700px] md:min-w-[900px]">
           
           {/* Column Headers */}
-          <div className="grid grid-cols-[200px_repeat(5,1fr)] gap-2 mb-2">
+          <div className="grid gap-2 mb-2" style={{ gridTemplateColumns: `200px repeat(${compareIsps.length}, minmax(180px, 1fr))` }}>
             <div className="flex items-end pb-3 pl-1 font-mono text-[0.65rem] text-text-dim tracking-[0.1em] uppercase">
               // ISP
             </div>
@@ -48,7 +48,7 @@ export default function ComparePage() {
           </div>
 
           {/* Table Body */}
-          <div className="grid grid-cols-[200px_repeat(5,1fr)] gap-x-2">
+          <div className="grid gap-x-2" style={{ gridTemplateColumns: `200px repeat(${compareIsps.length}, minmax(180px, 1fr))` }}>
             
             {/* Ping */}
             <div className="contents group">
@@ -139,7 +139,7 @@ export default function ComparePage() {
                 const textClass = scoreColor === 'cyan' ? 'text-cyan' : scoreColor === 'emerald' ? 'text-emerald' : scoreColor === 'purple-400' ? 'text-purple-400' : 'text-amber-500';
                 
                 return (
-                  <div key={isp.id} className={`flex items-center justify-center py-4 px-2 border-b border-white/10 border-x ${isBest ? 'border-cyan/20 bg-cyan/[0.04]' : 'border-white/10 bg-white/[0.015]'} text-center ${isBest ? 'rounded-bl-none' : index === 4 ? 'rounded-br-none' : ''}`}>
+                  <div key={isp.id} className={`flex items-center justify-center py-4 px-2 border-b border-white/10 border-x ${isBest ? 'border-cyan/20 bg-cyan/[0.04]' : 'border-white/10 bg-white/[0.015]'} text-center ${isBest ? 'rounded-bl-none' : index === compareIsps.length - 1 ? 'rounded-br-none' : ''}`}>
                     <div className="flex flex-col items-center gap-1 w-full px-2">
                       <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
                         <div className={`h-full rounded-full ${bgClass}`} style={{ width: `${isp.stability_score}%` }}></div>
@@ -154,7 +154,7 @@ export default function ComparePage() {
           </div>
 
           {/* CTA Row */}
-          <div className="grid grid-cols-[200px_repeat(5,1fr)] gap-x-2 mt-2">
+          <div className="grid gap-x-2 mt-2" style={{ gridTemplateColumns: `200px repeat(${compareIsps.length}, minmax(180px, 1fr))` }}>
             <div></div>
             {compareIsps.map((isp, index) => {
               const isBest = index === 0;

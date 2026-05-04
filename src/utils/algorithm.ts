@@ -9,6 +9,7 @@ export interface ISP {
   actual_monthly_fee_jpy: number;
   mobile_discount: string[];
   available_housing: string[];
+  regions: string[];
   tags: string[];
   affiliateId?: string;
 }
@@ -18,6 +19,8 @@ export interface UserAnswers {
   housingType: 'house' | 'mansion_optical' | 'mansion_vdsl' | 'unknown' | '';
   mobileCarrier: 'docomo' | 'au' | 'softbank' | 'other' | '';
   priority: 'ping' | 'price' | 'balance' | '';
+  region: string;
+  requires10G: boolean;
   budget: number; 
 }
 
@@ -67,6 +70,14 @@ export function recommendISPs(isps: ISP[], answers: UserAnswers): { isp: ISP, sc
   const filteredISPs = isps.filter(isp => {
     // ユーザーがVDSLと答えた場合、VDSL対応していない回線（NURO等）を弾く
     if (answers.housingType === 'mansion_vdsl' && !isp.available_housing.includes('mansion_vdsl')) {
+      return false;
+    }
+    // エリア対応していない回線を弾く
+    if (answers.region && !isp.regions.includes(answers.region)) {
+      return false;
+    }
+    // 10G希望の場合は、最大速度が10G未満のものを弾く
+    if (answers.requires10G && isp.max_speed_gbps < 10) {
       return false;
     }
     return true;

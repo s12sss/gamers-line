@@ -12,7 +12,7 @@ export default function DiagnosisPage() {
         
         <div className="text-center mb-12">
           <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
-            最適な回線を<span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-emerald">見つける</span>
+            最適な回線を<span className="gradient-text">見つける</span>
           </h1>
           <p className="text-zinc-400">
             あなたのプレイスタイルと住環境に合わせて、<br className="md:hidden" />最強のゲーミング回線を割り出します。

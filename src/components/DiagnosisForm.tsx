@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Gamepad2, Home, Smartphone, Zap, Wallet, ChevronRight, Activity, Check } from 'lucide-react';
+import { Gamepad2, Home, Smartphone, Zap, Wallet, ChevronRight, Activity, Check, MapPin, Download } from 'lucide-react';
 import { UserAnswers, recommendISPs, ISP } from '@/utils/algorithm';
 import ispsData from '@/data/isps.json';
 import Link from 'next/link';
@@ -170,6 +170,8 @@ export default function DiagnosisForm() {
     housingType: '',
     mobileCarrier: '',
     priority: '',
+    region: '',
+    requires10G: false,
     budget: 0,
   });
   const [results, setResults] = useState<{ isp: ISP, score: number }[] | null>(null);
@@ -179,7 +181,7 @@ export default function DiagnosisForm() {
     const newAnswers = { ...answers, [key]: value };
     setAnswers(newAnswers);
     
-    if (step < 5) {
+    if (step < 7) {
       setStep(step + 1);
     } else {
       setLoading(true);
@@ -191,12 +193,14 @@ export default function DiagnosisForm() {
     const recommended = recommendISPs(isps, answers);
     setResults(recommended);
     setLoading(false);
-    setStep(6);
+    setStep(8);
   };
 
-  const stepIcons = [null, <Gamepad2 />, <Home />, <Smartphone />, <Zap />, <Wallet />];
+  const stepIcons = [null, <Gamepad2 />, <Download />, <MapPin />, <Home />, <Smartphone />, <Zap />, <Wallet />];
   const stepTitles = [null,
     '普段プレイするゲームは？',
+    'ゲームの配信や、頻繁な大型アプデは？',
+    'お住まいの地域は？',
     '現在の住居タイプは？',
     'お使いのスマホキャリアは？',
     '回線選びで最も重視するのは？',
@@ -239,10 +243,8 @@ export default function DiagnosisForm() {
               {stepTitles[2]}
             </div>
             <div className="flex flex-col gap-3">
-              <OptionCard onClick={() => handleNext('housingType', 'house')} title="戸建て" desc="専用線を引ける可能性が高いです" />
-              <OptionCard onClick={() => handleNext('housingType', 'mansion_optical')} title="マンション（光配線）" desc="多くの光回線が導入可能です" />
-              <OptionCard onClick={() => handleNext('housingType', 'mansion_vdsl')} title="マンション（VDSL）" desc="電話線方式。一部の独自回線は導入不可" />
-              <OptionCard onClick={() => handleNext('housingType', 'unknown')} title="わからない" desc="標準的な判定を行います" />
+              <OptionCard onClick={() => handleNext('requires10G', true)} title="はい" desc="PCゲームの大型アプデや、高画質配信をします" />
+              <OptionCard onClick={() => handleNext('requires10G', false)} title="いいえ" desc="そこまで大容量の通信はしません（通常プラン）" />
             </div>
           </motion.div>
         );
@@ -255,11 +257,16 @@ export default function DiagnosisForm() {
               </div>
               {stepTitles[3]}
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <OptionCard onClick={() => handleNext('mobileCarrier', 'docomo')} title="docomo" />
-              <OptionCard onClick={() => handleNext('mobileCarrier', 'au')} title="au / UQ" />
-              <OptionCard onClick={() => handleNext('mobileCarrier', 'softbank')} title="SoftBank / Y!" />
-              <OptionCard onClick={() => handleNext('mobileCarrier', 'other')} title="格安SIM / その他" />
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <OptionCard onClick={() => handleNext('region', 'hokkaido')} title="北海道" />
+              <OptionCard onClick={() => handleNext('region', 'tohoku')} title="東北" />
+              <OptionCard onClick={() => handleNext('region', 'kanto')} title="関東" />
+              <OptionCard onClick={() => handleNext('region', 'tokai')} title="東海" />
+              <OptionCard onClick={() => handleNext('region', 'kansai')} title="関西" />
+              <OptionCard onClick={() => handleNext('region', 'chugoku')} title="中国" />
+              <OptionCard onClick={() => handleNext('region', 'shikoku')} title="四国" />
+              <OptionCard onClick={() => handleNext('region', 'kyushu')} title="九州" />
+              <OptionCard onClick={() => handleNext('region', 'okinawa')} title="沖縄" />
             </div>
           </motion.div>
         );
@@ -273,9 +280,10 @@ export default function DiagnosisForm() {
               {stepTitles[4]}
             </div>
             <div className="flex flex-col gap-3">
-              <OptionCard onClick={() => handleNext('priority', 'ping')} title="とにかくラグを無くしたい" desc="料金より通信品質を最優先" />
-              <OptionCard onClick={() => handleNext('priority', 'price')} title="月額料金を抑えたい" desc="安くてそこそこ遊べる回線が良い" />
-              <OptionCard onClick={() => handleNext('priority', 'balance')} title="バランスよく選びたい" desc="品質も料金も妥協したくない" />
+              <OptionCard onClick={() => handleNext('housingType', 'house')} title="戸建て" desc="専用線を引ける可能性が高いです" />
+              <OptionCard onClick={() => handleNext('housingType', 'mansion_optical')} title="マンション（光配線）" desc="多くの光回線が導入可能です" />
+              <OptionCard onClick={() => handleNext('housingType', 'mansion_vdsl')} title="マンション（VDSL）" desc="電話線方式。一部の独自回線は導入不可" />
+              <OptionCard onClick={() => handleNext('housingType', 'unknown')} title="わからない" desc="標準的な判定を行います" />
             </div>
           </motion.div>
         );
@@ -288,6 +296,39 @@ export default function DiagnosisForm() {
               </div>
               {stepTitles[5]}
             </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <OptionCard onClick={() => handleNext('mobileCarrier', 'docomo')} title="docomo" />
+              <OptionCard onClick={() => handleNext('mobileCarrier', 'au')} title="au / UQ" />
+              <OptionCard onClick={() => handleNext('mobileCarrier', 'softbank')} title="SoftBank / Y!" />
+              <OptionCard onClick={() => handleNext('mobileCarrier', 'other')} title="格安SIM / その他" />
+            </div>
+          </motion.div>
+        );
+      case 6:
+        return (
+          <motion.div key="step6" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.25 }}>
+            <div className="font-heading text-xl sm:text-[1.6rem] font-bold tracking-tight mb-5 sm:mb-7 flex items-center gap-3 text-text">
+              <div className="w-10 h-10 rounded-[10px] bg-cyan/10 border border-cyan/20 flex items-center justify-center text-cyan shrink-0">
+                {stepIcons[6]}
+              </div>
+              {stepTitles[6]}
+            </div>
+            <div className="flex flex-col gap-3">
+              <OptionCard onClick={() => handleNext('priority', 'ping')} title="とにかくラグを無くしたい" desc="料金より通信品質を最優先" />
+              <OptionCard onClick={() => handleNext('priority', 'price')} title="月額料金を抑えたい" desc="安くてそこそこ遊べる回線が良い" />
+              <OptionCard onClick={() => handleNext('priority', 'balance')} title="バランスよく選びたい" desc="品質も料金も妥協したくない" />
+            </div>
+          </motion.div>
+        );
+      case 7:
+        return (
+          <motion.div key="step7" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.25 }}>
+            <div className="font-heading text-xl sm:text-[1.6rem] font-bold tracking-tight mb-5 sm:mb-7 flex items-center gap-3 text-text">
+              <div className="w-10 h-10 rounded-[10px] bg-cyan/10 border border-cyan/20 flex items-center justify-center text-cyan shrink-0">
+                {stepIcons[7]}
+              </div>
+              {stepTitles[7]}
+            </div>
             <div className="flex flex-col gap-3">
               <OptionCard onClick={() => handleNext('budget', 4000)} title="4,000円以下" desc="実質月額をとにかく安く" />
               <OptionCard onClick={() => handleNext('budget', 5000)} title="5,000円前後" desc="標準的な価格帯" />
@@ -295,7 +336,7 @@ export default function DiagnosisForm() {
             </div>
           </motion.div>
         );
-      case 6:
+      case 8:
         return (
           <motion.div key="step6" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <div className="text-center mb-10 mt-4">
@@ -326,7 +367,7 @@ export default function DiagnosisForm() {
                 onClick={() => {
                   setStep(1);
                   setResults(null);
-                  setAnswers({ gameGenre: '', housingType: '', mobileCarrier: '', priority: '', budget: 0 });
+                  setAnswers({ gameGenre: '', housingType: '', mobileCarrier: '', priority: '', region: '', requires10G: false, budget: 0 });
                 }}
                 className="text-xs sm:text-sm text-cyan/70 hover:text-cyan underline underline-offset-4 transition-colors"
               >
@@ -344,16 +385,16 @@ export default function DiagnosisForm() {
     <div className="w-full max-w-[640px] mx-auto pt-6 sm:pt-16 pb-12 sm:pb-20">
       
       {/* Progress Bar */}
-      {step < 6 && !loading && (
+      {step < 8 && !loading && (
         <div className="mb-6 sm:mb-8 px-1 sm:px-2">
           <div className="flex justify-between items-center mb-2.5">
-            <span className="font-mono text-[0.65rem] sm:text-[0.7rem] text-cyan tracking-[0.12em] uppercase">STEP {step} / 5</span>
+            <span className="font-mono text-[0.65rem] sm:text-[0.7rem] text-cyan tracking-[0.12em] uppercase">STEP {step} / 7</span>
           </div>
           <div className="w-full h-0.5 bg-white/5 rounded-full overflow-hidden relative">
             <motion.div 
               className="absolute top-0 left-0 h-full bg-gradient-to-r from-cyan to-emerald shadow-[0_0_8px_rgba(0,229,255,0.6)]"
-              initial={{ width: `${((step - 1) / 5) * 100}%` }}
-              animate={{ width: `${(step / 5) * 100}%` }}
+              initial={{ width: `${((step - 1) / 7) * 100}%` }}
+              animate={{ width: `${(step / 7) * 100}%` }}
               transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
             />
           </div>
