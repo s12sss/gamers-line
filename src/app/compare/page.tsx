@@ -24,6 +24,12 @@ export default function ComparePage() {
 
       {/* Comparison Table Section */}
       <div className="relative z-10 max-w-[1200px] mx-auto w-full px-4 sm:px-10 py-10 sm:py-16 pb-24 overflow-x-auto">
+        {/* Mobile Scroll Hint */}
+        <div className="md:hidden flex items-center justify-end gap-1 mb-2 text-[0.65rem] text-cyan/70 font-mono tracking-widest animate-pulse">
+          <span>SWIPE</span>
+          <ChevronRight className="w-3 h-3" />
+        </div>
+
         <div className="min-w-[700px] md:min-w-[900px]">
           
           {/* Column Headers */}

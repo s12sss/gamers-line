@@ -22,7 +22,7 @@ function OptionCard({ title, desc, onClick }: { title: string, desc?: string, on
         <div className="font-heading font-semibold text-base text-text group-hover:text-cyan transition-colors tracking-tight mb-1">
           {title}
         </div>
-        {desc && <div className="text-sm text-text-muted leading-relaxed">{desc}</div>}
+        {desc && <div className="text-[0.8rem] sm:text-sm text-text-muted leading-relaxed">{desc}</div>}
       </div>
       
       <div className="text-text-dim group-hover:text-cyan group-hover:translate-x-0.5 transition-all relative z-10">
