@@ -1,0 +1,368 @@
+以下のコードは、Next.js (App Router) + TailwindCSS で構築されたネット回線診断ツールのMVPです。
+内部のルーティング、コンポーネントの分割、状態管理（React State）、および診断アルゴリズムのロジックはすでに完璧に動作しています。
+
+**あなたのミッション：**
+このツールの「デザイン・UI/UX」のみを、圧倒的に洗練されたプロフェッショナルなものにリファクタリングしてください。既存のロジック（`handleNext`や`results`の計算処理）は絶対に壊さないでください。
+
+**デザインの要件：**
+- ゲーマー向けのアフィリエイトサイトです。
+- "Cyber-Glassmorphism" をテーマにし、ダークモード（黒/ダークグレーベース）にネオンシアン（#00E5FF）やエメラルドグリーン（#00E676）のアクセントを効かせてください。
+- VercelやDiscord、Razerなどのような、クリーンでありながらゲーマーの心をくすぐるスタイリッシュなUIにしてください。
+- Framer Motionのアニメーションをよりリッチに（ホバー時のGlowエフェクトや、流れるようなステップ遷移など）してください。
+
+**対象ファイル：**
+以下に3つの対象ファイルのコードを添付します。これらを最高に美しいデザインに書き直したコードを出力してください。
+
+---
+
+### 1. `src/app/globals.css`
+```css
+@import "tailwindcss";
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --neon-cyan: #00E5FF;
+  --emerald-green: #00E676;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-neon-cyan: var(--neon-cyan);
+  --color-emerald: var(--emerald-green);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+```
+
+---
+
+### 2. `src/app/page.tsx`
+```tsx
+import Link from "next/link";
+
+export default function Home() {
+  return (
+    <div className="flex flex-col min-h-screen bg-background text-foreground font-sans selection:bg-neon-cyan selection:text-black">
+      {/* Header */}
+      <header className="sticky top-0 z-50 w-full glass-card border-b-0 border-white/10 px-6 py-4 flex justify-between items-center">
+        <div className="font-bold text-xl tracking-tighter">
+          Gamer's <span className="text-neon-cyan">Line</span>
+        </div>
+        <nav>
+          <Link href="/diagnosis" className="text-sm font-medium hover:text-neon-cyan transition-colors">
+            無料診断
+          </Link>
+        </nav>
+      </header>
+
+      {/* Hero Section */}
+      <main className="flex-1 flex flex-col items-center justify-center px-6 py-24 text-center">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-neon-cyan/20 blur-[120px] rounded-full -z-10 pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[300px] bg-emerald/10 blur-[100px] rounded-full -z-10 pointer-events-none" />
+
+        <div className="inline-flex items-center rounded-full border border-neon-cyan/30 bg-neon-cyan/10 px-3 py-1 text-sm text-neon-cyan mb-8">
+          <span className="flex w-2 h-2 rounded-full bg-neon-cyan mr-2 animate-pulse"></span>
+          FPSゲーマー特化型の回線診断ツール
+        </div>
+
+        <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 max-w-4xl">
+          そのラグ、<br className="md:hidden" />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-emerald">
+            回線のせいかも。
+          </span>
+        </h1>
+        <p className="text-lg md:text-xl text-zinc-400 mb-10 max-w-2xl">
+          Ping値と実質料金の「最適解」を導き出します。<br />
+          あなたに本当に必要なゲーミング回線を、たった30秒で無料診断。
+        </p>
+
+        <Link
+          href="/diagnosis"
+          className="group relative inline-flex h-14 items-center justify-center overflow-hidden rounded-full bg-neon-cyan px-8 font-bold text-black transition-transform hover:scale-105 active:scale-95"
+        >
+          <span className="absolute inset-0 bg-white/20 translate-y-full transition-transform group-hover:translate-y-0" />
+          <span className="relative flex items-center gap-2">
+            🚀 今すぐ無料診断をはじめる
+          </span>
+        </Link>
+      </main>
+
+      {/* Features Section */}
+      <section className="px-6 py-24 bg-black/50 border-t border-white/5">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-16">Gamer's Line が選ばれる理由</h2>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="glass-card p-8 rounded-2xl">
+              <div className="w-12 h-12 rounded-xl bg-neon-cyan/20 flex items-center justify-center mb-6">
+                <svg className="w-6 h-6 text-neon-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold mb-4">Ping値特化の分析</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed">
+                単なる「最大速度(Gbps)」ではなく、FPS/格ゲーで最も重要な「平均Ping値」をベースに回線の期待値を算出します。
+              </p>
+            </div>
+
+            <div className="glass-card p-8 rounded-2xl border-neon-cyan/30 relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-2 bg-neon-cyan text-black text-xs font-bold rounded-bl-lg">
+                NEW
+              </div>
+              <div className="w-12 h-12 rounded-xl bg-emerald/20 flex items-center justify-center mb-6">
+                <svg className="w-6 h-6 text-emerald" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold mb-4">絶対的ハードフィルター</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed">
+                VDSLマンションなど、物理的に導入不可能な回線は事前に徹底除外。「契約できない回線」をおすすめする事はありません。
+              </p>
+            </div>
+
+            <div className="glass-card p-8 rounded-2xl">
+              <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center mb-6">
+                <svg className="w-6 h-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold mb-4">実質料金・スマホ割を網羅</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed">
+                複雑なキャッシュバックやスマホセット割を自動計算。あなたにとって「本当はいくらなのか」を透明性を持って提示します。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+```
+
+---
+
+### 3. `src/components/DiagnosisForm.tsx`
+```tsx
+"use client";
+
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Gamepad2, Home, Smartphone, Zap, Wallet, CheckCircle2, ChevronRight, Activity } from 'lucide-react';
+import { UserAnswers, recommendISPs, ISP } from '@/utils/algorithm';
+import ispsData from '@/data/isps.json';
+
+const isps = ispsData as ISP[];
+
+export default function DiagnosisForm() {
+  const [step, setStep] = useState(1);
+  const [answers, setAnswers] = useState<UserAnswers>({
+    gameGenre: '',
+    housingType: '',
+    mobileCarrier: '',
+    priority: '',
+    budget: 0,
+  });
+  const [results, setResults] = useState<{ isp: ISP, score: number }[] | null>(null);
+
+  const handleNext = (key: keyof UserAnswers, value: any) => {
+    const newAnswers = { ...answers, [key]: value };
+    setAnswers(newAnswers);
+    
+    if (step < 5) {
+      setStep(step + 1);
+    } else {
+      // Calculate results
+      const recommended = recommendISPs(isps, newAnswers);
+      setResults(recommended);
+      setStep(6);
+    }
+  };
+
+  const renderStep = () => {
+    switch (step) {
+      case 1:
+        return (
+          <motion.div key="step1" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+              <Gamepad2 className="text-neon-cyan" /> 普段プレイするゲームは？
+            </h2>
+            <div className="grid gap-4">
+              <OptionCard onClick={() => handleNext('gameGenre', 'fps')} title="FPS / 格ゲー" desc="VALORANT, APEX, スト6など (Ping値超重視)" />
+              <OptionCard onClick={() => handleNext('gameGenre', 'mmo')} title="MMO / MOBA" desc="FF14, LoLなど (安定性重視)" />
+              <OptionCard onClick={() => handleNext('gameGenre', 'casual')} title="カジュアル / スマホ" desc="原神, スマホゲーム全般 (料金・速度バランス)" />
+            </div>
+          </motion.div>
+        );
+      case 2:
+        return (
+          <motion.div key="step2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+              <Home className="text-neon-cyan" /> 現在の住居タイプは？
+            </h2>
+            <div className="grid gap-4">
+              <OptionCard onClick={() => handleNext('housingType', 'house')} title="戸建て" desc="専用線を引ける可能性が高いです" />
+              <OptionCard onClick={() => handleNext('housingType', 'mansion_optical')} title="マンション (光配線)" desc="多くの光回線が導入可能です" />
+              <OptionCard onClick={() => handleNext('housingType', 'mansion_vdsl')} title="マンション (VDSL)" desc="電話線方式。一部の独自回線は導入不可" />
+              <OptionCard onClick={() => handleNext('housingType', 'unknown')} title="わからない" desc="標準的な判定を行います" />
+            </div>
+          </motion.div>
+        );
+      case 3:
+        return (
+          <motion.div key="step3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+              <Smartphone className="text-neon-cyan" /> お使いのスマホキャリアは？
+            </h2>
+            <div className="grid grid-cols-2 gap-4">
+              <OptionCard onClick={() => handleNext('mobileCarrier', 'docomo')} title="docomo" />
+              <OptionCard onClick={() => handleNext('mobileCarrier', 'au')} title="au / UQ" />
+              <OptionCard onClick={() => handleNext('mobileCarrier', 'softbank')} title="SoftBank / Y!" />
+              <OptionCard onClick={() => handleNext('mobileCarrier', 'other')} title="格安SIM / その他" />
+            </div>
+          </motion.div>
+        );
+      case 4:
+        return (
+          <motion.div key="step4" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+              <Zap className="text-neon-cyan" /> 回線選びで最も重視するのは？
+            </h2>
+            <div className="grid gap-4">
+              <OptionCard onClick={() => handleNext('priority', 'ping')} title="とにかくラグを無くしたい" desc="料金より通信品質を最優先" />
+              <OptionCard onClick={() => handleNext('priority', 'price')} title="月額料金を抑えたい" desc="安くてそこそこ遊べる回線が良い" />
+              <OptionCard onClick={() => handleNext('priority', 'balance')} title="バランスよく選びたい" desc="品質も料金も妥協したくない" />
+            </div>
+          </motion.div>
+        );
+      case 5:
+        return (
+          <motion.div key="step5" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+              <Wallet className="text-neon-cyan" /> 月額料金の予算は？
+            </h2>
+            <div className="grid gap-4">
+              <OptionCard onClick={() => handleNext('budget', 4000)} title="4,000円以下" desc="実質月額をとにかく安く" />
+              <OptionCard onClick={() => handleNext('budget', 5000)} title="5,000円前後" desc="標準的な価格帯" />
+              <OptionCard onClick={() => handleNext('budget', 99999)} title="料金は気にしない" desc="最高の環境を作りたい" />
+            </div>
+          </motion.div>
+        );
+      case 6:
+        return (
+          <motion.div key="step6" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
+            <div className="text-center mb-8">
+              <CheckCircle2 className="w-16 h-16 text-emerald mx-auto mb-4" />
+              <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-emerald">診断完了！</h2>
+              <p className="text-zinc-400 mt-2">あなたの環境・予算に最適なゲーミング回線はこちらです。</p>
+            </div>
+
+            <div className="space-y-6">
+              {results?.map((res, index) => (
+                <div key={res.isp.id} className="glass-card p-6 rounded-2xl relative overflow-hidden border border-white/10 hover:border-neon-cyan/50 transition-colors group">
+                  {index === 0 && (
+                    <div className="absolute top-0 right-0 bg-neon-cyan text-black text-xs font-bold px-3 py-1 rounded-bl-lg">
+                      BEST MATCH
+                    </div>
+                  )}
+                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                      <div className="flex items-center gap-3 mb-2">
+                        <span className={`text-2xl font-bold ${index === 0 ? 'text-neon-cyan' : 'text-white'}`}>
+                          {index + 1}位
+                        </span>
+                        <h3 className="text-xl font-bold group-hover:text-neon-cyan transition-colors">{res.isp.name}</h3>
+                        <span className="px-2 py-1 bg-white/10 rounded text-xs text-zinc-300">{res.isp.type}</span>
+                      </div>
+                      <div className="flex flex-wrap gap-2 mb-4 md:mb-0">
+                        {res.isp.tags.map(tag => (
+                          <span key={tag} className="text-xs px-2 py-1 bg-neon-cyan/10 text-neon-cyan rounded-full border border-neon-cyan/20">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="text-left md:text-right w-full md:w-auto p-4 bg-black/40 rounded-xl">
+                      <div className="text-xs text-zinc-400 mb-1">推測Ping値 / 実質月額</div>
+                      <div className="flex items-end md:justify-end gap-1">
+                        <Activity className="w-5 h-5 text-emerald mb-1 mr-1" />
+                        <span className="text-3xl font-bold text-emerald leading-none">{res.isp.avg_ping_ms}</span>
+                        <span className="text-sm text-zinc-400 mb-1 mr-4">ms</span>
+                        <span className="text-2xl font-bold text-white leading-none">{res.isp.actual_monthly_fee_jpy.toLocaleString()}</span>
+                        <span className="text-sm text-zinc-400 mb-1">円</span>
+                      </div>
+                    </div>
+                  </div>
+                  <button className="w-full mt-6 bg-white/10 hover:bg-neon-cyan hover:text-black text-white font-bold py-3 rounded-xl transition-all flex items-center justify-center gap-2">
+                    お申し込み・詳細を見る <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
+              ))}
+            </div>
+            
+            <p className="text-xs text-zinc-500 mt-8 text-center px-4">
+              ※本ページのPing値・実効速度は、『みんなのネット回線速度』等の第三者統計データを基に、最新数値を元に弊社が独自算出した推計値（期待値）です。ご利用環境により実際の数値は異なります。
+            </p>
+          </motion.div>
+        );
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div className="w-full max-w-2xl mx-auto">
+      {step < 6 && (
+        <div className="mb-8">
+          <div className="flex justify-between text-xs font-bold text-neon-cyan mb-2">
+            <span>STEP {step}</span>
+            <span>5 STEPS</span>
+          </div>
+          <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
+            <motion.div 
+              className="h-full bg-neon-cyan"
+              initial={{ width: `${((step - 1) / 5) * 100}%` }}
+              animate={{ width: `${(step / 5) * 100}%` }}
+              transition={{ duration: 0.3 }}
+            />
+          </div>
+        </div>
+      )}
+      
+      <div className="glass-card p-6 md:p-8 rounded-3xl min-h-[400px]">
+        <AnimatePresence mode="wait">
+          {renderStep()}
+        </AnimatePresence>
+      </div>
+    </div>
+  );
+}
+
+function OptionCard({ title, desc, onClick }: { title: string, desc?: string, onClick: () => void }) {
+  return (
+    <button 
+      onClick={onClick}
+      className="w-full text-left p-4 rounded-xl border border-white/10 bg-white/5 hover:bg-neon-cyan/10 hover:border-neon-cyan/50 transition-all group"
+    >
+      <div className="font-bold text-lg group-hover:text-neon-cyan transition-colors">{title}</div>
+      {desc && <div className="text-sm text-zinc-400 mt-1">{desc}</div>}
+    </button>
+  );
+}
+```

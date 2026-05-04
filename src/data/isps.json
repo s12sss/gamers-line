@@ -1,0 +1,67 @@
+[
+  {
+    "id": "nuro_hikari",
+    "name": "NURO光",
+    "type": "独自回線",
+    "max_speed_gbps": 2.0,
+    "avg_ping_ms": 12.5,
+    "avg_dl_speed_mbps": 500,
+    "stability_score": 90,
+    "actual_monthly_fee_jpy": 3950,
+    "mobile_discount": ["softbank", "nuro_mobile"],
+    "available_housing": ["house", "mansion_optical"],
+    "tags": ["FPS最強", "高額CB", "SoftBank割"]
+  },
+  {
+    "id": "au_hikari",
+    "name": "auひかり",
+    "type": "独自回線",
+    "max_speed_gbps": 1.0,
+    "avg_ping_ms": 14.2,
+    "avg_dl_speed_mbps": 480,
+    "stability_score": 88,
+    "actual_monthly_fee_jpy": 4100,
+    "mobile_discount": ["au", "uq_mobile"],
+    "available_housing": ["house", "mansion_optical"],
+    "tags": ["auユーザー必見", "独自回線で爆速"]
+  },
+  {
+    "id": "docomo_hikari",
+    "name": "ドコモ光 (GMOとくとくBB)",
+    "type": "コラボ光",
+    "max_speed_gbps": 1.0,
+    "avg_ping_ms": 18.5,
+    "avg_dl_speed_mbps": 320,
+    "stability_score": 80,
+    "actual_monthly_fee_jpy": 4400,
+    "mobile_discount": ["docomo"],
+    "available_housing": ["house", "mansion_optical", "mansion_vdsl"],
+    "tags": ["ドコモユーザー定番", "全国対応"]
+  },
+  {
+    "id": "so_net_hikari",
+    "name": "So-net光プラス",
+    "type": "コラボ光",
+    "max_speed_gbps": 1.0,
+    "avg_ping_ms": 19.0,
+    "avg_dl_speed_mbps": 300,
+    "stability_score": 78,
+    "actual_monthly_fee_jpy": 3800,
+    "mobile_discount": ["au", "uq_mobile"],
+    "available_housing": ["house", "mansion_optical", "mansion_vdsl"],
+    "tags": ["月額が安い", "au割"]
+  },
+  {
+    "id": "game_with_hikari",
+    "name": "GameWith光",
+    "type": "専用帯域",
+    "max_speed_gbps": 1.0,
+    "avg_ping_ms": 11.0,
+    "avg_dl_speed_mbps": 400,
+    "stability_score": 95,
+    "actual_monthly_fee_jpy": 5500,
+    "mobile_discount": [],
+    "available_housing": ["house", "mansion_optical", "mansion_vdsl"],
+    "tags": ["プロゲーマー仕様", "専用帯域", "ラグゼロ"]
+  }
+]
