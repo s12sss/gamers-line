@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Play, Activity, Wallet, Zap, ShieldAlert, BadgeCent, ChevronDown } from "lucide-react";
+import { Play, Activity, Wallet, Zap, ShieldAlert, BadgeCent, ChevronDown, ChevronRight } from "lucide-react";
 import ispsData from "@/data/isps.json";
 
 export default function ComparePage() {
