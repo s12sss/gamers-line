@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Tooltip from "@/components/Tooltip";
 import { Activity, ShieldCheck, Wallet, ChevronRight, Play } from 'lucide-react';
+import ispsData from "@/data/isps.json";
 
 export default function Home() {
   return (
@@ -57,7 +58,7 @@ export default function Home() {
       <div className="relative z-10 flex flex-wrap sm:flex-nowrap justify-center border-y border-white/10 bg-cyan/5 overflow-hidden animate-[fadeUp_0.6s_ease_0.4s_both]">
         {[
           { num: "7ms", label: "BEST PING記録" },
-          { num: "最大10Gbps", label: "超高速プラン対応" },
+          { num: `${ispsData.length}プラン`, label: "徹底比較・診断" },
           { num: "30秒", label: "診断所要時間" },
           { num: "100%", label: "無料・登録不要" },
         ].map((stat, i) => (
@@ -82,8 +83,8 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {/* Card 1 */}
-          <div className="group relative p-6 sm:p-9 rounded-[20px] bg-white/5 border border-white/10 backdrop-blur-md overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-cyan/30 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(0,229,255,0.07)]">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(0,229,255,0.06),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="group relative p-6 sm:p-9 rounded-[20px] bg-white/5 border border-white/10 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-cyan/30 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(0,229,255,0.07)]">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(0,229,255,0.06),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-[20px] pointer-events-none" />
             <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-cyan/10 text-cyan">
               <Activity className="w-6 h-6" />
             </div>
@@ -94,8 +95,8 @@ export default function Home() {
           </div>
 
           {/* Card 2 (Featured) */}
-          <div className="group relative p-6 sm:p-9 rounded-[20px] bg-cyan/5 border border-cyan/20 backdrop-blur-md overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-cyan/40 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(0,229,255,0.07)]">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(0,229,255,0.06),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="group relative p-6 sm:p-9 rounded-[20px] bg-cyan/5 border border-cyan/20 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-cyan/40 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(0,229,255,0.07)]">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(0,229,255,0.06),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-[20px] pointer-events-none" />
             <div className="absolute top-0 right-0 px-3.5 py-1.5 bg-cyan text-black text-[0.65rem] font-bold tracking-widest rounded-bl-xl rounded-tr-[18px]">
               NEW
             </div>
@@ -109,8 +110,8 @@ export default function Home() {
           </div>
 
           {/* Card 3 */}
-          <div className="group relative p-6 sm:p-9 rounded-[20px] bg-white/5 border border-white/10 backdrop-blur-md overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-cyan/30 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(0,229,255,0.07)]">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(0,229,255,0.06),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="group relative p-6 sm:p-9 rounded-[20px] bg-white/5 border border-white/10 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-cyan/30 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(0,229,255,0.07)]">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(0,229,255,0.06),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-[20px] pointer-events-none" />
             <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-purple-500/10 text-purple-400">
               <Wallet className="w-6 h-6" />
             </div>
