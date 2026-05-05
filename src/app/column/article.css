@@ -221,68 +221,81 @@
   margin: 0;
 }
 
-/* Callout Labels (Upgraded via Cheerio) */
-.article-body .callout-header {
+/* Callout Labels (e.g. <strong>TIP: タイトル</strong>) */
+.article-body .box-tip strong:first-child,
+.article-body .box-tip p:first-child strong,
+.article-body .box-check strong:first-child,
+.article-body .box-check p:first-child strong,
+.article-body .box-warning strong:first-child,
+.article-body .box-warning p:first-child strong {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-
-.article-body .callout-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: 'Space Mono', monospace;
-  font-size: 0.7rem;
+  gap: 7px;
   font-weight: 700;
-  letter-spacing: 0.1em;
-  padding: 4px 8px;
-  border-radius: 6px;
+  color: inherit !important;
 }
 
-.article-body .callout-label.tip {
-  background: rgba(0, 229, 255, 0.15);
-  color: var(--cyan);
-}
-
-.article-body .callout-label.check {
-  background: rgba(0, 230, 118, 0.15);
-  color: var(--emerald);
-}
-
-.article-body .callout-label.warning {
-  background: rgba(251, 191, 36, 0.15);
-  color: var(--amber);
-}
-
-.article-body .callout-title {
-  font-weight: bold;
-  font-size: 0.95rem;
-  color: var(--text);
+.article-body .box-tip strong:first-child::before,
+.article-body .box-tip p:first-child strong::before,
+.article-body .box-check strong:first-child::before,
+.article-body .box-check p:first-child strong::before,
+.article-body .box-warning strong:first-child::before,
+.article-body .box-warning p:first-child strong::before {
+  content: '';
+  display: inline-block;
+  width: 14px; height: 14px;
+  background-color: currentColor;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
 }
 
 /* TIP Box (Cyan) */
 .article-body .box-tip {
   background: rgba(0, 229, 255, 0.05);
   border: 1px solid rgba(0, 229, 255, 0.15);
+  color: var(--cyan);
 }
 .article-body .box-tip::before { background: var(--cyan); }
-.article-body .box-tip p { color: rgba(0, 229, 255, 0.85); }
+.article-body .box-tip p { color: inherit; }
+.article-body .box-tip strong:first-child::before,
+.article-body .box-tip p:first-child strong::before {
+  mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>');
+  -webkit-mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>');
+}
 
 /* CHECK Box (Emerald) */
 .article-body .box-check {
   background: rgba(0, 230, 118, 0.05);
   border: 1px solid rgba(0, 230, 118, 0.15);
+  color: var(--emerald);
 }
 .article-body .box-check::before { background: var(--emerald); }
-.article-body .box-check p { color: rgba(0, 230, 118, 0.85); }
+.article-body .box-check p { color: inherit; }
+.article-body .box-check strong:first-child::before,
+.article-body .box-check p:first-child strong::before {
+  mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"/></svg>');
+  -webkit-mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"/></svg>');
+}
 
 /* WARNING Box (Amber/Red) */
 .article-body .box-warning {
   background: rgba(251, 191, 36, 0.05);
   border: 1px solid rgba(251, 191, 36, 0.15);
+  color: var(--amber);
 }
 .article-body .box-warning::before { background: var(--amber); }
-.article-body .box-warning p { color: rgba(251, 191, 36, 0.85); }
+.article-body .box-warning p { color: inherit; }
+.article-body .box-warning strong:first-child::before,
+.article-body .box-warning p:first-child strong::before {
+  mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>');
+  -webkit-mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>');
+}
