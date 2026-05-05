@@ -1,13 +1,27 @@
 "use client";
 import Link from "next/link";
-import { Play, Activity, Wallet, Zap, ShieldAlert, BadgeCent, ChevronDown, ChevronRight, Gift, ChevronsUpDown } from "lucide-react";
+import { Play, Activity, Wallet, Zap, ShieldAlert, BadgeCent, ChevronDown, ChevronUp, ChevronRight, Gift, ChevronsUpDown } from "lucide-react";
 import ispsData from "@/data/isps.json";
 import { useState } from "react";
 import Tooltip from "@/components/Tooltip";
 
 export default function ComparePage() {
   const [filter, setFilter] = useState<'ALL' | '10G' | 'VDSL' | 'AU' | 'DOC' | 'SB'>('ALL');
-  const [sortBy, setSortBy] = useState<'ping' | 'price' | 'speed' | null>(null);
+  const [sortConfig, setSortConfig] = useState<{key: 'ping' | 'price' | 'speed', direction: 'asc' | 'desc'} | null>(null);
+
+  const handleSort = (key: 'ping' | 'price' | 'speed') => {
+    let defaultDirection: 'asc' | 'desc' = key === 'speed' ? 'desc' : 'asc';
+    
+    if (sortConfig && sortConfig.key === key) {
+      if (sortConfig.direction === defaultDirection) {
+        setSortConfig({ key, direction: defaultDirection === 'asc' ? 'desc' : 'asc' });
+      } else {
+        setSortConfig(null);
+      }
+    } else {
+      setSortConfig({ key, direction: defaultDirection });
+    }
+  };
   
   let compareIsps = ispsData.filter(isp => {
     if (filter === 'ALL') return true;
@@ -19,12 +33,14 @@ export default function ComparePage() {
     return true;
   });
 
-  if (sortBy === 'ping') {
-    compareIsps.sort((a, b) => a.avg_ping_ms - b.avg_ping_ms);
-  } else if (sortBy === 'price') {
-    compareIsps.sort((a, b) => a.actual_monthly_fee_jpy - b.actual_monthly_fee_jpy);
-  } else if (sortBy === 'speed') {
-    compareIsps.sort((a, b) => b.max_speed_gbps - a.max_speed_gbps);
+  if (sortConfig) {
+    compareIsps.sort((a, b) => {
+      let comparison = 0;
+      if (sortConfig.key === 'ping') comparison = a.avg_ping_ms - b.avg_ping_ms;
+      if (sortConfig.key === 'price') comparison = a.actual_monthly_fee_jpy - b.actual_monthly_fee_jpy;
+      if (sortConfig.key === 'speed') comparison = a.max_speed_gbps - b.max_speed_gbps;
+      return sortConfig.direction === 'asc' ? comparison : -comparison;
+    });
   }
 
   const bestPingValue = Math.min(...compareIsps.map(isp => isp.avg_ping_ms));
@@ -95,11 +111,15 @@ export default function ComparePage() {
             {/* Ping */}
             <div className="contents group">
               <button 
-                onClick={() => setSortBy(sortBy === 'ping' ? null : 'ping')}
+                onClick={() => handleSort('ping')}
                 className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-white/70 hover:text-white hover:bg-white/5 transition-all outline-none text-left w-full cursor-pointer"
               >
                 <Activity className="w-3.5 h-3.5 opacity-50" /> <Tooltip text="データが往復する時間の遅延を示す指標。FPSでは15ms以下が理想的とされます。" position="left">平均Ping値</Tooltip>
-                {sortBy === 'ping' ? <ChevronDown className="w-3.5 h-3.5 text-cyan ml-auto" /> : <ChevronsUpDown className="w-3.5 h-3.5 opacity-30 group-hover:opacity-60 transition-opacity ml-auto" />}
+                {sortConfig?.key === 'ping' ? (
+                  sortConfig.direction === 'asc' ? <ChevronDown className="w-3.5 h-3.5 text-cyan ml-auto" /> : <ChevronUp className="w-3.5 h-3.5 text-cyan ml-auto" />
+                ) : (
+                  <ChevronsUpDown className="w-3.5 h-3.5 opacity-30 group-hover:opacity-60 transition-opacity ml-auto" />
+                )}
               </button>
               {compareIsps.map((isp) => {
                 const isBest = isp.avg_ping_ms === bestPingValue;
@@ -115,11 +135,15 @@ export default function ComparePage() {
             {/* Price */}
             <div className="contents group">
               <button 
-                onClick={() => setSortBy(sortBy === 'price' ? null : 'price')}
+                onClick={() => handleSort('price')}
                 className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-white/70 hover:text-white hover:bg-white/5 transition-all outline-none text-left w-full cursor-pointer"
               >
                 <Wallet className="w-3.5 h-3.5 opacity-50" /> <Tooltip text="月額料金に加えて、初期費用やキャッシュバックなどを全て含めて月割にした、本当の月額料金です。" position="left">実質月額</Tooltip>
-                {sortBy === 'price' ? <ChevronDown className="w-3.5 h-3.5 text-cyan ml-auto" /> : <ChevronsUpDown className="w-3.5 h-3.5 opacity-30 group-hover:opacity-60 transition-opacity ml-auto" />}
+                {sortConfig?.key === 'price' ? (
+                  sortConfig.direction === 'asc' ? <ChevronDown className="w-3.5 h-3.5 text-cyan ml-auto" /> : <ChevronUp className="w-3.5 h-3.5 text-cyan ml-auto" />
+                ) : (
+                  <ChevronsUpDown className="w-3.5 h-3.5 opacity-30 group-hover:opacity-60 transition-opacity ml-auto" />
+                )}
               </button>
               {compareIsps.map((isp) => {
                 const isBest = isp.avg_ping_ms === bestPingValue;
@@ -134,11 +158,15 @@ export default function ComparePage() {
             {/* Max speed */}
             <div className="contents group">
               <button 
-                onClick={() => setSortBy(sortBy === 'speed' ? null : 'speed')}
+                onClick={() => handleSort('speed')}
                 className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-white/70 hover:text-white hover:bg-white/5 transition-all outline-none text-left w-full cursor-pointer"
               >
                 <Zap className="w-3.5 h-3.5 opacity-50" /> <Tooltip text="理論上の最も速い通信速度のこと。実際の速度とは異なる場合が多いです。" position="left">最大速度</Tooltip>
-                {sortBy === 'speed' ? <ChevronDown className="w-3.5 h-3.5 text-cyan ml-auto" /> : <ChevronsUpDown className="w-3.5 h-3.5 opacity-30 group-hover:opacity-60 transition-opacity ml-auto" />}
+                {sortConfig?.key === 'speed' ? (
+                  sortConfig.direction === 'desc' ? <ChevronDown className="w-3.5 h-3.5 text-cyan ml-auto" /> : <ChevronUp className="w-3.5 h-3.5 text-cyan ml-auto" />
+                ) : (
+                  <ChevronsUpDown className="w-3.5 h-3.5 opacity-30 group-hover:opacity-60 transition-opacity ml-auto" />
+                )}
               </button>
               {compareIsps.map((isp) => {
                 const isBest = isp.avg_ping_ms === bestPingValue;
