@@ -173,32 +173,32 @@ export default function ComparePage() {
               );
             })}
           </div>
+        </div>
 
-          <p className="text-[0.72rem] text-text-dim text-center mt-10 leading-[1.7]">
-            ※ Ping値は東京リージョン・VALORANTサーバーに対する第三者統計データの推計値です。実際の値はご利用環境により異なります。<br />
-            総合スコアはGamer's Lineの独自算出値（Ping値60%・料金20%・安定性20%）です。
-          </p>
 
-          {/* Diag CTA */}
-          <div className="mt-14 mx-4 sm:mx-0 p-6 sm:p-9 rounded-[20px] border border-cyan/20 bg-cyan/[0.04] flex flex-col sm:flex-row items-center justify-between gap-5 relative overflow-hidden">
-            <div className="absolute -top-[40px] -right-[40px] w-[200px] h-[200px] rounded-full bg-[radial-gradient(circle,rgba(0,229,255,0.08),transparent_70%)] pointer-events-none" />
-            <div className="relative z-10 text-center sm:text-left">
-              <h3 className="font-heading text-[1.15rem] font-bold tracking-tight mb-1.5">
-                どれが自分に合う？<span className="gradient-text">30秒で分かります</span>
-              </h3>
-              <p className="text-[0.83rem] text-text-muted leading-[1.5]">
-                住居タイプ・キャリア・予算を入力するだけ。完全無料・登録不要。
-              </p>
-            </div>
-            <Link
-              href="/diagnosis"
-              className="relative z-10 shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-cyan text-black font-heading font-bold text-[0.9rem] transition-all hover:-translate-y-0.5 hover:shadow-[0_0_24px_rgba(0,229,255,0.35)] w-full sm:w-auto"
-            >
-              <Play className="w-4 h-4 fill-black" />
-              無料診断スタート
-            </Link>
+        <p className="text-[0.72rem] text-text-dim text-center mt-10 leading-[1.7]">
+          ※ Ping値は東京リージョン・VALORANTサーバーに対する第三者統計データの推計値です。実際の値はご利用環境により異なります。<br />
+          総合スコアはGamer's Lineの独自算出値（Ping値60%・料金20%・安定性20%）です。
+        </p>
+
+        {/* Diag CTA */}
+        <div className="mt-14 p-6 sm:p-9 rounded-[20px] border border-cyan/20 bg-cyan/[0.04] flex flex-col sm:flex-row items-center justify-between gap-5 relative overflow-hidden">
+          <div className="absolute -top-[40px] -right-[40px] w-[200px] h-[200px] rounded-full bg-[radial-gradient(circle,rgba(0,229,255,0.08),transparent_70%)] pointer-events-none" />
+          <div className="relative z-10 text-center sm:text-left">
+            <h3 className="font-heading text-[1.15rem] font-bold tracking-tight mb-1.5">
+              どれが自分に合う？<span className="gradient-text">30秒で分かります</span>
+            </h3>
+            <p className="text-[0.83rem] text-text-muted leading-[1.5]">
+              住居タイプ・キャリア・重視するポイントを入力するだけ。完全無料・登録不要。
+            </p>
           </div>
-
+          <Link
+            href="/diagnosis"
+            className="relative z-10 shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-cyan text-black font-heading font-bold text-[0.9rem] transition-all hover:-translate-y-0.5 hover:shadow-[0_0_24px_rgba(0,229,255,0.35)] w-full sm:w-auto"
+          >
+            <Play className="w-4 h-4 fill-black" />
+            無料診断スタート
+          </Link>
         </div>
       </div>
     </div>
