@@ -69,12 +69,14 @@ export default function ProviderPage() {
                       <span className="font-mono text-[0.7rem] text-white/75 tracking-[0.1em] uppercase"><Tooltip text="理論上の最も速い通信速度のこと。実際の速度とは異なる場合が多いです。">最大速度</Tooltip></span>
                       <span className={`font-mono font-bold text-[1.3rem] leading-none text-cyan ${isp.max_speed_gbps >= 10 ? 'drop-shadow-[0_0_14px_rgba(0,229,255,0.4)]' : ''}`}>{isp.max_speed_gbps} Gbps</span>
                     </div>
+                    {/*
                     {isp.cashback_text && isp.cashback_text !== "キャンペーンなし" && (
                       <div className="flex flex-col gap-1">
                         <span className="font-mono text-[0.7rem] text-white/75 tracking-[0.1em] uppercase"><Tooltip text="開通後に受け取れる還元額の目安です。受取時期や適用条件は回線ごとに異なります。">キャッシュバック</Tooltip></span>
                         <span className="font-mono font-bold text-[1.1rem] leading-none text-purple-400 drop-shadow-[0_0_14px_rgba(192,132,252,0.4)]">{isp.cashback_text}</span>
                       </div>
                     )}
+                    */}
                     {isp.discounts && isp.discounts.length > 0 && (
                       <div className="flex flex-col gap-1">
                         <span className="font-mono text-[0.65rem] text-white/75 tracking-[0.05em] uppercase">{isp.discounts[0].carrier}利用で</span>
@@ -111,9 +113,9 @@ export default function ProviderPage() {
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-2.5 mt-2">
-                    <Link href={isp.affiliateLink} className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl bg-cyan text-black font-heading font-bold text-[0.875rem] transition-all hover:-translate-y-px hover:shadow-[0_0_32px_rgba(0,229,255,0.45)]">
-                      申し込む <ChevronRight className="w-3.5 h-3.5" />
-                    </Link>
+                    <span className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl bg-cyan/30 text-black/50 font-heading font-bold text-[0.875rem] cursor-not-allowed">
+                      準備中 <ChevronRight className="w-3.5 h-3.5 opacity-50" />
+                    </span>
                     <Link href="/column" className="inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl border border-white/10 text-text-muted font-medium text-[0.825rem] transition-all hover:border-cyan/30 hover:text-text hover:bg-cyan/5">
                       関連コラムを読む
                     </Link>

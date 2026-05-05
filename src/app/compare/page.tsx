@@ -211,6 +211,7 @@ export default function ComparePage() {
             </div>
 
             {/* Cashback */}
+            {/*
             <div className="contents group">
               <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-white/70">
                 <Gift className="w-3.5 h-3.5 opacity-50" /> <Tooltip text="開通後に受け取れる還元額の目安です。受取時期や適用条件は回線ごとに異なります。">キャッシュバック</Tooltip>
@@ -224,6 +225,7 @@ export default function ComparePage() {
                 );
               })}
             </div>
+            */}
 
             {/* Score */}
             <div className="contents group">
@@ -258,9 +260,9 @@ export default function ComparePage() {
               const isBest = isp.avg_ping_ms === bestPingValue;
               return (
                 <div key={isp.id} className="py-3 px-2 text-center">
-                  <Link href={isp.affiliateLink} className={`inline-flex w-full items-center justify-center gap-1 px-2 py-2.5 rounded-lg font-heading font-bold text-[0.8rem] transition-all bg-cyan text-black hover:-translate-y-px hover:shadow-[0_0_28px_rgba(0,229,255,0.4)]`}>
-                    申し込む
-                  </Link>
+                  <span className={`inline-flex w-full items-center justify-center gap-1 px-2 py-2.5 rounded-lg font-heading font-bold text-[0.8rem] bg-cyan/30 text-black/50 cursor-not-allowed`}>
+                    準備中
+                  </span>
                 </div>
               );
             })}

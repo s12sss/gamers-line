@@ -122,11 +122,13 @@ function ResultCard({ result, index, delay }: { result: {isp: ISP, score: number
             </div>
 
             <div className="flex flex-wrap gap-1.5 mt-2">
+              {/*
               {result.isp.cashback_text && result.isp.cashback_text !== 'キャンペーンなし' && (
                 <span className="px-2.5 sm:px-3 py-1 bg-purple-500/10 border border-purple-500/20 rounded-full text-[0.65rem] sm:text-[0.7rem] text-purple-400 font-medium flex items-center gap-1">
                   <Gift className="w-3 h-3" /> {result.isp.cashback_text}
                 </span>
               )}
+              */}
               {result.isp.discounts && result.isp.discounts.length > 0 && (
                 <span className="px-2.5 sm:px-3 py-1 bg-emerald/10 border border-emerald/20 rounded-full text-[0.65rem] sm:text-[0.7rem] text-emerald font-medium">
                   {result.isp.discounts[0].carrier}利用で割引
@@ -160,14 +162,11 @@ function ResultCard({ result, index, delay }: { result: {isp: ISP, score: number
         </div>
 
         {/* CTA Button */}
-        <Link 
-          href={`/out/${result.isp.id}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full py-3.5 rounded-xl border border-white/10 bg-white/5 text-text font-heading font-semibold text-[0.85rem] sm:text-[0.9rem] flex items-center justify-center gap-2 transition-all hover:bg-cyan/10 hover:border-cyan/50 hover:text-cyan mt-1 tracking-tight"
+        <span 
+          className="w-full py-3.5 rounded-xl border border-white/10 bg-white/5 text-text/50 font-heading font-semibold text-[0.85rem] sm:text-[0.9rem] flex items-center justify-center gap-2 mt-1 tracking-tight cursor-not-allowed"
         >
-          お申し込み・詳細を見る <ChevronRight className="w-4 h-4" />
-        </Link>
+          お申し込み（準備中）
+        </span>
       </div>
     </motion.div>
   );
