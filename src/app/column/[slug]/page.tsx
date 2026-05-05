@@ -321,7 +321,7 @@ export default async function ColumnArticle({ params }: Props) {
             <div className="mt-16 sm:mt-24">
               <h2 className="text-xl font-bold text-text mb-6 flex items-center gap-3">
                 <span className="w-1.5 h-1.5 rounded-full bg-cyan shadow-[0_0_8px_var(--cyan)]"></span>
-                この記事を書いた人
+                運営者プロフィール
               </h2>
               <AuthorProfile />
             </div>

@@ -25,17 +25,16 @@ export default function AuthorProfile() {
             Gamer's Line 編集長
           </h3>
           
-          <p className="text-[0.85rem] sm:text-[0.9rem] text-text-muted leading-[1.8] mb-4">
-            FPS歴10年以上のハードコアゲーマー。VALORANTやApex Legendsを中心にプレイ。過去にPing値のブレに悩み、自宅の回線環境を幾度となく改善した経験を持つ。カタログスペックの「最大速度」に騙されるゲーマーを一人でも減らすべく、Ping値と実測値に徹底的にこだわった情報を発信中。
-          </p>
-
-          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
-            <span className="flex items-center gap-1 px-2.5 py-1 bg-white/5 border border-white/10 rounded text-[0.7rem] text-text-dim font-mono">
-              <Activity className="w-3 h-3 text-emerald" /> Ping &lt; 15ms
-            </span>
-            <span className="flex items-center gap-1 px-2.5 py-1 bg-white/5 border border-white/10 rounded text-[0.7rem] text-text-dim font-mono">
-              <Zap className="w-3 h-3 text-cyan" /> 10Gbps FTTH
-            </span>
+          <div className="space-y-3 text-[0.85rem] sm:text-[0.9rem] text-text-muted leading-[1.8] mb-2">
+            <p>
+              オンラインゲーム歴15年。過去に自分自身が回線選びに失敗し、ラグや回線落ちに苦しんだ経験を持ちます。
+            </p>
+            <p>
+              インターネット回線は「年数縛り」があり簡単には乗り換えられないにも関わらず、公式サイトを見ても実際のスペック（実測Ping値など）は非常に分かりづらいのが現状です。さらに、住んでいる地域や建物の設備によっても対応状況がバラバラです。
+            </p>
+            <p>
+              実態のある商品を選ぶよりも遥かに難易度が高いこの「ゲーミング回線選びの闇」を解決すべく、本サイトを立ち上げました。
+            </p>
           </div>
         </div>
       </div>
