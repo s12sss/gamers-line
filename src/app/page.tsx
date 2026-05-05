@@ -23,9 +23,9 @@ export default function Home() {
           <span className="gradient-text">回線のせいかも。</span>
         </h1>
 
-        <p className="text-[clamp(0.95rem,2vw,1.2rem)] text-text-muted max-w-[560px] leading-[1.7] mb-12 animate-[fadeUp_0.6s_ease_0.2s_both] break-keep">
-          今のプレイ環境などを選択するだけで、<br className="hidden sm:block" />
-          あなたに本当に必要なゲーミング回線をたった30秒で<span className="inline-block">無料診断。</span>
+        <p className="text-[clamp(0.95rem,2vw,1.2rem)] text-text-muted max-w-[560px] leading-[1.7] mb-12 animate-[fadeUp_0.6s_ease_0.2s_both]">
+          今のプレイ環境を選択するだけで、<br className="hidden sm:block" />
+          あなたに本当に必要なゲーミング回線を<br className="sm:hidden" />たった30秒で無料診断
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto animate-[fadeUp_0.6s_ease_0.3s_both]">
