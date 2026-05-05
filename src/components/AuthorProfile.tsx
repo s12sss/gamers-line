@@ -16,10 +16,7 @@ export default function AuthorProfile() {
         </div>
 
         {/* Info */}
-        <div className="flex-1 text-center sm:text-left">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-cyan/10 border border-cyan/20 rounded-full text-[0.65rem] font-mono text-cyan font-bold tracking-wider mb-3">
-            <Gamepad2 className="w-3.5 h-3.5" /> CHIEF EDITOR
-          </div>
+        <div className="flex-1 text-center sm:text-left pt-2 sm:pt-0">
           
           <h3 className="font-heading text-xl font-bold text-text mb-2">
             Gamer's Line 編集長
