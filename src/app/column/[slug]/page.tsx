@@ -4,6 +4,7 @@ import ScrollProgress from '@/components/ScrollProgress';
 import '../article.css';
 import { getColumnDetail } from '@/libs/microcms';
 import { Metadata, ResolvingMetadata } from 'next';
+import * as cheerio from 'cheerio';
 
 export const revalidate = 60;
 
@@ -39,12 +40,23 @@ export default async function ColumnArticle({ params }: Props) {
   const resolvedParams = await params;
   const column = await getColumnDetail(resolvedParams.slug).catch(() => null);
 
+  let processedContent = column?.content || '';
+  const headings: { id: string; text: string }[] = [];
+
+  if (column) {
+    // cheerioの最新バージョンでは load() に { isDocument: false } を渡すことでbody/htmlの自動補完を防げます
+    const $ = cheerio.load(column.content, null, false);
+    $('h2').each((index, element) => {
+      const id = `chapter-${index + 1}`;
+      $(element).attr('id', id);
+      headings.push({ id, text: $(element).text() });
+    });
+    processedContent = $.html();
+  }
+
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground font-sans">
       <ScrollProgress />
-      
-
-
       {column ? (
         <>
           {/* Article Hero */}
@@ -96,8 +108,31 @@ export default async function ColumnArticle({ params }: Props) {
           {/* Main Content Wrapper */}
           <div className="relative z-10 max-w-[760px] mx-auto px-4 sm:px-10 pb-20 sm:pb-24 w-full article-body">
             
+            {/* 目次（TOC） */}
+            {headings.length > 0 && (
+              <div className="mb-12 rounded-[16px] border border-cyan/10 bg-[#050508]/80 p-6 sm:p-8 relative overflow-hidden backdrop-blur-sm">
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-cyan" />
+                <h3 className="font-heading text-[1rem] font-bold text-cyan tracking-[0.15em] mb-6 flex items-center gap-2">
+                  CONTENTS
+                </h3>
+                <ul className="flex flex-col gap-4">
+                  {headings.map((heading, i) => (
+                    <li key={heading.id} className="flex items-start gap-3">
+                      <span className="font-mono text-cyan/70 text-[0.7rem] font-bold tracking-widest pt-0.5">0{i + 1}</span>
+                      <a 
+                        href={`#${heading.id}`} 
+                        className="text-[0.85rem] text-text-muted hover:text-cyan border-b border-transparent hover:border-cyan/50 pb-0.5 transition-colors font-medium leading-[1.6]"
+                      >
+                        {heading.text}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             {/* 記事本文 */}
-            <div dangerouslySetInnerHTML={{ __html: column.content }} />
+            <div dangerouslySetInnerHTML={{ __html: processedContent }} />
 
             {/* Diagnosis CTA Inline */}
             <div className="my-10 sm:my-14 p-6 sm:p-9 rounded-[20px] border border-cyan/20 bg-cyan/[0.04] flex flex-col sm:flex-row items-center justify-between gap-5 relative overflow-hidden">

@@ -76,13 +76,25 @@
 }
 
 .article-body blockquote {
-  margin: 24px 0;
-  padding: 16px 20px;
-  background: rgba(0, 229, 255, 0.05);
+  margin: 32px 0;
+  padding: 24px;
+  background: rgba(0, 229, 255, 0.03);
+  border: 1px solid rgba(0, 229, 255, 0.1);
   border-left: 3px solid var(--cyan);
-  border-radius: 0 8px 8px 0;
+  border-radius: 12px;
   color: var(--text-muted);
-  font-style: italic;
+  font-size: 0.9rem;
+  position: relative;
+}
+
+/* Tipの最初の行を強調表示する（Tipタイトル等） */
+.article-body blockquote p:first-child strong,
+.article-body blockquote strong:first-child {
+  color: var(--cyan);
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 8px;
 }
 
 /* TOC Custom Counter */
