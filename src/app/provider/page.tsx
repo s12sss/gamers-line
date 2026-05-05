@@ -57,26 +57,26 @@ export default function ProviderPage() {
 
                   <div className="relative z-10 flex gap-6 flex-wrap mt-6">
                     <div className="flex flex-col gap-1">
-                      <span className="font-mono text-[0.6rem] text-text-dim tracking-[0.1em] uppercase">平均Ping</span>
+                      <span className="font-mono text-[0.6rem] text-white/60 tracking-[0.1em] uppercase">平均Ping</span>
                       <span className={`font-mono font-bold text-[1.3rem] leading-none ${isp.avg_ping_ms <= 15 ? 'text-emerald drop-shadow-[0_0_14px_rgba(0,230,118,0.4)]' : isp.avg_ping_ms <= 20 ? 'text-cyan' : 'text-amber-500'}`}>{isp.avg_ping_ms} ms</span>
                     </div>
                     <div className="flex flex-col gap-1">
-                      <span className="font-mono text-[0.6rem] text-text-dim tracking-[0.1em] uppercase">実質月額</span>
+                      <span className="font-mono text-[0.6rem] text-white/60 tracking-[0.1em] uppercase">実質月額</span>
                       <span className="font-mono font-bold text-[1.3rem] leading-none text-text">¥{isp.actual_monthly_fee_jpy.toLocaleString()}</span>
                     </div>
                     <div className="flex flex-col gap-1">
-                      <span className="font-mono text-[0.6rem] text-text-dim tracking-[0.1em] uppercase">最大速度</span>
+                      <span className="font-mono text-[0.6rem] text-white/60 tracking-[0.1em] uppercase">最大速度</span>
                       <span className={`font-mono font-bold text-[1.3rem] leading-none text-cyan ${isp.max_speed_gbps >= 10 ? 'drop-shadow-[0_0_14px_rgba(0,229,255,0.4)]' : ''}`}>{isp.max_speed_gbps} Gbps</span>
                     </div>
                     {isp.cashback_text && isp.cashback_text !== "キャンペーンなし" && (
                       <div className="flex flex-col gap-1">
-                        <span className="font-mono text-[0.6rem] text-text-dim tracking-[0.1em] uppercase">キャッシュバック</span>
+                        <span className="font-mono text-[0.6rem] text-white/60 tracking-[0.1em] uppercase">キャッシュバック</span>
                         <span className="font-mono font-bold text-[1.1rem] leading-none text-purple-400 drop-shadow-[0_0_14px_rgba(192,132,252,0.4)]">{isp.cashback_text}</span>
                       </div>
                     )}
                     {isp.discounts && isp.discounts.length > 0 && (
                       <div className="flex flex-col gap-1">
-                        <span className="font-mono text-[0.55rem] text-text-dim tracking-[0.05em] uppercase">{isp.discounts[0].carrier}利用で</span>
+                        <span className="font-mono text-[0.55rem] text-white/60 tracking-[0.05em] uppercase">{isp.discounts[0].carrier}利用で</span>
                         <span className="font-mono font-bold text-[1.3rem] leading-none text-emerald drop-shadow-[0_0_14px_rgba(0,230,118,0.4)]">-¥{isp.discounts[0].amount.toLocaleString()}</span>
                       </div>
                     )}

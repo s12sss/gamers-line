@@ -1,10 +1,21 @@
+"use client";
 import Link from "next/link";
 import { Play, Activity, Wallet, Zap, ShieldAlert, BadgeCent, ChevronDown, ChevronRight, Gift } from "lucide-react";
 import ispsData from "@/data/isps.json";
+import { useState } from "react";
 
 export default function ComparePage() {
-  // Use all ISPs
-  const compareIsps = ispsData;
+  const [filter, setFilter] = useState<'ALL' | '10G' | 'VDSL' | 'AU' | 'DOC' | 'SB'>('ALL');
+  
+  const compareIsps = ispsData.filter(isp => {
+    if (filter === 'ALL') return true;
+    if (filter === '10G') return isp.max_speed_gbps >= 10;
+    if (filter === 'VDSL') return isp.vdsl_support;
+    if (filter === 'AU') return isp.mobile_discount.includes('au');
+    if (filter === 'DOC') return isp.mobile_discount.includes('docomo');
+    if (filter === 'SB') return isp.mobile_discount.includes('softbank');
+    return true;
+  });
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground font-sans">
@@ -23,18 +34,31 @@ export default function ComparePage() {
       </div>
 
       {/* Comparison Table Section */}
-      <div className="relative z-10 max-w-[1200px] mx-auto w-full px-4 sm:px-10 py-10 sm:py-16 pb-24 overflow-x-auto">
+      <div className="relative z-10 max-w-[1200px] mx-auto w-full px-4 sm:px-10 py-10 sm:py-16 pb-24">
+        
+        {/* Filters */}
+        <div className="flex flex-wrap items-center gap-2 mb-6 sm:mb-8">
+          <span className="text-[0.75rem] font-medium text-white/70 mr-2">絞り込み:</span>
+          <button onClick={() => setFilter('ALL')} className={`px-3 py-1.5 rounded-full border ${filter === 'ALL' ? 'border-cyan/50 bg-cyan/10 text-cyan' : 'border-white/10 text-white/60 hover:text-white hover:bg-white/5'} font-medium text-[0.7rem] transition-all`}>すべて</button>
+          <button onClick={() => setFilter('10G')} className={`px-3 py-1.5 rounded-full border ${filter === '10G' ? 'border-cyan/50 bg-cyan/10 text-cyan' : 'border-white/10 text-white/60 hover:text-white hover:bg-white/5'} font-medium text-[0.7rem] transition-all`}>10Gプラン</button>
+          <button onClick={() => setFilter('VDSL')} className={`px-3 py-1.5 rounded-full border ${filter === 'VDSL' ? 'border-cyan/50 bg-cyan/10 text-cyan' : 'border-white/10 text-white/60 hover:text-white hover:bg-white/5'} font-medium text-[0.7rem] transition-all`}>VDSL対応</button>
+          <button onClick={() => setFilter('AU')} className={`px-3 py-1.5 rounded-full border ${filter === 'AU' ? 'border-cyan/50 bg-cyan/10 text-cyan' : 'border-white/10 text-white/60 hover:text-white hover:bg-white/5'} font-medium text-[0.7rem] transition-all`}>au割</button>
+          <button onClick={() => setFilter('DOC')} className={`px-3 py-1.5 rounded-full border ${filter === 'DOC' ? 'border-cyan/50 bg-cyan/10 text-cyan' : 'border-white/10 text-white/60 hover:text-white hover:bg-white/5'} font-medium text-[0.7rem] transition-all`}>docomo割</button>
+          <button onClick={() => setFilter('SB')} className={`px-3 py-1.5 rounded-full border ${filter === 'SB' ? 'border-cyan/50 bg-cyan/10 text-cyan' : 'border-white/10 text-white/60 hover:text-white hover:bg-white/5'} font-medium text-[0.7rem] transition-all`}>SoftBank割</button>
+        </div>
+
         {/* Mobile Scroll Hint */}
         <div className="md:hidden flex items-center justify-end gap-1 mb-2 text-[0.65rem] text-cyan/70 font-mono tracking-widest animate-pulse">
           <span>SWIPE</span>
           <ChevronRight className="w-3 h-3" />
         </div>
 
-        <div className="min-w-[700px] md:min-w-[900px]">
+        <div className="overflow-x-auto scrollbar-hide pb-6">
+          <div className="min-w-[700px] md:min-w-[900px]">
           
           {/* Column Headers */}
           <div className="grid gap-2 mb-2" style={{ gridTemplateColumns: `200px repeat(${compareIsps.length}, minmax(180px, 1fr))` }}>
-            <div className="flex items-end pb-3 pl-1 font-mono text-[0.65rem] text-text-dim tracking-[0.1em] uppercase">
+            <div className="flex items-end pb-3 pl-1 font-mono text-[0.65rem] text-white/60 tracking-[0.1em] uppercase">
               // ISP
             </div>
             {compareIsps.map((isp, index) => {
@@ -58,7 +82,7 @@ export default function ComparePage() {
             
             {/* Ping */}
             <div className="contents group">
-              <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-text-muted">
+              <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-white/70">
                 <Activity className="w-3.5 h-3.5 opacity-50" /> 平均Ping値
               </div>
               {compareIsps.map((isp, index) => {
@@ -74,7 +98,7 @@ export default function ComparePage() {
 
             {/* Price */}
             <div className="contents group">
-              <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-text-muted">
+              <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-white/70">
                 <Wallet className="w-3.5 h-3.5 opacity-50" /> 実質月額
               </div>
               {compareIsps.map((isp, index) => {
@@ -89,7 +113,7 @@ export default function ComparePage() {
 
             {/* Max speed */}
             <div className="contents group">
-              <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-text-muted">
+              <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-white/70">
                 <Zap className="w-3.5 h-3.5 opacity-50" /> 最大速度
               </div>
               {compareIsps.map((isp, index) => {
@@ -104,7 +128,7 @@ export default function ComparePage() {
 
             {/* VDSL */}
             <div className="contents group">
-              <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-text-muted">
+              <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-white/70">
                 <ShieldAlert className="w-3.5 h-3.5 opacity-50" /> VDSL対応
               </div>
               {compareIsps.map((isp, index) => {
@@ -120,7 +144,7 @@ export default function ComparePage() {
             {/* Discount (docomo/au/SB dynamically summarized or simplified. For simplicity, showing one row for mobile discount presence) */}
             {/* Discount */}
             <div className="contents group">
-              <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-text-muted">
+              <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-white/70">
                 <BadgeCent className="w-3.5 h-3.5 opacity-50" /> スマホセット割
               </div>
               {compareIsps.map((isp, index) => {
@@ -136,14 +160,14 @@ export default function ComparePage() {
 
             {/* Cashback */}
             <div className="contents group">
-              <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-text-muted">
+              <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-white/70">
                 <Gift className="w-3.5 h-3.5 opacity-50" /> キャッシュバック
               </div>
               {compareIsps.map((isp, index) => {
                 const isBest = index === 0;
                 return (
                   <div key={isp.id} className={`flex items-center justify-center py-3.5 border-b border-white/5 border-x ${isBest ? 'border-cyan/20 bg-cyan/[0.03]' : 'border-white/10 bg-white/[0.01]'} text-center`}>
-                    <span className={`font-mono text-[0.75rem] sm:text-[0.85rem] ${isp.cashback_text !== 'キャンペーンなし' ? 'text-purple-400 font-bold' : 'text-text-dim'}`}>{isp.cashback_text || '—'}</span>
+                    <span className={`font-mono text-[0.75rem] sm:text-[0.85rem] ${isp.cashback_text !== 'キャンペーンなし' ? 'text-purple-400 font-bold' : 'text-white/40'}`}>{isp.cashback_text || '—'}</span>
                   </div>
                 );
               })}
@@ -151,7 +175,7 @@ export default function ComparePage() {
 
             {/* Score */}
             <div className="contents group">
-              <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/10 text-[0.8rem] font-medium text-text-muted">
+              <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/10 text-[0.8rem] font-medium text-white/70">
                 <ChevronDown className="w-3.5 h-3.5 opacity-50" /> 総合スコア
               </div>
               {compareIsps.map((isp, index) => {
@@ -189,6 +213,7 @@ export default function ComparePage() {
               );
             })}
           </div>
+        </div>
         </div>
 
 
