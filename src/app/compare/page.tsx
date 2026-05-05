@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Play, Activity, Wallet, Zap, ShieldAlert, BadgeCent, ChevronDown, ChevronRight, Gift } from "lucide-react";
 import ispsData from "@/data/isps.json";
 import { useState } from "react";
+import Tooltip from "@/components/Tooltip";
 
 export default function ComparePage() {
   const [filter, setFilter] = useState<'ALL' | '10G' | 'VDSL' | 'AU' | 'DOC' | 'SB'>('ALL');
@@ -83,7 +84,7 @@ export default function ComparePage() {
             {/* Ping */}
             <div className="contents group">
               <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-white/70">
-                <Activity className="w-3.5 h-3.5 opacity-50" /> 平均Ping値
+                <Activity className="w-3.5 h-3.5 opacity-50" /> <Tooltip text="データが往復する時間の遅延を示す指標。FPSでは15ms以下が理想的とされます。">平均Ping値</Tooltip>
               </div>
               {compareIsps.map((isp, index) => {
                 const isBest = index === 0;
@@ -99,7 +100,7 @@ export default function ComparePage() {
             {/* Price */}
             <div className="contents group">
               <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-white/70">
-                <Wallet className="w-3.5 h-3.5 opacity-50" /> 実質月額
+                <Wallet className="w-3.5 h-3.5 opacity-50" /> <Tooltip text="月額料金に加えて、初期費用やキャッシュバックなどを全て含めて月割にした、本当の月額料金です。">実質月額</Tooltip>
               </div>
               {compareIsps.map((isp, index) => {
                 const isBest = index === 0;
@@ -114,7 +115,7 @@ export default function ComparePage() {
             {/* Max speed */}
             <div className="contents group">
               <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-white/70">
-                <Zap className="w-3.5 h-3.5 opacity-50" /> 最大速度
+                <Zap className="w-3.5 h-3.5 opacity-50" /> <Tooltip text="理論上の最も速い通信速度のこと。実際の速度とは異なる場合が多いです。">最大速度</Tooltip>
               </div>
               {compareIsps.map((isp, index) => {
                 const isBest = index === 0;
@@ -129,7 +130,7 @@ export default function ComparePage() {
             {/* VDSL */}
             <div className="contents group">
               <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-white/70">
-                <ShieldAlert className="w-3.5 h-3.5 opacity-50" /> VDSL対応
+                <ShieldAlert className="w-3.5 h-3.5 opacity-50" /> <Tooltip text="マンションの共用部から各部屋まで電話線を使う配線方式。最大速度が100Mbps程度に制限されるためゲームには不向きです。">VDSL対応</Tooltip>
               </div>
               {compareIsps.map((isp, index) => {
                 const isBest = index === 0;
@@ -161,7 +162,7 @@ export default function ComparePage() {
             {/* Cashback */}
             <div className="contents group">
               <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-white/70">
-                <Gift className="w-3.5 h-3.5 opacity-50" /> キャッシュバック
+                <Gift className="w-3.5 h-3.5 opacity-50" /> <Tooltip text="開通後に受け取れる還元額の目安です。受取時期や適用条件は回線ごとに異なります。">キャッシュバック</Tooltip>
               </div>
               {compareIsps.map((isp, index) => {
                 const isBest = index === 0;

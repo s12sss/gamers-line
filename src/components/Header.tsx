@@ -25,12 +25,12 @@ export default function Header() {
   const navLinks = [
     { name: "ランキング", href: "/ranking" },
     { name: "比較する", href: "/compare" },
+    { name: "回線一覧", href: "/provider" },
     { name: "コラム", href: "/column" },
   ];
 
   const mobileNavLinks = [
     ...navLinks,
-    { name: "プロバイダ特集", href: "/provider" },
   ];
 
   return (

@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { Play, ChevronRight } from "lucide-react";
+import { Zap, Activity, ChevronRight, CheckCircle2, XCircle, AlertCircle, ArrowUpRight, Play } from "lucide-react";
 import ispsData from "@/data/isps.json";
+import Tooltip from "@/components/Tooltip";
 
 export default function ProviderPage() {
   return (
@@ -12,11 +13,11 @@ export default function ProviderPage() {
           // PROVIDER FEATURE
         </div>
         <h1 className="relative z-10 font-heading text-[clamp(2rem,5vw,3.25rem)] font-bold tracking-tight leading-[1.1] mb-4">
-          プロバイダ別<br />
+          光回線別<br />
           <span className="gradient-text">徹底特集</span>
         </h1>
         <p className="relative z-10 text-text-muted text-base max-w-[520px] leading-[1.7]">
-          各プロバイダの特徴・強み・弱みをゲーマー目線で深堀り。申し込み前に必ず確認すべき情報を網羅。
+          各回線の特徴・強み・弱みをゲーマー目線で深堀り。申し込み前に必ず確認すべき情報を網羅。
         </p>
       </div>
 
@@ -57,26 +58,26 @@ export default function ProviderPage() {
 
                   <div className="relative z-10 flex gap-6 flex-wrap mt-6">
                     <div className="flex flex-col gap-1">
-                      <span className="font-mono text-[0.6rem] text-white/60 tracking-[0.1em] uppercase">平均Ping</span>
+                      <span className="font-mono text-[0.7rem] text-white/75 tracking-[0.1em] uppercase"><Tooltip text="データが往復する時間の遅延を示す指標。FPSでは15ms以下が理想的とされます。">平均Ping</Tooltip></span>
                       <span className={`font-mono font-bold text-[1.3rem] leading-none ${isp.avg_ping_ms <= 15 ? 'text-emerald drop-shadow-[0_0_14px_rgba(0,230,118,0.4)]' : isp.avg_ping_ms <= 20 ? 'text-cyan' : 'text-amber-500'}`}>{isp.avg_ping_ms} ms</span>
                     </div>
                     <div className="flex flex-col gap-1">
-                      <span className="font-mono text-[0.6rem] text-white/60 tracking-[0.1em] uppercase">実質月額</span>
+                      <span className="font-mono text-[0.7rem] text-white/75 tracking-[0.1em] uppercase"><Tooltip text="月額料金に加えて、初期費用やキャッシュバックなどを全て含めて月割にした、本当の月額料金です。">実質月額</Tooltip></span>
                       <span className="font-mono font-bold text-[1.3rem] leading-none text-text">¥{isp.actual_monthly_fee_jpy.toLocaleString()}</span>
                     </div>
                     <div className="flex flex-col gap-1">
-                      <span className="font-mono text-[0.6rem] text-white/60 tracking-[0.1em] uppercase">最大速度</span>
+                      <span className="font-mono text-[0.7rem] text-white/75 tracking-[0.1em] uppercase"><Tooltip text="理論上の最も速い通信速度のこと。実際の速度とは異なる場合が多いです。">最大速度</Tooltip></span>
                       <span className={`font-mono font-bold text-[1.3rem] leading-none text-cyan ${isp.max_speed_gbps >= 10 ? 'drop-shadow-[0_0_14px_rgba(0,229,255,0.4)]' : ''}`}>{isp.max_speed_gbps} Gbps</span>
                     </div>
                     {isp.cashback_text && isp.cashback_text !== "キャンペーンなし" && (
                       <div className="flex flex-col gap-1">
-                        <span className="font-mono text-[0.6rem] text-white/60 tracking-[0.1em] uppercase">キャッシュバック</span>
+                        <span className="font-mono text-[0.7rem] text-white/75 tracking-[0.1em] uppercase"><Tooltip text="開通後に受け取れる還元額の目安です。受取時期や適用条件は回線ごとに異なります。">キャッシュバック</Tooltip></span>
                         <span className="font-mono font-bold text-[1.1rem] leading-none text-purple-400 drop-shadow-[0_0_14px_rgba(192,132,252,0.4)]">{isp.cashback_text}</span>
                       </div>
                     )}
                     {isp.discounts && isp.discounts.length > 0 && (
                       <div className="flex flex-col gap-1">
-                        <span className="font-mono text-[0.55rem] text-white/60 tracking-[0.05em] uppercase">{isp.discounts[0].carrier}利用で</span>
+                        <span className="font-mono text-[0.65rem] text-white/75 tracking-[0.05em] uppercase">{isp.discounts[0].carrier}利用で</span>
                         <span className="font-mono font-bold text-[1.3rem] leading-none text-emerald drop-shadow-[0_0_14px_rgba(0,230,118,0.4)]">-¥{isp.discounts[0].amount.toLocaleString()}</span>
                       </div>
                     )}

@@ -1,10 +1,10 @@
 import Link from "next/link";
+import Tooltip from "@/components/Tooltip";
 import { Activity, ShieldCheck, Wallet, ChevronRight, Play } from 'lucide-react';
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground font-sans">
-
 
       {/* Hero Section */}
       <section className="relative flex flex-col items-center justify-center text-center px-4 pt-[120px] pb-[100px] overflow-hidden">
@@ -57,7 +57,7 @@ export default function Home() {
       <div className="relative z-10 flex flex-wrap sm:flex-nowrap justify-center border-y border-white/10 bg-cyan/5 overflow-hidden animate-[fadeUp_0.6s_ease_0.4s_both]">
         {[
           { num: "7ms", label: "BEST PING記録" },
-          { num: "主要7+", label: "比較回線プラン" },
+          { num: "厳選 7", label: "比較・診断プラン" },
           { num: "30秒", label: "診断所要時間" },
           { num: "100%", label: "無料・登録不要" },
         ].map((stat, i) => (
@@ -89,7 +89,7 @@ export default function Home() {
             </div>
             <h3 className="font-heading text-lg font-bold tracking-tight mb-3">Ping値特化の評価ロジック</h3>
             <p className="text-sm text-text-muted leading-[1.7]">
-              カタログスペックの「最大速度」ではなく、FPSや格ゲーの勝敗に直結する「実測Ping値」を最重要視。ゲーマー目線で真に快適な回線を導き出します。
+              カタログスペックの「<Tooltip text="理論上の最も速い通信速度のこと。実際の速度とは異なる場合が多いです。">最大速度</Tooltip>」ではなく、FPSや格ゲーの勝敗に直結する「<Tooltip text="データが往復する時間の遅延を示す指標。FPSでは15ms以下が理想的とされます。">実測Ping値</Tooltip>」を最重要視。ゲーマー目線で真に快適な回線を導き出します。
             </p>
           </div>
 
@@ -104,7 +104,7 @@ export default function Home() {
             </div>
             <h3 className="font-heading text-lg font-bold tracking-tight mb-3">無駄な提案を完全ブロック</h3>
             <p className="text-sm text-text-muted leading-[1.7]">
-              「おすすめされたのに、うちのマンションでは契約できなかった…」という悲劇を防ぐため、住居タイプ（VDSLなど）から物理的に導入不可な回線を自動で除外します。
+              「おすすめされたのに、うちのマンションでは契約できなかった…」という悲劇を防ぐため、住居タイプ（<Tooltip text="マンションの共用部から各部屋まで電話線を使う配線方式。最大速度が100Mbps程度に制限されるためゲームには不向きです。">VDSL</Tooltip>など）から物理的に導入不可な回線を自動で除外します。
             </p>
           </div>
 
@@ -116,7 +116,7 @@ export default function Home() {
             </div>
             <h3 className="font-heading text-lg font-bold tracking-tight mb-3">実質料金を透明化</h3>
             <p className="text-sm text-text-muted leading-[1.7]">
-              「結局、月々いくら払うの？」という疑問を解決。複雑なスマホセット割やキャッシュバック額を加味して、あなたにとって本当に安くて速い回線を提示します。
+              「結局、月々いくら払うの？」という疑問を解決。複雑なスマホセット割やキャッシュバック額を加味して、あなたにとって本当に安くて速い<Tooltip text="月額料金に加えて、初期費用やキャッシュバックなどを全て含めて月割にした、本当の月額料金です。">実質料金</Tooltip>を提示します。
             </p>
           </div>
         </div>
