@@ -38,7 +38,7 @@ export default function AboutPage() {
                 </tr>
                 <tr className="border-b border-white/10">
                   <th className="py-4 font-semibold text-text align-top">お問い合わせ</th>
-                  <td className="py-4">dummy@example.com <br/><span className="text-[0.8rem] text-text-dim mt-1 inline-block">※ご連絡は上記メールアドレスまでお願いいたします。</span></td>
+                  <td className="py-4">x77saku@gmail.com <br/><span className="text-[0.8rem] text-text-dim mt-1 inline-block">※ご連絡は上記メールアドレスまでお願いいたします。</span></td>
                 </tr>
                 <tr>
                   <th className="py-4 font-semibold text-text align-top">サイトの目的</th>
