@@ -6,6 +6,7 @@ import { getColumnDetail } from '@/libs/microcms';
 import { Metadata, ResolvingMetadata } from 'next';
 import * as cheerio from 'cheerio';
 import ClientArticleBody from '@/components/ClientArticleBody';
+import AuthorProfile from '@/components/AuthorProfile';
 
 export const revalidate = 60;
 
@@ -316,6 +317,15 @@ export default async function ColumnArticle({ params }: Props) {
               </Link>
             </div>
 
+            {/* Author Profile */}
+            <div className="mt-16 sm:mt-24">
+              <h2 className="text-xl font-bold text-text mb-6 flex items-center gap-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan shadow-[0_0_8px_var(--cyan)]"></span>
+                この記事を書いた人
+              </h2>
+              <AuthorProfile />
+            </div>
+            
           </div>
         </>
       )}

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import AuthorProfile from "@/components/AuthorProfile";
 
 export default function AboutPage() {
   return (
@@ -46,6 +47,15 @@ export default function AboutPage() {
                 </tr>
               </tbody>
             </table>
+          </section>
+
+          {/* Profile Section */}
+          <section>
+            <h2 className="text-xl font-bold text-text mb-6 flex items-center gap-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan shadow-[0_0_8px_var(--cyan)]"></span>
+              この記事を書いている人
+            </h2>
+            <AuthorProfile />
           </section>
         </div>
       </div>
