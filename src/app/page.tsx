@@ -142,7 +142,7 @@ export default function Home() {
                 <div className="absolute inset-0 rounded-full bg-cyan/10" />
                 01
               </div>
-              <h4 className="font-heading font-semibold text-base mb-2">5つの質問に答える</h4>
+              <h4 className="font-heading font-semibold text-base mb-2">6つの質問に答える</h4>
               <p className="text-[0.8rem] text-text-muted leading-relaxed">プレイゲームジャンル・住居タイプ・キャリア・重視点を選ぶだけ</p>
             </div>
 
