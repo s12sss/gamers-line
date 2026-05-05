@@ -147,7 +147,7 @@ export default async function ColumnArticle({ params }: Props) {
               </div>
               <Link
                 href="/diagnosis"
-                className="relative z-10 shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-cyan text-black font-heading font-bold text-[0.85rem] sm:text-[0.9rem] transition-all hover:-translate-y-0.5 hover:shadow-[0_0_24px_rgba(0,229,255,0.35)] w-full sm:w-auto !no-underline"
+                className="relative z-10 shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-cyan !text-black font-heading font-bold text-[0.85rem] sm:text-[0.9rem] transition-all hover:-translate-y-0.5 hover:shadow-[0_0_24px_rgba(0,229,255,0.35)] w-full sm:w-auto !no-underline"
               >
                 <Play className="w-4 h-4 fill-black" />
                 無料診断スタート
