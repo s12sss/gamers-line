@@ -43,6 +43,17 @@
   font-weight: 600;
 }
 
+.article-body img {
+  cursor: zoom-in;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  will-change: transform;
+}
+
+.article-body img:hover {
+  transform: scale(1.01);
+  filter: brightness(1.1);
+}
+
 .article-body a {
   color: var(--cyan);
   text-decoration: underline;
@@ -186,49 +197,92 @@
 .article-body .box-check,
 .article-body .box-warning {
   margin: 32px 0;
-  padding: 24px;
-  border-radius: 12px;
-  font-size: 0.9rem;
+  padding: 24px 28px;
+  border-radius: 14px;
   position: relative;
-  line-height: 1.8;
-  color: var(--text-muted);
+  overflow: hidden;
+  font-size: 0.875rem;
+  line-height: 1.75;
 }
 
-.article-body .box-tip p:last-child,
-.article-body .box-check p:last-child,
-.article-body .box-warning p:last-child {
-  margin-bottom: 0;
+.article-body .box-tip::before,
+.article-body .box-check::before,
+.article-body .box-warning::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  border-radius: 3px 0 0 3px;
 }
 
-.article-body .box-tip strong:first-child,
-.article-body .box-check strong:first-child,
-.article-body .box-warning strong:first-child {
+.article-body .box-tip p,
+.article-body .box-check p,
+.article-body .box-warning p {
+  margin: 0;
+}
+
+/* Callout Labels (Upgraded via Cheerio) */
+.article-body .callout-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.article-body .callout-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.article-body .callout-label.tip {
+  background: rgba(0, 229, 255, 0.15);
+  color: var(--cyan);
+}
+
+.article-body .callout-label.check {
+  background: rgba(0, 230, 118, 0.15);
+  color: var(--emerald);
+}
+
+.article-body .callout-label.warning {
+  background: rgba(251, 191, 36, 0.15);
+  color: var(--amber);
+}
+
+.article-body .callout-title {
   font-weight: bold;
-  letter-spacing: 0.05em;
-  display: block;
-  margin-bottom: 8px;
+  font-size: 0.95rem;
+  color: var(--text);
 }
 
 /* TIP Box (Cyan) */
 .article-body .box-tip {
-  background: rgba(0, 229, 255, 0.03);
-  border: 1px solid rgba(0, 229, 255, 0.1);
-  border-left: 3px solid var(--cyan);
+  background: rgba(0, 229, 255, 0.05);
+  border: 1px solid rgba(0, 229, 255, 0.15);
 }
-.article-body .box-tip strong:first-child { color: var(--cyan); }
+.article-body .box-tip::before { background: var(--cyan); }
+.article-body .box-tip p { color: rgba(0, 229, 255, 0.85); }
 
 /* CHECK Box (Emerald) */
 .article-body .box-check {
-  background: rgba(16, 185, 129, 0.03);
-  border: 1px solid rgba(16, 185, 129, 0.1);
-  border-left: 3px solid #10b981;
+  background: rgba(0, 230, 118, 0.05);
+  border: 1px solid rgba(0, 230, 118, 0.15);
 }
-.article-body .box-check strong:first-child { color: #10b981; }
+.article-body .box-check::before { background: var(--emerald); }
+.article-body .box-check p { color: rgba(0, 230, 118, 0.85); }
 
 /* WARNING Box (Amber/Red) */
 .article-body .box-warning {
-  background: rgba(245, 158, 11, 0.03);
-  border: 1px solid rgba(245, 158, 11, 0.1);
-  border-left: 3px solid #f59e0b;
+  background: rgba(251, 191, 36, 0.05);
+  border: 1px solid rgba(251, 191, 36, 0.15);
 }
-.article-body .box-warning strong:first-child { color: #f59e0b; }
+.article-body .box-warning::before { background: var(--amber); }
+.article-body .box-warning p { color: rgba(251, 191, 36, 0.85); }

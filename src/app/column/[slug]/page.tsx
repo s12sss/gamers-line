@@ -5,6 +5,7 @@ import '../article.css';
 import { getColumnDetail } from '@/libs/microcms';
 import { Metadata, ResolvingMetadata } from 'next';
 import * as cheerio from 'cheerio';
+import ClientArticleBody from '@/components/ClientArticleBody';
 
 export const revalidate = 60;
 
@@ -110,29 +111,32 @@ export default async function ColumnArticle({ params }: Props) {
             
             {/* 目次（TOC） */}
             {headings.length > 0 && (
-              <div className="mb-12 rounded-[16px] border border-cyan/10 bg-[#050508]/80 p-6 sm:p-8 relative overflow-hidden backdrop-blur-sm">
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-cyan" />
-                <h3 className="font-heading text-[1rem] font-bold text-cyan tracking-[0.15em] mb-6 flex items-center gap-2">
-                  CONTENTS
-                </h3>
-                <ul className="flex flex-col gap-4">
+              <nav className="mb-14 p-7 px-8 rounded-2xl border border-cyan/15 bg-cyan/[0.04] relative overflow-hidden" aria-label="目次">
+                <div className="absolute top-0 left-0 w-[3px] h-full bg-gradient-to-b from-cyan to-emerald rounded-l-sm" />
+                <div className="flex items-center gap-2 font-mono text-[0.7rem] text-cyan tracking-widest uppercase mb-4">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                  目次
+                </div>
+                <ol className="flex flex-col gap-2 m-0 p-0 list-none">
                   {headings.map((heading, i) => (
-                    <li key={heading.id} className="flex items-start gap-3">
-                      <span className="font-mono text-cyan/70 text-[0.7rem] font-bold tracking-widest pt-0.5">0{i + 1}</span>
+                    <li key={heading.id} className="flex items-baseline gap-2.5">
+                      <span className="font-mono text-cyan/50 text-[0.65rem] shrink-0">
+                        {i + 1 < 10 ? `0${i + 1}` : i + 1}
+                      </span>
                       <a 
                         href={`#${heading.id}`} 
-                        className="text-[0.85rem] text-text-muted hover:text-cyan border-b border-transparent hover:border-cyan/50 pb-0.5 transition-colors font-medium leading-[1.6]"
+                        className="text-[0.875rem] text-text-muted hover:text-cyan transition-colors leading-[1.4] no-underline"
                       >
                         {heading.text}
                       </a>
                     </li>
                   ))}
-                </ul>
-              </div>
+                </ol>
+              </nav>
             )}
 
             {/* 記事本文 */}
-            <div dangerouslySetInnerHTML={{ __html: processedContent }} />
+            <ClientArticleBody content={processedContent} />
 
             {/* Diagnosis CTA Inline */}
             <div className="my-10 sm:my-14 p-6 sm:p-9 rounded-[20px] border border-cyan/20 bg-cyan/[0.04] flex flex-col sm:flex-row items-center justify-between gap-5 relative overflow-hidden">

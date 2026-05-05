@@ -32,13 +32,13 @@ export default function ProviderPage() {
             const shadowClass = isFirst ? 'hover:shadow-[0_24px_64px_rgba(0,0,0,0.4),0_0_30px_rgba(0,229,255,0.07)]' : 'hover:shadow-[0_24px_64px_rgba(0,0,0,0.4),0_0_30px_rgba(255,255,255,0.05)]';
             
             return (
-              <div key={isp.id} className={`rounded-[24px] border ${borderClass} ${bgClass} overflow-hidden transition-all duration-300 hover:border-cyan/30 hover:-translate-y-1 ${shadowClass} animate-[fadeUp_0.5s_ease_both]`} style={{ animationDelay: `${index * 100}ms` }}>
-                <div className="p-7 sm:p-8 pb-6 border-b border-white/10 relative overflow-hidden">
+              <div key={isp.id} className={`rounded-[24px] border ${borderClass} ${bgClass} transition-all duration-300 hover:border-cyan/30 hover:-translate-y-1 ${shadowClass} animate-[fadeUp_0.5s_ease_both]`} style={{ animationDelay: `${index * 100}ms` }}>
+                <div className="p-7 sm:p-8 pb-6 border-b border-white/10 relative">
                   {isFirst && (
-                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_100%_0%,rgba(0,229,255,0.1),transparent_60%)] pointer-events-none" />
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_100%_0%,rgba(0,229,255,0.1),transparent_60%)] rounded-t-[24px] pointer-events-none" />
                   )}
                   {!isFirst && (
-                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_100%_0%,rgba(255,255,255,0.03),transparent_60%)] pointer-events-none" />
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_100%_0%,rgba(255,255,255,0.03),transparent_60%)] rounded-t-[24px] pointer-events-none" />
                   )}
                   
                   <div className="relative z-10 flex items-start justify-between gap-4 mb-4">
