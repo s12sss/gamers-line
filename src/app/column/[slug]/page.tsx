@@ -3,10 +3,39 @@ import { ChevronRight, Play, Check, X } from 'lucide-react';
 import ScrollProgress from '@/components/ScrollProgress';
 import '../article.css';
 import { getColumnDetail } from '@/libs/microcms';
+import { Metadata, ResolvingMetadata } from 'next';
 
-export default async function ColumnArticle({ params }: { params: Promise<{ slug: string }> }) {
+type Props = {
+  params: Promise<{ slug: string }>;
+};
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
   const resolvedParams = await params;
-  const column = await getColumnDetail(resolvedParams.slug);
+  const column = await getColumnDetail(resolvedParams.slug).catch(() => null);
+
+  if (!column) {
+    return {
+      title: '記事が見つかりません | Gamer\'s Line',
+    };
+  }
+
+  return {
+    title: `${column.title} | Gamer's Line`,
+    description: column.content.replace(/<[^>]*>?/gm, '').substring(0, 120) + '...',
+    openGraph: {
+      title: `${column.title} | Gamer's Line`,
+      description: column.content.replace(/<[^>]*>?/gm, '').substring(0, 120) + '...',
+      images: column.thumbnail ? [column.thumbnail.url] : [],
+    },
+  };
+}
+
+export default async function ColumnArticle({ params }: Props) {
+  const resolvedParams = await params;
+  const column = await getColumnDetail(resolvedParams.slug).catch(() => null);
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground font-sans">
@@ -44,7 +73,9 @@ export default async function ColumnArticle({ params }: { params: Promise<{ slug
                 <span className="text-[0.8rem] sm:text-[0.85rem] font-semibold text-text">Gamer's Line 編集部</span>
               </div>
               <div className="w-px h-4 bg-white/10" />
-              <div className="font-mono text-[0.68rem] sm:text-[0.72rem] text-text-muted tracking-[0.04em]">{new Date(column.publishedAt).toLocaleDateString('ja-JP')} UPDATE</div>
+              <div className="font-mono text-[0.68rem] sm:text-[0.72rem] text-text-muted tracking-[0.04em]">
+                {new Date(column.publishedAt || column.createdAt).toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/\//g, '.')} UPDATE
+              </div>
             </div>
 
             {/* Hero Thumb */}

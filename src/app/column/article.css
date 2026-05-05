@@ -55,6 +55,36 @@
   text-decoration-color: var(--cyan);
 }
 
+.article-body ul, .article-body ol {
+  margin: 20px 0;
+  padding-left: 24px;
+  color: rgba(240,240,248,0.85);
+  font-size: 0.9375rem;
+  line-height: 1.8;
+}
+
+.article-body li {
+  margin-bottom: 8px;
+}
+
+.article-body ul li {
+  list-style-type: disc;
+}
+
+.article-body ol li {
+  list-style-type: decimal;
+}
+
+.article-body blockquote {
+  margin: 24px 0;
+  padding: 16px 20px;
+  background: rgba(0, 229, 255, 0.05);
+  border-left: 3px solid var(--cyan);
+  border-radius: 0 8px 8px 0;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
 /* TOC Custom Counter */
 .toc-list {
   list-style: none;
