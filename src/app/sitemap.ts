@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next';
 import { getColumnsList } from '@/libs/microcms';
 
+export const revalidate = 60;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://gamers-line.jp';
 

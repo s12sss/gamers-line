@@ -5,6 +5,8 @@ import '../article.css';
 import { getColumnDetail } from '@/libs/microcms';
 import { Metadata, ResolvingMetadata } from 'next';
 
+export const revalidate = 60;
+
 type Props = {
   params: Promise<{ slug: string }>;
 };

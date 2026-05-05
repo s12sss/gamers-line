@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { ChevronRight, Play } from 'lucide-react';
 import { getColumnsList } from '@/libs/microcms';
 
+export const revalidate = 60;
+
 export default async function ColumnList({ searchParams }: { searchParams?: { [key: string]: string | string[] | undefined } }) {
   const tag = searchParams?.tag as string | undefined;
   const columns = await getColumnsList(tag);

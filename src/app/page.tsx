@@ -2,8 +2,11 @@ import Link from "next/link";
 import Tooltip from "@/components/Tooltip";
 import { Activity, ShieldCheck, Wallet, ChevronRight, Play } from 'lucide-react';
 import ispsData from "@/data/isps.json";
+import { getColumnsList } from "@/libs/microcms";
 
-export default function Home() {
+export const revalidate = 60; // 60 seconds ISR
+
+export default async function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground font-sans">
 
