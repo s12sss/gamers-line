@@ -56,8 +56,8 @@ export default function Home() {
       {/* Stats Bar */}
       <div className="relative z-10 flex flex-wrap sm:flex-nowrap justify-center border-y border-white/10 bg-cyan/5 overflow-hidden animate-[fadeUp_0.6s_ease_0.4s_both]">
         {[
-          { num: "15ms", label: "BEST PING記録" },
-          { num: "30+", label: "比較回線プラン" },
+          { num: "7ms", label: "BEST PING記録" },
+          { num: "主要7+", label: "比較回線プラン" },
           { num: "30秒", label: "診断所要時間" },
           { num: "100%", label: "無料・登録不要" },
         ].map((stat, i) => (
@@ -87,9 +87,9 @@ export default function Home() {
             <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-cyan/10 text-cyan">
               <Activity className="w-6 h-6" />
             </div>
-            <h3 className="font-heading text-lg font-bold tracking-tight mb-3">Ping値特化の分析</h3>
+            <h3 className="font-heading text-lg font-bold tracking-tight mb-3">Ping値特化の評価ロジック</h3>
             <p className="text-sm text-text-muted leading-[1.7]">
-              単なる「最大速度(Gbps)」ではなく、FPS/格ゲーで最も重要な「平均Ping値」をベースに回線の期待値を算出します。
+              カタログスペックの「最大速度」ではなく、FPSや格ゲーの勝敗に直結する「実測Ping値」を最重要視。ゲーマー目線で真に快適な回線を導き出します。
             </p>
           </div>
 
@@ -102,9 +102,9 @@ export default function Home() {
             <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-emerald/10 text-emerald">
               <ShieldCheck className="w-6 h-6" />
             </div>
-            <h3 className="font-heading text-lg font-bold tracking-tight mb-3">絶対的ハードフィルター</h3>
+            <h3 className="font-heading text-lg font-bold tracking-tight mb-3">無駄な提案を完全ブロック</h3>
             <p className="text-sm text-text-muted leading-[1.7]">
-              VDSLマンションなど、物理的に導入不可能な回線は事前に徹底除外。「契約できない回線」をおすすめすることはありません。
+              「おすすめされたのに、うちのマンションでは契約できなかった…」という悲劇を防ぐため、住居タイプ（VDSLなど）から物理的に導入不可な回線を自動で除外します。
             </p>
           </div>
 
@@ -114,9 +114,9 @@ export default function Home() {
             <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-purple-500/10 text-purple-400">
               <Wallet className="w-6 h-6" />
             </div>
-            <h3 className="font-heading text-lg font-bold tracking-tight mb-3">実質料金・スマホ割を網羅</h3>
+            <h3 className="font-heading text-lg font-bold tracking-tight mb-3">実質料金を透明化</h3>
             <p className="text-sm text-text-muted leading-[1.7]">
-              複雑なキャッシュバックやスマホセット割を自動計算。あなたにとって「本当はいくらなのか」を透明性を持って提示します。
+              「結局、月々いくら払うの？」という疑問を解決。複雑なスマホセット割やキャッシュバック額を加味して、あなたにとって本当に安くて速い回線を提示します。
             </p>
           </div>
         </div>

@@ -18,6 +18,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Gamer's Line — ゲーマーのための回線診断",
   description: "Ping値と実質料金の最適解を導き出す、FPSゲーマー特化型の回線診断ツール。",
+  verification: {
+    google: "e6ITBNtCcTDLYsqRfX5CZrjpS6iYsh_KHRtdzagsXY8",
+  },
 };
 
 export default function RootLayout({
