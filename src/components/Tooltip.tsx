@@ -13,10 +13,10 @@ export default function Tooltip({ text, children, className = "" }: { text: stri
     
     if (containerRef.current) {
       const rect = containerRef.current.getBoundingClientRect();
-      const tooltipWidth = 240; 
-      if (rect.left < tooltipWidth / 2) {
+      // Increase safe margin to 160px to account for larger tooltips on desktop
+      if (rect.left < 160) {
         setPosition('left');
-      } else if (window.innerWidth - rect.right < tooltipWidth / 2) {
+      } else if (window.innerWidth - rect.right < 160) {
         setPosition('right');
       } else {
         setPosition('center');

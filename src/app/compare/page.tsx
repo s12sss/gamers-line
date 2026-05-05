@@ -7,8 +7,9 @@ import Tooltip from "@/components/Tooltip";
 
 export default function ComparePage() {
   const [filter, setFilter] = useState<'ALL' | '10G' | 'VDSL' | 'AU' | 'DOC' | 'SB'>('ALL');
+  const [sortBy, setSortBy] = useState<'ping' | 'price' | 'speed' | null>(null);
   
-  const compareIsps = ispsData.filter(isp => {
+  let compareIsps = ispsData.filter(isp => {
     if (filter === 'ALL') return true;
     if (filter === '10G') return isp.max_speed_gbps >= 10;
     if (filter === 'VDSL') return isp.vdsl_support;
@@ -17,6 +18,14 @@ export default function ComparePage() {
     if (filter === 'SB') return isp.mobile_discount.includes('softbank');
     return true;
   });
+
+  if (sortBy === 'ping') {
+    compareIsps.sort((a, b) => a.avg_ping_ms - b.avg_ping_ms);
+  } else if (sortBy === 'price') {
+    compareIsps.sort((a, b) => a.actual_monthly_fee_jpy - b.actual_monthly_fee_jpy);
+  } else if (sortBy === 'speed') {
+    compareIsps.sort((a, b) => b.max_speed_gbps - a.max_speed_gbps);
+  }
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground font-sans">
@@ -83,9 +92,13 @@ export default function ComparePage() {
             
             {/* Ping */}
             <div className="contents group">
-              <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-white/70">
+              <button 
+                onClick={() => setSortBy(sortBy === 'ping' ? null : 'ping')}
+                className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-white/70 hover:text-white hover:bg-white/5 transition-all outline-none text-left w-full cursor-pointer"
+              >
                 <Activity className="w-3.5 h-3.5 opacity-50" /> <Tooltip text="データが往復する時間の遅延を示す指標。FPSでは15ms以下が理想的とされます。">平均Ping値</Tooltip>
-              </div>
+                {sortBy === 'ping' && <ChevronDown className="w-3.5 h-3.5 text-cyan ml-auto" />}
+              </button>
               {compareIsps.map((isp, index) => {
                 const isBest = index === 0;
                 const pingColor = isp.avg_ping_ms <= 15 ? 'text-emerald drop-shadow-[0_0_10px_rgba(0,230,118,0.4)]' : isp.avg_ping_ms <= 20 ? 'text-cyan drop-shadow-[0_0_10px_rgba(0,229,255,0.3)]' : 'text-amber-500';
@@ -99,9 +112,13 @@ export default function ComparePage() {
 
             {/* Price */}
             <div className="contents group">
-              <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-white/70">
+              <button 
+                onClick={() => setSortBy(sortBy === 'price' ? null : 'price')}
+                className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-white/70 hover:text-white hover:bg-white/5 transition-all outline-none text-left w-full cursor-pointer"
+              >
                 <Wallet className="w-3.5 h-3.5 opacity-50" /> <Tooltip text="月額料金に加えて、初期費用やキャッシュバックなどを全て含めて月割にした、本当の月額料金です。">実質月額</Tooltip>
-              </div>
+                {sortBy === 'price' && <ChevronDown className="w-3.5 h-3.5 text-cyan ml-auto" />}
+              </button>
               {compareIsps.map((isp, index) => {
                 const isBest = index === 0;
                 return (
@@ -114,9 +131,13 @@ export default function ComparePage() {
 
             {/* Max speed */}
             <div className="contents group">
-              <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-white/70">
+              <button 
+                onClick={() => setSortBy(sortBy === 'speed' ? null : 'speed')}
+                className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-white/70 hover:text-white hover:bg-white/5 transition-all outline-none text-left w-full cursor-pointer"
+              >
                 <Zap className="w-3.5 h-3.5 opacity-50" /> <Tooltip text="理論上の最も速い通信速度のこと。実際の速度とは異なる場合が多いです。">最大速度</Tooltip>
-              </div>
+                {sortBy === 'speed' && <ChevronDown className="w-3.5 h-3.5 text-cyan ml-auto" />}
+              </button>
               {compareIsps.map((isp, index) => {
                 const isBest = index === 0;
                 return (
@@ -207,7 +228,7 @@ export default function ComparePage() {
               const isBest = index === 0;
               return (
                 <div key={isp.id} className="py-3 px-2 text-center">
-                  <Link href={isp.affiliateLink} className={`inline-flex w-full items-center justify-center gap-1 px-2 py-2.5 rounded-lg font-heading font-bold text-[0.8rem] transition-all ${isBest ? 'bg-cyan text-black hover:-translate-y-px hover:shadow-[0_0_28px_rgba(0,229,255,0.4)]' : 'border border-white/10 bg-transparent text-text-muted hover:border-cyan/30 hover:text-text hover:bg-cyan/5'}`}>
+                  <Link href={isp.affiliateLink} className="inline-flex w-full items-center justify-center gap-1 px-2 py-2.5 rounded-lg font-heading font-bold text-[0.8rem] transition-all bg-cyan text-black hover:-translate-y-px hover:shadow-[0_0_28px_rgba(0,229,255,0.4)]">
                     申し込む
                   </Link>
                 </div>
