@@ -21,7 +21,6 @@ export type Column = {
   publishedAt: string;
   revisedAt: string;
   title: string;
-  slug: string;
   category: string[];
   thumbnail?: { url: string; width: number; height: number };
   content: string;
@@ -46,15 +45,15 @@ export async function getColumnsList(tag?: string) {
 }
 
 // 詳細取得
-export async function getColumnDetail(slug: string) {
+export async function getColumnDetail(contentId: string) {
   try {
-    const data = await client.getList<Column>({
+    const data = await client.get<Column>({
       endpoint: 'columns',
-      queries: { filters: `slug[equals]${slug}`, limit: 1 },
+      contentId,
     });
-    return data.contents[0] || null;
+    return data;
   } catch (error) {
-    console.error(`Failed to fetch column ${slug}:`, error);
+    console.error(`Failed to fetch column ${contentId}:`, error);
     return null;
   }
 }

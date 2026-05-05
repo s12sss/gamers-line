@@ -42,7 +42,7 @@ export default async function ColumnList({ searchParams }: { searchParams?: { [k
           columns.map((column, index) => (
             <Link 
               key={column.id} 
-              href={`/column/${column.slug}`} 
+              href={`/column/${column.id}`} 
               className={`group flex flex-col relative rounded-[20px] border border-white/10 bg-white/[0.035] overflow-hidden backdrop-blur-md transition-all duration-300 hover:border-cyan/30 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(0,229,255,0.06)] ${index === 0 ? 'md:col-span-2 sm:col-span-2' : ''}`}
             >
               <div className={`w-full ${index === 0 ? 'aspect-[16/7] md:aspect-[16/8]' : 'aspect-[16/7] sm:aspect-[16/8]'} bg-cyan/5 border-b border-white/10 flex items-center justify-center relative overflow-hidden shrink-0`}>
