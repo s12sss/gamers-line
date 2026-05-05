@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Play, Activity, Wallet, Zap, ShieldAlert, BadgeCent, ChevronDown, ChevronRight, Gift } from "lucide-react";
+import { Play, Activity, Wallet, Zap, ShieldAlert, BadgeCent, ChevronDown, ChevronRight, Gift, ChevronsUpDown } from "lucide-react";
 import ispsData from "@/data/isps.json";
 import { useState } from "react";
 import Tooltip from "@/components/Tooltip";
@@ -26,6 +26,8 @@ export default function ComparePage() {
   } else if (sortBy === 'speed') {
     compareIsps.sort((a, b) => b.max_speed_gbps - a.max_speed_gbps);
   }
+
+  const bestPingValue = Math.min(...compareIsps.map(isp => isp.avg_ping_ms));
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground font-sans">
@@ -71,8 +73,8 @@ export default function ComparePage() {
             <div className="flex items-end pb-3 pl-1 font-mono text-[0.65rem] text-white/60 tracking-[0.1em] uppercase">
               // ISP
             </div>
-            {compareIsps.map((isp, index) => {
-              const isBest = index === 0;
+            {compareIsps.map((isp) => {
+              const isBest = isp.avg_ping_ms === bestPingValue;
               return (
                 <div key={isp.id} className={`relative p-5 rounded-t-[16px] border ${isBest ? 'border-cyan/30 bg-cyan/5' : 'border-white/10 bg-white/5'} border-b-0 text-center`}>
                   {isBest && (
@@ -96,11 +98,11 @@ export default function ComparePage() {
                 onClick={() => setSortBy(sortBy === 'ping' ? null : 'ping')}
                 className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-white/70 hover:text-white hover:bg-white/5 transition-all outline-none text-left w-full cursor-pointer"
               >
-                <Activity className="w-3.5 h-3.5 opacity-50" /> <Tooltip text="データが往復する時間の遅延を示す指標。FPSでは15ms以下が理想的とされます。">平均Ping値</Tooltip>
-                {sortBy === 'ping' && <ChevronDown className="w-3.5 h-3.5 text-cyan ml-auto" />}
+                <Activity className="w-3.5 h-3.5 opacity-50" /> <Tooltip text="データが往復する時間の遅延を示す指標。FPSでは15ms以下が理想的とされます。" position="left">平均Ping値</Tooltip>
+                {sortBy === 'ping' ? <ChevronDown className="w-3.5 h-3.5 text-cyan ml-auto" /> : <ChevronsUpDown className="w-3.5 h-3.5 opacity-30 group-hover:opacity-60 transition-opacity ml-auto" />}
               </button>
-              {compareIsps.map((isp, index) => {
-                const isBest = index === 0;
+              {compareIsps.map((isp) => {
+                const isBest = isp.avg_ping_ms === bestPingValue;
                 const pingColor = isp.avg_ping_ms <= 15 ? 'text-emerald drop-shadow-[0_0_10px_rgba(0,230,118,0.4)]' : isp.avg_ping_ms <= 20 ? 'text-cyan drop-shadow-[0_0_10px_rgba(0,229,255,0.3)]' : 'text-amber-500';
                 return (
                   <div key={isp.id} className={`flex items-center justify-center py-3.5 border-b border-white/5 border-x ${isBest ? 'border-cyan/20 bg-cyan/[0.03]' : 'border-white/10 bg-white/[0.01]'} text-center`}>
@@ -116,11 +118,11 @@ export default function ComparePage() {
                 onClick={() => setSortBy(sortBy === 'price' ? null : 'price')}
                 className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-white/70 hover:text-white hover:bg-white/5 transition-all outline-none text-left w-full cursor-pointer"
               >
-                <Wallet className="w-3.5 h-3.5 opacity-50" /> <Tooltip text="月額料金に加えて、初期費用やキャッシュバックなどを全て含めて月割にした、本当の月額料金です。">実質月額</Tooltip>
-                {sortBy === 'price' && <ChevronDown className="w-3.5 h-3.5 text-cyan ml-auto" />}
+                <Wallet className="w-3.5 h-3.5 opacity-50" /> <Tooltip text="月額料金に加えて、初期費用やキャッシュバックなどを全て含めて月割にした、本当の月額料金です。" position="left">実質月額</Tooltip>
+                {sortBy === 'price' ? <ChevronDown className="w-3.5 h-3.5 text-cyan ml-auto" /> : <ChevronsUpDown className="w-3.5 h-3.5 opacity-30 group-hover:opacity-60 transition-opacity ml-auto" />}
               </button>
-              {compareIsps.map((isp, index) => {
-                const isBest = index === 0;
+              {compareIsps.map((isp) => {
+                const isBest = isp.avg_ping_ms === bestPingValue;
                 return (
                   <div key={isp.id} className={`flex items-center justify-center py-3.5 border-b border-white/5 border-x ${isBest ? 'border-cyan/20 bg-cyan/[0.04]' : 'border-white/10 bg-white/[0.015]'} text-center`}>
                     <span className="font-mono font-bold text-[0.95rem] text-text">¥{isp.actual_monthly_fee_jpy.toLocaleString()}</span>
@@ -135,11 +137,11 @@ export default function ComparePage() {
                 onClick={() => setSortBy(sortBy === 'speed' ? null : 'speed')}
                 className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-white/70 hover:text-white hover:bg-white/5 transition-all outline-none text-left w-full cursor-pointer"
               >
-                <Zap className="w-3.5 h-3.5 opacity-50" /> <Tooltip text="理論上の最も速い通信速度のこと。実際の速度とは異なる場合が多いです。">最大速度</Tooltip>
-                {sortBy === 'speed' && <ChevronDown className="w-3.5 h-3.5 text-cyan ml-auto" />}
+                <Zap className="w-3.5 h-3.5 opacity-50" /> <Tooltip text="理論上の最も速い通信速度のこと。実際の速度とは異なる場合が多いです。" position="left">最大速度</Tooltip>
+                {sortBy === 'speed' ? <ChevronDown className="w-3.5 h-3.5 text-cyan ml-auto" /> : <ChevronsUpDown className="w-3.5 h-3.5 opacity-30 group-hover:opacity-60 transition-opacity ml-auto" />}
               </button>
-              {compareIsps.map((isp, index) => {
-                const isBest = index === 0;
+              {compareIsps.map((isp) => {
+                const isBest = isp.avg_ping_ms === bestPingValue;
                 return (
                   <div key={isp.id} className={`flex items-center justify-center py-3.5 border-b border-white/5 border-x ${isBest ? 'border-cyan/20 bg-cyan/[0.03]' : 'border-white/10 bg-white/[0.01]'} text-center`}>
                     <span className="font-mono text-[0.85rem] text-cyan">{isp.max_speed_gbps} Gbps</span>
@@ -151,10 +153,10 @@ export default function ComparePage() {
             {/* VDSL */}
             <div className="contents group">
               <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-white/70">
-                <ShieldAlert className="w-3.5 h-3.5 opacity-50" /> <Tooltip text="マンションの共用部から各部屋まで電話線を使う配線方式。最大速度が100Mbps程度に制限されるためゲームには不向きです。">VDSL対応</Tooltip>
+                <ShieldAlert className="w-3.5 h-3.5 opacity-50" /> <Tooltip text="マンションの共用部から各部屋まで電話線を使う配線方式。最大速度が100Mbps程度に制限されるためゲームには不向きです。" position="left">VDSL対応</Tooltip>
               </div>
-              {compareIsps.map((isp, index) => {
-                const isBest = index === 0;
+              {compareIsps.map((isp) => {
+                const isBest = isp.avg_ping_ms === bestPingValue;
                 return (
                   <div key={isp.id} className={`flex items-center justify-center py-3.5 border-b border-white/5 border-x ${isBest ? 'border-cyan/20 bg-cyan/[0.04]' : 'border-white/10 bg-white/[0.015]'} text-center`}>
                     <span className={`text-[1.1rem] ${isp.vdsl_support ? 'text-emerald' : 'text-red-400'}`}>{isp.vdsl_support ? '✓' : '✕'}</span>
@@ -169,8 +171,8 @@ export default function ComparePage() {
               <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-white/70">
                 <BadgeCent className="w-3.5 h-3.5 opacity-50" /> スマホセット割
               </div>
-              {compareIsps.map((isp, index) => {
-                const isBest = index === 0;
+              {compareIsps.map((isp) => {
+                const isBest = isp.avg_ping_ms === bestPingValue;
                 const discountText = isp.discounts && isp.discounts.length > 0 ? isp.discounts.map(d => `${d.carrier}利用で割引`).join(', ') : '—';
                 return (
                   <div key={isp.id} className={`flex items-center justify-center py-3.5 border-b border-white/5 border-x ${isBest ? 'border-cyan/20 bg-cyan/[0.03]' : 'border-white/10 bg-white/[0.01]'} text-center`}>
@@ -185,8 +187,8 @@ export default function ComparePage() {
               <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-white/70">
                 <Gift className="w-3.5 h-3.5 opacity-50" /> <Tooltip text="開通後に受け取れる還元額の目安です。受取時期や適用条件は回線ごとに異なります。">キャッシュバック</Tooltip>
               </div>
-              {compareIsps.map((isp, index) => {
-                const isBest = index === 0;
+              {compareIsps.map((isp) => {
+                const isBest = isp.avg_ping_ms === bestPingValue;
                 return (
                   <div key={isp.id} className={`flex items-center justify-center py-3.5 border-b border-white/5 border-x ${isBest ? 'border-cyan/20 bg-cyan/[0.03]' : 'border-white/10 bg-white/[0.01]'} text-center`}>
                     <span className={`font-mono text-[0.75rem] sm:text-[0.85rem] ${isp.cashback_text !== 'キャンペーンなし' ? 'text-purple-400 font-bold' : 'text-white/40'}`}>{isp.cashback_text || '—'}</span>
@@ -224,11 +226,11 @@ export default function ComparePage() {
           {/* CTA Row */}
           <div className="grid gap-x-2 mt-2" style={{ gridTemplateColumns: `200px repeat(${compareIsps.length}, minmax(180px, 1fr))` }}>
             <div></div>
-            {compareIsps.map((isp, index) => {
-              const isBest = index === 0;
+            {compareIsps.map((isp) => {
+              const isBest = isp.avg_ping_ms === bestPingValue;
               return (
                 <div key={isp.id} className="py-3 px-2 text-center">
-                  <Link href={isp.affiliateLink} className="inline-flex w-full items-center justify-center gap-1 px-2 py-2.5 rounded-lg font-heading font-bold text-[0.8rem] transition-all bg-cyan text-black hover:-translate-y-px hover:shadow-[0_0_28px_rgba(0,229,255,0.4)]">
+                  <Link href={isp.affiliateLink} className={`inline-flex w-full items-center justify-center gap-1 px-2 py-2.5 rounded-lg font-heading font-bold text-[0.8rem] transition-all bg-cyan text-black hover:-translate-y-px hover:shadow-[0_0_28px_rgba(0,229,255,0.4)]`}>
                     申し込む
                   </Link>
                 </div>

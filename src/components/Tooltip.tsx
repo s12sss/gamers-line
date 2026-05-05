@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 
-export default function Tooltip({ text, children, className = "" }: { text: string; children: React.ReactNode; className?: string }) {
+export default function Tooltip({ text, children, position: explicitPosition, className = "" }: { text: string; children: React.ReactNode; position?: 'left' | 'right' | 'center', className?: string }) {
   const [isVisible, setIsVisible] = useState(false);
   const [position, setPosition] = useState<'center' | 'left' | 'right'>('center');
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -11,7 +11,9 @@ export default function Tooltip({ text, children, className = "" }: { text: stri
   const showTooltip = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     
-    if (containerRef.current) {
+    if (explicitPosition) {
+      setPosition(explicitPosition);
+    } else if (containerRef.current) {
       const rect = containerRef.current.getBoundingClientRect();
       // Increase safe margin to 160px to account for larger tooltips on desktop
       if (rect.left < 160) {
