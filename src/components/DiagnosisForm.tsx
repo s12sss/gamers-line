@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Gamepad2, Home, Smartphone, Zap, Wallet, ChevronRight, Activity, Check, MapPin, Download } from 'lucide-react';
+import { Gamepad2, Home, Smartphone, Zap, Wallet, ChevronRight, ChevronLeft, Activity, Check, MapPin, Download } from 'lucide-react';
 import { UserAnswers, recommendISPs, ISP } from '@/utils/algorithm';
 import ispsData from '@/data/isps.json';
 import Link from 'next/link';
@@ -172,7 +172,6 @@ export default function DiagnosisForm() {
     priority: '',
     region: '',
     requires10G: false,
-    budget: 0,
   });
   const [results, setResults] = useState<{ isp: ISP, score: number }[] | null>(null);
   const [loading, setLoading] = useState(false);
@@ -181,7 +180,7 @@ export default function DiagnosisForm() {
     const newAnswers = { ...answers, [key]: value };
     setAnswers(newAnswers);
     
-    if (step < 7) {
+    if (step < 6) {
       setStep(step + 1);
     } else {
       setLoading(true);
@@ -193,7 +192,7 @@ export default function DiagnosisForm() {
     const recommended = recommendISPs(isps, answers);
     setResults(recommended);
     setLoading(false);
-    setStep(8);
+    setStep(7);
   };
 
   const stepIcons = [null, <Gamepad2 />, <Download />, <MapPin />, <Home />, <Smartphone />, <Zap />, <Wallet />];
@@ -204,7 +203,6 @@ export default function DiagnosisForm() {
     '現在の住居タイプは？',
     'お使いのスマホキャリアは？',
     '回線選びで最も重視するのは？',
-    '月額料金の予算は？',
   ];
 
   const renderStep = () => {
@@ -322,23 +320,7 @@ export default function DiagnosisForm() {
         );
       case 7:
         return (
-          <motion.div key="step7" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.25 }}>
-            <div className="font-heading text-xl sm:text-[1.6rem] font-bold tracking-tight mb-5 sm:mb-7 flex items-center gap-3 text-text">
-              <div className="w-10 h-10 rounded-[10px] bg-cyan/10 border border-cyan/20 flex items-center justify-center text-cyan shrink-0">
-                {stepIcons[7]}
-              </div>
-              {stepTitles[7]}
-            </div>
-            <div className="flex flex-col gap-3">
-              <OptionCard onClick={() => handleNext('budget', 4000)} title="4,000円以下" desc="実質月額をとにかく安く" />
-              <OptionCard onClick={() => handleNext('budget', 5000)} title="5,000円前後" desc="標準的な価格帯" />
-              <OptionCard onClick={() => handleNext('budget', 99999)} title="料金は気にしない" desc="最高の環境を作りたい" />
-            </div>
-          </motion.div>
-        );
-      case 8:
-        return (
-          <motion.div key="step6" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+          <motion.div key="step7" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <div className="text-center mb-10 mt-4">
               <motion.div 
                 initial={{ scale: 0.5, opacity: 0 }} 
@@ -367,7 +349,7 @@ export default function DiagnosisForm() {
                 onClick={() => {
                   setStep(1);
                   setResults(null);
-                  setAnswers({ gameGenre: '', housingType: '', mobileCarrier: '', priority: '', region: '', requires10G: false, budget: 0 });
+                  setAnswers({ gameGenre: '', housingType: '', mobileCarrier: '', priority: '', region: '', requires10G: false });
                 }}
                 className="text-xs sm:text-sm text-cyan/70 hover:text-cyan underline underline-offset-4 transition-colors"
               >
@@ -385,16 +367,26 @@ export default function DiagnosisForm() {
     <div className="w-full max-w-[640px] mx-auto pt-6 sm:pt-16 pb-12 sm:pb-20">
       
       {/* Progress Bar */}
-      {step < 8 && !loading && (
+      {step < 7 && !loading && (
         <div className="mb-6 sm:mb-8 px-1 sm:px-2">
           <div className="flex justify-between items-center mb-2.5">
-            <span className="font-mono text-[0.65rem] sm:text-[0.7rem] text-cyan tracking-[0.12em] uppercase">STEP {step} / 7</span>
+            {step > 1 ? (
+              <button 
+                onClick={() => setStep(step - 1)}
+                className="flex items-center gap-1 text-[0.7rem] sm:text-[0.75rem] text-cyan hover:text-white transition-colors"
+              >
+                <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4" /> 戻る
+              </button>
+            ) : (
+              <div></div>
+            )}
+            <span className="font-mono text-[0.65rem] sm:text-[0.7rem] text-cyan tracking-[0.12em] uppercase">STEP {step} / 6</span>
           </div>
           <div className="w-full h-0.5 bg-white/5 rounded-full overflow-hidden relative">
             <motion.div 
               className="absolute top-0 left-0 h-full bg-gradient-to-r from-cyan to-emerald shadow-[0_0_8px_rgba(0,229,255,0.6)]"
-              initial={{ width: `${((step - 1) / 7) * 100}%` }}
-              animate={{ width: `${(step / 7) * 100}%` }}
+              initial={{ width: `${((step - 1) / 6) * 100}%` }}
+              animate={{ width: `${(step / 6) * 100}%` }}
               transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
             />
           </div>

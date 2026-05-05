@@ -23,9 +23,9 @@ export default function Home() {
           <span className="gradient-text">回線のせいかも。</span>
         </h1>
 
-        <p className="text-[clamp(0.95rem,2vw,1.2rem)] text-text-muted max-w-[560px] leading-[1.7] mb-12 animate-[fadeUp_0.6s_ease_0.2s_both]">
-          今のプレイ環境や予算を選択するだけで、<br className="hidden sm:block" />
-          あなたに本当に必要なゲーミング回線をたった30秒で無料診断。
+        <p className="text-[clamp(0.95rem,2vw,1.2rem)] text-text-muted max-w-[560px] leading-[1.7] mb-12 animate-[fadeUp_0.6s_ease_0.2s_both] break-keep">
+          今のプレイ環境などを選択するだけで、<br className="hidden sm:block" />
+          あなたに本当に必要なゲーミング回線をたった30秒で<span className="inline-block">無料診断。</span>
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto animate-[fadeUp_0.6s_ease_0.3s_both]">
@@ -143,7 +143,7 @@ export default function Home() {
                 01
               </div>
               <h4 className="font-heading font-semibold text-base mb-2">5つの質問に答える</h4>
-              <p className="text-[0.8rem] text-text-muted leading-relaxed">プレイゲームジャンル・住居タイプ・キャリア・重視点・予算を選ぶだけ</p>
+              <p className="text-[0.8rem] text-text-muted leading-relaxed">プレイゲームジャンル・住居タイプ・キャリア・重視点を選ぶだけ</p>
             </div>
 
             <div className="text-center px-6">
@@ -152,7 +152,7 @@ export default function Home() {
                 02
               </div>
               <h4 className="font-heading font-semibold text-base mb-2">AIが最適解を算出</h4>
-              <p className="text-[0.8rem] text-text-muted leading-relaxed">独自スコアリングで47以上のプロバイダからあなたに最適な3件を選出</p>
+              <p className="text-[0.8rem] text-text-muted leading-relaxed">独自スコアリングで30以上のプランからあなたに最適な3件を選出</p>
             </div>
 
             <div className="text-center px-6">

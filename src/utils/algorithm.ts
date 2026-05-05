@@ -21,7 +21,6 @@ export interface UserAnswers {
   priority: 'ping' | 'price' | 'balance' | '';
   region: string;
   requires10G: boolean;
-  budget: number; 
 }
 
 function calculateScore(isp: ISP, answers: UserAnswers): number {
@@ -55,11 +54,6 @@ function calculateScore(isp: ISP, answers: UserAnswers): number {
   // 3. 特殊条件による加点・減点
   if (isp.mobile_discount.includes(answers.mobileCarrier)) {
     score += 15; // スマホ割ボーナス
-  }
-
-  // 予算オーバーペナルティ
-  if (answers.budget > 0 && isp.actual_monthly_fee_jpy > answers.budget) {
-    score -= 30;
   }
 
   return score;
