@@ -67,7 +67,7 @@ function calculateScore(isp: ISP, answers: UserAnswers): number {
 
 export function recommendISPs(isps: ISP[], answers: UserAnswers): { isp: ISP, score: number }[] {
   // 1. ハードフィルター (絶対的な提供条件による足切り)
-  const filteredISPs = isps.filter(isp => {
+  let filteredISPs = isps.filter(isp => {
     // ユーザーがVDSLと答えた場合、VDSL対応していない回線（NURO等）を弾く
     if (answers.housingType === 'mansion_vdsl' && !isp.available_housing.includes('mansion_vdsl')) {
       return false;
@@ -82,6 +82,28 @@ export function recommendISPs(isps: ISP[], answers: UserAnswers): { isp: ISP, sc
     }
     return true;
   });
+
+  // フォールバック1: 10G条件を外す
+  if (filteredISPs.length === 0 && answers.requires10G) {
+    filteredISPs = isps.filter(isp => {
+      if (answers.housingType === 'mansion_vdsl' && !isp.available_housing.includes('mansion_vdsl')) return false;
+      if (answers.region && !isp.regions.includes(answers.region)) return false;
+      return true;
+    });
+  }
+
+  // フォールバック2: 地域条件も外す
+  if (filteredISPs.length === 0 && answers.region) {
+    filteredISPs = isps.filter(isp => {
+      if (answers.housingType === 'mansion_vdsl' && !isp.available_housing.includes('mansion_vdsl')) return false;
+      return true;
+    });
+  }
+
+  // フォールバック3: すべてのハードフィルターを外す（最低でも何かしら提案する）
+  if (filteredISPs.length === 0) {
+    filteredISPs = [...isps];
+  }
 
   // 2. スコア計算とランキング
   return filteredISPs
