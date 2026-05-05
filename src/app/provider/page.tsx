@@ -41,12 +41,12 @@ export default function ProviderPage() {
                   )}
                   
                   <div className="relative z-10 flex items-start justify-between gap-4 mb-4">
-                    <div className="flex flex-col gap-1.5">
-                      <div className="font-heading text-[1.5rem] font-bold tracking-tight">{isp.name}</div>
-                      <div className="text-[0.8rem] text-text-muted">{isp.providerName}</div>
+                    <div className="flex flex-col gap-1.5 min-w-0">
+                      <div className="font-heading text-[1.4rem] sm:text-[1.5rem] font-bold tracking-tight leading-tight break-keep">{isp.name}</div>
+                      <div className="text-[0.75rem] text-text-muted">{isp.providerName}</div>
                     </div>
-                    <div className="flex flex-col items-end gap-1.5">
-                      {isp.badges.map(badge => (
+                    <div className="flex flex-col items-end gap-1.5 shrink-0">
+                      {isp.badges && isp.badges.map(badge => (
                         <span key={badge} className={`px-3 py-1 rounded-full font-mono text-[0.6rem] font-bold tracking-[0.1em] whitespace-nowrap ${isFirst ? 'bg-cyan text-black' : 'bg-cyan/10 text-cyan border border-cyan/25'}`}>{badge}</span>
                       ))}
                       {!isp.vdsl_support && (
@@ -68,31 +68,37 @@ export default function ProviderPage() {
                       <span className="font-mono text-[0.6rem] text-text-dim tracking-[0.1em] uppercase">最大速度</span>
                       <span className={`font-mono font-bold text-[1.3rem] leading-none text-cyan ${isp.max_speed_gbps >= 10 ? 'drop-shadow-[0_0_14px_rgba(0,229,255,0.4)]' : ''}`}>{isp.max_speed_gbps} Gbps</span>
                     </div>
-                    {isp.discounts.length > 0 && (
+                    {isp.cashback_text && isp.cashback_text !== "キャンペーンなし" && (
                       <div className="flex flex-col gap-1">
-                        <span className="font-mono text-[0.6rem] text-text-dim tracking-[0.1em] uppercase">{isp.discounts[0].carrier}割</span>
-                        <span className="font-mono font-bold text-[1.3rem] leading-none text-emerald drop-shadow-[0_0_14px_rgba(0,230,118,0.4)]">¥{isp.discounts[0].amount.toLocaleString()}</span>
+                        <span className="font-mono text-[0.6rem] text-text-dim tracking-[0.1em] uppercase">キャッシュバック</span>
+                        <span className="font-mono font-bold text-[1.1rem] leading-none text-purple-400 drop-shadow-[0_0_14px_rgba(192,132,252,0.4)]">{isp.cashback_text}</span>
+                      </div>
+                    )}
+                    {isp.discounts && isp.discounts.length > 0 && (
+                      <div className="flex flex-col gap-1">
+                        <span className="font-mono text-[0.55rem] text-text-dim tracking-[0.05em] uppercase">{isp.discounts[0].carrier}利用で</span>
+                        <span className="font-mono font-bold text-[1.3rem] leading-none text-emerald drop-shadow-[0_0_14px_rgba(0,230,118,0.4)]">-¥{isp.discounts[0].amount.toLocaleString()}</span>
                       </div>
                     )}
                   </div>
                 </div>
                 
                 <div className="p-6 sm:p-8 pt-6 flex flex-col gap-5 h-full">
-                  <p className="text-[0.875rem] text-text-muted leading-[1.75]">
+                  <p className="text-[0.875rem] text-text/90 leading-[1.75]">
                     {isp.description}
                   </p>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="flex flex-col gap-2">
                       <div className="font-mono text-[0.62rem] tracking-[0.12em] uppercase text-emerald mb-1">// メリット</div>
-                      {isp.pros.map((pro, i) => (
-                        <div key={i} className="flex items-start gap-2 text-[0.82rem] text-text-muted leading-[1.5]"><span className="w-1.5 h-1.5 rounded-full bg-emerald shrink-0 mt-1.5" />{pro}</div>
+                      {isp.pros && isp.pros.map((pro, i) => (
+                        <div key={i} className="flex items-start gap-2 text-[0.82rem] text-text/80 leading-[1.5]"><span className="w-1.5 h-1.5 rounded-full bg-emerald shrink-0 mt-1.5" />{pro}</div>
                       ))}
                     </div>
                     <div className="flex flex-col gap-2">
                       <div className="font-mono text-[0.62rem] tracking-[0.12em] uppercase text-red-400 mb-1">// デメリット</div>
-                      {isp.cons.map((con, i) => (
-                        <div key={i} className="flex items-start gap-2 text-[0.82rem] text-text-muted leading-[1.5]"><span className="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-1.5" />{con}</div>
+                      {isp.cons && isp.cons.map((con, i) => (
+                        <div key={i} className="flex items-start gap-2 text-[0.82rem] text-text/80 leading-[1.5]"><span className="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-1.5" />{con}</div>
                       ))}
                     </div>
                   </div>

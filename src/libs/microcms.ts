@@ -28,11 +28,15 @@ export type Column = {
 };
 
 // 一覧取得
-export async function getColumnsList() {
+export async function getColumnsList(tag?: string) {
   try {
+    const queries: any = { orders: '-publishedAt' };
+    if (tag) {
+      queries.filters = `category[contains]${tag}`;
+    }
     const data = await client.getList<Column>({
       endpoint: 'columns',
-      queries: { orders: '-publishedAt' },
+      queries,
     });
     return data.contents;
   } catch (error) {

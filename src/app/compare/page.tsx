@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Play, Activity, Wallet, Zap, ShieldAlert, BadgeCent, ChevronDown, ChevronRight } from "lucide-react";
+import { Play, Activity, Wallet, Zap, ShieldAlert, BadgeCent, ChevronDown, ChevronRight, Gift } from "lucide-react";
 import ispsData from "@/data/isps.json";
 
 export default function ComparePage() {
@@ -14,7 +14,7 @@ export default function ComparePage() {
           // COMPARE
         </div>
         <h1 className="font-heading text-[clamp(2rem,5vw,3.25rem)] font-bold tracking-tight leading-[1.1] mb-4">
-          主要5回線を<br />
+          主要ゲーミング回線を<br />
           <span className="gradient-text">徹底比較</span>
         </h1>
         <p className="text-text-muted text-base max-w-[520px] leading-[1.7]">
@@ -118,16 +118,32 @@ export default function ComparePage() {
             </div>
 
             {/* Discount (docomo/au/SB dynamically summarized or simplified. For simplicity, showing one row for mobile discount presence) */}
+            {/* Discount */}
             <div className="contents group">
               <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-text-muted">
                 <BadgeCent className="w-3.5 h-3.5 opacity-50" /> スマホセット割
               </div>
               {compareIsps.map((isp, index) => {
                 const isBest = index === 0;
-                const discountText = isp.discounts.length > 0 ? isp.discounts.map(d => `${d.carrier}割`).join(', ') : '—';
+                const discountText = isp.discounts && isp.discounts.length > 0 ? isp.discounts.map(d => `${d.carrier}利用で割引`).join(', ') : '—';
                 return (
                   <div key={isp.id} className={`flex items-center justify-center py-3.5 border-b border-white/5 border-x ${isBest ? 'border-cyan/20 bg-cyan/[0.03]' : 'border-white/10 bg-white/[0.01]'} text-center`}>
-                    <span className={`font-mono text-[0.8rem] ${isp.discounts.length > 0 ? 'text-emerald' : 'text-red-400'}`}>{discountText}</span>
+                    <span className={`font-mono text-[0.65rem] sm:text-[0.75rem] ${isp.discounts && isp.discounts.length > 0 ? 'text-emerald' : 'text-red-400'}`}>{discountText}</span>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Cashback */}
+            <div className="contents group">
+              <div className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-text-muted">
+                <Gift className="w-3.5 h-3.5 opacity-50" /> キャッシュバック
+              </div>
+              {compareIsps.map((isp, index) => {
+                const isBest = index === 0;
+                return (
+                  <div key={isp.id} className={`flex items-center justify-center py-3.5 border-b border-white/5 border-x ${isBest ? 'border-cyan/20 bg-cyan/[0.03]' : 'border-white/10 bg-white/[0.01]'} text-center`}>
+                    <span className={`font-mono text-[0.75rem] sm:text-[0.85rem] ${isp.cashback_text !== 'キャンペーンなし' ? 'text-purple-400 font-bold' : 'text-text-dim'}`}>{isp.cashback_text || '—'}</span>
                   </div>
                 );
               })}

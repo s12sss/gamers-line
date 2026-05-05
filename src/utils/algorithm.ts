@@ -1,19 +1,27 @@
 export interface ISP {
   id: string;
   name: string;
+  providerName?: string;
   type: string;
   max_speed_gbps: number;
   avg_ping_ms: number;
   avg_dl_speed_mbps: number;
   stability_score: number;
   actual_monthly_fee_jpy: number;
+  vdsl_support: boolean;
+  cashback_text: string;
   mobile_discount: string[];
   available_housing: string[];
   regions: string[];
   tags: string[];
-  affiliateId?: string;
+  badges?: string[];
+  description?: string;
+  pros?: string[];
+  cons?: string[];
+  discounts?: { carrier: string; amount: number; name: string }[];
+  affiliateLink?: string;
+  detailLink?: string;
 }
-
 export interface UserAnswers {
   gameGenre: 'fps' | 'mmo' | 'casual' | '';
   housingType: 'house' | 'mansion_optical' | 'mansion_vdsl' | 'unknown' | '';

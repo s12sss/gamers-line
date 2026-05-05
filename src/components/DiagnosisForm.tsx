@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Gamepad2, Home, Smartphone, Zap, Wallet, ChevronRight, ChevronLeft, Activity, Check, MapPin, Download } from 'lucide-react';
+import { Gamepad2, Home, Smartphone, Zap, Wallet, ChevronRight, ChevronLeft, Activity, Check, MapPin, Download, Gift } from 'lucide-react';
 import { UserAnswers, recommendISPs, ISP } from '@/utils/algorithm';
 import ispsData from '@/data/isps.json';
 import Link from 'next/link';
@@ -121,7 +121,17 @@ function ResultCard({ result, index, delay }: { result: {isp: ISP, score: number
               </span>
             </div>
 
-            <div className="flex flex-wrap gap-1.5">
+            <div className="flex flex-wrap gap-1.5 mt-2">
+              {result.isp.cashback_text && result.isp.cashback_text !== 'キャンペーンなし' && (
+                <span className="px-2.5 sm:px-3 py-1 bg-purple-500/10 border border-purple-500/20 rounded-full text-[0.65rem] sm:text-[0.7rem] text-purple-400 font-medium flex items-center gap-1">
+                  <Gift className="w-3 h-3" /> {result.isp.cashback_text}
+                </span>
+              )}
+              {result.isp.discounts && result.isp.discounts.length > 0 && (
+                <span className="px-2.5 sm:px-3 py-1 bg-emerald/10 border border-emerald/20 rounded-full text-[0.65rem] sm:text-[0.7rem] text-emerald font-medium">
+                  {result.isp.discounts[0].carrier}利用で割引
+                </span>
+              )}
               {result.isp.tags.map(tag => (
                 <span key={tag} className="px-2.5 sm:px-3 py-1 bg-cyan/10 border border-cyan/20 rounded-full text-[0.65rem] sm:text-[0.7rem] text-cyan font-medium">
                   {tag}
