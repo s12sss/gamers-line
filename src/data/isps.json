@@ -144,7 +144,7 @@
     "actual_monthly_fee_jpy": 6050,
     "stability_score": 90,
     "vdsl_support": false,
-    "cashback_text": "最大77,000円還元",
+    "cashback_text": "最大94,000円還元キャンペーン中！",
     "discounts": [
       {
         "carrier": "au",
@@ -175,7 +175,7 @@
       "戸建て・関東エリア中心の提供",
       "VDSLは当然不可"
     ],
-    "affiliateLink": "#",
+    "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+48EZN6+42Y0+5ZMCH",
     "detailLink": "/provider"
   },
   {
@@ -205,7 +205,7 @@
     "actual_monthly_fee_jpy": 4950,
     "stability_score": 88,
     "vdsl_support": false,
-    "cashback_text": "最大77,000円還元",
+    "cashback_text": "最大94,000円還元キャンペーン中！",
     "discounts": [
       {
         "carrier": "au",
@@ -236,131 +236,7 @@
       "VDSLマンション不可",
       "提供エリアに制限あり"
     ],
-    "affiliateLink": "#",
-    "detailLink": "/provider"
-  },
-  {
-    "id": "docomo_hikari",
-    "name": "ドコモ光 (1ギガ)",
-    "providerName": "NTTドコモ",
-    "type": "コラボ光",
-    "max_speed_gbps": 1,
-    "avg_ping_ms": 20,
-    "avg_dl_speed_mbps": 320,
-    "mobile_discount": [
-      "docomo"
-    ],
-    "available_housing": [
-      "house",
-      "mansion_optical",
-      "mansion_vdsl"
-    ],
-    "regions": [
-      "hokkaido",
-      "tohoku",
-      "kanto",
-      "tokai",
-      "kansai",
-      "chugoku",
-      "shikoku",
-      "kyushu",
-      "okinawa"
-    ],
-    "actual_monthly_fee_jpy": 4400,
-    "stability_score": 80,
-    "vdsl_support": true,
-    "cashback_text": "最大38,000円還元",
-    "discounts": [
-      {
-        "carrier": "docomo",
-        "amount": 1100,
-        "name": "ドコモ光セット割"
-      }
-    ],
-    "tags": [
-      "VDSL対応",
-      "docomo割",
-      "全国対応"
-    ],
-    "badges": [
-      "docomo割"
-    ],
-    "description": "docomoユーザーなら最安クラス。VDSLマンションにも対応し、全国広いエリアで利用可能。平均Ping 20msは競技プレイにも十分な水準。",
-    "pros": [
-      "docomoスマホとセットで大幅割引",
-      "VDSLマンションでも契約可能",
-      "全国どこでも提供エリア"
-    ],
-    "cons": [
-      "Ping値は独自回線にやや劣る",
-      "プロバイダにより品質差あり"
-    ],
-    "affiliateLink": "#",
-    "detailLink": "/provider"
-  },
-  {
-    "id": "softbank_hikari",
-    "name": "SoftBank 光",
-    "providerName": "ソフトバンク株式会社",
-    "type": "コラボ光",
-    "max_speed_gbps": 1,
-    "avg_ping_ms": 22,
-    "avg_dl_speed_mbps": 300,
-    "mobile_discount": [
-      "softbank",
-      "ymobile"
-    ],
-    "available_housing": [
-      "house",
-      "mansion_optical",
-      "mansion_vdsl"
-    ],
-    "regions": [
-      "hokkaido",
-      "tohoku",
-      "kanto",
-      "tokai",
-      "kansai",
-      "chugoku",
-      "shikoku",
-      "kyushu",
-      "okinawa"
-    ],
-    "actual_monthly_fee_jpy": 4180,
-    "stability_score": 75,
-    "vdsl_support": true,
-    "cashback_text": "最大40,000円還元",
-    "discounts": [
-      {
-        "carrier": "SoftBank",
-        "amount": 1100,
-        "name": "おうち割 光セット"
-      },
-      {
-        "carrier": "Y!mobile",
-        "amount": 1188,
-        "name": "おうち割 光セット(A)"
-      }
-    ],
-    "tags": [
-      "VDSL対応",
-      "SB割対応",
-      "コスパ◎"
-    ],
-    "badges": [
-      "SB割"
-    ],
-    "description": "SoftBank/Y!mobileユーザーなら実質¥3,080〜とトップクラスのコスパ。Ping値はやや高めだが、料金重視ユーザーには有力候補。",
-    "pros": [
-      "強力なスマホセット割",
-      "VDSLマンションでも契約可能",
-      "違約金還元キャンペーンあり"
-    ],
-    "cons": [
-      "オプション加入が必須",
-      "上位陣に比べPingは劣る"
-    ],
-    "affiliateLink": "#",
+    "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+48EZN6+42Y0+5ZMCH",
     "detailLink": "/provider"
   },
   {
@@ -539,6 +415,452 @@
     "cons": [
       "NUROやauひかり等の独自回線と比べるとPing値は劣る",
       "プロバイダがBIGLOBEに固定される"
+    ]
+  },
+  {
+    "id": "docomo_hikari_10g",
+    "name": "ドコモ光 (10ギガ)",
+    "providerName": "NTTドコモ",
+    "type": "コラボ光",
+    "max_speed_gbps": 10,
+    "avg_ping_ms": 20,
+    "avg_dl_speed_mbps": 320,
+    "mobile_discount": [
+      "docomo"
+    ],
+    "available_housing": [
+      "house",
+      "mansion_optical",
+      "mansion_vdsl"
+    ],
+    "regions": [
+      "hokkaido",
+      "tohoku",
+      "kanto",
+      "tokai",
+      "kansai",
+      "chugoku",
+      "shikoku",
+      "kyushu",
+      "okinawa"
+    ],
+    "actual_monthly_fee_jpy": 6380,
+    "stability_score": 82,
+    "vdsl_support": false,
+    "cashback_text": "最大65,000円還元キャンペーン中！",
+    "discounts": [
+      {
+        "carrier": "docomo",
+        "amount": 1100,
+        "name": "ドコモ光セット割"
+      }
+    ],
+    "tags": [
+      "10G対応",
+      "VDSL対応",
+      "docomo割",
+      "全国対応"
+    ],
+    "badges": [
+      "docomo割"
+    ],
+    "description": "docomoユーザーなら最安クラス。VDSLマンションにも対応し、全国広いエリアで利用可能。平均Ping 20msは競技プレイにも十分な水準。",
+    "pros": [
+      "docomoスマホとセットで大幅割引",
+      "VDSLマンションでも契約可能",
+      "全国どこでも提供エリア"
+    ],
+    "cons": [
+      "Ping値は独自回線にやや劣る",
+      "プロバイダにより品質差あり"
+    ],
+    "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+4CL0VM+50+556VPT",
+    "detailLink": "/provider"
+  },
+  {
+    "id": "docomo_hikari_1g",
+    "name": "ドコモ光 (1ギガ)",
+    "providerName": "NTTドコモ",
+    "type": "コラボ光",
+    "max_speed_gbps": 1,
+    "avg_ping_ms": 20,
+    "avg_dl_speed_mbps": 320,
+    "mobile_discount": [
+      "docomo"
+    ],
+    "available_housing": [
+      "house",
+      "mansion_optical",
+      "mansion_vdsl"
+    ],
+    "regions": [
+      "hokkaido",
+      "tohoku",
+      "kanto",
+      "tokai",
+      "kansai",
+      "chugoku",
+      "shikoku",
+      "kyushu",
+      "okinawa"
+    ],
+    "actual_monthly_fee_jpy": 4400,
+    "stability_score": 75,
+    "vdsl_support": true,
+    "cashback_text": "最大65,000円還元キャンペーン中！",
+    "discounts": [
+      {
+        "carrier": "docomo",
+        "amount": 1100,
+        "name": "ドコモ光セット割"
+      }
+    ],
+    "tags": [
+      "VDSL対応",
+      "docomo割",
+      "全国対応"
+    ],
+    "badges": [
+      "docomo割"
+    ],
+    "description": "docomoユーザーなら最安クラス。VDSLマンションにも対応し、全国広いエリアで利用可能。平均Ping 20msは競技プレイにも十分な水準。",
+    "pros": [
+      "docomoスマホとセットで大幅割引",
+      "VDSLマンションでも契約可能",
+      "全国どこでも提供エリア"
+    ],
+    "cons": [
+      "Ping値は独自回線にやや劣る",
+      "プロバイダにより品質差あり"
+    ],
+    "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+4CL0VM+50+556VPT",
+    "detailLink": "/provider"
+  },
+  {
+    "id": "softbank_hikari_10g",
+    "name": "ソフトバンク光 (10ギガ)",
+    "providerName": "ソフトバンク株式会社",
+    "type": "コラボ光",
+    "max_speed_gbps": 10,
+    "avg_ping_ms": 22,
+    "avg_dl_speed_mbps": 300,
+    "mobile_discount": [
+      "softbank",
+      "ymobile"
+    ],
+    "available_housing": [
+      "house",
+      "mansion_optical",
+      "mansion_vdsl"
+    ],
+    "regions": [
+      "hokkaido",
+      "tohoku",
+      "kanto",
+      "tokai",
+      "kansai",
+      "chugoku",
+      "shikoku",
+      "kyushu",
+      "okinawa"
+    ],
+    "actual_monthly_fee_jpy": 6380,
+    "stability_score": 80,
+    "vdsl_support": false,
+    "cashback_text": "最大40,000円還元キャンペーン中！",
+    "discounts": [
+      {
+        "carrier": "SoftBank",
+        "amount": 1100,
+        "name": "おうち割 光セット"
+      },
+      {
+        "carrier": "Y!mobile",
+        "amount": 1188,
+        "name": "おうち割 光セット(A)"
+      }
+    ],
+    "tags": [
+      "10G対応",
+      "VDSL対応",
+      "SB割対応",
+      "コスパ◎"
+    ],
+    "badges": [
+      "SB割"
+    ],
+    "description": "SoftBank/Y!mobileユーザーなら実質¥3,080〜とトップクラスのコスパ。Ping値はやや高めだが、料金重視ユーザーには有力候補。",
+    "pros": [
+      "強力なスマホセット割",
+      "VDSLマンションでも契約可能",
+      "違約金還元キャンペーンあり"
+    ],
+    "cons": [
+      "オプション加入が必須",
+      "上位陣に比べPingは劣る"
+    ],
+    "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+4HXXBM+348K+1BP8ZM",
+    "detailLink": "/provider"
+  },
+  {
+    "id": "softbank_hikari_1g",
+    "name": "ソフトバンク光 (1ギガ)",
+    "providerName": "ソフトバンク株式会社",
+    "type": "コラボ光",
+    "max_speed_gbps": 1,
+    "avg_ping_ms": 22,
+    "avg_dl_speed_mbps": 300,
+    "mobile_discount": [
+      "softbank",
+      "ymobile"
+    ],
+    "available_housing": [
+      "house",
+      "mansion_optical",
+      "mansion_vdsl"
+    ],
+    "regions": [
+      "hokkaido",
+      "tohoku",
+      "kanto",
+      "tokai",
+      "kansai",
+      "chugoku",
+      "shikoku",
+      "kyushu",
+      "okinawa"
+    ],
+    "actual_monthly_fee_jpy": 4180,
+    "stability_score": 73,
+    "vdsl_support": true,
+    "cashback_text": "最大40,000円還元キャンペーン中！",
+    "discounts": [
+      {
+        "carrier": "SoftBank",
+        "amount": 1100,
+        "name": "おうち割 光セット"
+      },
+      {
+        "carrier": "Y!mobile",
+        "amount": 1188,
+        "name": "おうち割 光セット(A)"
+      }
+    ],
+    "tags": [
+      "VDSL対応",
+      "SB割対応",
+      "コスパ◎"
+    ],
+    "badges": [
+      "SB割"
+    ],
+    "description": "SoftBank/Y!mobileユーザーなら実質¥3,080〜とトップクラスのコスパ。Ping値はやや高めだが、料金重視ユーザーには有力候補。",
+    "pros": [
+      "強力なスマホセット割",
+      "VDSLマンションでも契約可能",
+      "違約金還元キャンペーンあり"
+    ],
+    "cons": [
+      "オプション加入が必須",
+      "上位陣に比べPingは劣る"
+    ],
+    "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+4HXXBM+348K+1BP8ZM",
+    "detailLink": "/provider"
+  },
+  {
+    "providerName": "中部テレコミュニケーション",
+    "type": "独自回線",
+    "mobile_discount": [
+      "au",
+      "uq_mobile"
+    ],
+    "available_housing": [
+      "house",
+      "mansion_optical"
+    ],
+    "regions": [
+      "tokai"
+    ],
+    "cashback_text": "最大93,000円還元キャンペーン中！",
+    "discounts": [
+      {
+        "carrier": "au",
+        "amount": 1100,
+        "name": "auスマートバリュー"
+      }
+    ],
+    "tags": [
+      "東海限定",
+      "独自回線",
+      "超低Ping"
+    ],
+    "badges": [],
+    "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+41V7ZM+42Y0+BX3J6",
+    "detailLink": "/provider",
+    "description": "東海地方（愛知・岐阜・三重・静岡）限定の最強ゲーミング回線。自社独自の光ファイバー網を使用しているため、NURO光に匹敵する低Pingと安定性を誇ります。",
+    "pros": [
+      "東海地方でトップクラスのPing値",
+      "au/UQスマホとのセット割あり",
+      "独自回線のため夜間もラグりにくい"
+    ],
+    "cons": [
+      "東海地方（一部長野等）でしか使えない",
+      "解約時の撤去工事費に注意が必要"
+    ],
+    "id": "commufa_hikari_1g",
+    "name": "コミュファ光 (1ギガ)",
+    "max_speed_gbps": 1,
+    "avg_ping_ms": 11,
+    "avg_dl_speed_mbps": 600,
+    "actual_monthly_fee_jpy": 5170,
+    "stability_score": 90,
+    "vdsl_support": false
+  },
+  {
+    "providerName": "中部テレコミュニケーション",
+    "type": "独自回線",
+    "mobile_discount": [
+      "au",
+      "uq_mobile"
+    ],
+    "available_housing": [
+      "house",
+      "mansion_optical"
+    ],
+    "regions": [
+      "tokai"
+    ],
+    "cashback_text": "最大93,000円還元キャンペーン中！",
+    "discounts": [
+      {
+        "carrier": "au",
+        "amount": 1100,
+        "name": "auスマートバリュー"
+      }
+    ],
+    "tags": [
+      "10G対応",
+      "東海限定",
+      "独自回線",
+      "超低Ping"
+    ],
+    "badges": [],
+    "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+41V7ZM+42Y0+BX3J6",
+    "detailLink": "/provider",
+    "description": "東海地方（愛知・岐阜・三重・静岡）限定の最強ゲーミング回線。自社独自の光ファイバー網を使用しているため、NURO光に匹敵する低Pingと安定性を誇ります。",
+    "pros": [
+      "東海地方でトップクラスのPing値",
+      "au/UQスマホとのセット割あり",
+      "独自回線のため夜間もラグりにくい"
+    ],
+    "cons": [
+      "東海地方（一部長野等）でしか使えない",
+      "解約時の撤去工事費に注意が必要"
+    ],
+    "id": "commufa_hikari_10g",
+    "name": "コミュファ光 (10ギガ)",
+    "max_speed_gbps": 10,
+    "avg_ping_ms": 8,
+    "avg_dl_speed_mbps": 1800,
+    "actual_monthly_fee_jpy": 5940,
+    "stability_score": 94,
+    "vdsl_support": false
+  },
+  {
+    "id": "pikara_hikari",
+    "name": "ピカラ光",
+    "providerName": "STNet",
+    "type": "独自回線",
+    "max_speed_gbps": 1,
+    "avg_ping_ms": 14,
+    "avg_dl_speed_mbps": 450,
+    "mobile_discount": [
+      "au",
+      "uq_mobile"
+    ],
+    "available_housing": [
+      "house",
+      "mansion_optical"
+    ],
+    "regions": [
+      "shikoku"
+    ],
+    "actual_monthly_fee_jpy": 4620,
+    "stability_score": 88,
+    "vdsl_support": false,
+    "cashback_text": "最大30,000円還元キャンペーン中！",
+    "discounts": [
+      {
+        "carrier": "au",
+        "amount": 1100,
+        "name": "auスマートバリュー"
+      }
+    ],
+    "tags": [
+      "四国限定",
+      "独自回線",
+      "auスマホ割"
+    ],
+    "badges": [],
+    "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+5QLFOY+348K+1ZGG0Y",
+    "detailLink": "/provider",
+    "description": "四国地方（香川・徳島・高知・愛媛）にお住まいのゲーマーならコレ一択。四国電力グループの独自回線網を使用し、圧倒的な安定感を実現。",
+    "pros": [
+      "四国エリアで最強の通信品質",
+      "独自回線のため混雑に強い",
+      "四国電力とのセット割でさらに安くなる"
+    ],
+    "cons": [
+      "四国エリア外では使えない",
+      "マンションへの導入済み物件が少なめ"
+    ]
+  },
+  {
+    "id": "megaegg_hikari",
+    "name": "メガ・エッグ",
+    "providerName": "エネルギア・コミュニケーションズ",
+    "type": "独自回線",
+    "max_speed_gbps": 1,
+    "avg_ping_ms": 15,
+    "avg_dl_speed_mbps": 400,
+    "mobile_discount": [
+      "au",
+      "uq_mobile"
+    ],
+    "available_housing": [
+      "house",
+      "mansion_optical"
+    ],
+    "regions": [
+      "chugoku"
+    ],
+    "actual_monthly_fee_jpy": 4620,
+    "stability_score": 87,
+    "vdsl_support": false,
+    "cashback_text": "最大20,000円還元キャンペーン中！",
+    "discounts": [
+      {
+        "carrier": "au",
+        "amount": 1100,
+        "name": "auスマートバリュー"
+      }
+    ],
+    "tags": [
+      "中国地方限定",
+      "独自回線",
+      "auスマホ割"
+    ],
+    "badges": [],
+    "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+5R6VAQ+348K+2BDR9U",
+    "detailLink": "/provider",
+    "description": "中国地方（広島・岡山・山口・島根・鳥取）のゲーマー定番回線。中国電力グループの独自ファイバーを利用しているため、夜間でも安定したPingを維持します。",
+    "pros": [
+      "中国エリアで非常に高い安定性",
+      "中国電力とのセットで永年割引",
+      "独自回線ならではの低Ping"
+    ],
+    "cons": [
+      "中国エリア外では使えない"
     ]
   }
 ]
