@@ -40,27 +40,30 @@ export default function ProviderPage() {
           <h2 className="font-heading text-2xl sm:text-3xl font-bold">主要プロバイダ詳細一覧</h2>
           
           {/* Tabs */}
-          <div className="flex items-end border-b border-white/10 overflow-x-auto no-scrollbar pt-2">
+          <div className="flex border-b border-white/10 overflow-x-auto no-scrollbar pt-2">
             <button 
               onClick={() => setSpeedFilter('all')} 
-              className={`relative px-6 py-3 font-bold text-sm transition-all whitespace-nowrap ${speedFilter === 'all' ? 'text-cyan bg-cyan/10 rounded-t-lg border-t border-x border-cyan/30' : 'text-text-muted hover:text-white hover:bg-white/5 rounded-t-lg'}`}
+              className={`relative px-6 py-3 font-bold text-sm transition-all whitespace-nowrap overflow-hidden ${speedFilter === 'all' ? 'text-cyan bg-[#0a0a12] rounded-t-lg border-t border-x border-cyan/30 -mb-px z-10' : 'text-text-muted hover:text-white hover:bg-white/5 rounded-t-lg border-t border-x border-transparent'}`}
             >
-              すべて
-              {speedFilter === 'all' && <div className="absolute -bottom-[1px] left-0 right-0 h-[2px] bg-cyan shadow-[0_0_10px_rgba(0,229,255,0.8)]" />}
+              {speedFilter === 'all' && <div className="absolute inset-0 bg-cyan/10 pointer-events-none" />}
+              <span className="relative z-10">すべて</span>
+              {speedFilter === 'all' && <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-cyan shadow-[0_0_10px_rgba(0,229,255,0.8)] z-20" />}
             </button>
             <button 
               onClick={() => setSpeedFilter('10g')} 
-              className={`relative px-6 py-3 font-bold text-sm transition-all whitespace-nowrap ${speedFilter === '10g' ? 'text-cyan bg-cyan/10 rounded-t-lg border-t border-x border-cyan/30' : 'text-text-muted hover:text-white hover:bg-white/5 rounded-t-lg'}`}
+              className={`relative px-6 py-3 font-bold text-sm transition-all whitespace-nowrap overflow-hidden ${speedFilter === '10g' ? 'text-cyan bg-[#0a0a12] rounded-t-lg border-t border-x border-cyan/30 -mb-px z-10' : 'text-text-muted hover:text-white hover:bg-white/5 rounded-t-lg border-t border-x border-transparent'}`}
             >
-              10Gプラン
-              {speedFilter === '10g' && <div className="absolute -bottom-[1px] left-0 right-0 h-[2px] bg-cyan shadow-[0_0_10px_rgba(0,229,255,0.8)]" />}
+              {speedFilter === '10g' && <div className="absolute inset-0 bg-cyan/10 pointer-events-none" />}
+              <span className="relative z-10">10Gプラン</span>
+              {speedFilter === '10g' && <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-cyan shadow-[0_0_10px_rgba(0,229,255,0.8)] z-20" />}
             </button>
             <button 
               onClick={() => setSpeedFilter('1g')} 
-              className={`relative px-6 py-3 font-bold text-sm transition-all whitespace-nowrap ${speedFilter === '1g' ? 'text-cyan bg-cyan/10 rounded-t-lg border-t border-x border-cyan/30' : 'text-text-muted hover:text-white hover:bg-white/5 rounded-t-lg'}`}
+              className={`relative px-6 py-3 font-bold text-sm transition-all whitespace-nowrap overflow-hidden ${speedFilter === '1g' ? 'text-cyan bg-[#0a0a12] rounded-t-lg border-t border-x border-cyan/30 -mb-px z-10' : 'text-text-muted hover:text-white hover:bg-white/5 rounded-t-lg border-t border-x border-transparent'}`}
             >
-              1G・標準プラン
-              {speedFilter === '1g' && <div className="absolute -bottom-[1px] left-0 right-0 h-[2px] bg-cyan shadow-[0_0_10px_rgba(0,229,255,0.8)]" />}
+              {speedFilter === '1g' && <div className="absolute inset-0 bg-cyan/10 pointer-events-none" />}
+              <span className="relative z-10">1G・標準プラン</span>
+              {speedFilter === '1g' && <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-cyan shadow-[0_0_10px_rgba(0,229,255,0.8)] z-20" />}
             </button>
           </div>
         </div>

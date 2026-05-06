@@ -73,16 +73,6 @@ export default function RootLayout({
         </Script>
 
         <Header />
-        
-        {/* Stealth Marketing (PR) Disclaimer */}
-        <div className="w-full bg-[#0a0a12]/80 border-b border-white/5 backdrop-blur-sm z-40 relative">
-          <div className="max-w-[1100px] mx-auto px-4 py-1.5 text-center sm:text-left">
-            <span className="text-[10px] sm:text-xs text-text-muted/70 font-mono tracking-wider">
-              ※当サイトはアフィリエイトプログラム（PR）を利用して収益を得ています。
-            </span>
-          </div>
-        </div>
-
         <main className="flex-1 flex flex-col">
           {children}
         </main>
