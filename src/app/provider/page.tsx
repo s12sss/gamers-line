@@ -19,7 +19,7 @@ export default function ProviderPage() {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground font-sans">
       {/* Page Header */}
-      <div className="relative z-10 max-w-[1100px] mx-auto w-full px-4 sm:px-10 py-10 sm:py-16 border-b border-white/10 overflow-hidden">
+      <div className="relative z-10 max-w-[1100px] mx-auto w-full px-4 sm:px-10 pt-10 pb-8 sm:pt-16 sm:pb-12 overflow-hidden">
         <div className="absolute -top-[60px] -right-[80px] w-[400px] h-[300px] bg-[radial-gradient(ellipse,rgba(0,229,255,0.08),transparent_70%)] blur-[40px] pointer-events-none" />
         <div className="relative z-10 font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase opacity-70 mb-4">
           // PROVIDER FEATURE
@@ -33,8 +33,12 @@ export default function ProviderPage() {
         </p>
       </div>
 
+      <div className="max-w-[1100px] mx-auto w-full px-4 sm:px-10">
+        <div className="h-px w-full bg-white/10" />
+      </div>
+
       {/* ISP List Section */}
-      <div className="relative z-10 max-w-[1100px] mx-auto w-full px-4 sm:px-10 pb-24 flex flex-col gap-8">
+      <div className="relative z-10 max-w-[1100px] mx-auto w-full px-4 sm:px-10 pt-10 sm:pt-12 pb-24 flex flex-col gap-8">
         
         <div className="flex flex-col gap-6">
           <h2 className="font-heading text-2xl sm:text-3xl font-bold">主要プロバイダ詳細一覧</h2>
