@@ -259,11 +259,16 @@ export default function ComparePage() {
             {compareIsps.map((isp) => {
               const isBest = isp.avg_ping_ms === bestPingValue;
               return (
-                <div key={isp.id} className="py-3 px-2 text-center">
+                <div key={isp.id} className="py-2 px-1 text-center">
                   {isp.affiliateLink !== "#" ? (
-                    <a href={isp.affiliateLink} target="_blank" rel="noopener noreferrer" className={`inline-flex w-full items-center justify-center gap-1 px-2 py-2.5 rounded-lg font-heading font-bold text-[0.8rem] bg-cyan text-black transition-all hover:bg-cyan/80 hover:shadow-[0_0_15px_rgba(0,229,255,0.4)]`}>
-                      公式サイトへ
-                    </a>
+                    <div className="flex flex-col gap-1 items-center w-full">
+                      <span className="text-[0.55rem] font-bold text-[#ffeb3b] tracking-tighter w-full text-center whitespace-nowrap overflow-hidden text-ellipsis">
+                        ＼ 最大{isp.cashback_text.replace(/最大|還元/g, '')} ／
+                      </span>
+                      <a href={isp.affiliateLink} target="_blank" rel="noopener noreferrer" className={`inline-flex w-full items-center justify-center gap-1 px-1 py-2.5 rounded-lg font-heading font-bold text-[0.75rem] bg-cyan text-black transition-all hover:bg-cyan/80 hover:shadow-[0_0_15px_rgba(0,229,255,0.4)]`}>
+                        お申し込み
+                      </a>
+                    </div>
                   ) : (
                     <span className={`inline-flex w-full items-center justify-center gap-1 px-2 py-2.5 rounded-lg font-heading font-bold text-[0.8rem] bg-cyan/30 text-black/50 cursor-not-allowed`}>
                       準備中

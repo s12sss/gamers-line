@@ -163,14 +163,19 @@ function ResultCard({ result, index, delay }: { result: {isp: ISP, score: number
 
         {/* CTA Button */}
         {result.isp.affiliateLink !== "#" ? (
-          <a 
-            href={result.isp.affiliateLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full py-3.5 rounded-xl border border-cyan/30 bg-cyan text-black font-heading font-bold text-[0.85rem] sm:text-[0.9rem] flex items-center justify-center gap-2 mt-1 tracking-tight transition-all hover:bg-cyan/90 hover:shadow-[0_0_15px_rgba(0,229,255,0.5)]"
-          >
-            一番お得に申し込む <ChevronRight className="w-4 h-4" />
-          </a>
+          <div className="flex flex-col gap-1 w-full mt-1">
+            <span className="text-[0.65rem] sm:text-[0.7rem] font-bold text-[#ffeb3b] tracking-tight bg-black/40 px-3 py-1 rounded-full border border-[#ffeb3b]/30 shadow-[0_0_10px_rgba(255,235,59,0.1)] w-full text-center whitespace-nowrap overflow-hidden text-ellipsis">
+              ＼ 今なら工事費無料 ＋ {result.isp.cashback_text} ／
+            </span>
+            <a 
+              href={result.isp.affiliateLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full py-3.5 rounded-xl border border-cyan/30 bg-cyan text-black font-heading font-bold text-[0.85rem] sm:text-[0.95rem] flex items-center justify-center gap-2 tracking-tight transition-all hover:bg-cyan/90 hover:shadow-[0_0_15px_rgba(0,229,255,0.5)]"
+            >
+              一番お得に申し込む <ChevronRight className="w-4 h-4" />
+            </a>
+          </div>
         ) : (
           <span 
             className="w-full py-3.5 rounded-xl border border-white/10 bg-white/5 text-text/50 font-heading font-semibold text-[0.85rem] sm:text-[0.9rem] flex items-center justify-center gap-2 mt-1 tracking-tight cursor-not-allowed"
