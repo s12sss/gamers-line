@@ -64,6 +64,12 @@ export default function ProviderPage() {
             </button>
           </div>
         </div>
+        
+        <div className="flex items-center justify-end mb-4">
+          <span className="text-[0.65rem] sm:text-[0.7rem] text-white/50 border border-white/10 px-3 py-1.5 rounded-md bg-white/5 font-mono tracking-wider">
+            ※表示料金は「戸建て・基本プラン（各種割引前）」の標準月額です。スマホセット割等でさらに安くなります。
+          </span>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 

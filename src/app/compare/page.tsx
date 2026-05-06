@@ -146,6 +146,12 @@ export default function ComparePage() {
           </div>
         </div>
 
+        <div className="flex items-center justify-end mb-4">
+          <span className="text-[0.65rem] sm:text-[0.7rem] text-white/50 border border-white/10 px-3 py-1.5 rounded-md bg-white/5 font-mono tracking-wider">
+            ※表示料金は「戸建て・基本プラン（各種割引前）」の標準月額です。スマホセット割等でさらに安くなります。
+          </span>
+        </div>
+
         {/* Mobile Scroll Hint */}
         <div className="md:hidden flex items-center justify-end gap-1 mb-2 text-[0.65rem] text-cyan/70 font-mono tracking-widest animate-pulse">
           <span>SWIPE</span>
@@ -334,7 +340,7 @@ export default function ComparePage() {
                   {isp.affiliateLink !== "#" ? (
                     <div className="flex flex-col gap-1 items-center w-full">
                       <span className="text-[0.55rem] font-bold text-[#ffeb3b] tracking-tighter w-full text-center whitespace-nowrap overflow-hidden text-ellipsis">
-                        ＼ {isp.cashback_text} ／
+                        ＼ {isp.cashback_text.replace('キャッシュバック', 'CB')} ／
                       </span>
                       <a href={isp.affiliateLink} target="_blank" rel="noopener noreferrer" className={`inline-flex w-full items-center justify-center gap-1 px-1 py-2.5 rounded-lg font-heading font-bold text-[0.75rem] bg-cyan text-black transition-all hover:bg-cyan/80 hover:shadow-[0_0_15px_rgba(0,229,255,0.4)]`}>
                         お申し込み

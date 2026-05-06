@@ -86,7 +86,7 @@
       "chugoku",
       "kyushu"
     ],
-    "actual_monthly_fee_jpy": 5500,
+    "actual_monthly_fee_jpy": 5200,
     "stability_score": 94,
     "vdsl_support": false,
     "cashback_text": "高額キャッシュバックキャンペーン実施中！",
@@ -202,7 +202,7 @@
       "shikoku",
       "kyushu"
     ],
-    "actual_monthly_fee_jpy": 3740,
+    "actual_monthly_fee_jpy": 5610,
     "stability_score": 88,
     "vdsl_support": false,
     "cashback_text": "高額キャッシュバックキャンペーン実施中！",
@@ -352,7 +352,7 @@
     "max_speed_gbps": 1,
     "avg_ping_ms": 20,
     "avg_dl_speed_mbps": 280,
-    "actual_monthly_fee_jpy": 4379,
+    "actual_monthly_fee_jpy": 5478,
     "stability_score": 75,
     "vdsl_support": true,
     "description": "auやUQモバイルユーザーに特におすすめの光コラボ。IPv6オプションに標準対応しており、全国どこでも安定した通信が可能。",
@@ -393,7 +393,7 @@
       "kyushu",
       "okinawa"
     ],
-    "actual_monthly_fee_jpy": 5940,
+    "actual_monthly_fee_jpy": 6380,
     "stability_score": 82,
     "vdsl_support": false,
     "cashback_text": "高額キャッシュバックキャンペーン実施中！",
@@ -453,7 +453,7 @@
       "kyushu",
       "okinawa"
     ],
-    "actual_monthly_fee_jpy": 4180,
+    "actual_monthly_fee_jpy": 5720,
     "stability_score": 75,
     "vdsl_support": true,
     "cashback_text": "高額キャッシュバックキャンペーン実施中！",
@@ -513,7 +513,7 @@
       "kyushu",
       "okinawa"
     ],
-    "actual_monthly_fee_jpy": 6930,
+    "actual_monthly_fee_jpy": 6380,
     "stability_score": 80,
     "vdsl_support": false,
     "cashback_text": "高額キャッシュバックキャンペーン実施中！",
@@ -579,7 +579,7 @@
       "kyushu",
       "okinawa"
     ],
-    "actual_monthly_fee_jpy": 4180,
+    "actual_monthly_fee_jpy": 5720,
     "stability_score": 73,
     "vdsl_support": true,
     "cashback_text": "高額キャッシュバックキャンペーン実施中！",
@@ -661,7 +661,7 @@
     "max_speed_gbps": 1,
     "avg_ping_ms": 12,
     "avg_dl_speed_mbps": 600,
-    "actual_monthly_fee_jpy": 5170,
+    "actual_monthly_fee_jpy": 5940,
     "stability_score": 90,
     "vdsl_support": false
   },
@@ -711,7 +711,7 @@
     "max_speed_gbps": 10,
     "avg_ping_ms": 8,
     "avg_dl_speed_mbps": 1800,
-    "actual_monthly_fee_jpy": 5940,
+    "actual_monthly_fee_jpy": 6710,
     "stability_score": 94,
     "vdsl_support": false
   },
@@ -740,7 +740,7 @@
       "kyushu",
       "okinawa"
     ],
-    "actual_monthly_fee_jpy": 4400,
+    "actual_monthly_fee_jpy": 6160,
     "stability_score": 92,
     "vdsl_support": true,
     "cashback_text": "高額キャッシュバックキャンペーン実施中！",
@@ -791,7 +791,7 @@
       "kyushu",
       "okinawa"
     ],
-    "actual_monthly_fee_jpy": 6700,
+    "actual_monthly_fee_jpy": 7370,
     "stability_score": 95,
     "vdsl_support": true,
     "cashback_text": "高額キャッシュバックキャンペーン実施中！",
@@ -837,7 +837,7 @@
     "regions": [
       "shikoku"
     ],
-    "actual_monthly_fee_jpy": 3740,
+    "actual_monthly_fee_jpy": 5720,
     "stability_score": 88,
     "vdsl_support": false,
     "cashback_text": "高額キャッシュバックキャンペーン実施中！",
@@ -886,7 +886,7 @@
     "regions": [
       "shikoku"
     ],
-    "actual_monthly_fee_jpy": 5720,
+    "actual_monthly_fee_jpy": 7370,
     "stability_score": 91,
     "vdsl_support": false,
     "cashback_text": "高額キャッシュバックキャンペーン実施中！",
@@ -936,7 +936,7 @@
     "regions": [
       "chugoku"
     ],
-    "actual_monthly_fee_jpy": 4070,
+    "actual_monthly_fee_jpy": 4620,
     "stability_score": 87,
     "vdsl_support": false,
     "cashback_text": "高額キャッシュバックキャンペーン実施中！",
@@ -984,7 +984,7 @@
     "regions": [
       "chugoku"
     ],
-    "actual_monthly_fee_jpy": 5720,
+    "actual_monthly_fee_jpy": 6750,
     "stability_score": 90,
     "vdsl_support": false,
     "cashback_text": "高額キャッシュバックキャンペーン実施中！",
@@ -1060,7 +1060,7 @@
     "max_speed_gbps": 1,
     "avg_ping_ms": 13,
     "avg_dl_speed_mbps": 550,
-    "actual_monthly_fee_jpy": 5605,
+    "actual_monthly_fee_jpy": 5448,
     "stability_score": 89,
     "vdsl_support": false
   },
@@ -1111,7 +1111,7 @@
     "max_speed_gbps": 10,
     "avg_ping_ms": 10,
     "avg_dl_speed_mbps": 1400,
-    "actual_monthly_fee_jpy": 6635,
+    "actual_monthly_fee_jpy": 6530,
     "stability_score": 93,
     "vdsl_support": false
   }
