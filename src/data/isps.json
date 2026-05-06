@@ -347,133 +347,6 @@
     "detailLink": "/provider"
   },
   {
-    "providerName": "ビッグローブ株式会社",
-    "type": "光コラボ",
-    "mobile_discount": [
-      "au",
-      "uq_mobile",
-      "biglobe_mobile"
-    ],
-    "available_housing": [
-      "house",
-      "mansion_optical"
-    ],
-    "regions": [
-      "hokkaido",
-      "tohoku",
-      "kanto",
-      "tokai",
-      "kansai",
-      "chugoku",
-      "shikoku",
-      "kyushu"
-    ],
-    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
-    "discounts": [
-      {
-        "carrier": "au",
-        "amount": 1100,
-        "name": "auスマートバリュー"
-      },
-      {
-        "carrier": "UQモバイル",
-        "amount": 1100,
-        "name": "自宅セット割"
-      }
-    ],
-    "tags": [
-      "10G対応",
-      "auスマホ割",
-      "IPv6対応",
-      "全国対応",
-      "工事費無料"
-    ],
-    "badges": [],
-    "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+4FK6WI+B4+2NBPO2",
-    "detailLink": "/provider",
-    "id": "biglobe_hikari_10g",
-    "name": "ビッグローブ光 (10G)",
-    "max_speed_gbps": 10,
-    "avg_ping_ms": 16,
-    "avg_dl_speed_mbps": 1100,
-    "actual_monthly_fee_jpy": 6270,
-    "stability_score": 82,
-    "vdsl_support": false,
-    "description": "通信速度にこだわるゲーマー向けの10Gプラン。提供エリアは限られますが、FPSでのラグを極限まで減らしたいauユーザーに最適です。",
-    "pros": [
-      "10Gbpsの超高速通信でアプデが一瞬で終わる",
-      "au・UQモバイルのスマホ料金が安くなる",
-      "1GプランよりPing値が安定しやすい"
-    ],
-    "cons": [
-      "VDSLマンション不可",
-      "提供エリアが限定的（東名阪の一部など）"
-    ]
-  },
-  {
-    "providerName": "ビッグローブ株式会社",
-    "type": "光コラボ",
-    "mobile_discount": [
-      "au",
-      "uq_mobile",
-      "biglobe_mobile"
-    ],
-    "available_housing": [
-      "house",
-      "mansion_optical"
-    ],
-    "regions": [
-      "hokkaido",
-      "tohoku",
-      "kanto",
-      "tokai",
-      "kansai",
-      "chugoku",
-      "shikoku",
-      "kyushu"
-    ],
-    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
-    "discounts": [
-      {
-        "carrier": "au",
-        "amount": 1100,
-        "name": "auスマートバリュー"
-      },
-      {
-        "carrier": "UQモバイル",
-        "amount": 1100,
-        "name": "自宅セット割"
-      }
-    ],
-    "tags": [
-      "auスマホ割",
-      "IPv6対応",
-      "全国対応",
-      "工事費無料"
-    ],
-    "badges": [],
-    "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+4FK6WI+B4+2NBPO2",
-    "detailLink": "/provider",
-    "id": "biglobe_hikari_1g",
-    "name": "ビッグローブ光 (1G)",
-    "max_speed_gbps": 1,
-    "avg_ping_ms": 20,
-    "avg_dl_speed_mbps": 280,
-    "actual_monthly_fee_jpy": 5478,
-    "stability_score": 75,
-    "vdsl_support": true,
-    "description": "auやUQモバイルユーザーに特におすすめの光コラボ。IPv6オプションに標準対応しており、全国どこでも安定した通信が可能。",
-    "pros": [
-      "au・UQモバイルのスマホ料金が安くなる",
-      "IPv6（次世代通信）が追加料金なしで使える",
-      "日本全国どこでも利用可能（引越し対応がラク）"
-    ],
-    "cons": [
-      "NUROやauひかり等の独自回線と比べるとPing値は劣る",
-      "プロバイダがBIGLOBEに固定される"
-    ]
-  },
-  {
     "id": "docomo_hikari_10g",
     "name": "ドコモ光 (10G)",
     "providerName": "NTTドコモ",
@@ -722,6 +595,133 @@
     ],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+4HXXBM+348K+1BP8ZM",
     "detailLink": "/provider"
+  },
+  {
+    "providerName": "ビッグローブ株式会社",
+    "type": "光コラボ",
+    "mobile_discount": [
+      "au",
+      "uq_mobile",
+      "biglobe_mobile"
+    ],
+    "available_housing": [
+      "house",
+      "mansion_optical"
+    ],
+    "regions": [
+      "hokkaido",
+      "tohoku",
+      "kanto",
+      "tokai",
+      "kansai",
+      "chugoku",
+      "shikoku",
+      "kyushu"
+    ],
+    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
+    "discounts": [
+      {
+        "carrier": "au",
+        "amount": 1100,
+        "name": "auスマートバリュー"
+      },
+      {
+        "carrier": "UQモバイル",
+        "amount": 1100,
+        "name": "自宅セット割"
+      }
+    ],
+    "tags": [
+      "10G対応",
+      "auスマホ割",
+      "IPv6対応",
+      "全国対応",
+      "工事費無料"
+    ],
+    "badges": [],
+    "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+4FK6WI+B4+2NBPO2",
+    "detailLink": "/provider",
+    "id": "biglobe_hikari_10g",
+    "name": "ビッグローブ光 (10G)",
+    "max_speed_gbps": 10,
+    "avg_ping_ms": 16,
+    "avg_dl_speed_mbps": 1100,
+    "actual_monthly_fee_jpy": 6270,
+    "stability_score": 82,
+    "vdsl_support": false,
+    "description": "通信速度にこだわるゲーマー向けの10Gプラン。提供エリアは限られますが、FPSでのラグを極限まで減らしたいauユーザーに最適です。",
+    "pros": [
+      "10Gbpsの超高速通信でアプデが一瞬で終わる",
+      "au・UQモバイルのスマホ料金が安くなる",
+      "1GプランよりPing値が安定しやすい"
+    ],
+    "cons": [
+      "VDSLマンション不可",
+      "提供エリアが限定的（東名阪の一部など）"
+    ]
+  },
+  {
+    "providerName": "ビッグローブ株式会社",
+    "type": "光コラボ",
+    "mobile_discount": [
+      "au",
+      "uq_mobile",
+      "biglobe_mobile"
+    ],
+    "available_housing": [
+      "house",
+      "mansion_optical"
+    ],
+    "regions": [
+      "hokkaido",
+      "tohoku",
+      "kanto",
+      "tokai",
+      "kansai",
+      "chugoku",
+      "shikoku",
+      "kyushu"
+    ],
+    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
+    "discounts": [
+      {
+        "carrier": "au",
+        "amount": 1100,
+        "name": "auスマートバリュー"
+      },
+      {
+        "carrier": "UQモバイル",
+        "amount": 1100,
+        "name": "自宅セット割"
+      }
+    ],
+    "tags": [
+      "auスマホ割",
+      "IPv6対応",
+      "全国対応",
+      "工事費無料"
+    ],
+    "badges": [],
+    "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+4FK6WI+B4+2NBPO2",
+    "detailLink": "/provider",
+    "id": "biglobe_hikari_1g",
+    "name": "ビッグローブ光 (1G)",
+    "max_speed_gbps": 1,
+    "avg_ping_ms": 20,
+    "avg_dl_speed_mbps": 280,
+    "actual_monthly_fee_jpy": 5478,
+    "stability_score": 75,
+    "vdsl_support": true,
+    "description": "auやUQモバイルユーザーに特におすすめの光コラボ。IPv6オプションに標準対応しており、全国どこでも安定した通信が可能。",
+    "pros": [
+      "au・UQモバイルのスマホ料金が安くなる",
+      "IPv6（次世代通信）が追加料金なしで使える",
+      "日本全国どこでも利用可能（引越し対応がラク）"
+    ],
+    "cons": [
+      "NUROやauひかり等の独自回線と比べるとPing値は劣る",
+      "プロバイダがBIGLOBEに固定される"
+    ]
   },
   {
     "providerName": "中部テレコミュニケーション",
