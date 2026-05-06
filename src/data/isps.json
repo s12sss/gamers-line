@@ -26,7 +26,7 @@
     "actual_monthly_fee_jpy": 5700,
     "stability_score": 96,
     "vdsl_support": false,
-    "cashback_text": "最大43,000円還元",
+    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "SoftBank",
@@ -89,7 +89,7 @@
     "actual_monthly_fee_jpy": 5200,
     "stability_score": 94,
     "vdsl_support": false,
-    "cashback_text": "最大43,000円還元",
+    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "SoftBank",
@@ -144,7 +144,7 @@
     "actual_monthly_fee_jpy": 6050,
     "stability_score": 90,
     "vdsl_support": false,
-    "cashback_text": "最大94,000円還元キャンペーン中！",
+    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "au",
@@ -205,7 +205,7 @@
     "actual_monthly_fee_jpy": 4950,
     "stability_score": 88,
     "vdsl_support": false,
-    "cashback_text": "最大94,000円還元キャンペーン中！",
+    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "au",
@@ -267,7 +267,7 @@
     "actual_monthly_fee_jpy": 5500,
     "stability_score": 92,
     "vdsl_support": true,
-    "cashback_text": "キャンペーンなし",
+    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
     "discounts": [],
     "tags": [
       "専用帯域",
@@ -312,7 +312,7 @@
       "shikoku",
       "kyushu"
     ],
-    "cashback_text": "最大85,000円還元キャンペーン中！",
+    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "au",
@@ -376,7 +376,7 @@
       "shikoku",
       "kyushu"
     ],
-    "cashback_text": "最大70,000円還元キャンペーン中！",
+    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "au",
@@ -447,7 +447,7 @@
     "actual_monthly_fee_jpy": 6380,
     "stability_score": 82,
     "vdsl_support": false,
-    "cashback_text": "最大65,000円還元キャンペーン中！",
+    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "docomo",
@@ -507,7 +507,7 @@
     "actual_monthly_fee_jpy": 4400,
     "stability_score": 75,
     "vdsl_support": true,
-    "cashback_text": "最大65,000円還元キャンペーン中！",
+    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "docomo",
@@ -567,7 +567,7 @@
     "actual_monthly_fee_jpy": 6380,
     "stability_score": 80,
     "vdsl_support": false,
-    "cashback_text": "最大40,000円還元キャンペーン中！",
+    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "SoftBank",
@@ -633,7 +633,7 @@
     "actual_monthly_fee_jpy": 4180,
     "stability_score": 73,
     "vdsl_support": true,
-    "cashback_text": "最大40,000円還元キャンペーン中！",
+    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "SoftBank",
@@ -681,7 +681,7 @@
     "regions": [
       "tokai"
     ],
-    "cashback_text": "最大93,000円還元キャンペーン中！",
+    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "au",
@@ -730,7 +730,7 @@
     "regions": [
       "tokai"
     ],
-    "cashback_text": "最大93,000円還元キャンペーン中！",
+    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "au",
@@ -788,7 +788,7 @@
     "actual_monthly_fee_jpy": 4620,
     "stability_score": 88,
     "vdsl_support": false,
-    "cashback_text": "最大30,000円還元キャンペーン中！",
+    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "au",
@@ -837,7 +837,7 @@
     "actual_monthly_fee_jpy": 4620,
     "stability_score": 87,
     "vdsl_support": false,
-    "cashback_text": "最大20,000円還元キャンペーン中！",
+    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "au",
