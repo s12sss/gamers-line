@@ -29,11 +29,18 @@ export const metadata: Metadata = {
     siteName: "Gamer's Line",
     locale: 'ja_JP',
     type: 'website',
+    images: [{
+      url: 'https://gamers-line.jp/ogp-image.png',
+      width: 1200,
+      height: 630,
+      alt: "Gamer's Line",
+    }],
   },
   twitter: {
     card: 'summary_large_image',
     title: "Gamer's Line | ゲーマー向け光回線診断・比較メディア",
     description: "Ping値と実質料金の最適解を導き出す、FPSゲーマー特化型の光回線・Ping改善診断メディア。",
+    images: ['https://gamers-line.jp/ogp-image.png'],
   },
   verification: {
     google: "e6ITBNtCcTDLYsqRfX5CZrjpS6iYsh_KHRtdzagsXY8",
@@ -66,6 +73,16 @@ export default function RootLayout({
         </Script>
 
         <Header />
+        
+        {/* Stealth Marketing (PR) Disclaimer */}
+        <div className="w-full bg-[#0a0a12]/80 border-b border-white/5 backdrop-blur-sm z-40 relative">
+          <div className="max-w-[1100px] mx-auto px-4 py-1.5 text-center sm:text-left">
+            <span className="text-[10px] sm:text-xs text-text-muted/70 font-mono tracking-wider">
+              ※当サイトはアフィリエイトプログラム（PR）を利用して収益を得ています。
+            </span>
+          </div>
+        </div>
+
         <main className="flex-1 flex flex-col">
           {children}
         </main>
