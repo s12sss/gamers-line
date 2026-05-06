@@ -42,8 +42,8 @@ export default async function ColumnList({ searchParams }: { searchParams?: { [k
       {/* Article Grid */}
       <div className="relative z-10 px-4 sm:px-10 pb-[60px] sm:pb-[100px] max-w-[1100px] mx-auto w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
         
-        {columns.length > 0 ? (
-          columns.map((column, index) => {
+        {displayColumns.length > 0 ? (
+          displayColumns.map((column, index) => {
             const urlSlug = column.slug ? column.slug.replace(/^\//, '') : column.id;
             return (
             <Link 
