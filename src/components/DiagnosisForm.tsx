@@ -173,7 +173,7 @@ function ResultCard({ result, index, delay }: { result: {isp: ISP, score: number
               rel="noopener noreferrer"
               className="w-full py-3.5 rounded-xl border border-cyan/30 bg-cyan text-black font-heading font-bold text-[0.85rem] sm:text-[0.95rem] flex items-center justify-center gap-2 tracking-tight transition-all hover:bg-cyan/90 hover:shadow-[0_0_15px_rgba(0,229,255,0.5)]"
             >
-              一番お得に申し込む <ChevronRight className="w-4 h-4" />
+              お得に申し込む <ChevronRight className="w-4 h-4" />
             </a>
           </div>
         ) : (
@@ -183,6 +183,12 @@ function ResultCard({ result, index, delay }: { result: {isp: ISP, score: number
             お申し込み（準備中）
           </span>
         )}
+        
+        <div className="mt-4 pt-4 border-t border-white/5">
+          <p className="text-[0.6rem] sm:text-[0.65rem] text-text-muted leading-relaxed">
+            ※表示料金は「戸建て」の標準月額です。マンションにお住まいの場合や、各社のキャンペーン適用で実際の負担額はさらに下がります。
+          </p>
+        </div>
       </div>
     </motion.div>
   );
