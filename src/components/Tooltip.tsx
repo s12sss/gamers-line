@@ -6,7 +6,7 @@ export default function Tooltip({ text, children, position: explicitPosition, cl
   const [isVisible, setIsVisible] = useState(false);
   const [position, setPosition] = useState<'center' | 'left' | 'right'>('center');
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLSpanElement>(null);
 
   const showTooltip = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -15,7 +15,6 @@ export default function Tooltip({ text, children, position: explicitPosition, cl
       setPosition(explicitPosition);
     } else if (containerRef.current) {
       const rect = containerRef.current.getBoundingClientRect();
-      // Increase safe margin to 160px to account for larger tooltips on desktop
       if (rect.left < 160) {
         setPosition('left');
       } else if (window.innerWidth - rect.right < 160) {
@@ -56,7 +55,7 @@ export default function Tooltip({ text, children, position: explicitPosition, cl
   };
 
   return (
-    <div 
+    <span 
       ref={containerRef}
       className={`relative inline-flex items-center group cursor-help ${className}`}
       onMouseEnter={showTooltip}
@@ -68,15 +67,15 @@ export default function Tooltip({ text, children, position: explicitPosition, cl
       </span>
       
       {/* Tooltip Box */}
-      <div 
+      <span 
         className={`absolute bottom-full ${getPositionClasses()} mb-2 w-max max-w-[240px] sm:max-w-[280px] p-2.5 bg-[#1a1a24] border border-white/15 rounded-lg text-[0.75rem] text-white/90 leading-relaxed shadow-xl transition-all duration-200 z-50 pointer-events-none break-words whitespace-normal text-left font-sans
           ${isVisible ? "opacity-100 translate-y-0 visible" : "opacity-0 translate-y-1 invisible"}
         `}
       >
         {text}
         {/* Triangle Arrow */}
-        <div className={`absolute top-full ${getArrowClasses()} -mt-px border-[6px] border-transparent border-t-[#1a1a24] drop-shadow-sm`} />
-      </div>
-    </div>
+        <span className={`absolute top-full ${getArrowClasses()} -mt-px border-[6px] border-transparent border-t-[#1a1a24] drop-shadow-sm`} />
+      </span>
+    </span>
   );
 }
