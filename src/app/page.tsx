@@ -96,7 +96,7 @@ export default async function Home() {
             </div>
             <h3 className="font-heading text-lg font-bold tracking-tight mb-3">Ping値特化の評価ロジック</h3>
             <p className="text-sm text-text-muted leading-[1.7]">
-              よくある「<Tooltip text="理論上の最も速い通信速度のこと。実際の速度とは異なる場合が多いです。">最大通信速度</Tooltip>」の比較ではなく、FPSや格ゲーのプレイ感に直結する「<Tooltip text="データが往復する時間の遅延を示す指標。FPSでは15ms以下が理想的とされます。">実測Ping値</Tooltip>（ラグの少なさ）」を徹底的に評価。ゲーマーにとって本当にストレスのない回線だけを厳選してご提案します。
+              FPSや格ゲーの勝敗を分ける「<Tooltip text="データが往復する時間の遅延を示す指標。FPSでは15ms以下が理想的とされます。">実測Ping値</Tooltip>（ラグの少なさ）」を基準に、ゲーマーにとって最適な回線を最短30秒で診断。あなたの環境に最も適したストレスのない選択肢をご提案します。
             </p>
           </div>
 
