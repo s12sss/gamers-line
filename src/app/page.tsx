@@ -222,7 +222,7 @@ export default async function Home() {
           </div>
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6 mb-[40px]">
             <h2 className="font-heading text-[clamp(1.75rem,4vw,2.75rem)] font-bold tracking-tight">
-              ラグを解決する<br />
+              回線選びに役立つ<br />
               <span className="gradient-text">最新コラム</span>
             </h2>
             <Link href="/column" className="inline-flex items-center gap-1 text-sm font-bold text-text-muted hover:text-cyan transition-colors">
@@ -236,9 +236,9 @@ export default async function Home() {
                 <Link key={column.id} href={`/column/${column.id}`} className="group flex flex-col gap-4">
                   <div className="relative w-full aspect-[1.91/1] rounded-2xl overflow-hidden border border-white/10">
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10" />
-                    {column.eyecatch?.url ? (
+                    {column.thumbnail?.url ? (
                       <Image 
-                        src={column.eyecatch.url} 
+                        src={column.thumbnail.url} 
                         alt={column.title} 
                         fill 
                         className="object-cover transition-transform duration-500 group-hover:scale-105" 
