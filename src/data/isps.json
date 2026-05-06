@@ -46,7 +46,8 @@
       "低Ping"
     ],
     "badges": [
-      "BEST PING"
+      "BEST PING",
+      "Pick UP!"
     ],
     "description": "圧倒的な通信品質を誇るNUROの10Gプラン。ゲーム・4K配信を同時にこなしても全く遅延を感じない、最高峰のゲーム環境を構築したい方向け。",
     "pros": [
@@ -108,7 +109,8 @@
       "FPS最適"
     ],
     "badges": [
-      "コスパ◎"
+      "コスパ◎",
+      "Pick UP!"
     ],
     "description": "NURO光の標準プラン。2Gbpsの帯域と独自インフラにより、10Gプランに迫る低Pingをリーズナブルな価格で実現。",
     "pros": [
@@ -119,6 +121,111 @@
     "cons": [
       "VDSLマンション不可",
       "提供エリアがやや限定的"
+    ],
+    "affiliateLink": "#",
+    "detailLink": "/provider"
+  },
+  {
+    "id": "gamewith_hikari_10g",
+    "name": "GameWith光 (10G)",
+    "providerName": "株式会社GameWith",
+    "type": "専用帯域",
+    "max_speed_gbps": 10,
+    "avg_ping_ms": 9,
+    "avg_dl_speed_mbps": 1500,
+    "mobile_discount": [],
+    "available_housing": [
+      "house",
+      "mansion_optical",
+      "mansion_vdsl"
+    ],
+    "regions": [
+      "hokkaido",
+      "tohoku",
+      "kanto",
+      "tokai",
+      "kansai",
+      "chugoku",
+      "shikoku",
+      "kyushu",
+      "okinawa"
+    ],
+    "actual_monthly_fee_jpy": 7370,
+    "stability_score": 95,
+    "vdsl_support": true,
+    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
+    "discounts": [],
+    "tags": [
+      "10G対応",
+      "専用帯域",
+      "プロゲーマー仕様",
+      "ラグゼロ"
+    ],
+    "badges": [
+      "GAMER専用",
+      "Pick UP!"
+    ],
+    "description": "国内最大級のゲームメディア「GameWith」が提供する、ゲーマーのための専用光回線。専用帯域を確保しているため、夜間の混雑時でもラグが発生しにくい。",
+    "pros": [
+      "ゲーマー専用の帯域確保で混雑に強い",
+      "各ゲームサーバーへの直結ルーティング",
+      "VDSLマンションでも契約可能"
+    ],
+    "cons": [
+      "スマホとのセット割引がない",
+      "月額料金がやや高め"
+    ],
+    "affiliateLink": "#",
+    "detailLink": "/provider"
+  },
+  {
+    "id": "gamewith_hikari_1g",
+    "name": "GameWith光 (1G)",
+    "providerName": "株式会社GameWith",
+    "type": "専用帯域",
+    "max_speed_gbps": 1,
+    "avg_ping_ms": 12,
+    "avg_dl_speed_mbps": 400,
+    "mobile_discount": [],
+    "available_housing": [
+      "house",
+      "mansion_optical",
+      "mansion_vdsl"
+    ],
+    "regions": [
+      "hokkaido",
+      "tohoku",
+      "kanto",
+      "tokai",
+      "kansai",
+      "chugoku",
+      "shikoku",
+      "kyushu",
+      "okinawa"
+    ],
+    "actual_monthly_fee_jpy": 6160,
+    "stability_score": 92,
+    "vdsl_support": true,
+    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
+    "discounts": [],
+    "tags": [
+      "専用帯域",
+      "プロゲーマー仕様",
+      "ラグゼロ"
+    ],
+    "badges": [
+      "GAMER専用",
+      "Pick UP!"
+    ],
+    "description": "国内最大級のゲームメディア「GameWith」が提供する、ゲーマーのための専用光回線。専用帯域を確保しているため、夜間の混雑時でもラグが発生しにくい。",
+    "pros": [
+      "ゲーマー専用の帯域確保で混雑に強い",
+      "各ゲームサーバーへの直結ルーティング",
+      "VDSLマンションでも契約可能"
+    ],
+    "cons": [
+      "スマホとのセット割引がない",
+      "月額料金がやや高め"
     ],
     "affiliateLink": "#",
     "detailLink": "/provider"
@@ -714,109 +821,6 @@
     "actual_monthly_fee_jpy": 5940,
     "stability_score": 90,
     "vdsl_support": false
-  },
-  {
-    "id": "gamewith_hikari_10g",
-    "name": "GameWith光 (10G)",
-    "providerName": "株式会社GameWith",
-    "type": "専用帯域",
-    "max_speed_gbps": 10,
-    "avg_ping_ms": 9,
-    "avg_dl_speed_mbps": 1500,
-    "mobile_discount": [],
-    "available_housing": [
-      "house",
-      "mansion_optical",
-      "mansion_vdsl"
-    ],
-    "regions": [
-      "hokkaido",
-      "tohoku",
-      "kanto",
-      "tokai",
-      "kansai",
-      "chugoku",
-      "shikoku",
-      "kyushu",
-      "okinawa"
-    ],
-    "actual_monthly_fee_jpy": 7370,
-    "stability_score": 95,
-    "vdsl_support": true,
-    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
-    "discounts": [],
-    "tags": [
-      "10G対応",
-      "専用帯域",
-      "プロゲーマー仕様",
-      "ラグゼロ"
-    ],
-    "badges": [
-      "GAMER専用"
-    ],
-    "description": "国内最大級のゲームメディア「GameWith」が提供する、ゲーマーのための専用光回線。専用帯域を確保しているため、夜間の混雑時でもラグが発生しにくい。",
-    "pros": [
-      "ゲーマー専用の帯域確保で混雑に強い",
-      "各ゲームサーバーへの直結ルーティング",
-      "VDSLマンションでも契約可能"
-    ],
-    "cons": [
-      "スマホとのセット割引がない",
-      "月額料金がやや高め"
-    ],
-    "affiliateLink": "#",
-    "detailLink": "/provider"
-  },
-  {
-    "id": "gamewith_hikari_1g",
-    "name": "GameWith光 (1G)",
-    "providerName": "株式会社GameWith",
-    "type": "専用帯域",
-    "max_speed_gbps": 1,
-    "avg_ping_ms": 12,
-    "avg_dl_speed_mbps": 400,
-    "mobile_discount": [],
-    "available_housing": [
-      "house",
-      "mansion_optical",
-      "mansion_vdsl"
-    ],
-    "regions": [
-      "hokkaido",
-      "tohoku",
-      "kanto",
-      "tokai",
-      "kansai",
-      "chugoku",
-      "shikoku",
-      "kyushu",
-      "okinawa"
-    ],
-    "actual_monthly_fee_jpy": 6160,
-    "stability_score": 92,
-    "vdsl_support": true,
-    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
-    "discounts": [],
-    "tags": [
-      "専用帯域",
-      "プロゲーマー仕様",
-      "ラグゼロ"
-    ],
-    "badges": [
-      "GAMER専用"
-    ],
-    "description": "国内最大級のゲームメディア「GameWith」が提供する、ゲーマーのための専用光回線。専用帯域を確保しているため、夜間の混雑時でもラグが発生しにくい。",
-    "pros": [
-      "ゲーマー専用の帯域確保で混雑に強い",
-      "各ゲームサーバーへの直結ルーティング",
-      "VDSLマンションでも契約可能"
-    ],
-    "cons": [
-      "スマホとのセット割引がない",
-      "月額料金がやや高め"
-    ],
-    "affiliateLink": "#",
-    "detailLink": "/provider"
   },
   {
     "id": "pikara_hikari_10g",
