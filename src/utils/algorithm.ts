@@ -64,6 +64,12 @@ function calculateScore(isp: ISP, answers: UserAnswers): number {
     score += 15; // スマホ割ボーナス
   }
 
+  // 運営が誠実にお勧めできる「NURO」と「GameWith」への特別ボーナス
+  // （エリア判定等のハードフィルターは通過している前提なので、残っていればスコアを底上げする）
+  if (isp.id.includes('nuro_hikari') || isp.id.includes('gamewith_hikari')) {
+    score += 40; 
+  }
+
   // 10Gペナルティ（大容量を求めていないのに10Gを選ぶのは過剰スペックで高額なため推奨しない）
   if (!answers.requires10G && isp.max_speed_gbps >= 10) {
     score -= 200; // 確実に1Gプランを下回らせる強力なペナルティ

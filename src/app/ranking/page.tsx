@@ -157,9 +157,11 @@ export default function RankingPage() {
                     準備中 <ChevronRight className="w-3.5 h-3.5 opacity-50" />
                   </span>
                 )}
+                {/* 評判・詳細ページ未実装のため一時非表示
                 <Link href={isp.detailLink} className="inline-flex items-center justify-center px-5 py-2.5 rounded-xl border border-white/10 text-text-muted text-[0.8rem] font-medium transition-all hover:border-cyan/30 hover:text-text hover:bg-cyan/5">
                   詳細を見る
                 </Link>
+                */}
               </div>
             </div>
           );

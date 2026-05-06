@@ -272,7 +272,7 @@ export default function DiagnosisForm() {
               {stepTitles[2]}
             </div>
             <div className="flex flex-col gap-3">
-              <OptionCard onClick={() => handleNext('requires10G', true)} title="はい" desc="PCゲームのアップデートやインストールを頻繁にするもしくは高画質配信をします" />
+              <OptionCard onClick={() => handleNext('requires10G', true)} title="はい" desc="大容量ゲームのDLや、高画質での生配信を行う" />
               <OptionCard onClick={() => handleNext('requires10G', false)} title="いいえ" desc="大容量通信行う頻度は低い" />
             </div>
           </motion.div>
