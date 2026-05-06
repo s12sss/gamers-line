@@ -56,8 +56,28 @@ export default async function ColumnArticle({ params }: Props) {
     processedContent = $.html();
   }
 
+  const jsonLd = column ? {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: column.title,
+    image: column.thumbnail ? [column.thumbnail.url] : [],
+    datePublished: column.publishedAt || column.createdAt,
+    dateModified: column.updatedAt || column.publishedAt,
+    author: {
+      '@type': 'Organization',
+      name: "Gamer's Line 編集部",
+      url: "https://gamers-line.jp"
+    }
+  } : null;
+
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground font-sans">
+      {jsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      )}
       <ScrollProgress />
       {column ? (
         <>
