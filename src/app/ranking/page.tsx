@@ -11,7 +11,7 @@ export default function RankingPage() {
       {/* Page Header */}
       <div className="relative z-10 max-w-[1100px] mx-auto w-full px-4 sm:px-10 py-10 sm:py-16 border-b border-white/10">
         <div className="font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase opacity-70 mb-4">
-          // RANKING 2025
+          // RANKING
         </div>
         <h1 className="font-heading text-[clamp(2rem,5vw,3.25rem)] font-bold tracking-tight leading-[1.1] mb-4">
           ゲーミング回線<br />
