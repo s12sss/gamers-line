@@ -9,12 +9,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Fetch all column articles from microCMS
   const columns = await getColumnsList();
 
-  const columnUrls: MetadataRoute.Sitemap = columns.map((col) => ({
-    url: `${baseUrl}/column/${col.id}`,
-    lastModified: col.updatedAt || col.publishedAt,
-    changeFrequency: 'weekly',
-    priority: 0.7,
-  }));
+  const columnUrls: MetadataRoute.Sitemap = columns.map((col) => {
+    const urlSlug = col.slug ? col.slug.replace(/^\//, '') : col.id;
+    return {
+      url: `${baseUrl}/column/${urlSlug}`,
+      lastModified: col.updatedAt || col.publishedAt,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    };
+  });
 
   const staticUrls: MetadataRoute.Sitemap = [
     {

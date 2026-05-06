@@ -24,6 +24,7 @@ export type Column = {
   category: string[];
   thumbnail?: { url: string; width: number; height: number };
   content: string;
+  slug?: string;
 };
 
 // 一覧取得
@@ -45,15 +46,31 @@ export async function getColumnsList(tag?: string) {
 }
 
 // 詳細取得
-export async function getColumnDetail(contentId: string) {
+export async function getColumnDetail(slugOrId: string) {
   try {
+    // 1. まずカスタムのslugフィールドで検索する（/あり・なし両方に対応）
+    const searchSlug = slugOrId.startsWith('/') ? slugOrId : `/${slugOrId}`;
+    const searchSlugNoSlash = searchSlug.replace(/^\//, '');
+    
+    const listData = await client.getList<Column>({
+      endpoint: 'columns',
+      queries: {
+        filters: `slug[equals]${searchSlug}[or]slug[equals]${searchSlugNoSlash}[or]slug[equals]/${searchSlugNoSlash}`
+      }
+    });
+
+    if (listData.contents.length > 0) {
+      return listData.contents[0];
+    }
+
+    // 2. 見つからなければ従来のcontentIdとして取得を試みる
     const data = await client.get<Column>({
       endpoint: 'columns',
-      contentId,
+      contentId: slugOrId,
     });
     return data;
   } catch (error) {
-    console.error(`Failed to fetch column ${contentId}:`, error);
+    console.error(`Failed to fetch column ${slugOrId}:`, error);
     return null;
   }
 }
