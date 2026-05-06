@@ -16,11 +16,25 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://gamers-line.jp'),
   title: {
     template: "%s | Gamer's Line",
     default: "Gamer's Line | ゲーマー向け光回線診断・比較メディア",
   },
   description: "Ping値と実質料金の最適解を導き出す、FPSゲーマー特化型の光回線・Ping改善診断メディア。",
+  openGraph: {
+    title: "Gamer's Line | ゲーマー向け光回線診断・比較メディア",
+    description: "Ping値と実質料金の最適解を導き出す、FPSゲーマー特化型の光回線・Ping改善診断メディア。",
+    url: 'https://gamers-line.jp',
+    siteName: "Gamer's Line",
+    locale: 'ja_JP',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Gamer's Line | ゲーマー向け光回線診断・比較メディア",
+    description: "Ping値と実質料金の最適解を導き出す、FPSゲーマー特化型の光回線・Ping改善診断メディア。",
+  },
   verification: {
     google: "e6ITBNtCcTDLYsqRfX5CZrjpS6iYsh_KHRtdzagsXY8",
   },
