@@ -23,15 +23,15 @@ export async function generateMetadata(
 
   if (!column) {
     return {
-      title: '記事が見つかりません | Gamer\'s Line',
+      title: '記事が見つかりません',
     };
   }
 
   return {
-    title: `${column.title} | Gamer's Line`,
+    title: column.title,
     description: column.content.replace(/<[^>]*>?/gm, '').substring(0, 120) + '...',
     openGraph: {
-      title: `${column.title} | Gamer's Line`,
+      title: column.title,
       description: column.content.replace(/<[^>]*>?/gm, '').substring(0, 120) + '...',
       images: column.thumbnail ? [column.thumbnail.url] : [],
     },

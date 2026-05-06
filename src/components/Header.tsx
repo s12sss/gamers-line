@@ -36,8 +36,13 @@ export default function Header() {
   return (
     <>
       <header className="sticky top-0 z-50 flex justify-between items-center px-4 sm:px-10 h-16 bg-[#050508]/75 backdrop-blur-xl border-b border-white/10">
-        <Link href="/" className="font-heading font-bold text-lg tracking-tighter text-text no-underline">
-          Gamer's <span className="text-cyan drop-shadow-[0_0_20px_rgba(0,229,255,0.6)]">Line</span>
+        <Link href="/" className="flex items-center gap-3 no-underline group">
+          <div className="font-heading font-bold text-lg tracking-tighter text-text">
+            Gamer's <span className="text-cyan drop-shadow-[0_0_20px_rgba(0,229,255,0.6)]">Line</span>
+          </div>
+          <div className="hidden lg:block text-[0.65rem] text-text-muted tracking-widest mt-0.5 opacity-70">
+            | ゲーマー向け光回線・Ping値改善診断メディア
+          </div>
         </Link>
         
         {/* Desktop Nav */}
