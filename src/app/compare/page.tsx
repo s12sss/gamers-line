@@ -6,7 +6,13 @@ import { useState } from "react";
 import Tooltip from "@/components/Tooltip";
 
 export default function ComparePage() {
-  const [filter, setFilter] = useState<'ALL' | '10G' | 'VDSL' | 'AU' | 'DOC' | 'SB'>('ALL');
+  const [activeFilters, setActiveFilters] = useState<string[]>([]);
+  
+  const toggleFilter = (key: string) => {
+    setActiveFilters(prev => 
+      prev.includes(key) ? prev.filter(k => k !== key) : [...prev, key]
+    );
+  };
   const [sortConfig, setSortConfig] = useState<{key: 'ping' | 'price' | 'speed', direction: 'asc' | 'desc'} | null>(null);
 
   const handleSort = (key: 'ping' | 'price' | 'speed') => {
@@ -24,12 +30,23 @@ export default function ComparePage() {
   };
   
   let compareIsps = ispsData.filter(isp => {
-    if (filter === 'ALL') return true;
-    if (filter === '10G') return isp.max_speed_gbps >= 10;
-    if (filter === 'VDSL') return isp.vdsl_support;
-    if (filter === 'AU') return isp.mobile_discount.includes('au');
-    if (filter === 'DOC') return isp.mobile_discount.includes('docomo');
-    if (filter === 'SB') return isp.mobile_discount.includes('softbank');
+    // Speed Filter
+    if (activeFilters.includes('10G') && isp.max_speed_gbps < 10) return false;
+    if (activeFilters.includes('1G') && isp.max_speed_gbps >= 10) return false;
+    
+    // Features
+    if (activeFilters.includes('VDSL') && !isp.vdsl_support) return false;
+    if (activeFilters.includes('au') && !isp.mobile_discount.includes('au')) return false;
+    if (activeFilters.includes('docomo') && !isp.mobile_discount.includes('docomo')) return false;
+    if (activeFilters.includes('softbank') && !isp.mobile_discount.includes('softbank')) return false;
+    
+    // Regions
+    const selectedRegions = activeFilters.filter(f => ['hokkaido', 'tohoku', 'kanto', 'tokai', 'kansai', 'chugoku', 'shikoku', 'kyushu'].includes(f));
+    if (selectedRegions.length > 0) {
+      const supportsSelectedRegion = selectedRegions.some(r => isp.regions.includes(r));
+      if (!supportsSelectedRegion) return false;
+    }
+    
     return true;
   });
 
@@ -65,14 +82,68 @@ export default function ComparePage() {
       <div className="relative z-10 max-w-[1200px] mx-auto w-full px-4 sm:px-10 py-10 sm:py-16 pb-24">
         
         {/* Filters */}
-        <div className="flex flex-wrap items-center gap-2 mb-6 sm:mb-8">
-          <span className="text-[0.75rem] font-medium text-white/70 mr-2">絞り込み:</span>
-          <button onClick={() => setFilter('ALL')} className={`px-3 py-1.5 rounded-full border ${filter === 'ALL' ? 'border-cyan/50 bg-cyan/10 text-cyan' : 'border-white/10 text-white/60 hover:text-white hover:bg-white/5'} font-medium text-[0.7rem] transition-all`}>すべて</button>
-          <button onClick={() => setFilter('10G')} className={`px-3 py-1.5 rounded-full border ${filter === '10G' ? 'border-cyan/50 bg-cyan/10 text-cyan' : 'border-white/10 text-white/60 hover:text-white hover:bg-white/5'} font-medium text-[0.7rem] transition-all`}>10Gプラン</button>
-          <button onClick={() => setFilter('VDSL')} className={`px-3 py-1.5 rounded-full border ${filter === 'VDSL' ? 'border-cyan/50 bg-cyan/10 text-cyan' : 'border-white/10 text-white/60 hover:text-white hover:bg-white/5'} font-medium text-[0.7rem] transition-all`}>VDSL対応</button>
-          <button onClick={() => setFilter('AU')} className={`px-3 py-1.5 rounded-full border ${filter === 'AU' ? 'border-cyan/50 bg-cyan/10 text-cyan' : 'border-white/10 text-white/60 hover:text-white hover:bg-white/5'} font-medium text-[0.7rem] transition-all`}>au割</button>
-          <button onClick={() => setFilter('DOC')} className={`px-3 py-1.5 rounded-full border ${filter === 'DOC' ? 'border-cyan/50 bg-cyan/10 text-cyan' : 'border-white/10 text-white/60 hover:text-white hover:bg-white/5'} font-medium text-[0.7rem] transition-all`}>docomo割</button>
-          <button onClick={() => setFilter('SB')} className={`px-3 py-1.5 rounded-full border ${filter === 'SB' ? 'border-cyan/50 bg-cyan/10 text-cyan' : 'border-white/10 text-white/60 hover:text-white hover:bg-white/5'} font-medium text-[0.7rem] transition-all`}>SoftBank割</button>
+        <div className="flex flex-col gap-4 mb-8 p-4 rounded-2xl bg-white/[0.02] border border-white/5">
+          <div className="flex items-center gap-3">
+            <span className="text-[0.75rem] font-bold text-text-dim w-16 shrink-0">速度/条件</span>
+            <div className="flex flex-wrap gap-2">
+              {['10G', '1G', 'VDSL'].map(key => (
+                <button 
+                  key={key}
+                  onClick={() => {
+                    if (key === '10G' && activeFilters.includes('1G')) toggleFilter('1G');
+                    if (key === '1G' && activeFilters.includes('10G')) toggleFilter('10G');
+                    toggleFilter(key);
+                  }}
+                  className={`px-4 py-1.5 rounded-full text-[0.75rem] font-bold transition-all ${activeFilters.includes(key) ? 'bg-cyan text-black shadow-[0_0_15px_rgba(0,229,255,0.4)]' : 'bg-white/5 text-text-muted hover:bg-white/10'}`}
+                >
+                  {key === '10G' ? '10Gプラン' : key === '1G' ? '1Gプラン' : 'VDSL対応'}
+                </button>
+              ))}
+            </div>
+          </div>
+          
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+            <span className="text-[0.75rem] font-bold text-text-dim w-16 shrink-0">スマホ割</span>
+            <div className="flex flex-wrap gap-2">
+              {[
+                { id: 'au', label: 'au/UQ割' },
+                { id: 'docomo', label: 'docomo割' },
+                { id: 'softbank', label: 'SoftBank/Y!割' }
+              ].map(item => (
+                <button 
+                  key={item.id}
+                  onClick={() => toggleFilter(item.id)}
+                  className={`px-4 py-1.5 rounded-full text-[0.75rem] font-bold transition-all ${activeFilters.includes(item.id) ? 'bg-cyan text-black shadow-[0_0_15px_rgba(0,229,255,0.4)]' : 'bg-white/5 text-text-muted hover:bg-white/10'}`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+            <span className="text-[0.75rem] font-bold text-text-dim w-16 shrink-0">提供エリア</span>
+            <div className="flex flex-wrap gap-2">
+              {[
+                { id: 'hokkaido', label: '北海道' },
+                { id: 'tohoku', label: '東北' },
+                { id: 'kanto', label: '関東' },
+                { id: 'tokai', label: '東海' },
+                { id: 'kansai', label: '関西' },
+                { id: 'chugoku', label: '中国' },
+                { id: 'shikoku', label: '四国' },
+                { id: 'kyushu', label: '九州' }
+              ].map(item => (
+                <button 
+                  key={item.id}
+                  onClick={() => toggleFilter(item.id)}
+                  className={`px-4 py-1.5 rounded-full text-[0.75rem] font-bold transition-all ${activeFilters.includes(item.id) ? 'bg-cyan text-black shadow-[0_0_15px_rgba(0,229,255,0.4)]' : 'bg-white/5 text-text-muted hover:bg-white/10'}`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Mobile Scroll Hint */}
@@ -263,7 +334,7 @@ export default function ComparePage() {
                   {isp.affiliateLink !== "#" ? (
                     <div className="flex flex-col gap-1 items-center w-full">
                       <span className="text-[0.55rem] font-bold text-[#ffeb3b] tracking-tighter w-full text-center whitespace-nowrap overflow-hidden text-ellipsis">
-                        ＼ 最大{isp.cashback_text.replace(/最大|還元/g, '')} ／
+                        ＼ {isp.cashback_text} ／
                       </span>
                       <a href={isp.affiliateLink} target="_blank" rel="noopener noreferrer" className={`inline-flex w-full items-center justify-center gap-1 px-1 py-2.5 rounded-lg font-heading font-bold text-[0.75rem] bg-cyan text-black transition-all hover:bg-cyan/80 hover:shadow-[0_0_15px_rgba(0,229,255,0.4)]`}>
                         お申し込み

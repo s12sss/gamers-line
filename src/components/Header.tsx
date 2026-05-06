@@ -23,7 +23,6 @@ export default function Header() {
   }, [isOpen]);
 
   const navLinks = [
-    { name: "ランキング", href: "/ranking" },
     { name: "比較する", href: "/compare" },
     { name: "回線一覧", href: "/provider" },
     { name: "コラム", href: "/column" },

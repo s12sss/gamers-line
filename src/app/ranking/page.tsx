@@ -1,10 +1,22 @@
+"use client";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import ispsData from "@/data/isps.json";
+import { useState } from "react";
+import Tooltip from "@/components/Tooltip";
 
 export default function RankingPage() {
-  // Sort ISPs by ping (ascending)
-  const rankedIsps = [...ispsData].sort((a, b) => a.avg_ping_ms - b.avg_ping_ms);
+  const [speedFilter, setSpeedFilter] = useState<'all' | '10g' | '1g'>('all');
+  
+  // Sort ISPs by ping (ascending) and filter by speed
+  const rankedIsps = [...ispsData]
+    .filter(isp => {
+      if (speedFilter === 'all') return true;
+      if (speedFilter === '10g') return isp.max_speed_gbps >= 10;
+      if (speedFilter === '1g') return isp.max_speed_gbps < 10;
+      return true;
+    })
+    .sort((a, b) => a.avg_ping_ms - b.avg_ping_ms);
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground font-sans">
@@ -23,12 +35,33 @@ export default function RankingPage() {
       </div>
 
       {/* Filter */}
-      <div className="relative z-10 max-w-[1100px] mx-auto w-full px-4 sm:px-10 py-6 flex items-center gap-2.5 flex-wrap">
-        <button className="px-[18px] py-[7px] rounded-full border border-cyan/50 bg-cyan/10 text-cyan font-medium text-[0.8rem] transition-all tracking-[0.01em]">総合</button>
-        <button className="px-[18px] py-[7px] rounded-full border border-white/10 text-text-muted font-medium text-[0.8rem] transition-all tracking-[0.01em] hover:border-cyan/30 hover:text-text hover:bg-cyan/5">FPS / 格ゲー特化</button>
-        <button className="px-[18px] py-[7px] rounded-full border border-white/10 text-text-muted font-medium text-[0.8rem] transition-all tracking-[0.01em] hover:border-cyan/30 hover:text-text hover:bg-cyan/5">コスパ重視</button>
-        <button className="px-[18px] py-[7px] rounded-full border border-white/10 text-text-muted font-medium text-[0.8rem] transition-all tracking-[0.01em] hover:border-cyan/30 hover:text-text hover:bg-cyan/5">戸建て向け</button>
-        <button className="px-[18px] py-[7px] rounded-full border border-white/10 text-text-muted font-medium text-[0.8rem] transition-all tracking-[0.01em] hover:border-cyan/30 hover:text-text hover:bg-cyan/5">マンション向け</button>
+      <div className="relative z-10 max-w-[1100px] mx-auto w-full px-4 sm:px-10 py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="flex items-center gap-2.5 flex-wrap">
+          <button className="px-[18px] py-[7px] rounded-full border border-cyan/50 bg-cyan/10 text-cyan font-medium text-[0.8rem] transition-all tracking-[0.01em]">総合</button>
+          <button className="px-[18px] py-[7px] rounded-full border border-white/10 text-text-muted font-medium text-[0.8rem] transition-all tracking-[0.01em] hover:border-cyan/30 hover:text-text hover:bg-cyan/5">FPS / 格ゲー特化</button>
+          <button className="px-[18px] py-[7px] rounded-full border border-white/10 text-text-muted font-medium text-[0.8rem] transition-all tracking-[0.01em] hover:border-cyan/30 hover:text-text hover:bg-cyan/5">コスパ重視</button>
+        </div>
+        
+        <div className="flex bg-black/60 border border-white/10 rounded-full p-1 w-full sm:w-auto">
+          <button 
+            onClick={() => setSpeedFilter('all')} 
+            className={`flex-1 sm:flex-none px-5 py-2 rounded-full text-[0.8rem] font-bold transition-all ${speedFilter === 'all' ? 'bg-cyan text-black shadow-[0_0_15px_rgba(0,229,255,0.3)]' : 'text-text-muted hover:text-white'}`}
+          >
+            すべて
+          </button>
+          <button 
+            onClick={() => setSpeedFilter('10g')} 
+            className={`flex-1 sm:flex-none px-5 py-2 rounded-full text-[0.8rem] font-bold transition-all ${speedFilter === '10g' ? 'bg-cyan text-black shadow-[0_0_15px_rgba(0,229,255,0.3)]' : 'text-text-muted hover:text-white'}`}
+          >
+            10Gのみ
+          </button>
+          <button 
+            onClick={() => setSpeedFilter('1g')} 
+            className={`flex-1 sm:flex-none px-5 py-2 rounded-full text-[0.8rem] font-bold transition-all ${speedFilter === '1g' ? 'bg-cyan text-black shadow-[0_0_15px_rgba(0,229,255,0.3)]' : 'text-text-muted hover:text-white'}`}
+          >
+            10G除外
+          </button>
+        </div>
       </div>
 
       {/* Promo */}

@@ -1,9 +1,21 @@
+"use client";
 import Link from "next/link";
-import { Zap, Activity, ChevronRight, CheckCircle2, XCircle, AlertCircle, ArrowUpRight, Play } from "lucide-react";
+import { ChevronRight, Play } from "lucide-react";
 import ispsData from "@/data/isps.json";
+import { useState } from "react";
 import Tooltip from "@/components/Tooltip";
 
 export default function ProviderPage() {
+  const [speedFilter, setSpeedFilter] = useState<'all' | '10g' | '1g'>('all');
+  
+  // Create a filtered version of ispsData
+  const filteredIsps = ispsData.filter(isp => {
+    if (speedFilter === 'all') return true;
+    if (speedFilter === '10g') return isp.max_speed_gbps >= 10;
+    if (speedFilter === '1g') return isp.max_speed_gbps < 10;
+    return true;
+  });
+
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground font-sans">
       {/* Page Header */}
@@ -21,11 +33,41 @@ export default function ProviderPage() {
         </p>
       </div>
 
-      {/* Provider Grid */}
-      <div className="relative z-10 max-w-[1100px] mx-auto w-full px-4 sm:px-10 py-12 sm:py-16 pb-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* ISP List Section */}
+      <div className="relative z-10 max-w-[1100px] mx-auto w-full px-4 sm:px-10 pb-24 flex flex-col gap-8">
+        
+        <div className="flex flex-col gap-6">
+          <h2 className="font-heading text-2xl sm:text-3xl font-bold">主要プロバイダ詳細一覧</h2>
+          
+          {/* Tabs */}
+          <div className="flex items-end border-b border-white/10 overflow-x-auto no-scrollbar pt-2">
+            <button 
+              onClick={() => setSpeedFilter('all')} 
+              className={`relative px-6 py-3 font-bold text-sm transition-all whitespace-nowrap ${speedFilter === 'all' ? 'text-cyan bg-cyan/10 rounded-t-lg border-t border-x border-cyan/30' : 'text-text-muted hover:text-white hover:bg-white/5 rounded-t-lg'}`}
+            >
+              すべて (総合)
+              {speedFilter === 'all' && <div className="absolute -bottom-[1px] left-0 right-0 h-[2px] bg-cyan shadow-[0_0_10px_rgba(0,229,255,0.8)]" />}
+            </button>
+            <button 
+              onClick={() => setSpeedFilter('10g')} 
+              className={`relative px-6 py-3 font-bold text-sm transition-all whitespace-nowrap ${speedFilter === '10g' ? 'text-cyan bg-cyan/10 rounded-t-lg border-t border-x border-cyan/30' : 'text-text-muted hover:text-white hover:bg-white/5 rounded-t-lg'}`}
+            >
+              10G対応プラン (最強環境)
+              {speedFilter === '10g' && <div className="absolute -bottom-[1px] left-0 right-0 h-[2px] bg-cyan shadow-[0_0_10px_rgba(0,229,255,0.8)]" />}
+            </button>
+            <button 
+              onClick={() => setSpeedFilter('1g')} 
+              className={`relative px-6 py-3 font-bold text-sm transition-all whitespace-nowrap ${speedFilter === '1g' ? 'text-cyan bg-cyan/10 rounded-t-lg border-t border-x border-cyan/30' : 'text-text-muted hover:text-white hover:bg-white/5 rounded-t-lg'}`}
+            >
+              1G・標準プラン (コスパ重視)
+              {speedFilter === '1g' && <div className="absolute -bottom-[1px] left-0 right-0 h-[2px] bg-cyan shadow-[0_0_10px_rgba(0,229,255,0.8)]" />}
+            </button>
+          </div>
+        </div>
 
-          {ispsData.map((isp, index) => {
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+          {filteredIsps.map((isp, index) => {
             const isFirst = index === 0;
             const borderClass = isFirst ? 'border-cyan/25' : 'border-white/10';
             const bgClass = isFirst ? 'bg-cyan/[0.03]' : 'bg-white/[0.035]';
