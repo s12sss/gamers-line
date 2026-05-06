@@ -149,7 +149,7 @@ export default function ComparePage() {
                 const isBest = isp.avg_ping_ms === bestPingValue;
                 return (
                   <div key={isp.id} className={`flex items-center justify-center py-3.5 border-b border-white/5 border-x ${isBest ? 'border-cyan/20 bg-cyan/[0.04]' : 'border-white/10 bg-white/[0.015]'} text-center`}>
-                    <span className="font-mono font-bold text-[0.95rem] text-text">¥{isp.actual_monthly_fee_jpy.toLocaleString()}</span>
+                    <span className="font-mono font-bold text-[0.95rem] text-text">¥{isp.actual_monthly_fee_jpy.toLocaleString()}〜</span>
                   </div>
                 );
               })}

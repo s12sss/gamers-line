@@ -154,7 +154,7 @@ function ResultCard({ result, index, delay }: { result: {isp: ISP, score: number
             </div>
             <div className="flex justify-start sm:justify-end items-baseline gap-1">
               <span className="font-mono text-xl sm:text-[1.3rem] font-bold text-text leading-none">
-                ¥{displayFee.toLocaleString()}
+                ¥{displayFee.toLocaleString()}〜
               </span>
               <span className="text-[0.65rem] sm:text-[0.7rem] text-text-muted">/月</span>
             </div>
@@ -165,7 +165,7 @@ function ResultCard({ result, index, delay }: { result: {isp: ISP, score: number
         {result.isp.affiliateLink !== "#" ? (
           <div className="flex flex-col gap-1 w-full mt-1">
             <span className="text-[0.65rem] sm:text-[0.7rem] font-bold text-[#ffeb3b] tracking-tight bg-black/40 px-3 py-1 rounded-full border border-[#ffeb3b]/30 shadow-[0_0_10px_rgba(255,235,59,0.1)] w-full text-center whitespace-nowrap overflow-hidden text-ellipsis">
-              ＼ 今なら工事費無料 ＋ {result.isp.cashback_text} ／
+              ＼ {result.isp.cashback_text} ／
             </span>
             <a 
               href={result.isp.affiliateLink}
