@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: {
     template: "%s | Gamer's Line",
-    default: "Gamer's Line | ゲーマー向け光回線・Ping値改善診断メディア",
+    default: "Gamer's Line | ゲーマー向け光回線・ラグ解消メディア",
   },
   description: "Ping値と実質料金の最適解を導き出す、FPSゲーマー特化型の光回線・Ping改善診断メディア。",
   verification: {

@@ -41,7 +41,7 @@ export default function Header() {
             Gamer's <span className="text-cyan drop-shadow-[0_0_20px_rgba(0,229,255,0.6)]">Line</span>
           </div>
           <div className="hidden lg:block text-[0.65rem] text-text-muted tracking-widest mt-0.5 opacity-70">
-            | ゲーマー向け光回線・Ping値改善診断メディア
+            | ゲーマー向け光回線・ラグ解消メディア
           </div>
         </Link>
         
