@@ -229,7 +229,7 @@ export default function DiagnosisForm() {
   const stepIcons = [null, <Gamepad2 />, <Download />, <MapPin />, <Home />, <Smartphone />, <Zap />, <Wallet />];
   const stepTitles = [null,
     '普段プレイするゲームは？',
-    'ゲームの配信や、頻繁な大型アプデは？',
+    'ゲームの配信や、大容量の通信は？',
     'お住まいの地域は？',
     '現在の住居タイプは？',
     'お使いのスマホキャリアは？',
@@ -256,9 +256,9 @@ export default function DiagnosisForm() {
               {stepTitles[1]}
             </div>
             <div className="flex flex-col gap-3">
-              <OptionCard onClick={() => handleNext('gameGenre', 'fps')} title="FPS / 格ゲー" desc="VALORANT, APEX, スト6など — Ping値超重視" />
-              <OptionCard onClick={() => handleNext('gameGenre', 'mmo')} title="MMO / MOBA" desc="FF14, LoLなど — 安定性重視" />
-              <OptionCard onClick={() => handleNext('gameGenre', 'casual')} title="カジュアル / スマホ" desc="原神, スマホゲーム全般 — 料金・速度バランス" />
+              <OptionCard onClick={() => handleNext('gameGenre', 'fps')} title="FPS / TPS / 格闘ゲーム" desc="VALORANT, APEX, スト6など — Ping値超重視" />
+              <OptionCard onClick={() => handleNext('gameGenre', 'mmo')} title="MMO / MOBA / マルチプレイ" desc="FF14, モンハン, ナイトレインなど — 安定性重視" />
+              <OptionCard onClick={() => handleNext('gameGenre', 'casual')} title="スマホゲーム / オフラインタイトル" desc="原神, 鳴潮, スマホゲーム, 買い切りゲーム全般" />
             </div>
           </motion.div>
         );
@@ -272,8 +272,8 @@ export default function DiagnosisForm() {
               {stepTitles[2]}
             </div>
             <div className="flex flex-col gap-3">
-              <OptionCard onClick={() => handleNext('requires10G', true)} title="はい" desc="PCゲームの大型アプデや、高画質配信をします" />
-              <OptionCard onClick={() => handleNext('requires10G', false)} title="いいえ" desc="そこまで大容量の通信はしません" />
+              <OptionCard onClick={() => handleNext('requires10G', true)} title="はい" desc="PCゲームのアップデートやインストールを頻繁にするもしくは高画質配信をします" />
+              <OptionCard onClick={() => handleNext('requires10G', false)} title="いいえ" desc="大容量通信行う頻度は低い" />
             </div>
           </motion.div>
         );
@@ -295,7 +295,6 @@ export default function DiagnosisForm() {
               <OptionCard onClick={() => handleNext('region', 'chugoku')} title="中国" />
               <OptionCard onClick={() => handleNext('region', 'shikoku')} title="四国" />
               <OptionCard onClick={() => handleNext('region', 'kyushu')} title="九州" />
-              <OptionCard onClick={() => handleNext('region', 'okinawa')} title="沖縄" />
             </div>
           </motion.div>
         );
