@@ -113,11 +113,17 @@ export default function ProviderPage() {
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-2.5 mt-2">
-                    <span className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl bg-cyan/30 text-black/50 font-heading font-bold text-[0.875rem] cursor-not-allowed">
-                      準備中 <ChevronRight className="w-3.5 h-3.5 opacity-50" />
-                    </span>
-                    <Link href="/column" className="inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl border border-white/10 text-text-muted font-medium text-[0.825rem] transition-all hover:border-cyan/30 hover:text-text hover:bg-cyan/5">
-                      関連コラムを読む
+                    {isp.affiliateLink !== "#" ? (
+                      <a href={isp.affiliateLink} target="_blank" rel="noopener noreferrer" className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl bg-cyan text-black font-heading font-bold text-[0.875rem] transition-all hover:bg-cyan/80 hover:shadow-[0_0_15px_rgba(0,229,255,0.4)]">
+                        公式サイトへ <ChevronRight className="w-3.5 h-3.5" />
+                      </a>
+                    ) : (
+                      <span className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl bg-cyan/30 text-black/50 font-heading font-bold text-[0.875rem] cursor-not-allowed">
+                        準備中 <ChevronRight className="w-3.5 h-3.5 opacity-50" />
+                      </span>
+                    )}
+                    <Link href={isp.detailLink} className="inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl border border-white/10 text-text-muted font-medium text-[0.825rem] transition-all hover:border-cyan/30 hover:text-text hover:bg-cyan/5">
+                      評判・詳細を見る
                     </Link>
                   </div>
                 </div>

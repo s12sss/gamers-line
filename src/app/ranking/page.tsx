@@ -110,9 +110,15 @@ export default function RankingPage() {
                 </div>
               </div>
               <div className="hidden md:flex flex-col justify-center p-6 gap-2.5 border-l border-white/10 min-w-[180px]">
-                <span className="inline-flex items-center justify-center gap-1.5 px-5 py-3 rounded-xl bg-cyan/30 text-black/50 font-heading font-bold text-[0.875rem] cursor-not-allowed">
-                  準備中 <ChevronRight className="w-3.5 h-3.5 opacity-50" />
-                </span>
+                {isp.affiliateLink !== "#" ? (
+                  <a href={isp.affiliateLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-1.5 px-5 py-3 rounded-xl bg-cyan text-black font-heading font-bold text-[0.875rem] transition-all hover:bg-cyan/80 hover:shadow-[0_0_15px_rgba(0,229,255,0.4)]">
+                    公式サイトへ <ChevronRight className="w-3.5 h-3.5" />
+                  </a>
+                ) : (
+                  <span className="inline-flex items-center justify-center gap-1.5 px-5 py-3 rounded-xl bg-cyan/30 text-black/50 font-heading font-bold text-[0.875rem] cursor-not-allowed">
+                    準備中 <ChevronRight className="w-3.5 h-3.5 opacity-50" />
+                  </span>
+                )}
                 <Link href={isp.detailLink} className="inline-flex items-center justify-center px-5 py-2.5 rounded-xl border border-white/10 text-text-muted text-[0.8rem] font-medium transition-all hover:border-cyan/30 hover:text-text hover:bg-cyan/5">
                   詳細を見る
                 </Link>

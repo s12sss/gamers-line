@@ -162,11 +162,22 @@ function ResultCard({ result, index, delay }: { result: {isp: ISP, score: number
         </div>
 
         {/* CTA Button */}
-        <span 
-          className="w-full py-3.5 rounded-xl border border-white/10 bg-white/5 text-text/50 font-heading font-semibold text-[0.85rem] sm:text-[0.9rem] flex items-center justify-center gap-2 mt-1 tracking-tight cursor-not-allowed"
-        >
-          お申し込み（準備中）
-        </span>
+        {result.isp.affiliateLink !== "#" ? (
+          <a 
+            href={result.isp.affiliateLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full py-3.5 rounded-xl border border-cyan/30 bg-cyan text-black font-heading font-bold text-[0.85rem] sm:text-[0.9rem] flex items-center justify-center gap-2 mt-1 tracking-tight transition-all hover:bg-cyan/90 hover:shadow-[0_0_15px_rgba(0,229,255,0.5)]"
+          >
+            一番お得に申し込む <ChevronRight className="w-4 h-4" />
+          </a>
+        ) : (
+          <span 
+            className="w-full py-3.5 rounded-xl border border-white/10 bg-white/5 text-text/50 font-heading font-semibold text-[0.85rem] sm:text-[0.9rem] flex items-center justify-center gap-2 mt-1 tracking-tight cursor-not-allowed"
+          >
+            お申し込み（準備中）
+          </span>
+        )}
       </div>
     </motion.div>
   );

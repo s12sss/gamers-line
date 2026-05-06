@@ -260,9 +260,15 @@ export default function ComparePage() {
               const isBest = isp.avg_ping_ms === bestPingValue;
               return (
                 <div key={isp.id} className="py-3 px-2 text-center">
-                  <span className={`inline-flex w-full items-center justify-center gap-1 px-2 py-2.5 rounded-lg font-heading font-bold text-[0.8rem] bg-cyan/30 text-black/50 cursor-not-allowed`}>
-                    準備中
-                  </span>
+                  {isp.affiliateLink !== "#" ? (
+                    <a href={isp.affiliateLink} target="_blank" rel="noopener noreferrer" className={`inline-flex w-full items-center justify-center gap-1 px-2 py-2.5 rounded-lg font-heading font-bold text-[0.8rem] bg-cyan text-black transition-all hover:bg-cyan/80 hover:shadow-[0_0_15px_rgba(0,229,255,0.4)]`}>
+                      公式サイトへ
+                    </a>
+                  ) : (
+                    <span className={`inline-flex w-full items-center justify-center gap-1 px-2 py-2.5 rounded-lg font-heading font-bold text-[0.8rem] bg-cyan/30 text-black/50 cursor-not-allowed`}>
+                      準備中
+                    </span>
+                  )}
                 </div>
               );
             })}
