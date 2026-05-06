@@ -64,6 +64,11 @@ function calculateScore(isp: ISP, answers: UserAnswers): number {
     score += 15; // スマホ割ボーナス
   }
 
+  // 10Gペナルティ（大容量を求めていないのに10Gを選ぶのは過剰スペックで高額なため推奨しない）
+  if (!answers.requires10G && isp.max_speed_gbps >= 10) {
+    score -= 200; // 確実に1Gプランを下回らせる強力なペナルティ
+  }
+
   return score;
 }
 
