@@ -96,7 +96,7 @@ export default function ComparePage() {
                   }}
                   className={`px-4 py-1.5 rounded-full text-[0.75rem] font-bold transition-all ${activeFilters.includes(key) ? 'bg-cyan text-black shadow-[0_0_15px_rgba(0,229,255,0.4)]' : 'bg-white/5 text-text-muted hover:bg-white/10'}`}
                 >
-                  {key === '10G' ? '10Gプラン' : key === '1G' ? '1Gプラン' : 'VDSL対応'}
+                  {key === '10G' ? '10Gプラン' : key === '1G' ? '1G・標準プラン' : 'VDSL対応'}
                 </button>
               ))}
             </div>
@@ -148,7 +148,7 @@ export default function ComparePage() {
 
         <div className="flex items-center justify-end mb-4">
           <span className="text-[0.65rem] sm:text-[0.7rem] text-white/50 border border-white/10 px-3 py-1.5 rounded-md bg-white/5 font-mono tracking-wider">
-            ※表示料金は「戸建て・基本プラン（各種割引前）」の標準月額です。スマホセット割等でさらに安くなります。
+            ※表示料金は「戸建て」の標準月額です。マンションにお住まいの場合や、各社のキャンペーン適用で実際の負担額はさらに下がります。
           </span>
         </div>
 
@@ -158,7 +158,7 @@ export default function ComparePage() {
           <ChevronRight className="w-3 h-3" />
         </div>
 
-        <div className="overflow-x-auto scrollbar-hide pb-6">
+        <div className="overflow-x-auto custom-scrollbar pb-6">
           <div className="min-w-[700px] md:min-w-[900px]">
           
           {/* Column Headers */}

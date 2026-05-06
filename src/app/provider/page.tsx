@@ -67,7 +67,7 @@ export default function ProviderPage() {
         
         <div className="flex items-center justify-end mb-4">
           <span className="text-[0.65rem] sm:text-[0.7rem] text-white/50 border border-white/10 px-3 py-1.5 rounded-md bg-white/5 font-mono tracking-wider">
-            ※表示料金は「戸建て・基本プラン（各種割引前）」の標準月額です。スマホセット割等でさらに安くなります。
+            ※表示料金は「戸建て」の標準月額です。マンションにお住まいの場合や、各社のキャンペーン適用で実際の負担額はさらに下がります。
           </span>
         </div>
 
