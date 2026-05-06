@@ -8,7 +8,7 @@ const puppeteer = require('puppeteer');
   
   console.log("Navigating to file...");
   // ユーザー指定の元のファイル
-  await page.goto('file:///C:/Users/shun/Downloads/site%20(4)/Gamers%20Line%20-%20Timing%20Article%20Images.html', { waitUntil: 'networkidle0' });
+  await page.goto('file:///C:/Users/shun/Downloads/site%20(2)/Gamers%20Line%20-%20Router%20Tips%20Article%20Images.html', { waitUntil: 'networkidle0' });
   
   await new Promise(r => setTimeout(r, 3000));
   
@@ -21,10 +21,11 @@ const puppeteer = require('puppeteer');
   if (frames.length === 0) {
     console.log("No frames found!");
   } else {
-    console.log(`Found ${frames.length} frames! Extracting...`);
-    for (let i = 0; i < frames.length; i++) {
+    console.log(`Found ${frames.length} frames! Extracting the first 2...`);
+    const limit = Math.min(frames.length, 2);
+    for (let i = 0; i < limit; i++) {
       const handle = frames[i];
-      const destPath = `C:/Users/shun/Downloads/Timing_Article_HQ_${i + 1}.png`;
+      const destPath = `C:/Users/shun/Downloads/Router_Tips_HQ_${i + 1}.png`;
       // PNG形式で保存（背景は透明にしない）
       await handle.screenshot({ path: destPath, type: 'png' });
       console.log(`Saved ${destPath}`);
