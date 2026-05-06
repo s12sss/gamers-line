@@ -6,7 +6,9 @@ export const revalidate = 60;
 
 export default async function ColumnList({ searchParams }: { searchParams?: { [key: string]: string | string[] | undefined } }) {
   const tag = searchParams?.tag as string | undefined;
-  const columns = await getColumnsList(tag);
+  // Get all columns to check total count, and filtered columns for display
+  const allColumns = await getColumnsList();
+  const displayColumns = tag ? allColumns.filter(c => c.category?.includes(tag)) : allColumns;
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground font-sans">
@@ -27,13 +29,15 @@ export default async function ColumnList({ searchParams }: { searchParams?: { [k
       </div>
 
       {/* Filter Tabs */}
-      <div className="relative z-10 px-4 sm:px-10 py-4 sm:py-7 max-w-[1100px] mx-auto w-full flex items-center gap-2 sm:gap-2.5 flex-wrap">
-        <Link href="/column" className={`px-[14px] sm:px-[18px] py-[6px] sm:py-[7px] rounded-full border ${!tag ? 'border-cyan/50 bg-cyan/10 text-cyan' : 'border-white/10 text-text-muted hover:border-cyan/30 hover:text-text hover:bg-cyan/5'} font-medium text-[0.75rem] sm:text-[0.8rem] transition-all tracking-[0.01em]`}>すべて</Link>
-        <Link href="/column?tag=FPS" className={`px-[14px] sm:px-[18px] py-[6px] sm:py-[7px] rounded-full border ${tag === 'FPS' ? 'border-cyan/50 bg-cyan/10 text-cyan' : 'border-white/10 text-text-muted hover:border-cyan/30 hover:text-text hover:bg-cyan/5'} font-medium text-[0.75rem] sm:text-[0.8rem] transition-all tracking-[0.01em]`}>FPS / 格ゲー</Link>
-        <Link href="/column?tag=回線の選び方" className={`px-[14px] sm:px-[18px] py-[6px] sm:py-[7px] rounded-full border ${tag === '回線の選び方' ? 'border-cyan/50 bg-cyan/10 text-cyan' : 'border-white/10 text-text-muted hover:border-cyan/30 hover:text-text hover:bg-cyan/5'} font-medium text-[0.75rem] sm:text-[0.8rem] transition-all tracking-[0.01em]`}>回線の選び方</Link>
-        <Link href="/column?tag=プロバイダ比較" className={`px-[14px] sm:px-[18px] py-[6px] sm:py-[7px] rounded-full border ${tag === 'プロバイダ比較' ? 'border-cyan/50 bg-cyan/10 text-cyan' : 'border-white/10 text-text-muted hover:border-cyan/30 hover:text-text hover:bg-cyan/5'} font-medium text-[0.75rem] sm:text-[0.8rem] transition-all tracking-[0.01em]`}>プロバイダ比較</Link>
-        <Link href="/column?tag=ニュース" className={`px-[14px] sm:px-[18px] py-[6px] sm:py-[7px] rounded-full border ${tag === 'ニュース' ? 'border-cyan/50 bg-cyan/10 text-cyan' : 'border-white/10 text-text-muted hover:border-cyan/30 hover:text-text hover:bg-cyan/5'} font-medium text-[0.75rem] sm:text-[0.8rem] transition-all tracking-[0.01em]`}>ニュース</Link>
-      </div>
+      {allColumns.length >= 10 && (
+        <div className="relative z-10 px-4 sm:px-10 py-4 sm:py-7 max-w-[1100px] mx-auto w-full flex items-center gap-2 sm:gap-2.5 flex-wrap">
+          <Link href="/column" className={`px-[14px] sm:px-[18px] py-[6px] sm:py-[7px] rounded-full border ${!tag ? 'border-cyan/50 bg-cyan/10 text-cyan' : 'border-white/10 text-text-muted hover:border-cyan/30 hover:text-text hover:bg-cyan/5'} font-medium text-[0.75rem] sm:text-[0.8rem] transition-all tracking-[0.01em]`}>すべて</Link>
+          <Link href="/column?tag=FPS" className={`px-[14px] sm:px-[18px] py-[6px] sm:py-[7px] rounded-full border ${tag === 'FPS' ? 'border-cyan/50 bg-cyan/10 text-cyan' : 'border-white/10 text-text-muted hover:border-cyan/30 hover:text-text hover:bg-cyan/5'} font-medium text-[0.75rem] sm:text-[0.8rem] transition-all tracking-[0.01em]`}>FPS / 格ゲー</Link>
+          <Link href="/column?tag=回線の選び方" className={`px-[14px] sm:px-[18px] py-[6px] sm:py-[7px] rounded-full border ${tag === '回線の選び方' ? 'border-cyan/50 bg-cyan/10 text-cyan' : 'border-white/10 text-text-muted hover:border-cyan/30 hover:text-text hover:bg-cyan/5'} font-medium text-[0.75rem] sm:text-[0.8rem] transition-all tracking-[0.01em]`}>回線の選び方</Link>
+          <Link href="/column?tag=プロバイダ比較" className={`px-[14px] sm:px-[18px] py-[6px] sm:py-[7px] rounded-full border ${tag === 'プロバイダ比較' ? 'border-cyan/50 bg-cyan/10 text-cyan' : 'border-white/10 text-text-muted hover:border-cyan/30 hover:text-text hover:bg-cyan/5'} font-medium text-[0.75rem] sm:text-[0.8rem] transition-all tracking-[0.01em]`}>プロバイダ比較</Link>
+          <Link href="/column?tag=ニュース" className={`px-[14px] sm:px-[18px] py-[6px] sm:py-[7px] rounded-full border ${tag === 'ニュース' ? 'border-cyan/50 bg-cyan/10 text-cyan' : 'border-white/10 text-text-muted hover:border-cyan/30 hover:text-text hover:bg-cyan/5'} font-medium text-[0.75rem] sm:text-[0.8rem] transition-all tracking-[0.01em]`}>ニュース</Link>
+        </div>
+      )}
 
       {/* Article Grid */}
       <div className="relative z-10 px-4 sm:px-10 pb-[60px] sm:pb-[100px] max-w-[1100px] mx-auto w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
