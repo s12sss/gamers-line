@@ -45,21 +45,21 @@ export default function ProviderPage() {
               onClick={() => setSpeedFilter('all')} 
               className={`relative px-6 py-3 font-bold text-sm transition-all whitespace-nowrap ${speedFilter === 'all' ? 'text-cyan bg-cyan/10 rounded-t-lg border-t border-x border-cyan/30' : 'text-text-muted hover:text-white hover:bg-white/5 rounded-t-lg'}`}
             >
-              すべて (総合)
+              すべて
               {speedFilter === 'all' && <div className="absolute -bottom-[1px] left-0 right-0 h-[2px] bg-cyan shadow-[0_0_10px_rgba(0,229,255,0.8)]" />}
             </button>
             <button 
               onClick={() => setSpeedFilter('10g')} 
               className={`relative px-6 py-3 font-bold text-sm transition-all whitespace-nowrap ${speedFilter === '10g' ? 'text-cyan bg-cyan/10 rounded-t-lg border-t border-x border-cyan/30' : 'text-text-muted hover:text-white hover:bg-white/5 rounded-t-lg'}`}
             >
-              10G対応プラン (最強環境)
+              10Gプラン
               {speedFilter === '10g' && <div className="absolute -bottom-[1px] left-0 right-0 h-[2px] bg-cyan shadow-[0_0_10px_rgba(0,229,255,0.8)]" />}
             </button>
             <button 
               onClick={() => setSpeedFilter('1g')} 
               className={`relative px-6 py-3 font-bold text-sm transition-all whitespace-nowrap ${speedFilter === '1g' ? 'text-cyan bg-cyan/10 rounded-t-lg border-t border-x border-cyan/30' : 'text-text-muted hover:text-white hover:bg-white/5 rounded-t-lg'}`}
             >
-              1G・標準プラン (コスパ重視)
+              1G・標準プラン
               {speedFilter === '1g' && <div className="absolute -bottom-[1px] left-0 right-0 h-[2px] bg-cyan shadow-[0_0_10px_rgba(0,229,255,0.8)]" />}
             </button>
           </div>

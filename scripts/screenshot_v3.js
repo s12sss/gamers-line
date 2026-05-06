@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer');
+const fs = require('fs');
 const path = require('path');
 
 async function main() {
@@ -8,9 +9,11 @@ async function main() {
   // Set viewport large enough to fit everything
   await page.setViewport({ width: 1400, height: 1000, deviceScaleFactor: 2 });
   
-  const fileUri = 'file:///' + 'C:/Users/shun/Downloads/Gamers Line - 10G Article Thumbnail.html'.replace(/\\/g, '/');
-  console.log('Loading:', fileUri);
-  await page.goto(fileUri, { waitUntil: 'networkidle0' });
+  const filePath = "C:\\Users\\shun\\Downloads\\Gamers Line - 10G Article Thumbnail.html";
+  const html = fs.readFileSync(filePath, 'utf8');
+  
+  // set content directly
+  await page.setContent(html, { waitUntil: 'networkidle0' });
   
   // Wait for all custom fonts to load properly
   await page.evaluate(() => document.fonts.ready);
@@ -18,7 +21,7 @@ async function main() {
   // Target the specific 1200x630 frame element
   const element = await page.$('.img-frame');
   
-  const outPath = path.join(__dirname, '../public/10g-article-thumbnail.png');
+  const outPath = path.join(__dirname, '../public/10g-article-thumbnail-v3.png');
   await element.screenshot({ path: outPath });
   
   console.log('Saved element screenshot to:', outPath);
