@@ -10,9 +10,28 @@ export const revalidate = 60; // 60 seconds ISR
 export default async function Home() {
   const allColumns = await getColumnsList();
   const columns = allColumns ? allColumns.slice(0, 3) : [];
+  const websiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: "Gamer's Line",
+    url: 'https://gamers-line.jp/',
+    description: 'Ping値と実質料金の最適解を導き出す、FPSゲーマー特化型の光回線・Ping改善診断メディア。',
+    publisher: {
+      '@type': 'Organization',
+      name: "Gamer's Line 編集部",
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://gamers-line.jp/ogp-image.png'
+      }
+    }
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground font-sans">
-
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
       {/* Hero Section */}
       <section className="relative flex flex-col items-center justify-center text-center px-4 pt-[120px] pb-[100px] overflow-hidden">
         {/* Ambient blobs */}

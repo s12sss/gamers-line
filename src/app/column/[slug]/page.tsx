@@ -70,12 +70,43 @@ export default async function ColumnArticle({ params }: Props) {
     }
   } : null;
 
+  const breadcrumbJsonLd = column ? {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'HOME',
+        item: 'https://gamers-line.jp/'
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'COLUMN',
+        item: 'https://gamers-line.jp/column'
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: column.title,
+        item: `https://gamers-line.jp/column/${column.id}`
+      }
+    ]
+  } : null;
+
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground font-sans">
       {jsonLd && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      )}
+      {breadcrumbJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
         />
       )}
       <ScrollProgress />
