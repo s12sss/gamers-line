@@ -64,7 +64,7 @@
   },
   {
     "id": "nuro_hikari_2g",
-    "name": "NURO 光 (2ギガ)",
+    "name": "NURO 光 (2G)",
     "providerName": "ソニーネットワークコミュニケーションズ",
     "type": "独自回線",
     "max_speed_gbps": 2,
@@ -180,7 +180,7 @@
   },
   {
     "id": "au_hikari_1g",
-    "name": "au ひかり (1ギガ)",
+    "name": "au ひかり (1G)",
     "providerName": "KDDI株式会社",
     "type": "独自回線",
     "max_speed_gbps": 1,
@@ -348,7 +348,7 @@
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+4FK6WI+B4+2NBPO2",
     "detailLink": "/provider",
     "id": "biglobe_hikari_1g",
-    "name": "ビッグローブ光 (1ギガ)",
+    "name": "ビッグローブ光 (1G)",
     "max_speed_gbps": 1,
     "avg_ping_ms": 20,
     "avg_dl_speed_mbps": 280,
@@ -428,7 +428,7 @@
   },
   {
     "id": "docomo_hikari_1g",
-    "name": "ドコモ光 (1ギガ)",
+    "name": "ドコモ光 (1G)",
     "providerName": "NTTドコモ",
     "type": "コラボ光",
     "max_speed_gbps": 1,
@@ -553,7 +553,7 @@
   },
   {
     "id": "softbank_hikari_1g",
-    "name": "ソフトバンク光 (1ギガ)",
+    "name": "ソフトバンク光 (1G)",
     "providerName": "ソフトバンク株式会社",
     "type": "コラボ光",
     "max_speed_gbps": 1,
@@ -639,55 +639,6 @@
       }
     ],
     "tags": [
-      "東海限定",
-      "独自回線",
-      "超低Ping"
-    ],
-    "badges": [],
-    "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+41V7ZM+42Y0+BX3J6",
-    "detailLink": "/provider",
-    "description": "東海地方（愛知・岐阜・三重・静岡）限定の最強ゲーミング回線。自社独自の光ファイバー網を使用しているため、NURO光に匹敵する低Pingと安定性を誇ります。",
-    "pros": [
-      "東海地方でトップクラスのPing値",
-      "au/UQスマホとのセット割あり",
-      "独自回線のため夜間もラグりにくい"
-    ],
-    "cons": [
-      "東海地方（一部長野等）でしか使えない",
-      "解約時の撤去工事費に注意が必要"
-    ],
-    "id": "commufa_hikari_1g",
-    "name": "コミュファ光 (1ギガ)",
-    "max_speed_gbps": 1,
-    "avg_ping_ms": 12,
-    "avg_dl_speed_mbps": 600,
-    "actual_monthly_fee_jpy": 5940,
-    "stability_score": 90,
-    "vdsl_support": false
-  },
-  {
-    "providerName": "中部テレコミュニケーション",
-    "type": "独自回線",
-    "mobile_discount": [
-      "au",
-      "uq_mobile"
-    ],
-    "available_housing": [
-      "house",
-      "mansion_optical"
-    ],
-    "regions": [
-      "tokai"
-    ],
-    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
-    "discounts": [
-      {
-        "carrier": "au",
-        "amount": 1100,
-        "name": "auスマートバリュー"
-      }
-    ],
-    "tags": [
       "10G対応",
       "東海限定",
       "独自回線",
@@ -716,55 +667,53 @@
     "vdsl_support": false
   },
   {
-    "id": "gamewith_hikari_1g",
-    "name": "GameWith光 (1ギガ)",
-    "providerName": "株式会社GameWith",
-    "type": "専用帯域",
-    "max_speed_gbps": 1,
-    "avg_ping_ms": 12,
-    "avg_dl_speed_mbps": 400,
-    "mobile_discount": [],
+    "providerName": "中部テレコミュニケーション",
+    "type": "独自回線",
+    "mobile_discount": [
+      "au",
+      "uq_mobile"
+    ],
     "available_housing": [
       "house",
-      "mansion_optical",
-      "mansion_vdsl"
+      "mansion_optical"
     ],
     "regions": [
-      "hokkaido",
-      "tohoku",
-      "kanto",
-      "tokai",
-      "kansai",
-      "chugoku",
-      "shikoku",
-      "kyushu",
-      "okinawa"
+      "tokai"
     ],
-    "actual_monthly_fee_jpy": 6160,
-    "stability_score": 92,
-    "vdsl_support": true,
     "cashback_text": "高額キャッシュバックキャンペーン実施中！",
-    "discounts": [],
+    "discounts": [
+      {
+        "carrier": "au",
+        "amount": 1100,
+        "name": "auスマートバリュー"
+      }
+    ],
     "tags": [
-      "専用帯域",
-      "プロゲーマー仕様",
-      "ラグゼロ"
+      "東海限定",
+      "独自回線",
+      "超低Ping"
     ],
-    "badges": [
-      "GAMER専用"
-    ],
-    "description": "国内最大級のゲームメディア「GameWith」が提供する、ゲーマーのための専用光回線。専用帯域を確保しているため、夜間の混雑時でもラグが発生しにくい。",
+    "badges": [],
+    "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+41V7ZM+42Y0+BX3J6",
+    "detailLink": "/provider",
+    "description": "東海地方（愛知・岐阜・三重・静岡）限定の最強ゲーミング回線。自社独自の光ファイバー網を使用しているため、NURO光に匹敵する低Pingと安定性を誇ります。",
     "pros": [
-      "ゲーマー専用の帯域確保で混雑に強い",
-      "各ゲームサーバーへの直結ルーティング",
-      "VDSLマンションでも契約可能"
+      "東海地方でトップクラスのPing値",
+      "au/UQスマホとのセット割あり",
+      "独自回線のため夜間もラグりにくい"
     ],
     "cons": [
-      "スマホとのセット割引がない",
-      "月額料金がやや高め"
+      "東海地方（一部長野等）でしか使えない",
+      "解約時の撤去工事費に注意が必要"
     ],
-    "affiliateLink": "#",
-    "detailLink": "/provider"
+    "id": "commufa_hikari_1g",
+    "name": "コミュファ光 (1G)",
+    "max_speed_gbps": 1,
+    "avg_ping_ms": 12,
+    "avg_dl_speed_mbps": 600,
+    "actual_monthly_fee_jpy": 5940,
+    "stability_score": 90,
+    "vdsl_support": false
   },
   {
     "id": "gamewith_hikari_10g",
@@ -819,53 +768,55 @@
     "detailLink": "/provider"
   },
   {
-    "id": "pikara_hikari_1g",
-    "name": "ピカラ光 (1ギガ)",
-    "providerName": "STNet",
-    "type": "独自回線",
+    "id": "gamewith_hikari_1g",
+    "name": "GameWith光 (1G)",
+    "providerName": "株式会社GameWith",
+    "type": "専用帯域",
     "max_speed_gbps": 1,
-    "avg_ping_ms": 14,
-    "avg_dl_speed_mbps": 450,
-    "mobile_discount": [
-      "au",
-      "uq_mobile"
-    ],
+    "avg_ping_ms": 12,
+    "avg_dl_speed_mbps": 400,
+    "mobile_discount": [],
     "available_housing": [
       "house",
-      "mansion_optical"
+      "mansion_optical",
+      "mansion_vdsl"
     ],
     "regions": [
-      "shikoku"
+      "hokkaido",
+      "tohoku",
+      "kanto",
+      "tokai",
+      "kansai",
+      "chugoku",
+      "shikoku",
+      "kyushu",
+      "okinawa"
     ],
-    "actual_monthly_fee_jpy": 5720,
-    "stability_score": 88,
-    "vdsl_support": false,
+    "actual_monthly_fee_jpy": 6160,
+    "stability_score": 92,
+    "vdsl_support": true,
     "cashback_text": "高額キャッシュバックキャンペーン実施中！",
-    "discounts": [
-      {
-        "carrier": "au",
-        "amount": 1100,
-        "name": "auスマートバリュー"
-      }
-    ],
+    "discounts": [],
     "tags": [
-      "四国限定",
-      "独自回線",
-      "auスマホ割"
+      "専用帯域",
+      "プロゲーマー仕様",
+      "ラグゼロ"
     ],
-    "badges": [],
-    "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+5QLFOY+348K+1ZGG0Y",
-    "detailLink": "/provider",
-    "description": "四国地方（香川・徳島・高知・愛媛）にお住まいのゲーマーならコレ一択。四国電力グループの独自回線網を使用し、圧倒的な安定感を実現。",
+    "badges": [
+      "GAMER専用"
+    ],
+    "description": "国内最大級のゲームメディア「GameWith」が提供する、ゲーマーのための専用光回線。専用帯域を確保しているため、夜間の混雑時でもラグが発生しにくい。",
     "pros": [
-      "四国エリアで最強の通信品質",
-      "独自回線のため混雑に強い",
-      "四国電力とのセット割でさらに安くなる"
+      "ゲーマー専用の帯域確保で混雑に強い",
+      "各ゲームサーバーへの直結ルーティング",
+      "VDSLマンションでも契約可能"
     ],
     "cons": [
-      "四国エリア外では使えない",
-      "マンションへの導入済み物件が少なめ"
-    ]
+      "スマホとのセット割引がない",
+      "月額料金がやや高め"
+    ],
+    "affiliateLink": "#",
+    "detailLink": "/provider"
   },
   {
     "id": "pikara_hikari_10g",
@@ -918,13 +869,13 @@
     ]
   },
   {
-    "id": "megaegg_hikari_1g",
-    "name": "メガ・エッグ (1ギガ)",
-    "providerName": "エネルギア・コミュニケーションズ",
+    "id": "pikara_hikari_1g",
+    "name": "ピカラ光 (1G)",
+    "providerName": "STNet",
     "type": "独自回線",
     "max_speed_gbps": 1,
-    "avg_ping_ms": 15,
-    "avg_dl_speed_mbps": 400,
+    "avg_ping_ms": 14,
+    "avg_dl_speed_mbps": 450,
     "mobile_discount": [
       "au",
       "uq_mobile"
@@ -934,10 +885,10 @@
       "mansion_optical"
     ],
     "regions": [
-      "chugoku"
+      "shikoku"
     ],
-    "actual_monthly_fee_jpy": 4620,
-    "stability_score": 87,
+    "actual_monthly_fee_jpy": 5720,
+    "stability_score": 88,
     "vdsl_support": false,
     "cashback_text": "高額キャッシュバックキャンペーン実施中！",
     "discounts": [
@@ -948,21 +899,22 @@
       }
     ],
     "tags": [
-      "中国地方限定",
+      "四国限定",
       "独自回線",
       "auスマホ割"
     ],
     "badges": [],
-    "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+5R6VAQ+348K+2BDR9U",
+    "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+5QLFOY+348K+1ZGG0Y",
     "detailLink": "/provider",
-    "description": "中国地方（広島・岡山・山口・島根・鳥取）のゲーマー定番回線。中国電力グループの独自ファイバーを利用しているため、夜間でも安定したPingを維持します。",
+    "description": "四国地方（香川・徳島・高知・愛媛）にお住まいのゲーマーならコレ一択。四国電力グループの独自回線網を使用し、圧倒的な安定感を実現。",
     "pros": [
-      "中国エリアで非常に高い安定性",
-      "中国電力とのセットで永年割引",
-      "独自回線ならではの低Ping"
+      "四国エリアで最強の通信品質",
+      "独自回線のため混雑に強い",
+      "四国電力とのセット割でさらに安くなる"
     ],
     "cons": [
-      "中国エリア外では使えない"
+      "四国エリア外では使えない",
+      "マンションへの導入済み物件が少なめ"
     ]
   },
   {
@@ -1015,20 +967,27 @@
     ]
   },
   {
-    "providerName": "株式会社オプテージ",
+    "id": "megaegg_hikari_1g",
+    "name": "メガ・エッグ (1G)",
+    "providerName": "エネルギア・コミュニケーションズ",
     "type": "独自回線",
+    "max_speed_gbps": 1,
+    "avg_ping_ms": 15,
+    "avg_dl_speed_mbps": 400,
     "mobile_discount": [
       "au",
-      "uq_mobile",
-      "mineo"
+      "uq_mobile"
     ],
     "available_housing": [
       "house",
       "mansion_optical"
     ],
     "regions": [
-      "kansai"
+      "chugoku"
     ],
+    "actual_monthly_fee_jpy": 4620,
+    "stability_score": 87,
+    "vdsl_support": false,
     "cashback_text": "高額キャッシュバックキャンペーン実施中！",
     "discounts": [
       {
@@ -1038,31 +997,22 @@
       }
     ],
     "tags": [
-      "関西限定",
+      "中国地方限定",
       "独自回線",
-      "超低Ping"
+      "auスマホ割"
     ],
     "badges": [],
-    "affiliateLink": "#",
+    "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+5R6VAQ+348K+2BDR9U",
     "detailLink": "/provider",
-    "description": "関西地方（大阪・京都・兵庫・奈良・滋賀・和歌山）で圧倒的なシェアを誇る独自回線。NURO光と同等の低遅延で、関西ゲーマーのド定番です。",
+    "description": "中国地方（広島・岡山・山口・島根・鳥取）のゲーマー定番回線。中国電力グループの独自ファイバーを利用しているため、夜間でも安定したPingを維持します。",
     "pros": [
-      "関西エリア最強クラスのPing値",
-      "独自ファイバー網で混雑しにくい",
-      "au・UQスマホのセット割対応"
+      "中国エリアで非常に高い安定性",
+      "中国電力とのセットで永年割引",
+      "独自回線ならではの低Ping"
     ],
     "cons": [
-      "関西エリア外では使えない",
-      "マンションの設備によっては契約できない"
-    ],
-    "id": "eo_hikari_1g",
-    "name": "eo光 (1ギガ)",
-    "max_speed_gbps": 1,
-    "avg_ping_ms": 13,
-    "avg_dl_speed_mbps": 550,
-    "actual_monthly_fee_jpy": 5448,
-    "stability_score": 89,
-    "vdsl_support": false
+      "中国エリア外では使えない"
+    ]
   },
   {
     "providerName": "株式会社オプテージ",
@@ -1113,6 +1063,56 @@
     "avg_dl_speed_mbps": 1400,
     "actual_monthly_fee_jpy": 6530,
     "stability_score": 93,
+    "vdsl_support": false
+  },
+  {
+    "providerName": "株式会社オプテージ",
+    "type": "独自回線",
+    "mobile_discount": [
+      "au",
+      "uq_mobile",
+      "mineo"
+    ],
+    "available_housing": [
+      "house",
+      "mansion_optical"
+    ],
+    "regions": [
+      "kansai"
+    ],
+    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
+    "discounts": [
+      {
+        "carrier": "au",
+        "amount": 1100,
+        "name": "auスマートバリュー"
+      }
+    ],
+    "tags": [
+      "関西限定",
+      "独自回線",
+      "超低Ping"
+    ],
+    "badges": [],
+    "affiliateLink": "#",
+    "detailLink": "/provider",
+    "description": "関西地方（大阪・京都・兵庫・奈良・滋賀・和歌山）で圧倒的なシェアを誇る独自回線。NURO光と同等の低遅延で、関西ゲーマーのド定番です。",
+    "pros": [
+      "関西エリア最強クラスのPing値",
+      "独自ファイバー網で混雑しにくい",
+      "au・UQスマホのセット割対応"
+    ],
+    "cons": [
+      "関西エリア外では使えない",
+      "マンションの設備によっては契約できない"
+    ],
+    "id": "eo_hikari_1g",
+    "name": "eo光 (1G)",
+    "max_speed_gbps": 1,
+    "avg_ping_ms": 13,
+    "avg_dl_speed_mbps": 550,
+    "actual_monthly_fee_jpy": 5448,
+    "stability_score": 89,
     "vdsl_support": false
   }
 ]
