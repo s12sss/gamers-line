@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Tooltip from "@/components/Tooltip";
-import { Activity, ShieldCheck, Wallet, ChevronRight, Play } from 'lucide-react';
+import { Activity, ShieldCheck, Wallet, ChevronRight, Play, MapPin } from 'lucide-react';
 import ispsData from "@/data/isps.json";
 import { getColumnsList } from "@/libs/microcms";
 
@@ -205,7 +205,7 @@ export default async function Home() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           <Link href="/compare" className="group relative p-8 rounded-[20px] bg-cyan/5 border border-cyan/20 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-cyan/40 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(0,229,255,0.07)]">
             <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-cyan/10 text-cyan">
               <Activity className="w-6 h-6" />
@@ -225,6 +225,17 @@ export default async function Home() {
             <p className="text-sm text-text-muted mb-6">主要なゲーミング回線の基本情報、月額料金、Ping値などを一覧で確認。</p>
             <div className="flex items-center text-white/70 text-sm font-bold font-mono tracking-widest group-hover:text-white transition-colors">
               PROVIDERS <ChevronRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
+            </div>
+          </Link>
+
+          <Link href="/area" className="group relative p-8 rounded-[20px] bg-emerald/5 border border-emerald/20 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-emerald/40 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(0,230,118,0.07)]">
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-emerald/10 text-emerald">
+              <MapPin className="w-6 h-6" />
+            </div>
+            <h3 className="font-heading text-xl font-bold tracking-tight mb-2 group-hover:text-emerald transition-colors">エリアカバー率MAP</h3>
+            <p className="text-sm text-text-muted mb-6">日本全国の10G回線普及率や、地域限定の最強ローカル回線をチェック。</p>
+            <div className="flex items-center text-emerald text-sm font-bold font-mono tracking-widest group-hover:text-emerald transition-colors">
+              COVERAGE MAP <ChevronRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
             </div>
           </Link>
         </div>

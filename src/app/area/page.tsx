@@ -72,9 +72,6 @@ export default function JapanCoveragePage() {
                       {regionData.name}エリア
                     </h2>
                   </div>
-                  <div className="px-4 py-2 bg-emerald/10 border border-emerald/30 rounded-full text-emerald text-sm font-bold font-mono animate-pulse">
-                    解析完了
-                  </div>
                 </div>
 
                 {/* Status Grid */}
