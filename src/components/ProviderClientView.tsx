@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { ProviderDetail } from '@/data/providerDetails';
-import { Check, X, ChevronRight, Star } from 'lucide-react';
+import { Check, X, ChevronRight } from 'lucide-react';
 
 type IspData = {
   id: string;
@@ -127,56 +127,6 @@ export default function ProviderClientView({ detail, isps }: Props) {
               </li>
             ))}
           </ul>
-        </div>
-      </div>
-
-      {/* User Reviews */}
-      <div className="mb-16">
-        <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
-          <Star className="w-6 h-6 text-yellow-500 fill-yellow-500" />
-          実際のゲーマーの口コミ
-          <span className="text-xs font-normal text-text-muted border border-white/10 px-2 py-1 rounded-md ml-2 hidden sm:inline-block">価格.com等より要約引用</span>
-        </h3>
-        
-        <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
-          {/* Review 1 */}
-          <div className="bg-white/5 border border-white/10 rounded-2xl p-6 relative">
-            <div className="flex justify-between items-start mb-3">
-              <div className="flex text-yellow-500">
-                <Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" />
-              </div>
-              <span className="text-xs text-text-muted">2024年2月</span>
-            </div>
-            <h4 className="font-bold text-white mb-2">Pingが一桁でパケロスも無し！</h4>
-            <p className="text-sm text-text-muted leading-relaxed mb-4">
-              FPSゲーマーですが、今まで使っていたコラボ光から{detail.name}に乗り換えて大正解でした。夜21時以降でもPingが10ms前後で安定しており、撃ち合いでの理不尽な負けが完全に無くなりました。
-            </p>
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded-full bg-cyan/20 flex items-center justify-center text-[10px] text-cyan font-bold">G</div>
-              <span className="text-xs font-mono text-text-muted">FPS廃人さん（戸建てプラン）</span>
-            </div>
-          </div>
-          
-          {/* Review 2 */}
-          <div className="bg-white/5 border border-white/10 rounded-2xl p-6 relative">
-            <div className="flex justify-between items-start mb-3">
-              <div className="flex text-yellow-500">
-                <Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 fill-current" /><Star className="w-4 h-4 text-white/20" />
-              </div>
-              <span className="text-xs text-text-muted">2023年11月</span>
-            </div>
-            <h4 className="font-bold text-white mb-2">速度は最高だが開通までが長い</h4>
-            <p className="text-sm text-text-muted leading-relaxed mb-4">
-              ゲームの大型アプデも爆速で終わるようになり、通信品質には100点満点をあげられます。ただ、申し込みから実際の開通工事までに1ヶ月近く待たされたのがネックでした。早めの申し込みを推奨します。
-            </p>
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center text-[10px] text-purple-400 font-bold">K</div>
-              <span className="text-xs font-mono text-text-muted">価格コムユーザーさん</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Detailed Body Content */}
       <div className="bg-[#050505] border border-white/10 rounded-3xl p-6 sm:p-12 mb-16 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
         {detail.bodyContent}
