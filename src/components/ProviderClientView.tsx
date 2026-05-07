@@ -60,7 +60,7 @@ export default function ProviderClientView({ detail, isps }: Props) {
       )}
 
       {/* Spec Radar / Grid */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
         <div className="bg-[#050505] border border-white/10 rounded-2xl p-6 relative overflow-hidden group hover:border-cyan/30 transition-colors">
           <div className="absolute inset-0 bg-gradient-to-br from-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
           <div className="text-text-muted text-xs font-bold tracking-widest mb-2 font-mono">AVG PING</div>
@@ -89,6 +89,15 @@ export default function ProviderClientView({ detail, isps }: Props) {
             {activeIsp.stability_score}<span className="text-lg text-text-muted ml-1">/100</span>
           </div>
         </div>
+      </div>
+
+      <div className="flex flex-col gap-2 mb-12 px-2">
+        <p className="text-[0.7rem] sm:text-xs text-text-muted/80 leading-relaxed">
+          ※ <strong className="text-yellow-500/80">STABILITY（安定性スコア）</strong> は、Ping値の変動幅・パケットロスト率・夜間帯の混雑による速度低下率など、ゲーマーにとって致命的となる要素を総合的に評価した100点満点の独自指標です。
+        </p>
+        <p className="text-[0.7rem] sm:text-xs text-text-muted/80 leading-relaxed">
+          ※ <strong className="text-purple-400/80">実質月額</strong> は「戸建てプラン」の標準的な料金目安です。マンションなどの集合住宅にお住まいの場合や、各社の期間限定キャンペーン・スマホセット割の適用により、実際の負担額はさらに安くなる場合があります。
+        </p>
       </div>
 
       {/* Pros & Cons */}
