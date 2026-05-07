@@ -25,6 +25,7 @@ export default function Header() {
   const navLinks = [
     { name: "比較する", href: "/compare" },
     { name: "回線一覧", href: "/provider" },
+    { name: "エリアMAP", href: "/area" },
     { name: "コラム", href: "/column" },
   ];
 

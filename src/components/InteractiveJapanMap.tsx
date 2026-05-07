@@ -100,7 +100,8 @@ export default function InteractiveJapanMap({ selectedRegion, onRegionSelect }: 
             animate={{ opacity: 1 }}
             className="absolute bottom-6 left-1/2 -translate-x-1/2 px-6 py-2.5 bg-black/80 border border-white/10 rounded-full backdrop-blur-md pointer-events-none"
           >
-            <p className="text-sm text-text-muted flex items-center gap-2">
+            <p className="text-sm font-bold text-white tracking-wider flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-cyan/80"></span>
               エリアをタップして確認
             </p>
           </motion.div>
