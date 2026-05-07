@@ -182,11 +182,12 @@ export default function ProviderPage() {
                         準備中 <ChevronRight className="w-3.5 h-3.5 opacity-50" />
                       </span>
                     )}
-                    {/* 評判・詳細ページ未実装のため一時非表示
-                    <Link href={isp.detailLink} className="inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl border border-white/10 text-text-muted font-medium text-[0.825rem] transition-all hover:border-cyan/30 hover:text-text hover:bg-cyan/5">
-                      評判・詳細を見る
-                    </Link>
-                    */}
+                    {/* 評判・詳細ページへのリンク */}
+                    {['nuro_hikari_10g', 'nuro_hikari_2g', 'gamewith_hikari_10g', 'gamewith_hikari_1g', 'eo_hikari_10g', 'eo_hikari_1g', 'au_hikari_10g', 'au_hikari_1g', 'docomo_hikari_10g', 'docomo_hikari_1g'].includes(isp.id) && (
+                      <Link href={`/provider/${isp.id.split('_')[0]}`} className="inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl border border-white/10 text-text-muted font-medium text-[0.825rem] transition-all hover:border-cyan/30 hover:text-text hover:bg-cyan/5 flex-1">
+                        評判・詳細を見る
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>
