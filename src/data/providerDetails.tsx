@@ -192,45 +192,45 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
   'docomo': {
     slug: 'docomo',
     name: 'ドコモ光',
-    catchphrase: 'プロバイダ「OCN」のTier1バックボーンで光コラボ最高峰の安定性',
-    heroDescription: 'NTTのフレッツ網を利用する全国対応の光コラボ回線ですが、プロバイダとして「OCNインターネット」を選択することで、世界最高水準のネットワーク基盤（Tier1）に直結できます。ドコモユーザーなら一択の回線です。',
+    catchphrase: 'プロバイダ「GMOとくとくBB」で速度と高額還元を両立。ドコモユーザー最強の選択',
+    heroDescription: 'NTTのフレッツ網を利用する全国対応の光コラボ回線ですが、プロバイダとして「GMOとくとくBB」を選択することで、最新のv6プラス通信による超低遅延と、業界最高クラスの高額キャッシュバックを同時に手に入れることができます。',
     ispIds: ['docomo_hikari_10g', 'docomo_hikari_1g'],
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 flex items-center gap-3">
-            <span className="text-cyan font-mono text-xl">01.</span> 世界最高水準「Tier1」バックボーンの強み
+            <span className="text-cyan font-mono text-xl">01.</span> ドコモ光は「GMOとくとくBB」が最強な理由
           </h2>
           <div className="bg-white/5 border border-white/10 p-6 rounded-2xl mb-6">
-            <h3 className="text-lg font-bold text-emerald mb-3">プロバイダ選びが運命を分ける</h3>
+            <h3 className="text-lg font-bold text-emerald mb-3">v6プラス（IPv4 over IPv6）で混雑を徹底回避</h3>
             <p>
-              ドコモ光はプロバイダを複数から選べますが、ゲーマーが選ぶべきは圧倒的に<strong>「OCNインターネット」</strong>です。OCNは世界でも限られた事業者しか持てない「Tier1」というインターネットの最上位ネットワーク網を持っています。データの経由地が少なくなるため、光コラボでありながら極めて安定した通信を実現します。
+              ドコモ光は20社以上のプロバイダから選べますが、ゲーマーが選ぶべきは圧倒的に<strong>「GMOとくとくBB」</strong>です。次世代の通信方式である「v6プラス」に標準対応しており、利用者が集中して回線が重くなる夜間帯でも、専用の空いているルートを通るためPing値が跳ね上がるのを防ぎます。
             </p>
           </div>
         </section>
 
         <section>
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 flex items-center gap-3">
-            <span className="text-cyan font-mono text-xl">02.</span> Wi-Fi 7ルーターが激安＆ドコモセット割
+            <span className="text-cyan font-mono text-xl">02.</span> ゲーミングルーター無料＆ドコモセット割
           </h2>
           <div className="grid sm:grid-cols-2 gap-4 mt-6">
             <div className="border border-white/10 bg-white/5 p-5 rounded-xl">
-              <h4 className="font-bold text-white mb-2">最新ルーターを優待価格で</h4>
-              <p className="text-sm">OCNインターネットを選ぶと、次世代規格である「Wi-Fi 7」対応の高性能ルーターが数千円〜という大幅な優待価格で購入できます。無線でも快適にゲームをしたい方には大きなメリットです。</p>
+              <h4 className="font-bold text-white mb-2">高性能Wi-Fiルーターが0円</h4>
+              <p className="text-sm">GMOとくとくBBを選ぶと、オンラインゲームにも十分対応できるv6プラス対応の高性能Wi-Fiルーターが「無料」でレンタルできます。わざわざ高いルーターを自腹で買う必要がありません。</p>
             </div>
             <div className="border border-white/10 bg-white/5 p-5 rounded-xl">
-              <h4 className="font-bold text-white mb-2">ドコモユーザーなら絶対コレ</h4>
-              <p className="text-sm">ドコモ光セット割により、ドコモのスマホ料金が毎月最大1,100円割引されます（ahamoは対象外）。他社の独自回線でドコモのセット割が使えるところはないため、ドコモユーザーの最適解となります。</p>
+              <h4 className="font-bold text-white mb-2">ドコモスマホ代が毎月割引</h4>
+              <p className="text-sm">ドコモ光セット割により、ドコモのスマホ料金が毎月最大1,100円割引されます（ahamoは対象外）。家族全員に適用されるため、ドコモユーザーであれば実質的な負担額は他社回線よりも圧倒的に安くなります。</p>
             </div>
           </div>
         </section>
 
         <section>
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 flex items-center gap-3">
-            <span className="text-cyan font-mono text-xl">03.</span> 初期設定をプロにお任せ可能
+            <span className="text-cyan font-mono text-xl">03.</span> 業界トップクラスの高額キャッシュバック
           </h2>
           <p>
-            光回線の導入にあたって、「ルーターの設定」や「IPv6（v6プラス）の接続設定」などが不安な方でも、OCNインターネットなら初回無料で専門スタッフによる「訪問サポート」を受けることができます。
+            GMOとくとくBBの特設ページから申し込むことで、数万円単位の高額キャッシュバックや、他社からの乗り換え違約金還元など、強烈な特典を受け取ることができます。回線品質が良いだけでなく、初期費用を大幅に浮かせることができるため非常にコストパフォーマンスの高い選択肢です。
           </p>
         </section>
       </div>
