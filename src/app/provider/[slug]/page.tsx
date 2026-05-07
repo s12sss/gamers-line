@@ -38,9 +38,6 @@ export default async function ProviderDetailPage({ params }: Props) {
 
         {/* Hero Header */}
         <div className="mb-12 text-center">
-          <div className="inline-block px-4 py-1.5 rounded-full border border-cyan/30 bg-cyan/10 text-xs font-bold text-cyan tracking-widest mb-6">
-            PROVIDER ANALYSIS
-          </div>
           <h1 className="font-heading text-4xl sm:text-6xl font-black text-white mb-6 tracking-tight">
             {detail.name}
           </h1>

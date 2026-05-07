@@ -36,12 +36,12 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
             <span className="text-cyan font-mono text-xl">02.</span> ゲーマーの最適解「eo光シンプルプラン」
           </h2>
           <p className="mb-4">
-            eo光には、ネット回線のみに特化した「eo光シンプルプラン」と、光電話やテレビがセットになった「eo光ネット」の2種類があります。ゲーマーの方に強くおすすめしたいのは<strong>「eo光シンプルプラン（10ギガ）」</strong>です。
+            eo光には、ネット回線のみに特化した「eo光シンプルプラン」と、光電話やテレビがセットになった「eo光ネット」の2種類があります。ゲーマーの方におすすめしたいのは、余計なオプションが省かれた<strong>「eo光シンプルプラン」</strong>です。
           </p>
           <div className="grid sm:grid-cols-2 gap-4 mt-6">
             <div className="border border-cyan/20 bg-cyan/5 p-5 rounded-xl">
-              <h4 className="font-bold text-cyan mb-2">10ギガが他社より圧倒的に安い</h4>
-              <p className="text-sm">他社の10Gbpsプランが月額6,000円〜7,000円台なのに対し、eo光シンプルプランの10ギガは<strong>月額5,500円（税込）</strong>という破格の料金設定です。1ギガ回線とほぼ変わらない料金で、10倍のポテンシャルを持つ回線を手に入れられます。</p>
+              <h4 className="font-bold text-cyan mb-2">1Gプランでも十分すぎる性能と安さ</h4>
+              <p className="text-sm">オンラインゲームは実はそれほど通信帯域を消費しないため、独自の光ファイバー網であるeo光なら<strong>1GプランでもPing一桁の快適なプレイが十分に可能</strong>です。さらに、実質月額も非常に安く抑えられているため、コストパフォーマンスは抜群です。※もちろん、配信や超大容量アップデートを頻繁に行うヘビーユーザー向けの10Gプランも選択可能です。</p>
             </div>
             <div className="border border-white/10 bg-white/5 p-5 rounded-xl">
               <h4 className="font-bold text-white mb-2">au・UQ・mineoユーザーなら更にお得</h4>

@@ -23,9 +23,9 @@ type Props = {
 };
 
 export default function ProviderClientView({ detail, isps }: Props) {
-  // 最初に10Gプランがあればそれを、なければ最初のプランを選択状態にする
+  // デフォルト表示を1G（なければ最初のプラン）にする
   const [activeIspId, setActiveIspId] = useState(
-    isps.find(isp => isp.id.includes('10g'))?.id || isps[0].id
+    isps.find(isp => isp.id.includes('1g') && !isp.id.includes('10g'))?.id || isps[0].id
   );
 
   const activeIsp = isps.find(isp => isp.id === activeIspId) || isps[0];
@@ -38,7 +38,7 @@ export default function ProviderClientView({ detail, isps }: Props) {
           <div className="inline-flex bg-white/5 p-1.5 rounded-full border border-white/10">
             {isps.map(isp => {
               const is10G = isp.id.includes('10g') || isp.max_speed_gbps >= 10;
-              const tabLabel = is10G ? '10Gプラン（推奨）' : '1G・標準プラン';
+              const tabLabel = is10G ? '10Gプラン' : '1Gプラン';
               const isActive = activeIspId === isp.id;
               
               return (
@@ -138,9 +138,6 @@ export default function ProviderClientView({ detail, isps }: Props) {
       {/* Bottom CTA */}
       <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-r from-cyan/20 to-emerald/20 border border-cyan/30 p-8 sm:p-12 text-center group">
         <div className="absolute inset-0 bg-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        <h2 className="text-2xl sm:text-3xl font-black text-white mb-4 relative z-10">
-          {detail.name} でラグのない世界へ
-        </h2>
         <p className="text-[#ffeb3b] font-bold text-sm sm:text-base mb-8 drop-shadow-md relative z-10">
           ＼ {activeIsp.cashback_text} ／
         </p>
