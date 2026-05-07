@@ -35,16 +35,26 @@ export default function JapanCoveragePage() {
 
   return (
     <div className="min-h-screen bg-background pb-20">
-      <div className="max-w-6xl mx-auto pt-24 px-4 mb-12">
-        <div className="text-center mb-8">
-          <h1 className="font-heading text-3xl sm:text-5xl font-black text-white mb-4 tracking-tight">
-            JAPAN <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan to-emerald">COVERAGE MAP</span>
-          </h1>
-          <p className="text-text-muted text-sm sm:text-base max-w-2xl mx-auto">
-            日本全国のゲーミング回線インフラ状況をリアルタイムスキャン。
-            10G回線の普及率や、地域限定の最強ローカル回線の存在が一目でわかります。
-          </p>
+      {/* Page Header */}
+      <div className="relative z-10 max-w-[1100px] mx-auto w-full px-4 sm:px-10 pt-10 pb-8 sm:pt-16 sm:pb-12 overflow-hidden">
+        <div className="absolute -top-[60px] -right-[80px] w-[400px] h-[300px] bg-[radial-gradient(ellipse,rgba(0,229,255,0.08),transparent_70%)] blur-[40px] pointer-events-none" />
+        <div className="relative z-10 font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase opacity-70 mb-4">
+          // AREA COVERAGE
         </div>
+        <h1 className="relative z-10 font-heading text-[clamp(2rem,5vw,3.25rem)] font-bold tracking-tight leading-[1.1] mb-4">
+          エリアカバー率<br />
+          <span className="gradient-text">徹底スキャン</span>
+        </h1>
+        <p className="relative z-10 text-text-muted text-base max-w-[520px] leading-[1.7]">
+          日本全国のゲーミング回線インフラ状況をリアルタイムスキャン。10G回線の普及率や、地域限定の最強ローカル回線の存在が一目でわかります。
+        </p>
+      </div>
+
+      <div className="max-w-[1100px] mx-auto w-full px-4 sm:px-10 mb-8 sm:mb-12">
+        <div className="h-px w-full bg-white/10" />
+      </div>
+
+      <div className="max-w-6xl mx-auto px-4 mb-12">
         
         {/* インタラクティブマップ */}
         <InteractiveJapanMap selectedRegion={selectedRegion} onRegionSelect={setSelectedRegion} />
