@@ -235,5 +235,110 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
         </section>
       </div>
     )
+  },
+  'softbank': {
+    slug: 'softbank',
+    name: 'ソフトバンク光',
+    catchphrase: 'ソフトバンクユーザーなら外せない、定番の光コラボ',
+    heroDescription: 'ソフトバンク・ワイモバイルユーザーならセット割でお得になる光コラボレーション回線です。全国どこでも利用でき、他社からの乗り換え時の違約金満額還元など、手厚いキャンペーンが魅力です。',
+    ispIds: ['softbank_hikari_10g', 'softbank_hikari_1g'],
+    bodyContent: (
+      <div className="space-y-12 text-text-muted leading-relaxed">
+        <section>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <span className="text-cyan font-mono text-xl">01.</span> ソフトバンクスマホとの強力なセット割
+          </h2>
+          <div className="bg-white/5 border border-white/10 p-6 rounded-2xl mb-6">
+            <p>
+              「おうち割 光セット」により、家族全員のソフトバンク・ワイモバイルのスマホ料金が毎月割引されます。NURO光が提供エリア外のソフトバンクユーザーにとって、第一の選択肢となります。（※詳細な情報は順次アップデート予定です）
+            </p>
+          </div>
+        </section>
+      </div>
+    )
+  },
+  'biglobe': {
+    slug: 'biglobe',
+    name: 'BIGLOBE光',
+    catchphrase: 'au・UQユーザーのもう一つの選択肢',
+    heroDescription: 'KDDIグループの老舗プロバイダ「BIGLOBE」が提供する光コラボ回線です。auひかりの提供エリア外でも、auやUQモバイルのセット割を適用できる全国対応の回線です。',
+    ispIds: ['biglobe_hikari_10g', 'biglobe_hikari_1g'],
+    bodyContent: (
+      <div className="space-y-12 text-text-muted leading-relaxed">
+        <section>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <span className="text-cyan font-mono text-xl">01.</span> IPv6オプションで安定した通信
+          </h2>
+          <div className="bg-white/5 border border-white/10 p-6 rounded-2xl mb-6">
+            <p>
+              IPv6(IPoE)方式での接続に標準対応しており、光コラボの弱点である夜間の混雑を回避できます。auひかりが導入できないマンションなどにお住まいのauユーザーに最適です。（※詳細な情報は順次アップデート予定です）
+            </p>
+          </div>
+        </section>
+      </div>
+    )
+  },
+  'commufa': {
+    slug: 'commufa',
+    name: 'コミュファ光',
+    catchphrase: '東海エリア最強の独自回線',
+    heroDescription: '東海エリア（愛知・岐阜・三重・静岡・長野）限定で提供されている独自回線です。ゲーマーに特化した専用プランがあり、低Ping・パケットロストゼロの最強環境を構築できます。',
+    ispIds: ['commufa_hikari_10g', 'commufa_hikari_1g'],
+    bodyContent: (
+      <div className="space-y-12 text-text-muted leading-relaxed">
+        <section>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <span className="text-cyan font-mono text-xl">01.</span> 東海地方ゲーマーの特権
+          </h2>
+          <div className="bg-white/5 border border-white/10 p-6 rounded-2xl mb-6">
+            <p>
+              独自の光ファイバー網を利用しているため、フレッツ光系の回線とは異なり混雑に非常に強いです。東海エリアに住んでいるゲーマーであれば、迷わず候補に入れたいトップクラスの回線です。（※詳細な情報は順次アップデート予定です）
+            </p>
+          </div>
+        </section>
+      </div>
+    )
+  },
+  'pikara': {
+    slug: 'pikara',
+    name: 'ピカラ光',
+    catchphrase: '四国エリアで安定感抜群の独自網',
+    heroDescription: '四国電力グループが提供する四国エリア限定の独自回線です。四国地方での圧倒的なシェアと、auスマホとのセット割が魅力の地域密着型サービスです。',
+    ispIds: ['pikara_hikari_10g', 'pikara_hikari_1g'],
+    bodyContent: (
+      <div className="space-y-12 text-text-muted leading-relaxed">
+        <section>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <span className="text-cyan font-mono text-xl">01.</span> 四国地方での高い顧客満足度
+          </h2>
+          <div className="bg-white/5 border border-white/10 p-6 rounded-2xl mb-6">
+            <p>
+              地域限定の独自回線ならではの安定した通信速度と、手厚いサポートが特徴です。四国エリアにお住まいのauユーザーであれば、通信費を抑えつつ快適なゲーム環境が手に入ります。（※詳細な情報は順次アップデート予定です）
+            </p>
+          </div>
+        </section>
+      </div>
+    )
+  },
+  'megaegg': {
+    slug: 'megaegg',
+    name: 'メガ・エッグ',
+    catchphrase: '中国エリアの快適ゲームライフを支える独自回線',
+    heroDescription: '中国電力グループが提供する中国エリア限定の光回線サービスです。他県からの影響を受けにくい独自のネットワーク網で、安定した通信と低Pingを実現します。',
+    ispIds: ['megaegg_hikari_10g', 'megaegg_hikari_1g'],
+    bodyContent: (
+      <div className="space-y-12 text-text-muted leading-relaxed">
+        <section>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <span className="text-cyan font-mono text-xl">01.</span> 中国地方のゲーマーにおすすめ
+          </h2>
+          <div className="bg-white/5 border border-white/10 p-6 rounded-2xl mb-6">
+            <p>
+              全国規模の回線にありがちな、主要都市のトラフィック増大による速度低下の影響を受けにくいため、中国エリア内で安定したゲームプレイが可能です。（※詳細な情報は順次アップデート予定です）
+            </p>
+          </div>
+        </section>
+      </div>
+    )
   }
 };

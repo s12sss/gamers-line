@@ -4,6 +4,7 @@ import { ChevronRight, Play } from "lucide-react";
 import ispsData from "@/data/isps.json";
 import { useState } from "react";
 import Tooltip from "@/components/Tooltip";
+import { PROVIDER_DETAILS } from "@/data/providerDetails";
 
 export default function ProviderPage() {
   const [speedFilter, setSpeedFilter] = useState<'all' | '10g' | '1g'>('all');
@@ -183,7 +184,7 @@ export default function ProviderPage() {
                       </span>
                     )}
                     {/* 評判・詳細ページへのリンク */}
-                    {['nuro_hikari_10g', 'nuro_hikari_2g', 'gamewith_hikari_10g', 'gamewith_hikari_1g', 'eo_hikari_10g', 'eo_hikari_1g', 'au_hikari_10g', 'au_hikari_1g', 'docomo_hikari_10g', 'docomo_hikari_1g'].includes(isp.id) && (
+                    {Object.keys(PROVIDER_DETAILS).includes(isp.id.split('_')[0]) && (
                       <Link href={`/provider/${isp.id.split('_')[0]}`} className="inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl border border-white/10 text-text-muted font-medium text-[0.825rem] transition-all hover:border-cyan/30 hover:text-text hover:bg-cyan/5 flex-1">
                         評判・詳細を見る
                       </Link>
