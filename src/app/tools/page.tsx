@@ -29,17 +29,24 @@ export default function ToolsPage() {
           </p>
         </div>
 
-        <div className="w-full mb-10 sm:mb-12">
-          <div className="h-px w-full bg-white/10" />
+        <div className="w-full mb-8 sm:mb-10">
+          <div className="flex flex-wrap items-center gap-3">
+            <a href="#simulator" className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-bold text-text-muted hover:text-white hover:border-cyan/50 hover:bg-cyan/5 transition-all">
+              ↓ 乗り換え損益シミュレーター
+            </a>
+            <a href="#reminder" className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-bold text-text-muted hover:text-white hover:border-emerald/50 hover:bg-emerald/5 transition-all">
+              ↓ キャッシュバックリマインダー
+            </a>
+          </div>
         </div>
 
         {/* Tools Container */}
-        <div className="space-y-12">
-          <section>
+        <div className="space-y-16">
+          <section id="simulator" className="scroll-mt-24">
             <SwitchingSimulator />
           </section>
           
-          <section>
+          <section id="reminder" className="scroll-mt-24">
             <CashbackReminder />
           </section>
         </div>

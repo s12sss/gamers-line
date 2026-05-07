@@ -99,12 +99,12 @@ export default function SwitchingSimulator() {
               <div className="font-mono text-[0.7rem] text-cyan tracking-[0.2em] mb-2 uppercase">SYSTEM VERDICT</div>
               {isSwitchBetter ? (
                 <>
-                  <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">今すぐ乗り換えた方がお得！</h3>
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 whitespace-nowrap tracking-tight">今すぐ乗り換えた方がお得！</h3>
                   <p className="text-sm text-text-muted">違約金を払っても、キャッシュバックと月額差額で回収できます。</p>
                 </>
               ) : (
                 <>
-                  <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">更新月まで待つのが無難です</h3>
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 whitespace-nowrap tracking-tight">更新月まで待つのが無難です</h3>
                   <p className="text-sm text-text-muted">現在の条件では、今すぐ乗り換えるとトータルで損になります。</p>
                 </>
               )}
