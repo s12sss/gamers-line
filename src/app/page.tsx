@@ -137,9 +137,9 @@ export default async function Home() {
             <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-purple-500/10 text-purple-400">
               <Wallet className="w-6 h-6" />
             </div>
-            <h3 className="font-heading text-lg font-bold tracking-tight mb-3">実質料金を透明化</h3>
+            <h3 className="font-heading text-lg font-bold tracking-tight mb-3">忖度なしの厳選プロバイダ</h3>
             <p className="text-sm text-text-muted leading-[1.7]">
-              「結局、月々いくら払うの？」という疑問を解決。複雑なスマホセット割やキャッシュバック額を加味して、あなたにとって本当に安くて速い<Tooltip text="月額料金に加えて、初期費用やキャッシュバックなどを全て含めて月割にした、本当の月額料金です。">実質料金</Tooltip>を提示します。
+              無数にある光回線の中から、オンラインゲームのプレイに本当に適した（Ping値が低く安定している）プロバイダだけを厳選。<Tooltip text="お使いのスマートフォンと同じキャリアの回線を選ぶことで、月額料金が毎月割引されるお得な制度です。">スマホセット割</Tooltip>にも対応し、コスパと性能を両立した回線が見つかります。
             </p>
           </div>
         </div>
