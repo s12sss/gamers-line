@@ -26,10 +26,10 @@ export default function JapanCoveragePage() {
 
   const renderStatusText = (status: 'AVAILABLE' | 'COVERED' | 'LIMITED' | 'UNAVAILABLE') => {
     switch (status) {
-      case 'AVAILABLE': return <span className="text-emerald font-bold font-mono">AVAILABLE</span>;
-      case 'COVERED': return <span className="text-emerald font-bold font-mono">COVERED</span>;
-      case 'LIMITED': return <span className="text-yellow-500 font-bold font-mono">LIMITED</span>;
-      case 'UNAVAILABLE': return <span className="text-red-500 font-bold font-mono">UNAVAILABLE</span>;
+      case 'AVAILABLE': return <span className="text-emerald font-bold">提供エリア内</span>;
+      case 'COVERED': return <span className="text-emerald font-bold">提供エリア内</span>;
+      case 'LIMITED': return <span className="text-yellow-500 font-bold">一部エリア対応</span>;
+      case 'UNAVAILABLE': return <span className="text-red-500 font-bold">エリア外</span>;
     }
   };
 
@@ -73,7 +73,7 @@ export default function JapanCoveragePage() {
                     </h2>
                   </div>
                   <div className="px-4 py-2 bg-emerald/10 border border-emerald/30 rounded-full text-emerald text-sm font-bold font-mono animate-pulse">
-                    ANALYSIS COMPLETE
+                    解析完了
                   </div>
                 </div>
 
@@ -121,12 +121,12 @@ export default function JapanCoveragePage() {
                       {regionData.status.localIsp ? (
                         <>
                           <ShieldCheck className="w-5 h-5 text-emerald" />
-                          <span className="text-emerald font-bold font-mono">DETECTED: {regionData.status.localIsp}</span>
+                          <span className="text-emerald font-bold">推奨：{regionData.status.localIsp}</span>
                         </>
                       ) : (
                         <>
                           <XCircle className="w-5 h-5 text-text-muted" />
-                          <span className="text-text-muted font-bold font-mono">NONE</span>
+                          <span className="text-text-muted font-bold">特になし</span>
                         </>
                       )}
                     </div>
@@ -145,8 +145,8 @@ export default function JapanCoveragePage() {
 
                 {/* CTA Button */}
                 <div className="flex justify-center">
-                  <Link href="/ranking" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-full transition-all border border-white/20">
-                    全国版の最強回線ランキングを見る
+                  <Link href="/diagnosis-pro-test" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-cyan text-black font-bold rounded-full transition-transform hover:scale-105 shadow-[0_0_20px_rgba(0,229,255,0.3)]">
+                    あなたの環境に最適な回線を診断する
                     <ChevronRight className="w-5 h-5" />
                   </Link>
                 </div>
