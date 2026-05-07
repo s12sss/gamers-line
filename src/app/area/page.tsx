@@ -42,11 +42,11 @@ export default function JapanCoveragePage() {
           // AREA COVERAGE
         </div>
         <h1 className="relative z-10 font-heading text-[clamp(2rem,5vw,3.25rem)] font-bold tracking-tight leading-[1.1] mb-4">
-          地域別<br />
-          <span className="gradient-text">対応エリア確認</span>
+          エリアから<br />
+          <span className="gradient-text">対応回線を探す</span>
         </h1>
         <p className="relative z-10 text-text-muted text-base max-w-[520px] leading-[1.7]">
-          お住まいの地域で利用できるゲーミング回線や、地域限定のおすすめローカル回線をチェックできます。
+          あなたの街で使える10Gプランや、地域限定の強力なローカル回線をマップから一発でチェックできます。
         </p>
       </div>
 
@@ -124,7 +124,7 @@ export default function JapanCoveragePage() {
 
                 {/* Advice Box */}
                 <div className="border-t border-white/10 pt-6 mt-6 mb-8">
-                  <div className="font-mono text-[0.62rem] tracking-[0.12em] uppercase text-cyan mb-2">// {regionData.name}の総評</div>
+                  <div className="font-mono text-[0.62rem] tracking-[0.12em] uppercase text-cyan mb-2">// 総評</div>
                   <p className="text-[0.875rem] text-text/90 leading-[1.75]">
                     {regionData.status.advice}
                   </p>

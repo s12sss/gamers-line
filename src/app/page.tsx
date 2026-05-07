@@ -232,8 +232,8 @@ export default async function Home() {
             <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-emerald/10 text-emerald">
               <MapPin className="w-6 h-6" />
             </div>
-            <h3 className="font-heading text-xl font-bold tracking-tight mb-2 group-hover:text-emerald transition-colors">エリアカバー率MAP</h3>
-            <p className="text-sm text-text-muted mb-6">日本全国の10G回線普及率や、地域限定の最強ローカル回線をチェック。</p>
+            <h3 className="font-heading text-xl font-bold tracking-tight mb-2 group-hover:text-emerald transition-colors">エリアから探す</h3>
+            <p className="text-sm text-text-muted mb-6">お住まいの地域で利用できるゲーミング回線や、地域限定の強力なローカル回線をチェック。</p>
             <div className="flex items-center text-emerald text-sm font-bold font-mono tracking-widest group-hover:text-emerald transition-colors">
               COVERAGE MAP <ChevronRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
             </div>
