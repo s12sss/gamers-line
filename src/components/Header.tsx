@@ -62,9 +62,8 @@ export default function Header() {
           })}
           <Link
             href="/diagnosis"
-            className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full border border-cyan/25 bg-cyan/10 text-cyan text-[0.8125rem] font-bold tracking-widest uppercase transition-all hover:bg-cyan/15 hover:shadow-[0_0_20px_rgba(0,229,255,0.2)] hover:border-cyan/50"
+            className="inline-flex items-center justify-center px-6 py-2 rounded-full bg-cyan text-black text-[0.8125rem] font-bold tracking-widest transition-all hover:opacity-90 hover:-translate-y-0.5"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan shadow-[0_0_8px_var(--cyan)] animate-[pulse-dot_2s_ease-in-out_infinite]"></span>
             無料診断
           </Link>
         </nav>
@@ -104,9 +103,8 @@ export default function Header() {
           })}
           <Link
             href="/diagnosis"
-            className="mt-3 mx-4 flex items-center justify-center gap-2 py-3 rounded-full border border-cyan/25 border-b-cyan/40 bg-cyan/10 text-cyan font-semibold text-[0.9rem] tracking-wide transition-colors hover:bg-cyan/15"
+            className="mt-3 mx-4 flex items-center justify-center py-3 rounded-full bg-cyan text-black font-semibold text-[0.9rem] tracking-wide transition-all hover:opacity-90"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan shadow-[0_0_8px_var(--cyan)] animate-[pulse-dot_2s_ease-in-out_infinite]"></span>
             無料診断スタート
           </Link>
         </div>

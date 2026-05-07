@@ -88,8 +88,8 @@ export default function InteractiveJapanMap({ selectedRegion, onRegionSelect }: 
             <span className="text-xs font-bold text-white ml-2">JAPAN REGIONS</span>
           </div>
           <div className="px-3 py-1 bg-black/60 border border-white/10 rounded-md backdrop-blur-md">
-            <span className="text-xs text-text-muted font-mono">SCAN:</span>
-            <span className="text-xs font-bold text-emerald ml-2 animate-pulse">STANDBY</span>
+            <span className="text-xs text-text-muted font-mono">STATUS:</span>
+            <span className="text-xs font-bold text-white ml-2">WAITING</span>
           </div>
         </div>
 
@@ -98,14 +98,10 @@ export default function InteractiveJapanMap({ selectedRegion, onRegionSelect }: 
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="absolute bottom-6 left-1/2 -translate-x-1/2 px-6 py-2 bg-black/80 border border-cyan/30 rounded-full backdrop-blur-md pointer-events-none"
+            className="absolute bottom-6 left-1/2 -translate-x-1/2 px-6 py-2.5 bg-black/80 border border-white/10 rounded-full backdrop-blur-md pointer-events-none"
           >
-            <p className="text-sm text-cyan font-bold flex items-center gap-2">
-              <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan"></span>
-              </span>
-              エリアをタップしてカバレッジをスキャン
+            <p className="text-sm text-text-muted flex items-center gap-2">
+              エリアをタップして確認
             </p>
           </motion.div>
         )}
