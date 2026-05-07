@@ -42,11 +42,11 @@ export default function JapanCoveragePage() {
           // AREA COVERAGE
         </div>
         <h1 className="relative z-10 font-heading text-[clamp(2rem,5vw,3.25rem)] font-bold tracking-tight leading-[1.1] mb-4">
-          エリアカバー率<br />
-          <span className="gradient-text">徹底スキャン</span>
+          地域別<br />
+          <span className="gradient-text">対応エリア確認</span>
         </h1>
         <p className="relative z-10 text-text-muted text-base max-w-[520px] leading-[1.7]">
-          日本全国のゲーミング回線インフラ状況をリアルタイムスキャン。10G回線の普及率や、地域限定の最強ローカル回線の存在が一目でわかります。
+          お住まいの地域で利用できるゲーミング回線や、地域限定のおすすめローカル回線をチェックできます。
         </p>
       </div>
 
@@ -68,76 +68,54 @@ export default function JapanCoveragePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="bg-[#050505] border border-cyan/30 rounded-3xl p-6 sm:p-10 relative overflow-hidden shadow-[0_0_30px_rgba(0,229,255,0.1)]"
+              className="bg-black border border-white/10 hover:border-cyan/30 transition-colors duration-300 rounded-[20px] p-6 sm:p-8 relative overflow-hidden group"
             >
-              {/* Scanline Effect */}
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan/5 to-transparent h-full w-full animate-[scan_4s_linear_infinite] pointer-events-none" />
-              
               <div className="relative z-10">
-                <div className="flex items-center justify-between border-b border-white/10 pb-6 mb-6">
-                  <div>
-                    <div className="text-cyan font-mono text-xs tracking-widest mb-1">SCAN RESULT</div>
-                    <h2 className="text-2xl sm:text-4xl font-black text-white flex items-center gap-3">
-                      <MapPin className="w-8 h-8 text-cyan" />
-                      {regionData.name}エリア
-                    </h2>
-                  </div>
+                <div className="flex items-center justify-between pb-4">
+                  <h2 className="font-heading text-[1.4rem] sm:text-[1.5rem] font-bold tracking-tight leading-tight flex items-center gap-2">
+                    <MapPin className="w-5 h-5 text-cyan" />
+                    {regionData.name}エリア
+                  </h2>
                 </div>
 
                 {/* Status Grid */}
-                <div className="grid sm:grid-cols-2 gap-4 mb-8">
-                  <div className="p-4 sm:p-5 bg-white/[0.03] border border-white/10 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:border-cyan/30 hover:bg-cyan/5 transition-all duration-300 relative overflow-hidden group">
-                    <div className="absolute top-0 -left-full w-1/2 h-full bg-gradient-to-r from-transparent via-cyan/10 to-transparent -skew-x-12 opacity-0 group-hover:opacity-100 group-hover:animate-[scanline_0.6s_ease_forwards]" />
-                    <div className="flex items-center gap-3 relative z-10">
-                      <Zap className="w-5 h-5 text-cyan" />
-                      <span className="text-text font-bold">10Gプラン普及率</span>
-                    </div>
-                    <div className="flex items-center gap-2 relative z-10">
+                <div className="flex gap-6 sm:gap-10 flex-wrap mt-2 mb-6">
+                  <div className="flex flex-col gap-1">
+                    <span className="font-mono text-[0.7rem] text-white/75 tracking-[0.1em] uppercase">10Gプラン普及率</span>
+                    <div className="flex items-center gap-1.5 font-bold text-[1.1rem]">
                       {renderStatusIcon(regionData.status.has10G)}
                       {renderStatusText(regionData.status.has10G)}
                     </div>
                   </div>
 
-                  <div className="p-4 sm:p-5 bg-white/[0.03] border border-white/10 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:border-cyan/30 hover:bg-cyan/5 transition-all duration-300 relative overflow-hidden group">
-                    <div className="absolute top-0 -left-full w-1/2 h-full bg-gradient-to-r from-transparent via-cyan/10 to-transparent -skew-x-12 opacity-0 group-hover:opacity-100 group-hover:animate-[scanline_0.6s_ease_forwards]" />
-                    <div className="flex items-center gap-3 relative z-10">
-                      <div className="w-5 h-5 rounded flex items-center justify-center bg-white/10 text-[10px] font-bold text-white shrink-0">N</div>
-                      <span className="text-text font-bold">NURO光 対応状況</span>
-                    </div>
-                    <div className="flex items-center gap-2 relative z-10">
+                  <div className="flex flex-col gap-1">
+                    <span className="font-mono text-[0.7rem] text-white/75 tracking-[0.1em] uppercase">NURO光 対応状況</span>
+                    <div className="flex items-center gap-1.5 font-bold text-[1.1rem]">
                       {renderStatusIcon(regionData.status.hasNuro)}
                       {renderStatusText(regionData.status.hasNuro)}
                     </div>
                   </div>
 
-                  <div className="p-4 sm:p-5 bg-white/[0.03] border border-white/10 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:border-cyan/30 hover:bg-cyan/5 transition-all duration-300 relative overflow-hidden group">
-                    <div className="absolute top-0 -left-full w-1/2 h-full bg-gradient-to-r from-transparent via-cyan/10 to-transparent -skew-x-12 opacity-0 group-hover:opacity-100 group-hover:animate-[scanline_0.6s_ease_forwards]" />
-                    <div className="flex items-center gap-3 relative z-10">
-                      <div className="w-5 h-5 rounded flex items-center justify-center bg-white/10 text-[10px] font-bold text-white shrink-0">G</div>
-                      <span className="text-text font-bold">GameWith光 対応状況</span>
-                    </div>
-                    <div className="flex items-center gap-2 relative z-10">
+                  <div className="flex flex-col gap-1">
+                    <span className="font-mono text-[0.7rem] text-white/75 tracking-[0.1em] uppercase">GameWith光 対応状況</span>
+                    <div className="flex items-center gap-1.5 font-bold text-[1.1rem]">
                       {renderStatusIcon(regionData.status.hasGameWith)}
                       {renderStatusText(regionData.status.hasGameWith)}
                     </div>
                   </div>
 
-                  <div className="p-4 sm:p-5 bg-white/[0.03] border border-white/10 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:border-cyan/30 hover:bg-cyan/5 transition-all duration-300 relative overflow-hidden group">
-                    <div className="absolute top-0 -left-full w-1/2 h-full bg-gradient-to-r from-transparent via-cyan/10 to-transparent -skew-x-12 opacity-0 group-hover:opacity-100 group-hover:animate-[scanline_0.6s_ease_forwards]" />
-                    <div className="flex items-center gap-3 relative z-10">
-                      <ShieldCheck className="w-5 h-5 text-purple-400" />
-                      <span className="text-text font-bold">地域最強ローカル回線</span>
-                    </div>
-                    <div className="flex items-center gap-2">
+                  <div className="flex flex-col gap-1">
+                    <span className="font-mono text-[0.7rem] text-white/75 tracking-[0.1em] uppercase">地域最強ローカル回線</span>
+                    <div className="flex items-center gap-1.5 font-bold text-[1.1rem]">
                       {regionData.status.localIsp ? (
                         <>
                           <ShieldCheck className="w-5 h-5 text-emerald" />
-                          <span className="text-emerald font-bold">推奨：{regionData.status.localIsp}</span>
+                          <span className="text-emerald">{regionData.status.localIsp}</span>
                         </>
                       ) : (
                         <>
                           <XCircle className="w-5 h-5 text-text-muted" />
-                          <span className="text-text-muted font-bold">特になし</span>
+                          <span className="text-text-muted">特になし</span>
                         </>
                       )}
                     </div>
@@ -145,11 +123,9 @@ export default function JapanCoveragePage() {
                 </div>
 
                 {/* Advice Box */}
-                <div className="p-6 bg-cyan/5 border border-cyan/20 rounded-2xl mb-8">
-                  <h3 className="text-cyan font-bold mb-2 flex items-center gap-2">
-                    <span className="text-lg">💡</span> {regionData.name}のゲーマーへの総評
-                  </h3>
-                  <p className="text-text-muted leading-relaxed text-sm sm:text-base">
+                <div className="border-t border-white/10 pt-6 mt-6 mb-8">
+                  <div className="font-mono text-[0.62rem] tracking-[0.12em] uppercase text-cyan mb-2">// {regionData.name}の総評</div>
+                  <p className="text-[0.875rem] text-text/90 leading-[1.75]">
                     {regionData.status.advice}
                   </p>
                 </div>
