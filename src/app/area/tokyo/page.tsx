@@ -1,92 +1,122 @@
-import TokyoAreaHero from '@/components/TokyoAreaHero';
+"use client";
+
+import { useState } from 'react';
+import InteractiveTokyoMap, { TokyoZone } from '@/components/InteractiveTokyoMap';
 import ispsData from '@/data/isps.json';
 import { ISP } from '@/utils/algorithm';
-import { Metadata } from 'next';
-import { ExternalLink } from 'lucide-react';
-
-export const metadata: Metadata = {
-  title: '東京都のゲーマー向け最強光回線 | Gamer\'s Line',
-  description: '東京（23区・多摩）で利用可能な、Ping値特化型の最強ゲーミング光回線を厳選比較。',
-};
+import { ExternalLink, AlertCircle } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function TokyoAreaPage() {
+  const [selectedZone, setSelectedZone] = useState<TokyoZone>(null);
+
   // 関東（kanto）または全国（all）対応のISPのみを抽出
-  const tokyoISPs = (ispsData as ISP[]).filter(isp => 
+  const baseTokyoISPs = (ispsData as ISP[]).filter(isp => 
     isp.regions.includes('kanto') || isp.regions.includes('all')
   );
 
+  // ゾーンに応じてフィルタリングや並び替え（デモ用ロジック）
+  // 実際は町域レベルのデータがないため、今回はUIの動的切り替えを見せることが目的です。
+  const displayedISPs = selectedZone === 'tama' 
+    ? [...baseTokyoISPs].reverse() // 多摩エリアではリストを逆順にしてUIの変化を分かりやすくする
+    : baseTokyoISPs;
+
   return (
     <div className="min-h-screen bg-background pb-20">
-      <TokyoAreaHero />
+      <div className="max-w-6xl mx-auto pt-24 px-4 mb-12">
+        <div className="text-center mb-8">
+          <h1 className="font-heading text-3xl sm:text-5xl font-black text-white mb-4 tracking-tight">
+            TOKYO <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan to-purple-500">NETWORK MAP</span>
+          </h1>
+          <p className="text-text-muted text-sm sm:text-base max-w-2xl mx-auto">
+            地図上のエリアをタップすると、その地域で引ける最強のゲーミング回線をリアルタイムでスキャンします。
+          </p>
+        </div>
+        
+        {/* インタラクティブマップ */}
+        <InteractiveTokyoMap selectedZone={selectedZone} onZoneSelect={setSelectedZone} />
+      </div>
       
-      <div className="max-w-4xl mx-auto px-4 mt-12 sm:mt-20 space-y-16">
-        <section>
-          <div className="mb-10">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-4">東京都で引けるおすすめゲーミング回線</h2>
-            <p className="text-text-muted leading-relaxed">
-              東京都内は通信インフラが最も整っているため、ほぼ全ての光回線が契約可能です。
-              しかし、マンションの設備（VDSL方式など）によっては希望の回線が引けない場合もあります。
-              ここでは、Ping値が安定している東京エリアのトップティア回線を厳選しました。
-            </p>
-          </div>
-          
-          <div className="grid gap-6">
-            {tokyoISPs.map((isp, idx) => (
-              <div key={isp.id} className="relative p-6 sm:p-8 rounded-3xl bg-white/5 border border-white/10 flex flex-col md:flex-row gap-8 items-center transition-all hover:bg-white/[0.07] hover:border-cyan/30">
-                <div className="flex-1 w-full">
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="text-4xl font-black text-white/10 italic">0{idx + 1}</span>
-                    <h4 className="text-2xl font-bold text-white">{isp.name}</h4>
+      <div className="max-w-4xl mx-auto px-4 space-y-16">
+        <AnimatePresence mode="wait">
+          {selectedZone && (
+            <motion.section 
+              key={selectedZone}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+            >
+              <div className="mb-10">
+                <h2 className="text-2xl sm:text-3xl font-bold mb-4 flex items-center gap-3">
+                  {selectedZone === '23ku' ? (
+                    <><span className="w-4 h-4 rounded-full bg-cyan shadow-[0_0_10px_#00e5ff]" />東京23区の回線スキャン結果</>
+                  ) : (
+                    <><span className="w-4 h-4 rounded-full bg-purple-500 shadow-[0_0_10px_#a855f7]" />多摩地域（市部）の回線スキャン結果</>
+                  )}
+                </h2>
+                
+                {selectedZone === 'tama' && (
+                  <div className="p-4 mb-6 rounded-xl bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 text-sm flex gap-3 items-start">
+                    <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                    <p>多摩地域（一部の市町村）では、10G（クロス）プランの提供エリア外となっている場合があります。お申し込み前に必ず公式サイトで提供エリア判定を行ってください。</p>
                   </div>
-                  
-                  <div className="grid grid-cols-2 gap-4 mb-6">
-                    <div className="p-4 rounded-xl bg-black/40 border border-white/5">
-                      <div className="text-xs text-text-muted mb-1">推測Ping値</div>
-                      <div className="text-2xl font-bold text-emerald font-mono">{isp.avg_ping_ms}<span className="text-sm text-text-muted ml-1">ms</span></div>
-                    </div>
-                    <div className="p-4 rounded-xl bg-black/40 border border-white/5">
-                      <div className="text-xs text-text-muted mb-1">月額料金</div>
-                      <div className="text-2xl font-bold text-cyan font-mono">¥{isp.actual_monthly_fee_jpy.toLocaleString()}</div>
-                    </div>
+                )}
+                
+                {selectedZone === '23ku' && (
+                  <div className="p-4 mb-6 rounded-xl bg-cyan/10 border border-cyan/20 text-cyan text-sm flex gap-3 items-start">
+                    <span className="text-lg">⚡</span>
+                    <p>東京23区内は10Gプランの普及率が国内トップクラスです。FPSガチ勢であれば、NUROやauひかりの10Gプランを最優先で検討することをおすすめします。</p>
                   </div>
-
-                  <div className="flex flex-wrap gap-2 mb-6 md:mb-0">
-                    {isp.badges?.map(badge => (
-                      <span key={badge} className="px-3 py-1 bg-cyan/10 border border-cyan/20 text-cyan text-xs font-bold rounded-full">
-                        {badge}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="w-full md:w-auto flex-shrink-0 flex flex-col gap-3">
-                  <a href={isp.affiliateLink || '#'} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-cyan text-black font-bold rounded-full hover:scale-105 transition-transform shadow-[0_0_20px_rgba(0,229,255,0.3)]">
-                    公式サイトを見る
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
-                </div>
+                )}
               </div>
-            ))}
-          </div>
-        </section>
+              
+              <div className="grid gap-6">
+                {displayedISPs.map((isp, idx) => (
+                  <div key={isp.id} className="relative p-6 sm:p-8 rounded-3xl bg-white/5 border border-white/10 flex flex-col md:flex-row gap-8 items-center transition-all hover:bg-white/[0.07] hover:border-cyan/30">
+                    <div className="flex-1 w-full">
+                      <div className="flex items-center gap-3 mb-4">
+                        <span className="text-4xl font-black text-white/10 italic">0{idx + 1}</span>
+                        <h4 className="text-2xl font-bold text-white">{isp.name}</h4>
+                      </div>
+                      
+                      <div className="grid grid-cols-2 gap-4 mb-6">
+                        <div className="p-4 rounded-xl bg-black/40 border border-white/5">
+                          <div className="text-xs text-text-muted mb-1">推測Ping値</div>
+                          <div className="text-2xl font-bold text-emerald font-mono">{isp.avg_ping_ms}<span className="text-sm text-text-muted ml-1">ms</span></div>
+                        </div>
+                        <div className="p-4 rounded-xl bg-black/40 border border-white/5">
+                          <div className="text-xs text-text-muted mb-1">月額料金</div>
+                          <div className="text-2xl font-bold text-cyan font-mono">¥{isp.actual_monthly_fee_jpy.toLocaleString()}</div>
+                        </div>
+                      </div>
 
-        <section className="p-8 rounded-3xl bg-cyan/5 border border-cyan/20">
-          <h3 className="text-xl font-bold mb-4 text-cyan">💡 東京エリアの回線選びのコツ</h3>
-          <ul className="space-y-4 text-sm sm:text-base text-text-muted">
-            <li className="flex gap-3">
-              <span className="text-emerald font-bold">1.</span>
-              <span><strong>NURO光の提供エリアが最も広い：</strong> 東京はNURO光の恩恵を最も受けやすい地域です。戸建てはもちろん、多くのマンションに「NURO光 for マンション」の設備が導入されています。</span>
-            </li>
-            <li className="flex gap-3">
-              <span className="text-emerald font-bold">2.</span>
-              <span><strong>10Gプランの普及率が日本一：</strong> 23区内であれば、多くのプロバイダで10Gプラン（超高速通信）が選択可能です。本格的にFPSをやるなら10Gプランを優先的に検討しましょう。</span>
-            </li>
-            <li className="flex gap-3">
-              <span className="text-emerald font-bold">3.</span>
-              <span><strong>VDSL問題に注意：</strong> 古いマンションの場合、光回線と謳っていても建物内が「VDSL（電話線）」で上限100Mbpsになっているケースが多々あります。契約前に必ず管理会社に配線方式を確認してください。</span>
-            </li>
-          </ul>
-        </section>
+                      <div className="flex flex-wrap gap-2 mb-6 md:mb-0">
+                        {isp.badges?.map(badge => (
+                          <span key={badge} className="px-3 py-1 bg-cyan/10 border border-cyan/20 text-cyan text-xs font-bold rounded-full">
+                            {badge}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="w-full md:w-auto flex-shrink-0 flex flex-col gap-3">
+                      <a href={isp.affiliateLink || '#'} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-cyan text-black font-bold rounded-full hover:scale-105 transition-transform shadow-[0_0_20px_rgba(0,229,255,0.3)]">
+                        公式サイトを見る
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.section>
+          )}
+        </AnimatePresence>
+
+        {!selectedZone && (
+          <section className="p-8 rounded-3xl bg-white/5 border border-white/10 text-center opacity-50">
+            <p className="text-text-muted">上のマップからエリアを選択してください</p>
+          </section>
+        )}
       </div>
     </div>
   );
