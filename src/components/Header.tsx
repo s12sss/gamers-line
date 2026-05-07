@@ -27,6 +27,7 @@ export default function Header() {
     { name: "回線一覧", href: "/provider" },
     { name: "エリアMAP", href: "/area" },
     { name: "コラム", href: "/column" },
+    { name: "便利ツール", href: "/tools" },
   ];
 
   const mobileNavLinks = [
