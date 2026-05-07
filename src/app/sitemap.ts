@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { getColumnsList } from '@/libs/microcms';
+import { PROVIDER_DETAILS } from '@/data/providerDetails';
 
 export const revalidate = 60;
 
@@ -76,5 +77,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  return [...staticUrls, ...columnUrls];
+  const providerUrls: MetadataRoute.Sitemap = Object.keys(PROVIDER_DETAILS).map((slug) => ({
+    url: `${baseUrl}/provider/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.7,
+  }));
+
+  return [...staticUrls, ...columnUrls, ...providerUrls];
 }
