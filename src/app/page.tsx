@@ -48,7 +48,7 @@ export default async function Home() {
 
         <p className="text-[clamp(0.95rem,2vw,1.2rem)] text-text-muted max-w-[560px] leading-[1.7] mb-12 animate-[fadeUp_0.6s_ease_0.2s_both]">
           今のプレイ環境を選択するだけで、<br className="hidden sm:block" />
-          あなたに本当に必要なゲーミング回線を<br className="sm:hidden" />最短30秒で無料診断
+          あなたに本当に必要なゲーミング回線を<br className="sm:hidden" />たった30秒で無料診断
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto animate-[fadeUp_0.6s_ease_0.3s_both]">
@@ -58,13 +58,13 @@ export default async function Home() {
           >
             <span className="absolute inset-0 bg-white/25 translate-y-full transition-transform duration-300 group-hover:translate-y-0" />
             <Play className="w-4 h-4 fill-black" />
-            <span className="relative z-10">最短30秒！かんたん診断</span>
+            <span className="relative z-10">今すぐ無料診断をはじめる</span>
           </Link>
           <Link
-            href="/diagnosis-pro-test"
-            className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full border border-purple-500/50 bg-purple-500/10 text-white text-[15px] font-bold transition-all hover:border-purple-500 hover:bg-purple-500/20 hover:-translate-y-0.5 hover:scale-105 w-full sm:w-auto"
+            href="#features"
+            className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full border border-white/10 bg-white/5 text-text-muted text-[15px] font-medium transition-all hover:border-cyan/30 hover:text-text hover:bg-cyan/5 w-full sm:w-auto"
           >
-            15問で徹底解析！プロ診断
+            選ばれる理由
             <ChevronRight className="w-4 h-4" />
           </Link>
         </div>
@@ -81,7 +81,7 @@ export default async function Home() {
         {[
           { num: "7ms", label: "BEST PING記録" },
           { num: "20件", label: "ゲーマー推奨プラン厳選" },
-          { num: "最短30秒", label: "診断所要時間" },
+          { num: "30秒", label: "診断所要時間" },
           { num: "100%", label: "無料・登録不要" },
         ].map((stat, i) => (
           <div key={i} className="flex-1 min-w-[50%] sm:min-w-0 max-w-none sm:max-w-[220px] p-6 sm:p-7 text-center border-b sm:border-b-0 border-r border-white/10 last:border-r-0 even:border-r-0 sm:even:border-r [&:nth-last-child(-n+2)]:border-b-0 sm:[&:nth-last-child(-n+2)]:border-b-0">
