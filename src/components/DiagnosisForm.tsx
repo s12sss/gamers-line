@@ -84,9 +84,11 @@ function LoadingScreen({ onDone }: { onDone: () => void }) {
   );
 }
 
-function ResultCard({ result, index, delay }: { result: {isp: ISP, score: number}, index: number, delay: number }) {
+function ResultCard({ result, index, delay, requires10G }: { result: {isp: ISP, score: number}, index: number, delay: number, requires10G: boolean }) {
   const isBest = index === 0;
   const displayFee = result.isp.actual_monthly_fee_jpy;
+  const displayName = result.isp.name.replace(/\s*\([0-9]+G\)/i, '');
+  const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
 
   return (
     <motion.div
@@ -114,7 +116,7 @@ function ResultCard({ result, index, delay }: { result: {isp: ISP, score: number
                 #{index + 1}
               </span>
               <span className="font-heading text-[1.1rem] sm:text-[1.2rem] font-bold tracking-tight text-text group-hover:text-cyan transition-colors">
-                {result.isp.name}
+                {displayName}
               </span>
               <span className="px-2 py-0.5 bg-white/5 rounded text-[0.65rem] sm:text-[0.7rem] text-text-muted font-mono border border-white/5">
                 {result.isp.type}
@@ -122,23 +124,53 @@ function ResultCard({ result, index, delay }: { result: {isp: ISP, score: number
             </div>
 
             <div className="flex flex-wrap gap-1.5 mt-2">
-              {/*
-              {result.isp.cashback_text && result.isp.cashback_text !== 'キャンペーンなし' && (
-                <span className="px-2.5 sm:px-3 py-1 bg-purple-500/10 border border-purple-500/20 rounded-full text-[0.65rem] sm:text-[0.7rem] text-purple-400 font-medium flex items-center gap-1">
-                  <Gift className="w-3 h-3" /> {result.isp.cashback_text}
+              {requires10G && result.isp.max_speed_gbps >= 10 && (
+                <span className="px-2.5 sm:px-3 py-1 bg-gradient-to-r from-purple-600 to-cyan-500 rounded-full text-[0.65rem] sm:text-[0.7rem] text-white font-bold tracking-wider shadow-[0_0_10px_rgba(0,229,255,0.3)]">
+                  ✨ 10Gプラン推奨
                 </span>
               )}
-              */}
               {result.isp.discounts && result.isp.discounts.length > 0 && (
                 <span className="px-2.5 sm:px-3 py-1 bg-emerald/10 border border-emerald/20 rounded-full text-[0.65rem] sm:text-[0.7rem] text-emerald font-medium">
                   {result.isp.discounts[0].carrier}利用で割引
                 </span>
               )}
-              {result.isp.tags.map(tag => (
-                <span key={tag} className="px-2.5 sm:px-3 py-1 bg-cyan/10 border border-cyan/20 rounded-full text-[0.65rem] sm:text-[0.7rem] text-cyan font-medium">
-                  {tag}
-                </span>
-              ))}
+              {result.isp.tags.map(tag => {
+                let tooltip = '';
+                if (tag === '独自回線') tooltip = 'NTT回線を使わない独立したネットワーク。混雑しにくく通信が安定しやすい。';
+                if (tag === 'FPS最適') tooltip = 'Ping値が低く、FPSゲームなどの激しい撃ち合いで有利になりやすい。';
+                if (tag === '低Ping') tooltip = '通信の遅延（ラグ）が非常に少ない回線。';
+                if (tag === '専用帯域') tooltip = 'ゲーマー専用の通信経路を利用し、混雑時間帯でもラグを防ぐ。';
+                if (tag === 'プロゲーマー仕様') tooltip = 'プロeスポーツチームも採用する高品質な通信環境。';
+                if (tag === 'ラグゼロ') tooltip = '遅延を感じさせない極めて安定した通信。';
+                
+                return (
+                  <div key={tag} className="relative inline-block">
+                    <button 
+                      onClick={() => setActiveTooltip(activeTooltip === tag ? null : tag)}
+                      onMouseEnter={() => setActiveTooltip(tag)}
+                      onMouseLeave={() => setActiveTooltip(null)}
+                      onBlur={() => setActiveTooltip(null)}
+                      className="px-2.5 sm:px-3 py-1 bg-cyan/10 border border-cyan/20 rounded-full text-[0.65rem] sm:text-[0.7rem] text-cyan font-medium cursor-help hover:bg-cyan/20 transition-colors"
+                    >
+                      {tag}
+                    </button>
+                    <AnimatePresence>
+                      {activeTooltip === tag && tooltip && (
+                        <motion.div 
+                          initial={{ opacity: 0, y: 5 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 5 }}
+                          transition={{ duration: 0.15 }}
+                          className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-[180px] p-2 sm:p-2.5 bg-black/95 border border-cyan/20 rounded-lg text-[0.65rem] sm:text-[0.7rem] text-text leading-relaxed text-left shadow-[0_0_15px_rgba(0,229,255,0.15)] z-50 pointer-events-none"
+                        >
+                          {tooltip}
+                          <div className="absolute top-full left-1/2 -translate-x-1/2 border-[5px] border-transparent border-t-cyan/20"></div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
@@ -203,6 +235,8 @@ export default function DiagnosisForm() {
     priority: '',
     region: '',
     requires10G: false,
+    wantsDiscount: false,
+    playFrequency: '',
   });
   const [results, setResults] = useState<{ isp: ISP, score: number }[] | null>(null);
   const [loading, setLoading] = useState(false);
@@ -211,7 +245,7 @@ export default function DiagnosisForm() {
     const newAnswers = { ...answers, [key]: value };
     setAnswers(newAnswers);
     
-    if (step < 6) {
+    if (step < 8) {
       setStep(step + 1);
     } else {
       setLoading(true);
@@ -223,16 +257,18 @@ export default function DiagnosisForm() {
     const recommended = recommendISPs(isps, answers);
     setResults(recommended);
     setLoading(false);
-    setStep(7);
+    setStep(9);
   };
 
-  const stepIcons = [null, <Gamepad2 />, <Download />, <MapPin />, <Home />, <Smartphone />, <Zap />, <Wallet />];
+  const stepIcons = [null, <Gamepad2 />, <Activity />, <Download />, <MapPin />, <Home />, <Smartphone />, <Wallet />, <Zap />];
   const stepTitles = [null,
     '普段プレイするゲームは？',
+    'ゲームをプレイする頻度はどのくらいですか？',
     'ゲームの配信や、大容量の通信は？',
     'お住まいの地域は？',
     '現在の住居タイプは？',
     'お使いのスマホキャリアは？',
+    'スマホとのセット割は重視しますか？',
     '回線選びで最も重視するのは？',
   ];
 
@@ -272,8 +308,9 @@ export default function DiagnosisForm() {
               {stepTitles[2]}
             </div>
             <div className="flex flex-col gap-3">
-              <OptionCard onClick={() => handleNext('requires10G', true)} title="はい" desc="大容量ゲームのDLや、高画質での生配信を行う" />
-              <OptionCard onClick={() => handleNext('requires10G', false)} title="いいえ" desc="大容量通信行う頻度は低い" />
+              <OptionCard onClick={() => handleNext('playFrequency', 'everyday')} title="毎日ガッツリ" desc="平日も休日も長時間プレイする" />
+              <OptionCard onClick={() => handleNext('playFrequency', 'often')} title="週に数回程度" desc="仕事や学校の合間にプレイする" />
+              <OptionCard onClick={() => handleNext('playFrequency', 'weekend')} title="たまに週末だけ" desc="気分転換に軽く遊ぶ程度" />
             </div>
           </motion.div>
         );
@@ -286,15 +323,9 @@ export default function DiagnosisForm() {
               </div>
               {stepTitles[3]}
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-              <OptionCard onClick={() => handleNext('region', 'hokkaido')} title="北海道" />
-              <OptionCard onClick={() => handleNext('region', 'tohoku')} title="東北" />
-              <OptionCard onClick={() => handleNext('region', 'kanto')} title="関東" />
-              <OptionCard onClick={() => handleNext('region', 'tokai')} title="東海" />
-              <OptionCard onClick={() => handleNext('region', 'kansai')} title="関西" />
-              <OptionCard onClick={() => handleNext('region', 'chugoku')} title="中国" />
-              <OptionCard onClick={() => handleNext('region', 'shikoku')} title="四国" />
-              <OptionCard onClick={() => handleNext('region', 'kyushu')} title="九州" />
+            <div className="flex flex-col gap-3">
+              <OptionCard onClick={() => handleNext('requires10G', true)} title="はい" desc="大容量ゲームのDLや、高画質での生配信を行う" />
+              <OptionCard onClick={() => handleNext('requires10G', false)} title="いいえ" desc="大容量通信行う頻度は低い" />
             </div>
           </motion.div>
         );
@@ -307,11 +338,17 @@ export default function DiagnosisForm() {
               </div>
               {stepTitles[4]}
             </div>
-            <div className="flex flex-col gap-3">
-              <OptionCard onClick={() => handleNext('housingType', 'house')} title="戸建て" desc="専用線を引ける可能性が高いです" />
-              <OptionCard onClick={() => handleNext('housingType', 'mansion_optical')} title="マンション（光配線）" desc="多くの光回線が導入可能です" />
-              <OptionCard onClick={() => handleNext('housingType', 'mansion_vdsl')} title="マンション（VDSL）" desc="電話線方式。一部の独自回線は導入不可" />
-              <OptionCard onClick={() => handleNext('housingType', 'unknown')} title="わからない" desc="標準的な判定を行います" />
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <OptionCard onClick={() => handleNext('region', 'hokkaido')} title="北海道" />
+              <OptionCard onClick={() => handleNext('region', 'tohoku')} title="東北" />
+              <OptionCard onClick={() => handleNext('region', 'kanto')} title="関東" />
+              <OptionCard onClick={() => handleNext('region', 'hokuriku_koshinetsu')} title="信越・北陸" />
+              <OptionCard onClick={() => handleNext('region', 'tokai')} title="東海" />
+              <OptionCard onClick={() => handleNext('region', 'kansai')} title="関西" />
+              <OptionCard onClick={() => handleNext('region', 'chugoku')} title="中国" />
+              <OptionCard onClick={() => handleNext('region', 'shikoku')} title="四国" />
+              <OptionCard onClick={() => handleNext('region', 'kyushu')} title="九州" />
+              <OptionCard onClick={() => handleNext('region', 'okinawa')} title="沖縄" />
             </div>
           </motion.div>
         );
@@ -324,11 +361,11 @@ export default function DiagnosisForm() {
               </div>
               {stepTitles[5]}
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <OptionCard onClick={() => handleNext('mobileCarrier', 'docomo')} title="docomo" />
-              <OptionCard onClick={() => handleNext('mobileCarrier', 'au')} title="au / UQ" />
-              <OptionCard onClick={() => handleNext('mobileCarrier', 'softbank')} title="SoftBank / Y!" />
-              <OptionCard onClick={() => handleNext('mobileCarrier', 'other')} title="格安SIM / その他" />
+            <div className="flex flex-col gap-3">
+              <OptionCard onClick={() => handleNext('housingType', 'house')} title="戸建て" desc="専用線を引ける可能性が高いです" />
+              <OptionCard onClick={() => handleNext('housingType', 'mansion_optical')} title="マンション（光配線）" desc="多くの光回線が導入可能です" />
+              <OptionCard onClick={() => handleNext('housingType', 'mansion_vdsl')} title="マンション（VDSL）" desc="電話線方式。一部の独自回線は導入不可" />
+              <OptionCard onClick={() => handleNext('housingType', 'unknown')} title="わからない" desc="標準的な判定を行います" />
             </div>
           </motion.div>
         );
@@ -341,6 +378,38 @@ export default function DiagnosisForm() {
               </div>
               {stepTitles[6]}
             </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <OptionCard onClick={() => handleNext('mobileCarrier', 'docomo')} title="docomo" />
+              <OptionCard onClick={() => handleNext('mobileCarrier', 'au')} title="au / UQ" />
+              <OptionCard onClick={() => handleNext('mobileCarrier', 'softbank')} title="SoftBank / Y!" />
+              <OptionCard onClick={() => handleNext('mobileCarrier', 'other')} title="格安SIM / その他" />
+            </div>
+          </motion.div>
+        );
+      case 7:
+        return (
+          <motion.div key="step7" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.25 }}>
+            <div className="font-heading text-xl sm:text-[1.6rem] font-bold tracking-tight mb-5 sm:mb-7 flex items-center gap-3 text-text">
+              <div className="w-10 h-10 rounded-[10px] bg-cyan/10 border border-cyan/20 flex items-center justify-center text-cyan shrink-0">
+                {stepIcons[7]}
+              </div>
+              {stepTitles[7]}
+            </div>
+            <div className="flex flex-col gap-3">
+              <OptionCard onClick={() => handleNext('wantsDiscount', true)} title="はい" desc="できれば割引を受けたい" />
+              <OptionCard onClick={() => handleNext('wantsDiscount', false)} title="いいえ" desc="割引よりも回線の性能を優先したい" />
+            </div>
+          </motion.div>
+        );
+      case 8:
+        return (
+          <motion.div key="step8" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.25 }}>
+            <div className="font-heading text-xl sm:text-[1.6rem] font-bold tracking-tight mb-5 sm:mb-7 flex items-center gap-3 text-text">
+              <div className="w-10 h-10 rounded-[10px] bg-cyan/10 border border-cyan/20 flex items-center justify-center text-cyan shrink-0">
+                {stepIcons[8]}
+              </div>
+              {stepTitles[8]}
+            </div>
             <div className="flex flex-col gap-3">
               <OptionCard onClick={() => handleNext('priority', 'ping')} title="とにかくラグを無くしたい" desc="料金より通信品質を最優先" />
               <OptionCard onClick={() => handleNext('priority', 'price')} title="月額料金を抑えたい" desc="安くてそこそこ遊べる回線が良い" />
@@ -348,9 +417,9 @@ export default function DiagnosisForm() {
             </div>
           </motion.div>
         );
-      case 7:
+      case 9:
         return (
-          <motion.div key="step7" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+          <motion.div key="step9" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <div className="text-center mb-10 mt-4">
               <motion.div 
                 initial={{ scale: 0.5, opacity: 0 }} 
@@ -362,11 +431,28 @@ export default function DiagnosisForm() {
               </motion.div>
               <h2 className="font-heading text-2xl sm:text-3xl font-bold tracking-tight text-text mb-2">診断完了！</h2>
               <p className="text-xs sm:text-sm text-text-muted">あなたの環境・予算に最適なゲーミング回線はこちらです。</p>
+              
+              {answers.requires10G && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="mt-6 px-5 py-3 sm:py-3.5 bg-cyan/5 border border-cyan/30 rounded-xl inline-flex items-center gap-3 shadow-[0_0_25px_rgba(0,229,255,0.08)] relative overflow-hidden group"
+                >
+                  <div className="absolute top-0 left-0 w-1 h-full bg-cyan shadow-[0_0_10px_rgba(0,229,255,0.5)]"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <Zap className="w-4 h-4 sm:w-5 sm:h-5 text-cyan animate-pulse shrink-0 drop-shadow-[0_0_8px_rgba(0,229,255,0.8)]" />
+                  <div className="text-left">
+                    <p className="text-[0.6rem] sm:text-[0.65rem] text-cyan font-mono tracking-wider mb-0.5 opacity-80 uppercase">AI Matching System</p>
+                    <p className="text-[0.8rem] sm:text-[0.9rem] font-bold text-text tracking-tight">あなたの用途なら<span className="text-cyan drop-shadow-[0_0_8px_rgba(0,229,255,0.3)] mx-0.5">10Gプラン</span>がおすすめです</p>
+                  </div>
+                </motion.div>
+              )}
             </div>
 
             <div className="flex flex-col gap-4 sm:gap-5">
               {results?.map((res, index) => (
-                <ResultCard key={res.isp.id} result={res} index={index} delay={index * 150} />
+                <ResultCard key={res.isp.id} result={res} index={index} delay={index * 150} requires10G={answers.requires10G} />
               ))}
             </div>
             
@@ -379,7 +465,7 @@ export default function DiagnosisForm() {
                 onClick={() => {
                   setStep(1);
                   setResults(null);
-                  setAnswers({ gameGenre: '', housingType: '', mobileCarrier: '', priority: '', region: '', requires10G: false });
+                  setAnswers({ gameGenre: '', housingType: '', mobileCarrier: '', priority: '', region: '', requires10G: false, wantsDiscount: false, playFrequency: '' });
                 }}
                 className="text-xs sm:text-sm text-cyan/70 hover:text-cyan underline underline-offset-4 transition-colors"
               >
@@ -397,7 +483,7 @@ export default function DiagnosisForm() {
     <div className="w-full max-w-[640px] mx-auto pt-6 sm:pt-16 pb-12 sm:pb-20">
       
       {/* Progress Bar */}
-      {step < 7 && !loading && (
+      {step < 9 && !loading && (
         <div className="mb-6 sm:mb-8 px-1 sm:px-2">
           <div className="flex justify-between items-center mb-2.5">
             {step > 1 ? (
@@ -410,13 +496,13 @@ export default function DiagnosisForm() {
             ) : (
               <div></div>
             )}
-            <span className="font-mono text-[0.65rem] sm:text-[0.7rem] text-cyan tracking-[0.12em] uppercase">STEP {step} / 6</span>
+            <span className="font-mono text-[0.65rem] sm:text-[0.7rem] text-cyan tracking-[0.12em] uppercase">STEP {step} / 8</span>
           </div>
           <div className="w-full h-0.5 bg-white/5 rounded-full overflow-hidden relative">
             <motion.div 
               className="absolute top-0 left-0 h-full bg-gradient-to-r from-cyan to-emerald shadow-[0_0_8px_rgba(0,229,255,0.6)]"
-              initial={{ width: `${((step - 1) / 6) * 100}%` }}
-              animate={{ width: `${(step / 6) * 100}%` }}
+              initial={{ width: `${((step - 1) / 8) * 100}%` }}
+              animate={{ width: `${(step / 8) * 100}%` }}
               transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
             />
           </div>

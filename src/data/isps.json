@@ -40,7 +40,6 @@
       }
     ],
     "tags": [
-      "最強10G",
       "独自回線",
       "FPS最適",
       "低Ping"
@@ -148,7 +147,8 @@
       "chugoku",
       "shikoku",
       "kyushu",
-      "okinawa"
+      "okinawa",
+      "hokuriku_koshinetsu"
     ],
     "actual_monthly_fee_jpy": 7370,
     "stability_score": 95,
@@ -156,7 +156,6 @@
     "cashback_text": "高額キャッシュバックキャンペーン実施中！",
     "discounts": [],
     "tags": [
-      "10G対応",
       "専用帯域",
       "プロゲーマー仕様",
       "ラグゼロ"
@@ -201,7 +200,8 @@
       "chugoku",
       "shikoku",
       "kyushu",
-      "okinawa"
+      "okinawa",
+      "hokuriku_koshinetsu"
     ],
     "actual_monthly_fee_jpy": 6160,
     "stability_score": 92,
@@ -246,7 +246,8 @@
       "house"
     ],
     "regions": [
-      "kanto"
+      "kanto",
+      "hokuriku_koshinetsu"
     ],
     "actual_monthly_fee_jpy": 6468,
     "stability_score": 90,
@@ -266,7 +267,6 @@
     ],
     "tags": [
       "関東限定10G",
-      "au割対応",
       "超安定"
     ],
     "badges": [
@@ -307,7 +307,8 @@
       "kanto",
       "chugoku",
       "shikoku",
-      "kyushu"
+      "kyushu",
+      "hokuriku_koshinetsu"
     ],
     "actual_monthly_fee_jpy": 5610,
     "stability_score": 88,
@@ -327,7 +328,6 @@
     ],
     "tags": [
       "低Ping",
-      "au割対応",
       "戸建て向け"
     ],
     "badges": [
@@ -371,7 +371,8 @@
       "chugoku",
       "shikoku",
       "kyushu",
-      "okinawa"
+      "okinawa",
+      "hokuriku_koshinetsu"
     ],
     "actual_monthly_fee_jpy": 6380,
     "stability_score": 82,
@@ -385,7 +386,6 @@
       }
     ],
     "tags": [
-      "10G対応",
       "VDSL対応",
       "docomo割",
       "全国対応"
@@ -431,7 +431,8 @@
       "chugoku",
       "shikoku",
       "kyushu",
-      "okinawa"
+      "okinawa",
+      "hokuriku_koshinetsu"
     ],
     "actual_monthly_fee_jpy": 5720,
     "stability_score": 75,
@@ -491,7 +492,8 @@
       "chugoku",
       "shikoku",
       "kyushu",
-      "okinawa"
+      "okinawa",
+      "hokuriku_koshinetsu"
     ],
     "actual_monthly_fee_jpy": 6380,
     "stability_score": 80,
@@ -510,9 +512,7 @@
       }
     ],
     "tags": [
-      "10G対応",
       "VDSL対応",
-      "SB割対応",
       "コスパ◎"
     ],
     "badges": [
@@ -557,7 +557,8 @@
       "chugoku",
       "shikoku",
       "kyushu",
-      "okinawa"
+      "okinawa",
+      "hokuriku_koshinetsu"
     ],
     "actual_monthly_fee_jpy": 5720,
     "stability_score": 73,
@@ -577,7 +578,6 @@
     ],
     "tags": [
       "VDSL対応",
-      "SB割対応",
       "コスパ◎"
     ],
     "badges": [
@@ -616,7 +616,9 @@
       "kansai",
       "chugoku",
       "shikoku",
-      "kyushu"
+      "kyushu",
+      "hokuriku_koshinetsu",
+      "okinawa"
     ],
     "cashback_text": "高額キャッシュバックキャンペーン実施中！",
     "discounts": [
@@ -632,8 +634,6 @@
       }
     ],
     "tags": [
-      "10G対応",
-      "auスマホ割",
       "IPv6対応",
       "全国対応",
       "工事費無料"
@@ -680,7 +680,9 @@
       "kansai",
       "chugoku",
       "shikoku",
-      "kyushu"
+      "kyushu",
+      "hokuriku_koshinetsu",
+      "okinawa"
     ],
     "cashback_text": "高額キャッシュバックキャンペーン実施中！",
     "discounts": [
@@ -696,7 +698,6 @@
       }
     ],
     "tags": [
-      "auスマホ割",
       "IPv6対応",
       "全国対応",
       "工事費無料"
@@ -746,7 +747,6 @@
       }
     ],
     "tags": [
-      "10G対応",
       "東海限定",
       "独自回線",
       "超低Ping"
@@ -853,10 +853,8 @@
       }
     ],
     "tags": [
-      "10G対応",
       "四国限定",
-      "独自回線",
-      "auスマホ割"
+      "独自回線"
     ],
     "badges": [],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+5QLFOY+348K+1ZGG0Y",
@@ -904,8 +902,7 @@
     ],
     "tags": [
       "四国限定",
-      "独自回線",
-      "auスマホ割"
+      "独自回線"
     ],
     "badges": [],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+5QLFOY+348K+1ZGG0Y",
@@ -952,10 +949,8 @@
       }
     ],
     "tags": [
-      "10G対応",
       "中国地方限定",
-      "独自回線",
-      "auスマホ割"
+      "独自回線"
     ],
     "badges": [],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+5R6VAQ+348K+2BDR9U",
@@ -1002,8 +997,7 @@
     ],
     "tags": [
       "中国地方限定",
-      "独自回線",
-      "auスマホ割"
+      "独自回線"
     ],
     "badges": [],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+5R6VAQ+348K+2BDR9U",
@@ -1031,7 +1025,8 @@
       "mansion_optical"
     ],
     "regions": [
-      "kansai"
+      "kansai",
+      "hokuriku_koshinetsu"
     ],
     "cashback_text": "高額キャッシュバックキャンペーン実施中！",
     "discounts": [
@@ -1042,13 +1037,12 @@
       }
     ],
     "tags": [
-      "10G対応",
       "関西限定",
       "独自回線",
       "超低Ping"
     ],
     "badges": [],
-    "affiliateLink": "#",
+    "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+5Q0036+3IIQ+5YRHE",
     "detailLink": "/provider",
     "description": "関西地方（大阪・京都・兵庫・奈良・滋賀・和歌山）で圧倒的なシェアを誇る独自回線。NURO光と同等の低遅延で、関西ゲーマーのド定番です。",
     "pros": [
@@ -1082,7 +1076,8 @@
       "mansion_optical"
     ],
     "regions": [
-      "kansai"
+      "kansai",
+      "hokuriku_koshinetsu"
     ],
     "cashback_text": "高額キャッシュバックキャンペーン実施中！",
     "discounts": [
@@ -1098,7 +1093,7 @@
       "超低Ping"
     ],
     "badges": [],
-    "affiliateLink": "#",
+    "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+5Q0036+3IIQ+5YRHE",
     "detailLink": "/provider",
     "description": "関西地方（大阪・京都・兵庫・奈良・滋賀・和歌山）で圧倒的なシェアを誇る独自回線。NURO光と同等の低遅延で、関西ゲーマーのド定番です。",
     "pros": [

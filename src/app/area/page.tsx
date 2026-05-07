@@ -79,43 +79,47 @@ export default function JapanCoveragePage() {
 
                 {/* Status Grid */}
                 <div className="grid sm:grid-cols-2 gap-4 mb-8">
-                  <div className="p-4 bg-black/50 border border-white/5 rounded-xl flex items-center justify-between">
-                    <div className="flex items-center gap-3">
+                  <div className="p-4 sm:p-5 bg-white/[0.03] border border-white/10 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:border-cyan/30 hover:bg-cyan/5 transition-all duration-300 relative overflow-hidden group">
+                    <div className="absolute top-0 -left-full w-1/2 h-full bg-gradient-to-r from-transparent via-cyan/10 to-transparent -skew-x-12 opacity-0 group-hover:opacity-100 group-hover:animate-[scanline_0.6s_ease_forwards]" />
+                    <div className="flex items-center gap-3 relative z-10">
                       <Zap className="w-5 h-5 text-cyan" />
-                      <span className="text-text-muted text-sm font-bold">10Gプラン普及率</span>
+                      <span className="text-text font-bold">10Gプラン普及率</span>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 relative z-10">
                       {renderStatusIcon(regionData.status.has10G)}
                       {renderStatusText(regionData.status.has10G)}
                     </div>
                   </div>
 
-                  <div className="p-4 bg-black/50 border border-white/5 rounded-xl flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <img src="/nuro-logo.svg" alt="NURO" className="w-5 h-5 grayscale opacity-70" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
-                      <span className="text-text-muted text-sm font-bold">NURO光 対応状況</span>
+                  <div className="p-4 sm:p-5 bg-white/[0.03] border border-white/10 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:border-cyan/30 hover:bg-cyan/5 transition-all duration-300 relative overflow-hidden group">
+                    <div className="absolute top-0 -left-full w-1/2 h-full bg-gradient-to-r from-transparent via-cyan/10 to-transparent -skew-x-12 opacity-0 group-hover:opacity-100 group-hover:animate-[scanline_0.6s_ease_forwards]" />
+                    <div className="flex items-center gap-3 relative z-10">
+                      <div className="w-5 h-5 rounded flex items-center justify-center bg-white/10 text-[10px] font-bold text-white shrink-0">N</div>
+                      <span className="text-text font-bold">NURO光 対応状況</span>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 relative z-10">
                       {renderStatusIcon(regionData.status.hasNuro)}
                       {renderStatusText(regionData.status.hasNuro)}
                     </div>
                   </div>
 
-                  <div className="p-4 bg-black/50 border border-white/5 rounded-xl flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <img src="/gamewith-logo.svg" alt="GameWith" className="w-5 h-5 grayscale opacity-70" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
-                      <span className="text-text-muted text-sm font-bold">GameWith光 対応状況</span>
+                  <div className="p-4 sm:p-5 bg-white/[0.03] border border-white/10 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:border-cyan/30 hover:bg-cyan/5 transition-all duration-300 relative overflow-hidden group">
+                    <div className="absolute top-0 -left-full w-1/2 h-full bg-gradient-to-r from-transparent via-cyan/10 to-transparent -skew-x-12 opacity-0 group-hover:opacity-100 group-hover:animate-[scanline_0.6s_ease_forwards]" />
+                    <div className="flex items-center gap-3 relative z-10">
+                      <div className="w-5 h-5 rounded flex items-center justify-center bg-white/10 text-[10px] font-bold text-white shrink-0">G</div>
+                      <span className="text-text font-bold">GameWith光 対応状況</span>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 relative z-10">
                       {renderStatusIcon(regionData.status.hasGameWith)}
                       {renderStatusText(regionData.status.hasGameWith)}
                     </div>
                   </div>
 
-                  <div className="p-4 bg-black/50 border border-white/5 rounded-xl flex items-center justify-between">
-                    <div className="flex items-center gap-3">
+                  <div className="p-4 sm:p-5 bg-white/[0.03] border border-white/10 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:border-cyan/30 hover:bg-cyan/5 transition-all duration-300 relative overflow-hidden group">
+                    <div className="absolute top-0 -left-full w-1/2 h-full bg-gradient-to-r from-transparent via-cyan/10 to-transparent -skew-x-12 opacity-0 group-hover:opacity-100 group-hover:animate-[scanline_0.6s_ease_forwards]" />
+                    <div className="flex items-center gap-3 relative z-10">
                       <ShieldCheck className="w-5 h-5 text-purple-400" />
-                      <span className="text-text-muted text-sm font-bold">地域最強ローカル回線</span>
+                      <span className="text-text font-bold">地域最強ローカル回線</span>
                     </div>
                     <div className="flex items-center gap-2">
                       {regionData.status.localIsp ? (
@@ -145,7 +149,11 @@ export default function JapanCoveragePage() {
 
                 {/* CTA Button */}
                 <div className="flex justify-center">
-                  <Link href="/diagnosis-pro-test" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-cyan text-black font-bold rounded-full transition-transform hover:scale-105 shadow-[0_0_20px_rgba(0,229,255,0.3)]">
+                  <Link 
+                    href="/diagnosis" 
+                    className="group relative inline-flex items-center justify-center gap-2.5 px-9 py-4 rounded-full bg-cyan text-black font-heading font-bold text-base transition-all hover:-translate-y-0.5 hover:scale-105 hover:shadow-[0_0_50px_rgba(0,229,255,0.55),0_0_100px_rgba(0,229,255,0.2)] active:scale-95 overflow-hidden w-full sm:w-auto"
+                  >
+                    <span className="absolute inset-0 bg-white/25 translate-y-full transition-transform duration-300 group-hover:translate-y-0" />
                     あなたの環境に最適な回線を診断する
                     <ChevronRight className="w-5 h-5" />
                   </Link>

@@ -26,6 +26,8 @@ export interface UserAnswers {
   gameGenre: 'fps' | 'mmo' | 'casual' | '';
   housingType: 'house' | 'mansion_optical' | 'mansion_vdsl' | 'unknown' | '';
   mobileCarrier: 'docomo' | 'au' | 'softbank' | 'other' | '';
+  wantsDiscount?: boolean;
+  playFrequency: 'everyday' | 'often' | 'weekend' | '';
   priority: 'ping' | 'price' | 'balance' | '';
   region: string;
   requires10G: boolean;
@@ -52,6 +54,13 @@ function calculateScore(isp: ISP, answers: UserAnswers): number {
     wPrice = 0.7; wPing = 0.1; wStability = 0.2;
   }
 
+  // プレイ頻度による微調整
+  if (answers.playFrequency === 'everyday') {
+    wPing += 0.1; wStability += 0.1; // 毎日やるなら品質重視
+  } else if (answers.playFrequency === 'weekend') {
+    wPrice += 0.1; // たまにしかやらないなら価格重視
+  }
+
   // 重視ポイントによる微調整
   if (answers.priority === 'ping') wPing += 0.2;
   if (answers.priority === 'price') wPrice += 0.2;
@@ -59,20 +68,30 @@ function calculateScore(isp: ISP, answers: UserAnswers): number {
   // 基本スコア計算
   score = (normPing * wPing) + (normPrice * wPrice) + (normStability * wStability);
 
-  // 3. 特殊条件による加点・減点
-  if (isp.mobile_discount.includes(answers.mobileCarrier)) {
-    score += 15; // スマホ割ボーナス
+  // 特殊条件による加点・減点
+  // ユーザーがセット割を希望している場合のみ加点する
+  if (answers.wantsDiscount !== false && isp.mobile_discount.includes(answers.mobileCarrier)) {
+    // 料金重視でない場合（性能重視・バランス）はセット割の重要度を下げる
+    score += (answers.priority !== 'price') ? 3 : 15;
   }
 
   // 運営が誠実にお勧めできる「NURO」と「GameWith」への特別ボーナス
-  // （エリア判定等のハードフィルターは通過している前提なので、残っていればスコアを底上げする）
   if (isp.id.includes('nuro_hikari') || isp.id.includes('gamewith_hikari')) {
     score += 40; 
   }
 
-  // 10Gペナルティ（大容量を求めていないのに10Gを選ぶのは過剰スペックで高額なため推奨しない）
-  if (!answers.requires10G && isp.max_speed_gbps >= 10) {
-    score -= 200; // 確実に1Gプランを下回らせる強力なペナルティ
+  // 10G条件の処理（ハードフィルターではなくスコア加減点で調整）
+  if (answers.requires10G) {
+    if (isp.max_speed_gbps >= 10) {
+      score += 150; // 10G希望なら10G対応回線に大幅加点し上位に出やすくする
+    } else {
+      score += 0; // 1Gプランも排除はしないが加点はしない
+    }
+  } else {
+    // 10Gペナルティ（大容量を求めていないのに10Gを選ぶのは過剰スペックで高額なため推奨しない）
+    if (isp.max_speed_gbps >= 10) {
+      score -= 200; // 確実に1Gプランを下回らせる強力なペナルティ
+    }
   }
 
   return score;
@@ -89,21 +108,10 @@ export function recommendISPs(isps: ISP[], answers: UserAnswers): { isp: ISP, sc
     if (answers.region && !isp.regions.includes(answers.region)) {
       return false;
     }
-    // 10G希望の場合は、最大速度が10G未満のものを弾く
-    if (answers.requires10G && isp.max_speed_gbps < 10) {
-      return false;
-    }
     return true;
   });
 
-  // フォールバック1: 10G条件を外す
-  if (filteredISPs.length === 0 && answers.requires10G) {
-    filteredISPs = isps.filter(isp => {
-      if (answers.housingType === 'mansion_vdsl' && !isp.available_housing.includes('mansion_vdsl')) return false;
-      if (answers.region && !isp.regions.includes(answers.region)) return false;
-      return true;
-    });
-  }
+
 
   // フォールバック2: 地域条件も外す
   if (filteredISPs.length === 0 && answers.region) {
@@ -119,11 +127,25 @@ export function recommendISPs(isps: ISP[], answers: UserAnswers): { isp: ISP, sc
   }
 
   // 2. スコア計算とランキング
-  return filteredISPs
+  const scored = filteredISPs
     .map(isp => ({
       isp,
       score: Math.round(calculateScore(isp, answers))
     }))
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 3); // トップ3
+    .sort((a, b) => b.score - a.score);
+
+  // 3. プロバイダ単位で重複排除（一番スコアが高いプランのみ残す）
+  const uniqueRecommendations: { isp: ISP, score: number }[] = [];
+  const seenBaseNames = new Set<string>();
+
+  for (const item of scored) {
+    const baseName = item.isp.name.replace(/\s*\([0-9]+G\)/i, '').trim();
+    if (!seenBaseNames.has(baseName)) {
+      seenBaseNames.add(baseName);
+      uniqueRecommendations.push(item);
+      if (uniqueRecommendations.length === 3) break;
+    }
+  }
+
+  return uniqueRecommendations;
 }

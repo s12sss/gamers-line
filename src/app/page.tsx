@@ -165,8 +165,8 @@ export default async function Home() {
                 <div className="absolute inset-0 rounded-full bg-cyan/10" />
                 01
               </div>
-              <h4 className="font-heading font-semibold text-base mb-2">6つの質問に答える</h4>
-              <p className="text-[0.8rem] text-text-muted leading-relaxed">プレイゲームジャンル・住居タイプ・キャリア・重視点を選ぶだけ</p>
+              <h4 className="font-heading font-semibold text-base mb-2">8つの質問に答える</h4>
+              <p className="text-[0.8rem] text-text-muted leading-relaxed">プレイジャンル・頻度・住居・キャリア・割引・重視点を選ぶだけ</p>
             </div>
 
             <div className="text-center px-6">
@@ -175,7 +175,7 @@ export default async function Home() {
                 02
               </div>
               <h4 className="font-heading font-semibold text-base mb-2">AIが最適解を算出</h4>
-              <p className="text-[0.8rem] text-text-muted leading-relaxed">独自スコアリングで30以上のプランからあなたに最適な3件を選出</p>
+              <p className="text-[0.8rem] text-text-muted leading-relaxed">独自スコアリングで20以上のプランからあなたに最適な3件を選出</p>
             </div>
 
             <div className="text-center px-6">
