@@ -23,9 +23,9 @@ type Props = {
 };
 
 export default function ProviderClientView({ detail, isps }: Props) {
-  // デフォルト表示を1G（なければ最初のプラン）にする
+  // デフォルト表示を10G以外のプラン（1Gや2Gなど）にする
   const [activeIspId, setActiveIspId] = useState(
-    isps.find(isp => isp.id.includes('1g') && !isp.id.includes('10g'))?.id || isps[0].id
+    isps.find(isp => !isp.id.includes('10g'))?.id || isps[0].id
   );
 
   const activeIsp = isps.find(isp => isp.id === activeIspId) || isps[0];
