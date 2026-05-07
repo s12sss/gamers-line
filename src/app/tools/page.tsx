@@ -14,20 +14,23 @@ export default function ToolsPage() {
       <div className="max-w-[1000px] mx-auto px-4 sm:px-10">
         
         {/* Page Header */}
-        <div className="mb-12">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 rounded-2xl bg-cyan/10 border border-cyan/20 flex items-center justify-center text-cyan shadow-[0_0_15px_rgba(0,229,255,0.15)]">
-              <PenTool className="w-6 h-6" />
-            </div>
-            <div>
-              <h1 className="font-heading text-2xl sm:text-3xl font-bold tracking-tight">
-                回線乗り換え<span className="gradient-text">支援ツール</span>
-              </h1>
-            </div>
+        <div className="relative z-10 w-full pt-10 pb-8 sm:pt-16 sm:pb-12 overflow-hidden">
+          <div className="absolute -top-[60px] -right-[80px] w-[400px] h-[300px] bg-[radial-gradient(ellipse,rgba(0,229,255,0.08),transparent_70%)] blur-[40px] pointer-events-none" />
+          <div className="relative z-10 font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase opacity-70 mb-4">
+            // SUPPORT TOOLS
           </div>
-          <p className="text-text-muted text-sm sm:text-base leading-relaxed max-w-[600px]">
-            「違約金を払っても今すぐ乗り換えた方がいいのか？」「キャッシュバックの受け取り忘れが怖い」といった乗り換え時の不安を解消するためのツール群です。
+          <h1 className="relative z-10 font-heading text-[clamp(2rem,5vw,3.25rem)] font-bold tracking-tight leading-[1.1] mb-4">
+            回線乗り換え<br />
+            <span className="gradient-text">支援ツール</span>
+          </h1>
+          <p className="text-sm text-text-muted max-w-[500px] leading-[1.7]">
+            回線検討に役立つ便利ツール群です。<br className="hidden sm:block" />
+            今後も順次追加予定。
           </p>
+        </div>
+
+        <div className="w-full mb-10 sm:mb-12">
+          <div className="h-px w-full bg-white/10" />
         </div>
 
         {/* Tools Container */}
