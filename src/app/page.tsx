@@ -200,8 +200,9 @@ export default async function Home() {
             主要ゲーミング回線を<br />
             <span className="gradient-text">一覧・比較する</span>
           </h2>
-          <p className="text-sm text-text-muted max-w-[400px]">
-            「まずはどんな回線があるか知りたい」「自分で条件を絞り込んで比較したい」という方はこちら。
+          <p className="text-sm text-text-muted max-w-[400px] leading-[1.7]">
+            「まずはどんな回線があるか知りたい」<br className="hidden sm:block" />
+            「自分で条件を絞り込んで比較したい」という方はこちら。
           </p>
         </div>
 

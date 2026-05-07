@@ -15,7 +15,7 @@ export default function DiagnosisPage() {
             最適な回線を<span className="gradient-text">見つける</span>
           </h1>
           <p className="text-zinc-400">
-            あなたのプレイスタイルと住環境に合わせて、<br className="md:hidden" />最強のゲーミング回線を割り出します。
+            あなたのプレイスタイルと住環境に合わせて、<br className="md:hidden" />最強のゲーミング回線を提案します。
           </p>
         </div>
 

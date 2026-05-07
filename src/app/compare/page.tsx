@@ -73,8 +73,9 @@ export default function ComparePage() {
           主要ゲーミング回線を<br />
           <span className="gradient-text">徹底比較</span>
         </h1>
-        <p className="text-text-muted text-base max-w-[520px] leading-[1.7]">
-          Ping値・月額・速度・割引をすべて並べて一目比較。あなたに合った回線を見つけよう。
+        <p className="text-sm text-text-muted max-w-[500px] leading-[1.7]">
+          Ping値・月額・速度・割引をすべて並べて一目比較。<br className="hidden sm:block" />
+          あなたに合った回線を見つけよう。
         </p>
       </div>
 

@@ -29,8 +29,9 @@ export default function ProviderPage() {
           光回線別<br />
           <span className="gradient-text">徹底特集</span>
         </h1>
-        <p className="relative z-10 text-text-muted text-base max-w-[520px] leading-[1.7]">
-          各回線の特徴・強み・弱みをゲーマー目線で深堀り。申し込み前に必ず確認すべき情報を網羅。
+        <p className="text-sm text-text-muted max-w-[500px] leading-[1.7]">
+          各回線の特徴・強み・弱みをゲーマー目線で深堀り。<br className="hidden sm:block" />
+          申し込み前に必ず確認すべき情報を網羅。
         </p>
       </div>
 
