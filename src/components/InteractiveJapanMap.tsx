@@ -89,7 +89,11 @@ export default function InteractiveJapanMap({ selectedRegion, onRegionSelect }: 
           </div>
           <div className="px-3 py-1 bg-black/60 border border-white/10 rounded-md backdrop-blur-md">
             <span className="text-xs text-text-muted font-mono">STATUS:</span>
-            <span className="text-xs font-bold text-white ml-2">WAITING</span>
+            {selectedRegion ? (
+              <span className="text-xs font-bold text-emerald ml-2">SELECTED</span>
+            ) : (
+              <span className="text-xs font-bold text-white ml-2">WAITING</span>
+            )}
           </div>
         </div>
 
