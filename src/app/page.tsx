@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Tooltip from "@/components/Tooltip";
-import { Activity, ShieldCheck, Wallet, ChevronRight, Play, Gamepad2 } from 'lucide-react';
+import { Activity, ShieldCheck, Wallet, ChevronRight, Play } from 'lucide-react';
 import ispsData from "@/data/isps.json";
 import { getColumnsList } from "@/libs/microcms";
 
@@ -33,104 +33,44 @@ export default async function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
       />
       {/* Hero Section */}
-      <section className="relative px-4 pt-[100px] sm:pt-[120px] pb-[80px] sm:pb-[100px] overflow-hidden">
+      <section className="relative flex flex-col items-center justify-center text-center px-4 pt-[120px] pb-[100px] overflow-hidden">
         {/* Ambient blobs */}
-        <div className="blob w-[700px] h-[500px] bg-[radial-gradient(ellipse,rgba(0,229,255,0.18)_0%,transparent_70%)] -top-[100px] left-1/2 -translate-x-1/2 lg:-translate-x-1/4 animate-[bloat_8s_ease-in-out_infinite]" />
+        <div className="blob w-[700px] h-[500px] bg-[radial-gradient(ellipse,rgba(0,229,255,0.18)_0%,transparent_70%)] -top-[100px] left-1/2 -translate-x-1/2 animate-[bloat_8s_ease-in-out_infinite]" />
         <div className="blob w-[400px] h-[350px] bg-[radial-gradient(ellipse,rgba(0,230,118,0.12)_0%,transparent_70%)] bottom-0 -right-[100px] animate-[bloat2_10s_ease-in-out_infinite_2s]" />
         <div className="blob w-[350px] h-[300px] bg-[radial-gradient(ellipse,var(--color-purple-custom)_0%,transparent_70%)] top-1/2 -left-[80px] animate-[bloat3_12s_ease-in-out_infinite_4s]" />
 
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-8 items-center relative z-10">
-          {/* Left Side: Text Content */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
-            <h1 className="font-heading text-[clamp(2.5rem,8vw,5.5rem)] font-bold tracking-tighter leading-[1.05] mb-6 animate-[fadeUp_0.6s_ease_0.1s_both]">
-              そのラグ、<br />
-              <span className="gradient-text">回線のせいかも。</span>
-            </h1>
 
-            <p className="text-[clamp(0.95rem,2vw,1.2rem)] text-text-muted max-w-[560px] leading-[1.7] mb-10 lg:mb-12 animate-[fadeUp_0.6s_ease_0.2s_both]">
-              今のプレイ環境を選択するだけで、<br className="hidden sm:block" />
-              あなたに本当に必要なゲーミング回線を<br className="sm:hidden" />たった30秒で無料診断
-            </p>
 
-            <div className="flex flex-col gap-3 w-full sm:w-auto animate-[fadeUp_0.6s_ease_0.3s_both]">
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start w-full">
-                <Link
-                  href="/diagnosis"
-                  className="group relative inline-flex items-center justify-center gap-2.5 px-9 py-4 rounded-full bg-cyan text-black font-heading font-bold text-base transition-all hover:-translate-y-0.5 hover:scale-105 hover:shadow-[0_0_50px_rgba(0,229,255,0.55),0_0_100px_rgba(0,229,255,0.2)] active:scale-95 overflow-hidden w-full sm:w-auto"
-                >
-                  <span className="absolute inset-0 bg-white/25 translate-y-full transition-transform duration-300 group-hover:translate-y-0" />
-                  <Play className="w-4 h-4 fill-black" />
-                  <span className="relative z-10">今すぐ無料診断をはじめる</span>
-                </Link>
-                <Link
-                  href="#features"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full border border-white/10 bg-white/5 text-text-muted text-[15px] font-medium transition-all hover:border-cyan/30 hover:text-text hover:bg-cyan/5 w-full sm:w-auto"
-                >
-                  選ばれる理由
-                  <ChevronRight className="w-4 h-4" />
-                </Link>
-              </div>
-              <div className="text-[0.65rem] sm:text-[0.7rem] text-text-dim tracking-wider text-center lg:text-left pl-0 lg:pl-4 mt-2">
-                ＼ 完全匿名・個人情報の入力不要 ／
-              </div>
-            </div>
-          </div>
+        <h1 className="font-heading text-[clamp(2.5rem,8vw,5.5rem)] font-bold tracking-tighter leading-[1.05] mb-6 animate-[fadeUp_0.6s_ease_0.1s_both]">
+          そのラグ、<br />
+          <span className="gradient-text">回線のせいかも。</span>
+        </h1>
 
-          {/* Right Side: Graphic (Desktop Only) */}
-          <div className="hidden lg:flex relative w-full h-full min-h-[400px] items-center justify-center animate-[fadeIn_1s_ease_0.4s_both]">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,229,255,0.05)_0%,transparent_60%)]" />
-            
-            {/* Mock Diagnosis Card */}
-            <div className="relative w-[90%] max-w-[460px] p-7 rounded-[28px] border border-white/10 bg-black/40 backdrop-blur-2xl shadow-[0_30px_60px_rgba(0,0,0,0.6),0_0_40px_rgba(0,229,255,0.1)] transform rotate-[-3deg] hover:rotate-0 transition-transform duration-700 ease-out z-10">
-              <div className="absolute -top-[1px] -right-[1px] px-5 py-2 bg-gradient-to-r from-cyan to-emerald text-black text-[0.75rem] font-bold tracking-widest rounded-bl-[24px] rounded-tr-[28px] font-mono shadow-[0_0_20px_rgba(0,229,255,0.3)]">
-                BEST MATCH
-              </div>
-              
-              <div className="flex items-center gap-4 mb-7">
-                <div className="w-14 h-14 rounded-full bg-cyan/10 border border-cyan/30 flex items-center justify-center text-cyan shadow-[inset_0_0_15px_rgba(0,229,255,0.2)]">
-                  <Gamepad2 className="w-7 h-7" />
-                </div>
-                <div>
-                  <div className="text-[0.75rem] text-cyan font-mono mb-1 tracking-wider">最強10G・FPS最適</div>
-                  <div className="font-heading text-2xl font-bold text-text tracking-tight">NURO 光 (10G)</div>
-                </div>
-              </div>
+        <p className="text-[clamp(0.95rem,2vw,1.2rem)] text-text-muted max-w-[560px] leading-[1.7] mb-12 animate-[fadeUp_0.6s_ease_0.2s_both]">
+          今のプレイ環境を選択するだけで、<br className="hidden sm:block" />
+          あなたに本当に必要なゲーミング回線を<br className="sm:hidden" />たった30秒で無料診断
+        </p>
 
-              <div className="grid grid-cols-2 gap-4 mb-7">
-                <div className="p-4 bg-white/5 rounded-2xl border border-white/5 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-16 h-16 bg-emerald/10 blur-[15px] rounded-full" />
-                  <div className="text-[0.7rem] text-text-muted mb-1.5 relative z-10">推測 Ping値</div>
-                  <div className="flex items-baseline gap-1 relative z-10">
-                    <span className="font-mono text-4xl font-bold text-emerald drop-shadow-[0_0_15px_rgba(0,230,118,0.3)]">7</span>
-                    <span className="text-sm text-emerald/70 font-mono">ms</span>
-                  </div>
-                </div>
-                <div className="p-4 bg-white/5 rounded-2xl border border-white/5 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-16 h-16 bg-cyan/10 blur-[15px] rounded-full" />
-                  <div className="text-[0.7rem] text-text-muted mb-1.5 relative z-10">最大速度</div>
-                  <div className="flex items-baseline gap-1 relative z-10">
-                    <span className="font-mono text-4xl font-bold text-cyan drop-shadow-[0_0_15px_rgba(0,229,255,0.3)]">10</span>
-                    <span className="text-sm text-cyan/70 font-mono">Gbps</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="w-full py-4 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center gap-2.5">
-                <span className="w-2 h-2 rounded-full bg-emerald shadow-[0_0_8px_var(--color-emerald)] animate-[pulse-dot_2s_ease-in-out_infinite]"></span>
-                <span className="text-[0.85rem] font-bold text-text-muted tracking-wide">診断アルゴリズムが最適解を算出</span>
-              </div>
-            </div>
-
-            {/* Decorative elements behind the card */}
-            <div className="absolute top-[10%] right-[5%] w-20 h-20 rounded-full border border-cyan/20 blur-[1px] animate-[pulse_4s_ease-in-out_infinite]" />
-            <div className="absolute bottom-[5%] left-[10%] w-32 h-32 rounded-full border border-purple-500/20 blur-[1px] animate-[pulse_5s_ease-in-out_infinite_1s]" />
-            <div className="absolute top-1/2 -translate-y-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan/20 to-transparent -rotate-12 -z-10" />
-            <div className="absolute top-1/2 -translate-y-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-purple-500/20 to-transparent rotate-12 -z-10" />
-          </div>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto animate-[fadeUp_0.6s_ease_0.3s_both]">
+          <Link
+            href="/diagnosis"
+            className="group relative inline-flex items-center justify-center gap-2.5 px-9 py-4 rounded-full bg-cyan text-black font-heading font-bold text-base transition-all hover:-translate-y-0.5 hover:scale-105 hover:shadow-[0_0_50px_rgba(0,229,255,0.55),0_0_100px_rgba(0,229,255,0.2)] active:scale-95 overflow-hidden w-full sm:w-auto"
+          >
+            <span className="absolute inset-0 bg-white/25 translate-y-full transition-transform duration-300 group-hover:translate-y-0" />
+            <Play className="w-4 h-4 fill-black" />
+            <span className="relative z-10">今すぐ無料診断をはじめる</span>
+          </Link>
+          <Link
+            href="#features"
+            className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full border border-white/10 bg-white/5 text-text-muted text-[15px] font-medium transition-all hover:border-cyan/30 hover:text-text hover:bg-cyan/5 w-full sm:w-auto"
+          >
+            選ばれる理由
+            <ChevronRight className="w-4 h-4" />
+          </Link>
         </div>
 
-        {/* Scroll hint (Mobile only or center bottom) */}
-        <div className="hidden lg:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-text-dim text-[0.7rem] tracking-widest uppercase animate-[fadeIn_1s_ease_1s_both]">
+        {/* Scroll hint */}
+        <div className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-text-dim text-[0.7rem] tracking-widest uppercase animate-[fadeIn_1s_ease_1s_both]">
           <div className="w-[1px] h-10 bg-gradient-to-b from-transparent to-text-dim animate-[scrollLine_2s_ease-in-out_infinite]"></div>
           scroll
         </div>
