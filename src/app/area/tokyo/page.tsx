@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function TokyoAreaPage() {
   // 関東（kanto）または全国（all）対応のISPのみを抽出
   const tokyoISPs = (ispsData as ISP[]).filter(isp => 
-    isp.region.includes('kanto') || isp.region.includes('all')
+    isp.regions.includes('kanto') || isp.regions.includes('all')
   );
 
   return (
