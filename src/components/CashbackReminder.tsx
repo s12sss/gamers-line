@@ -4,40 +4,18 @@ import { useState } from 'react';
 import { Calendar, Bell, ExternalLink, ShieldCheck } from 'lucide-react';
 
 export default function CashbackReminder() {
-  const [provider, setProvider] = useState<string>("NURO光");
-  const [contractMonth, setContractMonth] = useState<string>(
-    new Date().toISOString().slice(0, 7) // YYYY-MM
-  );
-
-  // プロバイダごとのキャッシュバック受け取り時期（簡易マッピング）
-  const providerWaitMonths: Record<string, number> = {
-    "NURO光": 11,
-    "auひかり": 10,
-    "ドコモ光": 5,
-    "ソフトバンク光": 5,
-    "GameWith光": 3,
-    "その他": 6,
-  };
+  const [taskDetails, setTaskDetails] = useState<string>("プロバイダのマイページから口座情報を登録する");
+  const [scheduledDate, setScheduledDate] = useState<string>("");
 
   const generateCalendarUrl = () => {
-    const waitMonths = providerWaitMonths[provider] || 6;
-    
-    // 契約月から指定月数後を計算
-    const date = new Date(contractMonth + "-01");
-    date.setMonth(date.getMonth() + waitMonths);
-    
-    // YYYYMMDD形式に変換 (Googleカレンダー用)
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    // 月初め（1日）に設定
-    const day = "01";
-    const dateString = `${year}${month}${day}`;
+    // 日付が未入力の場合は今日の日付をセット
+    const dateStr = scheduledDate ? scheduledDate.replace(/-/g, "") : new Date().toISOString().slice(0, 10).replace(/-/g, "");
 
-    const title = `⚠️ [Gamer's Line] ${provider} キャッシュバック受け取り手続き`;
-    const details = `【${provider}】のキャッシュバック受け取り手続きの時期が来ました！\n\nマイページ、または指定のメールアドレス宛に案内が届いているはずです。\n期限内に忘れずに申請しましょう！\n\n■ Gamer's Line で手続き方法を確認する\nhttps://gamers-line.jp/`;
+    const title = `⚠️ [Gamer's Line] キャッシュバック受け取り手続き`;
+    const details = `キャッシュバック受け取り手続きの時期が来ました！\n\n【やること】\n${taskDetails}\n\n期限内に忘れずに申請しましょう！\n\n■ Gamer's Line で手続き方法を確認する\nhttps://gamers-line.jp/`;
 
-    // Google Calendar Template URL
-    return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${dateString}/${dateString}&details=${encodeURIComponent(details)}`;
+    // Google Calendar Template URL (終日予定として登録)
+    return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${dateStr}/${dateStr}&details=${encodeURIComponent(details)}`;
   };
 
   return (
@@ -50,8 +28,8 @@ export default function CashbackReminder() {
           <ShieldCheck className="w-5 h-5" />
         </div>
         <div>
-          <h2 className="font-heading text-xl font-bold">キャッシュバック防具（リマインダー）</h2>
-          <p className="text-sm text-text-muted">「11ヶ月後」など忘れた頃に来る手続きをGoogleカレンダーに登録します</p>
+          <h2 className="font-heading text-xl font-bold">キャッシュバックリマインダー</h2>
+          <p className="text-sm text-text-muted">「数ヶ月後」など忘れた頃に来る手続きをGoogleカレンダーに登録します</p>
         </div>
       </div>
 
@@ -59,24 +37,22 @@ export default function CashbackReminder() {
         {/* Form */}
         <div className="space-y-6">
           <div className="space-y-2">
-            <label className="text-sm font-bold text-text">申し込んだ（申し込む予定の）回線</label>
-            <select 
-              value={provider}
-              onChange={(e) => setProvider(e.target.value)}
-              className="w-full bg-[#050508] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald/50 focus:ring-1 focus:ring-emerald/50"
-            >
-              {Object.keys(providerWaitMonths).map(p => (
-                <option key={p} value={p}>{p} (約{providerWaitMonths[p]}ヶ月後)</option>
-              ))}
-            </select>
+            <label className="text-sm font-bold text-text">キャッシュバックの条件・やること</label>
+            <textarea 
+              value={taskDetails}
+              onChange={(e) => setTaskDetails(e.target.value)}
+              placeholder="例：〇〇のマイページで口座情報を登録する"
+              rows={3}
+              className="w-full bg-[#050508] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald/50 focus:ring-1 focus:ring-emerald/50 resize-none"
+            />
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-bold text-text">申し込み予定月</label>
+            <label className="text-sm font-bold text-text">手続きの予定日（メールが届く日など）</label>
             <input 
-              type="month" 
-              value={contractMonth}
-              onChange={(e) => setContractMonth(e.target.value)}
+              type="date" 
+              value={scheduledDate}
+              onChange={(e) => setScheduledDate(e.target.value)}
               className="w-full bg-[#050508] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald/50 focus:ring-1 focus:ring-emerald/50 [color-scheme:dark]"
             />
           </div>
@@ -96,7 +72,7 @@ export default function CashbackReminder() {
 
             <h3 className="text-lg font-bold text-white mb-2">未来の自分に通知を設定</h3>
             <p className="text-sm text-text-muted mb-6">
-              指定した月の1日に、カレンダーに予定と手続きの案内を登録します。これで受け取り忘れの心配はありません。
+              指定した日付でカレンダーに予定を登録します。これで受け取り忘れの心配はありません。
             </p>
 
             <a 
