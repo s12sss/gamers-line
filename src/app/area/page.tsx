@@ -1,0 +1,164 @@
+"use client";
+
+import { useState } from 'react';
+import InteractiveJapanMap from '@/components/InteractiveJapanMap';
+import { REGION_COVERAGE, RegionId } from '@/utils/regionData';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ShieldCheck, AlertTriangle, XCircle, Zap, MapPin, ChevronRight } from 'lucide-react';
+import Link from 'next/link';
+
+export default function JapanCoveragePage() {
+  const [selectedRegion, setSelectedRegion] = useState<RegionId | null>(null);
+
+  const regionData = selectedRegion ? REGION_COVERAGE[selectedRegion] : null;
+
+  const renderStatusIcon = (status: 'AVAILABLE' | 'COVERED' | 'LIMITED' | 'UNAVAILABLE') => {
+    switch (status) {
+      case 'AVAILABLE':
+      case 'COVERED':
+        return <ShieldCheck className="w-5 h-5 text-emerald" />;
+      case 'LIMITED':
+        return <AlertTriangle className="w-5 h-5 text-yellow-500" />;
+      case 'UNAVAILABLE':
+        return <XCircle className="w-5 h-5 text-red-500" />;
+    }
+  };
+
+  const renderStatusText = (status: 'AVAILABLE' | 'COVERED' | 'LIMITED' | 'UNAVAILABLE') => {
+    switch (status) {
+      case 'AVAILABLE': return <span className="text-emerald font-bold font-mono">AVAILABLE</span>;
+      case 'COVERED': return <span className="text-emerald font-bold font-mono">COVERED</span>;
+      case 'LIMITED': return <span className="text-yellow-500 font-bold font-mono">LIMITED</span>;
+      case 'UNAVAILABLE': return <span className="text-red-500 font-bold font-mono">UNAVAILABLE</span>;
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-background pb-20">
+      <div className="max-w-6xl mx-auto pt-24 px-4 mb-12">
+        <div className="text-center mb-8">
+          <h1 className="font-heading text-3xl sm:text-5xl font-black text-white mb-4 tracking-tight">
+            JAPAN <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan to-emerald">COVERAGE MAP</span>
+          </h1>
+          <p className="text-text-muted text-sm sm:text-base max-w-2xl mx-auto">
+            日本全国のゲーミング回線インフラ状況をリアルタイムスキャン。
+            10G回線の普及率や、地域限定の最強ローカル回線の存在が一目でわかります。
+          </p>
+        </div>
+        
+        {/* インタラクティブマップ */}
+        <InteractiveJapanMap selectedRegion={selectedRegion} onRegionSelect={setSelectedRegion} />
+      </div>
+      
+      <div className="max-w-4xl mx-auto px-4">
+        <AnimatePresence mode="wait">
+          {regionData ? (
+            <motion.section 
+              key={selectedRegion}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="bg-[#050505] border border-cyan/30 rounded-3xl p-6 sm:p-10 relative overflow-hidden shadow-[0_0_30px_rgba(0,229,255,0.1)]"
+            >
+              {/* Scanline Effect */}
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan/5 to-transparent h-full w-full animate-[scan_4s_linear_infinite] pointer-events-none" />
+              
+              <div className="relative z-10">
+                <div className="flex items-center justify-between border-b border-white/10 pb-6 mb-6">
+                  <div>
+                    <div className="text-cyan font-mono text-xs tracking-widest mb-1">SCAN RESULT</div>
+                    <h2 className="text-2xl sm:text-4xl font-black text-white flex items-center gap-3">
+                      <MapPin className="w-8 h-8 text-cyan" />
+                      {regionData.name}エリア
+                    </h2>
+                  </div>
+                  <div className="px-4 py-2 bg-emerald/10 border border-emerald/30 rounded-full text-emerald text-sm font-bold font-mono animate-pulse">
+                    ANALYSIS COMPLETE
+                  </div>
+                </div>
+
+                {/* Status Grid */}
+                <div className="grid sm:grid-cols-2 gap-4 mb-8">
+                  <div className="p-4 bg-black/50 border border-white/5 rounded-xl flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <Zap className="w-5 h-5 text-cyan" />
+                      <span className="text-text-muted text-sm font-bold">10Gプラン普及率</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      {renderStatusIcon(regionData.status.has10G)}
+                      {renderStatusText(regionData.status.has10G)}
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-black/50 border border-white/5 rounded-xl flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <img src="/nuro-logo.svg" alt="NURO" className="w-5 h-5 grayscale opacity-70" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+                      <span className="text-text-muted text-sm font-bold">NURO光 対応状況</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      {renderStatusIcon(regionData.status.hasNuro)}
+                      {renderStatusText(regionData.status.hasNuro)}
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-black/50 border border-white/5 rounded-xl flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <img src="/gamewith-logo.svg" alt="GameWith" className="w-5 h-5 grayscale opacity-70" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+                      <span className="text-text-muted text-sm font-bold">GameWith光 対応状況</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      {renderStatusIcon(regionData.status.hasGameWith)}
+                      {renderStatusText(regionData.status.hasGameWith)}
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-black/50 border border-white/5 rounded-xl flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <ShieldCheck className="w-5 h-5 text-purple-400" />
+                      <span className="text-text-muted text-sm font-bold">地域最強ローカル回線</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      {regionData.status.localIsp ? (
+                        <>
+                          <ShieldCheck className="w-5 h-5 text-emerald" />
+                          <span className="text-emerald font-bold font-mono">DETECTED: {regionData.status.localIsp}</span>
+                        </>
+                      ) : (
+                        <>
+                          <XCircle className="w-5 h-5 text-text-muted" />
+                          <span className="text-text-muted font-bold font-mono">NONE</span>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Advice Box */}
+                <div className="p-6 bg-cyan/5 border border-cyan/20 rounded-2xl mb-8">
+                  <h3 className="text-cyan font-bold mb-2 flex items-center gap-2">
+                    <span className="text-lg">💡</span> {regionData.name}のゲーマーへの総評
+                  </h3>
+                  <p className="text-text-muted leading-relaxed text-sm sm:text-base">
+                    {regionData.status.advice}
+                  </p>
+                </div>
+
+                {/* CTA Button */}
+                <div className="flex justify-center">
+                  <Link href="/ranking" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-full transition-all border border-white/20">
+                    全国版の最強回線ランキングを見る
+                    <ChevronRight className="w-5 h-5" />
+                  </Link>
+                </div>
+              </div>
+            </motion.section>
+          ) : (
+            <section className="p-8 rounded-3xl bg-white/5 border border-white/10 text-center opacity-50">
+              <p className="text-text-muted">上のマップからスキャンしたい地方を選択してください</p>
+            </section>
+          )}
+        </AnimatePresence>
+      </div>
+    </div>
+  );
+}
