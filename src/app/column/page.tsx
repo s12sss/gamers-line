@@ -19,7 +19,7 @@ export default async function ColumnList({ searchParams }: { searchParams?: { [k
         <div className="font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase opacity-70 mb-4">
           // COLUMN
         </div>
-        <h1 className="font-heading text-[clamp(1.8rem,5vw,3.5rem)] font-bold tracking-tight leading-[1.1] mb-4">
+        <h1 className="relative z-10 font-heading text-[clamp(2rem,5vw,3.25rem)] font-bold tracking-tight leading-[1.1] mb-4">
           ゲーマーのための<br />
           <span className="gradient-text">回線攻略ガイド</span>
         </h1>
