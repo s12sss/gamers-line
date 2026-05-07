@@ -127,6 +127,9 @@ export default function ProviderClientView({ detail, isps }: Props) {
               </li>
             ))}
           </ul>
+        </div>
+      </div>
+
       {/* Detailed Body Content */}
       <div className="bg-[#050505] border border-white/10 rounded-3xl p-6 sm:p-12 mb-16 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
         {detail.bodyContent}
