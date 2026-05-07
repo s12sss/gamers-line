@@ -7,6 +7,7 @@ import { Metadata, ResolvingMetadata } from 'next';
 import * as cheerio from 'cheerio';
 import ClientArticleBody from '@/components/ClientArticleBody';
 import AuthorProfile from '@/components/AuthorProfile';
+import ArticleShareArea from '@/components/ArticleShareArea';
 
 export const revalidate = 60;
 
@@ -31,6 +32,12 @@ export async function generateMetadata(
     title: column.title,
     description: column.content.replace(/<[^>]*>?/gm, '').substring(0, 120) + '...',
     openGraph: {
+      title: column.title,
+      description: column.content.replace(/<[^>]*>?/gm, '').substring(0, 120) + '...',
+      images: column.thumbnail ? [column.thumbnail.url] : [],
+    },
+    twitter: {
+      card: 'summary_large_image',
       title: column.title,
       description: column.content.replace(/<[^>]*>?/gm, '').substring(0, 120) + '...',
       images: column.thumbnail ? [column.thumbnail.url] : [],
@@ -189,6 +196,9 @@ export default async function ColumnArticle({ params }: Props) {
 
             {/* 記事本文 */}
             <ClientArticleBody content={processedContent} />
+
+            {/* SNS Share */}
+            <ArticleShareArea title={column.title} />
 
             {/* Diagnosis CTA Inline */}
             <div className="my-10 sm:my-14 p-6 sm:p-9 rounded-[20px] border border-cyan/20 bg-cyan/[0.04] flex flex-col sm:flex-row items-center justify-between gap-5 relative overflow-hidden">
