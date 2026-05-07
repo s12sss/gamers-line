@@ -45,7 +45,7 @@ export default function JapanCoveragePage() {
           エリアから<br />
           <span className="gradient-text">対応回線を探す</span>
         </h1>
-        <p className="relative z-10 text-text-muted text-base max-w-[520px] leading-[1.7]">
+        <p className="relative z-10 text-sm text-text-muted max-w-[520px] leading-[1.7]">
           あなたの街で使える10Gプランや、地域限定の強力なローカル回線をマップから一発でチェックできます。
         </p>
       </div>

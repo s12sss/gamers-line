@@ -22,14 +22,14 @@ export default function InteractiveJapanMap({ selectedRegion, onRegionSelect }: 
   ];
 
   return (
-    <div className="relative w-full aspect-video min-h-[300px] bg-[#050505] overflow-hidden rounded-3xl border border-white/10 flex items-center justify-center p-4">
+    <div className="relative w-full min-h-[450px] sm:aspect-video sm:min-h-[400px] bg-[#050505] overflow-hidden rounded-[20px] sm:rounded-3xl border border-white/10 flex items-center justify-center p-4 pt-16 sm:p-4">
       {/* Background Grid & Scanlines */}
       <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(0,229,255,0.3) 1px, transparent 0)', backgroundSize: '32px 32px' }} />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan/5 to-transparent h-full w-full animate-[scan_4s_linear_infinite]" />
 
       {/* SVG Map Container */}
-      <div className="relative w-full max-w-[800px] aspect-video">
-        <svg viewBox="0 0 850 600" className="w-full h-full drop-shadow-[0_0_15px_rgba(0,229,255,0.2)]">
+      <div className="relative w-full h-full max-w-[800px] flex items-center justify-center">
+        <svg viewBox="0 0 850 600" preserveAspectRatio="xMidYMid meet" className="w-full max-h-full drop-shadow-[0_0_15px_rgba(0,229,255,0.2)]">
           <defs>
             <linearGradient id="cyber-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="rgba(0, 229, 255, 0.4)" />
