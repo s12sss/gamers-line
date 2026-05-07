@@ -16,7 +16,7 @@ export const REGION_COVERAGE: Record<RegionId, { name: string, status: CoverageS
       hasNuro: 'COVERED',
       hasGameWith: 'COVERED',
       localIsp: null,
-      advice: '北海道はNURO光の恩恵を受けられる広大なエリアです。冬場の引きこもりゲーミングに備え、NUROまたはドコモ・auの光回線を推奨します。10G対応エリアは札幌市周辺など一部に限られます。'
+      advice: '北海道はNURO光が使えるのが本当に強いですね！ただ、10Gプランは札幌周辺など一部に限られるので事前のエリア確認は必須です。雪の季節に家で快適にゲームを楽しむなら、NUROか、お使いのスマホのセット割が効く光回線を選ぶと失敗しないですよ！'
     }
   },
   tohoku: {
@@ -26,7 +26,7 @@ export const REGION_COVERAGE: Record<RegionId, { name: string, status: CoverageS
       hasNuro: 'LIMITED',
       hasGameWith: 'COVERED',
       localIsp: null,
-      advice: '東北地方の一部（宮城など）でNURO光が提供開始されていますが、全体的にはまだ普及途上です。全国対応のGameWith光や、スマホキャリアに合わせた光コラボ回線を選ぶのが最も確実でPingが安定します。'
+      advice: '東北は宮城などでNURO光が使えるようになってきましたが、まだ全域とは言えない状況です。Pingの安定を最優先するなら、全国どこでも対応しているGameWith光を選ぶか、スマホキャリアに合わせた光コラボ回線を選ぶのが無難で確実です！'
     }
   },
   kanto: {
@@ -36,7 +36,7 @@ export const REGION_COVERAGE: Record<RegionId, { name: string, status: CoverageS
       hasNuro: 'COVERED',
       hasGameWith: 'COVERED',
       localIsp: null,
-      advice: '関東は国内最強の通信インフラを誇ります。10Gプランの普及率が最も高く、FPSガチ勢であればNURO 10Gやauひかり10Gを最優先で導入すべき「恵まれた地域」です。'
+      advice: '関東はインフラが整っているので、ゲーマーにとっては本当に助かるエリアですよね。10Gプランもかなり普及してきているので、FPSなどで絶対に撃ち負けたくない方は、NURO光やauひかりの10Gプランを最優先でチェックしてみてください！'
     }
   },
   chubu: {
@@ -46,7 +46,7 @@ export const REGION_COVERAGE: Record<RegionId, { name: string, status: CoverageS
       hasNuro: 'COVERED',
       hasGameWith: 'COVERED',
       localIsp: 'コミュファ光',
-      advice: '東海地方に住んでいるなら、地域最強の独自網「コミュファ光」のゲーミングカスタムが圧倒的におすすめです。NURO光も強力ですが、ローカル回線のPingの低さは全国トップクラスです。'
+      advice: '東海エリアにお住まいなら、独自回線である「コミュファ光」のゲーミングカスタムが正直かなりおすすめです！NURO光ももちろん良いのですが、コミュファ光のPingの低さと安定感は全国でもトップクラスなので、一度エリア確認をしてみる価値はありますよ！'
     }
   },
   kansai: {
@@ -56,7 +56,7 @@ export const REGION_COVERAGE: Record<RegionId, { name: string, status: CoverageS
       hasNuro: 'COVERED',
       hasGameWith: 'COVERED',
       localIsp: 'eo光',
-      advice: '関西エリアの最適解は「eo光」です。独自回線のためフレッツ網の混雑の影響を受けず、10Gコースの普及率も非常に高いです。eo光が引けない場合の代替としてNURO光を検討しましょう。'
+      advice: '関西で回線に悩んでいるなら、まずは「eo光」が引けるか確認してみてほしいです！独自回線なので夜間でも混雑しにくく、10Gコースもかなり選べるようになっています。もしeo光がエリア外だった場合は、NURO光を検討するのがベストな流れですね！'
     }
   },
   chugoku: {
@@ -66,7 +66,7 @@ export const REGION_COVERAGE: Record<RegionId, { name: string, status: CoverageS
       hasNuro: 'COVERED',
       hasGameWith: 'COVERED',
       localIsp: 'メガ・エッグ',
-      advice: '中国地方では独自回線の「メガ・エッグ」が安定感抜群ですが、NURO光も広島・岡山などで広く展開しています。都市部であれば10Gプランの導入も視野に入ります。'
+      advice: '中国地方にお住まいなら、地域密着型の「メガ・エッグ」がかなり安定していておすすめできます！もちろん広島や岡山ならNURO光も広く対応しているので、ご自宅が10Gプランに対応しているかどうかも含めて、この2つを中心に探してみると良いですよ！'
     }
   },
   shikoku: {
@@ -76,7 +76,7 @@ export const REGION_COVERAGE: Record<RegionId, { name: string, status: CoverageS
       hasNuro: 'UNAVAILABLE',
       hasGameWith: 'COVERED',
       localIsp: 'ピカラ光',
-      advice: '四国は現在NURO光の提供エリア外です。そのため、四国電力系の最強ローカル回線「ピカラ光」か、全国対応でPing調整済みの「GameWith光」の2択から選ぶのがゲーマーの鉄則となります。'
+      advice: '四国はまだNURO光が来ていないんですよね…。でも大丈夫です！四国にお住まいなら、強力な独自回線の「ピカラ光」か、全国対応でPingも安定している「GameWith光」のどちらかを選べば、快適なゲーミング環境が作れるので安心してください！'
     }
   },
   kyushu: {
@@ -86,7 +86,7 @@ export const REGION_COVERAGE: Record<RegionId, { name: string, status: CoverageS
       hasNuro: 'COVERED',
       hasGameWith: 'COVERED',
       localIsp: 'BBIQ',
-      advice: '九州地方（沖縄除く）はNURO光と地域最強回線「BBIQ（ビビック）」の激戦区です。まずはBBIQの提供エリアか確認し、ダメならNURO光、沖縄の場合はGameWith光やauひかりを推奨します。'
+      advice: '九州（沖縄除く）は、NURO光と地域回線の「BBIQ」の両方が選べるうらやましいエリアです！まずはBBIQが引けるか確認して、難しければNURO光を検討するのがおすすめです。沖縄にお住まいの場合は、GameWith光やauひかりを中心に探すと失敗しにくいですよ！'
     }
   }
 };
