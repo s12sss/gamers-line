@@ -395,8 +395,7 @@ export default function SpeedTestPage() {
                       </h3>
                       <p className="relative z-10 text-sm text-white/70 mb-8 leading-relaxed font-medium">
                         現在の回線に満足していますか？<br className="hidden sm:block"/>
-                        あなたに最適な「ラグなし最強回線」を<br className="hidden sm:block"/>
-                        完全無料で診断します。
+                        あなたに最適な回線を完全無料で診断します。
                       </p>
                       
                       <Link
