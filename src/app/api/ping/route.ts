@@ -1,19 +1,15 @@
 import { NextResponse } from 'next/server';
 
-// 常に最新の結果を返すためキャッシュを無効化
+// Edgeランタイムを指定（Vercelの最寄りCDNエッジで処理させるため超高速応答になる）
+export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
-  // ブラウザからのPing測定用エンドポイント
-  // 応答速度のみを測るため、最小限のペイロードを返す
-  return NextResponse.json(
-    { status: 'ok', timestamp: Date.now() },
-    {
-      headers: {
-        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
-        'Pragma': 'no-cache',
-        'Expires': '0',
-      },
-    }
-  );
+  return new NextResponse('pong', {
+    status: 200,
+    headers: {
+      'Content-Type': 'text/plain',
+      'Cache-Control': 'no-store, max-age=0',
+    },
+  });
 }
