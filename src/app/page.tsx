@@ -166,8 +166,9 @@ export default async function Home() {
             <ChevronRight className="w-4 h-4" />
           </Link>
         </div>
+      </div>
 
-        {/* Scroll hint */}
+      {/* Scroll hint */}
         <div className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-text-dim text-[0.7rem] tracking-widest uppercase animate-[fadeIn_1s_ease_1s_both]">
           <div className="w-[1px] h-10 bg-gradient-to-b from-transparent to-text-dim animate-[scrollLine_2s_ease-in-out_infinite]"></div>
           scroll
