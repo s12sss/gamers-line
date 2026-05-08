@@ -69,7 +69,7 @@ export default async function Home() {
         />
 
         {/* Horizon Glow Line */}
-        <div className="absolute left-0 right-0 bottom-[46%] h-[1px] pointer-events-none"
+        <div className="absolute left-0 right-0 bottom-[30%] sm:bottom-[35%] h-[1px] pointer-events-none"
              style={{
                background: 'linear-gradient(90deg, transparent 0%, rgba(0,229,255,0.5) 30%, rgba(0,230,118,0.5) 70%, transparent 100%)',
                boxShadow: '0 0 14px rgba(0,229,255,0.7), 0 0 28px rgba(0,229,255,0.4)'
@@ -129,14 +129,10 @@ export default async function Home() {
           </div>
 
           <h1 className="font-heading font-black text-[clamp(2.5rem,6vw,4.4rem)] leading-[1.08] tracking-[-0.04em] text-white text-center drop-shadow-[0_0_24px_rgba(0,229,255,0.25)] sm:drop-shadow-[0_0_60px_rgba(0,0,0,0.6)]">
-            そのラグ、<span className="inline-block bg-gradient-to-br from-[#00E5FF] to-[#00E676] text-[#02040a] px-2 sm:px-4 py-0 leading-tight">回線</span>のせいかも。
+            そのラグ、<span className="bg-gradient-to-br from-[#00E5FF] to-[#00E676] bg-clip-text text-transparent drop-shadow-[0_0_18px_rgba(0,229,255,0.45)]">回線</span>のせいかも。
           </h1>
 
-          <div className="font-sans font-medium text-[0.9rem] sm:text-[1.05rem] text-[#a8a8c8] tracking-[0.18em] drop-shadow-[0_0_12px_rgba(0,0,0,0.6)]">
-            ゲーマーのための回線診断・乗り換えメディア
-          </div>
-
-          <div className="mt-1.5 flex items-center gap-[14px] font-heading font-bold text-[1.1rem] sm:text-[1.35rem] tracking-[-0.02em] text-white">
+          <div className="mt-2 flex items-center gap-[14px] font-heading font-bold text-[1.1rem] sm:text-[1.35rem] tracking-[-0.02em] text-white">
             <span className="w-2 h-2 rounded-full bg-[#00E5FF] shadow-[0_0_14px_#00E5FF,0_0_28px_rgba(0,229,255,0.5)]" />
             <span>Gamer's <span className="text-[#00E5FF] drop-shadow-[0_0_16px_rgba(0,229,255,0.5)]">Line</span></span>
             <span className="ml-[6px] pl-[14px] border-l border-white/20 font-mono font-normal text-[0.75rem] sm:text-[0.85rem] text-[#7a7a9a] tracking-[0.12em]">
@@ -145,7 +141,7 @@ export default async function Home() {
           </div>
 
           {/* User's added sentence below all this */}
-          <p className="mt-8 text-[clamp(0.9rem,1.5vw,1rem)] text-text-dim max-w-[560px] leading-[1.7] text-center animate-[fadeUp_0.6s_ease_0.2s_both]">
+          <p className="mt-8 text-[clamp(0.95rem,1.5vw,1.1rem)] text-gray-300 font-medium max-w-[560px] leading-[1.7] text-center animate-[fadeUp_0.6s_ease_0.2s_both]">
             あなたに本当に必要なゲーミング回線を<br className="sm:hidden" />たった30秒で無料診断
           </p>
 
@@ -169,8 +165,8 @@ export default async function Home() {
       </div>
 
       {/* Scroll hint */}
-        <div className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-text-dim text-[0.7rem] tracking-widest uppercase animate-[fadeIn_1s_ease_1s_both]">
-          <div className="w-[1px] h-10 bg-gradient-to-b from-transparent to-text-dim animate-[scrollLine_2s_ease-in-out_infinite]"></div>
+        <div className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-gray-400 font-medium text-[0.7rem] tracking-widest uppercase animate-[fadeIn_1s_ease_1s_both]">
+          <div className="w-[1px] h-10 bg-gradient-to-b from-transparent to-gray-400 animate-[scrollLine_2s_ease-in-out_infinite]"></div>
           scroll
         </div>
       </section>
