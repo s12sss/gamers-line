@@ -75,8 +75,8 @@ function calculateScore(isp: ISP, answers: UserAnswers): number {
     score += (answers.priority !== 'price') ? 3 : 15;
   }
 
-  // 運営が誠実にお勧めできる「NURO」と「GameWith」への特別ボーナス
-  if (isp.id.includes('nuro_hikari') || isp.id.includes('gamewith_hikari')) {
+  // 運営が誠実にお勧めできる「NURO」と「hi-ho」への特別ボーナス
+  if (isp.id.includes('nuro_hikari') || isp.id.includes('hiho_with_games')) {
     score += 40; 
   }
 

@@ -113,6 +113,58 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
       </div>
     )
   },
+  'hi-ho': {
+    slug: 'hi-ho',
+    name: 'hi-ho ひかり with games',
+    catchphrase: 'ゲーマー専用帯域×高性能ルーター。設定不要で手に入る圧倒的低遅延',
+    heroDescription: '株式会社ハイホーが提供する、オンラインゲーム特化型の光コラボ回線です。通常の光回線とは異なる「ゲーム専用帯域」を確保しており、さらにゲームに最適な高性能ゲーミングルーターが標準でセットになるため、ネットワークの知識がなくても最高のゲーム環境が手に入ります。',
+    ispIds: ['hiho_with_games_10g', 'hiho_with_games_1g'],
+    bodyContent: (
+      <div className="space-y-12 text-text-muted leading-relaxed">
+        <section>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <span className="text-cyan font-mono text-xl">01.</span> 一般通信と分離された「ゲーム専用帯域」
+          </h2>
+          <div className="bg-white/5 border border-white/10 p-6 rounded-2xl mb-6">
+            <p>
+              hi-ho ひかり with games最大の強みは、一般利用者の通信ルート（動画視聴やWebサイト閲覧など）とは別の<strong>ゲーマー専用の通信ルート（帯域）</strong>を確保している点です。これにより、夜間のゴールデンタイムなど他の人がネットを大量に使っている時間帯でも、ゲームの通信速度やPing値が影響を受けにくく、ラグのない快適なプレイが可能です。
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <span className="text-cyan font-mono text-xl">02.</span> 高性能ゲーミングルーターがセットで届く
+          </h2>
+          <p className="mb-4">
+            ネット回線がいくら良くても、自宅のWi-Fiルーターが古ければ意味がありません。hi-ho ひかり with gamesでは、専用の高性能ゲーミングルーターが標準でレンタル（セット）提供されます。
+          </p>
+          <div className="grid sm:grid-cols-2 gap-4 mt-6">
+            <div className="border border-cyan/20 bg-cyan/5 p-5 rounded-xl">
+              <h4 className="font-bold text-cyan mb-2">難しい設定は不要</h4>
+              <p className="text-sm">届いたルーターを繋ぐだけで、回線のポテンシャルを100%引き出せる最適な設定が完了します。自分で数万円する高価なゲーミングルーターを選ぶ手間もかかりません。</p>
+            </div>
+            <div className="border border-white/10 bg-white/5 p-5 rounded-xl">
+              <h4 className="font-bold text-white mb-2">31日間月額無料</h4>
+              <p className="text-sm">導入時のハードルを下げるため、契約から31日間の月額料金が無料になるキャンペーンが実施されています。初期費用を抑えて最高の環境へ乗り換えるチャンスです。</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <span className="text-cyan font-mono text-xl">03.</span> マンションでも導入しやすい「光コラボ」
+          </h2>
+          <div className="p-4 border border-cyan/30 bg-cyan/5 rounded-lg mt-4">
+            <p className="text-sm font-medium text-cyan">
+              💡 NTT回線（フレッツ光）対応エリアなら全国どこでもOK<br/>
+              独自回線（NURO光やeo光）が引けないマンションでも、hi-ho ひかり with gamesなら導入可能です。現在ドコモ光やソフトバンク光を使っている場合は、工事なし（事業者変更）で簡単に乗り換えが完了します。
+            </p>
+          </div>
+        </section>
+      </div>
+    )
+  },
   'gamewith': {
     slug: 'gamewith',
     name: 'GameWith光',
