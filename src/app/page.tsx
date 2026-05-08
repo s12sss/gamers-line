@@ -94,13 +94,28 @@ export default async function Home() {
 
 
 
-        <h1 className="relative z-10 font-heading text-[clamp(2.5rem,8vw,5.5rem)] font-bold tracking-tighter leading-[1.05] mb-6 animate-[fadeUp_0.6s_ease_0.1s_both]">
-          そのラグ、<br />
-          <span className="gradient-text">回線のせいかも。</span>
+        {/* Eyebrow */}
+        <div className="relative z-10 flex items-center gap-4 mb-6 animate-[fadeUp_0.6s_ease_0.05s_both]">
+          <div className="w-8 sm:w-12 h-[1px] bg-cyan shadow-[0_0_10px_var(--cyan)]" />
+          <span className="font-mono text-[0.65rem] sm:text-[0.8rem] text-cyan tracking-[0.3em] uppercase font-bold text-shadow-sm shadow-cyan">
+            FOR GAMERS / NETWORK MEDIA
+          </span>
+          <div className="w-8 sm:w-12 h-[1px] bg-cyan shadow-[0_0_10px_var(--cyan)]" />
+        </div>
+
+        <h1 className="relative z-10 font-heading text-[clamp(2rem,6vw,4.5rem)] font-bold tracking-tighter leading-[1.1] mb-6 animate-[fadeUp_0.6s_ease_0.1s_both] text-white">
+          そのラグ、
+          <span className="inline-block bg-gradient-to-r from-cyan to-emerald text-background px-2 sm:px-4 py-1 sm:py-2 rounded-lg sm:rounded-xl mx-1 sm:mx-2 leading-none transform -skew-x-6">
+            <span className="inline-block transform skew-x-6">回線</span>
+          </span>
+          のせいかも。
         </h1>
 
-        <p className="relative z-10 text-[clamp(0.95rem,2vw,1.2rem)] text-text-muted max-w-[560px] leading-[1.7] mb-12 animate-[fadeUp_0.6s_ease_0.2s_both]">
-          今のプレイ環境を選択するだけで、<br className="hidden sm:block" />
+        <div className="relative z-10 text-[clamp(1rem,2.5vw,1.4rem)] text-text-muted font-bold tracking-widest mb-4 animate-[fadeUp_0.6s_ease_0.15s_both]">
+          ゲーマーのための回線診断・乗り換えメディア
+        </div>
+
+        <p className="relative z-10 text-[clamp(0.9rem,1.5vw,1rem)] text-text-dim max-w-[560px] leading-[1.7] mb-12 animate-[fadeUp_0.6s_ease_0.2s_both]">
           あなたに本当に必要なゲーミング回線を<br className="sm:hidden" />たった30秒で無料診断
         </p>
 
