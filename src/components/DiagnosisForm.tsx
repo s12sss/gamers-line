@@ -203,7 +203,7 @@ function ResultCard({ result, index, delay, requires10G }: { result: {isp: ISP, 
               href={result.isp.affiliateLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-3.5 rounded-xl border border-cyan/30 bg-cyan text-black font-heading font-bold text-[0.85rem] sm:text-[0.95rem] flex items-center justify-center gap-2 tracking-tight transition-all hover:bg-cyan/90 hover:shadow-[0_0_15px_rgba(0,229,255,0.5)]"
+              className="w-full py-3.5 rounded-xl border border-cyan/30 bg-gradient-to-r from-cyan to-emerald text-black font-heading font-bold text-[0.85rem] sm:text-[0.95rem] flex items-center justify-center gap-2 tracking-tight transition-all hover:shadow-[0_0_20px_rgba(0,230,118,0.4)]"
             >
               お得に申し込む <ChevronRight className="w-4 h-4" />
             </a>

@@ -120,7 +120,7 @@ export default async function ColumnList({ searchParams }: { searchParams?: { [k
         </div>
         <Link
           href="/diagnosis"
-          className="relative z-10 shrink-0 inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-cyan text-black font-heading font-bold text-[0.9rem] transition-all hover:-translate-y-0.5 hover:shadow-[0_0_40px_rgba(0,229,255,0.5)] w-full sm:w-auto"
+          className="relative z-10 shrink-0 inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r from-cyan to-emerald text-black font-heading font-bold text-[0.9rem] transition-all hover:-translate-y-0.5 hover:shadow-[0_0_40px_rgba(0,230,118,0.5)] w-full sm:w-auto"
         >
           <Play className="w-4 h-4 fill-black" />
           無料診断スタート

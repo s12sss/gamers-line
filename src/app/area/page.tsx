@@ -134,7 +134,7 @@ export default function JapanCoveragePage() {
                 <div className="flex justify-center">
                   <Link 
                     href="/diagnosis" 
-                    className="group relative inline-flex items-center justify-center gap-2.5 px-9 py-4 rounded-full bg-cyan text-black font-heading font-bold text-base transition-all hover:-translate-y-0.5 hover:scale-105 hover:shadow-[0_0_50px_rgba(0,229,255,0.55),0_0_100px_rgba(0,229,255,0.2)] active:scale-95 overflow-hidden w-full sm:w-auto"
+                    className="group relative inline-flex items-center justify-center gap-2.5 px-9 py-4 rounded-full bg-gradient-to-r from-cyan to-emerald text-black font-heading font-bold text-base transition-all hover:-translate-y-0.5 hover:scale-105 hover:shadow-[0_0_50px_rgba(0,230,118,0.55),0_0_100px_rgba(0,230,118,0.2)] active:scale-95 overflow-hidden w-full sm:w-auto"
                   >
                     <span className="absolute inset-0 bg-white/25 translate-y-full transition-transform duration-300 group-hover:translate-y-0" />
                     あなたの環境に最適な回線を診断する

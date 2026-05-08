@@ -343,7 +343,7 @@ export default function ComparePage() {
                       <span className="text-[0.55rem] font-bold text-[#ffeb3b] tracking-tighter w-full text-center whitespace-nowrap overflow-hidden text-ellipsis">
                         ＼ {isp.cashback_text.replace('キャッシュバック', 'CB')} ／
                       </span>
-                      <a href={isp.affiliateLink} target="_blank" rel="noopener noreferrer" className={`inline-flex w-full items-center justify-center gap-1 px-1 py-2.5 rounded-lg font-heading font-bold text-[0.75rem] bg-cyan text-black transition-all hover:bg-cyan/80 hover:shadow-[0_0_15px_rgba(0,229,255,0.4)]`}>
+                      <a href={isp.affiliateLink} target="_blank" rel="noopener noreferrer" className={`inline-flex w-full items-center justify-center gap-1 px-1 py-2.5 rounded-lg font-heading font-bold text-[0.75rem] bg-gradient-to-r from-cyan to-emerald text-black transition-all hover:shadow-[0_0_15px_rgba(0,230,118,0.4)]`}>
                         お申し込み
                       </a>
                     </div>
@@ -378,7 +378,7 @@ export default function ComparePage() {
           </div>
           <Link
             href="/diagnosis"
-            className="relative z-10 shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-cyan text-black font-heading font-bold text-[0.9rem] transition-all hover:-translate-y-0.5 hover:shadow-[0_0_24px_rgba(0,229,255,0.35)] w-full sm:w-auto"
+            className="relative z-10 shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-cyan to-emerald text-black font-heading font-bold text-[0.9rem] transition-all hover:-translate-y-0.5 hover:shadow-[0_0_24px_rgba(0,230,118,0.35)] w-full sm:w-auto"
           >
             <Play className="w-4 h-4 fill-black" />
             無料診断スタート

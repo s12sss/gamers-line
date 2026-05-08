@@ -93,7 +93,7 @@ export default function Header() {
 
           <Link
             href="/diagnosis"
-            className="ml-2 inline-flex items-center justify-center px-6 py-2 rounded-full bg-cyan text-black text-[0.8125rem] font-bold tracking-widest transition-all hover:opacity-90 hover:-translate-y-0.5"
+            className="ml-2 inline-flex items-center justify-center px-6 py-2 rounded-full bg-gradient-to-r from-cyan to-emerald text-black text-[0.8125rem] font-bold tracking-widest transition-all hover:opacity-90 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(0,230,118,0.3)]"
           >
             無料診断
           </Link>
@@ -143,7 +143,7 @@ export default function Header() {
           <div className="pt-2 border-t border-white/10 mt-2">
             <Link
               href="/diagnosis"
-              className="flex items-center justify-center w-full py-3.5 rounded-full bg-cyan text-black font-bold text-[0.95rem] tracking-wide transition-all hover:opacity-90"
+              className="flex items-center justify-center w-full py-3.5 rounded-full bg-gradient-to-r from-cyan to-emerald text-black font-bold text-[0.95rem] tracking-wide transition-all hover:opacity-90"
             >
               無料診断スタート
             </Link>

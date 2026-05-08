@@ -175,7 +175,7 @@ export default function ProviderPage() {
                         <span className="text-[0.65rem] font-bold text-[#ffeb3b] tracking-tight bg-black/40 px-2 py-0.5 rounded-full border border-[#ffeb3b]/30 shadow-[0_0_10px_rgba(255,235,59,0.1)] w-full text-center whitespace-nowrap overflow-hidden text-ellipsis">
                           ＼ {isp.cashback_text} ／
                         </span>
-                        <a href={isp.affiliateLink} target="_blank" rel="noopener noreferrer" className="w-full inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl bg-cyan text-black font-heading font-bold text-[0.875rem] transition-all hover:bg-cyan/80 hover:shadow-[0_0_15px_rgba(0,229,255,0.4)]">
+                        <a href={isp.affiliateLink} target="_blank" rel="noopener noreferrer" className="w-full inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl bg-gradient-to-r from-cyan to-emerald text-black font-heading font-bold text-[0.875rem] transition-all hover:shadow-[0_0_15px_rgba(0,230,118,0.4)]">
                           お申し込みはこちら <ChevronRight className="w-3.5 h-3.5" />
                         </a>
                       </div>
@@ -211,7 +211,7 @@ export default function ProviderPage() {
           </div>
           <Link
             href="/diagnosis"
-            className="relative z-10 shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-cyan text-black font-heading font-bold text-[0.9rem] transition-all hover:-translate-y-0.5 hover:shadow-[0_0_24px_rgba(0,229,255,0.35)] w-full sm:w-auto"
+            className="relative z-10 shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-gradient-to-r from-cyan to-emerald text-black font-heading font-bold text-[0.9rem] transition-all hover:-translate-y-0.5 hover:shadow-[0_0_24px_rgba(0,230,118,0.35)] w-full sm:w-auto"
           >
             <Play className="w-4 h-4 fill-black" />
             無料診断スタート

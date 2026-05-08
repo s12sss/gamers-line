@@ -145,7 +145,7 @@ export default function ProviderClientView({ detail, isps }: Props) {
           href={activeIsp.affiliateLink !== "#" ? activeIsp.affiliateLink : "#"}
           target={activeIsp.affiliateLink !== "#" ? "_blank" : undefined}
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-cyan text-black font-black text-lg sm:text-xl rounded-full transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(0,229,255,0.5)] relative z-10"
+          className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-gradient-to-r from-cyan to-emerald text-black font-black text-lg sm:text-xl rounded-full transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(0,230,118,0.5)] relative z-10"
         >
           {detail.name}のお申込みはこちら
           <ChevronRight className="w-6 h-6" />
