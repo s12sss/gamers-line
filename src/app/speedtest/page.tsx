@@ -241,20 +241,15 @@ export default function SpeedTestPage() {
         {/* Test Section */}
         <div className="bg-[#0a0a12] border border-white/10 rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden">
           {status === 'IDLE' && (
-            <div className="flex flex-col items-center justify-center min-h-[300px]">
-              <div className="relative w-48 h-48 mb-8">
-                <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-                  <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="4" />
-                </svg>
-                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <Zap className="w-12 h-12 text-cyan opacity-50 mb-2" />
-                </div>
+            <div className="flex flex-col items-center justify-center py-10 min-h-[250px]">
+              <div className="w-16 h-16 rounded-full bg-cyan/10 border border-cyan/30 flex items-center justify-center mx-auto mb-8 shadow-[0_0_30px_rgba(0,229,255,0.2)]">
+                <Activity className="w-8 h-8 text-cyan" />
               </div>
               <button 
                 onClick={runTest}
-                className="px-10 py-4 bg-cyan text-black font-heading font-bold text-lg rounded-full hover:shadow-[0_0_30px_rgba(0,229,255,0.4)] transition-all hover:-translate-y-1 active:scale-95 flex items-center gap-2"
+                className="px-8 py-3.5 bg-cyan text-black font-heading font-bold text-[0.95rem] rounded-xl hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all hover:-translate-y-1 active:scale-95 flex items-center gap-2"
               >
-                <Activity className="w-5 h-5" /> 測定スタート
+                測定スタート <ChevronRight className="w-4 h-4" />
               </button>
             </div>
           )}
@@ -294,22 +289,30 @@ export default function SpeedTestPage() {
                 animate={{ opacity: 1, scale: 1 }}
                 className="flex flex-col items-center justify-center min-h-[300px]"
               >
-                <div className="font-mono text-[0.8rem] text-text-muted tracking-widest mb-2 uppercase">あなたの階級</div>
+                <div className="font-mono text-[0.7rem] text-text-muted tracking-widest mb-1 uppercase">あなたの階級</div>
                 <motion.h2 
                   initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }}
-                  className={`font-heading text-5xl sm:text-7xl font-black mb-8 tracking-tighter ${TIER_COLORS[result.tier]}`}
+                  className={`font-heading text-4xl sm:text-5xl font-black mb-8 tracking-tighter ${TIER_COLORS[result.tier]}`}
                 >
                   {result.tier}
                 </motion.h2>
 
-                <div className="grid grid-cols-2 gap-4 sm:gap-8 w-full max-w-md mb-10">
-                  <div className="bg-white/5 border border-white/10 rounded-2xl p-4 flex flex-col items-center">
-                    <Activity className="w-5 h-5 text-emerald mb-2" />
-                    <span className="font-mono text-2xl font-bold text-white">{result.ping} <span className="text-sm text-text-muted">ms</span></span>
+                <div className="grid grid-cols-2 gap-4 w-full max-w-sm mb-10">
+                  <div className="bg-black/40 border border-white/5 rounded-[14px] p-4 sm:p-5 flex flex-col items-center">
+                    <div className="text-[0.65rem] sm:text-[0.7rem] text-text-muted mb-2 tracking-wider">Ping</div>
+                    <div className="flex items-baseline gap-1">
+                      <Activity className="w-[14px] h-[14px] text-emerald relative top-[2px] mr-1" />
+                      <span className="font-mono text-3xl font-bold text-emerald drop-shadow-[0_0_20px_rgba(0,230,118,0.4)] leading-none">{result.ping}</span>
+                      <span className="text-[0.7rem] text-text-muted ml-0.5">ms</span>
+                    </div>
                   </div>
-                  <div className="bg-white/5 border border-white/10 rounded-2xl p-4 flex flex-col items-center">
-                    <Download className="w-5 h-5 text-cyan mb-2" />
-                    <span className="font-mono text-2xl font-bold text-white">{result.speed} <span className="text-sm text-text-muted">Mbps</span></span>
+                  <div className="bg-black/40 border border-white/5 rounded-[14px] p-4 sm:p-5 flex flex-col items-center">
+                    <div className="text-[0.65rem] sm:text-[0.7rem] text-text-muted mb-2 tracking-wider">Speed</div>
+                    <div className="flex items-baseline gap-1">
+                      <Download className="w-[14px] h-[14px] text-cyan relative top-[2px] mr-1" />
+                      <span className="font-mono text-3xl font-bold text-cyan drop-shadow-[0_0_20px_rgba(0,229,255,0.4)] leading-none">{result.speed}</span>
+                      <span className="text-[0.7rem] text-text-muted ml-0.5">Mbps</span>
+                    </div>
                   </div>
                 </div>
 
@@ -328,11 +331,11 @@ export default function SpeedTestPage() {
                   </div>
                 )}
 
-                <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md">
-                  <button onClick={shareOnX} className="flex-1 py-3.5 bg-black border border-white/20 text-white font-bold rounded-xl hover:bg-white/5 transition-colors flex items-center justify-center gap-2">
+                <div className="flex flex-col sm:flex-row gap-3 w-full max-w-sm mt-4">
+                  <button onClick={shareOnX} className="flex-1 py-3 bg-black border border-white/10 text-white font-bold rounded-xl hover:bg-white/5 transition-colors flex items-center justify-center gap-2 text-sm">
                     <Share2 className="w-4 h-4" /> 結果をXでシェア
                   </button>
-                  <button onClick={runTest} className="py-3.5 px-6 bg-white/5 border border-white/10 text-white font-medium rounded-xl hover:bg-white/10 transition-colors">
+                  <button onClick={runTest} className="py-3 px-6 bg-white/5 border border-white/10 text-white font-medium rounded-xl hover:bg-white/10 transition-colors text-sm">
                     再測定
                   </button>
                 </div>
