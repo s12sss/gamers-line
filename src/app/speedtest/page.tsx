@@ -46,13 +46,13 @@ export default function SpeedTestPage() {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [rankings, setRankings] = useState<RankingEntry[]>([]);
 
-  // 階級判定ロジック
+  // 階級判定ロジック（高精度化に合わせてしきい値を調整）
   const calculateTier = (pingResult: number, speedResult: number): Tier => {
-    if (pingResult <= 10 && speedResult >= 500) return 'GOD';
-    if (pingResult <= 20 && speedResult >= 300) return 'MASTER';
-    if (pingResult <= 30 && speedResult >= 200) return 'DIAMOND';
-    if (pingResult <= 40 && speedResult >= 100) return 'GOLD';
-    if (pingResult <= 60 && speedResult >= 50) return 'SILVER';
+    if (pingResult <= 8 && speedResult >= 600) return 'GOD';
+    if (pingResult <= 15 && speedResult >= 400) return 'MASTER';
+    if (pingResult <= 25 && speedResult >= 200) return 'DIAMOND';
+    if (pingResult <= 35 && speedResult >= 100) return 'GOLD';
+    if (pingResult <= 50 && speedResult >= 50) return 'SILVER';
     return 'BRONZE';
   };
 
@@ -62,38 +62,81 @@ export default function SpeedTestPage() {
     setResult(null);
     setHasSubmitted(false);
 
-    // 1. Ping測定 (複数回平均)
-    let totalPing = 0;
-    const pingSamples = 5;
+    // 1. ウォームアップ (TCP/SSLコネクションを事前に確立してPingのブレを無くす)
+    await fetch('/api/ping', { cache: 'no-store' }).catch(() => {});
+    await new Promise(resolve => setTimeout(resolve, 200));
+
+    // 2. 高精度Ping測定 (複数回測り、異常値をトリムする)
+    let validPings: number[] = [];
+    const pingSamples = 10;
+    
     for (let i = 0; i < pingSamples; i++) {
+      const url = '/api/ping?t=' + Date.now() + '-' + i;
       const start = performance.now();
-      await fetch('/api/ping?t=' + Date.now(), { cache: 'no-store' }).catch(() => {});
+      await fetch(url, { cache: 'no-store' }).catch(() => {});
       const end = performance.now();
-      totalPing += (end - start);
-      setPing(Math.round(totalPing / (i + 1)));
+      
+      let rtt = end - start;
+      // Performance APIが使える場合は、DNSやTCP接続時間を除外した純粋な「リクエスト〜レスポンス」の時間を取得
+      const entries = performance.getEntriesByName(window.location.origin + url);
+      if (entries.length > 0) {
+        const entry = entries[0] as PerformanceResourceTiming;
+        if (entry.responseEnd > 0 && entry.requestStart > 0) {
+           rtt = entry.responseEnd - entry.requestStart;
+        }
+      }
+      validPings.push(rtt);
+      
+      const currentAvg = Math.round(validPings.reduce((a, b) => a + b, 0) / validPings.length);
+      setPing(currentAvg);
       setProgress(((i + 1) / pingSamples) * 30);
-      await new Promise(resolve => setTimeout(resolve, 100)); // インターバル
+      await new Promise(resolve => setTimeout(resolve, 50));
     }
-    const finalPing = Math.round(totalPing / pingSamples);
+
+    // 上下20%の異常値（スパイク）を弾いて正確な平均を出す
+    validPings.sort((a, b) => a - b);
+    const trimCount = Math.floor(validPings.length * 0.2);
+    const trimmedPings = validPings.slice(trimCount, validPings.length - trimCount);
+    const finalPing = Math.round(trimmedPings.reduce((a, b) => a + b, 0) / trimmedPings.length) || 1;
+    setPing(finalPing);
 
     setStatus('TESTING_SPEED');
-    // 2. 速度測定 (1MBダウンロード複数回)
-    let totalSpeed = 0;
-    const speedSamples = 3;
-    for (let i = 0; i < speedSamples; i++) {
-      const start = performance.now();
-      const res = await fetch('/api/speed?t=' + Date.now(), { cache: 'no-store' }).catch(() => null);
-      if (res) {
-        await res.text(); // データ読み込み完了まで待つ
-        const end = performance.now();
-        const durationSec = (end - start) / 1000;
-        const mbps = (1 * 8) / durationSec; // 1MB * 8bits / sec
-        totalSpeed += mbps;
-        setSpeed(Math.round(totalSpeed / (i + 1)));
+    
+    // 3. 高精度速度測定 (5秒間の並列ダウンロードで帯域を測定)
+    const speedStartTime = performance.now();
+    const testDuration = 5000; // 5秒間
+    let totalBytes = 0;
+    
+    const downloadTask = async () => {
+      while (performance.now() - speedStartTime < testDuration) {
+        const res = await fetch('/api/speed?t=' + Date.now(), { cache: 'no-store' }).catch(() => null);
+        if (res) {
+          const blob = await res.blob();
+          totalBytes += blob.size;
+        }
       }
-      setProgress(30 + ((i + 1) / speedSamples) * 70);
-    }
-    const finalSpeed = Math.round(totalSpeed / speedSamples);
+    };
+
+    // 4並列でダウンロードさせて帯域を最大限使い切る
+    const tasks = [downloadTask(), downloadTask(), downloadTask(), downloadTask()];
+    
+    // UIアニメーション用のインターバル
+    const uiInterval = setInterval(() => {
+      const elapsed = performance.now() - speedStartTime;
+      if (elapsed > 0) {
+        // Mbps計算 = (バイト数 * 8ビット) / 秒数 / 1,000,000
+        const mbps = (totalBytes * 8) / (elapsed / 1000) / 1000000;
+        setSpeed(Math.round(mbps));
+        setProgress(30 + Math.min((elapsed / testDuration) * 70, 70));
+      }
+    }, 200);
+
+    await Promise.all(tasks);
+    clearInterval(uiInterval);
+    
+    const totalElapsed = performance.now() - speedStartTime;
+    const finalSpeed = Math.round((totalBytes * 8) / (totalElapsed / 1000) / 1000000) || 1;
+    setSpeed(finalSpeed);
 
     const tier = calculateTier(finalPing, finalSpeed);
     setResult({ ping: finalPing, speed: finalSpeed, tier });
