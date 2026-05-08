@@ -18,6 +18,7 @@ interface RankingEntry {
   id: string;
   name: string;
   isp: string;
+  plan: string;
   ping: number;
   speed: number;
   tier: Tier;
@@ -42,9 +43,30 @@ export default function SpeedTestPage() {
   
   const [name, setName] = useState('');
   const [selectedIsp, setSelectedIsp] = useState('');
+  const [selectedPlan, setSelectedPlan] = useState('');
+  const [customIsp, setCustomIsp] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [percentile, setPercentile] = useState<number | null>(null);
   const [rankings, setRankings] = useState<RankingEntry[]>([]);
+
+  // 拡張された主要プロバイダリスト
+  const MAJOR_ISPS = [
+    "hi-ho ひかり with games",
+    "NURO光",
+    "GameWith光",
+    "Gaming+",
+    "ドコモ光",
+    "ソフトバンク光",
+    "auひかり",
+    "楽天ひかり",
+    "ビッグローブ光",
+    "OCN光",
+    "eo光",
+    "コミュファ光",
+    "J:COM",
+    "その他"
+  ];
 
   // 階級判定ロジック（高精度化に合わせてしきい値を調整）
   const calculateTier = (pingResult: number, speedResult: number): Tier => {
@@ -163,17 +185,23 @@ export default function SpeedTestPage() {
     if (!name.trim() || !result) return;
     setIsSubmitting(true);
     try {
-      await fetch('/api/ranking', {
+      const actualIsp = selectedIsp === 'その他' ? customIsp : selectedIsp;
+      const res = await fetch('/api/ranking', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name,
-          isp: selectedIsp,
+          isp: actualIsp,
+          plan: selectedPlan,
           ping: result.ping,
           speed: result.speed,
           tier: result.tier
         })
       });
+      const data = await res.json();
+      if (data.percentile) {
+        setPercentile(data.percentile);
+      }
       setHasSubmitted(true);
       fetchRankings(); // ランキング再取得
     } catch (e) {
@@ -291,7 +319,7 @@ export default function SpeedTestPage() {
                     <p className="text-sm text-text/80 mb-4">
                       このPing値ではFPSなどの競技ゲームで明確に不利になります。環境の改善、またはゲーマー専用回線への乗り換えを強くおすすめします。
                     </p>
-                    <Link href="/provider/hi-ho" className="inline-flex items-center justify-center w-full py-3 bg-red-500 text-white font-bold rounded-lg hover:bg-red-600 transition-colors">
+                    <Link href="/diagnosis" className="inline-flex items-center justify-center w-full py-3 bg-red-500 text-white font-bold rounded-lg hover:bg-red-600 transition-colors">
                       ラグを解消する最強回線を見る
                     </Link>
                   </div>
@@ -324,12 +352,37 @@ export default function SpeedTestPage() {
                           className="w-full bg-black border border-white/20 rounded-lg px-4 py-3 text-white focus:border-cyan focus:outline-none appearance-none"
                         >
                           <option value="">利用している回線を選択（任意）</option>
-                          <option value="不明/その他">不明/その他</option>
-                          {ispsData.map(isp => (
-                            <option key={isp.id} value={isp.name}>{isp.name}</option>
+                          {MAJOR_ISPS.map(isp => (
+                            <option key={isp} value={isp}>{isp}</option>
                           ))}
                         </select>
                       </div>
+                      
+                      {selectedIsp === 'その他' && (
+                        <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }}>
+                          <input 
+                            type="text" placeholder="プロバイダ名を入力"
+                            value={customIsp} onChange={(e) => setCustomIsp(e.target.value)}
+                            className="w-full bg-black border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/30 focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan"
+                          />
+                        </motion.div>
+                      )}
+
+                      <div>
+                        <select 
+                          value={selectedPlan} onChange={(e) => setSelectedPlan(e.target.value)}
+                          className="w-full bg-black border border-white/20 rounded-lg px-4 py-3 text-white focus:border-cyan focus:outline-none appearance-none"
+                        >
+                          <option value="">プラン/最大速度を選択（任意）</option>
+                          <option value="1G">1Gbps</option>
+                          <option value="2G">2Gbps</option>
+                          <option value="5G">5Gbps</option>
+                          <option value="10G">10Gbps</option>
+                          <option value="VDSL/100M以下">VDSL/100Mbps以下</option>
+                          <option value="不明">不明</option>
+                        </select>
+                      </div>
+
                       <button 
                         onClick={submitScore} disabled={isSubmitting || !name.trim()}
                         className="w-full py-3 bg-cyan text-black font-bold rounded-lg hover:bg-cyan/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
@@ -339,9 +392,21 @@ export default function SpeedTestPage() {
                     </div>
                   </div>
                 ) : (
-                  <div className="mt-12 pt-10 border-t border-white/10 w-full max-w-md text-center text-emerald font-bold flex items-center justify-center gap-2">
-                    <Activity className="w-5 h-5" /> ランキングへの登録が完了しました！
-                  </div>
+                  <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-12 pt-10 border-t border-white/10 w-full max-w-md text-center">
+                    <div className="text-emerald font-bold flex items-center justify-center gap-2 mb-4">
+                      <Activity className="w-5 h-5" /> ランキングへの登録が完了しました！
+                    </div>
+                    {percentile && (
+                      <div className="bg-cyan/10 border border-cyan/30 rounded-xl p-6">
+                        <div className="text-sm text-cyan font-bold mb-2 uppercase tracking-widest">Relative Rank</div>
+                        <div className="text-white text-lg">
+                          あなたは全チャレンジャーの中で<br />
+                          <span className="text-3xl font-black text-cyan mx-2">上位 {percentile}%</span><br />
+                          の回線環境です！
+                        </div>
+                      </div>
+                    )}
+                  </motion.div>
                 )}
               </motion.div>
             )}
@@ -384,7 +449,12 @@ export default function SpeedTestPage() {
                       </td>
                       <td className="px-6 py-4">
                         <div className="font-bold text-white mb-0.5">{entry.name}</div>
-                        <div className="text-[0.65rem] text-text-muted bg-white/5 px-2 py-0.5 rounded-full inline-block truncate max-w-[150px]">{entry.isp}</div>
+                        <div className="flex flex-wrap gap-1">
+                          <span className="text-[0.65rem] text-text-muted bg-white/5 px-2 py-0.5 rounded-full inline-block truncate max-w-[120px]">{entry.isp}</span>
+                          {entry.plan && entry.plan !== '不明' && (
+                            <span className="text-[0.65rem] text-cyan/70 bg-cyan/10 px-2 py-0.5 rounded-full inline-block">{entry.plan}</span>
+                          )}
+                        </div>
                       </td>
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-1.5">
