@@ -42,8 +42,8 @@ export default function SpeedTestPage() {
   
   const [selectedIsp, setSelectedIsp] = useState('');
   const [selectedPlan, setSelectedPlan] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [percentile, setPercentile] = useState<number | null>(null);
   const [rankings, setRankings] = useState<RankingEntry[]>([]);
 
   // 拡張された主要プロバイダリスト
@@ -185,7 +185,7 @@ export default function SpeedTestPage() {
     if (!result) return;
     setIsSubmitting(true);
     try {
-      await fetch('/api/ranking', {
+      const res = await fetch('/api/ranking', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -196,6 +196,10 @@ export default function SpeedTestPage() {
           tier: result.tier
         })
       });
+      const data = await res.json();
+      if (data.percentile) {
+        setPercentile(data.percentile);
+      }
       setHasSubmitted(true);
       fetchRankings(); // ランキング再取得
     } catch (e) {
@@ -339,7 +343,32 @@ export default function SpeedTestPage() {
                   </button>
                 </div>
 
-                {/* ランキング登録フォーム / 診断への誘導バナー */}
+                {/* 診断への誘導バナー（常時表示） */}
+                <div className="mt-12 pt-10 border-t border-white/10 w-full max-w-lg mx-auto">
+                  <div className="relative overflow-hidden rounded-2xl border border-cyan/30 bg-gradient-to-r from-cyan/10 to-emerald/10 p-8 sm:p-10 text-center group transition-all hover:border-cyan/50 hover:shadow-[0_0_30px_rgba(0,229,255,0.15)]">
+                    <div className="absolute top-0 right-0 w-40 h-40 bg-cyan/20 blur-[50px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+                    <div className="absolute bottom-0 left-0 w-40 h-40 bg-emerald/20 blur-[50px] rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+                    
+                    <h3 className="relative z-10 font-heading font-bold text-xl sm:text-2xl mb-4 tracking-tight">
+                      さらに上のゲーミング環境へ
+                    </h3>
+                    <p className="relative z-10 text-sm text-white/70 mb-8 leading-relaxed font-medium">
+                      現在の回線に満足していますか？<br className="hidden sm:block"/>
+                      あなたに最適な回線を完全無料で診断します。
+                    </p>
+                    
+                    <Link
+                      href="/diagnosis"
+                      className="relative z-10 inline-flex items-center justify-center gap-2 px-8 py-4 w-full sm:w-auto rounded-full bg-gradient-to-r from-cyan to-emerald text-black font-bold font-heading text-[0.95rem] transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(0,230,118,0.4)] active:scale-95"
+                    >
+                      <Activity className="w-5 h-5" />
+                      最適な回線を診断する
+                      <ChevronRight className="w-4 h-4" />
+                    </Link>
+                  </div>
+                </div>
+
+                {/* ランキング登録フォーム / 送信完了画面 */}
                 {!hasSubmitted ? (
                   <div className="mt-12 pt-10 border-t border-white/10 w-full max-w-md text-left mx-auto">
                     <h3 className="font-bold text-lg mb-4 flex items-center gap-2"><Trophy className="w-5 h-5 text-[#ffd700]" /> ランキングに登録する</h3>
@@ -381,32 +410,20 @@ export default function SpeedTestPage() {
                     </div>
                   </div>
                 ) : (
-                  <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-12 pt-10 border-t border-white/10 w-full max-w-lg mx-auto">
-                    <div className="relative overflow-hidden rounded-2xl border border-cyan/30 bg-gradient-to-r from-cyan/10 to-emerald/10 p-8 sm:p-10 text-center group transition-all hover:border-cyan/50 hover:shadow-[0_0_30px_rgba(0,229,255,0.15)]">
-                      <div className="absolute top-0 right-0 w-40 h-40 bg-cyan/20 blur-[50px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-                      <div className="absolute bottom-0 left-0 w-40 h-40 bg-emerald/20 blur-[50px] rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" />
-                      
-                      <div className="text-emerald font-bold flex items-center justify-center gap-2 mb-8 text-sm">
-                        <Activity className="w-4 h-4" /> ランキングへの登録が完了しました！
-                      </div>
-
-                      <h3 className="relative z-10 font-heading font-bold text-xl sm:text-2xl mb-4 tracking-tight">
-                        さらに上のゲーミング環境へ
-                      </h3>
-                      <p className="relative z-10 text-sm text-white/70 mb-8 leading-relaxed font-medium">
-                        現在の回線に満足していますか？<br className="hidden sm:block"/>
-                        あなたに最適な回線を完全無料で診断します。
-                      </p>
-                      
-                      <Link
-                        href="/diagnosis"
-                        className="relative z-10 inline-flex items-center justify-center gap-2 px-8 py-4 w-full sm:w-auto rounded-full bg-gradient-to-r from-cyan to-emerald text-black font-bold font-heading text-[0.95rem] transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(0,230,118,0.4)] active:scale-95"
-                      >
-                        <Activity className="w-5 h-5" />
-                        最適な回線を診断する
-                        <ChevronRight className="w-4 h-4" />
-                      </Link>
+                  <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-12 pt-10 border-t border-white/10 w-full max-w-md text-center mx-auto">
+                    <div className="text-emerald font-bold flex items-center justify-center gap-2 mb-4">
+                      <Activity className="w-5 h-5" /> ランキングへの登録が完了しました！
                     </div>
+                    {percentile && (
+                      <div className="bg-cyan/10 border border-cyan/30 rounded-xl p-6">
+                        <div className="text-sm text-cyan font-bold mb-2 uppercase tracking-widest">Relative Rank</div>
+                        <div className="text-white text-lg">
+                          あなたは全チャレンジャーの中で<br />
+                          <span className="text-3xl font-black text-cyan mx-2">上位 {percentile}%</span><br />
+                          の回線環境です！
+                        </div>
+                      </div>
+                    )}
                   </motion.div>
                 )}
               </motion.div>

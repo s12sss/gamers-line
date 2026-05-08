@@ -6,7 +6,12 @@ const redis = redisUrl ? new Redis(redisUrl) : null;
 
 export const dynamic = 'force-dynamic';
 
-const LEADERBOARD_KEY = 'gamers_line_leaderboard';
+const getLeaderboardKey = () => {
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  return `gamers_line_leaderboard_${year}_${month}`;
+};
 
 export async function GET() {
   if (!redis) {
@@ -20,6 +25,7 @@ export async function GET() {
   }
 
   try {
+    const LEADERBOARD_KEY = getLeaderboardKey();
     const results = await redis.zrange(LEADERBOARD_KEY, 0, 49);
     const rankings = results.map((item) => JSON.parse(item));
     return NextResponse.json({ rankings, mock: false });
@@ -53,6 +59,8 @@ export async function POST(request: Request) {
     };
 
     const memberStr = JSON.stringify(entry);
+
+    const LEADERBOARD_KEY = getLeaderboardKey();
 
     // スコアを登録
     await redis.zadd(LEADERBOARD_KEY, ping, memberStr);
