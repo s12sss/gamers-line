@@ -415,16 +415,6 @@ export default function SpeedTestPage() {
                     <div className="text-emerald font-bold flex items-center justify-center gap-2 mb-4">
                       <Activity className="w-5 h-5" /> ランキングへの登録が完了しました！
                     </div>
-                    {percentile && (
-                      <div className="bg-cyan/10 border border-cyan/30 rounded-xl p-6">
-                        <div className="text-sm text-cyan font-bold mb-2 uppercase tracking-widest">Relative Rank</div>
-                        <div className="text-white text-lg">
-                          あなたは全チャレンジャーの中で<br />
-                          <span className="text-3xl font-black text-cyan mx-2">上位 {percentile}%</span><br />
-                          の回線環境です！
-                        </div>
-                      </div>
-                    )}
                   </motion.div>
                 )}
               </motion.div>
