@@ -14,7 +14,7 @@ export default function ToolsPage() {
       <div className="max-w-[1000px] mx-auto px-4 sm:px-10">
         
         {/* Page Header */}
-        <div className="relative z-10 w-full pt-10 pb-8 sm:pt-16 sm:pb-12 overflow-hidden">
+        <div className="relative z-10 w-full pt-4 pb-8 sm:pt-8 sm:pb-12 overflow-hidden">
           <div className="absolute -top-[60px] -right-[80px] w-[400px] h-[300px] bg-[radial-gradient(ellipse,rgba(0,229,255,0.08),transparent_70%)] blur-[40px] pointer-events-none" />
           <div className="relative z-10 font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase opacity-70 mb-4">
             // SUPPORT TOOLS
