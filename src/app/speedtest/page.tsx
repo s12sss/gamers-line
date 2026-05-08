@@ -42,6 +42,7 @@ export default function SpeedTestPage() {
   
   const [selectedIsp, setSelectedIsp] = useState('');
   const [selectedPlan, setSelectedPlan] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [percentile, setPercentile] = useState<number | null>(null);
   const [rankings, setRankings] = useState<RankingEntry[]>([]);
