@@ -60,6 +60,20 @@ export default async function ColumnArticle({ params }: Props) {
       $(element).attr('id', id);
       headings.push({ id, text: $(element).text() });
     });
+
+    // Custom Button Parser (CTA)
+    // リンクテキストが [btn] から始まる場合、リッチな申し込みボタンに変換する
+    $('a').each((_, element) => {
+      const $el = $(element);
+      const text = $el.text();
+      if (text.includes('[btn]')) {
+        $el.text(text.replace('[btn]', '').trim());
+        $el.addClass('btn-signup');
+        // 矢印アイコンを追加
+        $el.append('<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>');
+      }
+    });
+
     processedContent = $.html();
   }
 
