@@ -69,7 +69,7 @@ export default async function Home() {
         />
 
         {/* Horizon Glow Line */}
-        <div className="absolute left-0 right-0 bottom-[30%] sm:bottom-[35%] h-[1px] pointer-events-none"
+        <div className="absolute left-0 right-0 bottom-[38%] sm:bottom-[41%] h-[1px] pointer-events-none"
              style={{
                background: 'linear-gradient(90deg, transparent 0%, rgba(0,229,255,0.5) 30%, rgba(0,230,118,0.5) 70%, transparent 100%)',
                boxShadow: '0 0 14px rgba(0,229,255,0.7), 0 0 28px rgba(0,229,255,0.4)'
@@ -141,7 +141,7 @@ export default async function Home() {
           </div>
 
           {/* User's added sentence below all this */}
-          <p className="mt-8 text-[clamp(0.95rem,1.5vw,1.1rem)] text-gray-300 font-medium max-w-[560px] leading-[1.7] text-center animate-[fadeUp_0.6s_ease_0.2s_both]">
+          <p className="mt-12 sm:mt-14 text-[clamp(0.95rem,1.5vw,1.1rem)] text-gray-300 font-medium max-w-[560px] leading-[1.7] text-center animate-[fadeUp_0.6s_ease_0.2s_both]">
             あなたに本当に必要なゲーミング回線を<br className="sm:hidden" />たった30秒で無料診断
           </p>
 
