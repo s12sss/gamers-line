@@ -122,7 +122,7 @@ export default async function Home() {
         </div>
 
         {/* THE HORIZON LINE & FLOOR GRID (Dynamically positioned between texts) */}
-        <div className="relative w-full h-[1px] my-10 sm:my-14 flex justify-center z-0 animate-[fadeIn_1s_ease_0.3s_both]">
+        <div className="relative w-full h-[1px] my-5 sm:my-7 flex justify-center z-0 animate-[fadeIn_1s_ease_0.3s_both]">
           {/* Horizon Glow Line */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200vw] h-[1px] pointer-events-none"
                style={{
