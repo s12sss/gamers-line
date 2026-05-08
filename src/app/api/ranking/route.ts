@@ -12,8 +12,8 @@ export async function GET() {
   if (!redis) {
     return NextResponse.json({ 
       rankings: [
-        { id: '1', name: 'ダミープレイヤー', isp: 'hi-ho ひかり with games', plan: '10G', ping: 8, speed: 1200, tier: 'GOD', date: new Date().toISOString() },
-        { id: '2', name: 'テスト太郎', isp: 'NURO光', plan: '2G', ping: 12, speed: 600, tier: 'MASTER', date: new Date().toISOString() },
+        { id: '1', isp: 'hi-ho ひかり with games', plan: '10G', ping: 8, speed: 1200, tier: 'GOD', date: new Date().toISOString() },
+        { id: '2', isp: 'NURO光', plan: '2G', ping: 12, speed: 600, tier: 'MASTER', date: new Date().toISOString() },
       ],
       mock: true
     });
@@ -36,15 +36,14 @@ export async function POST(request: Request) {
 
   try {
     const body = await request.json();
-    const { name, isp, plan, ping, speed, tier } = body;
+    const { isp, plan, ping, speed, tier } = body;
 
-    if (!name || typeof ping !== 'number' || typeof speed !== 'number') {
+    if (typeof ping !== 'number' || typeof speed !== 'number') {
       return NextResponse.json({ error: 'Invalid data' }, { status: 400 });
     }
 
     const entry = {
       id: crypto.randomUUID(),
-      name: name.substring(0, 20),
       isp: isp || '不明',
       plan: plan || '不明',
       ping,

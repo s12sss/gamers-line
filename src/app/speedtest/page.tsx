@@ -16,7 +16,6 @@ interface TestResult {
 
 interface RankingEntry {
   id: string;
-  name: string;
   isp: string;
   plan: string;
   ping: number;
@@ -41,7 +40,6 @@ export default function SpeedTestPage() {
   const [speed, setSpeed] = useState(0);
   const [result, setResult] = useState<TestResult | null>(null);
   
-  const [name, setName] = useState('');
   const [selectedIsp, setSelectedIsp] = useState('');
   const [selectedPlan, setSelectedPlan] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -185,14 +183,13 @@ export default function SpeedTestPage() {
   }, []);
 
   const submitScore = async () => {
-    if (!name.trim() || !result) return;
+    if (!result) return;
     setIsSubmitting(true);
     try {
       const res = await fetch('/api/ranking', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name,
           isp: selectedIsp,
           plan: selectedPlan,
           ping: result.ping,
@@ -241,14 +238,20 @@ export default function SpeedTestPage() {
         {/* Test Section */}
         <div className="bg-[#0a0a12] border border-white/10 rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden">
           {status === 'IDLE' && (
-            <div className="flex flex-col items-center justify-center py-10 min-h-[250px]">
-              <div className="w-16 h-16 rounded-full bg-cyan/10 border border-cyan/30 flex items-center justify-center mx-auto mb-8 shadow-[0_0_30px_rgba(0,229,255,0.2)]">
-                <Activity className="w-8 h-8 text-cyan" />
+            <div className="flex flex-col items-center justify-center py-10 min-h-[250px] relative">
+              {/* Outer decorative ring */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full border border-white/5 bg-[radial-gradient(ellipse,rgba(0,229,255,0.02),transparent_70%)] pointer-events-none" />
+              
+              <div className="relative w-[90px] h-[90px] rounded-full bg-black/40 border border-cyan/30 flex items-center justify-center mx-auto mb-10 shadow-[0_0_40px_rgba(0,229,255,0.15)] group cursor-pointer hover:border-cyan hover:shadow-[0_0_50px_rgba(0,229,255,0.3)] transition-all duration-500" onClick={runTest}>
+                <div className="absolute inset-0 rounded-full border border-transparent border-t-cyan/40 animate-[spin_4s_linear_infinite]" />
+                <Activity className="w-10 h-10 text-cyan drop-shadow-[0_0_10px_rgba(0,229,255,0.8)] group-hover:scale-110 transition-transform duration-500" />
               </div>
+
               <button 
                 onClick={runTest}
-                className="px-8 py-3.5 bg-cyan text-black font-heading font-bold text-[0.95rem] rounded-xl hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all hover:-translate-y-1 active:scale-95 flex items-center gap-2"
+                className="relative px-8 py-3.5 bg-transparent border border-cyan/30 text-cyan font-heading font-bold text-[0.85rem] sm:text-[0.95rem] tracking-wider rounded-full hover:bg-cyan hover:text-black hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all duration-300 hover:-translate-y-1 active:scale-95 flex items-center gap-2 overflow-hidden group"
               >
+                <div className="absolute top-0 -left-full w-[60%] h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 opacity-0 group-hover:opacity-100 group-hover:animate-[scanline_0.6s_ease_forwards]" />
                 測定スタート <ChevronRight className="w-4 h-4" />
               </button>
             </div>
@@ -346,16 +349,9 @@ export default function SpeedTestPage() {
                     <h3 className="font-bold text-lg mb-4 flex items-center gap-2"><Trophy className="w-5 h-5 text-[#ffd700]" /> ランキングに登録する</h3>
                     <div className="space-y-4">
                       <div>
-                        <input 
-                          type="text" placeholder="プレイヤー名（最大20文字）" maxLength={20}
-                          value={name} onChange={(e) => setName(e.target.value)}
-                          className="w-full bg-black border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/30 focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan"
-                        />
-                      </div>
-                      <div>
                         <select 
                           value={selectedIsp} onChange={(e) => setSelectedIsp(e.target.value)}
-                          className="w-full bg-black border border-white/20 rounded-lg px-4 py-3 text-white focus:border-cyan focus:outline-none appearance-none"
+                          className="w-full bg-black border border-white/20 rounded-[12px] px-4 py-3 text-white focus:border-cyan focus:outline-none appearance-none font-medium text-sm"
                         >
                           <option value="">利用している回線を選択（任意）</option>
                           {MAJOR_ISPS.map(isp => (
@@ -367,7 +363,7 @@ export default function SpeedTestPage() {
                       <div>
                         <select 
                           value={selectedPlan} onChange={(e) => setSelectedPlan(e.target.value)}
-                          className="w-full bg-black border border-white/20 rounded-lg px-4 py-3 text-white focus:border-cyan focus:outline-none appearance-none"
+                          className="w-full bg-black border border-white/20 rounded-[12px] px-4 py-3 text-white focus:border-cyan focus:outline-none appearance-none font-medium text-sm"
                         >
                           <option value="">プラン/最大速度を選択（任意）</option>
                           <option value="1G">1Gbps</option>
@@ -380,10 +376,10 @@ export default function SpeedTestPage() {
                       </div>
 
                       <button 
-                        onClick={submitScore} disabled={isSubmitting || !name.trim()}
-                        className="w-full py-3 bg-cyan text-black font-bold rounded-lg hover:bg-cyan/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        onClick={submitScore} disabled={isSubmitting}
+                        className="w-full py-3.5 bg-cyan text-black font-bold rounded-[12px] hover:bg-cyan/80 hover:shadow-[0_0_15px_rgba(0,229,255,0.4)] transition-all disabled:opacity-50 disabled:cursor-not-allowed mt-2"
                       >
-                        {isSubmitting ? '登録中...' : 'スコアを登録する'}
+                        {isSubmitting ? '登録中...' : 'データを登録する'}
                       </button>
                     </div>
                   </div>
@@ -412,43 +408,48 @@ export default function SpeedTestPage() {
 
       {/* Leaderboard Section */}
       <div className="max-w-4xl mx-auto px-4">
-        <h2 className="font-heading text-2xl font-bold mb-6 flex items-center gap-2">
-          <Trophy className="w-6 h-6 text-cyan" /> トッププレイヤー (Top 50)
-        </h2>
+        <div className="mb-8 mt-4 flex items-end justify-between border-b border-white/10 pb-4">
+          <div>
+            <h2 className="font-heading text-2xl sm:text-3xl font-black mb-1 flex items-center gap-3 tracking-tight text-text">
+              <Trophy className="w-6 h-6 sm:w-7 sm:h-7 text-cyan drop-shadow-[0_0_10px_rgba(0,229,255,0.5)]" /> 
+              HALL OF FAME
+            </h2>
+            <p className="font-mono text-[0.65rem] sm:text-xs text-text-muted tracking-widest uppercase">全国ゲーマー回線実測データ (Top 50)</p>
+          </div>
+        </div>
         
-        <div className="bg-[#0a0a12] border border-white/10 rounded-2xl overflow-hidden">
+        <div className="bg-[#0a0a12] border border-white/10 rounded-[20px] overflow-hidden">
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse min-w-[600px]">
+            <table className="w-full text-left border-collapse min-w-[500px]">
               <thead>
                 <tr className="bg-white/5 border-b border-white/10">
-                  <th className="px-6 py-4 font-mono text-[0.7rem] text-white/50 tracking-widest uppercase font-normal">Rank</th>
-                  <th className="px-6 py-4 font-mono text-[0.7rem] text-white/50 tracking-widest uppercase font-normal">Player</th>
-                  <th className="px-6 py-4 font-mono text-[0.7rem] text-white/50 tracking-widest uppercase font-normal">Ping</th>
-                  <th className="px-6 py-4 font-mono text-[0.7rem] text-white/50 tracking-widest uppercase font-normal">Speed</th>
-                  <th className="px-6 py-4 font-mono text-[0.7rem] text-white/50 tracking-widest uppercase font-normal">Tier</th>
+                  <th className="px-6 py-4 font-mono text-[0.65rem] text-white/40 tracking-widest uppercase font-normal w-[80px]">Rank</th>
+                  <th className="px-6 py-4 font-mono text-[0.65rem] text-white/40 tracking-widest uppercase font-normal">ISP / Plan</th>
+                  <th className="px-6 py-4 font-mono text-[0.65rem] text-white/40 tracking-widest uppercase font-normal">Ping</th>
+                  <th className="px-6 py-4 font-mono text-[0.65rem] text-white/40 tracking-widest uppercase font-normal">Speed</th>
+                  <th className="px-6 py-4 font-mono text-[0.65rem] text-white/40 tracking-widest uppercase font-normal">Tier</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5">
                 {rankings.length === 0 ? (
                   <tr>
-                    <td colSpan={5} className="px-6 py-8 text-center text-text-muted text-sm">
+                    <td colSpan={5} className="px-6 py-12 text-center text-text-muted text-sm font-medium">
                       データがありません。最初のチャレンジャーになりましょう！
                     </td>
                   </tr>
                 ) : (
                   rankings.map((entry, idx) => (
-                    <tr key={entry.id || idx} className="hover:bg-white/[0.02] transition-colors">
+                    <tr key={entry.id || idx} className="hover:bg-white/[0.02] transition-colors group">
                       <td className="px-6 py-4">
-                        <span className={`font-mono font-bold text-lg ${idx === 0 ? 'text-[#ffd700]' : idx === 1 ? 'text-[#c0c0c0]' : idx === 2 ? 'text-[#cd7f32]' : 'text-white/50'}`}>
+                        <span className={`font-mono font-bold text-lg sm:text-xl tracking-tighter ${idx === 0 ? 'text-[#ffeb3b] drop-shadow-[0_0_10px_rgba(255,235,59,0.3)]' : idx === 1 ? 'text-[#c0c0c0]' : idx === 2 ? 'text-[#cd7f32]' : 'text-white/30'}`}>
                           #{idx + 1}
                         </span>
                       </td>
                       <td className="px-6 py-4">
-                        <div className="font-bold text-white mb-0.5">{entry.name}</div>
-                        <div className="flex flex-wrap gap-1">
-                          <span className="text-[0.65rem] text-text-muted bg-white/5 px-2 py-0.5 rounded-full inline-block truncate max-w-[120px]">{entry.isp}</span>
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="font-bold text-[0.85rem] sm:text-[0.95rem] text-white group-hover:text-cyan transition-colors">{entry.isp === '不明' ? '匿名プレイヤー' : entry.isp}</span>
                           {entry.plan && entry.plan !== '不明' && (
-                            <span className="text-[0.65rem] text-cyan/70 bg-cyan/10 px-2 py-0.5 rounded-full inline-block">{entry.plan}</span>
+                            <span className="text-[0.65rem] text-cyan bg-cyan/10 border border-cyan/20 px-2 py-0.5 rounded-md font-mono">{entry.plan}</span>
                           )}
                         </div>
                       </td>
