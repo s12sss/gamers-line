@@ -45,18 +45,6 @@ export default async function Home() {
         <div className="absolute rounded-full blur-[90px] pointer-events-none w-[560px] h-[560px] right-[-240px] bottom-[-240px] bg-[rgba(0,230,118,0.22)]" />
         <div className="absolute rounded-full blur-[60px] pointer-events-none w-[700px] h-[700px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[rgba(5,15,35,0.7)]" />
 
-        {/* Perspective Floor Grid */}
-        <div className="absolute left-[-10%] right-[-10%] bottom-[-10%] h-[55%] pointer-events-none opacity-55"
-             style={{
-               backgroundImage: 'linear-gradient(rgba(0,229,255,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,0.18) 1px, transparent 1px)',
-               backgroundSize: '60px 60px',
-               transform: 'perspective(700px) rotateX(62deg)',
-               transformOrigin: 'center top',
-               WebkitMaskImage: 'linear-gradient(180deg, transparent 0%, #000 35%, transparent 95%)',
-               maskImage: 'linear-gradient(180deg, transparent 0%, #000 35%, transparent 95%)'
-             }}
-        />
-
         {/* Flat Grid (mask center) */}
         <div className="absolute inset-0 pointer-events-none"
              style={{
@@ -65,14 +53,6 @@ export default async function Home() {
                backgroundPosition: 'center center',
                WebkitMaskImage: 'radial-gradient(ellipse 75% 75% at 50% 50%, transparent 25%, #000 80%)',
                maskImage: 'radial-gradient(ellipse 75% 75% at 50% 50%, transparent 25%, #000 80%)'
-             }}
-        />
-
-        {/* Horizon Glow Line */}
-        <div className="absolute left-0 right-0 bottom-[38%] sm:bottom-[41%] h-[1px] pointer-events-none"
-             style={{
-               background: 'linear-gradient(90deg, transparent 0%, rgba(0,229,255,0.5) 30%, rgba(0,230,118,0.5) 70%, transparent 100%)',
-               boxShadow: '0 0 14px rgba(0,229,255,0.7), 0 0 28px rgba(0,229,255,0.4)'
              }}
         />
 
@@ -139,9 +119,33 @@ export default async function Home() {
               gamers-line.jp
             </span>
           </div>
+        </div>
 
+        {/* THE HORIZON LINE & FLOOR GRID (Dynamically positioned between texts) */}
+        <div className="relative w-full h-[1px] my-10 sm:my-14 flex justify-center z-0 animate-[fadeIn_1s_ease_0.3s_both]">
+          {/* Horizon Glow Line */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200vw] h-[1px] pointer-events-none"
+               style={{
+                 background: 'linear-gradient(90deg, transparent 0%, rgba(0,229,255,0.5) 30%, rgba(0,230,118,0.5) 70%, transparent 100%)',
+                 boxShadow: '0 0 14px rgba(0,229,255,0.7), 0 0 28px rgba(0,229,255,0.4)'
+               }}
+          />
+          {/* Perspective Floor Grid */}
+          <div className="absolute top-[1px] left-1/2 -translate-x-1/2 w-[200vw] h-[600px] pointer-events-none opacity-55"
+               style={{
+                 backgroundImage: 'linear-gradient(rgba(0,229,255,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,0.18) 1px, transparent 1px)',
+                 backgroundSize: '60px 60px',
+                 transform: 'perspective(700px) rotateX(62deg)',
+                 transformOrigin: 'center top',
+                 WebkitMaskImage: 'linear-gradient(180deg, transparent 0%, #000 35%, transparent 95%)',
+                 maskImage: 'linear-gradient(180deg, transparent 0%, #000 35%, transparent 95%)'
+               }}
+          />
+        </div>
+
+        <div className="relative z-10 flex flex-col items-center w-full max-w-[1200px] mx-auto">
           {/* User's added sentence below all this */}
-          <p className="mt-12 sm:mt-14 text-[clamp(0.95rem,1.5vw,1.1rem)] text-gray-300 font-medium max-w-[560px] leading-[1.7] text-center animate-[fadeUp_0.6s_ease_0.2s_both]">
+          <p className="text-[clamp(0.95rem,1.5vw,1.1rem)] text-gray-300 font-medium max-w-[560px] leading-[1.7] text-center animate-[fadeUp_0.6s_ease_0.2s_both]">
             あなたに本当に必要なゲーミング回線を<br className="sm:hidden" />たった30秒で無料診断
           </p>
 
