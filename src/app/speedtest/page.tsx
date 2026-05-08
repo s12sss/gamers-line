@@ -87,9 +87,9 @@ export default function SpeedTestPage() {
     await fetch('/api/ping', { cache: 'no-store' }).catch(() => {});
     await new Promise(resolve => setTimeout(resolve, 200));
 
-    // 2. 高精度Ping測定 (複数回測り、異常値をトリムする)
+    // 2. 高精度Ping測定 (時間をかけて30回測り、異常値をトリムする)
     let validPings: number[] = [];
-    const pingSamples = 10;
+    const pingSamples = 30; // サンプル数を増やして安定させる
     
     for (let i = 0; i < pingSamples; i++) {
       const url = '/api/ping?t=' + Date.now() + '-' + i;
@@ -98,7 +98,6 @@ export default function SpeedTestPage() {
       const end = performance.now();
       
       let rtt = end - start;
-      // Performance APIが使える場合は、純粋な「リクエスト送信〜最初の1バイト受信(TTFB)」の時間を取得
       const entries = performance.getEntriesByName(window.location.origin + url);
       if (entries.length > 0) {
         const entry = entries[0] as PerformanceResourceTiming;
@@ -107,15 +106,17 @@ export default function SpeedTestPage() {
         }
       }
       
-      // HTTPの仕様上どうしても発生するブラウザ側の処理遅延（オーバーヘッド）を強力に補正し、
-      // Gate02などのWebSocket/ICMP測定による「純粋なPing」の数値に極限まで近づける
-      const estimatedIcmpPing = Math.max(1, Math.round(rtt * 0.35) - 2);
+      // Vercelエッジ(東京)のTTFBはすでにGate02とほぼ同等（20〜30ms）なので、
+      // 過剰な補正はかけず、Node.jsのルーティングによる微小な遅延(約2〜5ms)のみを引く
+      const estimatedIcmpPing = Math.max(1, Math.round(rtt) - 3);
       validPings.push(estimatedIcmpPing);
       
       const currentAvg = Math.round(validPings.reduce((a, b) => a + b, 0) / validPings.length);
       setPing(currentAvg);
       setProgress(((i + 1) / pingSamples) * 30);
-      await new Promise(resolve => setTimeout(resolve, 50));
+      
+      // インターバルを長めに取り、Ping測定だけで約6秒かける
+      await new Promise(resolve => setTimeout(resolve, 200));
     }
 
     // 上下20%の異常値（スパイク）を弾いて正確な平均を出す
@@ -127,9 +128,9 @@ export default function SpeedTestPage() {
 
     setStatus('TESTING_SPEED');
     
-    // 3. 高精度速度測定 (5秒間の並列ダウンロードで帯域を測定)
+    // 3. 高精度速度測定 (15秒間の並列ダウンロードで帯域を測定)
     const speedStartTime = performance.now();
-    const testDuration = 5000; // 5秒間
+    const testDuration = 15000; // 15秒間（より長く安定した帯域を測る）
     let totalBytes = 0;
     
     const downloadTask = async () => {
@@ -142,8 +143,8 @@ export default function SpeedTestPage() {
       }
     };
 
-    // 4並列でダウンロードさせて帯域を最大限使い切る
-    const tasks = [downloadTask(), downloadTask(), downloadTask(), downloadTask()];
+    // 6並列でダウンロードさせて10G回線などの太い帯域も使い切るようにする
+    const tasks = [downloadTask(), downloadTask(), downloadTask(), downloadTask(), downloadTask(), downloadTask()];
     
     // UIアニメーション用のインターバル
     const uiInterval = setInterval(() => {
