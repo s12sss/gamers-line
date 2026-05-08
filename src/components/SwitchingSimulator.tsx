@@ -129,7 +129,7 @@ export default function SwitchingSimulator() {
             </div>
 
             {isSwitchBetter && (
-              <Link href="/provider" className="group relative w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-gradient-to-r from-cyan to-emerald text-black font-bold text-sm transition-all hover:shadow-[0_0_20px_rgba(0,230,118,0.4)] hover:-translate-y-0.5 no-underline">
+              <Link href="/provider" className="group relative w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-cyan text-black font-bold text-sm transition-all hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] hover:-translate-y-0.5 no-underline">
                 <CheckCircle2 className="w-5 h-5" />
                 乗り換え先プロバイダを探す
                 <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
