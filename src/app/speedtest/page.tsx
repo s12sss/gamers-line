@@ -249,7 +249,7 @@ export default function SpeedTestPage() {
 
               <button 
                 onClick={runTest}
-                className="relative px-10 py-4 bg-cyan text-black font-heading font-bold text-lg rounded-full hover:shadow-[0_0_30px_rgba(0,229,255,0.6)] transition-all duration-300 hover:-translate-y-1 active:scale-95 flex items-center gap-2 overflow-hidden group shadow-[0_0_15px_rgba(0,229,255,0.2)]"
+                className="relative px-8 py-3.5 bg-gradient-to-r from-cyan to-emerald text-black font-heading font-bold text-[0.95rem] rounded-full hover:shadow-[0_0_30px_rgba(0,230,118,0.4)] transition-all duration-300 hover:-translate-y-1 active:scale-95 flex items-center gap-2 overflow-hidden group shadow-[0_0_15px_rgba(0,229,255,0.2)]"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-12 -translate-x-full group-hover:animate-[scanline_0.6s_ease_forwards]" />
                 <Activity className="w-5 h-5 drop-shadow-[0_0_5px_rgba(0,0,0,0.3)] relative z-10" />
@@ -348,11 +348,11 @@ export default function SpeedTestPage() {
                 {!hasSubmitted ? (
                   <div className="mt-12 pt-10 border-t border-white/10 w-full max-w-md text-left">
                     <h3 className="font-bold text-lg mb-4 flex items-center gap-2"><Trophy className="w-5 h-5 text-[#ffd700]" /> ランキングに登録する</h3>
-                    <div className="space-y-4">
+                    <div className="space-y-3.5">
                       <div>
                         <select 
                           value={selectedIsp} onChange={(e) => setSelectedIsp(e.target.value)}
-                          className="w-full bg-black border border-white/20 rounded-[12px] px-4 py-3 text-white focus:border-cyan focus:outline-none appearance-none font-medium text-sm"
+                          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-cyan focus:bg-white/10 focus:outline-none appearance-none font-medium text-[0.85rem] transition-colors"
                         >
                           <option value="">利用している回線を選択（任意）</option>
                           {MAJOR_ISPS.map(isp => (
@@ -364,7 +364,7 @@ export default function SpeedTestPage() {
                       <div>
                         <select 
                           value={selectedPlan} onChange={(e) => setSelectedPlan(e.target.value)}
-                          className="w-full bg-black border border-white/20 rounded-[12px] px-4 py-3 text-white focus:border-cyan focus:outline-none appearance-none font-medium text-sm"
+                          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-cyan focus:bg-white/10 focus:outline-none appearance-none font-medium text-[0.85rem] transition-colors"
                         >
                           <option value="">プラン/最大速度を選択（任意）</option>
                           <option value="1G">1Gbps</option>
@@ -378,9 +378,10 @@ export default function SpeedTestPage() {
 
                       <button 
                         onClick={submitScore} disabled={isSubmitting}
-                        className="w-full py-3.5 bg-cyan text-black font-bold rounded-[12px] hover:bg-cyan/80 hover:shadow-[0_0_15px_rgba(0,229,255,0.4)] transition-all disabled:opacity-50 disabled:cursor-not-allowed mt-2"
+                        className="w-full py-3.5 bg-gradient-to-r from-cyan to-emerald text-black font-bold rounded-xl hover:shadow-[0_0_20px_rgba(0,230,118,0.4)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed mt-2 relative overflow-hidden group"
                       >
-                        {isSubmitting ? '登録中...' : 'データを登録する'}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-12 -translate-x-full group-hover:animate-[scanline_0.6s_ease_forwards]" />
+                        <span className="relative z-10 drop-shadow-[0_0_5px_rgba(0,0,0,0.2)]">{isSubmitting ? '登録中...' : 'データを登録する'}</span>
                       </button>
                     </div>
                   </div>
@@ -440,7 +441,7 @@ export default function SpeedTestPage() {
                   </tr>
                 ) : (
                   rankings.map((entry, idx) => (
-                    <tr key={entry.id || idx} className={`group relative transition-all duration-300 overflow-hidden ${idx === 0 ? 'bg-gradient-to-r from-[#ffeb3b]/10 to-transparent border-l-[3px] border-[#ffeb3b]' : idx === 1 ? 'bg-gradient-to-r from-[#c0c0c0]/10 to-transparent border-l-[3px] border-[#c0c0c0]' : idx === 2 ? 'bg-gradient-to-r from-[#cd7f32]/10 to-transparent border-l-[3px] border-[#cd7f32]' : 'hover:bg-white/[0.02] border-l-[3px] border-transparent'}`}>
+                    <tr key={entry.id || idx} className={`group relative transition-all duration-300 overflow-hidden ${idx === 0 ? 'bg-gradient-to-r from-[#ffeb3b]/10 to-transparent' : idx === 1 ? 'bg-gradient-to-r from-[#c0c0c0]/10 to-transparent' : idx === 2 ? 'bg-gradient-to-r from-[#cd7f32]/10 to-transparent' : 'hover:bg-white/[0.02]'}`}>
                       {idx < 3 && <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:animate-[scanline_1s_ease_forwards] pointer-events-none" />}
                       <td className="px-6 py-4 relative z-10">
                         <div className="flex items-center gap-2">
