@@ -34,6 +34,59 @@ export default async function Home() {
       />
       {/* Hero Section */}
       <section className="relative flex flex-col items-center justify-center text-center px-4 pt-[120px] pb-[100px] overflow-hidden">
+        {/* === CYBERPUNK BACKGROUND ELEMENTS === */}
+        {/* Perspective Floor Grid */}
+        <div className="absolute left-[-10%] right-[-10%] bottom-[-10%] h-[55%] pointer-events-none opacity-50"
+             style={{
+               backgroundImage: 'linear-gradient(rgba(0,229,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,0.15) 1px, transparent 1px)',
+               backgroundSize: '60px 60px',
+               transform: 'perspective(700px) rotateX(62deg)',
+               transformOrigin: 'center top',
+               WebkitMaskImage: 'linear-gradient(180deg, transparent 0%, #000 35%, transparent 95%)',
+               maskImage: 'linear-gradient(180deg, transparent 0%, #000 35%, transparent 95%)'
+             }}
+        />
+
+        {/* Diagonal Speed Streaks */}
+        <div className="absolute inset-0 pointer-events-none opacity-70"
+             style={{
+               backgroundImage: 'repeating-linear-gradient(105deg, transparent 0px, transparent 80px, rgba(0,229,255,0.04) 80px, rgba(0,229,255,0.04) 81px, transparent 82px, transparent 180px, rgba(0,230,118,0.03) 180px, rgba(0,230,118,0.03) 181px, transparent 182px)',
+               WebkitMaskImage: 'linear-gradient(105deg, transparent 0%, #000 25%, #000 75%, transparent 100%)',
+               maskImage: 'linear-gradient(105deg, transparent 0%, #000 25%, #000 75%, transparent 100%)'
+             }}
+        />
+
+        {/* Scanlines Overlay (Hero only) */}
+        <div className="absolute inset-0 pointer-events-none mix-blend-overlay opacity-80"
+             style={{
+               backgroundImage: 'repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 4px)'
+             }}
+        />
+
+        {/* Horizon Glow Line */}
+        <div className="absolute left-0 right-0 bottom-[40%] h-[1px] pointer-events-none"
+             style={{
+               background: 'linear-gradient(90deg, transparent 0%, rgba(0,229,255,0.5) 30%, rgba(0,230,118,0.5) 70%, transparent 100%)',
+               boxShadow: '0 0 14px rgba(0,229,255,0.7), 0 0 28px rgba(0,229,255,0.4)'
+             }}
+        />
+
+        {/* HUD Brackets (Corner) */}
+        <div className="absolute top-8 left-4 sm:left-8 w-8 h-8 border-t-[1.5px] border-l-[1.5px] border-cyan/50 shadow-[-1px_-1px_8px_rgba(0,229,255,0.3)] pointer-events-none" />
+        <div className="absolute top-8 right-4 sm:right-8 w-8 h-8 border-t-[1.5px] border-r-[1.5px] border-cyan/50 shadow-[1px_-1px_8px_rgba(0,229,255,0.3)] pointer-events-none" />
+        <div className="absolute bottom-8 left-4 sm:left-8 w-8 h-8 border-b-[1.5px] border-l-[1.5px] border-emerald/50 shadow-[-1px_1px_8px_rgba(0,230,118,0.3)] pointer-events-none" />
+        <div className="absolute bottom-8 right-4 sm:right-8 w-8 h-8 border-b-[1.5px] border-r-[1.5px] border-emerald/50 shadow-[1px_1px_8px_rgba(0,230,118,0.3)] pointer-events-none" />
+
+        {/* Cross Markers (Sprinkled) */}
+        <div className="absolute top-[20%] left-[10%] w-[14px] h-[14px] opacity-50 pointer-events-none hidden sm:block">
+          <div className="absolute left-1/2 top-0 bottom-0 w-[1px] -translate-x-1/2 bg-cyan/70 shadow-[0_0_6px_rgba(0,229,255,0.6)]" />
+          <div className="absolute top-1/2 left-0 right-0 h-[1px] -translate-y-1/2 bg-cyan/70 shadow-[0_0_6px_rgba(0,229,255,0.6)]" />
+        </div>
+        <div className="absolute top-[75%] right-[12%] w-[14px] h-[14px] opacity-40 pointer-events-none hidden sm:block">
+          <div className="absolute left-1/2 top-0 bottom-0 w-[1px] -translate-x-1/2 bg-cyan/70 shadow-[0_0_6px_rgba(0,229,255,0.6)]" />
+          <div className="absolute top-1/2 left-0 right-0 h-[1px] -translate-y-1/2 bg-cyan/70 shadow-[0_0_6px_rgba(0,229,255,0.6)]" />
+        </div>
+
         {/* Ambient blobs */}
         <div className="blob w-[700px] h-[500px] bg-[radial-gradient(ellipse,rgba(0,229,255,0.18)_0%,transparent_70%)] -top-[100px] left-1/2 -translate-x-1/2 animate-[bloat_8s_ease-in-out_infinite]" />
         <div className="blob w-[400px] h-[350px] bg-[radial-gradient(ellipse,rgba(0,230,118,0.12)_0%,transparent_70%)] bottom-0 -right-[100px] animate-[bloat2_10s_ease-in-out_infinite_2s]" />
@@ -41,17 +94,17 @@ export default async function Home() {
 
 
 
-        <h1 className="font-heading text-[clamp(2.5rem,8vw,5.5rem)] font-bold tracking-tighter leading-[1.05] mb-6 animate-[fadeUp_0.6s_ease_0.1s_both]">
+        <h1 className="relative z-10 font-heading text-[clamp(2.5rem,8vw,5.5rem)] font-bold tracking-tighter leading-[1.05] mb-6 animate-[fadeUp_0.6s_ease_0.1s_both]">
           そのラグ、<br />
           <span className="gradient-text">回線のせいかも。</span>
         </h1>
 
-        <p className="text-[clamp(0.95rem,2vw,1.2rem)] text-text-muted max-w-[560px] leading-[1.7] mb-12 animate-[fadeUp_0.6s_ease_0.2s_both]">
+        <p className="relative z-10 text-[clamp(0.95rem,2vw,1.2rem)] text-text-muted max-w-[560px] leading-[1.7] mb-12 animate-[fadeUp_0.6s_ease_0.2s_both]">
           今のプレイ環境を選択するだけで、<br className="hidden sm:block" />
           あなたに本当に必要なゲーミング回線を<br className="sm:hidden" />たった30秒で無料診断
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto animate-[fadeUp_0.6s_ease_0.3s_both]">
+        <div className="relative z-10 flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto animate-[fadeUp_0.6s_ease_0.3s_both]">
           <Link
             href="/diagnosis"
             className="group relative inline-flex items-center justify-center gap-2.5 px-9 py-4 rounded-full bg-cyan text-black font-heading font-bold text-base transition-all hover:-translate-y-0.5 hover:scale-105 hover:shadow-[0_0_50px_rgba(0,229,255,0.55),0_0_100px_rgba(0,229,255,0.2)] active:scale-95 overflow-hidden w-full sm:w-auto"
