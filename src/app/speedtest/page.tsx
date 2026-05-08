@@ -423,6 +423,52 @@ export default function SpeedTestPage() {
         </div>
       </div>
 
+      {/* Tier Guide Section */}
+      <div className="max-w-4xl mx-auto px-4 mt-8 mb-16">
+        <h2 className="font-heading text-xl sm:text-2xl font-black mb-6 flex items-center gap-3 tracking-tight text-text">
+          <Activity className="w-6 h-6 text-cyan" /> 
+          ランク階級の目安
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="bg-[#0a0a12] border border-white/10 rounded-xl p-5 hover:border-[#ffeb3b]/50 transition-colors">
+            <div className="text-[#ffeb3b] font-mono font-bold text-lg mb-2 drop-shadow-[0_0_8px_rgba(255,235,59,0.5)] flex items-center gap-2">
+              GOD <span className="text-xs font-sans text-white/50 font-normal">Ping 8ms以下</span>
+            </div>
+            <p className="text-sm text-text-muted leading-relaxed">プロも嫉妬する国内最高峰の神回線。ラグという概念が存在しない最強の世界。</p>
+          </div>
+          <div className="bg-[#0a0a12] border border-white/10 rounded-xl p-5 hover:border-[#e040fb]/50 transition-colors">
+            <div className="text-[#e040fb] font-mono font-bold text-lg mb-2 drop-shadow-[0_0_8px_rgba(224,64,251,0.5)] flex items-center gap-2">
+              MASTER <span className="text-xs font-sans text-white/50 font-normal">Ping 15ms以下</span>
+            </div>
+            <p className="text-sm text-text-muted leading-relaxed">コンマ1秒を争うガチ勢に最適な素晴らしい環境。どんなゲームも極めて快適。</p>
+          </div>
+          <div className="bg-[#0a0a12] border border-white/10 rounded-xl p-5 hover:border-[#00e5ff]/50 transition-colors">
+            <div className="text-[#00e5ff] font-mono font-bold text-lg mb-2 drop-shadow-[0_0_8px_rgba(0,229,255,0.5)] flex items-center gap-2">
+              DIAMOND <span className="text-xs font-sans text-white/50 font-normal">Ping 25ms以下</span>
+            </div>
+            <p className="text-sm text-text-muted leading-relaxed">FPS・TPSをプレイする上で全く問題のない、非常に優秀で恵まれた通信環境。</p>
+          </div>
+          <div className="bg-[#0a0a12] border border-white/10 rounded-xl p-5 hover:border-[#ffd700]/50 transition-colors">
+            <div className="text-[#ffd700] font-mono font-bold text-lg mb-2 flex items-center gap-2">
+              GOLD <span className="text-xs font-sans text-white/50 font-normal">Ping 35ms以下</span>
+            </div>
+            <p className="text-sm text-text-muted leading-relaxed">一般的なオンラインゲームを遊ぶのに十分な水準。たまに撃ち負けるかも。</p>
+          </div>
+          <div className="bg-[#0a0a12] border border-white/10 rounded-xl p-5 hover:border-[#c0c0c0]/50 transition-colors">
+            <div className="text-[#c0c0c0] font-mono font-bold text-lg mb-2 flex items-center gap-2">
+              SILVER <span className="text-xs font-sans text-white/50 font-normal">Ping 50ms以下</span>
+            </div>
+            <p className="text-sm text-text-muted leading-relaxed">少しラグを感じる場面があるかも。FPSよりMMOなどに適している環境。</p>
+          </div>
+          <div className="bg-[#0a0a12] border border-white/10 rounded-xl p-5 hover:border-[#cd7f32]/50 transition-colors">
+            <div className="text-[#cd7f32] font-mono font-bold text-lg mb-2 flex items-center gap-2">
+              BRONZE <span className="text-xs font-sans text-white/50 font-normal">Ping 51ms以上</span>
+            </div>
+            <p className="text-sm text-text-muted leading-relaxed">対人ゲームでは明確に不利になる環境。回線の乗り換えを強く推奨します。</p>
+          </div>
+        </div>
+      </div>
+
       {/* Leaderboard Section */}
       <div className="max-w-4xl mx-auto px-4">
         <div className="mb-8 mt-4 flex items-end justify-between border-b border-white/10 pb-4">
