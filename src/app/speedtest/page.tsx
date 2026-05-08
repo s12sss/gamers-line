@@ -74,7 +74,6 @@ export default function SpeedTestPage() {
     setStatus('TESTING_PING');
     setProgress(0);
     setResult(null);
-    setHasSubmitted(false);
 
     // 1. ウォームアップ (TCP/SSLコネクションを事前に確立してPingのブレを無くす)
     await fetch('/api/ping', { cache: 'no-store' }).catch(() => {});
