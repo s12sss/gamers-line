@@ -36,7 +36,7 @@ export default function Header() {
       title: "お役立ちツール",
       links: [
         { name: "回線ランク測定", href: "/speedtest" },
-        { name: "便利ツール群", href: "/tools" },
+        { name: "便利ツール", href: "/tools" },
       ]
     },
     {
