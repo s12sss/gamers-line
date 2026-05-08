@@ -35,10 +35,20 @@ export default async function Home() {
       {/* Hero Section */}
       <section className="relative flex flex-col items-center justify-center text-center px-4 pt-[120px] pb-[100px] overflow-hidden">
         {/* === CYBERPUNK BACKGROUND ELEMENTS === */}
+        {/* Depth Core (Darken center) */}
+        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_50%_38%_at_50%_52%,rgba(8,18,40,0.9)_0%,transparent_70%)]" />
+
+        {/* Corner Glows (matching Twitter Card) */}
+        <div className="absolute rounded-full blur-[90px] pointer-events-none w-[560px] h-[560px] left-[-220px] top-[-220px] bg-[rgba(0,229,255,0.25)]" />
+        <div className="absolute rounded-full blur-[90px] pointer-events-none w-[480px] h-[480px] right-[-200px] top-[-160px] bg-[rgba(0,180,230,0.18)]" />
+        <div className="absolute rounded-full blur-[90px] pointer-events-none w-[520px] h-[520px] left-[-200px] bottom-[-220px] bg-[rgba(0,230,118,0.18)]" />
+        <div className="absolute rounded-full blur-[90px] pointer-events-none w-[560px] h-[560px] right-[-240px] bottom-[-240px] bg-[rgba(0,230,118,0.22)]" />
+        <div className="absolute rounded-full blur-[60px] pointer-events-none w-[700px] h-[700px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[rgba(5,15,35,0.7)]" />
+
         {/* Perspective Floor Grid */}
-        <div className="absolute left-[-10%] right-[-10%] bottom-[-10%] h-[55%] pointer-events-none opacity-50"
+        <div className="absolute left-[-10%] right-[-10%] bottom-[-10%] h-[55%] pointer-events-none opacity-55"
              style={{
-               backgroundImage: 'linear-gradient(rgba(0,229,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,0.15) 1px, transparent 1px)',
+               backgroundImage: 'linear-gradient(rgba(0,229,255,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,0.18) 1px, transparent 1px)',
                backgroundSize: '60px 60px',
                transform: 'perspective(700px) rotateX(62deg)',
                transformOrigin: 'center top',
@@ -47,79 +57,99 @@ export default async function Home() {
              }}
         />
 
-        {/* Diagonal Speed Streaks */}
-        <div className="absolute inset-0 pointer-events-none opacity-70"
+        {/* Flat Grid (mask center) */}
+        <div className="absolute inset-0 pointer-events-none"
              style={{
-               backgroundImage: 'repeating-linear-gradient(105deg, transparent 0px, transparent 80px, rgba(0,229,255,0.04) 80px, rgba(0,229,255,0.04) 81px, transparent 82px, transparent 180px, rgba(0,230,118,0.03) 180px, rgba(0,230,118,0.03) 181px, transparent 182px)',
-               WebkitMaskImage: 'linear-gradient(105deg, transparent 0%, #000 25%, #000 75%, transparent 100%)',
-               maskImage: 'linear-gradient(105deg, transparent 0%, #000 25%, #000 75%, transparent 100%)'
-             }}
-        />
-
-        {/* Scanlines Overlay (Hero only) */}
-        <div className="absolute inset-0 pointer-events-none mix-blend-overlay opacity-80"
-             style={{
-               backgroundImage: 'repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 4px)'
+               backgroundImage: 'linear-gradient(rgba(0,229,255,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,0.07) 1px, transparent 1px)',
+               backgroundSize: '60px 60px',
+               backgroundPosition: 'center center',
+               WebkitMaskImage: 'radial-gradient(ellipse 75% 75% at 50% 50%, transparent 25%, #000 80%)',
+               maskImage: 'radial-gradient(ellipse 75% 75% at 50% 50%, transparent 25%, #000 80%)'
              }}
         />
 
         {/* Horizon Glow Line */}
-        <div className="absolute left-0 right-0 bottom-[40%] h-[1px] pointer-events-none"
+        <div className="absolute left-0 right-0 bottom-[46%] h-[1px] pointer-events-none"
              style={{
                background: 'linear-gradient(90deg, transparent 0%, rgba(0,229,255,0.5) 30%, rgba(0,230,118,0.5) 70%, transparent 100%)',
                boxShadow: '0 0 14px rgba(0,229,255,0.7), 0 0 28px rgba(0,229,255,0.4)'
              }}
         />
 
+        {/* Diagonal Speed Streaks */}
+        <div className="absolute inset-0 pointer-events-none opacity-80"
+             style={{
+               backgroundImage: 'repeating-linear-gradient(105deg, transparent 0px, transparent 80px, rgba(0,229,255,0.05) 80px, rgba(0,229,255,0.05) 81px, transparent 82px, transparent 180px, rgba(0,230,118,0.04) 180px, rgba(0,230,118,0.04) 181px, transparent 182px)',
+               WebkitMaskImage: 'linear-gradient(105deg, transparent 0%, #000 25%, #000 75%, transparent 100%)',
+               maskImage: 'linear-gradient(105deg, transparent 0%, #000 25%, #000 75%, transparent 100%)'
+             }}
+        />
+
+        {/* Accent lines */}
+        <div className="absolute h-[2px] w-[280px] top-[14%] left-[-40px] -rotate-[18deg] opacity-85 pointer-events-none origin-left"
+             style={{ background: 'linear-gradient(90deg, transparent, rgba(0,229,255,0.9), transparent)', boxShadow: '0 0 14px rgba(0,229,255,0.7)' }} />
+        <div className="absolute h-[2px] w-[200px] top-[88%] right-[-20px] -rotate-[18deg] opacity-70 pointer-events-none origin-left"
+             style={{ background: 'linear-gradient(90deg, transparent, rgba(0,230,118,0.9), transparent)', boxShadow: '0 0 14px rgba(0,230,118,0.7)' }} />
+
         {/* HUD Brackets (Corner) */}
-        <div className="absolute top-8 left-4 sm:left-8 w-8 h-8 border-t-[1.5px] border-l-[1.5px] border-cyan/50 shadow-[-1px_-1px_8px_rgba(0,229,255,0.3)] pointer-events-none" />
-        <div className="absolute top-8 right-4 sm:right-8 w-8 h-8 border-t-[1.5px] border-r-[1.5px] border-cyan/50 shadow-[1px_-1px_8px_rgba(0,229,255,0.3)] pointer-events-none" />
-        <div className="absolute bottom-8 left-4 sm:left-8 w-8 h-8 border-b-[1.5px] border-l-[1.5px] border-emerald/50 shadow-[-1px_1px_8px_rgba(0,230,118,0.3)] pointer-events-none" />
-        <div className="absolute bottom-8 right-4 sm:right-8 w-8 h-8 border-b-[1.5px] border-r-[1.5px] border-emerald/50 shadow-[1px_1px_8px_rgba(0,230,118,0.3)] pointer-events-none" />
+        <div className="absolute top-6 left-6 w-9 h-9 border-t-[1.5px] border-l-[1.5px] border-cyan/60 shadow-[-1px_-1px_8px_rgba(0,229,255,0.3)] pointer-events-none hidden sm:block" />
+        <div className="absolute top-6 right-6 w-9 h-9 border-t-[1.5px] border-r-[1.5px] border-cyan/60 shadow-[1px_-1px_8px_rgba(0,229,255,0.3)] pointer-events-none hidden sm:block" />
+        <div className="absolute bottom-6 left-6 w-9 h-9 border-b-[1.5px] border-l-[1.5px] border-emerald/60 shadow-[-1px_1px_8px_rgba(0,230,118,0.3)] pointer-events-none hidden sm:block" />
+        <div className="absolute bottom-6 right-6 w-9 h-9 border-b-[1.5px] border-r-[1.5px] border-emerald/60 shadow-[1px_1px_8px_rgba(0,230,118,0.3)] pointer-events-none hidden sm:block" />
 
         {/* Cross Markers (Sprinkled) */}
-        <div className="absolute top-[20%] left-[10%] w-[14px] h-[14px] opacity-50 pointer-events-none hidden sm:block">
+        <div className="absolute top-[18%] left-[8%] w-[14px] h-[14px] opacity-55 pointer-events-none hidden sm:block">
           <div className="absolute left-1/2 top-0 bottom-0 w-[1px] -translate-x-1/2 bg-cyan/70 shadow-[0_0_6px_rgba(0,229,255,0.6)]" />
           <div className="absolute top-1/2 left-0 right-0 h-[1px] -translate-y-1/2 bg-cyan/70 shadow-[0_0_6px_rgba(0,229,255,0.6)]" />
         </div>
-        <div className="absolute top-[75%] right-[12%] w-[14px] h-[14px] opacity-40 pointer-events-none hidden sm:block">
+        <div className="absolute top-[74%] left-[6%] w-[14px] h-[14px] opacity-55 pointer-events-none hidden sm:block">
+          <div className="absolute left-1/2 top-0 bottom-0 w-[1px] -translate-x-1/2 bg-cyan/70 shadow-[0_0_6px_rgba(0,229,255,0.6)]" />
+          <div className="absolute top-1/2 left-0 right-0 h-[1px] -translate-y-1/2 bg-cyan/70 shadow-[0_0_6px_rgba(0,229,255,0.6)]" />
+        </div>
+        <div className="absolute top-[22%] right-[7%] w-[14px] h-[14px] opacity-55 pointer-events-none hidden sm:block">
           <div className="absolute left-1/2 top-0 bottom-0 w-[1px] -translate-x-1/2 bg-cyan/70 shadow-[0_0_6px_rgba(0,229,255,0.6)]" />
           <div className="absolute top-1/2 left-0 right-0 h-[1px] -translate-y-1/2 bg-cyan/70 shadow-[0_0_6px_rgba(0,229,255,0.6)]" />
         </div>
 
-        {/* Ambient blobs */}
-        <div className="blob w-[700px] h-[500px] bg-[radial-gradient(ellipse,rgba(0,229,255,0.18)_0%,transparent_70%)] -top-[100px] left-1/2 -translate-x-1/2 animate-[bloat_8s_ease-in-out_infinite]" />
-        <div className="blob w-[400px] h-[350px] bg-[radial-gradient(ellipse,rgba(0,230,118,0.12)_0%,transparent_70%)] bottom-0 -right-[100px] animate-[bloat2_10s_ease-in-out_infinite_2s]" />
-        <div className="blob w-[350px] h-[300px] bg-[radial-gradient(ellipse,var(--color-purple-custom)_0%,transparent_70%)] top-1/2 -left-[80px] animate-[bloat3_12s_ease-in-out_infinite_4s]" />
+        {/* Vignettes & Overlays */}
+        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_45%_35%_at_50%_50%,rgba(2,4,10,0.55)_0%,transparent_70%)]" />
+        
+        <div className="absolute inset-0 pointer-events-none mix-blend-overlay opacity-85"
+             style={{ backgroundImage: 'repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 4px)' }} />
+             
+        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(0,0,0,0.55)_100%)]" />
 
-
-
-        {/* Eyebrow */}
-        <div className="relative z-10 flex items-center gap-4 mb-6 animate-[fadeUp_0.6s_ease_0.05s_both]">
-          <div className="w-8 sm:w-12 h-[1px] bg-cyan shadow-[0_0_10px_var(--cyan)]" />
-          <span className="font-mono text-[0.65rem] sm:text-[0.8rem] text-cyan tracking-[0.3em] uppercase font-bold text-shadow-sm shadow-cyan">
+        {/* TEXT OVERLAY */}
+        <div className="relative z-10 flex flex-col items-center justify-center gap-[18px] w-full max-w-[1200px] mx-auto animate-[fadeUp_0.6s_ease_0.1s_both]">
+          
+          <div className="flex items-center gap-[14px] font-mono text-[0.65rem] sm:text-[0.78rem] text-[#00E5FF] tracking-[0.32em] uppercase drop-shadow-[0_0_14px_rgba(0,229,255,0.5)]">
+            <div className="w-[34px] h-[1px] bg-[#00E5FF] shadow-[0_0_10px_#00E5FF]" />
             FOR GAMERS / NETWORK MEDIA
-          </span>
-          <div className="w-8 sm:w-12 h-[1px] bg-cyan shadow-[0_0_10px_var(--cyan)]" />
-        </div>
+            <div className="w-[34px] h-[1px] bg-[#00E5FF] shadow-[0_0_10px_#00E5FF]" />
+          </div>
 
-        <h1 className="relative z-10 font-heading text-[clamp(2rem,6vw,4.5rem)] font-bold tracking-tighter leading-[1.1] mb-6 animate-[fadeUp_0.6s_ease_0.1s_both] text-white">
-          そのラグ、
-          <span className="inline-block bg-gradient-to-r from-cyan to-emerald text-background px-2 sm:px-4 py-1 sm:py-2 rounded-lg sm:rounded-xl mx-1 sm:mx-2 leading-none transform -skew-x-6">
-            <span className="inline-block transform skew-x-6">回線</span>
-          </span>
-          のせいかも。
-        </h1>
+          <h1 className="font-heading font-black text-[clamp(2.5rem,6vw,4.4rem)] leading-[1.08] tracking-[-0.04em] text-white text-center drop-shadow-[0_0_24px_rgba(0,229,255,0.25)] sm:drop-shadow-[0_0_60px_rgba(0,0,0,0.6)]">
+            そのラグ、<span className="inline-block bg-gradient-to-br from-[#00E5FF] to-[#00E676] text-[#02040a] px-2 sm:px-4 py-0 leading-tight">回線</span>のせいかも。
+          </h1>
 
-        <div className="relative z-10 text-[clamp(1rem,2.5vw,1.4rem)] text-text-muted font-bold tracking-widest mb-4 animate-[fadeUp_0.6s_ease_0.15s_both]">
-          ゲーマーのための回線診断・乗り換えメディア
-        </div>
+          <div className="font-sans font-medium text-[0.9rem] sm:text-[1.05rem] text-[#a8a8c8] tracking-[0.18em] drop-shadow-[0_0_12px_rgba(0,0,0,0.6)]">
+            ゲーマーのための回線診断・乗り換えメディア
+          </div>
 
-        <p className="relative z-10 text-[clamp(0.9rem,1.5vw,1rem)] text-text-dim max-w-[560px] leading-[1.7] mb-12 animate-[fadeUp_0.6s_ease_0.2s_both]">
-          あなたに本当に必要なゲーミング回線を<br className="sm:hidden" />たった30秒で無料診断
-        </p>
+          <div className="mt-1.5 flex items-center gap-[14px] font-heading font-bold text-[1.1rem] sm:text-[1.35rem] tracking-[-0.02em] text-white">
+            <span className="w-2 h-2 rounded-full bg-[#00E5FF] shadow-[0_0_14px_#00E5FF,0_0_28px_rgba(0,229,255,0.5)]" />
+            <span>Gamer's <span className="text-[#00E5FF] drop-shadow-[0_0_16px_rgba(0,229,255,0.5)]">Line</span></span>
+            <span className="ml-[6px] pl-[14px] border-l border-white/20 font-mono font-normal text-[0.75rem] sm:text-[0.85rem] text-[#7a7a9a] tracking-[0.12em]">
+              gamers-line.jp
+            </span>
+          </div>
 
-        <div className="relative z-10 flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto animate-[fadeUp_0.6s_ease_0.3s_both]">
+          {/* User's added sentence below all this */}
+          <p className="mt-8 text-[clamp(0.9rem,1.5vw,1rem)] text-text-dim max-w-[560px] leading-[1.7] text-center animate-[fadeUp_0.6s_ease_0.2s_both]">
+            あなたに本当に必要なゲーミング回線を<br className="sm:hidden" />たった30秒で無料診断
+          </p>
+
+          <div className="mt-4 flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto animate-[fadeUp_0.6s_ease_0.3s_both]">
           <Link
             href="/diagnosis"
             className="group relative inline-flex items-center justify-center gap-2.5 px-9 py-4 rounded-full bg-cyan text-black font-heading font-bold text-base transition-all hover:-translate-y-0.5 hover:scale-105 hover:shadow-[0_0_50px_rgba(0,229,255,0.55),0_0_100px_rgba(0,229,255,0.2)] active:scale-95 overflow-hidden w-full sm:w-auto"
