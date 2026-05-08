@@ -1,14 +1,11 @@
 import { NextResponse } from 'next/server';
-import { Redis } from '@upstash/redis';
+import Redis from 'ioredis';
 
-// Vercel KV (Upstash Redis) の接続設定
-// 環境変数が設定されていない場合（ローカル等）はモックを返すようにする
-const redis = (process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN)
-  ? new Redis({
-      url: process.env.KV_REST_API_URL,
-      token: process.env.KV_REST_API_TOKEN,
-    })
-  : null;
+// Vercel marketplaceのOfficial Redis Cloudなどから提供されるURL
+const redisUrl = process.env.REDIS_URL || process.env.REDISCLOUD_URL || process.env.KV_URL;
+
+// 接続設定 (URLがあれば接続、なければローカルモック用)
+const redis = redisUrl ? new Redis(redisUrl) : null;
 
 export const dynamic = 'force-dynamic';
 
@@ -26,9 +23,10 @@ export async function GET() {
   }
 
   try {
-    // Ping値が低い（良い）順に上位50件を取得
-    // ZADD で ping をスコアとして保存するため、zrange を使用
-    const rankings = await redis.zrange(LEADERBOARD_KEY, 0, 49);
+    // ioredis では zrange にパラメータを渡してJSON文字列の配列を取得する
+    const results = await redis.zrange(LEADERBOARD_KEY, 0, 49);
+    // JSON文字列の配列をオブジェクトにパース
+    const rankings = results.map((item) => JSON.parse(item));
     return NextResponse.json({ rankings, mock: false });
   } catch (error) {
     console.error('Failed to fetch rankings:', error);
@@ -51,7 +49,7 @@ export async function POST(request: Request) {
 
     const entry = {
       id: crypto.randomUUID(),
-      name: name.substring(0, 20), // 念のため文字数制限
+      name: name.substring(0, 20),
       isp: isp || 'unknown',
       ping,
       speed,
@@ -59,11 +57,8 @@ export async function POST(request: Request) {
       date: new Date().toISOString()
     };
 
-    // Ping値をスコアとして Sorted Set に追加
-    await redis.zadd(LEADERBOARD_KEY, { score: ping, member: entry });
-
-    // リーダーボードが大きくなりすぎないように、上位1000件を残して削除（任意）
-    // await redis.zremrangebyrank(LEADERBOARD_KEY, 1000, -1);
+    // ioredis では zadd に (key, score, member) の順で渡す
+    await redis.zadd(LEADERBOARD_KEY, ping, JSON.stringify(entry));
 
     return NextResponse.json({ success: true, entry });
   } catch (error) {
