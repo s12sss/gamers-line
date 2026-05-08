@@ -354,9 +354,9 @@ export default function SpeedTestPage() {
                           value={selectedIsp} onChange={(e) => setSelectedIsp(e.target.value)}
                           className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-cyan focus:bg-white/10 focus:outline-none appearance-none font-medium text-[0.85rem] transition-colors"
                         >
-                          <option value="">利用している回線を選択（任意）</option>
+                          <option value="" className="bg-[#0a0a12] text-white">利用している回線を選択（任意）</option>
                           {MAJOR_ISPS.map(isp => (
-                            <option key={isp} value={isp}>{isp}</option>
+                            <option key={isp} value={isp} className="bg-[#0a0a12] text-white">{isp}</option>
                           ))}
                         </select>
                       </div>
@@ -366,13 +366,13 @@ export default function SpeedTestPage() {
                           value={selectedPlan} onChange={(e) => setSelectedPlan(e.target.value)}
                           className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-cyan focus:bg-white/10 focus:outline-none appearance-none font-medium text-[0.85rem] transition-colors"
                         >
-                          <option value="">プラン/最大速度を選択（任意）</option>
-                          <option value="1G">1Gbps</option>
-                          <option value="2G">2Gbps</option>
-                          <option value="5G">5Gbps</option>
-                          <option value="10G">10Gbps</option>
-                          <option value="VDSL/100M以下">VDSL/100Mbps以下</option>
-                          <option value="不明">不明</option>
+                          <option value="" className="bg-[#0a0a12] text-white">プラン/最大速度を選択（任意）</option>
+                          <option value="1G" className="bg-[#0a0a12] text-white">1Gbps</option>
+                          <option value="2G" className="bg-[#0a0a12] text-white">2Gbps</option>
+                          <option value="5G" className="bg-[#0a0a12] text-white">5Gbps</option>
+                          <option value="10G" className="bg-[#0a0a12] text-white">10Gbps</option>
+                          <option value="VDSL/100M以下" className="bg-[#0a0a12] text-white">VDSL/100Mbps以下</option>
+                          <option value="不明" className="bg-[#0a0a12] text-white">不明</option>
                         </select>
                       </div>
 
@@ -441,9 +441,8 @@ export default function SpeedTestPage() {
                   </tr>
                 ) : (
                   rankings.map((entry, idx) => (
-                    <tr key={entry.id || idx} className={`group relative transition-all duration-300 overflow-hidden ${idx === 0 ? 'bg-gradient-to-r from-[#ffeb3b]/10 to-transparent' : idx === 1 ? 'bg-gradient-to-r from-[#c0c0c0]/10 to-transparent' : idx === 2 ? 'bg-gradient-to-r from-[#cd7f32]/10 to-transparent' : 'hover:bg-white/[0.02]'}`}>
-                      {idx < 3 && <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:animate-[scanline_1s_ease_forwards] pointer-events-none" />}
-                      <td className="px-6 py-4 relative z-10">
+                    <tr key={entry.id || idx} className={`group transition-all duration-300 ${idx === 0 ? 'bg-gradient-to-r from-[#ffeb3b]/10 to-transparent' : idx === 1 ? 'bg-gradient-to-r from-[#c0c0c0]/10 to-transparent' : idx === 2 ? 'bg-gradient-to-r from-[#cd7f32]/10 to-transparent' : 'hover:bg-white/[0.02]'}`}>
+                      <td className="px-6 py-4">
                         <div className="flex items-center gap-2">
                           {idx === 0 && <Trophy className="w-4 h-4 text-[#ffeb3b] drop-shadow-[0_0_8px_rgba(255,235,59,0.5)] animate-pulse" />}
                           <span className={`font-mono font-black text-xl sm:text-2xl tracking-tighter italic ${idx === 0 ? 'text-[#ffeb3b] drop-shadow-[0_0_10px_rgba(255,235,59,0.4)]' : idx === 1 ? 'text-[#c0c0c0]' : idx === 2 ? 'text-[#cd7f32]' : 'text-white/20'}`}>
@@ -451,7 +450,7 @@ export default function SpeedTestPage() {
                           </span>
                         </div>
                       </td>
-                      <td className="px-6 py-4 relative z-10">
+                      <td className="px-6 py-4">
                         <div className="flex flex-col gap-1">
                           <span className="font-medium text-[0.75rem] sm:text-[0.8rem] text-text-dim group-hover:text-text transition-colors tracking-tight leading-tight">{entry.isp === '不明' ? '匿名プレイヤー' : entry.isp}</span>
                           {entry.plan && entry.plan !== '不明' && (
@@ -459,7 +458,7 @@ export default function SpeedTestPage() {
                           )}
                         </div>
                       </td>
-                      <td className="px-6 py-4 relative z-10">
+                      <td className="px-6 py-4">
                         <div className="flex items-center gap-1.5">
                           <Activity className={`w-3.5 h-3.5 ${entry.ping <= 15 ? 'text-emerald' : 'text-text-muted'}`} />
                           <span className={`font-mono font-bold ${entry.ping <= 15 ? 'text-emerald' : 'text-white'}`}>{entry.ping} <span className="text-[0.65rem] text-white/50 font-sans">ms</span></span>
