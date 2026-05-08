@@ -40,11 +40,6 @@ export default function SpeedTestPage() {
   const [speed, setSpeed] = useState(0);
   const [result, setResult] = useState<TestResult | null>(null);
   
-  const [selectedIsp, setSelectedIsp] = useState('');
-  const [selectedPlan, setSelectedPlan] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [hasSubmitted, setHasSubmitted] = useState(false);
-  const [percentile, setPercentile] = useState<number | null>(null);
   const [rankings, setRankings] = useState<RankingEntry[]>([]);
 
   // 拡張された主要プロバイダリスト
@@ -182,34 +177,6 @@ export default function SpeedTestPage() {
     fetchRankings();
   }, []);
 
-  const submitScore = async () => {
-    if (!result) return;
-    setIsSubmitting(true);
-    try {
-      const res = await fetch('/api/ranking', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          isp: selectedIsp,
-          plan: selectedPlan,
-          ping: result.ping,
-          speed: result.speed,
-          tier: result.tier
-        })
-      });
-      const data = await res.json();
-      if (data.percentile) {
-        setPercentile(data.percentile);
-      }
-      setHasSubmitted(true);
-      fetchRankings(); // ランキング再取得
-    } catch (e) {
-      console.error(e);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   const shareOnX = () => {
     if (!result) return;
     const text = `Gamer's Lineで回線速度を測定しました！\n\n📶 Ping: ${result.ping}ms\n🚀 ダウンロード: ${result.speed}Mbps\n🏆 私の階級は【${result.tier}】でした！\n\nあなたの回線ランクは？\n#GamersLine #回線ランクマスター\n`;
@@ -344,64 +311,31 @@ export default function SpeedTestPage() {
                   </button>
                 </div>
 
-                {/* ランキング登録フォーム */}
-                {!hasSubmitted ? (
-                  <div className="mt-12 pt-10 border-t border-white/10 w-full max-w-md text-left">
-                    <h3 className="font-bold text-lg mb-4 flex items-center gap-2"><Trophy className="w-5 h-5 text-[#ffd700]" /> ランキングに登録する</h3>
-                    <div className="space-y-3.5">
-                      <div>
-                        <select 
-                          value={selectedIsp} onChange={(e) => setSelectedIsp(e.target.value)}
-                          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-cyan focus:bg-white/10 focus:outline-none appearance-none font-medium text-[0.85rem] transition-colors"
-                        >
-                          <option value="" className="bg-[#0a0a12] text-white">利用している回線を選択（任意）</option>
-                          {MAJOR_ISPS.map(isp => (
-                            <option key={isp} value={isp} className="bg-[#0a0a12] text-white">{isp}</option>
-                          ))}
-                        </select>
-                      </div>
-
-                      <div>
-                        <select 
-                          value={selectedPlan} onChange={(e) => setSelectedPlan(e.target.value)}
-                          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-cyan focus:bg-white/10 focus:outline-none appearance-none font-medium text-[0.85rem] transition-colors"
-                        >
-                          <option value="" className="bg-[#0a0a12] text-white">プラン/最大速度を選択（任意）</option>
-                          <option value="1G" className="bg-[#0a0a12] text-white">1Gbps</option>
-                          <option value="2G" className="bg-[#0a0a12] text-white">2Gbps</option>
-                          <option value="5G" className="bg-[#0a0a12] text-white">5Gbps</option>
-                          <option value="10G" className="bg-[#0a0a12] text-white">10Gbps</option>
-                          <option value="VDSL/100M以下" className="bg-[#0a0a12] text-white">VDSL/100Mbps以下</option>
-                          <option value="不明" className="bg-[#0a0a12] text-white">不明</option>
-                        </select>
-                      </div>
-
-                      <button 
-                        onClick={submitScore} disabled={isSubmitting}
-                        className="w-full py-3.5 bg-gradient-to-r from-cyan to-emerald text-black font-bold rounded-xl hover:shadow-[0_0_20px_rgba(0,230,118,0.4)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed mt-2 relative overflow-hidden group"
-                      >
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-12 -translate-x-full group-hover:animate-[scanline_0.6s_ease_forwards]" />
-                        <span className="relative z-10 drop-shadow-[0_0_5px_rgba(0,0,0,0.2)]">{isSubmitting ? '登録中...' : 'データを登録する'}</span>
-                      </button>
-                    </div>
+                {/* 診断への誘導バナー */}
+                <div className="mt-12 pt-10 border-t border-white/10 w-full max-w-lg mx-auto">
+                  <div className="relative overflow-hidden rounded-2xl border border-cyan/30 bg-gradient-to-r from-cyan/10 to-emerald/10 p-8 sm:p-10 text-center group transition-all hover:border-cyan/50 hover:shadow-[0_0_30px_rgba(0,229,255,0.15)]">
+                    <div className="absolute top-0 right-0 w-40 h-40 bg-cyan/20 blur-[50px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+                    <div className="absolute bottom-0 left-0 w-40 h-40 bg-emerald/20 blur-[50px] rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+                    
+                    <h3 className="relative z-10 font-heading font-bold text-xl sm:text-2xl mb-4 tracking-tight">
+                      さらに上のゲーミング環境へ
+                    </h3>
+                    <p className="relative z-10 text-sm text-white/70 mb-8 leading-relaxed font-medium">
+                      現在の回線に満足していますか？<br className="hidden sm:block"/>
+                      あなたに最適な「ラグなし最強回線」を<br className="hidden sm:block"/>
+                      完全無料で診断します。
+                    </p>
+                    
+                    <Link
+                      href="/diagnosis"
+                      className="relative z-10 inline-flex items-center justify-center gap-2 px-8 py-4 w-full sm:w-auto rounded-full bg-gradient-to-r from-cyan to-emerald text-black font-bold font-heading text-[0.95rem] transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(0,230,118,0.4)] active:scale-95"
+                    >
+                      <Activity className="w-5 h-5" />
+                      最適な回線を診断する
+                      <ChevronRight className="w-4 h-4" />
+                    </Link>
                   </div>
-                ) : (
-                  <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-12 pt-10 border-t border-white/10 w-full max-w-md text-center">
-                    <div className="text-emerald font-bold flex items-center justify-center gap-2 mb-4">
-                      <Activity className="w-5 h-5" /> ランキングへの登録が完了しました！
-                    </div>
-                    {percentile && (
-                      <div className="bg-cyan/10 border border-cyan/30 rounded-xl p-6">
-                        <div className="text-sm text-cyan font-bold mb-2 uppercase tracking-widest">Relative Rank</div>
-                        <div className="text-white text-lg">
-                          あなたは全チャレンジャーの中で<br />
-                          <span className="text-3xl font-black text-cyan mx-2">上位 {percentile}%</span><br />
-                          の回線環境です！
-                        </div>
-                      </div>
-                    )}
-                  </motion.div>
-                )}
+                </div>
               </motion.div>
             )}
           </AnimatePresence>
