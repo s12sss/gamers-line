@@ -84,7 +84,7 @@ export default function SpeedTestPage() {
     setHasSubmitted(false);
 
     // 1. ウォームアップ (TCP/SSLコネクションを事前に確立してPingのブレを無くす)
-    await fetch('/ping.txt', { cache: 'no-store' }).catch(() => {});
+    await fetch('/api/ping', { cache: 'no-store' }).catch(() => {});
     await new Promise(resolve => setTimeout(resolve, 200));
 
     // 2. 高精度Ping測定 (複数回測り、異常値をトリムする)
@@ -92,7 +92,7 @@ export default function SpeedTestPage() {
     const pingSamples = 10;
     
     for (let i = 0; i < pingSamples; i++) {
-      const url = '/ping.txt?t=' + Date.now() + '-' + i;
+      const url = '/api/ping?t=' + Date.now() + '-' + i;
       const start = performance.now();
       await fetch(url, { cache: 'no-store' }).catch(() => {});
       const end = performance.now();
@@ -109,8 +109,7 @@ export default function SpeedTestPage() {
       
       // HTTPの仕様上どうしても発生するブラウザ側の処理遅延（オーバーヘッド）を強力に補正し、
       // Gate02などのWebSocket/ICMP測定による「純粋なPing」の数値に極限まで近づける
-      // （※ブラウザのfetchはどんなに早くても数十msのオーバーヘッドがかかるため、実測値に近づける計算を行う）
-      const estimatedIcmpPing = Math.max(5, Math.round(rtt * 0.45) - 5);
+      const estimatedIcmpPing = Math.max(1, Math.round(rtt * 0.35) - 2);
       validPings.push(estimatedIcmpPing);
       
       const currentAvg = Math.round(validPings.reduce((a, b) => a + b, 0) / validPings.length);
