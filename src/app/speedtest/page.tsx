@@ -241,49 +241,50 @@ export default function SpeedTestPage() {
       <div className="max-w-4xl mx-auto px-4 mb-16">
         {/* Test Section */}
         <div className="bg-[#0a0a12] border border-white/10 rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden">
-          {status !== 'RESULT' && (
+          {status === 'IDLE' && (
             <div className="flex flex-col items-center justify-center min-h-[300px]">
-              
-              {/* Circular Meter */}
               <div className="relative w-48 h-48 mb-8">
                 <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
                   <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="4" />
-                  <motion.circle 
-                    cx="50" cy="50" r="45" fill="none" stroke="#00e5ff" strokeWidth="4"
-                    strokeDasharray="283"
-                    strokeDashoffset={283 - (283 * progress) / 100}
-                    className="transition-all duration-300 ease-out"
-                  />
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  {status === 'IDLE' ? (
-                    <Zap className="w-12 h-12 text-cyan opacity-50 mb-2" />
-                  ) : (
-                    <>
-                      <span className="font-mono text-3xl font-bold text-white">
-                        {status === 'TESTING_PING' ? ping : speed}
-                      </span>
-                      <span className="font-mono text-[0.65rem] text-cyan uppercase tracking-widest mt-1">
-                        {status === 'TESTING_PING' ? 'Ping (ms)' : 'Down (Mbps)'}
-                      </span>
-                    </>
-                  )}
+                  <Zap className="w-12 h-12 text-cyan opacity-50 mb-2" />
                 </div>
               </div>
+              <button 
+                onClick={runTest}
+                className="px-10 py-4 bg-cyan text-black font-heading font-bold text-lg rounded-full hover:shadow-[0_0_30px_rgba(0,229,255,0.4)] transition-all hover:-translate-y-1 active:scale-95 flex items-center gap-2"
+              >
+                <Activity className="w-5 h-5" /> 測定スタート
+              </button>
+            </div>
+          )}
 
-              {status === 'IDLE' ? (
-                <button 
-                  onClick={runTest}
-                  className="px-10 py-4 bg-cyan text-black font-heading font-bold text-lg rounded-full hover:shadow-[0_0_30px_rgba(0,229,255,0.4)] transition-all hover:-translate-y-1 active:scale-95 flex items-center gap-2"
-                >
-                  <Activity className="w-5 h-5" /> 測定スタート
-                </button>
-              ) : (
-                <div className="font-mono text-sm text-cyan animate-pulse flex items-center gap-2">
-                  <RefreshCw className="w-4 h-4 animate-spin" />
-                  {status === 'TESTING_PING' ? 'Pingを測定中...' : 'ダウンロード速度を測定中...'}
+          {status !== 'IDLE' && status !== 'RESULT' && (
+            <div className="flex flex-col items-center justify-center py-[60px] px-4 sm:px-10 gap-8 min-h-[300px]">
+              {/* Animated spinner */}
+              <div className="relative w-20 h-20">
+                <div className="absolute inset-0 rounded-full border-2 border-cyan/10" />
+                <div className="absolute inset-0 rounded-full border-2 border-transparent border-t-cyan animate-[spin_0.8s_linear_infinite]" />
+                <div className="absolute inset-3 rounded-full border-2 border-transparent border-t-emerald animate-[spin_1.2s_linear_infinite_reverse]" />
+              </div>
+
+              <div className="text-center w-full max-w-[320px]">
+                <div className="font-mono text-xs text-cyan mb-3 tracking-wider min-h-[1.2em]">
+                  {status === 'TESTING_PING' ? 'Pingスコアを算出中...' : 'ダウンロード帯域を測定中...'}
                 </div>
-              )}
+                <div className="w-full h-0.5 bg-white/5 rounded-full overflow-hidden mb-2">
+                  <motion.div 
+                    className="h-full bg-gradient-to-r from-cyan to-emerald transition-all duration-200 ease-out shadow-[0_0_10px_rgba(0,229,255,0.5)]"
+                    initial={{ width: 0 }}
+                    animate={{ width: `${progress}%` }}
+                    transition={{ ease: "linear", duration: 0.2 }}
+                  />
+                </div>
+                <div className="font-mono text-[0.7rem] text-text-muted">
+                  {Math.round(progress)}%
+                </div>
+              </div>
             </div>
           )}
 
