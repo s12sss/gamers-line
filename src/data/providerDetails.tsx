@@ -118,7 +118,7 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
     name: 'hi-ho ひかり with games',
     catchphrase: 'ゲーマー専用帯域×高性能ルーター。設定不要で手に入る圧倒的低遅延',
     heroDescription: '株式会社ハイホーが提供する、オンラインゲーム特化型の光コラボ回線です。通常の光回線とは異なる「ゲーム専用帯域」を確保しており、さらにゲームに最適な高性能ゲーミングルーターが標準でセットになるため、ネットワークの知識がなくても最高のゲーム環境が手に入ります。',
-    ispIds: ['hiho_with_games_10g', 'hiho_with_games_1g'],
+    ispIds: ['hi-ho_with_games_10g', 'hi-ho_with_games_1g'],
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>

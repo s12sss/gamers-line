@@ -76,7 +76,7 @@ function calculateScore(isp: ISP, answers: UserAnswers): number {
   }
 
   // 運営が誠実にお勧めできる「NURO」と「hi-ho」への特別ボーナス
-  if (isp.id.includes('nuro_hikari') || isp.id.includes('hiho_with_games')) {
+  if (isp.id.includes('nuro_hikari') || isp.id.includes('hi-ho_with_games')) {
     score += 40; 
   }
 
