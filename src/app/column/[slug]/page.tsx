@@ -157,7 +157,7 @@ export default async function ColumnArticle({ params }: Props) {
             </div>
 
             {/* Hero Thumb */}
-            <div className="w-full aspect-[1200/630] bg-cyan/[0.03] border border-white/10 rounded-[16px] sm:rounded-[20px] my-6 sm:my-9 flex flex-col items-center justify-center relative overflow-hidden">
+            <div className="w-full bg-cyan/[0.03] border border-white/10 rounded-[16px] sm:rounded-[20px] my-6 sm:my-9 flex flex-col items-center justify-center relative overflow-hidden" style={{ aspectRatio: '1200 / 630' }}>
               <div className="absolute inset-0 bg-[repeating-linear-gradient(45deg,transparent,transparent_28px,rgba(255,255,255,0.012)_28px,rgba(255,255,255,0.012)_29px)]" />
               {column.thumbnail ? (
                 <img src={column.thumbnail.url} alt={column.title} className="absolute inset-0 w-full h-full object-cover z-10" />
