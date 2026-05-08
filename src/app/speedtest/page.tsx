@@ -379,7 +379,7 @@ export default function SpeedTestPage() {
                           value={selectedIsp} onChange={(e) => setSelectedIsp(e.target.value)}
                           className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-cyan focus:bg-white/10 focus:outline-none appearance-none font-medium text-[0.85rem] transition-colors"
                         >
-                          <option value="" className="bg-[#0a0a12] text-white">利用している回線を選択（任意）</option>
+                          <option value="" className="bg-[#0a0a12] text-white">利用している回線を選択（必須）</option>
                           {MAJOR_ISPS.map(isp => (
                             <option key={isp} value={isp} className="bg-[#0a0a12] text-white">{isp}</option>
                           ))}
@@ -391,7 +391,7 @@ export default function SpeedTestPage() {
                           value={selectedPlan} onChange={(e) => setSelectedPlan(e.target.value)}
                           className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-cyan focus:bg-white/10 focus:outline-none appearance-none font-medium text-[0.85rem] transition-colors"
                         >
-                          <option value="" className="bg-[#0a0a12] text-white">プラン/最大速度を選択（任意）</option>
+                          <option value="" className="bg-[#0a0a12] text-white">プラン/最大速度を選択（必須）</option>
                           <option value="1G" className="bg-[#0a0a12] text-white">1Gbps</option>
                           <option value="2G" className="bg-[#0a0a12] text-white">2Gbps</option>
                           <option value="5G" className="bg-[#0a0a12] text-white">5Gbps</option>
@@ -402,7 +402,7 @@ export default function SpeedTestPage() {
                       </div>
 
                       <button 
-                        onClick={submitScore} disabled={isSubmitting}
+                        onClick={submitScore} disabled={isSubmitting || !selectedIsp || !selectedPlan}
                         className="w-full py-3.5 bg-gradient-to-r from-cyan to-emerald text-black font-bold rounded-xl hover:shadow-[0_0_20px_rgba(0,230,118,0.4)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed mt-2 relative overflow-hidden group"
                       >
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-12 -translate-x-full group-hover:animate-[scanline_0.6s_ease_forwards]" />
