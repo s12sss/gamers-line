@@ -227,7 +227,7 @@ export default function SpeedTestPage() {
         </div>
         <h1 className="relative z-10 font-heading text-[clamp(2rem,5vw,3.25rem)] font-bold tracking-tight leading-[1.1] mb-4">
           回線ランク<br />
-          <span className="gradient-text">測定＆リーダーボード</span>
+          <span className="gradient-text">測定</span>
         </h1>
         <p className="relative z-10 text-sm text-text-muted max-w-[520px] leading-[1.7]">
           ブラウザ上でPingとダウンロード速度を簡易測定し、ゲーマー階級を判定します。上位を目指してランキングに挑戦しましょう。
@@ -249,10 +249,11 @@ export default function SpeedTestPage() {
 
               <button 
                 onClick={runTest}
-                className="relative px-8 py-3.5 bg-transparent border border-cyan/30 text-cyan font-heading font-bold text-[0.85rem] sm:text-[0.95rem] tracking-wider rounded-full hover:bg-cyan hover:text-black hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all duration-300 hover:-translate-y-1 active:scale-95 flex items-center gap-2 overflow-hidden group"
+                className="relative px-10 py-4 bg-cyan text-black font-heading font-bold text-lg rounded-full hover:shadow-[0_0_30px_rgba(0,229,255,0.6)] transition-all duration-300 hover:-translate-y-1 active:scale-95 flex items-center gap-2 overflow-hidden group shadow-[0_0_15px_rgba(0,229,255,0.2)]"
               >
-                <div className="absolute top-0 -left-full w-[60%] h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 opacity-0 group-hover:opacity-100 group-hover:animate-[scanline_0.6s_ease_forwards]" />
-                測定スタート <ChevronRight className="w-4 h-4" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-12 -translate-x-full group-hover:animate-[scanline_0.6s_ease_forwards]" />
+                <Activity className="w-5 h-5 drop-shadow-[0_0_5px_rgba(0,0,0,0.3)] relative z-10" />
+                <span className="tracking-widest relative z-10 drop-shadow-[0_0_5px_rgba(0,0,0,0.1)]">測定スタート</span>
               </button>
             </div>
           )}
@@ -439,21 +440,25 @@ export default function SpeedTestPage() {
                   </tr>
                 ) : (
                   rankings.map((entry, idx) => (
-                    <tr key={entry.id || idx} className="hover:bg-white/[0.02] transition-colors group">
-                      <td className="px-6 py-4">
-                        <span className={`font-mono font-bold text-lg sm:text-xl tracking-tighter ${idx === 0 ? 'text-[#ffeb3b] drop-shadow-[0_0_10px_rgba(255,235,59,0.3)]' : idx === 1 ? 'text-[#c0c0c0]' : idx === 2 ? 'text-[#cd7f32]' : 'text-white/30'}`}>
-                          #{idx + 1}
-                        </span>
+                    <tr key={entry.id || idx} className={`group relative transition-all duration-300 overflow-hidden ${idx === 0 ? 'bg-gradient-to-r from-[#ffeb3b]/10 to-transparent border-l-[3px] border-[#ffeb3b]' : idx === 1 ? 'bg-gradient-to-r from-[#c0c0c0]/10 to-transparent border-l-[3px] border-[#c0c0c0]' : idx === 2 ? 'bg-gradient-to-r from-[#cd7f32]/10 to-transparent border-l-[3px] border-[#cd7f32]' : 'hover:bg-white/[0.02] border-l-[3px] border-transparent'}`}>
+                      {idx < 3 && <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:animate-[scanline_1s_ease_forwards] pointer-events-none" />}
+                      <td className="px-6 py-4 relative z-10">
+                        <div className="flex items-center gap-2">
+                          {idx === 0 && <Trophy className="w-4 h-4 text-[#ffeb3b] drop-shadow-[0_0_8px_rgba(255,235,59,0.5)] animate-pulse" />}
+                          <span className={`font-mono font-black text-xl sm:text-2xl tracking-tighter italic ${idx === 0 ? 'text-[#ffeb3b] drop-shadow-[0_0_10px_rgba(255,235,59,0.4)]' : idx === 1 ? 'text-[#c0c0c0]' : idx === 2 ? 'text-[#cd7f32]' : 'text-white/20'}`}>
+                            #{idx + 1}
+                          </span>
+                        </div>
                       </td>
-                      <td className="px-6 py-4">
-                        <div className="flex flex-wrap items-center gap-2">
-                          <span className="font-bold text-[0.85rem] sm:text-[0.95rem] text-white group-hover:text-cyan transition-colors">{entry.isp === '不明' ? '匿名プレイヤー' : entry.isp}</span>
+                      <td className="px-6 py-4 relative z-10">
+                        <div className="flex flex-col gap-1">
+                          <span className="font-medium text-[0.75rem] sm:text-[0.8rem] text-text-dim group-hover:text-text transition-colors tracking-tight leading-tight">{entry.isp === '不明' ? '匿名プレイヤー' : entry.isp}</span>
                           {entry.plan && entry.plan !== '不明' && (
-                            <span className="text-[0.65rem] text-cyan bg-cyan/10 border border-cyan/20 px-2 py-0.5 rounded-md font-mono">{entry.plan}</span>
+                            <span className="text-[0.6rem] text-cyan/70 bg-cyan/5 border border-cyan/10 px-1.5 py-0.5 rounded inline-block w-fit font-mono">{entry.plan}</span>
                           )}
                         </div>
                       </td>
-                      <td className="px-6 py-4">
+                      <td className="px-6 py-4 relative z-10">
                         <div className="flex items-center gap-1.5">
                           <Activity className={`w-3.5 h-3.5 ${entry.ping <= 15 ? 'text-emerald' : 'text-text-muted'}`} />
                           <span className={`font-mono font-bold ${entry.ping <= 15 ? 'text-emerald' : 'text-white'}`}>{entry.ping} <span className="text-[0.65rem] text-white/50 font-sans">ms</span></span>
