@@ -28,6 +28,7 @@ export default function Header() {
     { name: "エリアMAP", href: "/area" },
     { name: "VPN特集", href: "/vpn" },
     { name: "コラム", href: "/column" },
+    { name: "スピードテスト", href: "/speedtest" },
     { name: "便利ツール", href: "/tools" },
   ];
 
