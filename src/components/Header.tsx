@@ -26,6 +26,7 @@ export default function Header() {
     { name: "比較する", href: "/compare" },
     { name: "回線一覧", href: "/provider" },
     { name: "エリアMAP", href: "/area" },
+    { name: "VPN特集", href: "/vpn" },
     { name: "コラム", href: "/column" },
     { name: "便利ツール", href: "/tools" },
   ];
