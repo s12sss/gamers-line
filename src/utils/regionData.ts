@@ -26,7 +26,7 @@ export const REGION_COVERAGE: Record<RegionId, { name: string, status: CoverageS
       hasNuro: 'LIMITED',
       hasGameWith: 'COVERED',
       localIsp: null,
-      advice: '東北は宮城などでNURO光が使えるようになってきましたが、まだ全域とは言えない状況です。Pingの安定を最優先するなら、全国どこでも対応しているGameWith光を選ぶか、スマホキャリアに合わせた光コラボ回線を選ぶのが無難で確実です！'
+      advice: '東北は宮城などでNURO光が使えるようになってきましたが、まだ全域とは言えない状況です。Pingの安定を最優先するなら、全国どこでも対応しているhi-ho ひかり with gamesを選ぶか、スマホキャリアに合わせた光コラボ回線を選ぶのが無難で確実です！'
     }
   },
   kanto: {
@@ -76,7 +76,7 @@ export const REGION_COVERAGE: Record<RegionId, { name: string, status: CoverageS
       hasNuro: 'UNAVAILABLE',
       hasGameWith: 'COVERED',
       localIsp: 'ピカラ光',
-      advice: '四国はまだNURO光が来ていないんですよね…。でも大丈夫です！四国にお住まいなら、強力な独自回線の「ピカラ光」か、全国対応でPingも安定している「GameWith光」のどちらかを選べば、快適なゲーミング環境が作れるので安心してください！'
+      advice: '四国はまだNURO光が来ていないんですよね…。でも大丈夫です！四国にお住まいなら、強力な独自回線の「ピカラ光」か、全国対応でPingも安定している「hi-ho ひかり with games」のどちらかを選べば、快適なゲーミング環境が作れるので安心してください！'
     }
   },
   kyushu: {
@@ -86,7 +86,7 @@ export const REGION_COVERAGE: Record<RegionId, { name: string, status: CoverageS
       hasNuro: 'COVERED',
       hasGameWith: 'COVERED',
       localIsp: 'BBIQ',
-      advice: '九州（沖縄除く）は、NURO光と地域回線の「BBIQ」の両方が選べるうらやましいエリアです！まずはBBIQが引けるか確認して、難しければNURO光を検討するのがおすすめです。沖縄にお住まいの場合は、GameWith光やauひかりを中心に探すと失敗しにくいですよ！'
+      advice: '九州（沖縄除く）は、NURO光と地域回線の「BBIQ」の両方が選べるうらやましいエリアです！まずはBBIQが引けるか確認して、難しければNURO光を検討するのがおすすめです。沖縄にお住まいの場合は、hi-ho ひかり with gamesやauひかりを中心に探すと失敗しにくいですよ！'
     }
   }
 };
