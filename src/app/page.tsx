@@ -361,8 +361,10 @@ export default async function Home() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {columns.length > 0 ? (
-              columns.map((column: any) => (
-                <Link key={column.id} href={`/column/${column.id}`} className="group flex flex-col gap-4">
+              columns.map((column: any) => {
+                const urlSlug = column.slug ? column.slug.replace(/^\//, '') : column.id;
+                return (
+                <Link key={column.id} href={`/column/${urlSlug}`} className="group flex flex-col gap-4">
                   <div className="relative w-full aspect-[1.91/1] rounded-2xl overflow-hidden border border-white/10">
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10" />
                     {column.thumbnail?.url ? (
@@ -392,7 +394,8 @@ export default async function Home() {
                     </h3>
                   </div>
                 </Link>
-              ))
+                );
+              })
             ) : (
               <p className="text-text-muted text-sm col-span-full">記事がありません。</p>
             )}
