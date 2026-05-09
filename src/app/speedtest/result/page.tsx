@@ -3,15 +3,16 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 
 type Props = {
-  searchParams: Promise<{ ping?: string; tier?: string }>;
+  searchParams: Promise<{ ping?: string; tier?: string; dl?: string }>;
 };
 
 export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
   const resolvedParams = await searchParams;
   const ping = resolvedParams.ping || '??';
   const tier = resolvedParams.tier || 'UNRANKED';
+  const dl = resolvedParams.dl || '0';
   
-  const ogImageUrl = `https://gamers-line.jp/api/og/speedtest?ping=${ping}&tier=${tier}`;
+  const ogImageUrl = `https://gamers-line.jp/api/og/speedtest?ping=${ping}&tier=${tier}&dl=${dl}`;
 
   return {
     title: `私の回線ランクは【${tier}】でした！ | Gamer's Line`,
@@ -34,6 +35,7 @@ export default async function SpeedtestResultPage({ searchParams }: Props) {
   const resolvedParams = await searchParams;
   const ping = resolvedParams.ping || '??';
   const tier = resolvedParams.tier || 'UNRANKED';
+  const dl = resolvedParams.dl || '0';
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans flex flex-col items-center justify-center p-4">
@@ -42,7 +44,7 @@ export default async function SpeedtestResultPage({ searchParams }: Props) {
         
         <h1 className="font-heading text-2xl font-bold mb-2">測定結果のシェア完了！</h1>
         <p className="text-text-muted mb-8 text-sm">
-          Ping: <span className="text-white font-bold">{ping}ms</span> / 階級: <span className="text-cyan font-bold">{tier}</span>
+          Ping: <span className="text-white font-bold">{ping}ms</span> / ダウンロード: <span className="text-white font-bold">{dl}Mbps</span> / 階級: <span className="text-cyan font-bold">{tier}</span>
         </p>
 
         <Link 
