@@ -14,24 +14,26 @@ export default function GearPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-background pb-20">
-      {/* Breadcrumbs */}
-      <div className="pt-24 px-4 sm:px-10 max-w-[1100px] mx-auto">
+    <div className="flex flex-col min-h-screen bg-background text-foreground font-sans">
+      {/* Page Header */}
+      <div className="relative z-10 max-w-[1200px] mx-auto w-full px-4 sm:px-10 py-10 sm:py-16 border-b border-white/10 mt-14 sm:mt-0">
         <Breadcrumbs items={breadcrumbs} />
+        <div className="font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase opacity-70 mb-4 mt-4">
+          // GEAR & DEVICES
+        </div>
+        <h1 className="font-heading text-[clamp(2rem,5vw,3.25rem)] font-bold tracking-tight leading-[1.1] mb-4">
+          推奨ゲーミング<br className="sm:hidden" />
+          <span className="gradient-text">通信デバイス</span>
+        </h1>
+        <p className="text-sm text-text-muted max-w-[600px] leading-[1.7]">
+          いくら最強の光回線を契約しても、「ルーター」や「LANケーブル」が古いとPingは劇的に悪化します。<br className="hidden sm:block" />
+          回線変更が難しい方でも、デバイスを変えるだけでラグが解消する最強のギアを厳選しました。
+        </p>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 mt-8 mb-16">
-        {/* Hero Section */}
-        <div className="text-center mb-16 relative">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-cyan/10 rounded-full blur-3xl pointer-events-none" />
-          <h1 className="font-heading text-3xl sm:text-5xl font-black text-white mb-6 tracking-tight relative z-10">
-            推奨デバイス <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan to-emerald">& ギア</span>
-          </h1>
-          <p className="text-text-muted text-sm sm:text-base max-w-2xl mx-auto leading-relaxed relative z-10">
-            いくら最強の光回線を契約しても、<strong className="text-cyan font-bold">「ルーター」や「LANケーブル」</strong>が古いとPingは劇的に悪化します。回線変更が難しい方でも、デバイスを変えるだけでラグが解消する可能性があります。
-          </p>
-        </div>
-
+      {/* Content Section */}
+      <div className="relative z-10 max-w-[1200px] mx-auto w-full px-4 sm:px-10 py-10 sm:py-16 pb-24">
+        
         {/* Section 1: Routers (2-3 Columns) */}
         <div className="affi-frame">
           <div className="affi-title-row">
@@ -42,7 +44,7 @@ export default function GearPage() {
             <div className="affi-subtitle hidden sm:block">// RECOMMENDED ROUTERS</div>
           </div>
           
-          <p className="text-sm text-text-muted mb-6 leading-relaxed">
+          <p className="text-sm text-text-muted mb-6 leading-relaxed max-w-3xl">
             Wi-Fi 6（11ax）以上の最新規格に対応し、有線接続時のスループットも高い高性能モデル。
           </p>
 
@@ -112,7 +114,7 @@ export default function GearPage() {
             <div className="affi-subtitle hidden sm:block">// HIGH-SPEED CABLES</div>
           </div>
           
-          <p className="text-sm text-text-muted mb-6 leading-relaxed">
+          <p className="text-sm text-text-muted mb-6 leading-relaxed max-w-3xl">
             Cat5eなどの古いケーブルを使っていると、10G回線を引いても速度が出ません。FPSゲーマーなら「Cat6A（カテゴリ6A）」一択です。
           </p>
 
@@ -120,7 +122,6 @@ export default function GearPage() {
             {/* Cable 1 */}
             <div className="affi-card featured">
               <div className="affi-thumb">
-                {/* placeholder image */}
                 <img src="https://images.unsplash.com/photo-1558227691-41ea78d1f631?auto=format&fit=crop&w=600&q=80" alt="LAN Cable" className="mix-blend-screen opacity-80" />
               </div>
               <div className="affi-card-body">
