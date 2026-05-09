@@ -7,16 +7,7 @@ import { NextRequest } from "next/server";
 
 export const runtime = "edge";
 
-const fontDataPromise = fetch(
-  new URL('./Roboto-Black.ttf', import.meta.url)
-).then((res) => res.arrayBuffer());
 
-const hexToRgba = (hex: string, alpha: number) => {
-  const r = parseInt(hex.slice(1, 3), 16);
-  const g = parseInt(hex.slice(3, 5), 16);
-  const b = parseInt(hex.slice(5, 7), 16);
-  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-};
 
 const TIER_CONFIG: Record<string, { color: string; glow: string; glow2: string }> = {
   GOD:     { color: "#FFD700", glow: "rgba(255,215,0,0.45)",    glow2: "rgba(255,180,0,0.2)" },
@@ -30,7 +21,7 @@ const TIER_CONFIG: Record<string, { color: string; glow: string; glow2: string }
 function GridLines() {
   const pcts = [16, 33, 50, 66, 83];
   return (
-    <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, display: "flex" }}>
+    <div style={{ position: "absolute", inset: 0, display: "flex" }}>
       {pcts.map((p) => (
         <div key={`h${p}`} style={{ position: "absolute", left: 0, right: 0, top: `${p}%`, height: 1, background: "rgba(0,229,255,0.05)" }} />
       ))}
@@ -67,11 +58,12 @@ export async function GET(req: NextRequest) {
   const dlNum      = parseInt(dl);
   const dlBarPct   = isNaN(dlNum)   ? 50 : Math.min(100, Math.max(5, (dlNum / 1000) * 100));
 
-  const fontData = await fontDataPromise;
+  const { origin } = new URL(req.url);
+  const fontData = await fetch(`${origin}/fonts/Roboto-Black.ttf`).then((res) => res.arrayBuffer());
 
   return new ImageResponse(
     (
-      <div style={{ width: 1200, height: 630, background: "#050508", display: "flex", flexDirection: "column", position: "relative", overflow: "hidden", fontFamily: '"Arial Black", Arial, sans-serif' }}>
+      <div style={{ width: 1200, height: 630, background: "#050508", display: "flex", flexDirection: "column", position: "relative", overflow: "hidden", fontFamily: '"RobotoBlack", Arial, sans-serif' }}>
 
         <GridLines />
 
@@ -92,7 +84,7 @@ export async function GET(req: NextRequest) {
         {/* top bar */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "28px 96px 0" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12, color: "rgba(255,255,255,0.4)", fontSize: 16, letterSpacing: "0.22em", fontWeight: 700 }}>
-            <div style={{ width: 32, height: 1, background: c, display: "flex" }} />
+            <div style={{ width: 32, height: 1, background: c, display: "flex", flexShrink: 0 }} />
             CONNECTION RANK MASTER
           </div>
           <div style={{ display: "flex", fontSize: 30, fontWeight: 900, color: "#f0f0f8" }}>
@@ -104,18 +96,18 @@ export async function GET(req: NextRequest) {
         <div style={{ flex: 1, display: "flex", alignItems: "center", padding: "0 84px" }}>
 
           {/* LEFT: rank 180px */}
-          <div style={{ display: "flex", flexDirection: "column", width: "56%", overflow: "hidden" }}>
+          <div style={{ display: "flex", flexDirection: "column", flex: 13, overflow: "visible" }}>
             <div style={{ color: "rgba(255,255,255,0.5)", fontSize: 18, letterSpacing: "0.28em", fontWeight: 700, marginBottom: 16 }}>YOUR RANK</div>
-            <div style={{ fontSize: 180, fontWeight: 900, lineHeight: 0.85, letterSpacing: "-0.02em", color: c, whiteSpace: "nowrap" }}>
+            <div style={{ fontSize: 140, fontWeight: 900, lineHeight: 0.85, letterSpacing: "-0.02em", color: c, whiteSpace: "nowrap" }}>
               {tierKey}
             </div>
           </div>
 
           {/* divider */}
-          <div style={{ width: 1, height: 300, background: `linear-gradient(180deg, transparent, ${hexToRgba(c, 0.5)}, transparent)`, display: "flex", margin: "0 48px", flexShrink: 0 }} />
+          <div style={{ width: 1, height: 300, background: `linear-gradient(180deg, transparent, ${c}50, transparent)`, display: "flex", margin: "0 48px", flexShrink: 0 }} />
 
           {/* RIGHT: ping + dl */}
-          <div style={{ display: "flex", flexDirection: "column", width: "44%" }}>
+          <div style={{ display: "flex", flexDirection: "column", flex: 10 }}>
 
             {/* Ping */}
             <div style={{ display: "flex", flexDirection: "column" }}>
@@ -161,7 +153,7 @@ export async function GET(req: NextRequest) {
       height: 630,
       fonts: [
         {
-          name: 'Arial Black',
+          name: 'RobotoBlack',
           data: fontData,
           weight: 900,
           style: 'normal',
