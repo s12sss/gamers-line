@@ -80,6 +80,11 @@ function calculateScore(isp: ISP, answers: UserAnswers): number {
     score += 40; 
   }
 
+  // アフィリエイト提携待ちのため、GameWith光の表示優先度を意図的に下げるペナルティ
+  if (isp.id.includes('gamewith_hikari')) {
+    score -= 30;
+  }
+
   // 10G条件の処理（ハードフィルターではなくスコア加減点で調整）
   if (answers.requires10G) {
     if (isp.max_speed_gbps >= 10) {

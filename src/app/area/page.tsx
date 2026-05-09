@@ -81,14 +81,6 @@ export default function JapanCoveragePage() {
                 {/* Status Grid */}
                 <div className="flex gap-6 sm:gap-10 flex-wrap mt-2 mb-6">
                   <div className="flex flex-col gap-1">
-                    <span className="font-mono text-[0.7rem] text-white/75 tracking-[0.1em] uppercase">10Gプラン普及率</span>
-                    <div className="flex items-center gap-1.5 font-bold text-[1.1rem]">
-                      {renderStatusIcon(regionData.status.has10G)}
-                      {renderStatusText(regionData.status.has10G)}
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col gap-1">
                     <span className="font-mono text-[0.7rem] text-white/75 tracking-[0.1em] uppercase">NURO光 対応状況</span>
                     <div className="flex items-center gap-1.5 font-bold text-[1.1rem]">
                       {renderStatusIcon(regionData.status.hasNuro)}
@@ -105,19 +97,10 @@ export default function JapanCoveragePage() {
                   </div>
 
                   <div className="flex flex-col gap-1">
-                    <span className="font-mono text-[0.7rem] text-white/75 tracking-[0.1em] uppercase">地域最強ローカル回線</span>
+                    <span className="font-mono text-[0.7rem] text-white/75 tracking-[0.1em] uppercase">hi-ho ひかり 対応状況</span>
                     <div className="flex items-center gap-1.5 font-bold text-[1.1rem]">
-                      {regionData.status.localIsp ? (
-                        <>
-                          <ShieldCheck className="w-5 h-5 text-emerald" />
-                          <span className="text-emerald">{regionData.status.localIsp}</span>
-                        </>
-                      ) : (
-                        <>
-                          <XCircle className="w-5 h-5 text-text-muted" />
-                          <span className="text-text-muted">特になし</span>
-                        </>
-                      )}
+                      {renderStatusIcon(regionData.status.hasHiHo)}
+                      {renderStatusText(regionData.status.hasHiHo)}
                     </div>
                   </div>
                 </div>
