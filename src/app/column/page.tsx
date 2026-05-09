@@ -54,10 +54,10 @@ export default async function ColumnList({ searchParams }: { searchParams: Promi
       </div>
 
       {/* 2-Column Layout */}
-      <div className="relative z-10 px-4 sm:px-10 pb-[60px] sm:pb-[100px] max-w-[1200px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mt-8">
+      <div className="relative z-10 px-4 sm:px-10 pb-[60px] sm:pb-[100px] max-w-[1350px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 mt-8">
         
         {/* Main Content (Articles Grid) */}
-        <div className="lg:col-span-8">
+        <div className="lg:col-span-8 xl:col-span-9">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-heading font-bold text-white tracking-wide">
               {q ? `「${q}」の検索結果` : tag ? `「${tag}」の記事一覧` : '最新の記事一覧'}
@@ -65,7 +65,7 @@ export default async function ColumnList({ searchParams }: { searchParams: Promi
             </h2>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
             {displayColumns.length > 0 ? (
               displayColumns.map((column, index) => {
                 const urlSlug = column.slug ? column.slug.replace(/^\//, '') : column.id;
@@ -73,9 +73,9 @@ export default async function ColumnList({ searchParams }: { searchParams: Promi
                 <Link 
                   key={column.id} 
                   href={`/column/${urlSlug}`} 
-                  className={`group flex flex-col relative rounded-[20px] border border-white/10 bg-white/[0.035] overflow-hidden backdrop-blur-md transition-all duration-300 hover:border-cyan/30 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(0,229,255,0.06)]`}
+                  className={`group flex flex-col relative rounded-[20px] border border-white/10 bg-white/[0.035] overflow-hidden backdrop-blur-md transition-all duration-300 hover:border-cyan/30 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(0,229,255,0.06)] ${index === 0 ? 'sm:col-span-2' : ''}`}
                 >
-                  <div className={`w-full aspect-[16/8] bg-cyan/5 border-b border-white/10 flex items-center justify-center relative overflow-hidden shrink-0`}>
+                  <div className={`w-full ${index === 0 ? 'aspect-[16/8] xl:aspect-[24/11]' : 'aspect-[16/8]'} bg-cyan/5 border-b border-white/10 flex items-center justify-center relative overflow-hidden shrink-0`}>
                     <div className="absolute inset-0 bg-[repeating-linear-gradient(45deg,transparent,transparent_24px,rgba(255,255,255,0.015)_24px,rgba(255,255,255,0.015)_25px)]" />
                     {column.thumbnail ? (
                       <img src={column.thumbnail.url} alt={column.title} className="absolute inset-0 w-full h-full object-cover z-10 opacity-80" />
@@ -112,7 +112,7 @@ export default async function ColumnList({ searchParams }: { searchParams: Promi
         </div>
 
         {/* Sidebar */}
-        <div className="lg:col-span-4 flex flex-col gap-6 order-first lg:order-last">
+        <div className="lg:col-span-4 xl:col-span-3 flex flex-col gap-6 order-first lg:order-last">
           
           {/* Mobile Accordion */}
           <details className="lg:hidden group bg-white/5 border border-white/10 rounded-[20px] overflow-hidden">
