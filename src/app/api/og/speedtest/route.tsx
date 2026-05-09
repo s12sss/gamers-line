@@ -58,8 +58,7 @@ export async function GET(req: NextRequest) {
   const dlNum      = parseInt(dl);
   const dlBarPct   = isNaN(dlNum)   ? 50 : Math.min(100, Math.max(5, (dlNum / 1000) * 100));
 
-  const { origin } = new URL(req.url);
-  const fontData = await fetch(`${origin}/fonts/Roboto-Black.ttf`).then((res) => res.arrayBuffer());
+  const fontData = await fetch(`https://gamers-line.jp/fonts/Roboto-Black.ttf`).then((res) => res.arrayBuffer());
 
   return new ImageResponse(
     (
@@ -84,7 +83,6 @@ export async function GET(req: NextRequest) {
         {/* top bar */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "28px 96px 0" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12, color: "rgba(255,255,255,0.4)", fontSize: 16, letterSpacing: "0.22em", fontWeight: 700 }}>
-            <div style={{ width: 32, height: 1, background: c, display: "flex", flexShrink: 0 }} />
             CONNECTION RANK MASTER
           </div>
           <div style={{ display: "flex", fontSize: 30, fontWeight: 900, color: "#f0f0f8" }}>
@@ -96,7 +94,7 @@ export async function GET(req: NextRequest) {
         <div style={{ flex: 1, display: "flex", alignItems: "center", padding: "0 84px" }}>
 
           {/* LEFT: rank 180px */}
-          <div style={{ display: "flex", flexDirection: "column", flex: 13, overflow: "visible" }}>
+          <div style={{ display: "flex", flexDirection: "column", flex: 20, overflow: "visible" }}>
             <div style={{ color: "rgba(255,255,255,0.5)", fontSize: 18, letterSpacing: "0.28em", fontWeight: 700, marginBottom: 16 }}>YOUR RANK</div>
             <div style={{ fontSize: 140, fontWeight: 900, lineHeight: 0.85, letterSpacing: "-0.02em", color: c, whiteSpace: "nowrap" }}>
               {tierKey}
@@ -107,7 +105,7 @@ export async function GET(req: NextRequest) {
           <div style={{ width: 1, height: 300, background: `linear-gradient(180deg, transparent, ${c}50, transparent)`, display: "flex", margin: "0 48px", flexShrink: 0 }} />
 
           {/* RIGHT: ping + dl */}
-          <div style={{ display: "flex", flexDirection: "column", flex: 10 }}>
+          <div style={{ display: "flex", flexDirection: "column", flex: 9 }}>
 
             {/* Ping */}
             <div style={{ display: "flex", flexDirection: "column" }}>
