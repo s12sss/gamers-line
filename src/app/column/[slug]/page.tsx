@@ -51,6 +51,7 @@ export default async function ColumnArticle({ params }: Props) {
 
   let processedContent = column?.content || '';
   const headings: { id: string; text: string }[] = [];
+  const faqs: { questionName: string; acceptedAnswerText: string }[] = [];
 
   if (column) {
     // cheerioの最新バージョンでは load() に { isDocument: false } を渡すことでbody/htmlの自動補完を防げます
@@ -59,6 +60,27 @@ export default async function ColumnArticle({ params }: Props) {
       const id = `chapter-${index + 1}`;
       $(element).attr('id', id);
       headings.push({ id, text: $(element).text() });
+    });
+
+    // FAQ Schema Parser
+    // h2, h3 に疑問符が含まれている場合、次の見出しまでのテキストを回答として抽出
+    $('h2, h3').each((_, element) => {
+      const text = $(element).text();
+      if (text.includes('?') || text.includes('？') || text.includes('とは')) {
+        let answerText = '';
+        let nextEl = $(element).next();
+        while (nextEl.length > 0 && !nextEl.is('h2, h3, h4')) {
+          answerText += nextEl.text() + ' ';
+          nextEl = nextEl.next();
+        }
+        answerText = answerText.trim();
+        if (answerText) {
+          faqs.push({
+            questionName: text,
+            acceptedAnswerText: answerText.substring(0, 300) // 長すぎないように制限
+          });
+        }
+      }
     });
 
     // Custom Button Parser (CTA)
@@ -120,6 +142,19 @@ export default async function ColumnArticle({ params }: Props) {
     ]
   } : null;
 
+  const faqJsonLd = faqs.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(faq => ({
+      '@type': 'Question',
+      name: faq.questionName,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.acceptedAnswerText
+      }
+    }))
+  } : null;
+
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground font-sans">
       {jsonLd && (
@@ -132,6 +167,12 @@ export default async function ColumnArticle({ params }: Props) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        />
+      )}
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
       )}
       <ScrollProgress />
