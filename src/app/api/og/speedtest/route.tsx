@@ -1,185 +1,148 @@
-import { ImageResponse } from 'next/og';
-import { NextRequest } from 'next/server';
+// app/api/og/speedtest/route.tsx
+// Usage: /api/og/speedtest?ping=8&tier=GOD&dl=262
+// @vercel/og (Satori) — display:flex only, no grid, no backdrop-filter
 
-export const runtime = 'edge';
+import { ImageResponse } from "next/og";
+import { NextRequest } from "next/server";
+
+export const runtime = "edge";
+
+const TIER_CONFIG: Record<string, { color: string; glow: string; glow2: string }> = {
+  GOD:     { color: "#FFD700", glow: "rgba(255,215,0,0.45)",    glow2: "rgba(255,180,0,0.2)" },
+  MASTER:  { color: "#D946EF", glow: "rgba(217,70,239,0.45)",   glow2: "rgba(200,50,220,0.2)" },
+  DIAMOND: { color: "#00E5FF", glow: "rgba(0,229,255,0.45)",    glow2: "rgba(0,180,220,0.2)" },
+  GOLD:    { color: "#FBBF24", glow: "rgba(251,191,36,0.4)",    glow2: "rgba(230,160,20,0.2)" },
+  SILVER:  { color: "#9CA3AF", glow: "rgba(156,163,175,0.35)",  glow2: "rgba(130,140,150,0.15)" },
+  BRONZE:  { color: "#EF4444", glow: "rgba(239,68,68,0.4)",     glow2: "rgba(200,40,40,0.2)" },
+};
+
+function GridLines() {
+  const pcts = [16, 33, 50, 66, 83];
+  return (
+    <div style={{ position: "absolute", inset: 0, display: "flex" }}>
+      {pcts.map((p) => (
+        <div key={`h${p}`} style={{ position: "absolute", left: 0, right: 0, top: `${p}%`, height: 1, background: "rgba(0,229,255,0.05)" }} />
+      ))}
+      {pcts.map((p) => (
+        <div key={`v${p}`} style={{ position: "absolute", top: 0, bottom: 0, left: `${p}%`, width: 1, background: "rgba(0,229,255,0.05)" }} />
+      ))}
+    </div>
+  );
+}
+
+function Corner({ pos, color }: { pos: "tl" | "tr" | "bl" | "br"; color: string }) {
+  const size = 28;
+  const off = 20;
+  const base: React.CSSProperties = { position: "absolute", width: size, height: size, display: "flex" };
+  const borders: Record<string, React.CSSProperties> = {
+    tl: { top: off, left: off,     borderTop: `2px solid ${color}`, borderLeft:   `2px solid ${color}` },
+    tr: { top: off, right: off,    borderTop: `2px solid ${color}`, borderRight:  `2px solid ${color}` },
+    bl: { bottom: off, left: off,  borderBottom: `2px solid ${color}`, borderLeft:  `2px solid ${color}` },
+    br: { bottom: off, right: off, borderBottom: `2px solid ${color}`, borderRight: `2px solid ${color}` },
+  };
+  return <div style={{ ...base, ...borders[pos] }} />;
+}
 
 export async function GET(req: NextRequest) {
-  try {
-    const { searchParams } = new URL(req.url);
-    const ping = searchParams.get('ping') || '??';
-    const tier = searchParams.get('tier') || 'UNRANKED';
+  const { searchParams } = new URL(req.url);
+  const ping    = searchParams.get("ping") ?? "---";
+  const dl      = searchParams.get("dl")   ?? "---";
+  const tierKey = (searchParams.get("tier") ?? "SILVER").toUpperCase();
+  const tier    = TIER_CONFIG[tierKey] ?? TIER_CONFIG["SILVER"];
+  const c       = tier.color;
 
-    // 階級に応じたカラーとメッセージ設定
-    let tierColor = '#ffffff';
-    let glowColor = 'rgba(255,255,255,0.3)';
-    let subMessage = 'EVALUATING CONNECTION...';
-    
-    if (tier === 'GOD') {
-      tierColor = '#FFD700'; // Gold
-      glowColor = 'rgba(255,215,0,0.5)';
-      subMessage = 'FLAWLESS CONNECTION DETECTED';
-    } else if (tier === 'MASTER') {
-      tierColor = '#a855f7'; // Purple
-      glowColor = 'rgba(168,85,247,0.5)';
-      subMessage = 'ELITE TIER PERFORMANCE';
-    } else if (tier === 'PLATINUM') {
-      tierColor = '#00E5FF'; // Cyan
-      glowColor = 'rgba(0,229,255,0.5)';
-      subMessage = 'HIGH-SPEED CONNECTION';
-    } else if (tier === 'GOLD') {
-      tierColor = '#fbbf24'; // Amber
-      glowColor = 'rgba(251,191,36,0.5)';
-      subMessage = 'OPTIMAL LATENCY';
-    } else if (tier === 'SILVER') {
-      tierColor = '#9ca3af'; // Gray
-      glowColor = 'rgba(156,163,175,0.4)';
-      subMessage = 'AVERAGE PERFORMANCE';
-    } else if (tier === 'BRONZE') {
-      tierColor = '#ef4444'; // Red
-      glowColor = 'rgba(239,68,68,0.5)';
-      subMessage = 'CRITICAL LATENCY DETECTED';
-    }
+  const pingNum    = parseInt(ping);
+  const pingBarPct = isNaN(pingNum) ? 50 : Math.max(5, Math.min(100, 100 - pingNum));
+  const dlNum      = parseInt(dl);
+  const dlBarPct   = isNaN(dlNum)   ? 50 : Math.min(100, Math.max(5, (dlNum / 1000) * 100));
 
-    return new ImageResponse(
-      (
-        <div
-          style={{
-            height: '100%',
-            width: '100%',
-            display: 'flex',
-            backgroundColor: '#050508',
-            fontFamily: 'sans-serif',
-            position: 'relative',
-            overflow: 'hidden',
-          }}
-        >
-          {/* 背景のグリッドと光 */}
-          <div
-            style={{
-              position: 'absolute',
-              inset: 0,
-              backgroundImage: 'linear-gradient(rgba(255,255,255,0.04) 2px, transparent 2px), linear-gradient(90deg, rgba(255,255,255,0.04) 2px, transparent 2px)',
-              backgroundSize: '60px 60px',
-            }}
-          />
-          <div
-            style={{
-              position: 'absolute',
-              top: '-20%',
-              left: '-10%',
-              width: '60%',
-              height: '80%',
-              borderRadius: '50%',
-              background: `radial-gradient(ellipse, ${glowColor} 0%, transparent 60%)`,
-              opacity: 0.6,
-            }}
-          />
-          <div
-            style={{
-              position: 'absolute',
-              bottom: '-30%',
-              right: '-10%',
-              width: '70%',
-              height: '70%',
-              borderRadius: '50%',
-              background: 'radial-gradient(ellipse, rgba(0,229,255,0.15) 0%, transparent 60%)',
-            }}
-          />
+  return new ImageResponse(
+    (
+      <div style={{ width: 1200, height: 630, background: "#050508", display: "flex", flexDirection: "column", position: "relative", overflow: "hidden", fontFamily: '"Arial Black", Arial, sans-serif' }}>
 
-          {/* メインのカードレイアウト（左側に情報、右側に巨大な文字） */}
-          <div style={{ display: 'flex', width: '100%', height: '100%', padding: '60px', zIndex: 10 }}>
-            
-            {/* 左サイド: HUD & 情報 */}
-            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', width: '45%', borderRight: '2px solid rgba(255,255,255,0.1)', paddingRight: '40px' }}>
-              
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <div style={{ color: '#00E5FF', fontSize: '18px', letterSpacing: '6px', fontWeight: 'bold', marginBottom: '8px' }}>
-                  // GAMER'S LINE
-                </div>
-                <div style={{ color: '#ffffff', fontSize: '36px', fontWeight: '900', letterSpacing: '2px', lineHeight: 1.1 }}>
-                  SPEEDTEST<br />RESULT
-                </div>
+        <GridLines />
+
+        {/* glow blobs */}
+        <div style={{ position: "absolute", top: "-20%", left: "-10%", width: "55%", paddingBottom: "55%", borderRadius: "50%", background: `radial-gradient(circle, ${tier.glow} 0%, transparent 70%)`, display: "flex" }} />
+        <div style={{ position: "absolute", bottom: "-20%", right: "-10%", width: "40%", paddingBottom: "40%", borderRadius: "50%", background: `radial-gradient(circle, ${tier.glow2} 0%, transparent 70%)`, display: "flex" }} />
+
+        {/* watermark */}
+        <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%, -50%)", fontSize: 240, fontWeight: 900, color: c, opacity: 0.04, letterSpacing: "-0.03em", whiteSpace: "nowrap", lineHeight: 1, display: "flex" }}>
+          {tierKey}
+        </div>
+
+        <Corner pos="tl" color={c} />
+        <Corner pos="tr" color={c} />
+        <Corner pos="bl" color={c} />
+        <Corner pos="br" color={c} />
+
+        {/* top bar */}
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "28px 96px 0" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, color: "rgba(255,255,255,0.4)", fontSize: 16, letterSpacing: "0.22em", fontWeight: 700 }}>
+            <div style={{ width: 32, height: 1, background: c, display: "flex" }} />
+            CONNECTION RANK MASTER
+          </div>
+          <div style={{ fontSize: 30, fontWeight: 900, color: "#f0f0f8" }}>
+            Gamer's <span style={{ color: c }}>Line</span>
+          </div>
+        </div>
+
+        {/* main */}
+        <div style={{ flex: 1, display: "flex", alignItems: "center", padding: "0 84px" }}>
+
+          {/* LEFT: rank 180px */}
+          <div style={{ display: "flex", flexDirection: "column", flex: 1.3, overflow: "hidden" }}>
+            <div style={{ color: "rgba(255,255,255,0.5)", fontSize: 18, letterSpacing: "0.28em", fontWeight: 700, marginBottom: 16 }}>YOUR RANK</div>
+            <div style={{ fontSize: 180, fontWeight: 900, lineHeight: 0.85, letterSpacing: "-0.02em", color: c, whiteSpace: "nowrap" }}>
+              {tierKey}
+            </div>
+          </div>
+
+          {/* divider */}
+          <div style={{ width: 1, height: 300, background: `linear-gradient(180deg, transparent, ${c}50, transparent)`, display: "flex", margin: "0 48px", flexShrink: 0 }} />
+
+          {/* RIGHT: ping + dl */}
+          <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
+
+            {/* Ping */}
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <div style={{ color: "rgba(255,255,255,0.6)", fontSize: 18, letterSpacing: "0.25em", fontWeight: 700, marginBottom: 4 }}>PING</div>
+              <div style={{ display: "flex", alignItems: "baseline", gap: 10 }}>
+                <div style={{ fontSize: 125, fontWeight: 900, lineHeight: 1, letterSpacing: "-0.03em", color: c }}>{ping}</div>
+                <div style={{ fontSize: 28, fontWeight: 700, color: "rgba(255,255,255,0.6)", letterSpacing: "0.08em" }}>ms</div>
               </div>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                {/* Ping Score Box */}
-                <div style={{ display: 'flex', flexDirection: 'column', border: '1px solid rgba(255,255,255,0.1)', backgroundColor: 'rgba(255,255,255,0.03)', borderRadius: '16px', padding: '24px' }}>
-                  <div style={{ color: '#a1a1aa', fontSize: '14px', letterSpacing: '3px', marginBottom: '4px' }}>LATENCY (PING)</div>
-                  <div style={{ display: 'flex', alignItems: 'baseline' }}>
-                    <span style={{ color: '#ffffff', fontSize: '64px', fontWeight: '900', lineHeight: 1 }}>{ping}</span>
-                    <span style={{ color: '#a1a1aa', fontSize: '20px', marginLeft: '8px', fontWeight: 'bold' }}>ms</span>
-                  </div>
-                </div>
-
-                {/* Sub Status */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <div style={{ width: '12px', height: '12px', backgroundColor: tierColor, borderRadius: '50%', boxShadow: `0 0 10px ${tierColor}` }} />
-                  <div style={{ color: tierColor, fontSize: '14px', letterSpacing: '2px', fontWeight: 'bold' }}>
-                    {subMessage}
-                  </div>
-                </div>
-              </div>
-
-              <div style={{ display: 'flex', alignItems: 'center', color: '#52525b', fontSize: '12px', letterSpacing: '2px', fontFamily: 'monospace' }}>
-                SYS.REQ: 2026 / REGION: JP / PROTOCOL: V6
+              <div style={{ width: "100%", height: 3, background: "rgba(255,255,255,0.1)", borderRadius: 2, marginTop: 8, display: "flex" }}>
+                <div style={{ width: `${pingBarPct}%`, height: "100%", background: c, borderRadius: 2, display: "flex" }} />
               </div>
             </div>
 
-            {/* 右サイド: 巨大な階級表示 */}
-            <div style={{ display: 'flex', width: '55%', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
-              <div style={{ 
-                position: 'absolute', 
-                color: 'rgba(255,255,255,0.02)', 
-                fontSize: '280px', 
-                fontWeight: '900',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                whiteSpace: 'nowrap'
-              }}>
-                {tier}
+            <div style={{ width: "100%", height: 1, background: "rgba(255,255,255,0.07)", margin: "20px 0", display: "flex" }} />
+
+            {/* Download */}
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <div style={{ color: "rgba(255,255,255,0.6)", fontSize: 18, letterSpacing: "0.25em", fontWeight: 700, marginBottom: 4 }}>DOWNLOAD</div>
+              <div style={{ display: "flex", alignItems: "baseline", gap: 10 }}>
+                <div style={{ fontSize: 125, fontWeight: 900, lineHeight: 1, letterSpacing: "-0.03em", color: "#ffffff" }}>{dl}</div>
+                <div style={{ fontSize: 28, fontWeight: 700, color: "rgba(255,255,255,0.6)", letterSpacing: "0.08em" }}>Mbps</div>
               </div>
-              
-              <div style={{
-                color: tierColor,
-                fontSize: tier === 'PLATINUM' ? '110px' : '130px', // 文字数によってサイズ調整
-                fontWeight: '900',
-                letterSpacing: '4px',
-                textShadow: `0 0 40px ${glowColor}, 0 0 80px ${glowColor}`,
-                zIndex: 20,
-                textAlign: 'center'
-              }}>
-                {tier}
-              </div>
-              
-              {/* 装飾用ボーダー枠 */}
-              <div style={{
-                position: 'absolute',
-                top: '20px',
-                right: '20px',
-                bottom: '20px',
-                left: '20px',
-                border: `1px solid ${glowColor}`,
-                borderLeft: 'none',
-                opacity: 0.5
-              }}>
-                <div style={{ position: 'absolute', top: '-1px', right: '-1px', width: '20px', height: '20px', borderTop: `4px solid ${tierColor}`, borderRight: `4px solid ${tierColor}` }} />
-                <div style={{ position: 'absolute', bottom: '-1px', right: '-1px', width: '20px', height: '20px', borderBottom: `4px solid ${tierColor}`, borderRight: `4px solid ${tierColor}` }} />
+              <div style={{ width: "100%", height: 3, background: "rgba(255,255,255,0.1)", borderRadius: 2, marginTop: 8, display: "flex" }}>
+                <div style={{ width: `${dlBarPct}%`, height: "100%", background: "rgba(255,255,255,0.35)", borderRadius: 2, display: "flex" }} />
               </div>
             </div>
 
           </div>
         </div>
-      ),
-      {
-        width: 1200,
-        height: 630,
-      }
-    );
-  } catch (e: any) {
-    console.log(`${e.message}`);
-    return new Response(`Failed to generate the image`, {
-      status: 500,
-    });
-  }
+
+        {/* bottom bar */}
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", borderTop: "1px solid rgba(255,255,255,0.07)", padding: "0 108px", height: 80 }}>
+          <div style={{ color: "rgba(255,255,255,0.3)", fontSize: 16, letterSpacing: "0.18em", fontWeight: 700 }}>SPEEDTEST RESULT</div>
+          <div style={{ padding: "10px 28px", border: `1px solid ${c}55`, color: c, fontSize: 16, letterSpacing: "0.18em", fontWeight: 700 }}>
+            SHARE YOUR RANK
+          </div>
+        </div>
+
+      </div>
+    ),
+    { width: 1200, height: 630 }
+  );
 }
