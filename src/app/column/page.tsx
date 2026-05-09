@@ -15,9 +15,10 @@ const REVIEW_TAGS = ['回線・プロバイダ比較', 'サービス実測・検
 const GENRE_TAGS = ['FPS / TPS', '格闘ゲーム', 'MOBA', 'MMO', 'スマホゲーム', 'その他ゲーム'];
 const OTHER_TAGS = ['お得なキャンペーン', '最新ニュース', 'VPN'];
 
-export default async function ColumnList({ searchParams }: { searchParams?: { [key: string]: string | string[] | undefined } }) {
-  const tag = searchParams?.tag as string | undefined;
-  const q = searchParams?.q as string | undefined;
+export default async function ColumnList({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
+  const params = await searchParams;
+  const tag = params.tag as string | undefined;
+  const q = params.q as string | undefined;
   
   // Get all columns to check total count, and filtered columns for display
   const allColumns = await getColumnsList();
