@@ -25,6 +25,20 @@ export default async function ColumnList({ searchParams }: { searchParams: Promi
   const allColumns = await getColumnsList();
 
   // ----------------------------------------------------
+  // 存在するカテゴリ（タグ）の抽出
+  // ----------------------------------------------------
+  const activeCategories = new Set<string>();
+  allColumns.forEach(c => {
+    c.category?.forEach(cat => activeCategories.add(cat));
+  });
+
+  const activeServiceTags = SERVICE_TAGS.filter(t => activeCategories.has(t));
+  const activeKnowledgeTags = KNOWLEDGE_TAGS.filter(t => activeCategories.has(t));
+  const activeReviewTags = REVIEW_TAGS.filter(t => activeCategories.has(t));
+  const activeGenreTags = GENRE_TAGS.filter(t => activeCategories.has(t));
+  const activeOtherTags = OTHER_TAGS.filter(t => activeCategories.has(t));
+
+  // ----------------------------------------------------
   // 月別アーカイブの集計
   // ----------------------------------------------------
   const archiveMap = new Map<string, { label: string; count: number }>();
@@ -164,70 +178,80 @@ export default async function ColumnList({ searchParams }: { searchParams: Promi
 
               {/* Tags */}
               <div className="flex flex-col gap-5 pt-2">
-                <div>
-                  <h3 className="text-[0.75rem] font-bold tracking-wider text-white/80 mb-2.5 flex items-center gap-1.5">
-                    <Hash className="w-3.5 h-3.5 text-cyan" /> サービス名
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {SERVICE_TAGS.map(t => (
-                      <Link key={t} href={`/column?tag=${t}`} className={`px-3 py-1.5 rounded-md text-[0.7rem] font-medium transition-all ${tag === t ? 'bg-cyan/20 text-cyan border border-cyan/50' : 'bg-white/5 text-text-muted border border-white/5 hover:bg-white/10 hover:text-white'}`}>
-                        {t}
-                      </Link>
-                    ))}
+                {activeServiceTags.length > 0 && (
+                  <div>
+                    <h3 className="text-[0.75rem] font-bold tracking-wider text-white/80 mb-2.5 flex items-center gap-1.5">
+                      <Hash className="w-3.5 h-3.5 text-cyan" /> サービス名
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {activeServiceTags.map(t => (
+                        <Link key={t} href={`/column?tag=${t}`} className={`px-3 py-1.5 rounded-md text-[0.7rem] font-medium transition-all ${tag === t ? 'bg-cyan/20 text-cyan border border-cyan/50' : 'bg-white/5 text-text-muted border border-white/5 hover:bg-white/10 hover:text-white'}`}>
+                          {t}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
 
-                <div>
-                  <h3 className="text-[0.75rem] font-bold tracking-wider text-white/80 mb-2.5 flex items-center gap-1.5">
-                    <Hash className="w-3.5 h-3.5 text-cyan" /> 基礎知識・選び方
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {KNOWLEDGE_TAGS.map(t => (
-                      <Link key={t} href={`/column?tag=${t}`} className={`px-3 py-1.5 rounded-md text-[0.7rem] font-medium transition-all ${tag === t ? 'bg-cyan/20 text-cyan border border-cyan/50' : 'bg-white/5 text-text-muted border border-white/5 hover:bg-white/10 hover:text-white'}`}>
-                        {t}
-                      </Link>
-                    ))}
+                {activeKnowledgeTags.length > 0 && (
+                  <div>
+                    <h3 className="text-[0.75rem] font-bold tracking-wider text-white/80 mb-2.5 flex items-center gap-1.5">
+                      <Hash className="w-3.5 h-3.5 text-cyan" /> 基礎知識・選び方
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {activeKnowledgeTags.map(t => (
+                        <Link key={t} href={`/column?tag=${t}`} className={`px-3 py-1.5 rounded-md text-[0.7rem] font-medium transition-all ${tag === t ? 'bg-cyan/20 text-cyan border border-cyan/50' : 'bg-white/5 text-text-muted border border-white/5 hover:bg-white/10 hover:text-white'}`}>
+                          {t}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
 
-                <div>
-                  <h3 className="text-[0.75rem] font-bold tracking-wider text-white/80 mb-2.5 flex items-center gap-1.5">
-                    <Hash className="w-3.5 h-3.5 text-cyan" /> 検証・レビュー
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {REVIEW_TAGS.map(t => (
-                      <Link key={t} href={`/column?tag=${t}`} className={`px-3 py-1.5 rounded-md text-[0.7rem] font-medium transition-all ${tag === t ? 'bg-cyan/20 text-cyan border border-cyan/50' : 'bg-white/5 text-text-muted border border-white/5 hover:bg-white/10 hover:text-white'}`}>
-                        {t}
-                      </Link>
-                    ))}
+                {activeReviewTags.length > 0 && (
+                  <div>
+                    <h3 className="text-[0.75rem] font-bold tracking-wider text-white/80 mb-2.5 flex items-center gap-1.5">
+                      <Hash className="w-3.5 h-3.5 text-cyan" /> 検証・レビュー
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {activeReviewTags.map(t => (
+                        <Link key={t} href={`/column?tag=${t}`} className={`px-3 py-1.5 rounded-md text-[0.7rem] font-medium transition-all ${tag === t ? 'bg-cyan/20 text-cyan border border-cyan/50' : 'bg-white/5 text-text-muted border border-white/5 hover:bg-white/10 hover:text-white'}`}>
+                          {t}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
 
-                <div>
-                  <h3 className="text-[0.75rem] font-bold tracking-wider text-white/80 mb-2.5 flex items-center gap-1.5">
-                    <Hash className="w-3.5 h-3.5 text-cyan" /> ゲームジャンル
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {GENRE_TAGS.map(t => (
-                      <Link key={t} href={`/column?tag=${t}`} className={`px-3 py-1.5 rounded-md text-[0.7rem] font-medium transition-all ${tag === t ? 'bg-cyan/20 text-cyan border border-cyan/50' : 'bg-white/5 text-text-muted border border-white/5 hover:bg-white/10 hover:text-white'}`}>
-                        {t}
-                      </Link>
-                    ))}
+                {activeGenreTags.length > 0 && (
+                  <div>
+                    <h3 className="text-[0.75rem] font-bold tracking-wider text-white/80 mb-2.5 flex items-center gap-1.5">
+                      <Hash className="w-3.5 h-3.5 text-cyan" /> ゲームジャンル
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {activeGenreTags.map(t => (
+                        <Link key={t} href={`/column?tag=${t}`} className={`px-3 py-1.5 rounded-md text-[0.7rem] font-medium transition-all ${tag === t ? 'bg-cyan/20 text-cyan border border-cyan/50' : 'bg-white/5 text-text-muted border border-white/5 hover:bg-white/10 hover:text-white'}`}>
+                          {t}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
 
-                <div>
-                  <h3 className="text-[0.75rem] font-bold tracking-wider text-white/80 mb-2.5 flex items-center gap-1.5">
-                    <Hash className="w-3.5 h-3.5 text-cyan" /> トレンド・その他
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {OTHER_TAGS.map(t => (
-                      <Link key={t} href={`/column?tag=${t}`} className={`px-3 py-1.5 rounded-md text-[0.7rem] font-medium transition-all ${tag === t ? 'bg-cyan/20 text-cyan border border-cyan/50' : 'bg-white/5 text-text-muted border border-white/5 hover:bg-white/10 hover:text-white'}`}>
-                        {t}
-                      </Link>
-                    ))}
+                {activeOtherTags.length > 0 && (
+                  <div>
+                    <h3 className="text-[0.75rem] font-bold tracking-wider text-white/80 mb-2.5 flex items-center gap-1.5">
+                      <Hash className="w-3.5 h-3.5 text-cyan" /> トレンド・その他
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {activeOtherTags.map(t => (
+                        <Link key={t} href={`/column?tag=${t}`} className={`px-3 py-1.5 rounded-md text-[0.7rem] font-medium transition-all ${tag === t ? 'bg-cyan/20 text-cyan border border-cyan/50' : 'bg-white/5 text-text-muted border border-white/5 hover:bg-white/10 hover:text-white'}`}>
+                          {t}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
                 
                 {/* Archives */}
                 {archives.length > 0 && (
@@ -272,70 +296,80 @@ export default async function ColumnList({ searchParams }: { searchParams: Promi
 
             {/* Tags */}
             <div className="p-5 rounded-[20px] bg-white/[0.02] border border-white/10 flex flex-col gap-6">
-              <div>
-                <h3 className="text-[0.8rem] font-bold tracking-wider text-white/80 mb-3 flex items-center gap-1.5">
-                  <Hash className="w-3.5 h-3.5 text-cyan" /> サービス名
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {SERVICE_TAGS.map(t => (
-                    <Link key={t} href={`/column?tag=${t}`} className={`px-3 py-1.5 rounded-md text-[0.7rem] font-medium transition-all ${tag === t ? 'bg-cyan/20 text-cyan border border-cyan/50' : 'bg-white/5 text-text-muted border border-white/5 hover:bg-white/10 hover:text-white'}`}>
-                      {t}
-                    </Link>
-                  ))}
+              {activeServiceTags.length > 0 && (
+                <div>
+                  <h3 className="text-[0.8rem] font-bold tracking-wider text-white/80 mb-3 flex items-center gap-1.5">
+                    <Hash className="w-3.5 h-3.5 text-cyan" /> サービス名
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {activeServiceTags.map(t => (
+                      <Link key={t} href={`/column?tag=${t}`} className={`px-3 py-1.5 rounded-md text-[0.7rem] font-medium transition-all ${tag === t ? 'bg-cyan/20 text-cyan border border-cyan/50' : 'bg-white/5 text-text-muted border border-white/5 hover:bg-white/10 hover:text-white'}`}>
+                        {t}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
 
-              <div>
-                <h3 className="text-[0.8rem] font-bold tracking-wider text-white/80 mb-3 flex items-center gap-1.5">
-                  <Hash className="w-3.5 h-3.5 text-cyan" /> 基礎知識・選び方
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {KNOWLEDGE_TAGS.map(t => (
-                    <Link key={t} href={`/column?tag=${t}`} className={`px-3 py-1.5 rounded-md text-[0.7rem] font-medium transition-all ${tag === t ? 'bg-cyan/20 text-cyan border border-cyan/50' : 'bg-white/5 text-text-muted border border-white/5 hover:bg-white/10 hover:text-white'}`}>
-                      {t}
-                    </Link>
-                  ))}
+              {activeKnowledgeTags.length > 0 && (
+                <div>
+                  <h3 className="text-[0.8rem] font-bold tracking-wider text-white/80 mb-3 flex items-center gap-1.5">
+                    <Hash className="w-3.5 h-3.5 text-cyan" /> 基礎知識・選び方
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {activeKnowledgeTags.map(t => (
+                      <Link key={t} href={`/column?tag=${t}`} className={`px-3 py-1.5 rounded-md text-[0.7rem] font-medium transition-all ${tag === t ? 'bg-cyan/20 text-cyan border border-cyan/50' : 'bg-white/5 text-text-muted border border-white/5 hover:bg-white/10 hover:text-white'}`}>
+                        {t}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
 
-              <div>
-                <h3 className="text-[0.8rem] font-bold tracking-wider text-white/80 mb-3 flex items-center gap-1.5">
-                  <Hash className="w-3.5 h-3.5 text-cyan" /> 検証・レビュー
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {REVIEW_TAGS.map(t => (
-                    <Link key={t} href={`/column?tag=${t}`} className={`px-3 py-1.5 rounded-md text-[0.7rem] font-medium transition-all ${tag === t ? 'bg-cyan/20 text-cyan border border-cyan/50' : 'bg-white/5 text-text-muted border border-white/5 hover:bg-white/10 hover:text-white'}`}>
-                      {t}
-                    </Link>
-                  ))}
+              {activeReviewTags.length > 0 && (
+                <div>
+                  <h3 className="text-[0.8rem] font-bold tracking-wider text-white/80 mb-3 flex items-center gap-1.5">
+                    <Hash className="w-3.5 h-3.5 text-cyan" /> 検証・レビュー
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {activeReviewTags.map(t => (
+                      <Link key={t} href={`/column?tag=${t}`} className={`px-3 py-1.5 rounded-md text-[0.7rem] font-medium transition-all ${tag === t ? 'bg-cyan/20 text-cyan border border-cyan/50' : 'bg-white/5 text-text-muted border border-white/5 hover:bg-white/10 hover:text-white'}`}>
+                        {t}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
 
-              <div>
-                <h3 className="text-[0.8rem] font-bold tracking-wider text-white/80 mb-3 flex items-center gap-1.5">
-                  <Hash className="w-3.5 h-3.5 text-cyan" /> ゲームジャンル
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {GENRE_TAGS.map(t => (
-                    <Link key={t} href={`/column?tag=${t}`} className={`px-3 py-1.5 rounded-md text-[0.7rem] font-medium transition-all ${tag === t ? 'bg-cyan/20 text-cyan border border-cyan/50' : 'bg-white/5 text-text-muted border border-white/5 hover:bg-white/10 hover:text-white'}`}>
-                      {t}
-                    </Link>
-                  ))}
+              {activeGenreTags.length > 0 && (
+                <div>
+                  <h3 className="text-[0.8rem] font-bold tracking-wider text-white/80 mb-3 flex items-center gap-1.5">
+                    <Hash className="w-3.5 h-3.5 text-cyan" /> ゲームジャンル
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {activeGenreTags.map(t => (
+                      <Link key={t} href={`/column?tag=${t}`} className={`px-3 py-1.5 rounded-md text-[0.7rem] font-medium transition-all ${tag === t ? 'bg-cyan/20 text-cyan border border-cyan/50' : 'bg-white/5 text-text-muted border border-white/5 hover:bg-white/10 hover:text-white'}`}>
+                        {t}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
 
-              <div>
-                <h3 className="text-[0.8rem] font-bold tracking-wider text-white/80 mb-3 flex items-center gap-1.5">
-                  <Hash className="w-3.5 h-3.5 text-cyan" /> トレンド・その他
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {OTHER_TAGS.map(t => (
-                    <Link key={t} href={`/column?tag=${t}`} className={`px-3 py-1.5 rounded-md text-[0.7rem] font-medium transition-all ${tag === t ? 'bg-cyan/20 text-cyan border border-cyan/50' : 'bg-white/5 text-text-muted border border-white/5 hover:bg-white/10 hover:text-white'}`}>
-                      {t}
-                    </Link>
-                  ))}
+              {activeOtherTags.length > 0 && (
+                <div>
+                  <h3 className="text-[0.8rem] font-bold tracking-wider text-white/80 mb-3 flex items-center gap-1.5">
+                    <Hash className="w-3.5 h-3.5 text-cyan" /> トレンド・その他
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {activeOtherTags.map(t => (
+                      <Link key={t} href={`/column?tag=${t}`} className={`px-3 py-1.5 rounded-md text-[0.7rem] font-medium transition-all ${tag === t ? 'bg-cyan/20 text-cyan border border-cyan/50' : 'bg-white/5 text-text-muted border border-white/5 hover:bg-white/10 hover:text-white'}`}>
+                        {t}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
               
               {/* Archives */}
               {archives.length > 0 && (
