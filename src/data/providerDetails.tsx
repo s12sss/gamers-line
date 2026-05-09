@@ -165,7 +165,42 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
       </div>
     )
   },
+  'gamewith': {
+    slug: 'gamewith',
+    name: 'GameWith光',
+    catchphrase: 'ゲーム攻略メディアが本気で作った「ゲーマー専用」光コラボ',
+    heroDescription: '国内最大級のゲームメディア「GameWith」が提供するゲーミング専用回線です。全国どこでも使える「光コラボ」でありながら、ゲームの通信を優先する専用帯域を確保しているため、光コラボ特有のラグや遅延を極限まで抑え込みます。',
+    ispIds: ['gamewith_hikari_10g', 'gamewith_hikari_1g'],
+    bodyContent: (
+      <div className="space-y-12 text-text-muted leading-relaxed">
+        <section>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <span className="text-cyan font-mono text-xl">01.</span> 光コラボなのに「ゲームの通信」を優先処理
+          </h2>
+          <div className="bg-white/5 border border-white/10 p-6 rounded-2xl mb-6">
+            <p>
+              通常の光コラボ回線は、動画を見る人もゲームをする人も同じ「帯域」を共有するため、夜間に混雑しがちです。しかしGameWith光は、<strong>ゲームサーバーへの通信経路を最適化</strong>し、専用の帯域を確保しています。これにより、APEXやVALORANTといった主要タイトルにおいて、安定した低Pingを実現しています。
+            </p>
+          </div>
+        </section>
 
+        <section>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <span className="text-cyan font-mono text-xl">02.</span> 全国エリア対応で導入ハードルが低い
+          </h2>
+          <p className="mb-4">
+            eo光やNURO光のような独自回線とは違い、GameWith光はNTTのフレッツ網を利用する「光コラボ」です。そのため、<strong>全国のほぼ全てのエリアで利用可能</strong>であり、すでにフレッツ光やドコモ光・ソフトバンク光などを利用している場合は、工事不要（事業者変更）で簡単に乗り換えることができます。
+          </p>
+          <div className="p-4 border border-cyan/30 bg-cyan/5 rounded-lg mt-4">
+            <p className="text-sm font-medium text-cyan">
+              💡 独自回線が引けなかった人への「最後の切り札」<br/>
+              賃貸マンションの都合でNURO光などが導入できない場合、光コラボであるGameWith光が最も安定したゲーム環境を構築する現実的な選択肢になります。
+            </p>
+          </div>
+        </section>
+      </div>
+    )
+  },
   'au': {
     slug: 'au',
     name: 'auひかり',
