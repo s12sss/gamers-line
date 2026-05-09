@@ -8,7 +8,7 @@ const AFFILIATE_LINKS: Record<string, string> = {
   au_hikari: 'https://example.com/a8/au',
   docomo_hikari: 'https://example.com/a8/docomo',
   so_net_hikari: 'https://example.com/a8/sonet',
-  game_with_hikari: 'https://example.com/a8/gamewith'
+  game_with_hikari: 'https://gamewith-hikari.gamewith.co.jp/'
 };
 
 export async function GET(
