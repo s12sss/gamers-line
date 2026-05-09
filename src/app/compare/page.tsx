@@ -46,6 +46,20 @@ export default function ComparePage() {
       const supportsSelectedRegion = selectedRegions.some(r => isp.regions.includes(r));
       if (!supportsSelectedRegion) return false;
     }
+
+    // Service Name
+    const selectedServices = activeFilters.filter(f => f.startsWith('srv_'));
+    if (selectedServices.length > 0) {
+      const isMatch = selectedServices.some(srv => {
+        const key = srv.replace('srv_', '');
+        if (key === 'local') {
+          return ['commufa', 'eo', 'megaegg', 'pikara', 'bbiq'].some(b => isp.id.includes(b));
+        }
+        if (key === 'au') return isp.id.includes('au_hikari');
+        return isp.id.includes(key);
+      });
+      if (!isMatch) return false;
+    }
     
     return true;
   });
@@ -84,6 +98,30 @@ export default function ComparePage() {
         
         {/* Filters */}
         <div className="flex flex-col gap-4 mb-8 p-4 rounded-2xl bg-white/[0.02] border border-white/5">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+            <span className="text-[0.75rem] font-bold text-text-dim w-16 shrink-0">サービス名</span>
+            <div className="flex flex-wrap gap-2">
+              {[
+                { id: 'srv_nuro', label: 'NURO光' },
+                { id: 'srv_gamewith', label: 'GameWith光' },
+                { id: 'srv_hi-ho', label: 'hi-ho ひかり' },
+                { id: 'srv_au', label: 'auひかり' },
+                { id: 'srv_docomo', label: 'ドコモ光' },
+                { id: 'srv_softbank', label: 'ソフトバンク光' },
+                { id: 'srv_biglobe', label: 'ビッグローブ光' },
+                { id: 'srv_local', label: '地域独自回線(eo等)' }
+              ].map(item => (
+                <button 
+                  key={item.id}
+                  onClick={() => toggleFilter(item.id)}
+                  className={`px-4 py-1.5 rounded-full text-[0.75rem] font-bold transition-all ${activeFilters.includes(item.id) ? 'bg-cyan text-black shadow-[0_0_15px_rgba(0,229,255,0.4)]' : 'bg-white/5 text-text-muted hover:bg-white/10'}`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div className="flex items-center gap-3">
             <span className="text-[0.75rem] font-bold text-text-dim w-16 shrink-0">速度/条件</span>
             <div className="flex flex-wrap gap-2">
