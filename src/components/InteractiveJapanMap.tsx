@@ -68,10 +68,10 @@ export default function InteractiveJapanMap({ selectedRegion, onRegionSelect }: 
                   className="pointer-events-none"
                 />
                 <text 
-                  x={region.center.x + 12} 
-                  y={region.center.y + 8} 
+                  x={region.center.x + 8} 
+                  y={region.center.y + 6} 
                   fill={isSelected ? '#fff' : '#94a3b8'} 
-                  className="font-bold text-[28px] pointer-events-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+                  className="font-bold text-[20px] pointer-events-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
                   filter={isSelected ? 'url(#glow)' : ''}
                 >
                   {region.name}
