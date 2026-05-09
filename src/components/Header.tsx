@@ -23,9 +23,10 @@ export default function Header() {
     }
   }, [isOpen]);
 
-  const navGroups = [
+  const navItems = [
+    { title: "速度チェック", href: "/speedtest" },
     {
-      title: "回線を探す",
+      title: "回線比較",
       links: [
         { name: "条件で比較する", href: "/compare" },
         { name: "回線一覧・詳細", href: "/provider" },
@@ -33,19 +34,13 @@ export default function Header() {
       ]
     },
     {
-      title: "お役立ちツール",
+      title: "コラム",
       links: [
-        { name: "回線ランク測定", href: "/speedtest" },
-        { name: "便利ツール", href: "/tools" },
+        { name: "お役立ちコラム", href: "/column" },
+        { name: "ゲーミングVPN特集", href: "/vpn" },
       ]
     },
-    {
-      title: "読み物",
-      links: [
-        { name: "ゲーミングVPN特集", href: "/vpn" },
-        { name: "お役立ちコラム", href: "/column" },
-      ]
-    }
+    { title: "便利ツール", href: "/tools" },
   ];
 
   return (
@@ -62,32 +57,43 @@ export default function Header() {
         
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-6">
-          {navGroups.map((group) => (
-            <div key={group.title} className="relative group">
-              <button className="flex items-center gap-1 text-sm font-medium text-text-muted hover:text-text transition-colors py-4">
-                {group.title}
-                <ChevronDown className="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform duration-200" />
-              </button>
-              
-              {/* Dropdown Menu */}
-              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-50">
-                <div className="bg-[#0a0a12] border border-white/10 rounded-xl p-2 w-48 shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
-                  {group.links.map(link => {
-                    const isActive = pathname.startsWith(link.href);
-                    return (
-                      <Link 
-                        key={link.href} 
-                        href={link.href}
-                        className={`block px-4 py-2.5 text-sm rounded-lg transition-colors ${
-                          isActive ? "bg-cyan/10 text-cyan font-bold" : "text-text-muted hover:bg-white/5 hover:text-white"
-                        }`}
-                      >
-                        {link.name}
-                      </Link>
-                    )
-                  })}
-                </div>
-              </div>
+          {navItems.map((item) => (
+            <div key={item.title} className="relative group">
+              {item.href ? (
+                <Link 
+                  href={item.href}
+                  className="flex items-center gap-1 text-sm font-medium text-text-muted hover:text-text transition-colors py-4"
+                >
+                  {item.title}
+                </Link>
+              ) : (
+                <>
+                  <button className="flex items-center gap-1 text-sm font-medium text-text-muted hover:text-text transition-colors py-4">
+                    {item.title}
+                    <ChevronDown className="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform duration-200" />
+                  </button>
+                  
+                  {/* Dropdown Menu */}
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-50">
+                    <div className="bg-[#0a0a12] border border-white/10 rounded-xl p-2 w-48 shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
+                      {item.links?.map(link => {
+                        const isActive = pathname.startsWith(link.href);
+                        return (
+                          <Link 
+                            key={link.href} 
+                            href={link.href}
+                            className={`block px-4 py-2.5 text-sm rounded-lg transition-colors ${
+                              isActive ? "bg-cyan/10 text-cyan font-bold" : "text-text-muted hover:bg-white/5 hover:text-white"
+                            }`}
+                          >
+                            {link.name}
+                          </Link>
+                        )
+                      })}
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           ))}
 
@@ -118,25 +124,38 @@ export default function Header() {
         }`}
       >
         <div className="flex flex-col pt-4 px-4 gap-6">
-          {navGroups.map((group) => (
-            <div key={group.title} className="flex flex-col gap-2">
-              <div className="font-mono text-[0.65rem] text-cyan tracking-widest uppercase mb-1">{group.title}</div>
-              <div className="flex flex-col gap-1">
-                {group.links.map(link => {
-                  const isActive = pathname.startsWith(link.href);
-                  return (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className={`flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-colors ${
-                        isActive ? "text-cyan bg-cyan/10" : "text-text-muted hover:text-text hover:bg-white/5"
-                      }`}
-                    >
-                      {link.name}
-                    </Link>
-                  );
-                })}
-              </div>
+          {navItems.map((item) => (
+            <div key={item.title} className="flex flex-col gap-2">
+              {item.href ? (
+                <Link
+                  href={item.href}
+                  className={`flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-colors ${
+                    pathname.startsWith(item.href) ? "text-cyan bg-cyan/10 font-bold" : "text-text-muted hover:text-text hover:bg-white/5"
+                  }`}
+                >
+                  {item.title}
+                </Link>
+              ) : (
+                <>
+                  <div className="font-mono text-[0.65rem] text-cyan tracking-widest uppercase mb-1">{item.title}</div>
+                  <div className="flex flex-col gap-1">
+                    {item.links?.map(link => {
+                      const isActive = pathname.startsWith(link.href);
+                      return (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          className={`flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-colors ${
+                            isActive ? "text-cyan bg-cyan/10" : "text-text-muted hover:text-text hover:bg-white/5"
+                          }`}
+                        >
+                          {link.name}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </>
+              )}
             </div>
           ))}
 
