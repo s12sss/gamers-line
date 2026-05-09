@@ -87,24 +87,17 @@ export default async function PrefecturePage({ params }: Props) {
       </div>
 
       <div className="max-w-6xl mx-auto px-4 mt-8 mb-12">
-        <div className="text-center mb-8">
-          <h1 className="font-heading text-3xl sm:text-5xl font-black text-white mb-4 tracking-tight">
-            {prefData.name} <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan to-purple-500">NETWORK MAP</span>
+        <div className="text-center mb-10">
+          <h1 className="font-heading text-[1.75rem] sm:text-4xl font-black text-white mb-4 tracking-tight leading-tight">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan to-emerald">
+              {prefData.name}
+            </span>
+            のゲーミング回線 徹底比較
           </h1>
-          <p className="text-text-muted text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-            {prefData.name}内で利用可能なゲーミング回線のカバレッジと、おすすめの光回線をランキング形式で紹介します。
+          <p className="text-text-muted text-sm sm:text-base max-w-2xl mx-auto leading-[1.7]">
+            {prefData.name}にお住まいで「ApexやVALORANTでラグい…」と悩んでいる方向けに、地域限定の最強ローカル回線から定番の10Gプランまで、本当におすすめできる光回線だけを厳選しました。
           </p>
         </div>
-
-        {/* 東京の場合は専用のマップコンポーネントを表示 */}
-        {prefecture === 'tokyo' && (
-          <div className="mb-16">
-            <TokyoMapWrapper />
-            <div className="text-center mt-4">
-              <p className="text-xs text-text-muted">※東京23区および多摩エリアの対応状況マップ</p>
-            </div>
-          </div>
-        )}
 
         <div className="max-w-4xl mx-auto space-y-12">
           {/* Status Box */}
