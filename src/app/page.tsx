@@ -439,34 +439,6 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* VPN Promo Banner */}
-      <section className="relative z-10 px-4 sm:px-10 py-8 bg-background border-b border-white/5">
-        <div className="max-w-[1100px] mx-auto w-full">
-          <Link href="/vpn" className="group relative overflow-hidden rounded-2xl bg-[#050508] border border-cyan/20 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 transition-all hover:border-cyan/50 hover:shadow-[0_0_30px_rgba(0,229,255,0.15)]">
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center opacity-5 mix-blend-overlay" />
-            <div className="absolute top-0 right-0 w-64 h-64 bg-cyan/10 rounded-full blur-3xl group-hover:bg-cyan/20 transition-colors" />
-            
-            <div className="relative z-10 flex items-center gap-5">
-              <div className="hidden sm:flex w-14 h-14 rounded-xl bg-gradient-to-br from-cyan to-blue-600 items-center justify-center shadow-lg shadow-cyan/20 flex-shrink-0">
-                <ShieldCheck className="w-7 h-7 text-black" />
-              </div>
-              <div>
-                <div className="text-cyan text-xs font-mono font-bold tracking-widest mb-1">SPECIAL FEATURE</div>
-                <h3 className="text-xl sm:text-2xl font-heading font-bold text-white mb-2">ゲーマーのための最強VPNガイド</h3>
-                <p className="text-sm text-text-muted">回線を変えずにPingを改善・SBMM回避・DDoS対策を行う裏技</p>
-              </div>
-            </div>
-            
-            <div className="relative z-10 w-full sm:w-auto">
-              <div className="flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white/10 text-white font-bold text-sm border border-white/10 group-hover:bg-cyan group-hover:text-black group-hover:border-cyan transition-all w-full">
-                特集を見る
-                <ChevronRight className="w-4 h-4" />
-              </div>
-            </div>
-          </Link>
-        </div>
-      </section>
-
       {/* FAQ Section */}
       <section className="relative z-10 px-4 sm:px-10 py-[60px] sm:py-[100px] bg-cyan/[0.015] border-y border-white/10 overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[radial-gradient(ellipse,rgba(0,229,255,0.03)_0%,transparent_70%)] pointer-events-none" />
@@ -497,6 +469,34 @@ export default async function Home() {
               </details>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* VPN Promo Banner */}
+      <section className="relative z-10 px-4 sm:px-10 py-8 bg-background border-b border-white/5">
+        <div className="max-w-[1100px] mx-auto w-full">
+          <Link href="/vpn" className="group relative overflow-hidden rounded-2xl bg-[#050508] border border-cyan/20 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 transition-all hover:border-cyan/50 hover:shadow-[0_0_30px_rgba(0,229,255,0.15)]">
+            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center opacity-5 mix-blend-overlay" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-cyan/10 rounded-full blur-3xl group-hover:bg-cyan/20 transition-colors" />
+            
+            <div className="relative z-10 flex items-center gap-5">
+              <div className="hidden sm:flex w-14 h-14 rounded-xl bg-gradient-to-br from-cyan to-blue-600 items-center justify-center shadow-lg shadow-cyan/20 flex-shrink-0">
+                <ShieldCheck className="w-7 h-7 text-black" />
+              </div>
+              <div>
+                <div className="text-cyan text-xs font-mono font-bold tracking-widest mb-1">SPECIAL FEATURE</div>
+                <h3 className="text-xl sm:text-2xl font-heading font-bold text-white mb-2">ゲーマーのための最強VPNガイド</h3>
+                <p className="text-sm text-text-muted">回線を変えずにPingを改善・SBMM回避・DDoS対策を行う裏技</p>
+              </div>
+            </div>
+            
+            <div className="relative z-10 w-full sm:w-auto">
+              <div className="flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white/10 text-white font-bold text-sm border border-white/10 group-hover:bg-cyan group-hover:text-black group-hover:border-cyan transition-all w-full">
+                特集を見る
+                <ChevronRight className="w-4 h-4" />
+              </div>
+            </div>
+          </Link>
         </div>
       </section>
 
