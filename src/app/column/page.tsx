@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Suspense } from 'react';
-import { ChevronRight, Play, Hash, Search, ChevronDown } from 'lucide-react';
+import { ChevronRight, Play, Hash, Search, ChevronDown, CalendarDays } from 'lucide-react';
 import { getColumnsList } from '@/libs/microcms';
 import ColumnSearch from '@/components/ColumnSearch';
 
@@ -19,13 +19,42 @@ export default async function ColumnList({ searchParams }: { searchParams: Promi
   const params = await searchParams;
   const tag = params.tag as string | undefined;
   const q = params.q as string | undefined;
+  const month = params.month as string | undefined;
   
   // Get all columns to check total count, and filtered columns for display
   const allColumns = await getColumnsList();
-  
+
+  // ----------------------------------------------------
+  // 月別アーカイブの集計
+  // ----------------------------------------------------
+  const archiveMap = new Map<string, { label: string; count: number }>();
+  allColumns.forEach(c => {
+    const date = new Date(c.publishedAt);
+    const filterKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+    const label = `${date.getFullYear()}年${date.getMonth() + 1}月`;
+    
+    if (archiveMap.has(filterKey)) {
+      archiveMap.get(filterKey)!.count += 1;
+    } else {
+      archiveMap.set(filterKey, { label, count: 1 });
+    }
+  });
+  // 降順（新しい月順）にソート
+  const archives = Array.from(archiveMap.entries()).sort((a, b) => b[0].localeCompare(a[0]));
+
+  // ----------------------------------------------------
+  // 絞り込み処理
+  // ----------------------------------------------------
   let displayColumns = allColumns;
   if (tag) {
     displayColumns = displayColumns.filter(c => c.category?.includes(tag));
+  }
+  if (month) {
+    displayColumns = displayColumns.filter(c => {
+      const date = new Date(c.publishedAt);
+      const filterKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+      return filterKey === month;
+    });
   }
   if (q) {
     const query = q.toLowerCase();
@@ -60,7 +89,7 @@ export default async function ColumnList({ searchParams }: { searchParams: Promi
         <div className="lg:col-span-8 xl:col-span-9">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-heading font-bold text-white tracking-wide">
-              {q ? `「${q}」の検索結果` : tag ? `「${tag}」の記事一覧` : '最新の記事一覧'}
+              {q ? `「${q}」の検索結果` : month ? `「${month.replace('-', '年')}月」の記事一覧` : tag ? `「${tag}」の記事一覧` : '最新の記事一覧'}
               <span className="ml-3 text-sm text-text-muted font-mono bg-white/5 px-2 py-0.5 rounded-full">{displayColumns.length}件</span>
             </h2>
           </div>
@@ -200,8 +229,25 @@ export default async function ColumnList({ searchParams }: { searchParams: Promi
                   </div>
                 </div>
                 
+                {/* Archives */}
+                {archives.length > 0 && (
+                  <div className="pt-2 border-t border-white/5 mt-2">
+                    <h3 className="text-[0.75rem] font-bold tracking-wider text-white/80 mb-2.5 flex items-center gap-1.5">
+                      <CalendarDays className="w-3.5 h-3.5 text-cyan" /> 月別アーカイブ
+                    </h3>
+                    <div className="flex flex-col gap-1.5">
+                      {archives.map(([key, data]) => (
+                        <Link key={key} href={`/column?month=${key}`} className={`flex items-center justify-between px-3 py-2 rounded-md text-[0.75rem] font-medium transition-all ${month === key ? 'bg-cyan/10 text-cyan border border-cyan/30' : 'bg-white/[0.02] text-text-muted hover:bg-white/5 hover:text-white border border-transparent'}`}>
+                          <span>{data.label}</span>
+                          <span className="font-mono text-[0.65rem] bg-white/10 px-2 py-0.5 rounded-full text-white/70">{data.count}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                
                 {/* Clear Filter */}
-                {(tag || q) && (
+                {(tag || q || month) && (
                   <div className="pt-2">
                     <Link href="/column" className="inline-block text-center w-full py-2.5 rounded-lg text-[0.75rem] font-bold text-white bg-white/10 hover:bg-white/20 transition-colors">
                       絞り込みを解除
@@ -291,8 +337,25 @@ export default async function ColumnList({ searchParams }: { searchParams: Promi
                 </div>
               </div>
               
+              {/* Archives */}
+              {archives.length > 0 && (
+                <div className="pt-2 border-t border-white/5 mt-2">
+                  <h3 className="text-[0.8rem] font-bold tracking-wider text-white/80 mb-3 flex items-center gap-1.5">
+                    <CalendarDays className="w-3.5 h-3.5 text-cyan" /> 月別アーカイブ
+                  </h3>
+                  <div className="flex flex-col gap-2">
+                    {archives.map(([key, data]) => (
+                      <Link key={key} href={`/column?month=${key}`} className={`flex items-center justify-between px-3 py-2.5 rounded-md text-[0.8rem] font-medium transition-all ${month === key ? 'bg-cyan/10 text-cyan border border-cyan/30' : 'bg-white/[0.02] text-text-muted hover:bg-white/5 hover:text-white border border-transparent'}`}>
+                        <span>{data.label}</span>
+                        <span className="font-mono text-[0.7rem] bg-white/10 px-2.5 py-0.5 rounded-full text-white/70">{data.count}</span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+              
               {/* Clear Filter */}
-              {(tag || q) && (
+              {(tag || q || month) && (
                 <div className="pt-2">
                   <Link href="/column" className="inline-block text-center w-full py-2.5 rounded-lg text-[0.75rem] font-bold text-white bg-white/10 hover:bg-white/20 transition-colors">
                     絞り込みを解除
