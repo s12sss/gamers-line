@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 import { ChevronRight, Play, Hash, Search, ChevronDown, CalendarDays } from 'lucide-react';
 import { getColumnsList } from '@/libs/microcms';
 import ColumnSearch from '@/components/ColumnSearch';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const revalidate = 60;
 
@@ -84,7 +85,11 @@ export default async function ColumnList({ searchParams }: { searchParams: Promi
 
       {/* Page Header */}
       <div className="relative z-10 px-4 sm:px-10 py-10 sm:py-[72px] max-w-[1100px] mx-auto w-full border-b border-white/10">
-        <div className="font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase opacity-70 mb-4">
+        <Breadcrumbs items={[
+          { name: 'HOME', path: '/' },
+          { name: 'コラム記事', path: '/column' }
+        ]} />
+        <div className="font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase opacity-70 mb-4 mt-4">
           // COLUMN
         </div>
         <h1 className="relative z-10 font-heading text-[clamp(2rem,5vw,3.25rem)] font-bold tracking-tight leading-[1.1] mb-4">

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Activity, Download, Zap, Trophy, ChevronRight, Share2, AlertTriangle, RefreshCw } from 'lucide-react';
 import ispsData from '@/data/isps.json';
 import Link from 'next/link';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 type Tier = 'GOD' | 'MASTER' | 'DIAMOND' | 'GOLD' | 'SILVER' | 'BRONZE';
 
@@ -164,6 +165,15 @@ export default function SpeedTestPage() {
     const tier = calculateTier(finalPing, finalSpeed);
     setResult({ ping: finalPing, speed: finalSpeed, tier });
     setStatus('RESULT');
+
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'speedtest_complete', {
+        event_category: 'engagement',
+        event_label: 'Speedtest Finished',
+        tier: tier,
+        ping: finalPing,
+      });
+    }
   };
 
   const fetchRankings = async () => {
@@ -217,12 +227,34 @@ export default function SpeedTestPage() {
     window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
   };
 
+  const softwareAppJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: "ゲーマー向け回線ランク測定（スピードテスト） | Gamer's Line",
+    applicationCategory: "WebApplication",
+    operatingSystem: "All",
+    description: "Ping値とダウンロード速度を簡易測定し、あなたの回線をゲーマー基準で階級判定するツールです。",
+    offers: {
+      '@type': 'Offer',
+      price: "0",
+      priceCurrency: "JPY"
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground font-sans pb-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppJsonLd) }}
+      />
       {/* Header */}
       <div className="relative z-10 max-w-[1100px] mx-auto w-full px-4 sm:px-10 pt-10 pb-8 sm:pt-16 sm:pb-12 overflow-hidden">
+        <Breadcrumbs items={[
+          { name: 'HOME', path: '/' },
+          { name: 'スピードテスト', path: '/speedtest' }
+        ]} />
         <div className="absolute -top-[60px] -right-[80px] w-[400px] h-[300px] bg-[radial-gradient(ellipse,rgba(0,229,255,0.08),transparent_70%)] blur-[40px] pointer-events-none" />
-        <div className="relative z-10 font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase opacity-70 mb-4">
+        <div className="relative z-10 font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase opacity-70 mb-4 mt-4">
           // CONNECTION RANK MASTER
         </div>
         <h1 className="relative z-10 font-heading text-[clamp(2rem,5vw,3.25rem)] font-bold tracking-tight leading-[1.1] mb-4">

@@ -4,6 +4,7 @@ import { Play, Activity, Wallet, Zap, ShieldAlert, BadgeCent, ChevronDown, Chevr
 import ispsData from "@/data/isps.json";
 import { useState } from "react";
 import Tooltip from "@/components/Tooltip";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export default function ComparePage() {
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
@@ -80,7 +81,11 @@ export default function ComparePage() {
     <div className="flex flex-col min-h-screen bg-background text-foreground font-sans">
       {/* Page Header */}
       <div className="relative z-10 max-w-[1200px] mx-auto w-full px-4 sm:px-10 py-10 sm:py-16 border-b border-white/10">
-        <div className="font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase opacity-70 mb-4">
+        <Breadcrumbs items={[
+          { name: 'HOME', path: '/' },
+          { name: '回線比較', path: '/compare' }
+        ]} />
+        <div className="font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase opacity-70 mb-4 mt-4">
           // COMPARE
         </div>
         <h1 className="font-heading text-[clamp(2rem,5vw,3.25rem)] font-bold tracking-tight leading-[1.1] mb-4">

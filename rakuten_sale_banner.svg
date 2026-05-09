@@ -1,0 +1,53 @@
+<svg width="1280" height="670" viewBox="0 0 1280 670" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="30%" cy="50%" r="80%">
+      <stop offset="0%" stop-color="#0a1628"/>
+      <stop offset="100%" stop-color="#020408"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00E5FF" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#00E5FF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="primaryGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00E5FF"/>
+      <stop offset="100%" stop-color="#00E676"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1280" height="670" fill="url(#bg)"/>
+  
+  <!-- Glow effect -->
+  <circle cx="640" cy="335" r="400" fill="url(#glow)"/>
+  
+  <!-- Cyber Grid -->
+  <g stroke="#00E5FF" stroke-opacity="0.05" stroke-width="1.5">
+    <line x1="0" y1="134" x2="1280" y2="134"/>
+    <line x1="0" y1="268" x2="1280" y2="268"/>
+    <line x1="0" y1="402" x2="1280" y2="402"/>
+    <line x1="0" y1="536" x2="1280" y2="536"/>
+    <line x1="256" y1="0" x2="256" y2="670"/>
+    <line x1="512" y1="0" x2="512" y2="670"/>
+    <line x1="768" y1="0" x2="768" y2="670"/>
+    <line x1="1024" y1="0" x2="1024" y2="670"/>
+  </g>
+  
+  <!-- Accents -->
+  <rect x="120" y="80" width="40" height="3" fill="#00E5FF" opacity="0.6"/>
+  <rect x="1120" y="80" width="40" height="3" fill="#00E676" opacity="0.6"/>
+  <rect x="120" y="590" width="40" height="3" fill="#00E676" opacity="0.6"/>
+  <rect x="1120" y="590" width="40" height="3" fill="#00E5FF" opacity="0.6"/>
+
+  <!-- Texts -->
+  <!-- Big English -->
+  <text x="640" y="300" font-family="Arial Black, sans-serif" font-size="110" font-weight="900" font-style="italic" fill="url(#primaryGlow)" opacity="0.95" text-anchor="middle" letter-spacing="6">RAKUTEN SALE</text>
+  
+  <!-- Japanese Main -->
+  <text x="640" y="420" font-family="Noto Sans JP, sans-serif" font-size="64" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="2">楽天セール攻略まとめ</text>
+  
+  <!-- Japanese Sub -->
+  <text x="640" y="490" font-family="Noto Sans JP, sans-serif" font-size="28" font-weight="700" fill="#00E5FF" opacity="0.8" text-anchor="middle" letter-spacing="6">ゲーマーの部屋をアップグレードする最適解</text>
+  
+  <!-- Branding -->
+  <text x="640" y="610" font-family="Arial Black, sans-serif" font-size="24" font-weight="900" fill="#ffffff" opacity="0.4" text-anchor="middle" letter-spacing="8">Gamer Lab</text>
+</svg>

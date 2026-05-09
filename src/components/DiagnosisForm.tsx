@@ -258,6 +258,15 @@ export default function DiagnosisForm() {
     setResults(recommended);
     setLoading(false);
     setStep(9);
+
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'diagnosis_complete', {
+        event_category: 'engagement',
+        event_label: 'Diagnosis Finished',
+        requires10G: answers.requires10G,
+        priority: answers.priority,
+      });
+    }
   };
 
   const stepIcons = [null, <Gamepad2 />, <Activity />, <Download />, <MapPin />, <Home />, <Smartphone />, <Wallet />, <Zap />];

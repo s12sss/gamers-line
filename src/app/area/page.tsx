@@ -157,6 +157,72 @@ export default function JapanCoveragePage() {
             </section>
           )}
         </AnimatePresence>
+
+        {/* SEO Prefecture Links */}
+        <section className="mt-20 pt-10 border-t border-white/10">
+          <div className="font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase mb-6 text-center">
+            // PREFECTURE LIST
+          </div>
+          <h2 className="font-heading text-2xl font-bold tracking-tight text-center mb-8">
+            都道府県別の回線事情とPing値比較
+          </h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+            {/* Hokkaido / Tohoku */}
+            <Link href="/area/hokkaido" className="text-sm text-text-muted hover:text-cyan transition-colors">北海道</Link>
+            <Link href="/area/aomori" className="text-sm text-text-muted hover:text-cyan transition-colors">青森県</Link>
+            <Link href="/area/iwate" className="text-sm text-text-muted hover:text-cyan transition-colors">岩手県</Link>
+            <Link href="/area/miyagi" className="text-sm text-text-muted hover:text-cyan transition-colors">宮城県</Link>
+            <Link href="/area/akita" className="text-sm text-text-muted hover:text-cyan transition-colors">秋田県</Link>
+            <Link href="/area/yamagata" className="text-sm text-text-muted hover:text-cyan transition-colors">山形県</Link>
+            <Link href="/area/fukushima" className="text-sm text-text-muted hover:text-cyan transition-colors">福島県</Link>
+            {/* Kanto */}
+            <Link href="/area/ibaraki" className="text-sm text-text-muted hover:text-cyan transition-colors">茨城県</Link>
+            <Link href="/area/tochigi" className="text-sm text-text-muted hover:text-cyan transition-colors">栃木県</Link>
+            <Link href="/area/gunma" className="text-sm text-text-muted hover:text-cyan transition-colors">群馬県</Link>
+            <Link href="/area/saitama" className="text-sm text-text-muted hover:text-cyan transition-colors">埼玉県</Link>
+            <Link href="/area/chiba" className="text-sm text-text-muted hover:text-cyan transition-colors">千葉県</Link>
+            <Link href="/area/tokyo" className="text-sm text-text-muted hover:text-cyan transition-colors">東京都</Link>
+            <Link href="/area/kanagawa" className="text-sm text-text-muted hover:text-cyan transition-colors">神奈川県</Link>
+            {/* Chubu */}
+            <Link href="/area/niigata" className="text-sm text-text-muted hover:text-cyan transition-colors">新潟県</Link>
+            <Link href="/area/toyama" className="text-sm text-text-muted hover:text-cyan transition-colors">富山県</Link>
+            <Link href="/area/ishikawa" className="text-sm text-text-muted hover:text-cyan transition-colors">石川県</Link>
+            <Link href="/area/fukui" className="text-sm text-text-muted hover:text-cyan transition-colors">福井県</Link>
+            <Link href="/area/yamanashi" className="text-sm text-text-muted hover:text-cyan transition-colors">山梨県</Link>
+            <Link href="/area/nagano" className="text-sm text-text-muted hover:text-cyan transition-colors">長野県</Link>
+            <Link href="/area/gifu" className="text-sm text-text-muted hover:text-cyan transition-colors">岐阜県</Link>
+            <Link href="/area/shizuoka" className="text-sm text-text-muted hover:text-cyan transition-colors">静岡県</Link>
+            <Link href="/area/aichi" className="text-sm text-text-muted hover:text-cyan transition-colors">愛知県</Link>
+            <Link href="/area/mie" className="text-sm text-text-muted hover:text-cyan transition-colors">三重県</Link>
+            {/* Kansai */}
+            <Link href="/area/shiga" className="text-sm text-text-muted hover:text-cyan transition-colors">滋賀県</Link>
+            <Link href="/area/kyoto" className="text-sm text-text-muted hover:text-cyan transition-colors">京都府</Link>
+            <Link href="/area/osaka" className="text-sm text-text-muted hover:text-cyan transition-colors">大阪府</Link>
+            <Link href="/area/hyogo" className="text-sm text-text-muted hover:text-cyan transition-colors">兵庫県</Link>
+            <Link href="/area/nara" className="text-sm text-text-muted hover:text-cyan transition-colors">奈良県</Link>
+            <Link href="/area/wakayama" className="text-sm text-text-muted hover:text-cyan transition-colors">和歌山県</Link>
+            {/* Chugoku */}
+            <Link href="/area/tottori" className="text-sm text-text-muted hover:text-cyan transition-colors">鳥取県</Link>
+            <Link href="/area/shimane" className="text-sm text-text-muted hover:text-cyan transition-colors">島根県</Link>
+            <Link href="/area/okayama" className="text-sm text-text-muted hover:text-cyan transition-colors">岡山県</Link>
+            <Link href="/area/hiroshima" className="text-sm text-text-muted hover:text-cyan transition-colors">広島県</Link>
+            <Link href="/area/yamaguchi" className="text-sm text-text-muted hover:text-cyan transition-colors">山口県</Link>
+            {/* Shikoku */}
+            <Link href="/area/tokushima" className="text-sm text-text-muted hover:text-cyan transition-colors">徳島県</Link>
+            <Link href="/area/kagawa" className="text-sm text-text-muted hover:text-cyan transition-colors">香川県</Link>
+            <Link href="/area/ehime" className="text-sm text-text-muted hover:text-cyan transition-colors">愛媛県</Link>
+            <Link href="/area/kochi" className="text-sm text-text-muted hover:text-cyan transition-colors">高知県</Link>
+            {/* Kyushu / Okinawa */}
+            <Link href="/area/fukuoka" className="text-sm text-text-muted hover:text-cyan transition-colors">福岡県</Link>
+            <Link href="/area/saga" className="text-sm text-text-muted hover:text-cyan transition-colors">佐賀県</Link>
+            <Link href="/area/nagasaki" className="text-sm text-text-muted hover:text-cyan transition-colors">長崎県</Link>
+            <Link href="/area/kumamoto" className="text-sm text-text-muted hover:text-cyan transition-colors">熊本県</Link>
+            <Link href="/area/oita" className="text-sm text-text-muted hover:text-cyan transition-colors">大分県</Link>
+            <Link href="/area/miyazaki" className="text-sm text-text-muted hover:text-cyan transition-colors">宮崎県</Link>
+            <Link href="/area/kagoshima" className="text-sm text-text-muted hover:text-cyan transition-colors">鹿児島県</Link>
+            <Link href="/area/okinawa" className="text-sm text-text-muted hover:text-cyan transition-colors">沖縄県</Link>
+          </div>
+        </section>
       </div>
     </div>
   );

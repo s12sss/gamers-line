@@ -8,6 +8,7 @@ import * as cheerio from 'cheerio';
 import ClientArticleBody from '@/components/ClientArticleBody';
 import AuthorProfile from '@/components/AuthorProfile';
 import ArticleShareArea from '@/components/ArticleShareArea';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const revalidate = 60;
 
@@ -117,31 +118,6 @@ export default async function ColumnArticle({ params }: Props) {
     }
   } : null;
 
-  const breadcrumbJsonLd = column ? {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'HOME',
-        item: 'https://gamers-line.jp/'
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'COLUMN',
-        item: 'https://gamers-line.jp/column'
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: column.title,
-        item: `https://gamers-line.jp/column/${column.id}`
-      }
-    ]
-  } : null;
-
   const faqJsonLd = faqs.length > 0 ? {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -163,12 +139,6 @@ export default async function ColumnArticle({ params }: Props) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       )}
-      {breadcrumbJsonLd && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-        />
-      )}
       {faqJsonLd && (
         <script
           type="application/ld+json"
@@ -180,15 +150,13 @@ export default async function ColumnArticle({ params }: Props) {
         <>
           {/* Article Hero */}
           <div className="relative z-10 max-w-[1000px] mx-auto px-4 sm:px-10 py-8 sm:py-16 w-full">
-            <div className="flex items-center gap-2 mb-5 sm:mb-7 text-[0.7rem] sm:text-[0.78rem] text-text-dim font-mono tracking-[0.03em] flex-wrap">
-              <Link href="/" className="hover:text-text-muted transition-colors">HOME</Link>
-              <span className="opacity-40">/</span>
-              <Link href="/column" className="hover:text-text-muted transition-colors">COLUMN</Link>
-              <span className="opacity-40">/</span>
-              <span className="text-text-muted uppercase">{column.title}</span>
-            </div>
+            <Breadcrumbs items={[
+              { name: 'HOME', path: '/' },
+              { name: 'COLUMN', path: '/column' },
+              { name: column.title }
+            ]} />
 
-            <div className="flex gap-2 mb-4 sm:mb-5 flex-wrap">
+            <div className="flex gap-2 mb-4 sm:mb-5 mt-2 flex-wrap">
               {column.category?.map(cat => (
                 <span key={cat} className="px-3 py-1 rounded-full text-[0.65rem] sm:text-[0.7rem] font-semibold tracking-[0.06em] uppercase bg-cyan/10 text-cyan border border-cyan/20">{cat}</span>
               ))}
@@ -286,15 +254,13 @@ export default async function ColumnArticle({ params }: Props) {
         <>
           {/* Article Hero */}
           <div className="relative z-10 max-w-[1000px] mx-auto px-4 sm:px-10 py-8 sm:py-16 w-full">
-            <div className="flex items-center gap-2 mb-5 sm:mb-7 text-[0.7rem] sm:text-[0.78rem] text-text-dim font-mono tracking-[0.03em] flex-wrap">
-              <Link href="/" className="hover:text-text-muted transition-colors">HOME</Link>
-              <span className="opacity-40">/</span>
-              <Link href="/column" className="hover:text-text-muted transition-colors">COLUMN</Link>
-              <span className="opacity-40">/</span>
-              <span className="text-text-muted">VALORANT PING GUIDE</span>
-            </div>
+            <Breadcrumbs items={[
+              { name: 'HOME', path: '/' },
+              { name: 'COLUMN', path: '/column' },
+              { name: 'VALORANT PING GUIDE' }
+            ]} />
 
-            <div className="flex gap-2 mb-4 sm:mb-5 flex-wrap">
+            <div className="flex gap-2 mb-4 sm:mb-5 mt-2 flex-wrap">
               <span className="px-3 py-1 rounded-full text-[0.65rem] sm:text-[0.7rem] font-semibold tracking-[0.06em] uppercase bg-cyan/10 text-cyan border border-cyan/20">FPS</span>
               <span className="px-3 py-1 rounded-full text-[0.65rem] sm:text-[0.7rem] font-semibold tracking-[0.06em] uppercase bg-purple-500/10 text-purple-400 border border-purple-500/20">回線の選び方</span>
             </div>

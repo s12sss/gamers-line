@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Tooltip from "@/components/Tooltip";
-import { Activity, ShieldCheck, Wallet, ChevronRight, Play, MapPin } from 'lucide-react';
+import { Activity, ShieldCheck, Wallet, ChevronRight, Play, MapPin, ChevronDown } from 'lucide-react';
 import ispsData from "@/data/isps.json";
 import { getColumnsList } from "@/libs/microcms";
 
@@ -26,11 +26,47 @@ export default async function Home() {
     }
   };
 
+  const faqs = [
+    {
+      q: "回線診断は本当に無料ですか？",
+      a: "はい、完全無料です。個人情報の入力や会員登録なども一切不要で、何度でもご利用いただけます。"
+    },
+    {
+      q: "スピードテストで良い結果を出すには？",
+      a: "Wi-Fi（無線LAN）ではなく、Cat6以上の有線LANケーブルを使用してPCから測定することを強くおすすめします。また、バックグラウンドでの動画再生やダウンロードを停止した状態で測定してください。"
+    },
+    {
+      q: "マンションに住んでいますが、どの回線を選べばいいですか？",
+      a: "マンションの場合、建物の設備（光配線方式かVDSL方式か）によって選べる回線が異なります。当サイトの診断ツールでは、住居タイプを選択するだけでご自宅に導入可能な最適な回線をご提案します。"
+    },
+    {
+      q: "乗り換えの際、今の回線の違約金はかかりますか？",
+      a: "多くのゲーミング回線や主要プロバイダでは、乗り換え時の違約金を全額負担してくれるキャッシュバックキャンペーンを実施しています。各社の特典を活用すれば、実質負担ゼロで乗り換えることが可能です。"
+    }
+  ];
+
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(faq => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.a
+      }
+    }))
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground font-sans">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       {/* Hero Section */}
       <section className="relative flex flex-col items-center justify-center text-center px-4 pt-[120px] pb-[100px] overflow-hidden">
@@ -428,6 +464,39 @@ export default async function Home() {
               </div>
             </div>
           </Link>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="relative z-10 px-4 sm:px-10 py-[60px] sm:py-[100px] bg-cyan/[0.015] border-y border-white/10 overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[radial-gradient(ellipse,rgba(0,229,255,0.03)_0%,transparent_70%)] pointer-events-none" />
+        <div className="max-w-[800px] mx-auto relative z-10">
+          <div className="font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase mb-3 opacity-70 text-center">
+            // FAQ
+          </div>
+          <h2 className="font-heading text-[clamp(1.75rem,4vw,2.75rem)] font-bold tracking-tight mb-[40px] text-center">
+            よくある質問
+          </h2>
+          
+          <div className="flex flex-col gap-4">
+            {faqs.map((faq, index) => (
+              <details key={index} className="group bg-white/5 border border-white/10 rounded-[16px] overflow-hidden transition-all hover:border-cyan/30">
+                <summary className="flex items-center justify-between p-5 sm:p-6 cursor-pointer font-bold text-[0.95rem] sm:text-base text-white list-none [&::-webkit-details-marker]:hidden">
+                  <span className="flex gap-3">
+                    <span className="text-cyan font-mono">Q.</span>
+                    {faq.q}
+                  </span>
+                  <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 ml-4 group-open:rotate-180 transition-transform duration-300">
+                    <ChevronDown className="w-4 h-4 text-cyan" />
+                  </div>
+                </summary>
+                <div className="px-5 sm:px-6 pb-6 pt-2 text-text-muted text-sm sm:text-[0.95rem] leading-[1.7] border-t border-white/5 flex gap-3">
+                  <span className="text-emerald font-mono font-bold mt-0.5">A.</span>
+                  <div>{faq.a}</div>
+                </div>
+              </details>
+            ))}
+          </div>
         </div>
       </section>
 

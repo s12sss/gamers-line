@@ -1,16 +1,36 @@
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import DiagnosisForm from '@/components/DiagnosisForm';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export default function DiagnosisPage() {
+  const softwareAppJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: "ゲーミング回線 診断ツール | Gamer's Line",
+    applicationCategory: "WebApplication",
+    operatingSystem: "All",
+    description: "プレイスタイルや居住環境から、あなたに最適なゲーミング回線を30秒で無料診断するツールです。",
+    offers: {
+      '@type': 'Offer',
+      price: "0",
+      priceCurrency: "JPY"
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-neon-cyan selection:text-black py-12 px-4">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppJsonLd) }}
+      />
       <div className="max-w-4xl mx-auto">
-        <Link href="/" className="inline-flex items-center gap-2 text-zinc-400 hover:text-neon-cyan mb-8 transition-colors font-medium">
-          <ArrowLeft className="w-4 h-4" /> トップページに戻る
-        </Link>
+        <Breadcrumbs items={[
+          { name: 'HOME', path: '/' },
+          { name: '回線診断', path: '/diagnosis' }
+        ]} />
         
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 mt-4">
           <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
             最適な回線を<span className="gradient-text">見つける</span>
           </h1>

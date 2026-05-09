@@ -1,0 +1,52 @@
+<svg width="1280" height="670" viewBox="0 0 1280 670" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="70%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#110a1f"/>
+      <stop offset="100%" stop-color="#020408"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#A78BFA" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#A78BFA" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="primaryGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A78BFA"/>
+      <stop offset="100%" stop-color="#00E5FF"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1280" height="670" fill="url(#bg)"/>
+  
+  <!-- Glow effect -->
+  <circle cx="640" cy="335" r="450" fill="url(#glow)"/>
+  
+  <!-- Cyber Lines (Diagonal) -->
+  <g stroke="#A78BFA" stroke-opacity="0.08" stroke-width="2">
+    <line x1="-200" y1="0" x2="1480" y2="840"/>
+    <line x1="-100" y1="0" x2="1580" y2="840"/>
+    <line x1="0" y1="0" x2="1680" y2="840"/>
+    
+    <line x1="-200" y1="670" x2="1480" y2="-170"/>
+    <line x1="-100" y1="670" x2="1580" y2="-170"/>
+    <line x1="0" y1="670" x2="1680" y2="-170"/>
+  </g>
+  
+  <!-- Accents -->
+  <circle cx="150" cy="120" r="4" fill="#A78BFA" opacity="0.8"/>
+  <circle cx="1130" cy="120" r="4" fill="#00E5FF" opacity="0.8"/>
+  <circle cx="150" cy="550" r="4" fill="#00E5FF" opacity="0.8"/>
+  <circle cx="1130" cy="550" r="4" fill="#A78BFA" opacity="0.8"/>
+
+  <!-- Texts -->
+  <!-- Big English -->
+  <text x="640" y="290" font-family="Arial Black, sans-serif" font-size="130" font-weight="900" font-style="italic" fill="url(#primaryGlow)" opacity="0.95" text-anchor="middle" letter-spacing="8">BEST BUY</text>
+  
+  <!-- Japanese Main -->
+  <text x="640" y="420" font-family="Noto Sans JP, sans-serif" font-size="68" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="4">買ってよかったモノ</text>
+  
+  <!-- Japanese Sub -->
+  <text x="640" y="500" font-family="Noto Sans JP, sans-serif" font-size="28" font-weight="700" fill="#A78BFA" opacity="0.8" text-anchor="middle" letter-spacing="6">デスク周り・ゲーミングガジェット厳選</text>
+  
+  <!-- Branding -->
+  <text x="640" y="620" font-family="Arial Black, sans-serif" font-size="24" font-weight="900" fill="#ffffff" opacity="0.4" text-anchor="middle" letter-spacing="8">Gamer Lab</text>
+</svg>
