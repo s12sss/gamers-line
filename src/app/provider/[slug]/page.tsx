@@ -25,7 +25,7 @@ export default async function ProviderDetailPage({ params }: Props) {
   }
 
   // Pingから擬似的なレビュースコアを算出（SEOリッチリザルト用）
-  const avgPing = matchingIsps.reduce((acc, isp) => acc + isp.pingAverage, 0) / matchingIsps.length;
+  const avgPing = matchingIsps.reduce((acc, isp) => acc + isp.avg_ping_ms, 0) / matchingIsps.length;
   let ratingValue = "3.8";
   if (avgPing <= 15) ratingValue = "4.8";
   else if (avgPing <= 20) ratingValue = "4.5";
