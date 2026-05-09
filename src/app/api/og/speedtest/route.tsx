@@ -78,7 +78,7 @@ export async function GET(req: NextRequest) {
         <div style={{ position: "absolute", bottom: "-20%", right: "-10%", width: "40%", paddingBottom: "40%", borderRadius: "50%", background: `radial-gradient(circle, ${tier.glow2} 0%, transparent 70%)`, display: "flex" }} />
 
         {/* watermark */}
-        <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%, -50%)", fontSize: 240, fontWeight: 900, color: c, opacity: 0.04, letterSpacing: "-0.03em", whiteSpace: "nowrap", lineHeight: 1, display: "flex" }}>
+        <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%, -50%)", fontSize: 240, fontWeight: 900, fontFamily: "RobotoBlack", color: c, opacity: 0.04, letterSpacing: "-0.03em", whiteSpace: "nowrap", lineHeight: 1, display: "flex" }}>
           {tierKey}
         </div>
 
@@ -89,11 +89,11 @@ export async function GET(req: NextRequest) {
 
         {/* top bar */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "28px 96px 0" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 12, color: "rgba(255,255,255,0.4)", fontSize: 16, letterSpacing: "0.22em", fontWeight: 900 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, color: "rgba(255,255,255,0.4)", fontSize: 16, letterSpacing: "0.22em", fontWeight: 900, fontFamily: "RobotoBlack" }}>
             <div style={{ width: 32, height: 1, background: c, display: "flex" }} />
             CONNECTION RANK MASTER
           </div>
-          <div style={{ display: "flex", fontSize: 30, color: "#f0f0f8", fontWeight: 900 }}>
+          <div style={{ display: "flex", fontSize: 30, color: "#f0f0f8", fontWeight: 900, fontFamily: "RobotoBlack" }}>
             <span style={{ marginRight: 8 }}>Gamer's</span><span style={{ color: c }}>Line</span>
           </div>
         </div>
@@ -103,8 +103,8 @@ export async function GET(req: NextRequest) {
 
           {/* LEFT: rank 180px */}
           <div style={{ display: "flex", flexDirection: "column", flex: 1, overflow: "hidden" }}>
-            <div style={{ color: "rgba(255,255,255,0.5)", fontSize: 18, letterSpacing: "0.28em", marginBottom: 16, fontWeight: 900 }}>YOUR RANK</div>
-            <div style={{ fontSize: 180, lineHeight: 0.85, letterSpacing: "-0.02em", color: c, whiteSpace: "nowrap", fontWeight: 900 }}>
+            <div style={{ color: "rgba(255,255,255,0.5)", fontSize: 18, letterSpacing: "0.28em", marginBottom: 16, fontWeight: 900, fontFamily: "RobotoBlack" }}>YOUR RANK</div>
+            <div style={{ fontSize: 180, lineHeight: 0.85, letterSpacing: "-0.02em", color: c, whiteSpace: "nowrap", fontWeight: 900, fontFamily: "RobotoBlack" }}>
               {tierKey}
             </div>
           </div>
@@ -117,10 +117,10 @@ export async function GET(req: NextRequest) {
 
             {/* Ping */}
             <div style={{ display: "flex", flexDirection: "column" }}>
-              <div style={{ color: "rgba(255,255,255,0.6)", fontSize: 18, letterSpacing: "0.25em", marginBottom: 4, fontWeight: 900 }}>PING</div>
+              <div style={{ color: "rgba(255,255,255,0.6)", fontSize: 18, letterSpacing: "0.25em", marginBottom: 4, fontWeight: 900, fontFamily: "RobotoBlack" }}>PING</div>
               <div style={{ display: "flex", alignItems: "baseline", gap: 10 }}>
-                <div style={{ fontSize: 125, lineHeight: 1, letterSpacing: "-0.03em", color: c, fontWeight: 900 }}>{ping}</div>
-                <div style={{ fontSize: 28, color: "rgba(255,255,255,0.6)", letterSpacing: "0.08em", fontWeight: 900 }}>ms</div>
+                <div style={{ fontSize: 125, lineHeight: 1, letterSpacing: "-0.03em", color: c, fontWeight: 900, fontFamily: "RobotoBlack" }}>{ping}</div>
+                <div style={{ fontSize: 28, color: "rgba(255,255,255,0.6)", letterSpacing: "0.08em", fontWeight: 900, fontFamily: "RobotoBlack" }}>ms</div>
               </div>
               <div style={{ width: "100%", height: 3, background: "rgba(255,255,255,0.1)", borderRadius: 2, marginTop: 8, display: "flex" }}>
                 <div style={{ width: `${pingBarPct}%`, height: "100%", background: c, borderRadius: 2, display: "flex" }} />
@@ -131,10 +131,10 @@ export async function GET(req: NextRequest) {
 
             {/* Download */}
             <div style={{ display: "flex", flexDirection: "column" }}>
-              <div style={{ color: "rgba(255,255,255,0.6)", fontSize: 18, letterSpacing: "0.25em", marginBottom: 4, fontWeight: 900 }}>DOWNLOAD</div>
+              <div style={{ color: "rgba(255,255,255,0.6)", fontSize: 18, letterSpacing: "0.25em", marginBottom: 4, fontWeight: 900, fontFamily: "RobotoBlack" }}>DOWNLOAD</div>
               <div style={{ display: "flex", alignItems: "baseline", gap: 10 }}>
-                <div style={{ fontSize: 125, lineHeight: 1, letterSpacing: "-0.03em", color: "#ffffff", fontWeight: 900 }}>{dl}</div>
-                <div style={{ fontSize: 28, color: "rgba(255,255,255,0.6)", letterSpacing: "0.08em", fontWeight: 900 }}>Mbps</div>
+                <div style={{ fontSize: 125, lineHeight: 1, letterSpacing: "-0.03em", color: "#ffffff", fontWeight: 900, fontFamily: "RobotoBlack" }}>{dl}</div>
+                <div style={{ fontSize: 28, color: "rgba(255,255,255,0.6)", letterSpacing: "0.08em", fontWeight: 900, fontFamily: "RobotoBlack" }}>Mbps</div>
               </div>
               <div style={{ width: "100%", height: 3, background: "rgba(255,255,255,0.1)", borderRadius: 2, marginTop: 8, display: "flex" }}>
                 <div style={{ width: `${dlBarPct}%`, height: "100%", background: "rgba(255,255,255,0.35)", borderRadius: 2, display: "flex" }} />
@@ -165,9 +165,8 @@ export async function GET(req: NextRequest) {
           style: 'normal',
         },
         {
-          name: 'Roboto',
+          name: 'RobotoBlack',
           data: fontBoldData,
-          weight: 900,
           style: 'normal',
         }
       ]
