@@ -249,7 +249,6 @@ export default async function ColumnArticle({ params }: Props) {
                 無料診断スタート
               </Link>
             </div>
-            </div>
 
             {/* Mobile Sidebar (Bottom) */}
             <div className="mt-16 sm:mt-24 lg:hidden">
@@ -474,8 +473,6 @@ export default async function ColumnArticle({ params }: Props) {
                     すべてのコラムを見る <ChevronRight className="w-4 h-4" />
                   </Link>
                 </div>
-              </div>
-            )}
               </div>
             )}
             
