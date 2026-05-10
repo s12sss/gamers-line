@@ -114,11 +114,14 @@ export default function GearPage() {
             ラグを無くすための<br />
             <span className="text-emerald drop-shadow-[0_0_15px_rgba(16,185,129,0.5)]">最強ゲーミングデバイス</span>
           </h1>
-          <p className="text-text-muted text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            通信の安定性やPingは、大元の光回線だけでなく「ルーター」や「LANケーブル」の性能にも大きく左右されます。
-            <br className="mb-2" />
-            デバイス環境を見直すだけでラグが劇的に改善するケースも多いため、環境構築に最適な通信ギアを厳選しました。
-          </p>
+          <div className="text-text-muted text-base sm:text-lg max-w-2xl mx-auto leading-relaxed" style={{ wordBreak: 'keep-all', overflowWrap: 'anywhere' }}>
+            <p className="mb-3">
+              通信の安定性やPingは、大元の光回線だけでなく「ルーター」や「LANケーブル」の性能にも大きく左右されます。
+            </p>
+            <p>
+              デバイス環境を見直すだけでラグが劇的に改善するケースも多いため、環境構築に最適な通信ギアを厳選しました。
+            </p>
+          </div>
         </div>
 
         {/* Benefits Section */}
@@ -129,7 +132,7 @@ export default function GearPage() {
             </div>
             <h3 className="text-lg font-bold mb-2">ルーターの処理能力がPingを決める</h3>
             <p className="text-sm text-text-muted leading-relaxed">
-              数世代前のルーターでは、ゲームの激しいデータ通信を処理しきれず、遅延の原因になることがあります。
+              ルーターのCPU性能が低いと、ゲームの激しい通信パケットを捌ききれずにラグが発生します。
             </p>
           </div>
           <div className="bg-white/[0.02] border border-white/5 p-6 rounded-2xl flex flex-col items-center text-center">
@@ -138,7 +141,7 @@ export default function GearPage() {
             </div>
             <h3 className="text-lg font-bold mb-2">ケーブルは「Cat6A」一択</h3>
             <p className="text-sm text-text-muted leading-relaxed">
-              Cat5eはノイズに弱く、Cat7/8は家庭環境では逆にノイズを拾いやすくなります。最も安定するのは「Cat6A」です。
+              Cat5eはノイズに弱く、Cat7以上はオーバースペックで逆に不安定になることも。家庭用ならCat6Aがベストです。
             </p>
           </div>
           <div className="bg-white/[0.02] border border-white/5 p-6 rounded-2xl flex flex-col items-center text-center">
@@ -147,7 +150,7 @@ export default function GearPage() {
             </div>
             <h3 className="text-lg font-bold mb-2">IPv6（IPoE）対応は必須</h3>
             <p className="text-sm text-text-muted leading-relaxed">
-              夜間の混雑を回避する「IPv6通信」を利用するには、ルーター側が対応している必要があります。
+              夜間の回線混雑を避ける「IPv6」通信。これを利用するためには、ルーター自体がIPv6に対応している必要があります。
             </p>
           </div>
         </div>
