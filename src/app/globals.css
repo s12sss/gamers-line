@@ -143,3 +143,233 @@ body::before {
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 229, 255, 0.7);
 }
+
+/* ─── AFFILIATE / RECOMMENDED ITEMS ─── */
+.affi-frame {
+  margin: 32px 0;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 16px;
+  position: relative;
+}
+.affi-title-row {
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 12px;
+}
+.affi-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.affi-title .accent {
+  color: var(--cyan);
+}
+.affi-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+.affi-grid {
+  display: grid;
+  gap: 20px;
+}
+.affi-grid.cols-1 { grid-template-columns: 1fr; }
+.affi-grid.cols-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.affi-grid.cols-3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+.affi-card {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.affi-grid.cols-1 .affi-card {
+  flex-direction: row;
+}
+@media (max-width: 640px) {
+  .affi-grid.cols-1 .affi-card {
+    flex-direction: column;
+  }
+}
+.affi-thumb {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #111;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.affi-grid.cols-1 .affi-thumb {
+  width: 32%;
+  max-width: 260px;
+  aspect-ratio: auto;
+}
+@media (max-width: 640px) {
+  .affi-grid.cols-1 .affi-thumb {
+    width: 100%;
+    aspect-ratio: 16/9;
+  }
+}
+.affi-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.affi-card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.affi-card-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+.affi-rank {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--emerald);
+  border: 1px solid var(--emerald);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.affi-best {
+  font-size: 0.7rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #ff007f, var(--purple));
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.affi-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 8px;
+}
+.affi-spec {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.affi-spec-tag {
+  font-size: 0.65rem;
+  background: var(--glass-border);
+  padding: 2px 8px;
+  border-radius: 12px;
+  color: var(--text-muted);
+}
+.affi-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  flex: 1;
+}
+.affi-btn-wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+.affi-price-row {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  width: 100%;
+}
+
+/* Existing affi-btn in old articles */
+.affi-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-weight: 900;
+  text-decoration: none !important;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+  width: 100%;
+  margin-top: 8px;
+}
+.affi-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+/* Amazon / Rakuten / Official CTA Buttons */
+.btn-amazon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-width: 140px;
+  padding: 12px;
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+.btn-amazon:hover { background: rgba(245, 158, 11, 0.25); }
+
+.btn-rakuten {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-width: 140px;
+  padding: 12px;
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+.btn-rakuten:hover { background: rgba(239, 68, 68, 0.25); }
+
+/* The [btn] gets converted to .btn-signup */
+.btn-signup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-width: 140px;
+  gap: 8px;
+  padding: 12px;
+  background: rgba(0, 229, 255, 0.15);
+  color: var(--cyan) !important;
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none !important;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+.btn-signup:hover {
+  background: rgba(0, 229, 255, 0.25);
+  transform: translateY(-2px);
+}
+.btn-signup .btn-icon {
+  width: 18px;
+  height: 18px;
+}

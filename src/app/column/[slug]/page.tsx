@@ -9,6 +9,7 @@ import ClientArticleBody from '@/components/ClientArticleBody';
 import AuthorProfile from '@/components/AuthorProfile';
 import ArticleShareArea from '@/components/ArticleShareArea';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import ColumnSidebar from '@/components/ColumnSidebar';
 
 export const revalidate = 60;
 
@@ -192,9 +193,11 @@ export default async function ColumnArticle({ params }: Props) {
             </div>
           </div>
 
-          {/* Main Content Wrapper */}
-          <div className="relative z-10 max-w-[760px] mx-auto px-4 sm:px-10 pb-20 sm:pb-24 w-full article-body">
+          {/* Main Content & Sidebar Wrapper */}
+          <div className="relative z-10 max-w-[1150px] mx-auto px-4 sm:px-10 pb-20 sm:pb-24 w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
             
+            {/* Left: Article Body */}
+            <div className="lg:col-span-8 article-body">
             {/* 目次（TOC） */}
             {headings.length > 0 && (
               <nav className="mb-14 p-7 px-8 rounded-2xl border border-cyan/15 bg-cyan/[0.04] relative overflow-hidden" aria-label="目次">
@@ -455,7 +458,25 @@ export default async function ColumnArticle({ params }: Props) {
               </div>
             )}
             
+            {/* Mobile Sidebar (Bottom) */}
+            <div className="mt-16 sm:mt-24 lg:hidden">
+              <h2 className="text-xl font-bold text-text mb-6 flex items-center gap-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan shadow-[0_0_8px_var(--cyan)]"></span>
+                その他の記事を探す
+              </h2>
+              <ColumnSidebar />
+            </div>
+
           </div>
+
+          {/* Right: Desktop Sidebar */}
+          <div className="hidden lg:block lg:col-span-4">
+            <div className="sticky top-[100px]">
+              <ColumnSidebar />
+            </div>
+          </div>
+          
+        </div>
         </>
       )}
 

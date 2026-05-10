@@ -58,7 +58,7 @@ export async function GET(req: NextRequest) {
   const dlNum      = parseInt(dl);
   const dlBarPct   = isNaN(dlNum)   ? 50 : Math.min(100, Math.max(5, (dlNum / 1000) * 100));
 
-  const fontData = await fetch(`https://gamers-line.jp/fonts/Roboto-Black.ttf`).then((res) => res.arrayBuffer());
+  const fontData = await fetch(new URL('./Roboto-Black.ttf', import.meta.url)).then((res) => res.arrayBuffer());
 
   return new ImageResponse(
     (
