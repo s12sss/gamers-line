@@ -248,7 +248,7 @@ export default async function ColumnList({ searchParams }: { searchParams: Promi
                 {activePlayerTags.length > 0 && (
                   <div>
                     <h3 className="text-[0.75rem] font-bold tracking-wider text-white/80 mb-2.5 flex items-center gap-1.5">
-                      <Hash className="w-3.5 h-3.5 text-cyan" /> プレイヤー・配信者
+                      <Hash className="w-3.5 h-3.5 text-cyan" /> プロゲーマー・ストリーマー
                     </h3>
                     <div className="flex flex-wrap gap-2">
                       {activePlayerTags.map(t => (
@@ -381,7 +381,7 @@ export default async function ColumnList({ searchParams }: { searchParams: Promi
               {activePlayerTags.length > 0 && (
                 <div>
                   <h3 className="text-[0.8rem] font-bold tracking-wider text-white/80 mb-3 flex items-center gap-1.5">
-                    <Hash className="w-3.5 h-3.5 text-cyan" /> プレイヤー・配信者
+                    <Hash className="w-3.5 h-3.5 text-cyan" /> プロゲーマー・ストリーマー
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {activePlayerTags.map(t => (
