@@ -178,9 +178,9 @@ export default function ProviderPage() {
                     ))}
                   </div>
 
-                  <div className="flex flex-col sm:flex-row gap-2.5 mt-2">
+                  <div className="flex flex-col gap-2.5 mt-4">
                     {isp.affiliateLink !== "#" ? (
-                      <div className="flex flex-col gap-1 items-center flex-1">
+                      <div className="flex flex-col gap-1 items-center w-full">
                         <span className="text-[0.65rem] font-bold text-[#ffeb3b] tracking-tight bg-black/40 px-2 py-0.5 rounded-full border border-[#ffeb3b]/30 shadow-[0_0_10px_rgba(255,235,59,0.1)] w-full text-center whitespace-nowrap overflow-hidden text-ellipsis">
                           ＼ {isp.cashback_text} ／
                         </span>
@@ -189,13 +189,13 @@ export default function ProviderPage() {
                         </a>
                       </div>
                     ) : (
-                      <span className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl bg-cyan/30 text-black/50 font-heading font-bold text-[0.875rem] cursor-not-allowed">
+                      <span className="w-full inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl bg-cyan/30 text-black/50 font-heading font-bold text-[0.875rem] cursor-not-allowed">
                         準備中 <ChevronRight className="w-3.5 h-3.5 opacity-50" />
                       </span>
                     )}
                     {/* 評判・詳細ページへのリンク */}
                     {Object.keys(PROVIDER_DETAILS).includes(isp.id.split('_')[0]) && (
-                      <Link href={`/provider/${isp.id.split('_')[0]}`} className="inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl border border-white/10 text-text-muted font-medium text-[0.825rem] transition-all hover:border-cyan/30 hover:text-text hover:bg-cyan/5 flex-1">
+                      <Link href={`/provider/${isp.id.split('_')[0]}`} className="w-full inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl border border-white/10 text-text-muted font-medium text-[0.825rem] transition-all hover:border-cyan/30 hover:text-text hover:bg-cyan/5">
                         評判・詳細を見る
                       </Link>
                     )}

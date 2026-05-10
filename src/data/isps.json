@@ -1344,5 +1344,58 @@
     "stability_score": 88,
     "vdsl_support": false,
     "mansion_monthly_fee_jpy": 4290
+  },
+  {
+    "id": "gaming_plus",
+    "name": "Gaming+ (ゲーミングプラス)",
+    "providerName": "株式会社ネットフォレスト",
+    "type": "プロバイダ乗換",
+    "max_speed_gbps": 10,
+    "avg_ping_ms": 13,
+    "avg_dl_speed_mbps": 500,
+    "mobile_discount": [],
+    "available_housing": [
+      "house",
+      "mansion_optical",
+      "mansion_vdsl"
+    ],
+    "regions": [
+      "hokkaido",
+      "tohoku",
+      "kanto",
+      "tokai",
+      "kansai",
+      "chugoku",
+      "shikoku",
+      "kyushu",
+      "okinawa",
+      "hokuriku_koshinetsu"
+    ],
+    "actual_monthly_fee_jpy": 3278,
+    "mansion_monthly_fee_jpy": 3278,
+    "stability_score": 89,
+    "vdsl_support": true,
+    "cashback_text": "最大25日間お試し無料！",
+    "discounts": [],
+    "tags": [
+      "全国対応",
+      "プロバイダ乗換",
+      "10G(クロス)対応"
+    ],
+    "badges": [
+      "ゲーマー特化"
+    ],
+    "affiliateLink": "#",
+    "detailLink": "",
+    "description": "フレッツ光やドコモ光などを利用中の方で、回線工事なしでPing値を改善したい場合に最適なゲーマー専用プロバイダ。",
+    "pros": [
+      "今あるフレッツ回線のまま乗り換え可能",
+      "eスポーツ特化の専用帯域で夜間も低Ping",
+      "最大25日間の無料お試し期間あり"
+    ],
+    "cons": [
+      "回線料金とは別にプロバイダ料がかかる",
+      "独自回線(NURO等)ほどの効果は出ない事も"
+    ]
   }
 ]
