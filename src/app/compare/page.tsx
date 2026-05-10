@@ -37,6 +37,12 @@ export default function ComparePage() {
     
     // Features
     if (activeFilters.includes('VDSL') && !isp.vdsl_support) return false;
+    
+    const isCollabo = ['hi-ho', 'gamewith', 'docomo', 'softbank', 'biglobe', 'gaming-plus'].some(id => isp.id.includes(id));
+    const isIndependent = ['nuro', 'au', 'commufa', 'pikara', 'megaegg', 'eo', 'bbiq'].some(id => isp.id.includes(id));
+    if (activeFilters.includes('collabo') && !isCollabo) return false;
+    if (activeFilters.includes('independent') && !isIndependent) return false;
+
     if (activeFilters.includes('au') && !isp.mobile_discount.includes('au')) return false;
     if (activeFilters.includes('docomo') && !isp.mobile_discount.includes('docomo')) return false;
     if (activeFilters.includes('softbank') && !isp.mobile_discount.includes('softbank')) return false;
@@ -110,6 +116,7 @@ export default function ComparePage() {
                 { id: 'srv_nuro', label: 'NURO光' },
                 { id: 'srv_gamewith', label: 'GameWith光' },
                 { id: 'srv_hi-ho', label: 'hi-ho ひかり' },
+                { id: 'srv_gamingplus', label: 'Gaming+' },
                 { id: 'srv_au', label: 'auひかり' },
                 { id: 'srv_docomo', label: 'ドコモ光' },
                 { id: 'srv_softbank', label: 'ソフトバンク光' },
@@ -130,17 +137,19 @@ export default function ComparePage() {
           <div className="flex items-center gap-3">
             <span className="text-[0.75rem] font-bold text-text-dim w-16 shrink-0">速度/条件</span>
             <div className="flex flex-wrap gap-2">
-              {['10G', '1G', 'VDSL'].map(key => (
+              {['10G', '1G', 'VDSL', 'collabo', 'independent'].map(key => (
                 <button 
                   key={key}
                   onClick={() => {
                     if (key === '10G' && activeFilters.includes('1G')) toggleFilter('1G');
                     if (key === '1G' && activeFilters.includes('10G')) toggleFilter('10G');
+                    if (key === 'collabo' && activeFilters.includes('independent')) toggleFilter('independent');
+                    if (key === 'independent' && activeFilters.includes('collabo')) toggleFilter('collabo');
                     toggleFilter(key);
                   }}
                   className={`px-4 py-1.5 rounded-full text-[0.75rem] font-bold transition-all ${activeFilters.includes(key) ? 'bg-cyan text-black shadow-[0_0_15px_rgba(0,229,255,0.4)]' : 'bg-white/5 text-text-muted hover:bg-white/10'}`}
                 >
-                  {key === '10G' ? '10Gプラン' : key === '1G' ? '1G・標準プラン' : 'VDSL対応'}
+                  {key === '10G' ? '10Gプラン' : key === '1G' ? '1G・標準プラン' : key === 'VDSL' ? 'VDSL対応' : key === 'collabo' ? '光コラボ・プロバイダ' : '独自回線'}
                 </button>
               ))}
             </div>
