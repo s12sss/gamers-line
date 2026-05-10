@@ -490,7 +490,7 @@ export default function SpeedTestPage() {
             <div className="text-[#c0c0c0] font-mono font-bold text-lg mb-2 flex items-center gap-2">
               SILVER <span className="text-xs font-sans text-white/50 font-normal">Ping 40ms以下</span>
             </div>
-            <p className="text-sm text-text-muted leading-relaxed">少しラグを感じる場面があるかも。FPSよりMMOなどに適している環境。</p>
+            <p className="text-sm text-text-muted leading-relaxed">少しラグを感じる場面があるかも。コンマ数秒を争うFPSなど以外であれば十分に遊べる環境。</p>
           </div>
           <div className="bg-[#0a0a12] border border-white/10 rounded-xl p-5 hover:border-[#cd7f32]/50 transition-colors">
             <div className="text-[#cd7f32] font-mono font-bold text-lg mb-2 flex items-center gap-2">
