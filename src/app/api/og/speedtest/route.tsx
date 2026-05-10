@@ -60,7 +60,8 @@ export async function GET(req: NextRequest) {
   const dlNum      = parseInt(dl);
   const dlBarPct   = isNaN(dlNum)   ? 50 : Math.min(100, Math.max(5, (dlNum / 1000) * 100));
 
-  const fontData = await readFile(join(process.cwd(), "public/fonts/Roboto-Black.ttf"));
+  const fontBuffer = await readFile(join(process.cwd(), "public/fonts/Roboto-Black.ttf"));
+  const fontData = Uint8Array.from(fontBuffer).buffer;
 
   return new ImageResponse(
     (
