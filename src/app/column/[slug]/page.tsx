@@ -194,10 +194,10 @@ export default async function ColumnArticle({ params }: Props) {
           </div>
 
           {/* Main Content & Sidebar Wrapper */}
-          <div className="relative z-10 max-w-[1150px] mx-auto px-4 sm:px-10 pb-20 sm:pb-24 w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
+          <div className="relative z-10 max-w-[760px] mx-auto px-4 sm:px-10 pb-20 sm:pb-24 w-full">
             
-            {/* Left: Article Body */}
-            <div className="lg:col-span-8 article-body">
+            {/* Center: Article Body */}
+            <div className="article-body">
             {/* 目次（TOC） */}
             {headings.length > 0 && (
               <nav className="mb-14 p-7 px-8 rounded-2xl border border-cyan/15 bg-cyan/[0.04] relative overflow-hidden" aria-label="目次">
@@ -262,7 +262,7 @@ export default async function ColumnArticle({ params }: Props) {
           </div>
 
           {/* Right: Desktop Sidebar */}
-          <div className="hidden lg:block lg:col-span-4">
+          <div className="hidden xl:block absolute left-full ml-12 top-0 bottom-0 w-[300px]">
             <div className="sticky top-[100px]">
               <ColumnSidebar />
             </div>
