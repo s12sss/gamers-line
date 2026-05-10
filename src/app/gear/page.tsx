@@ -2,14 +2,14 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Wifi, Link2, Zap, ShieldCheck, AlertTriangle, ExternalLink, CheckCircle2, Network, Cpu } from 'lucide-react';
+import { Wifi, Link2, Zap, ShieldCheck, AlertTriangle, ChevronRight, CheckCircle2, Network, Cpu } from 'lucide-react';
 
 export default function GearPage() {
   const categories = [
     {
       id: "routers",
       title: "【最強の要】ゲーミングWi-Fiルーター",
-      subtitle: "通信の心臓部。古いルーターはどんな神回線も台無しにします。",
+      subtitle: "通信の心臓部。回線のポテンシャルを100%引き出すための重要デバイスです。",
       icon: <Wifi className="w-6 h-6 text-cyan" />,
       items: [
         {
@@ -48,7 +48,7 @@ export default function GearPage() {
           id: "cable-cat6a",
           name: "エレコム LANケーブル Cat6A",
           badge: "FPSプレイヤーの必須装備",
-          description: "どれだけ最強の回線を引いても、古いLANケーブル（Cat5eなど）を使っていればそこがボトルネックになります。ノイズ耐性が高く、10G回線にも完全対応する「Cat6A」はFPSの必須装備です。",
+          description: "高品質な光回線を活かすには、それに見合った規格のケーブルを使用することが大切です。ノイズ耐性が高く、10G回線にも完全対応する「Cat6A」はFPSにおける最適解のひとつです。",
           features: ["10Gbps対応・伝送帯域500MHz", "ノイズに強いシールド設計", "爪折れ防止カバー付き"],
           price: "約1,200円",
           color: "from-purple-500 to-pink-500",
@@ -68,7 +68,7 @@ export default function GearPage() {
           id: "hub-2.5g",
           name: "TP-Link 2.5G対応 5ポートハブ",
           badge: "高速通信を分配",
-          description: "家庭の壁にLANポートが1つしかない場合、このハブを使って複数の機器に有線を分配します。1Gの安いハブを買うと速度が制限されるため、今後を見据えて「2.5G対応ハブ」を選ぶのが鉄則です。",
+          description: "家庭の壁にLANポートが1つしかない場合、このハブを使って複数の機器に有線を分配します。一般的な1G対応ハブでは高速通信が制限されてしまうため、将来性を見据えた「2.5G対応ハブ」をおすすめします。",
           features: ["2.5Gbpsの超高速通信を分配", "ファンレスの静音設計", "金属筐体による高い放熱性"],
           price: "約11,000円",
           color: "from-amber-500 to-orange-500",
@@ -88,7 +88,7 @@ export default function GearPage() {
           id: "wifi-card",
           name: "TP-Link Wi-Fi 6E PCIeカード",
           badge: "無線の限界を突破",
-          description: "USB挿しの安物のWi-Fi子機はラグの温床です。無線でFPSをやるなら、マザーボードに直接挿す「PCIe接続」かつ、外部アンテナを備えたWi-Fi 6E対応カード一択です。最新の6GHz帯を使えば無線でも驚くほどPingが安定します。",
+          description: "安定した通信環境を構築するなら、マザーボードに直接接続する「PCIe接続」かつ、外部アンテナを備えたWi-Fi 6E対応カードが最適です。最新の6GHz帯を利用することで、無線環境でも安定したPingを維持しやすくなります。",
           features: ["混雑ゼロの新しい6GHz帯(Wi-Fi 6E)対応", "磁石付きの強力な外部アンテナ付属", "Bluetooth 5.3機能も同時に搭載"],
           price: "約8,500円",
           color: "from-rose-500 to-red-500",
@@ -115,9 +115,11 @@ export default function GearPage() {
             <span className="text-emerald drop-shadow-[0_0_15px_rgba(16,185,129,0.5)]">最強ゲーミングデバイス</span>
           </h1>
           <p className="text-text-muted text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            いくら最強の光回線を契約しても、「ルーター」や「LANケーブル」が古いとPingは劇的に悪化します。<br className="hidden sm:block" />
-            回線の乗り換えが難しい場合でも、デバイスを変えるだけでラグが解消するケースは非常に多いです。<br className="hidden sm:block" />
-            Pingを限界まで下げるための、FPSプレイヤー必携の最強ギアを厳選しました。
+            いくら高性能な光回線を契約していても、ご自宅の「ルーター」や「LANケーブル」の規格が古いと、それが原因でPingが悪化してしまうことがあります。
+            <br className="mb-2" />
+            回線の乗り換えが難しい場合でも、デバイス環境を見直すだけでラグが大きく改善するケースは少なくありません。
+            <br className="mb-2" />
+            Pingを少しでも下げたいプレイヤーに向けた、おすすめの通信ギアを厳選しました。
           </p>
         </div>
 
@@ -129,7 +131,7 @@ export default function GearPage() {
             </div>
             <h3 className="text-lg font-bold mb-2">ルーターの処理能力がPingを決める</h3>
             <p className="text-sm text-text-muted leading-relaxed">
-              古いルーターはCPU性能が低く、ゲームの激しいパケット送受信に耐えきれずにラグを発生させます。
+              数世代前のルーターでは、ゲームの激しいデータ通信を処理しきれず、遅延の原因になることがあります。
             </p>
           </div>
           <div className="bg-white/[0.02] border border-white/5 p-6 rounded-2xl flex flex-col items-center text-center">
@@ -238,7 +240,7 @@ export default function GearPage() {
           </p>
           <Link href="/diagnosis" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-cyan text-black font-bold text-sm transition-all hover:scale-105 shadow-[0_0_20px_rgba(0,229,255,0.3)]">
             30秒の無料診断を試す
-            <ExternalLink className="w-4 h-4" />
+            <ChevronRight className="w-4 h-4" />
           </Link>
         </div>
 
