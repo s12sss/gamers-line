@@ -249,6 +249,7 @@ export default async function ColumnArticle({ params }: Props) {
                 無料診断スタート
               </Link>
             </div>
+            </div>
 
             {/* Mobile Sidebar (Bottom) */}
             <div className="mt-16 sm:mt-24 lg:hidden">
@@ -259,11 +260,9 @@ export default async function ColumnArticle({ params }: Props) {
               <ColumnSidebar />
             </div>
 
-          </div>
-
           {/* Right: Desktop Sidebar */}
           <div className="hidden xl:block absolute left-full ml-12 top-0 bottom-0 w-[300px]">
-            <div className="sticky top-[100px]">
+            <div className="sticky top-[100px] pb-10 max-h-[calc(100vh-100px)] overflow-y-auto custom-scrollbar">
               <ColumnSidebar />
             </div>
           </div>
