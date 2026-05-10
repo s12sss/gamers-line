@@ -24,7 +24,7 @@ export interface ISP {
   detailLink?: string;
 }
 export interface UserAnswers {
-  gameGenre: 'fps' | 'mmo' | 'casual' | '';
+  gameGenre: 'fps' | 'fighting' | 'mmo' | 'moba' | 'casual' | '';
   housingType: 'house' | 'mansion_optical' | 'mansion_vdsl' | 'unknown' | '';
   mobileCarrier: 'docomo' | 'au' | 'softbank' | 'other' | '';
   wantsDiscount?: boolean;
@@ -47,9 +47,9 @@ function calculateScore(isp: ISP, answers: UserAnswers): number {
 
   // 2. ゲームジャンルによる重み付け (Weight)
   let wPing = 0, wPrice = 0, wStability = 0;
-  if (answers.gameGenre === 'fps') {
+  if (answers.gameGenre === 'fps' || answers.gameGenre === 'fighting') {
     wPing = 0.7; wPrice = 0.2; wStability = 0.1;
-  } else if (answers.gameGenre === 'mmo') {
+  } else if (answers.gameGenre === 'mmo' || answers.gameGenre === 'moba') {
     wStability = 0.5; wPing = 0.3; wPrice = 0.2;
   } else {
     wPrice = 0.7; wPing = 0.1; wStability = 0.2;

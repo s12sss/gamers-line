@@ -308,9 +308,16 @@ export default function DiagnosisForm() {
               {stepTitles[1]}
             </div>
             <div className="flex flex-col gap-3">
-              <OptionCard onClick={() => handleNext('gameGenre', 'fps')} title="FPS / TPS / 格闘ゲーム" desc="VALORANT, APEX, スト6など — Ping値超重視" />
-              <OptionCard onClick={() => handleNext('gameGenre', 'mmo')} title="MMO / MOBA / マルチプレイ" desc="FF14, モンハン, ナイトレインなど — 安定性重視" />
-              <OptionCard onClick={() => handleNext('gameGenre', 'casual')} title="スマホゲーム / オフラインタイトル" desc="原神, 鳴潮, スマホゲーム, 買い切りゲーム全般" />
+              <div className="text-[0.65rem] sm:text-[0.7rem] font-bold text-cyan tracking-wider mb-[-0.25rem] mt-2">▼ Ping値（応答速度）を超重視</div>
+              <OptionCard onClick={() => handleNext('gameGenre', 'fps')} title="FPS / TPS" desc="VALORANT, APEXなど — コンマ1秒の遅延も許さない" />
+              <OptionCard onClick={() => handleNext('gameGenre', 'fighting')} title="格闘ゲーム" desc="スト6, 鉄拳など — 一瞬のラグが勝敗を分ける" />
+              
+              <div className="text-[0.65rem] sm:text-[0.7rem] font-bold text-emerald tracking-wider mb-[-0.25rem] mt-2">▼ 安定性（パケットロスト防止）を重視</div>
+              <OptionCard onClick={() => handleNext('gameGenre', 'mmo')} title="MMO / RPG" desc="FF14, ドラクエ10など — 回線落ちを防ぎたい" />
+              <OptionCard onClick={() => handleNext('gameGenre', 'moba')} title="MOBA / マルチプレイ" desc="LoL, モンハンなど — 安定したマルチプレイ環境" />
+              
+              <div className="text-[0.65rem] sm:text-[0.7rem] font-bold text-text-muted tracking-wider mb-[-0.25rem] mt-2">▼ コスパ・バランス重視</div>
+              <OptionCard onClick={() => handleNext('gameGenre', 'casual')} title="スマホゲーム / オフラインタイトル" desc="原神, 鳴潮, 買い切りゲーム全般" />
             </div>
           </motion.div>
         );
