@@ -172,8 +172,17 @@ export default async function PrefecturePage({ params }: Props) {
                         <div className="text-2xl font-bold text-emerald font-mono">{isp.avg_ping_ms}<span className="text-sm text-text-muted ml-1">ms</span></div>
                       </div>
                       <div className="p-4 rounded-xl bg-black/40 border border-white/5">
-                        <div className="text-xs text-text-muted mb-1">月額料金</div>
-                        <div className="text-2xl font-bold text-cyan font-mono">¥{isp.actual_monthly_fee_jpy.toLocaleString()}</div>
+                        <div className="text-xs text-text-muted mb-1.5">月額料金</div>
+                        <div className="flex flex-col gap-1.5">
+                          <div className="flex items-center gap-2">
+                            <span className="text-[0.6rem] text-text-muted px-1.5 py-0.5 bg-white/5 rounded leading-none">戸建</span>
+                            <span className="text-lg font-bold text-cyan font-mono leading-none">¥{isp.actual_monthly_fee_jpy.toLocaleString()}〜</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-[0.6rem] text-text-muted px-1.5 py-0.5 bg-white/5 rounded leading-none">ﾏﾝｼｮﾝ</span>
+                            <span className="text-lg font-bold text-cyan font-mono leading-none">¥{isp.mansion_monthly_fee_jpy.toLocaleString()}〜</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
 

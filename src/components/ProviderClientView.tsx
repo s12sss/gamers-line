@@ -10,6 +10,7 @@ type IspData = {
   max_speed_gbps: number;
   avg_ping_ms: number;
   actual_monthly_fee_jpy: number;
+  mansion_monthly_fee_jpy: number;
   stability_score: number;
   cashback_text: string;
   affiliateLink: string;
@@ -75,11 +76,22 @@ export default function ProviderClientView({ detail, isps }: Props) {
             {activeIsp.max_speed_gbps}<span className="text-lg text-text-muted ml-1">Gbps</span>
           </div>
         </div>
-        <div className="bg-[#050505] border border-white/10 rounded-2xl p-6 relative overflow-hidden group hover:border-purple-500/30 transition-colors">
+        <div className="bg-[#050505] border border-white/10 rounded-2xl p-5 sm:p-6 relative overflow-hidden group hover:border-purple-500/30 transition-colors flex flex-col justify-center">
           <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-          <div className="text-text-muted text-xs font-bold tracking-widest mb-2 font-mono">MONTHLY FEE</div>
-          <div className="text-3xl font-black text-purple-400">
-            <span className="text-sm mr-1">実質</span>{activeIsp.actual_monthly_fee_jpy.toLocaleString()}<span className="text-lg text-text-muted ml-1">円</span>
+          <div className="text-text-muted text-xs font-bold tracking-widest mb-3 font-mono">MONTHLY FEE</div>
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-2">
+              <span className="text-[0.6rem] text-text-muted px-1.5 py-0.5 bg-white/5 rounded leading-none shrink-0">戸建</span>
+              <div className="text-2xl font-black text-purple-400 leading-none">
+                <span className="text-xs mr-1 text-purple-400/80">¥</span>{activeIsp.actual_monthly_fee_jpy.toLocaleString()}
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-[0.6rem] text-text-muted px-1.5 py-0.5 bg-white/5 rounded leading-none shrink-0">ﾏﾝｼｮﾝ</span>
+              <div className="text-2xl font-black text-purple-400 leading-none">
+                <span className="text-xs mr-1 text-purple-400/80">¥</span>{activeIsp.mansion_monthly_fee_jpy.toLocaleString()}
+              </div>
+            </div>
           </div>
         </div>
         <div className="bg-[#050505] border border-white/10 rounded-2xl p-6 relative overflow-hidden group hover:border-yellow-500/30 transition-colors">
@@ -96,7 +108,7 @@ export default function ProviderClientView({ detail, isps }: Props) {
           ※ <strong className="text-yellow-500/80">STABILITY（安定性スコア）</strong> は、Ping値の変動幅・パケットロスト率・夜間帯の混雑による速度低下率など、ゲーマーにとって致命的となる要素を総合的に評価した100点満点の独自指標です。
         </p>
         <p className="text-[0.7rem] sm:text-xs text-text-muted/80 leading-relaxed">
-          ※ <strong className="text-purple-400/80">実質月額</strong> は「戸建てプラン」の標準的な料金目安です。マンションなどの集合住宅にお住まいの場合や、各社の期間限定キャンペーン・スマホセット割の適用により、実際の負担額はさらに安くなる場合があります。
+          ※ <strong className="text-purple-400/80">実質月額</strong> は各種キャンペーンを考慮した目安です。建物の設備や各社の期間限定キャンペーン・スマホセット割の適用状況により、実際の負担額は変動する場合があります。
         </p>
       </div>
 

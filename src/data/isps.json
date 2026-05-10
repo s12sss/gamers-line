@@ -50,7 +50,8 @@
       "月額料金がやや高め"
     ],
     "affiliateLink": "https://h.accesstrade.net/sp/cc?rk=0100pau800os5p",
-    "detailLink": "/provider/hi-ho"
+    "detailLink": "/provider/hi-ho",
+    "mansion_monthly_fee_jpy": 6160
   },
   {
     "id": "hi-ho_with_games_1g",
@@ -102,7 +103,8 @@
       "スマホとのセット割引がない"
     ],
     "affiliateLink": "https://h.accesstrade.net/sp/cc?rk=0100pau800os5p",
-    "detailLink": "/provider/hi-ho"
+    "detailLink": "/provider/hi-ho",
+    "mansion_monthly_fee_jpy": 4840
   },
   {
     "id": "nuro_hikari_10g",
@@ -165,7 +167,8 @@
       "開通までに時間がかかる場合がある"
     ],
     "affiliateLink": "#",
-    "detailLink": "/provider"
+    "detailLink": "/provider",
+    "mansion_monthly_fee_jpy": 5700
   },
   {
     "id": "nuro_hikari_2g",
@@ -227,7 +230,8 @@
       "提供エリアがやや限定的"
     ],
     "affiliateLink": "#",
-    "detailLink": "/provider"
+    "detailLink": "/provider",
+    "mansion_monthly_fee_jpy": 2750
   },
   {
     "id": "gamewith_hikari_10g",
@@ -280,7 +284,8 @@
       "月額料金がやや高め"
     ],
     "affiliateLink": "https://gamewith-hikari.gamewith.co.jp/",
-    "detailLink": "/provider"
+    "detailLink": "/provider",
+    "mansion_monthly_fee_jpy": 6050
   },
   {
     "id": "gamewith_hikari_1g",
@@ -333,7 +338,8 @@
       "月額料金がやや高め"
     ],
     "affiliateLink": "https://gamewith-hikari.gamewith.co.jp/",
-    "detailLink": "/provider"
+    "detailLink": "/provider",
+    "mansion_monthly_fee_jpy": 4840
   },
   {
     "id": "au_hikari_10g",
@@ -388,7 +394,8 @@
       "VDSLは当然不可"
     ],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+48EZN6+42Y0+5ZMCH",
-    "detailLink": "/provider"
+    "detailLink": "/provider",
+    "mansion_monthly_fee_jpy": 6468
   },
   {
     "id": "au_hikari_1g",
@@ -449,7 +456,8 @@
       "提供エリアに制限あり"
     ],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+48EZN6+42Y0+5ZMCH",
-    "detailLink": "/provider"
+    "detailLink": "/provider",
+    "mansion_monthly_fee_jpy": 4180
   },
   {
     "id": "docomo_hikari_10g",
@@ -509,7 +517,8 @@
       "プロバイダにより品質差あり"
     ],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+4CL0VM+50+556VPT",
-    "detailLink": "/provider"
+    "detailLink": "/provider",
+    "mansion_monthly_fee_jpy": 6380
   },
   {
     "id": "docomo_hikari_1g",
@@ -569,7 +578,8 @@
       "プロバイダにより品質差あり"
     ],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+4CL0VM+50+556VPT",
-    "detailLink": "/provider"
+    "detailLink": "/provider",
+    "mansion_monthly_fee_jpy": 4400
   },
   {
     "id": "softbank_hikari_10g",
@@ -634,7 +644,8 @@
       "上位陣に比べPingは劣る"
     ],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+4HXXBM+348K+1BP8ZM",
-    "detailLink": "/provider"
+    "detailLink": "/provider",
+    "mansion_monthly_fee_jpy": 6380
   },
   {
     "id": "softbank_hikari_1g",
@@ -699,7 +710,8 @@
       "上位陣に比べPingは劣る"
     ],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+4HXXBM+348K+1BP8ZM",
-    "detailLink": "/provider"
+    "detailLink": "/provider",
+    "mansion_monthly_fee_jpy": 4180
   },
   {
     "providerName": "ビッグローブ株式会社",
@@ -763,7 +775,8 @@
     "cons": [
       "VDSLマンション不可",
       "提供エリアが限定的（東名阪の一部など）"
-    ]
+    ],
+    "mansion_monthly_fee_jpy": 6270
   },
   {
     "providerName": "ビッグローブ株式会社",
@@ -827,7 +840,8 @@
     "cons": [
       "NUROやauひかり等の独自回線と比べるとPing値は劣る",
       "プロバイダがBIGLOBEに固定される"
-    ]
+    ],
+    "mansion_monthly_fee_jpy": 4378
   },
   {
     "providerName": "中部テレコミュニケーション",
@@ -876,7 +890,8 @@
     "avg_dl_speed_mbps": 1800,
     "actual_monthly_fee_jpy": 6710,
     "stability_score": 94,
-    "vdsl_support": false
+    "vdsl_support": false,
+    "mansion_monthly_fee_jpy": 5940
   },
   {
     "providerName": "中部テレコミュニケーション",
@@ -925,7 +940,8 @@
     "avg_dl_speed_mbps": 600,
     "actual_monthly_fee_jpy": 5940,
     "stability_score": 90,
-    "vdsl_support": false
+    "vdsl_support": false,
+    "mansion_monthly_fee_jpy": 4070
   },
   {
     "id": "pikara_hikari_10g",
@@ -973,7 +989,8 @@
     "cons": [
       "四国エリア外では使えない",
       "マンションへの導入済み物件が少なめ"
-    ]
+    ],
+    "mansion_monthly_fee_jpy": 7370
   },
   {
     "id": "pikara_hikari_1g",
@@ -1021,7 +1038,8 @@
     "cons": [
       "四国エリア外では使えない",
       "マンションへの導入済み物件が少なめ"
-    ]
+    ],
+    "mansion_monthly_fee_jpy": 4400
   },
   {
     "id": "megaegg_hikari_10g",
@@ -1068,7 +1086,8 @@
     ],
     "cons": [
       "中国エリア外では使えない"
-    ]
+    ],
+    "mansion_monthly_fee_jpy": 6750
   },
   {
     "id": "megaegg_hikari_1g",
@@ -1115,7 +1134,8 @@
     ],
     "cons": [
       "中国エリア外では使えない"
-    ]
+    ],
+    "mansion_monthly_fee_jpy": 3520
   },
   {
     "providerName": "株式会社オプテージ",
@@ -1166,7 +1186,8 @@
     "avg_dl_speed_mbps": 1400,
     "actual_monthly_fee_jpy": 6530,
     "stability_score": 93,
-    "vdsl_support": false
+    "vdsl_support": false,
+    "mansion_monthly_fee_jpy": 6530
   },
   {
     "providerName": "株式会社オプテージ",
@@ -1217,7 +1238,8 @@
     "avg_dl_speed_mbps": 550,
     "actual_monthly_fee_jpy": 5448,
     "stability_score": 89,
-    "vdsl_support": false
+    "vdsl_support": false,
+    "mansion_monthly_fee_jpy": 3326
   },
   {
     "providerName": "株式会社QTnet",
@@ -1268,7 +1290,8 @@
     "avg_dl_speed_mbps": 4500,
     "actual_monthly_fee_jpy": 6380,
     "stability_score": 93,
-    "vdsl_support": false
+    "vdsl_support": false,
+    "mansion_monthly_fee_jpy": 6380
   },
   {
     "providerName": "株式会社QTnet",
@@ -1319,6 +1342,7 @@
     "avg_dl_speed_mbps": 450,
     "actual_monthly_fee_jpy": 5500,
     "stability_score": 88,
-    "vdsl_support": false
+    "vdsl_support": false,
+    "mansion_monthly_fee_jpy": 4290
   }
 ]

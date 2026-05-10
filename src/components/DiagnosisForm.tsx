@@ -86,7 +86,6 @@ function LoadingScreen({ onDone }: { onDone: () => void }) {
 
 function ResultCard({ result, index, delay, requires10G }: { result: {isp: ISP, score: number}, index: number, delay: number, requires10G: boolean }) {
   const isBest = index === 0;
-  const displayFee = result.isp.actual_monthly_fee_jpy;
   const displayName = result.isp.name.replace(/\s*\([0-9]+G\)/i, '');
   const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
 
@@ -184,11 +183,19 @@ function ResultCard({ result, index, delay, requires10G }: { result: {isp: ISP, 
               </span>
               <span className="text-[0.7rem] sm:text-[0.75rem] text-text-muted ml-0.5">ms</span>
             </div>
-            <div className="flex justify-start sm:justify-end items-baseline gap-1">
-              <span className="font-mono text-xl sm:text-[1.3rem] font-bold text-text leading-none">
-                ¥{displayFee.toLocaleString()}〜
-              </span>
-              <span className="text-[0.65rem] sm:text-[0.7rem] text-text-muted">/月</span>
+            <div className="flex flex-col gap-1.5 mt-2">
+              <div className="flex justify-start sm:justify-end items-baseline gap-1.5">
+                <span className="text-[0.65rem] text-text-muted px-1.5 py-0.5 bg-white/5 rounded">戸建て</span>
+                <span className="font-mono text-[1.1rem] sm:text-[1.2rem] font-bold text-text leading-none">
+                  ¥{result.isp.actual_monthly_fee_jpy.toLocaleString()}〜
+                </span>
+              </div>
+              <div className="flex justify-start sm:justify-end items-baseline gap-1.5">
+                <span className="text-[0.65rem] text-text-muted px-1.5 py-0.5 bg-white/5 rounded">マンション</span>
+                <span className="font-mono text-[1.1rem] sm:text-[1.2rem] font-bold text-text leading-none">
+                  ¥{result.isp.mansion_monthly_fee_jpy.toLocaleString()}〜
+                </span>
+              </div>
             </div>
           </div>
         </div>

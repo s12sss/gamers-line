@@ -8,6 +8,7 @@ export interface ISP {
   avg_dl_speed_mbps: number;
   stability_score: number;
   actual_monthly_fee_jpy: number;
+  mansion_monthly_fee_jpy: number;
   vdsl_support: boolean;
   cashback_text: string;
   mobile_discount: string[];
