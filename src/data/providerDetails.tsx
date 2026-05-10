@@ -425,7 +425,7 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
     name: 'Gaming+ (ゲーミングプラス)',
     catchphrase: '回線工事不要。プロバイダ乗り換えだけで手に入る圧倒的低遅延',
     heroDescription: '「光回線の工事ができない」「今のフレッツ光やドコモ光のままでPingを良くしたい」というゲーマーのための、eスポーツ特化型プロバイダです。次世代のIPv6 IPoE接続を利用した専用帯域により、夜間の混雑時でもラグのない快適なプレイ環境を実現します。',
-    ispIds: ['gaming_plus_10g', 'gaming_plus_1g'],
+    ispIds: ['gaming-plus_10g', 'gaming-plus_1g'],
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>

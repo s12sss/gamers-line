@@ -1346,7 +1346,7 @@
     "mansion_monthly_fee_jpy": 4290
   },
   {
-    "id": "gaming_plus_10g",
+    "id": "gaming-plus_10g",
     "name": "Gaming+ 10G (ゲーミングプラス)",
     "providerName": "株式会社ネットフォレスト",
     "type": "プロバイダ乗換",
@@ -1398,7 +1398,7 @@
     ]
   },
   {
-    "id": "gaming_plus_1g",
+    "id": "gaming-plus_1g",
     "name": "Gaming+ 1G (ゲーミングプラス)",
     "providerName": "株式会社ネットフォレスト",
     "type": "プロバイダ乗換",

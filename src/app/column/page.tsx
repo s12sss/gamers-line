@@ -14,6 +14,7 @@ const SERVICE_TAGS = [
 const KNOWLEDGE_TAGS = ['回線の基礎知識', '失敗しない選び方'];
 const REVIEW_TAGS = ['回線・プロバイダ比較', 'サービス実測・検証', 'ゲーミング製品レビュー'];
 const GENRE_TAGS = ['FPS / TPS', '格闘ゲーム', 'MOBA', 'MMO', 'スマホゲーム', 'その他ゲーム'];
+const PLAYER_TAGS = ['ストリーマー', 'プロゲーマー'];
 const OTHER_TAGS = ['お得なキャンペーン', '最新ニュース', 'VPN'];
 
 export default async function ColumnList({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
@@ -37,6 +38,7 @@ export default async function ColumnList({ searchParams }: { searchParams: Promi
   const activeKnowledgeTags = KNOWLEDGE_TAGS.filter(t => activeCategories.has(t));
   const activeReviewTags = REVIEW_TAGS.filter(t => activeCategories.has(t));
   const activeGenreTags = GENRE_TAGS.filter(t => activeCategories.has(t));
+  const activePlayerTags = PLAYER_TAGS.filter(t => activeCategories.has(t));
   const activeOtherTags = OTHER_TAGS.filter(t => activeCategories.has(t));
 
   // ----------------------------------------------------
@@ -243,6 +245,21 @@ export default async function ColumnList({ searchParams }: { searchParams: Promi
                   </div>
                 )}
 
+                {activePlayerTags.length > 0 && (
+                  <div>
+                    <h3 className="text-[0.75rem] font-bold tracking-wider text-white/80 mb-2.5 flex items-center gap-1.5">
+                      <Hash className="w-3.5 h-3.5 text-cyan" /> プレイヤー・配信者
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {activePlayerTags.map(t => (
+                        <Link key={t} href={`/column?tag=${t}`} className={`px-3 py-1.5 rounded-md text-[0.7rem] font-medium transition-all ${tag === t ? 'bg-cyan/20 text-cyan border border-cyan/50' : 'bg-white/5 text-text-muted border border-white/5 hover:bg-white/10 hover:text-white'}`}>
+                          {t}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 {activeOtherTags.length > 0 && (
                   <div>
                     <h3 className="text-[0.75rem] font-bold tracking-wider text-white/80 mb-2.5 flex items-center gap-1.5">
@@ -353,6 +370,21 @@ export default async function ColumnList({ searchParams }: { searchParams: Promi
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {activeGenreTags.map(t => (
+                      <Link key={t} href={`/column?tag=${t}`} className={`px-3 py-1.5 rounded-md text-[0.7rem] font-medium transition-all ${tag === t ? 'bg-cyan/20 text-cyan border border-cyan/50' : 'bg-white/5 text-text-muted border border-white/5 hover:bg-white/10 hover:text-white'}`}>
+                        {t}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {activePlayerTags.length > 0 && (
+                <div>
+                  <h3 className="text-[0.8rem] font-bold tracking-wider text-white/80 mb-3 flex items-center gap-1.5">
+                    <Hash className="w-3.5 h-3.5 text-cyan" /> プレイヤー・配信者
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {activePlayerTags.map(t => (
                       <Link key={t} href={`/column?tag=${t}`} className={`px-3 py-1.5 rounded-md text-[0.7rem] font-medium transition-all ${tag === t ? 'bg-cyan/20 text-cyan border border-cyan/50' : 'bg-white/5 text-text-muted border border-white/5 hover:bg-white/10 hover:text-white'}`}>
                         {t}
                       </Link>
