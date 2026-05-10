@@ -12,7 +12,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   const tier = resolvedParams.tier || 'UNRANKED';
   const dl = resolvedParams.dl || '0';
   
-  const ogImageUrl = `https://gamers-line.jp/api/og/speedtest.png?ping=${ping}&tier=${tier}&dl=${dl}`;
+  const ogImageUrl = `https://gamers-line.jp/og-image/speedtest?ping=${ping}&tier=${tier}&dl=${dl}&ext=.png`;
 
   return {
     title: `私の回線ランクは【${tier}】でした！ | Gamer's Line`,
@@ -40,6 +40,7 @@ export default async function SpeedtestResultPage({ searchParams }: Props) {
   return (
     <div className="min-h-screen bg-background text-foreground font-sans flex flex-col items-center justify-center p-4">
       <div className="max-w-md w-full bg-white/5 border border-white/10 rounded-2xl p-8 text-center relative overflow-hidden">
+        <script dangerouslySetInnerHTML={{ __html: "window.location.replace('/speedtest');" }} />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-32 bg-cyan/20 blur-[50px] pointer-events-none" />
         
         <h1 className="font-heading text-2xl font-bold mb-2">測定結果のシェア完了！</h1>
