@@ -4,10 +4,8 @@
 
 import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
-import { readFile } from "fs/promises";
-import { join } from "path";
 
-export const runtime = "nodejs";
+export const runtime = "edge";
 
 
 
@@ -60,8 +58,7 @@ export async function GET(req: NextRequest) {
   const dlNum      = parseInt(dl);
   const dlBarPct   = isNaN(dlNum)   ? 50 : Math.min(100, Math.max(5, (dlNum / 1000) * 100));
 
-  const fontBuffer = await readFile(join(process.cwd(), "public/fonts/Roboto-Black.ttf"));
-  const fontData = Uint8Array.from(fontBuffer).buffer;
+  const fontData = await fetch(new URL('./Roboto-Black.ttf', import.meta.url)).then((res) => res.arrayBuffer());
 
   return new ImageResponse(
     (
