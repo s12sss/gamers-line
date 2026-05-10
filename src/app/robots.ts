@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/out/', '/api/'], // Outbound affiliate redirect links shouldn't be indexed directly
+      disallow: ['/out/'], // Outbound affiliate redirect links shouldn't be indexed directly
     },
     sitemap: 'https://gamers-line.jp/sitemap.xml',
   };
