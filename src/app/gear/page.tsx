@@ -8,7 +8,7 @@ export default function GearPage() {
   const categories = [
     {
       id: "routers",
-      title: "【最強の要】ゲーミングWi-Fiルーター",
+      title: "ゲーミングWi-Fiルーター",
       subtitle: "通信の心臓部。回線のポテンシャルを100%引き出すための重要デバイスです。",
       icon: <Wifi className="w-6 h-6 text-cyan" />,
       items: [
@@ -40,7 +40,7 @@ export default function GearPage() {
     },
     {
       id: "cables",
-      title: "【有線の命】LANケーブル",
+      title: "LANケーブル",
       subtitle: "Pingを極限まで下げるための必須装備。Cat6Aが現在のオンラインゲームにおける最適解です。",
       icon: <Link2 className="w-6 h-6 text-purple-400" />,
       items: [
@@ -60,7 +60,7 @@ export default function GearPage() {
     },
     {
       id: "hubs",
-      title: "【分配器】スイッチングハブ",
+      title: "スイッチングハブ",
       subtitle: "PC、PS5、Switchなど複数の機器を有線で繋ぎたい場合の必須アイテム。",
       icon: <Network className="w-6 h-6 text-amber-500" />,
       items: [
@@ -80,7 +80,7 @@ export default function GearPage() {
     },
     {
       id: "pcie",
-      title: "【無線勢の最終兵器】Wi-Fi増設カード",
+      title: "Wi-Fi増設カード",
       subtitle: "どうしても有線LANが引けない部屋で、無線環境のPingを極限まで下げる方法。",
       icon: <Cpu className="w-6 h-6 text-rose-500" />,
       items: [
@@ -115,11 +115,9 @@ export default function GearPage() {
             <span className="text-emerald drop-shadow-[0_0_15px_rgba(16,185,129,0.5)]">最強ゲーミングデバイス</span>
           </h1>
           <p className="text-text-muted text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            いくら高性能な光回線を契約していても、ご自宅の「ルーター」や「LANケーブル」の規格が古いと、それが原因でPingが悪化してしまうことがあります。
+            通信の安定性やPingは、大元の光回線だけでなく「ルーター」や「LANケーブル」の性能にも大きく左右されます。
             <br className="mb-2" />
-            回線の乗り換えが難しい場合でも、デバイス環境を見直すだけでラグが大きく改善するケースは少なくありません。
-            <br className="mb-2" />
-            Pingを少しでも下げたいプレイヤーに向けた、おすすめの通信ギアを厳選しました。
+            デバイス環境を見直すだけでラグが劇的に改善するケースも多いため、環境構築に最適な通信ギアを厳選しました。
           </p>
         </div>
 
