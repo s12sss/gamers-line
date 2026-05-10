@@ -1218,5 +1218,107 @@
     "actual_monthly_fee_jpy": 5448,
     "stability_score": 89,
     "vdsl_support": false
+  },
+  {
+    "providerName": "株式会社QTnet",
+    "type": "独自回線",
+    "mobile_discount": [
+      "au",
+      "uq_mobile"
+    ],
+    "available_housing": [
+      "house",
+      "mansion_optical"
+    ],
+    "regions": [
+      "kyushu"
+    ],
+    "cashback_text": "最大30,000円還元！",
+    "discounts": [
+      {
+        "carrier": "au",
+        "amount": 1100,
+        "name": "auスマートバリュー"
+      }
+    ],
+    "tags": [
+      "九州限定",
+      "独自回線",
+      "低Ping"
+    ],
+    "badges": [
+      "九州エリアNo.1"
+    ],
+    "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+54KEB6+348K+2Z861U",
+    "detailLink": "/provider/bbiq",
+    "description": "九州電力グループのQTnetが提供する九州エリア限定の独自回線。安定したPing値と速度で九州のゲーマーに絶大な人気を誇ります。",
+    "pros": [
+      "九州エリア限定の独自網で混雑に強く安定性が高い",
+      "au・UQスマホとのセット割対応でお得",
+      "九州ゲーマーの定番回線"
+    ],
+    "cons": [
+      "九州エリア以外では契約不可",
+      "10Gプランの提供エリアが限定的"
+    ],
+    "id": "bbiq_hikari_10g",
+    "name": "BBIQ (10G)",
+    "max_speed_gbps": 10,
+    "avg_ping_ms": 12,
+    "avg_dl_speed_mbps": 4500,
+    "actual_monthly_fee_jpy": 6380,
+    "stability_score": 93,
+    "vdsl_support": false
+  },
+  {
+    "providerName": "株式会社QTnet",
+    "type": "独自回線",
+    "mobile_discount": [
+      "au",
+      "uq_mobile"
+    ],
+    "available_housing": [
+      "house",
+      "mansion_optical"
+    ],
+    "regions": [
+      "kyushu"
+    ],
+    "cashback_text": "最大30,000円還元！",
+    "discounts": [
+      {
+        "carrier": "au",
+        "amount": 1100,
+        "name": "auスマートバリュー"
+      }
+    ],
+    "tags": [
+      "九州限定",
+      "独自回線",
+      "低Ping"
+    ],
+    "badges": [
+      "九州エリアNo.1"
+    ],
+    "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+54KEB6+348K+2Z861U",
+    "detailLink": "/provider/bbiq",
+    "description": "九州電力グループのQTnetが提供する九州エリア限定の独自回線。安定したPing値と速度で九州のゲーマーに絶大な人気を誇ります。",
+    "pros": [
+      "九州エリア限定の独自網で混雑に強く安定性が高い",
+      "au・UQスマホとのセット割対応でお得",
+      "九州ゲーマーの定番回線"
+    ],
+    "cons": [
+      "九州エリア以外では契約不可",
+      "10Gプランの提供エリアが限定的"
+    ],
+    "id": "bbiq_hikari_1g",
+    "name": "BBIQ (1G)",
+    "max_speed_gbps": 1,
+    "avg_ping_ms": 15,
+    "avg_dl_speed_mbps": 450,
+    "actual_monthly_fee_jpy": 5500,
+    "stability_score": 88,
+    "vdsl_support": false
   }
 ]

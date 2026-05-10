@@ -392,5 +392,32 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
         </section>
       </div>
     )
+  },
+
+  'bbiq': {
+    slug: 'bbiq',
+    name: 'BBIQ（ビビック）',
+    catchphrase: '九州ゲーマーの特権。電力系ネットワークで圧倒的な安定感',
+    heroDescription: '九州エリア（福岡・佐賀・長崎・熊本・大分・宮崎・鹿児島）にお住まいなら、九州電力グループのQTnetが提供する独自回線「BBIQ」が強力な選択肢となります。フレッツ光とは異なる独自の光ファイバー網を使用しているため、夜間の混雑時でもPingが安定しやすく、FPSや格闘ゲームにおいて絶大な威力を発揮します。',
+    ispIds: ['bbiq_hikari_10g', 'bbiq_hikari_1g'],
+    bodyContent: (
+      <div className="space-y-12 text-text-muted leading-relaxed">
+        <section>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <span className="text-cyan font-mono text-xl">01.</span> なぜ九州ゲーマーはBBIQを選ぶべきなのか？
+          </h2>
+          <div className="bg-white/5 border border-white/10 p-6 rounded-2xl mb-6">
+            <h3 className="text-xl font-bold text-emerald mb-4">独自ファイバー網による「Pingの安定感」</h3>
+            <p className="mb-4">
+              BBIQ最大の強みは、九州電力のインフラ網を活用した「独自回線」であることです。全国規模の光コラボ回線にありがちな、利用者の集中による夜間のゴールデンタイムの速度低下・Pingスパイク（突発的なラグ）が起こりにくく、常に安定した環境でプレイが可能です。
+            </p>
+            <p>
+              また、auやUQ mobileをお使いの方なら「auスマートバリュー」「自宅セット割」が適用されるため、ランニングコストも大幅に削減できます。
+            </p>
+          </div>
+        </section>
+      </div>
+    )
   }
+
 };
