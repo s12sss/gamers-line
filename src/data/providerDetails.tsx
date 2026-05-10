@@ -462,10 +462,17 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 flex items-center gap-3">
             <span className="text-cyan font-mono text-xl">03.</span> 注意点：別途「回線料金」が必要
           </h2>
-          <p>
-            Gaming+は「プロバイダのみ」のサービスです。そのため、月額3,278円（税込）のプロバイダ料金のほかに、NTT等へ支払う「光回線の利用料」が別途発生します。<br/>
-            NURO光やeo光のような独自回線を引けない賃貸マンションにお住まいの方にとっての、最強の代替手段（切り札）と言えます。
-          </p>
+          <div className="bg-white/5 border border-white/10 p-6 rounded-2xl mb-6">
+            <p className="mb-4">
+              Gaming+は「プロバイダのみ」のサービスです。そのため、月額3,278円（税込）のプロバイダ料金のほかに、NTTや光コラボ事業者へ支払う「光回線の基本利用料」が別途発生します。
+            </p>
+            <p className="mb-4 text-sm">
+              例えば、現在お使いの光回線利用料が毎月約5,000円〜6,000円の場合、合計で<strong>毎月8,000円〜9,000円前後</strong>のコストがかかる計算になります。
+            </p>
+            <p>
+              一見すると独自回線（月額5,000〜6,000円台）より割高に見えますが、<strong>「現在の回線の高額な解約違約金」や「撤去工事費・新規開通工事費」をゼロにできる</strong>という圧倒的なメリットがあります。初期費用や手間をかけずに最速でラグを解消したい方にとって、最も合理的な選択肢と言えます。
+            </p>
+          </div>
         </section>
       </div>
     )
