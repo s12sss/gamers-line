@@ -312,7 +312,7 @@ export default async function Home() {
                 02
               </div>
               <h4 className="font-heading font-semibold text-base mb-2">AIが最適解を算出</h4>
-              <p className="text-[0.8rem] text-text-muted leading-relaxed">独自スコアリングで20以上のプランからあなたに最適な3件を選出</p>
+              <p className="text-[0.8rem] text-text-muted leading-relaxed">独自スコアリングで{ispsData.length}のプランからあなたに最適な3件を選出</p>
             </div>
 
             <div className="text-center px-6">
