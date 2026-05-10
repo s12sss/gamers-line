@@ -73,7 +73,7 @@ export default function GearPage() {
                     <span className="a-logo">Amazon</span> で見る
                   </a>
                   <a href="#" className="affi-btn rakuten" target="_blank" rel="sponsored">
-                    <span className="r-logo">Rakuten</span> で見る
+                    <span className="r-logo">楽天市場</span> で見る
                   </a>
                 </div>
               </div>
@@ -102,7 +102,7 @@ export default function GearPage() {
                     <span className="a-logo">Amazon</span> で見る
                   </a>
                   <a href="#" className="affi-btn rakuten" target="_blank" rel="sponsored">
-                    <span className="r-logo">Rakuten</span> で見る
+                    <span className="r-logo">楽天市場</span> で見る
                   </a>
                 </div>
               </div>
