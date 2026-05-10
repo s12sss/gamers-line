@@ -41,14 +41,14 @@ export default function GearPage() {
     {
       id: "cables",
       title: "【有線の命】LANケーブル",
-      subtitle: "Pingを極限まで下げるための必須装備。Cat6Aが現在のFPSの最適解です。",
+      subtitle: "Pingを極限まで下げるための必須装備。Cat6Aが現在のオンラインゲームにおける最適解です。",
       icon: <Link2 className="w-6 h-6 text-purple-400" />,
       items: [
         {
           id: "cable-cat6a",
           name: "エレコム LANケーブル Cat6A",
-          badge: "FPSプレイヤーの必須装備",
-          description: "高品質な光回線を活かすには、それに見合った規格のケーブルを使用することが大切です。ノイズ耐性が高く、10G回線にも完全対応する「Cat6A」はFPSにおける最適解のひとつです。",
+          badge: "オンラインゲーマーの必須装備",
+          description: "高品質な光回線を活かすには、それに見合った規格のケーブルを使用することが大切です。ノイズ耐性が高く、10G回線にも完全対応する「Cat6A」はオンラインゲームにおける最適解のひとつです。",
           features: ["10Gbps対応・伝送帯域500MHz", "ノイズに強いシールド設計", "爪折れ防止カバー付き"],
           price: "約1,200円",
           color: "from-purple-500 to-pink-500",
