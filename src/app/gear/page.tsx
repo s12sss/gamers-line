@@ -68,9 +68,14 @@ export default function GearPage() {
                   <span className="affi-price-label">PRICE:</span>
                   <span className="affi-price">¥24,800</span>
                 </div>
-                <a href="#" className="affi-btn" target="_blank" rel="sponsored">
-                  <span className="a-logo">Amazon</span> で見る
-                </a>
+                <div className="affi-btn-group">
+                  <a href="#" className="affi-btn amazon" target="_blank" rel="sponsored">
+                    <span className="a-logo">Amazon</span> で見る
+                  </a>
+                  <a href="#" className="affi-btn rakuten" target="_blank" rel="sponsored">
+                    <span className="r-logo">Rakuten</span> で見る
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -92,9 +97,14 @@ export default function GearPage() {
                   <span className="affi-price-label">PRICE:</span>
                   <span className="affi-price">¥13,500</span>
                 </div>
-                <a href="#" className="affi-btn" target="_blank" rel="sponsored">
-                  <span className="a-logo">Amazon</span> で見る
-                </a>
+                <div className="affi-btn-group">
+                  <a href="#" className="affi-btn amazon" target="_blank" rel="sponsored">
+                    <span className="a-logo">Amazon</span> で見る
+                  </a>
+                  <a href="#" className="affi-btn rakuten" target="_blank" rel="sponsored">
+                    <span className="r-logo">Rakuten</span> で見る
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -144,9 +154,14 @@ export default function GearPage() {
                     <div className="affi-price-label">PRICE:</div>
                     <div className="affi-price text-2xl">¥1,180</div>
                   </div>
-                  <a href="#" className="affi-btn" target="_blank" rel="sponsored">
-                    <span className="a-logo">Amazon</span> で見る
-                  </a>
+                  <div className="affi-btn-group" style={{ flex: 2, marginTop: 0 }}>
+                    <a href="#" className="affi-btn amazon" target="_blank" rel="sponsored">
+                      <span className="a-logo">Amazon</span> で見る
+                    </a>
+                    <a href="#" className="affi-btn rakuten" target="_blank" rel="sponsored">
+                      <span className="r-logo">Rakuten</span> で見る
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

@@ -161,9 +161,20 @@ body::before {
 .affi-price-label { font-family:'Space Mono',monospace; font-size:0.65rem; color:var(--text-dim); letter-spacing:0.1em; }
 .affi-price { font-family:'Space Mono',monospace; font-weight:700; font-size:1.3rem; color:var(--cyan); }
 
-.affi-btn { display:flex; align-items:center; justify-content:center; gap:8px; padding:12px 16px; background: linear-gradient(90deg, #ff9900, #ffaa33); color:#1a1a1a; font-family:'Noto Sans JP',sans-serif; font-weight:700; font-size:0.95rem; border-radius:8px; text-decoration:none; border:1px solid rgba(255,153,0,0.6); box-shadow: 0 0 18px rgba(255,153,0,0.25); transition:all 0.15s ease; cursor:pointer; width:100%; margin-top:8px; }
-.affi-btn:hover { background: linear-gradient(90deg, #ffaa00, #ffbb44); box-shadow: 0 0 28px rgba(255,170,0,0.5); transform: translateY(-1px); }
+.affi-btn-group { display: flex; gap: 8px; margin-top: 8px; width: 100%; flex-wrap: wrap; }
+.affi-btn-group .affi-btn { margin-top: 0; flex: 1; min-width: 120px; }
+
+.affi-btn { display:flex; align-items:center; justify-content:center; gap:8px; padding:12px 16px; font-family:'Noto Sans JP',sans-serif; font-weight:700; font-size:0.95rem; border-radius:8px; text-decoration:none; border:1px solid transparent; transition:all 0.15s ease; cursor:pointer; width:100%; margin-top:8px; }
+.affi-btn:hover { transform: translateY(-1px); }
+
+.affi-btn.amazon { background: linear-gradient(90deg, #ff9900, #ffaa33); color:#1a1a1a; border-color:rgba(255,153,0,0.6); box-shadow: 0 0 18px rgba(255,153,0,0.25); }
+.affi-btn.amazon:hover { background: linear-gradient(90deg, #ffaa00, #ffbb44); box-shadow: 0 0 28px rgba(255,170,0,0.5); }
+
+.affi-btn.rakuten { background: linear-gradient(90deg, #bf0000, #df0000); color:#fff; border-color:rgba(191,0,0,0.6); box-shadow: 0 0 18px rgba(191,0,0,0.25); }
+.affi-btn.rakuten:hover { background: linear-gradient(90deg, #df0000, #ff1111); box-shadow: 0 0 28px rgba(223,0,0,0.5); }
+
 .affi-btn .a-logo { font-family:'Space Grotesk',sans-serif; font-weight:900; letter-spacing:-0.04em; font-size:1.05rem; }
+.affi-btn .r-logo { font-family:'Space Grotesk',sans-serif; font-weight:900; letter-spacing:-0.02em; font-size:1.05rem; }
 
 .affi-disclaimer { margin-top:24px; font-family:'Space Mono',monospace; font-size:0.7rem; color:var(--text-dim); letter-spacing:0.04em; line-height:1.6; padding:12px 16px; border-left: 2px solid rgba(0,229,255,0.3); background: rgba(0,229,255,0.03); border-radius: 0 8px 8px 0; }
 
