@@ -12,7 +12,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   const tier = resolvedParams.tier || 'UNRANKED';
   const dl = resolvedParams.dl || '0';
   
-  const ogImageUrl = `https://gamers-line.jp/og-image/speedtest?ping=${ping}&tier=${tier}&dl=${dl}&ext=.png`;
+  const ogImageUrl = `https://gamers-line.jp/og-image/speedtest.png?ping=${ping}&tier=${tier}&dl=${dl}`;
 
   return {
     title: `私の回線ランクは【${tier}】でした！ | Gamer's Line`,
