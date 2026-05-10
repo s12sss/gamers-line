@@ -30,7 +30,7 @@ export default function ScrollToTopButton() {
   return (
     <button
       onClick={scrollToTop}
-      className={`fixed bottom-12 right-6 sm:bottom-16 sm:right-[max(1.5rem,calc(50vw-390px))] z-[100] p-3 sm:p-4 rounded-full bg-cyan/10 border border-cyan/30 text-cyan backdrop-blur-md shadow-[0_0_20px_rgba(0,229,255,0.15)] transition-all duration-300 hover:bg-cyan hover:text-black hover:scale-110 focus:outline-none ${
+      className={`lg:hidden fixed bottom-12 right-6 sm:bottom-16 sm:right-[max(1.5rem,calc(50vw-390px))] z-[100] p-3 sm:p-4 rounded-full bg-cyan/10 border border-cyan/30 text-cyan backdrop-blur-md shadow-[0_0_20px_rgba(0,229,255,0.15)] transition-all duration-300 hover:bg-cyan hover:text-black hover:scale-110 focus:outline-none ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"
       }`}
       aria-label="ページトップへ戻る"
