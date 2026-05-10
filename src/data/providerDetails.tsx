@@ -418,6 +418,57 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
         </section>
       </div>
     )
+  },
+
+  'gaming-plus': {
+    slug: 'gaming-plus',
+    name: 'Gaming+ (ゲーミングプラス)',
+    catchphrase: '回線工事不要。プロバイダ乗り換えだけで手に入る圧倒的低遅延',
+    heroDescription: '「光回線の工事ができない」「今のフレッツ光やドコモ光のままでPingを良くしたい」というゲーマーのための、eスポーツ特化型プロバイダです。次世代のIPv6 IPoE接続を利用した専用帯域により、夜間の混雑時でもラグのない快適なプレイ環境を実現します。',
+    ispIds: ['gaming_plus_10g', 'gaming_plus_1g'],
+    bodyContent: (
+      <div className="space-y-12 text-text-muted leading-relaxed">
+        <section>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <span className="text-cyan font-mono text-xl">01.</span> プロバイダを変えるだけでPingが下がる理由
+          </h2>
+          <div className="bg-white/5 border border-white/10 p-6 rounded-2xl mb-6">
+            <p className="mb-4">
+              日本の光回線の大半は「フレッツ光（NTT網）」を使用していますが、夜間に速度が低下する原因のほとんどは「プロバイダの混雑（網終端装置のパンク）」です。
+            </p>
+            <p>
+              Gaming+は、最新の「v6プラス（IPv4 over IPv6）」技術を採用し、さらに<strong>ゲーマーのために設計された大容量の専用帯域</strong>を確保しています。これにより、一般的なプロバイダで発生する渋滞ルートを完全に回避し、Ping値を劇的に改善することができます。
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <span className="text-cyan font-mono text-xl">02.</span> 工事なし・最短即日で乗り換え完了
+          </h2>
+          <div className="grid sm:grid-cols-2 gap-4 mt-6">
+            <div className="border border-white/10 bg-white/5 p-5 rounded-xl">
+              <h4 className="font-bold text-white mb-2">物理的な配線工事が一切不要</h4>
+              <p className="text-sm">現在フレッツ光や光コラボ（ドコモ光・ソフトバンク光など）をご利用中であれば、物理的な工事は一切必要ありません。Webから申し込むだけで、最短即日でネットワークがGaming+に切り替わります。</p>
+            </div>
+            <div className="border border-cyan/20 bg-cyan/5 p-5 rounded-xl">
+              <h4 className="font-bold text-cyan mb-2">最大25日間の無料お試し期間</h4>
+              <p className="text-sm">「本当にPingが下がるのか不安…」という方のために、最大25日間の無料お試し期間が用意されています。実際にAPEXやVALORANTをプレイして、Ping値の改善を体感してから継続を決めることができます。</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 flex items-center gap-3">
+            <span className="text-cyan font-mono text-xl">03.</span> 注意点：別途「回線料金」が必要
+          </h2>
+          <p>
+            Gaming+は「プロバイダのみ」のサービスです。そのため、月額3,278円（税込）のプロバイダ料金のほかに、NTT等へ支払う「光回線の利用料」が別途発生します。<br/>
+            NURO光やeo光のような独自回線を引けない賃貸マンションにお住まいの方にとっての、最強の代替手段（切り札）と言えます。
+          </p>
+        </section>
+      </div>
+    )
   }
 
 };
