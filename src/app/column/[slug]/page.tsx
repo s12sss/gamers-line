@@ -249,8 +249,27 @@ export default async function ColumnArticle({ params }: Props) {
                 無料診断スタート
               </Link>
             </div>
+            </div>
+
+            {/* Mobile Sidebar (Bottom) */}
+            <div className="mt-16 sm:mt-24 lg:hidden">
+              <h2 className="text-xl font-bold text-text mb-6 flex items-center gap-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan shadow-[0_0_8px_var(--cyan)]"></span>
+                その他の記事を探す
+              </h2>
+              <ColumnSidebar />
+            </div>
 
           </div>
+
+          {/* Right: Desktop Sidebar */}
+          <div className="hidden lg:block lg:col-span-4">
+            <div className="sticky top-[100px]">
+              <ColumnSidebar />
+            </div>
+          </div>
+          
+        </div>
         </>
       ) : (
         /* モックデータ（フォールバック） */
@@ -457,26 +476,10 @@ export default async function ColumnArticle({ params }: Props) {
                 </div>
               </div>
             )}
+              </div>
+            )}
             
-            {/* Mobile Sidebar (Bottom) */}
-            <div className="mt-16 sm:mt-24 lg:hidden">
-              <h2 className="text-xl font-bold text-text mb-6 flex items-center gap-3">
-                <span className="w-1.5 h-1.5 rounded-full bg-cyan shadow-[0_0_8px_var(--cyan)]"></span>
-                その他の記事を探す
-              </h2>
-              <ColumnSidebar />
-            </div>
-
           </div>
-
-          {/* Right: Desktop Sidebar */}
-          <div className="hidden lg:block lg:col-span-4">
-            <div className="sticky top-[100px]">
-              <ColumnSidebar />
-            </div>
-          </div>
-          
-        </div>
         </>
       )}
 
