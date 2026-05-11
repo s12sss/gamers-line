@@ -98,15 +98,15 @@ export default function SpeedTestPage() {
 
     // 2. 高精度Ping測定 (USENと同じ水準にするため、サンプル数を減らし強力な補正をかける)
     let validPings: number[] = [];
-    const orderedPings: number[] = [];
+    const rawRtts: number[] = [];
     const pingSamples = 10;
-    
+
     for (let i = 0; i < pingSamples; i++) {
       const url = '/api/ping?t=' + Date.now() + '-' + i;
       const start = performance.now();
       await fetch(url, { cache: 'no-store' }).catch(() => {});
       const end = performance.now();
-      
+
       let rtt = end - start;
       const entries = performance.getEntriesByName(window.location.origin + url);
       if (entries.length > 0) {
@@ -115,12 +115,10 @@ export default function SpeedTestPage() {
            rtt = entry.responseStart - entry.requestStart;
         }
       }
-      
-      // USEN(Gate02)のICMP Ping(15〜25ms)と、ブラウザのHTTP TTFB(約80〜120ms)の差分を吸収するため、
-      // 0.18〜0.2倍して「実質的なゲーム用Ping」に変換する
+
+      rawRtts.push(rtt);
       const estimatedIcmpPing = Math.max(2, Math.round(rtt * 0.18));
       validPings.push(estimatedIcmpPing);
-      orderedPings.push(estimatedIcmpPing);
       
       const currentAvg = Math.round(validPings.reduce((a, b) => a + b, 0) / validPings.length);
       setPing(currentAvg);
@@ -174,9 +172,9 @@ export default function SpeedTestPage() {
     const finalSpeed = Math.round((totalBytes * 8) / (totalElapsed / 1000) / 1000000) || 1;
     setSpeed(finalSpeed);
 
-    const finalJitter = orderedPings.length > 1
+    const finalJitter = rawRtts.length > 1
       ? Math.round(
-          orderedPings.slice(1).reduce((sum, p, i) => sum + Math.abs(p - orderedPings[i]), 0) / (orderedPings.length - 1)
+          rawRtts.slice(1).reduce((sum: number, p: number, i: number) => sum + Math.abs(p - rawRtts[i]), 0) / (rawRtts.length - 1)
         )
       : 0;
 
