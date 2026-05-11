@@ -1,9 +1,11 @@
 "use client";
+
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import ispsData from "@/data/isps.json";
 import { useState } from "react";
 import Tooltip from "@/components/Tooltip";
+
 
 export default function RankingPage() {
   const [speedFilter, setSpeedFilter] = useState<'all' | '10g' | '1g'>('all');

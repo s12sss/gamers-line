@@ -1,10 +1,12 @@
 "use client";
+
 import Link from "next/link";
 import { Play, Activity, Wallet, Zap, ShieldAlert, BadgeCent, ChevronDown, ChevronUp, ChevronRight, Gift, ChevronsUpDown } from "lucide-react";
 import ispsData from "@/data/isps.json";
 import { useState } from "react";
 import Tooltip from "@/components/Tooltip";
 import Breadcrumbs from "@/components/Breadcrumbs";
+
 
 export default function ComparePage() {
   const [activeFilters, setActiveFilters] = useState<string[]>([]);

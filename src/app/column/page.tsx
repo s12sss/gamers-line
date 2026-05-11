@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from 'next/link';
 import { ChevronRight, Play } from 'lucide-react';
 import { getColumnsList } from '@/libs/microcms';
@@ -148,3 +149,9 @@ export default async function ColumnList({ searchParams }: { searchParams: Promi
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: '/column',
+  },
+};

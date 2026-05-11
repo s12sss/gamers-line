@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import DiagnosisForm from '@/components/DiagnosisForm';
 import Breadcrumbs from '@/components/Breadcrumbs';
+
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: '/diagnosis',
+  },
+};
 
 export default function DiagnosisPage() {
   const softwareAppJsonLd = {

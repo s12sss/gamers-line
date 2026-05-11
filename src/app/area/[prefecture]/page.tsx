@@ -29,6 +29,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `【2026年最新】${prefData.name}でおすすめのゲーミング回線・Ping値比較 | Gamer's Line`,
     description: `${prefData.name}にお住まいのゲーマー必見！FPSやMMOでラグを無くすための最強の光回線を徹底比較。10Gプランの対応状況や、${prefData.name}特有のローカル回線情報も網羅しています。`,
+    alternates: {
+      canonical: `/area/${prefecture}`,
+    },
     openGraph: {
       title: `${prefData.name}でおすすめのゲーミング回線・Ping値比較`,
       description: `${prefData.name}でラグを無くすための最強の光回線を徹底比較。`,

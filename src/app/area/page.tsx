@@ -1,11 +1,13 @@
 "use client";
 
+
 import { useState } from 'react';
 import InteractiveJapanMap from '@/components/InteractiveJapanMap';
 import { REGION_COVERAGE, RegionId } from '@/utils/regionData';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldCheck, AlertTriangle, XCircle, Zap, MapPin, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
+
 
 export default function JapanCoveragePage() {
   const [selectedRegion, setSelectedRegion] = useState<RegionId | null>(null);

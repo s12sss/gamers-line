@@ -1,5 +1,6 @@
 "use client";
 
+
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Activity, Download, Zap, Trophy, ChevronRight, Share2, AlertTriangle, RefreshCw } from 'lucide-react';
@@ -33,6 +34,7 @@ const TIER_COLORS = {
   SILVER: 'text-[#c0c0c0]',
   BRONZE: 'text-[#cd7f32]'
 };
+
 
 export default function SpeedTestPage() {
   const [status, setStatus] = useState<'IDLE' | 'TESTING_PING' | 'TESTING_SPEED' | 'RESULT'>('IDLE');

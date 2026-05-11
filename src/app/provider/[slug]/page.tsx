@@ -9,6 +9,30 @@ type Props = {
   params: Promise<{ slug: string }>;
 };
 
+import { Metadata } from 'next';
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const resolvedParams = await params;
+  const detail = PROVIDER_DETAILS[resolvedParams.slug];
+
+  if (!detail) {
+    return { title: 'Not Found' };
+  }
+
+  return {
+    title: `${detail.name}の評判・Ping値・料金を徹底解説 | Gamer's Line`,
+    description: detail.heroDescription,
+    alternates: {
+      canonical: `/provider/${resolvedParams.slug}`,
+    },
+    openGraph: {
+      title: `${detail.name}の評判・Ping値・料金を徹底解説`,
+      description: detail.heroDescription,
+      url: `https://gamers-line.jp/provider/${resolvedParams.slug}`,
+    },
+  };
+}
+
 export default async function ProviderDetailPage({ params }: Props) {
   const resolvedParams = await params;
   const detail = PROVIDER_DETAILS[resolvedParams.slug];

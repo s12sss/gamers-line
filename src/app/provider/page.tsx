@@ -1,10 +1,12 @@
 "use client";
+
 import Link from "next/link";
 import { ChevronRight, Play } from "lucide-react";
 import ispsData from "@/data/isps.json";
 import { useState } from "react";
 import Tooltip from "@/components/Tooltip";
 import { PROVIDER_DETAILS } from "@/data/providerDetails";
+
 
 export default function ProviderPage() {
   const [speedFilter, setSpeedFilter] = useState<'all' | '10g' | '1g'>('all');

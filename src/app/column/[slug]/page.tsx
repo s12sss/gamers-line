@@ -33,6 +33,9 @@ export async function generateMetadata(
   return {
     title: column.title,
     description: column.content.replace(/<[^>]*>?/gm, '').substring(0, 120) + '...',
+    alternates: {
+      canonical: `/column/${resolvedParams.slug}`,
+    },
     openGraph: {
       title: column.title,
       description: column.content.replace(/<[^>]*>?/gm, '').substring(0, 120) + '...',
