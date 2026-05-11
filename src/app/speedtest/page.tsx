@@ -77,11 +77,11 @@ export default function SpeedTestPage() {
     // 合成スコア
     const composite = pingScore * 0.7 + dlScore * 0.3;
 
-    if (composite >= 85) return 'GOD';
-    if (composite >= 68) return 'MASTER';
-    if (composite >= 50) return 'DIAMOND';
-    if (composite >= 35) return 'GOLD';
-    if (composite >= 18) return 'SILVER';
+    if (composite >= 73) return 'GOD';
+    if (composite >= 58) return 'MASTER';
+    if (composite >= 44) return 'DIAMOND';
+    if (composite >= 30) return 'GOLD';
+    if (composite >= 15) return 'SILVER';
     return 'BRONZE';
   };
 
