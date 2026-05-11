@@ -68,13 +68,20 @@ export default function SpeedTestPage() {
     "その他"
   ];
 
-  // 階級判定ロジック（高精度化に合わせてしきい値を調整）
+  // 階級判定ロジック（Ping 70% + DL速度 30% の重み付けスコア）
   const calculateTier = (pingResult: number, speedResult: number): Tier => {
-    if (pingResult <= 8 && speedResult >= 600) return 'GOD';
-    if (pingResult <= 12 && speedResult >= 400) return 'MASTER';
-    if (pingResult <= 18 && speedResult >= 200) return 'DIAMOND';
-    if (pingResult <= 25 && speedResult >= 100) return 'GOLD';
-    if (pingResult <= 40 && speedResult >= 50) return 'SILVER';
+    // Ping スコア: 2ms=100点, 50ms=0点
+    const pingScore = Math.max(0, Math.min(100, (50 - pingResult) / 48 * 100));
+    // DL スコア: 1000Mbps=100点, 0Mbps=0点
+    const dlScore = Math.max(0, Math.min(100, speedResult / 10));
+    // 合成スコア
+    const composite = pingScore * 0.7 + dlScore * 0.3;
+
+    if (composite >= 85) return 'GOD';
+    if (composite >= 68) return 'MASTER';
+    if (composite >= 50) return 'DIAMOND';
+    if (composite >= 35) return 'GOLD';
+    if (composite >= 18) return 'SILVER';
     return 'BRONZE';
   };
 
@@ -466,39 +473,39 @@ export default function SpeedTestPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <div className="bg-[#0a0a12] border border-white/10 rounded-xl p-5 hover:border-[#ffeb3b]/50 transition-colors">
             <div className="text-[#ffeb3b] font-mono font-bold text-lg mb-2 drop-shadow-[0_0_8px_rgba(255,235,59,0.5)] flex items-center gap-2">
-              GOD <span className="text-xs font-sans text-white/50 font-normal">Ping 8ms以下</span>
+              GOD <span className="text-xs font-sans text-white/50 font-normal">Ping 7ms・900Mbps級</span>
             </div>
-            <p className="text-sm text-text-muted leading-relaxed">プロも嫉妬する国内最高峰の神回線。ラグという概念が存在しない最強の世界。</p>
+            <p className="text-sm text-text-muted leading-relaxed">Pingも速度も最高峰。NURO光など独自インフラ限定の領域。ラグという概念が存在しない。</p>
           </div>
           <div className="bg-[#0a0a12] border border-white/10 rounded-xl p-5 hover:border-[#e040fb]/50 transition-colors">
             <div className="text-[#e040fb] font-mono font-bold text-lg mb-2 drop-shadow-[0_0_8px_rgba(224,64,251,0.5)] flex items-center gap-2">
-              MASTER <span className="text-xs font-sans text-white/50 font-normal">Ping 12ms以下</span>
+              MASTER <span className="text-xs font-sans text-white/50 font-normal">Ping 12ms・500Mbps級</span>
             </div>
-            <p className="text-sm text-text-muted leading-relaxed">コンマ1秒を争うガチ勢に最適な素晴らしい環境。どんなゲームも極めて快適。</p>
+            <p className="text-sm text-text-muted leading-relaxed">ガチ勢が求める水準をクリア。低遅延かつ帯域も十分で、競技環境として文句なし。</p>
           </div>
           <div className="bg-[#0a0a12] border border-white/10 rounded-xl p-5 hover:border-[#00e5ff]/50 transition-colors">
             <div className="text-[#00e5ff] font-mono font-bold text-lg mb-2 drop-shadow-[0_0_8px_rgba(0,229,255,0.5)] flex items-center gap-2">
-              DIAMOND <span className="text-xs font-sans text-white/50 font-normal">Ping 18ms以下</span>
+              DIAMOND <span className="text-xs font-sans text-white/50 font-normal">Ping 18ms・300Mbps級</span>
             </div>
-            <p className="text-sm text-text-muted leading-relaxed">FPS・TPSをプレイする上で全く問題のない、非常に優秀で恵まれた通信環境。</p>
+            <p className="text-sm text-text-muted leading-relaxed">FPS・TPSで不満を感じない優秀な環境。一般ゲーマーとして十分すぎるスペック。</p>
           </div>
           <div className="bg-[#0a0a12] border border-white/10 rounded-xl p-5 hover:border-[#ffd700]/50 transition-colors">
             <div className="text-[#ffd700] font-mono font-bold text-lg mb-2 flex items-center gap-2">
-              GOLD <span className="text-xs font-sans text-white/50 font-normal">Ping 25ms以下</span>
+              GOLD <span className="text-xs font-sans text-white/50 font-normal">Ping 25ms・150Mbps級</span>
             </div>
-            <p className="text-sm text-text-muted leading-relaxed">一般的なオンラインゲームを遊ぶのに十分な水準。たまに撃ち負けるかも。</p>
+            <p className="text-sm text-text-muted leading-relaxed">MMOや格ゲーなら快適。FPSでたまに撃ち負ける場面があるかも。</p>
           </div>
           <div className="bg-[#0a0a12] border border-white/10 rounded-xl p-5 hover:border-[#c0c0c0]/50 transition-colors">
             <div className="text-[#c0c0c0] font-mono font-bold text-lg mb-2 flex items-center gap-2">
-              SILVER <span className="text-xs font-sans text-white/50 font-normal">Ping 40ms以下</span>
+              SILVER <span className="text-xs font-sans text-white/50 font-normal">Ping 35ms前後</span>
             </div>
-            <p className="text-sm text-text-muted leading-relaxed">少しラグを感じる場面があるかも。コンマ数秒を争うFPSなど以外であれば十分に遊べる環境。</p>
+            <p className="text-sm text-text-muted leading-relaxed">ラグを感じる場面が増えてくる水準。カジュアルゲームなら問題ないが改善を検討したい。</p>
           </div>
           <div className="bg-[#0a0a12] border border-white/10 rounded-xl p-5 hover:border-[#cd7f32]/50 transition-colors">
             <div className="text-[#cd7f32] font-mono font-bold text-lg mb-2 flex items-center gap-2">
-              BRONZE <span className="text-xs font-sans text-white/50 font-normal">Ping 41ms以上</span>
+              BRONZE <span className="text-xs font-sans text-white/50 font-normal">改善推奨</span>
             </div>
-            <p className="text-sm text-text-muted leading-relaxed">対人ゲームでは明確に不利になる環境。回線の乗り換えを強く推奨します。</p>
+            <p className="text-sm text-text-muted leading-relaxed">対人ゲームでは明確に不利な環境。回線の乗り換えを強く推奨します。</p>
           </div>
         </div>
       </div>
