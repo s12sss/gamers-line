@@ -6,6 +6,7 @@ import { Gamepad2, Home, Smartphone, Zap, Wallet, ChevronRight, ChevronLeft, Act
 import { UserAnswers, recommendISPs, ISP } from '@/utils/algorithm';
 import ispsData from '@/data/isps.json';
 import Link from 'next/link';
+import AffiliateLink from './AffiliateLink';
 
 const isps = ispsData as ISP[];
 
@@ -206,14 +207,14 @@ function ResultCard({ result, index, delay, requires10G }: { result: {isp: ISP, 
             <span className="text-[0.65rem] sm:text-[0.7rem] font-bold text-[#ffeb3b] tracking-tight bg-black/40 px-3 py-1 rounded-full border border-[#ffeb3b]/30 shadow-[0_0_10px_rgba(255,235,59,0.1)] w-full text-center whitespace-nowrap overflow-hidden text-ellipsis">
               ＼ {result.isp.cashback_text} ／
             </span>
-            <a 
-              href={result.isp.affiliateLink}
-              target="_blank"
-              rel="noopener noreferrer"
+            <AffiliateLink
+              href={result.isp.affiliateLink || '#'}
+              ispName={result.isp.name}
+              ispId={result.isp.id}
               className="w-full py-3.5 rounded-xl border border-cyan/30 bg-gradient-to-r from-cyan to-emerald text-black font-heading font-bold text-[0.85rem] sm:text-[0.95rem] flex items-center justify-center gap-2 tracking-tight transition-all hover:shadow-[0_0_20px_rgba(0,230,118,0.4)]"
             >
               お得に申し込む <ChevronRight className="w-4 h-4" />
-            </a>
+            </AffiliateLink>
           </div>
         ) : (
           <span 

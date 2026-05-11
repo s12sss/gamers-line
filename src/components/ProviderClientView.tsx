@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { ProviderDetail } from '@/data/providerDetails';
 import { Check, X, ChevronRight } from 'lucide-react';
+import AffiliateLink from './AffiliateLink';
 import ProviderRadarChart from './ProviderRadarChart';
 
 type IspData = {
@@ -204,18 +205,15 @@ export default function ProviderClientView({ detail, isps, allProviders }: Props
         <p className="text-[#ffeb3b] font-bold text-sm sm:text-base mb-8 drop-shadow-md relative z-10">
           ＼ {activeIsp.cashback_text} ／
         </p>
-        <a
-          href={activeIsp.affiliateLink !== "#" ? activeIsp.affiliateLink : "#"}
-          target={activeIsp.affiliateLink !== "#" ? "_blank" : undefined}
-          rel="noopener noreferrer"
+        <AffiliateLink
+          href={activeIsp.affiliateLink}
+          ispName={activeIsp.name}
+          ispId={activeIsp.id}
           className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-cyan text-black font-black text-lg sm:text-xl rounded-full transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(0,229,255,0.5)] relative z-10"
         >
           {detail.name}のお申込みはこちら
           <ChevronRight className="w-6 h-6" />
-        </a>
-        {activeIsp.affiliateLink === "#" && (
-          <p className="text-sm text-text-muted mt-4">※現在リンク準備中です</p>
-        )}
+        </AffiliateLink>
       </div>
     </div>
   );

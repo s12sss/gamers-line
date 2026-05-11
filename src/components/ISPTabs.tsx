@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { ExternalLink } from 'lucide-react';
+import AffiliateLink from './AffiliateLink';
 
 interface ISP {
   id: string;
@@ -56,15 +57,15 @@ function ISPCard({ isp, idx }: { isp: ISP; idx: number }) {
         </div>
       </div>
       <div className="w-full md:w-auto flex-shrink-0">
-        <a
+        <AffiliateLink
           href={isp.affiliateLink || '#'}
-          target="_blank"
-          rel="noopener noreferrer sponsored"
+          ispName={isp.name}
+          ispId={isp.id}
           className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-cyan text-black font-bold rounded-full hover:scale-105 transition-transform shadow-[0_0_20px_rgba(0,229,255,0.3)] w-full"
         >
           公式サイトを見る
           <ExternalLink className="w-4 h-4" />
-        </a>
+        </AffiliateLink>
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import ispsData from "@/data/isps.json";
 import { useState } from "react";
 import Tooltip from "@/components/Tooltip";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import AffiliateLink from "@/components/AffiliateLink";
 
 
 export default function ComparePage() {
@@ -404,9 +405,9 @@ export default function ComparePage() {
                       <span className="text-[0.55rem] font-bold text-[#ffeb3b] tracking-tighter w-full text-center whitespace-nowrap overflow-hidden text-ellipsis">
                         ＼ {isp.cashback_text.replace('キャッシュバック', 'CB')} ／
                       </span>
-                      <a href={isp.affiliateLink} target="_blank" rel="noopener noreferrer" className={`inline-flex w-full items-center justify-center gap-1 px-1 py-2.5 rounded-lg font-heading font-bold text-[0.75rem] bg-cyan text-black transition-all hover:bg-cyan/80 hover:shadow-[0_0_15px_rgba(0,229,255,0.4)]`}>
+                      <AffiliateLink href={isp.affiliateLink} ispName={isp.name} ispId={isp.id} className="inline-flex w-full items-center justify-center gap-1 px-1 py-2.5 rounded-lg font-heading font-bold text-[0.75rem] bg-cyan text-black transition-all hover:bg-cyan/80 hover:shadow-[0_0_15px_rgba(0,229,255,0.4)]">
                         お申し込み
-                      </a>
+                      </AffiliateLink>
                     </div>
                   ) : (
                     <span className={`inline-flex w-full items-center justify-center gap-1 px-2 py-2.5 rounded-lg font-heading font-bold text-[0.8rem] bg-cyan/30 text-black/50 cursor-not-allowed`}>
