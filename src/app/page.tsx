@@ -200,7 +200,7 @@ export default async function Home() {
             className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full border border-white/10 bg-white/5 text-text-muted text-[15px] font-medium transition-all hover:border-emerald/30 hover:text-text hover:bg-emerald/5 w-full sm:w-auto"
           >
             <Activity className="w-4 h-4" />
-            回線速度を計測
+            回線速度を調べる
           </Link>
         </div>
       </div>
