@@ -76,9 +76,9 @@ function calculateScore(isp: ISP, answers: UserAnswers): number {
     score += (answers.priority !== 'price') ? 3 : 15;
   }
 
-  // 運営が誠実にお勧めできる「NURO」と「hi-ho」への特別ボーナス
-  if (isp.id.includes('nuro_hikari') || isp.id.includes('hi-ho_with_games')) {
-    score += 40; 
+  // NUROへの特別ボーナス（独自インフラ・低Ping実績）
+  if (isp.id.includes('nuro_hikari')) {
+    score += 40;
   }
 
   // アフィリエイト提携待ちのため、GameWith光の表示優先度を意図的に下げるペナルティ
