@@ -20,11 +20,11 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://gamers-line.jp'),
   title: {
     template: "%s | Gamer's Line",
-    default: "Gamer's Line | ゲーマー向け光回線診断・比較メディア",
+    default: "ゲーマー向け光回線診断 - Gamer's Line",
   },
   description: "Ping値と実質料金の最適解を導き出す、FPSゲーマー特化型の光回線・Ping改善診断メディア。",
   openGraph: {
-    title: "Gamer's Line | ゲーマー向け光回線診断・比較メディア",
+    title: "ゲーマー向け光回線診断 - Gamer's Line",
     description: "Ping値と実質料金の最適解を導き出す、FPSゲーマー特化型の光回線・Ping改善診断メディア。",
     url: 'https://gamers-line.jp',
     siteName: "Gamer's Line",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Gamer's Line | ゲーマー向け光回線診断・比較メディア",
+    title: "ゲーマー向け光回線診断 - Gamer's Line",
     description: "Ping値と実質料金の最適解を導き出す、FPSゲーマー特化型の光回線・Ping改善診断メディア。",
   },
   verification: {
