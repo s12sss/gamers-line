@@ -98,6 +98,7 @@ export default function SpeedTestPage() {
 
     // 2. 高精度Ping測定 (USENと同じ水準にするため、サンプル数を減らし強力な補正をかける)
     let validPings: number[] = [];
+    const orderedPings: number[] = [];
     const pingSamples = 10;
     
     for (let i = 0; i < pingSamples; i++) {
@@ -119,6 +120,7 @@ export default function SpeedTestPage() {
       // 0.18〜0.2倍して「実質的なゲーム用Ping」に変換する
       const estimatedIcmpPing = Math.max(2, Math.round(rtt * 0.18));
       validPings.push(estimatedIcmpPing);
+      orderedPings.push(estimatedIcmpPing);
       
       const currentAvg = Math.round(validPings.reduce((a, b) => a + b, 0) / validPings.length);
       setPing(currentAvg);
@@ -172,9 +174,11 @@ export default function SpeedTestPage() {
     const finalSpeed = Math.round((totalBytes * 8) / (totalElapsed / 1000) / 1000000) || 1;
     setSpeed(finalSpeed);
 
-    const finalJitter = Math.round(
-      trimmedPings.reduce((sum, p) => sum + Math.abs(p - finalPing), 0) / trimmedPings.length
-    ) || 0;
+    const finalJitter = orderedPings.length > 1
+      ? Math.round(
+          orderedPings.slice(1).reduce((sum, p, i) => sum + Math.abs(p - orderedPings[i]), 0) / (orderedPings.length - 1)
+        )
+      : 0;
 
     const tier = calculateTier(finalPing, finalSpeed);
     setResult({ ping: finalPing, jitter: finalJitter, speed: finalSpeed, tier });
