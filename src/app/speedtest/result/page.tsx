@@ -16,6 +16,9 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   return {
     title: `私の回線ランクは【${tier}】でした！ | Gamer's Line`,
     description: `Ping: ${ping}ms / DL: ${dl}Mbps — ゲーマー回線ランク診断の結果です。あなたのランクは？`,
+    alternates: {
+      canonical: `https://gamers-line.jp/speedtest/result?ping=${ping}&tier=${tier}&dl=${dl}`,
+    },
     openGraph: {
       title: `私の回線ランクは【${tier}】でした！ | Gamer's Line`,
       description: `Ping: ${ping}ms / DL: ${dl}Mbps — ゲーマー回線ランク診断の結果です。あなたのランクは？`,
