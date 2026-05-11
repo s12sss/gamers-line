@@ -6,6 +6,14 @@ export interface ProviderDetail {
   catchphrase: string;
   heroDescription: string;
   ispIds: string[]; // 10G, 1Gなど複数のプランID
+  stats?: {
+    ping: number;
+    stability: number;
+    speed: number;
+    cost: number;
+    installation: number;
+    benefit: number;
+  };
   bodyContent: React.ReactNode;
 }
 
@@ -16,6 +24,7 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
     catchphrase: '関西ゲーマーの特権。圧倒的な安さとPing一桁を叩き出す最強の独自回線',
     heroDescription: '関西エリア（大阪・京都・兵庫・奈良・滋賀・和歌山・福井）にお住まいなら、迷わずeo光一択です。NTT網を使わない「独自回線」のため混雑に強く、特にゲーム用途においては圧倒的なコストパフォーマンスを誇る「eo光シンプルプラン」が最強の選択肢となります。',
     ispIds: ['eo_hikari_10g', 'eo_hikari_1g'],
+    stats: { ping: 5, stability: 5, speed: 4, cost: 5, installation: 2, benefit: 4 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>
@@ -73,6 +82,7 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
     catchphrase: '標準で2Gbps。プロゲーマーも愛用する圧倒的なスピード',
     heroDescription: 'ソニーネットワークコミュニケーションズが提供するNURO光は、標準プランで「下り最大2Gbps」という驚異的なスピードを誇ります。プロeスポーツチームも採用するほどの回線品質と、高額なキャッシュバックが魅力です。',
     ispIds: ['nuro_hikari_10g', 'nuro_hikari_2g'],
+    stats: { ping: 4, stability: 4, speed: 5, cost: 4, installation: 2, benefit: 5 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>
@@ -119,6 +129,7 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
     catchphrase: 'ゲーマー専用帯域×高性能ルーター。設定不要で手に入る圧倒的低遅延',
     heroDescription: '株式会社ハイホーが提供する、オンラインゲーム特化型の光コラボ回線です。通常の光回線とは異なる「ゲーム専用帯域」を確保しており、さらにゲームに最適な高性能ゲーミングルーターが標準でセットになるため、ネットワークの知識がなくても最高のゲーム環境が手に入ります。',
     ispIds: ['hi-ho_with_games_10g', 'hi-ho_with_games_1g'],
+    stats: { ping: 4, stability: 4, speed: 4, cost: 3, installation: 5, benefit: 3 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>
@@ -171,6 +182,7 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
     catchphrase: 'ゲーム攻略メディアが本気で作った「ゲーマー専用」光コラボ',
     heroDescription: '国内最大級のゲームメディア「GameWith」が提供するゲーミング専用回線です。全国どこでも使える「光コラボ」でありながら、ゲームの通信を優先する専用帯域を確保しているため、光コラボ特有のラグや遅延を極限まで抑え込みます。',
     ispIds: ['gamewith_hikari_10g', 'gamewith_hikari_1g'],
+    stats: { ping: 5, stability: 4, speed: 4, cost: 3, installation: 5, benefit: 2 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>
@@ -207,6 +219,7 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
     catchphrase: '独自網による圧倒的安定感。auユーザーならさらに神コスパ',
     heroDescription: 'KDDIが自社で保有する独自の光ファイバー網を利用した光回線です。NTT回線とは異なるネットワークを使用しているため、夜間の混雑時でもパケットロストが少なく、安定したPing値を維持できます。auユーザーなら割引の恩恵が絶大です。',
     ispIds: ['au_hikari_10g', 'au_hikari_1g'],
+    stats: { ping: 5, stability: 5, speed: 4, cost: 4, installation: 3, benefit: 5 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>
@@ -247,6 +260,7 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
     catchphrase: 'プロバイダ「GMOとくとくBB」で速度と高額還元を両立。ドコモユーザー最強の選択',
     heroDescription: 'NTTのフレッツ網を利用する全国対応の光コラボ回線ですが、プロバイダとして「GMOとくとくBB」を選択することで、最新のv6プラス通信による超低遅延と、業界最高クラスの高額キャッシュバックを同時に手に入れることができます。',
     ispIds: ['docomo_hikari_10g', 'docomo_hikari_1g'],
+    stats: { ping: 3, stability: 3, speed: 3, cost: 4, installation: 5, benefit: 5 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>
@@ -294,6 +308,7 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
     catchphrase: 'ソフトバンクユーザーなら外せない、定番の光コラボ',
     heroDescription: 'ソフトバンク・ワイモバイルユーザーならセット割でお得になる光コラボレーション回線です。全国どこでも利用でき、他社からの乗り換え時の違約金満額還元など、手厚いキャンペーンが魅力です。',
     ispIds: ['softbank_hikari_10g', 'softbank_hikari_1g'],
+    stats: { ping: 3, stability: 3, speed: 3, cost: 4, installation: 5, benefit: 4 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>
@@ -315,6 +330,7 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
     catchphrase: 'au・UQユーザーのもう一つの選択肢',
     heroDescription: 'KDDIグループの老舗プロバイダ「BIGLOBE」が提供する光コラボ回線です。auひかりの提供エリア外でも、auやUQモバイルのセット割を適用できる全国対応の回線です。',
     ispIds: ['biglobe_hikari_10g', 'biglobe_hikari_1g'],
+    stats: { ping: 3, stability: 3, speed: 3, cost: 4, installation: 5, benefit: 4 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>
@@ -336,6 +352,7 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
     catchphrase: '東海エリア最強の独自回線',
     heroDescription: '東海エリア（愛知・岐阜・三重・静岡・長野）限定で提供されている独自回線です。ゲーマーに特化した専用プランがあり、低Ping・パケットロストゼロの最強環境を構築できます。',
     ispIds: ['commufa_hikari_10g', 'commufa_hikari_1g'],
+    stats: { ping: 5, stability: 5, speed: 4, cost: 5, installation: 2, benefit: 4 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>
@@ -357,6 +374,7 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
     catchphrase: '四国エリアで安定感抜群の独自網',
     heroDescription: '四国電力グループが提供する四国エリア限定の独自回線です。四国地方での圧倒的なシェアと、auスマホとのセット割が魅力の地域密着型サービスです。',
     ispIds: ['pikara_hikari_10g', 'pikara_hikari_1g'],
+    stats: { ping: 5, stability: 5, speed: 4, cost: 4, installation: 2, benefit: 3 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>
@@ -378,6 +396,7 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
     catchphrase: '中国エリアの快適ゲームライフを支える独自回線',
     heroDescription: '中国電力グループが提供する中国エリア限定の光回線サービスです。他県からの影響を受けにくい独自のネットワーク網で、安定した通信と低Pingを実現します。',
     ispIds: ['megaegg_hikari_10g', 'megaegg_hikari_1g'],
+    stats: { ping: 5, stability: 5, speed: 4, cost: 4, installation: 2, benefit: 3 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>
@@ -400,6 +419,7 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
     catchphrase: '九州ゲーマーの特権。電力系ネットワークで圧倒的な安定感',
     heroDescription: '九州エリア（福岡・佐賀・長崎・熊本・大分・宮崎・鹿児島）にお住まいなら、九州電力グループのQTnetが提供する独自回線「BBIQ」が強力な選択肢となります。フレッツ光とは異なる独自の光ファイバー網を使用しているため、夜間の混雑時でもPingが安定しやすく、FPSや格闘ゲームにおいて絶大な威力を発揮します。',
     ispIds: ['bbiq_hikari_10g', 'bbiq_hikari_1g'],
+    stats: { ping: 5, stability: 5, speed: 4, cost: 4, installation: 2, benefit: 4 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>
@@ -426,6 +446,7 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
     catchphrase: '回線工事不要。プロバイダ乗り換えだけで手に入る圧倒的低遅延',
     heroDescription: '「光回線の工事ができない」「今のフレッツ光やドコモ光のままでPingを良くしたい」というゲーマーのための、eスポーツ特化型プロバイダです。次世代のIPv6 IPoE接続を利用した専用帯域により、夜間の混雑時でもラグのない快適なプレイ環境を実現します。',
     ispIds: ['gaming-plus_10g', 'gaming-plus_1g'],
+    stats: { ping: 4, stability: 4, speed: 3, cost: 2, installation: 5, benefit: 3 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>

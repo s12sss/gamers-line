@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { ProviderDetail } from '@/data/providerDetails';
 import { Check, X, ChevronRight } from 'lucide-react';
+import ProviderRadarChart from './ProviderRadarChart';
 
 type IspData = {
   id: string;
@@ -60,56 +61,72 @@ export default function ProviderClientView({ detail, isps }: Props) {
         </div>
       )}
 
-      {/* Spec Radar / Grid */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-        <div className="bg-[#050505] border border-white/10 rounded-2xl p-6 relative overflow-hidden group hover:border-cyan/30 transition-colors">
-          <div className="absolute inset-0 bg-gradient-to-br from-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-          <div className="text-text-muted text-xs font-bold tracking-widest mb-2 font-mono">AVG PING</div>
-          <div className="text-4xl font-black text-cyan drop-shadow-[0_0_15px_rgba(0,229,255,0.3)]">
-            {activeIsp.avg_ping_ms}<span className="text-lg text-text-muted ml-1">ms</span>
+      {/* Top Section: Radar Chart & Spec Grid */}
+      <div className="grid lg:grid-cols-5 gap-8 mb-12">
+        
+        {/* Radar Chart */}
+        <div className="lg:col-span-2 flex flex-col items-center justify-center bg-[#050505] border border-white/10 rounded-3xl p-6 relative overflow-hidden group hover:border-cyan/30 transition-colors">
+          <div className="text-center mb-2 z-10 relative">
+            <h3 className="font-heading text-lg font-bold tracking-widest text-cyan drop-shadow-[0_0_10px_rgba(0,229,255,0.8)]">
+              総合ステータス
+            </h3>
           </div>
+          {detail.stats && <ProviderRadarChart stats={detail.stats} />}
         </div>
-        <div className="bg-[#050505] border border-white/10 rounded-2xl p-6 relative overflow-hidden group hover:border-emerald/30 transition-colors">
-          <div className="absolute inset-0 bg-gradient-to-br from-emerald/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-          <div className="text-text-muted text-xs font-bold tracking-widest mb-2 font-mono">MAX SPEED</div>
-          <div className="text-4xl font-black text-emerald drop-shadow-[0_0_15px_rgba(16,185,129,0.3)]">
-            {activeIsp.max_speed_gbps}<span className="text-lg text-text-muted ml-1">Gbps</span>
-          </div>
-        </div>
-        <div className="bg-[#050505] border border-white/10 rounded-2xl p-5 sm:p-6 relative overflow-hidden group hover:border-purple-500/30 transition-colors flex flex-col justify-center">
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-          <div className="text-text-muted text-xs font-bold tracking-widest mb-3 font-mono">MONTHLY FEE</div>
-          <div className="flex flex-col gap-2">
-            <div className="flex items-center gap-2">
-              <span className="text-[0.6rem] text-text-muted px-1.5 py-0.5 bg-white/5 rounded leading-none shrink-0">戸建</span>
-              <div className="text-2xl font-black text-purple-400 leading-none">
-                <span className="text-xs mr-1 text-purple-400/80">¥</span>{activeIsp.actual_monthly_fee_jpy.toLocaleString()}
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-[0.6rem] text-text-muted px-1.5 py-0.5 bg-white/5 rounded leading-none shrink-0">ﾏﾝｼｮﾝ</span>
-              <div className="text-2xl font-black text-purple-400 leading-none">
-                <span className="text-xs mr-1 text-purple-400/80">¥</span>{activeIsp.mansion_monthly_fee_jpy.toLocaleString()}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="bg-[#050505] border border-white/10 rounded-2xl p-6 relative overflow-hidden group hover:border-yellow-500/30 transition-colors">
-          <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-          <div className="text-text-muted text-xs font-bold tracking-widest mb-2 font-mono">STABILITY</div>
-          <div className="text-4xl font-black text-yellow-500 drop-shadow-[0_0_15px_rgba(234,179,8,0.3)]">
-            {activeIsp.stability_score}<span className="text-lg text-text-muted ml-1">/100</span>
-          </div>
-        </div>
-      </div>
 
-      <div className="flex flex-col gap-2 mb-12 px-2">
-        <p className="text-[0.7rem] sm:text-xs text-text-muted/80 leading-relaxed">
-          ※ <strong className="text-yellow-500/80">STABILITY（安定性スコア）</strong> は、Ping値の変動幅・パケットロスト率・夜間帯の混雑による速度低下率など、ゲーマーにとって致命的となる要素を総合的に評価した100点満点の独自指標です。
-        </p>
-        <p className="text-[0.7rem] sm:text-xs text-text-muted/80 leading-relaxed">
-          ※ <strong className="text-purple-400/80">実質月額</strong> は各種キャンペーンを考慮した目安です。建物の設備や各社の期間限定キャンペーン・スマホセット割の適用状況により、実際の負担額は変動する場合があります。
-        </p>
+        {/* Spec Grid */}
+        <div className="lg:col-span-3 flex flex-col justify-center">
+          <div className="grid sm:grid-cols-2 gap-4 mb-4">
+            <div className="bg-[#050505] border border-white/10 rounded-2xl p-6 relative overflow-hidden group hover:border-cyan/30 transition-colors">
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="text-text-muted text-xs font-bold tracking-widest mb-2 font-mono">AVG PING</div>
+              <div className="text-4xl font-black text-cyan drop-shadow-[0_0_15px_rgba(0,229,255,0.3)]">
+                {activeIsp.avg_ping_ms}<span className="text-lg text-text-muted ml-1">ms</span>
+              </div>
+            </div>
+            <div className="bg-[#050505] border border-white/10 rounded-2xl p-6 relative overflow-hidden group hover:border-emerald/30 transition-colors">
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="text-text-muted text-xs font-bold tracking-widest mb-2 font-mono">MAX SPEED</div>
+              <div className="text-4xl font-black text-emerald drop-shadow-[0_0_15px_rgba(16,185,129,0.3)]">
+                {activeIsp.max_speed_gbps}<span className="text-lg text-text-muted ml-1">Gbps</span>
+              </div>
+            </div>
+            <div className="bg-[#050505] border border-white/10 rounded-2xl p-5 sm:p-6 relative overflow-hidden group hover:border-purple-500/30 transition-colors flex flex-col justify-center">
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="text-text-muted text-xs font-bold tracking-widest mb-3 font-mono">MONTHLY FEE</div>
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center gap-2">
+                  <span className="text-[0.6rem] text-text-muted px-1.5 py-0.5 bg-white/5 rounded leading-none shrink-0">戸建</span>
+                  <div className="text-2xl font-black text-purple-400 leading-none">
+                    <span className="text-xs mr-1 text-purple-400/80">¥</span>{activeIsp.actual_monthly_fee_jpy.toLocaleString()}
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-[0.6rem] text-text-muted px-1.5 py-0.5 bg-white/5 rounded leading-none shrink-0">ﾏﾝｼｮﾝ</span>
+                  <div className="text-2xl font-black text-purple-400 leading-none">
+                    <span className="text-xs mr-1 text-purple-400/80">¥</span>{activeIsp.mansion_monthly_fee_jpy.toLocaleString()}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="bg-[#050505] border border-white/10 rounded-2xl p-6 relative overflow-hidden group hover:border-yellow-500/30 transition-colors">
+              <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="text-text-muted text-xs font-bold tracking-widest mb-2 font-mono">STABILITY</div>
+              <div className="text-4xl font-black text-yellow-500 drop-shadow-[0_0_15px_rgba(234,179,8,0.3)]">
+                {activeIsp.stability_score}<span className="text-lg text-text-muted ml-1">/100</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-2 px-2">
+            <p className="text-[0.7rem] sm:text-xs text-text-muted/80 leading-relaxed">
+              ※ <strong className="text-yellow-500/80">STABILITY（安定性スコア）</strong> は、Ping値の変動幅・パケットロスト率・夜間帯の混雑による速度低下率など、ゲーマーにとって致命的となる要素を総合的に評価した100点満点の独自指標です。
+            </p>
+            <p className="text-[0.7rem] sm:text-xs text-text-muted/80 leading-relaxed">
+              ※ <strong className="text-purple-400/80">実質月額</strong> は各種キャンペーンを考慮した目安です。建物の設備や各社の期間限定キャンペーン・スマホセット割の適用状況により、実際の負担額は変動する場合があります。
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* Pros & Cons */}
