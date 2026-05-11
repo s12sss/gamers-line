@@ -82,7 +82,7 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
     catchphrase: '標準で2Gbps。プロゲーマーも愛用する圧倒的なスピード',
     heroDescription: 'ソニーネットワークコミュニケーションズが提供するNURO光は、標準プランで「下り最大2Gbps」という驚異的なスピードを誇ります。プロeスポーツチームも採用するほどの回線品質と、高額なキャッシュバックが魅力です。',
     ispIds: ['nuro_hikari_10g', 'nuro_hikari_2g'],
-    stats: { ping: 4, stability: 4, speed: 5, cost: 4, installation: 2, benefit: 5 },
+    stats: { ping: 5, stability: 4, speed: 5, cost: 4, installation: 2, benefit: 5 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>
