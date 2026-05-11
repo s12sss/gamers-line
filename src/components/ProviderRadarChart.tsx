@@ -12,14 +12,24 @@ export interface RadarStats {
   benefit: number;
 }
 
-export default function ProviderRadarChart({ stats }: { stats: RadarStats }) {
+export default function ProviderRadarChart({ 
+  stats,
+  compareStats,
+  baseName = 'この回線',
+  compareName = '比較対象',
+}: { 
+  stats: RadarStats;
+  compareStats?: RadarStats;
+  baseName?: string;
+  compareName?: string;
+}) {
   const data = [
-    { subject: 'Ping値', A: stats.ping, fullMark: 5 },
-    { subject: '安定度', A: stats.stability, fullMark: 5 },
-    { subject: '通信速度', A: stats.speed, fullMark: 5 },
-    { subject: 'コスパ', A: stats.cost, fullMark: 5 },
-    { subject: '特典', A: stats.benefit, fullMark: 5 },
-    { subject: '導入しやすさ', A: stats.installation, fullMark: 5 },
+    { subject: 'Ping値', A: stats.ping, B: compareStats?.ping, fullMark: 5 },
+    { subject: '安定度', A: stats.stability, B: compareStats?.stability, fullMark: 5 },
+    { subject: '通信速度', A: stats.speed, B: compareStats?.speed, fullMark: 5 },
+    { subject: 'コスパ', A: stats.cost, B: compareStats?.cost, fullMark: 5 },
+    { subject: '特典', A: stats.benefit, B: compareStats?.benefit, fullMark: 5 },
+    { subject: '導入しやすさ', A: stats.installation, B: compareStats?.installation, fullMark: 5 },
   ];
 
   const [activeTab, setActiveTab] = useState<string | null>(null);
@@ -34,8 +44,21 @@ export default function ProviderRadarChart({ stats }: { stats: RadarStats }) {
   };
 
   return (
-    <div className="flex flex-col w-full">
-      <div className="w-full h-[300px] sm:h-[350px] relative">
+    <div className="flex flex-col w-full relative">
+      {compareStats && (
+        <div className="absolute top-2 left-2 z-20 flex flex-col gap-1.5 text-[10px] sm:text-xs">
+          <div className="flex items-center gap-2 bg-black/50 px-2 py-1 rounded-md border border-cyan/30">
+            <span className="w-3 h-3 rounded-full bg-[#00e5ff] shadow-[0_0_8px_rgba(0,229,255,0.8)]" />
+            <span className="text-white font-bold">{baseName}</span>
+          </div>
+          <div className="flex items-center gap-2 bg-black/50 px-2 py-1 rounded-md border border-[#ff00ea]/30">
+            <span className="w-3 h-3 rounded-full bg-[#ff00ea] shadow-[0_0_8px_rgba(255,0,234,0.8)]" />
+            <span className="text-white font-bold">{compareName}</span>
+          </div>
+        </div>
+      )}
+
+      <div className="w-full h-[300px] sm:h-[350px] relative z-10">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,229,255,0.08),transparent_60%)] pointer-events-none" />
       <ResponsiveContainer width="100%" height="100%">
         <RadarChart cx="50%" cy="50%" outerRadius="60%" data={data} margin={{ top: 10, right: 25, bottom: 10, left: 25 }}>
@@ -51,18 +74,33 @@ export default function ProviderRadarChart({ stats }: { stats: RadarStats }) {
             axisLine={false} 
           />
           <Radar
-            name="ステータス"
+            name={baseName}
             dataKey="A"
             stroke="#00e5ff"
             strokeWidth={2}
             fill="url(#colorCyan)"
-            fillOpacity={0.6}
+            fillOpacity={compareStats ? 0.4 : 0.6}
             isAnimationActive={true}
           />
+          {compareStats && (
+            <Radar
+              name={compareName}
+              dataKey="B"
+              stroke="#ff00ea"
+              strokeWidth={2}
+              fill="url(#colorMagenta)"
+              fillOpacity={0.4}
+              isAnimationActive={true}
+            />
+          )}
           <defs>
             <linearGradient id="colorCyan" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="#00e5ff" stopOpacity={0.9}/>
               <stop offset="100%" stopColor="#00e5ff" stopOpacity={0.1}/>
+            </linearGradient>
+            <linearGradient id="colorMagenta" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#ff00ea" stopOpacity={0.9}/>
+              <stop offset="100%" stopColor="#ff00ea" stopOpacity={0.1}/>
             </linearGradient>
           </defs>
         </RadarChart>

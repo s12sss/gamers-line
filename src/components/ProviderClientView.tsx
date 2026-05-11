@@ -19,16 +19,28 @@ type IspData = {
   cons: string[];
 };
 
+import { RadarStats } from './ProviderRadarChart';
+
+type CompareProvider = {
+  slug: string;
+  name: string;
+  stats: RadarStats;
+};
+
 type Props = {
   detail: ProviderDetail;
   isps: IspData[];
+  allProviders?: CompareProvider[];
 };
 
-export default function ProviderClientView({ detail, isps }: Props) {
+export default function ProviderClientView({ detail, isps, allProviders }: Props) {
   // デフォルト表示を10G以外のプラン（1Gや2Gなど）にする
   const [activeIspId, setActiveIspId] = useState(
     isps.find(isp => !isp.id.includes('10g'))?.id || isps[0].id
   );
+  
+  const [compareSlug, setCompareSlug] = useState<string>('');
+  const compareProvider = allProviders?.find(p => p.slug === compareSlug);
 
   const activeIsp = isps.find(isp => isp.id === activeIspId) || isps[0];
 
@@ -124,7 +136,29 @@ export default function ProviderClientView({ detail, isps }: Props) {
             <p className="text-sm text-text-muted mt-2">各項目の強み・弱みを独自に評価</p>
           </div>
           <div className="max-w-[500px] mx-auto relative z-10">
-            <ProviderRadarChart stats={detail.stats} />
+            <ProviderRadarChart 
+              stats={detail.stats}
+              compareStats={compareProvider?.stats}
+              baseName={detail.name}
+              compareName={compareProvider?.name}
+            />
+
+            {/* Compare Selector */}
+            {allProviders && allProviders.length > 0 && (
+              <div className="mt-6 flex flex-col items-center border-t border-white/10 pt-6">
+                <label className="text-xs text-text-muted/70 mb-2 font-bold tracking-wider">COMPARE WITH</label>
+                <select
+                  className="bg-[#0a0a0a] border border-white/20 text-white rounded-full px-5 py-2.5 text-sm outline-none focus:border-cyan hover:border-cyan/50 transition-colors cursor-pointer text-center appearance-none"
+                  value={compareSlug}
+                  onChange={(e) => setCompareSlug(e.target.value)}
+                >
+                  <option value="">▼ 比較する回線を選択</option>
+                  {allProviders.map(p => (
+                    <option key={p.slug} value={p.slug}>{p.name}</option>
+                  ))}
+                </select>
+              </div>
+            )}
           </div>
         </div>
       )}

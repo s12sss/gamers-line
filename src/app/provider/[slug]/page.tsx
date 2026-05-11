@@ -58,6 +58,15 @@ export default async function ProviderDetailPage({ params }: Props) {
   // 名前から一意のレビュー数を生成
   const reviewCount = (detail.name.charCodeAt(0) * 15 + Math.floor(avgPing * 10)).toString();
 
+  // 比較用の他プロバイダデータを抽出
+  const allProviders = Object.values(PROVIDER_DETAILS)
+    .filter((p) => p.slug !== detail.slug && p.stats)
+    .map((p) => ({
+      slug: p.slug,
+      name: p.name,
+      stats: p.stats!,
+    }));
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -104,7 +113,7 @@ export default async function ProviderDetailPage({ params }: Props) {
         </div>
 
         {/* 1G/10G切り替え可能なクライアントビュー */}
-        <ProviderClientView detail={detail} isps={matchingIsps} />
+        <ProviderClientView detail={detail} isps={matchingIsps} allProviders={allProviders} />
 
       </div>
     </div>
