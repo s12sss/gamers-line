@@ -12,6 +12,7 @@ type Tier = 'GOD' | 'MASTER' | 'DIAMOND' | 'GOLD' | 'SILVER' | 'BRONZE';
 
 interface TestResult {
   ping: number;
+  jitter: number;
   speed: number;
   tier: Tier;
 }
@@ -171,8 +172,12 @@ export default function SpeedTestPage() {
     const finalSpeed = Math.round((totalBytes * 8) / (totalElapsed / 1000) / 1000000) || 1;
     setSpeed(finalSpeed);
 
+    const finalJitter = Math.round(
+      trimmedPings.reduce((sum, p) => sum + Math.abs(p - finalPing), 0) / trimmedPings.length
+    ) || 0;
+
     const tier = calculateTier(finalPing, finalSpeed);
-    setResult({ ping: finalPing, speed: finalSpeed, tier });
+    setResult({ ping: finalPing, jitter: finalJitter, speed: finalSpeed, tier });
     setStatus('RESULT');
 
     if (typeof window !== 'undefined' && (window as any).gtag) {
@@ -342,21 +347,29 @@ export default function SpeedTestPage() {
                   {result.tier}
                 </motion.h2>
 
-                <div className="grid grid-cols-2 gap-4 w-full max-w-sm mb-10">
-                  <div className="bg-black/40 border border-white/5 rounded-[14px] p-4 sm:p-5 flex flex-col items-center">
-                    <div className="text-[0.65rem] sm:text-[0.7rem] text-text-muted mb-2 tracking-wider">Ping</div>
-                    <div className="flex items-baseline gap-1">
-                      <Activity className="w-[14px] h-[14px] text-emerald relative top-[2px] mr-1" />
-                      <span className="font-mono text-3xl font-bold text-emerald drop-shadow-[0_0_20px_rgba(0,230,118,0.4)] leading-none">{result.ping}</span>
-                      <span className="text-[0.7rem] text-text-muted ml-0.5">ms</span>
+                <div className="grid grid-cols-3 gap-3 w-full max-w-sm mb-10">
+                  <div className="bg-black/40 border border-white/5 rounded-[14px] p-4 flex flex-col items-center">
+                    <div className="text-[0.6rem] text-text-muted mb-2 tracking-wider">Ping</div>
+                    <div className="flex items-baseline gap-0.5">
+                      <Activity className="w-[12px] h-[12px] text-emerald relative top-[2px] mr-0.5" />
+                      <span className="font-mono text-2xl font-bold text-emerald drop-shadow-[0_0_20px_rgba(0,230,118,0.4)] leading-none">{result.ping}</span>
+                      <span className="text-[0.6rem] text-text-muted ml-0.5">ms</span>
                     </div>
                   </div>
-                  <div className="bg-black/40 border border-white/5 rounded-[14px] p-4 sm:p-5 flex flex-col items-center">
-                    <div className="text-[0.65rem] sm:text-[0.7rem] text-text-muted mb-2 tracking-wider">Speed</div>
-                    <div className="flex items-baseline gap-1">
-                      <Download className="w-[14px] h-[14px] text-cyan relative top-[2px] mr-1" />
-                      <span className="font-mono text-3xl font-bold text-cyan drop-shadow-[0_0_20px_rgba(0,229,255,0.4)] leading-none">{result.speed}</span>
-                      <span className="text-[0.7rem] text-text-muted ml-0.5">Mbps</span>
+                  <div className="bg-black/40 border border-white/5 rounded-[14px] p-4 flex flex-col items-center">
+                    <div className="text-[0.6rem] text-text-muted mb-2 tracking-wider">Jitter</div>
+                    <div className="flex items-baseline gap-0.5">
+                      <Zap className="w-[12px] h-[12px] text-yellow-400 relative top-[2px] mr-0.5" />
+                      <span className="font-mono text-2xl font-bold text-yellow-400 leading-none">{result.jitter}</span>
+                      <span className="text-[0.6rem] text-text-muted ml-0.5">ms</span>
+                    </div>
+                  </div>
+                  <div className="bg-black/40 border border-white/5 rounded-[14px] p-4 flex flex-col items-center">
+                    <div className="text-[0.6rem] text-text-muted mb-2 tracking-wider">Speed</div>
+                    <div className="flex items-baseline gap-0.5">
+                      <Download className="w-[12px] h-[12px] text-cyan relative top-[2px] mr-0.5" />
+                      <span className="font-mono text-2xl font-bold text-cyan drop-shadow-[0_0_20px_rgba(0,229,255,0.4)] leading-none">{result.speed}</span>
+                      <span className="text-[0.6rem] text-text-muted ml-0.5">Mbps</span>
                     </div>
                   </div>
                 </div>
@@ -475,7 +488,7 @@ export default function SpeedTestPage() {
             <div className="text-[#ffeb3b] font-mono font-bold text-lg mb-2 drop-shadow-[0_0_8px_rgba(255,235,59,0.5)] flex items-center gap-2">
               GOD <span className="text-xs font-sans text-white/50 font-normal">Ping 10ms以下・500Mbps+</span>
             </div>
-            <p className="text-sm text-text-muted leading-relaxed">NURO光・hi-ho・GameWith光など独自インフラ限定の領域。ラグという概念が存在しない最強環境。</p>
+            <p className="text-sm text-text-muted leading-relaxed">独自インフラ回線のみが到達できる最高峰。ラグという概念が存在しない、別次元のゲーミング環境。</p>
           </div>
           <div className="bg-[#0a0a12] border border-white/10 rounded-xl p-5 hover:border-[#e040fb]/50 transition-colors">
             <div className="text-[#e040fb] font-mono font-bold text-lg mb-2 drop-shadow-[0_0_8px_rgba(224,64,251,0.5)] flex items-center gap-2">
