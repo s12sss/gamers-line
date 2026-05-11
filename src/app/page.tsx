@@ -196,11 +196,11 @@ export default async function Home() {
             <span className="relative z-10">今すぐ無料診断をはじめる</span>
           </Link>
           <Link
-            href="#features"
-            className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full border border-white/10 bg-white/5 text-text-muted text-[15px] font-medium transition-all hover:border-cyan/30 hover:text-text hover:bg-cyan/5 w-full sm:w-auto"
+            href="/speedtest"
+            className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full border border-white/10 bg-white/5 text-text-muted text-[15px] font-medium transition-all hover:border-emerald/30 hover:text-text hover:bg-emerald/5 w-full sm:w-auto"
           >
-            選ばれる理由
-            <ChevronRight className="w-4 h-4" />
+            <Activity className="w-4 h-4" />
+            回線速度を計測
           </Link>
         </div>
       </div>
@@ -228,7 +228,6 @@ export default async function Home() {
           </div>
         ))}
       </div>
-
 
 
       {/* Features Section */}
