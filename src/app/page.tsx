@@ -303,7 +303,7 @@ export default async function Home() {
                 01
               </div>
               <h4 className="font-heading font-semibold text-base mb-2">8つの質問に答える</h4>
-              <p className="text-[0.8rem] text-text-muted leading-relaxed">プレイジャンル・頻度・住居・キャリア・割引・重視点を選ぶだけ</p>
+              <p className="text-[0.8rem] text-text-muted leading-relaxed">住環境やプレイスタイルに合わせた8つの質問に答えるだけ</p>
             </div>
 
             <div className="text-center px-6">
@@ -312,7 +312,7 @@ export default async function Home() {
                 02
               </div>
               <h4 className="font-heading font-semibold text-base mb-2">AIが最適解を算出</h4>
-              <p className="text-[0.8rem] text-text-muted leading-relaxed">独自スコアリングで{ispsData.length}のプランからあなたに最適な3件を選出</p>
+              <p className="text-[0.8rem] text-text-muted leading-relaxed">独自スコアリングであなたに最適な3件を選出</p>
             </div>
 
             <div className="text-center px-6">
