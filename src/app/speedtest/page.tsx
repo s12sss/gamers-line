@@ -473,25 +473,25 @@ export default function SpeedTestPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <div className="bg-[#0a0a12] border border-white/10 rounded-xl p-5 hover:border-[#ffeb3b]/50 transition-colors">
             <div className="text-[#ffeb3b] font-mono font-bold text-lg mb-2 drop-shadow-[0_0_8px_rgba(255,235,59,0.5)] flex items-center gap-2">
-              GOD <span className="text-xs font-sans text-white/50 font-normal">Ping 7ms・900Mbps級</span>
+              GOD <span className="text-xs font-sans text-white/50 font-normal">Ping 10ms以下・500Mbps+</span>
             </div>
-            <p className="text-sm text-text-muted leading-relaxed">Pingも速度も最高峰。NURO光など独自インフラ限定の領域。ラグという概念が存在しない。</p>
+            <p className="text-sm text-text-muted leading-relaxed">NURO光・hi-ho・GameWith光など独自インフラ限定の領域。ラグという概念が存在しない最強環境。</p>
           </div>
           <div className="bg-[#0a0a12] border border-white/10 rounded-xl p-5 hover:border-[#e040fb]/50 transition-colors">
             <div className="text-[#e040fb] font-mono font-bold text-lg mb-2 drop-shadow-[0_0_8px_rgba(224,64,251,0.5)] flex items-center gap-2">
-              MASTER <span className="text-xs font-sans text-white/50 font-normal">Ping 12ms・500Mbps級</span>
+              MASTER <span className="text-xs font-sans text-white/50 font-normal">Ping 15ms前後・300Mbps+</span>
             </div>
-            <p className="text-sm text-text-muted leading-relaxed">ガチ勢が求める水準をクリア。低遅延かつ帯域も十分で、競技環境として文句なし。</p>
+            <p className="text-sm text-text-muted leading-relaxed">ガチ勢が求める水準。低遅延かつ帯域も十分で、競技環境として文句なし。</p>
           </div>
           <div className="bg-[#0a0a12] border border-white/10 rounded-xl p-5 hover:border-[#00e5ff]/50 transition-colors">
             <div className="text-[#00e5ff] font-mono font-bold text-lg mb-2 drop-shadow-[0_0_8px_rgba(0,229,255,0.5)] flex items-center gap-2">
-              DIAMOND <span className="text-xs font-sans text-white/50 font-normal">Ping 18ms・300Mbps級</span>
+              DIAMOND <span className="text-xs font-sans text-white/50 font-normal">Ping 20ms前後・200Mbps+</span>
             </div>
             <p className="text-sm text-text-muted leading-relaxed">FPS・TPSで不満を感じない優秀な環境。一般ゲーマーとして十分すぎるスペック。</p>
           </div>
           <div className="bg-[#0a0a12] border border-white/10 rounded-xl p-5 hover:border-[#ffd700]/50 transition-colors">
             <div className="text-[#ffd700] font-mono font-bold text-lg mb-2 flex items-center gap-2">
-              GOLD <span className="text-xs font-sans text-white/50 font-normal">Ping 25ms・150Mbps級</span>
+              GOLD <span className="text-xs font-sans text-white/50 font-normal">Ping 25ms前後・100Mbps+</span>
             </div>
             <p className="text-sm text-text-muted leading-relaxed">MMOや格ゲーなら快適。FPSでたまに撃ち負ける場面があるかも。</p>
           </div>
