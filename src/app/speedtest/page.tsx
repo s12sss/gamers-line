@@ -70,17 +70,17 @@ export default function SpeedTestPage() {
   ];
 
   // 階級判定ロジック（Ping 70% + DL速度 30% の重み付けスコア）
+  // DIAMOND以上はPing 20ms未満が必須条件
   const calculateTier = (pingResult: number, speedResult: number): Tier => {
-    // Ping スコア: 2ms=100点, 50ms=0点
     const pingScore = Math.max(0, Math.min(100, (50 - pingResult) / 48 * 100));
-    // DL スコア: 1000Mbps=100点, 0Mbps=0点
     const dlScore = Math.max(0, Math.min(100, speedResult / 10));
-    // 合成スコア
     const composite = pingScore * 0.7 + dlScore * 0.3;
 
-    if (composite >= 73) return 'GOD';
-    if (composite >= 58) return 'MASTER';
-    if (composite >= 44) return 'DIAMOND';
+    if (pingResult < 20) {
+      if (composite >= 73) return 'GOD';
+      if (composite >= 58) return 'MASTER';
+      if (composite >= 44) return 'DIAMOND';
+    }
     if (composite >= 30) return 'GOLD';
     if (composite >= 15) return 'SILVER';
     return 'BRONZE';
@@ -339,7 +339,7 @@ export default function SpeedTestPage() {
                 animate={{ opacity: 1, scale: 1 }}
                 className="flex flex-col items-center justify-center min-h-[300px]"
               >
-                <div className="font-mono text-[0.7rem] text-text-muted tracking-widest mb-1 uppercase">あなたの階級</div>
+                <div className="font-mono text-xs text-text-muted tracking-widest mb-1 uppercase">あなたの階級</div>
                 <motion.h2 
                   initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }}
                   className={`font-heading text-4xl sm:text-5xl font-black mb-8 tracking-tighter ${TIER_COLORS[result.tier]}`}
@@ -349,7 +349,7 @@ export default function SpeedTestPage() {
 
                 <div className="grid grid-cols-3 gap-3 w-full max-w-sm mb-10">
                   <div className="bg-black/40 border border-white/5 rounded-[14px] p-4 flex flex-col items-center">
-                    <div className="text-[0.6rem] text-text-muted mb-2 tracking-wider">Ping</div>
+                    <div className="text-xs text-text-muted mb-2 tracking-wider">Ping</div>
                     <div className="flex items-baseline gap-0.5">
                       <Activity className="w-[12px] h-[12px] text-emerald relative top-[2px] mr-0.5" />
                       <span className="font-mono text-2xl font-bold text-emerald drop-shadow-[0_0_20px_rgba(0,230,118,0.4)] leading-none">{result.ping}</span>
@@ -357,7 +357,7 @@ export default function SpeedTestPage() {
                     </div>
                   </div>
                   <div className="bg-black/40 border border-white/5 rounded-[14px] p-4 flex flex-col items-center">
-                    <div className="text-[0.6rem] text-text-muted mb-2 tracking-wider">Jitter</div>
+                    <div className="text-xs text-text-muted mb-2 tracking-wider">Jitter</div>
                     <div className="flex items-baseline gap-0.5">
                       <Zap className="w-[12px] h-[12px] text-yellow-400 relative top-[2px] mr-0.5" />
                       <span className="font-mono text-2xl font-bold text-yellow-400 leading-none">{result.jitter}</span>
@@ -365,7 +365,7 @@ export default function SpeedTestPage() {
                     </div>
                   </div>
                   <div className="bg-black/40 border border-white/5 rounded-[14px] p-4 flex flex-col items-center">
-                    <div className="text-[0.6rem] text-text-muted mb-2 tracking-wider">Speed</div>
+                    <div className="text-xs text-text-muted mb-2 tracking-wider">Speed</div>
                     <div className="flex items-baseline gap-0.5">
                       <Download className="w-[12px] h-[12px] text-cyan relative top-[2px] mr-0.5" />
                       <span className="font-mono text-2xl font-bold text-cyan drop-shadow-[0_0_20px_rgba(0,229,255,0.4)] leading-none">{result.speed}</span>
