@@ -303,7 +303,7 @@ export default async function Home() {
                 01
               </div>
               <h4 className="font-heading font-semibold text-base mb-2">8つの質問に答える</h4>
-              <p className="text-[0.8rem] text-text-muted leading-relaxed">住環境やプレイスタイルに合わせた8つの質問に答えるだけ</p>
+              <p className="text-[0.8rem] text-text-muted leading-relaxed">ゲームジャンルや住まいの環境、スマホキャリアなど簡単な質問に答えるだけ</p>
             </div>
 
             <div className="text-center px-6">
