@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Activity, Download, Zap, Trophy, ChevronRight, Share2, AlertTriangle, RefreshCw } from 'lucide-react';
+import { Activity, Download, Trophy, ChevronRight, Share2, AlertTriangle } from 'lucide-react';
 import ispsData from '@/data/isps.json';
 import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -12,7 +12,6 @@ type Tier = 'GOD' | 'MASTER' | 'DIAMOND' | 'GOLD' | 'SILVER' | 'BRONZE';
 
 interface TestResult {
   ping: number;
-  jitter: number;
   speed: number;
   tier: Tier;
 }
@@ -98,7 +97,6 @@ export default function SpeedTestPage() {
 
     // 2. 高精度Ping測定 (USENと同じ水準にするため、サンプル数を減らし強力な補正をかける)
     let validPings: number[] = [];
-    const rawRtts: number[] = [];
     const pingSamples = 10;
 
     for (let i = 0; i < pingSamples; i++) {
@@ -116,7 +114,6 @@ export default function SpeedTestPage() {
         }
       }
 
-      rawRtts.push(rtt);
       const estimatedIcmpPing = Math.max(2, Math.round(rtt * 0.18));
       validPings.push(estimatedIcmpPing);
       
@@ -172,14 +169,8 @@ export default function SpeedTestPage() {
     const finalSpeed = Math.round((totalBytes * 8) / (totalElapsed / 1000) / 1000000) || 1;
     setSpeed(finalSpeed);
 
-    const finalJitter = rawRtts.length > 1
-      ? Math.round(
-          rawRtts.slice(1).reduce((sum: number, p: number, i: number) => sum + Math.abs(p - rawRtts[i]), 0) / (rawRtts.length - 1)
-        )
-      : 0;
-
     const tier = calculateTier(finalPing, finalSpeed);
-    setResult({ ping: finalPing, jitter: finalJitter, speed: finalSpeed, tier });
+    setResult({ ping: finalPing, speed: finalSpeed, tier });
     setStatus('RESULT');
 
     if (typeof window !== 'undefined' && (window as any).gtag) {
@@ -349,29 +340,21 @@ export default function SpeedTestPage() {
                   {result.tier}
                 </motion.h2>
 
-                <div className="grid grid-cols-3 gap-3 w-full max-w-sm mb-10">
-                  <div className="bg-black/40 border border-white/5 rounded-[14px] p-4 flex flex-col items-center">
+                <div className="grid grid-cols-2 gap-4 w-full max-w-sm mb-10">
+                  <div className="bg-black/40 border border-white/5 rounded-[14px] p-4 sm:p-5 flex flex-col items-center">
                     <div className="text-xs text-text-muted mb-2 tracking-wider">Ping</div>
-                    <div className="flex items-baseline gap-0.5">
-                      <Activity className="w-[12px] h-[12px] text-emerald relative top-[2px] mr-0.5" />
-                      <span className="font-mono text-2xl font-bold text-emerald drop-shadow-[0_0_20px_rgba(0,230,118,0.4)] leading-none">{result.ping}</span>
-                      <span className="text-[0.6rem] text-text-muted ml-0.5">ms</span>
+                    <div className="flex items-baseline gap-1">
+                      <Activity className="w-[14px] h-[14px] text-emerald relative top-[2px] mr-1" />
+                      <span className="font-mono text-3xl font-bold text-emerald drop-shadow-[0_0_20px_rgba(0,230,118,0.4)] leading-none">{result.ping}</span>
+                      <span className="text-[0.7rem] text-text-muted ml-0.5">ms</span>
                     </div>
                   </div>
-                  <div className="bg-black/40 border border-white/5 rounded-[14px] p-4 flex flex-col items-center">
-                    <div className="text-xs text-text-muted mb-2 tracking-wider">Jitter</div>
-                    <div className="flex items-baseline gap-0.5">
-                      <Zap className="w-[12px] h-[12px] text-yellow-400 relative top-[2px] mr-0.5" />
-                      <span className="font-mono text-2xl font-bold text-yellow-400 leading-none">{result.jitter}</span>
-                      <span className="text-[0.6rem] text-text-muted ml-0.5">ms</span>
-                    </div>
-                  </div>
-                  <div className="bg-black/40 border border-white/5 rounded-[14px] p-4 flex flex-col items-center">
+                  <div className="bg-black/40 border border-white/5 rounded-[14px] p-4 sm:p-5 flex flex-col items-center">
                     <div className="text-xs text-text-muted mb-2 tracking-wider">Speed</div>
-                    <div className="flex items-baseline gap-0.5">
-                      <Download className="w-[12px] h-[12px] text-cyan relative top-[2px] mr-0.5" />
-                      <span className="font-mono text-2xl font-bold text-cyan drop-shadow-[0_0_20px_rgba(0,229,255,0.4)] leading-none">{result.speed}</span>
-                      <span className="text-[0.6rem] text-text-muted ml-0.5">Mbps</span>
+                    <div className="flex items-baseline gap-1">
+                      <Download className="w-[14px] h-[14px] text-cyan relative top-[2px] mr-1" />
+                      <span className="font-mono text-3xl font-bold text-cyan drop-shadow-[0_0_20px_rgba(0,229,255,0.4)] leading-none">{result.speed}</span>
+                      <span className="text-[0.7rem] text-text-muted ml-0.5">Mbps</span>
                     </div>
                   </div>
                 </div>
