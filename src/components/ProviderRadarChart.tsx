@@ -19,14 +19,14 @@ export default function ProviderRadarChart({ stats }: { stats: RadarStats }) {
     { subject: '通信速度', A: stats.speed, fullMark: 5 },
     { subject: 'コスパ', A: stats.cost, fullMark: 5 },
     { subject: '特典', A: stats.benefit, fullMark: 5 },
-    { subject: '導入の容易さ', A: stats.installation, fullMark: 5 },
+    { subject: '手軽さ', A: stats.installation, fullMark: 5 },
   ];
 
   return (
     <div className="w-full h-[300px] sm:h-[350px] relative">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,229,255,0.08),transparent_60%)] pointer-events-none" />
       <ResponsiveContainer width="100%" height="100%">
-        <RadarChart cx="50%" cy="50%" outerRadius="65%" data={data}>
+        <RadarChart cx="50%" cy="50%" outerRadius="60%" data={data} margin={{ top: 10, right: 25, bottom: 10, left: 25 }}>
           <PolarGrid stroke="rgba(255,255,255,0.15)" strokeDasharray="3 3" />
           <PolarAngleAxis 
             dataKey="subject" 
