@@ -30,7 +30,7 @@ export type Column = {
 // 一覧取得
 export async function getColumnsList(tag?: string) {
   try {
-    const queries: any = { orders: '-publishedAt' };
+    const queries: any = { orders: '-publishedAt', limit: 100 };
     if (tag) {
       queries.filters = `category[contains]${tag}`;
     }
