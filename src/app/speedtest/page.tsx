@@ -95,9 +95,9 @@ export default function SpeedTestPage() {
     await fetch('/api/ping', { cache: 'no-store' }).catch(() => {});
     await new Promise(resolve => setTimeout(resolve, 200));
 
-    // 2. 高精度Ping測定 (USENと同じ水準にするため、サンプル数を減らし強力な補正をかける)
+    // 2. 高精度Ping測定（20サンプル取得・中央値で安定化）
     let validPings: number[] = [];
-    const pingSamples = 10;
+    const pingSamples = 20;
 
     for (let i = 0; i < pingSamples; i++) {
       const url = '/api/ping?t=' + Date.now() + '-' + i;
@@ -124,11 +124,12 @@ export default function SpeedTestPage() {
       await new Promise(resolve => setTimeout(resolve, 100));
     }
 
-    // 上下20%の異常値（スパイク）を弾いて正確な平均を出す
+    // 中央値で安定したPingを算出（偶然の好条件に左右されにくい）
     validPings.sort((a, b) => a - b);
-    const trimCount = Math.floor(validPings.length * 0.2);
-    const trimmedPings = validPings.slice(trimCount, validPings.length - trimCount);
-    const finalPing = Math.round(trimmedPings.reduce((a, b) => a + b, 0) / trimmedPings.length) || 1;
+    const mid = Math.floor(validPings.length / 2);
+    const finalPing = validPings.length % 2 === 0
+      ? Math.round((validPings[mid - 1] + validPings[mid]) / 2)
+      : validPings[mid];
     setPing(finalPing);
 
     setStatus('TESTING_SPEED');
