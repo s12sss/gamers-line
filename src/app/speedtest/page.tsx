@@ -76,12 +76,12 @@ export default function SpeedTestPage() {
     const composite = pingScore * 0.7 + dlScore * 0.3;
 
     if (pingResult < 20) {
-      if (composite >= 73) return 'GOD';
-      if (composite >= 58) return 'MASTER';
-      if (composite >= 44) return 'DIAMOND';
+      if (composite >= 83) return 'GOD';
+      if (composite >= 67) return 'MASTER';
+      if (composite >= 55) return 'DIAMOND';
     }
-    if (composite >= 30) return 'GOLD';
-    if (composite >= 15) return 'SILVER';
+    if (composite >= 38) return 'GOLD';
+    if (composite >= 20) return 'SILVER';
     return 'BRONZE';
   };
 
@@ -471,39 +471,39 @@ export default function SpeedTestPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <div className="bg-[#0a0a12] border border-white/10 rounded-xl p-5 hover:border-[#ffeb3b]/50 transition-colors">
             <div className="text-[#ffeb3b] font-mono font-bold text-lg mb-2 drop-shadow-[0_0_8px_rgba(255,235,59,0.5)] flex items-center gap-2">
-              GOD <span className="text-xs font-sans text-white/50 font-normal">Ping 10ms以下・500Mbps+</span>
+              GOD <span className="text-xs font-sans text-white/50 font-normal">最高峰の環境のみ</span>
             </div>
-            <p className="text-sm text-text-muted leading-relaxed">独自インフラ回線のみが到達できる最高峰。ラグという概念が存在しない、別次元のゲーミング環境。</p>
+            <p className="text-sm text-text-muted leading-relaxed">最高級の回線＋最高の条件が揃った時だけ到達できる領域。ラグという概念が存在しない別次元の環境。</p>
           </div>
           <div className="bg-[#0a0a12] border border-white/10 rounded-xl p-5 hover:border-[#e040fb]/50 transition-colors">
             <div className="text-[#e040fb] font-mono font-bold text-lg mb-2 drop-shadow-[0_0_8px_rgba(224,64,251,0.5)] flex items-center gap-2">
-              MASTER <span className="text-xs font-sans text-white/50 font-normal">Ping 15ms前後・300Mbps+</span>
+              MASTER <span className="text-xs font-sans text-white/50 font-normal">推奨環境・上位半分</span>
             </div>
-            <p className="text-sm text-text-muted leading-relaxed">ガチ勢が求める水準。低遅延かつ帯域も十分で、競技環境として文句なし。</p>
+            <p className="text-sm text-text-muted leading-relaxed">ゲーミング回線を使いこなしている層が到達する水準。競技環境として申し分なし。</p>
           </div>
           <div className="bg-[#0a0a12] border border-white/10 rounded-xl p-5 hover:border-[#00e5ff]/50 transition-colors">
             <div className="text-[#00e5ff] font-mono font-bold text-lg mb-2 drop-shadow-[0_0_8px_rgba(0,229,255,0.5)] flex items-center gap-2">
-              DIAMOND <span className="text-xs font-sans text-white/50 font-normal">Ping 20ms前後・200Mbps+</span>
+              DIAMOND <span className="text-xs font-sans text-white/50 font-normal">推奨環境ならほぼ達成</span>
             </div>
-            <p className="text-sm text-text-muted leading-relaxed">FPS・TPSで不満を感じない優秀な環境。一般ゲーマーとして十分すぎるスペック。</p>
+            <p className="text-sm text-text-muted leading-relaxed">ゲーミング向け回線ユーザーの標準的な水準。FPS・格ゲーで不満を感じないレベル。</p>
           </div>
           <div className="bg-[#0a0a12] border border-white/10 rounded-xl p-5 hover:border-[#ffd700]/50 transition-colors">
             <div className="text-[#ffd700] font-mono font-bold text-lg mb-2 flex items-center gap-2">
-              GOLD <span className="text-xs font-sans text-white/50 font-normal">Ping 25ms前後・100Mbps+</span>
+              GOLD <span className="text-xs font-sans text-white/50 font-normal">一般的な光回線</span>
             </div>
-            <p className="text-sm text-text-muted leading-relaxed">MMOや格ゲーなら快適。FPSでたまに撃ち負ける場面があるかも。</p>
+            <p className="text-sm text-text-muted leading-relaxed">普通の1G光回線の標準的な環境。MMOやカジュアルゲームは快適だが、FPSでは改善の余地あり。</p>
           </div>
           <div className="bg-[#0a0a12] border border-white/10 rounded-xl p-5 hover:border-[#c0c0c0]/50 transition-colors">
             <div className="text-[#c0c0c0] font-mono font-bold text-lg mb-2 flex items-center gap-2">
-              SILVER <span className="text-xs font-sans text-white/50 font-normal">Ping 35ms前後</span>
+              SILVER <span className="text-xs font-sans text-white/50 font-normal">改善を検討</span>
             </div>
-            <p className="text-sm text-text-muted leading-relaxed">ラグを感じる場面が増えてくる水準。カジュアルゲームなら問題ないが改善を検討したい。</p>
+            <p className="text-sm text-text-muted leading-relaxed">ラグを感じる場面が増えてくる水準。対人ゲームでは不利になりやすい。</p>
           </div>
           <div className="bg-[#0a0a12] border border-white/10 rounded-xl p-5 hover:border-[#cd7f32]/50 transition-colors">
             <div className="text-[#cd7f32] font-mono font-bold text-lg mb-2 flex items-center gap-2">
-              BRONZE <span className="text-xs font-sans text-white/50 font-normal">改善推奨</span>
+              BRONZE <span className="text-xs font-sans text-white/50 font-normal">乗り換え強く推奨</span>
             </div>
-            <p className="text-sm text-text-muted leading-relaxed">対人ゲームでは明確に不利な環境。回線の乗り換えを強く推奨します。</p>
+            <p className="text-sm text-text-muted leading-relaxed">対人ゲームでは明確に不利な環境。回線の見直しを強く推奨します。</p>
           </div>
         </div>
       </div>
