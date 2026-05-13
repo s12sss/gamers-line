@@ -18,7 +18,7 @@
     "regions": [
       "hokkaido",
       "kanto",
-      "tokai",
+      "chubu",
       "kansai",
       "chugoku",
       "kyushu"
@@ -82,7 +82,7 @@
     "regions": [
       "hokkaido",
       "kanto",
-      "tokai",
+      "chubu",
       "kansai",
       "chugoku",
       "kyushu"
@@ -144,7 +144,7 @@
       "hokkaido",
       "tohoku",
       "kanto",
-      "tokai",
+      "chubu",
       "kansai",
       "chugoku",
       "shikoku",
@@ -198,7 +198,7 @@
       "hokkaido",
       "tohoku",
       "kanto",
-      "tokai",
+      "chubu",
       "kansai",
       "chugoku",
       "shikoku",
@@ -251,7 +251,7 @@
       "hokkaido",
       "tohoku",
       "kanto",
-      "tokai",
+      "chubu",
       "kansai",
       "chugoku",
       "shikoku",
@@ -305,7 +305,7 @@
       "hokkaido",
       "tohoku",
       "kanto",
-      "tokai",
+      "chubu",
       "kansai",
       "chugoku",
       "shikoku",
@@ -479,7 +479,7 @@
       "hokkaido",
       "tohoku",
       "kanto",
-      "tokai",
+      "chubu",
       "kansai",
       "chugoku",
       "shikoku",
@@ -540,7 +540,7 @@
       "hokkaido",
       "tohoku",
       "kanto",
-      "tokai",
+      "chubu",
       "kansai",
       "chugoku",
       "shikoku",
@@ -602,7 +602,7 @@
       "hokkaido",
       "tohoku",
       "kanto",
-      "tokai",
+      "chubu",
       "kansai",
       "chugoku",
       "shikoku",
@@ -668,7 +668,7 @@
       "hokkaido",
       "tohoku",
       "kanto",
-      "tokai",
+      "chubu",
       "kansai",
       "chugoku",
       "shikoku",
@@ -729,7 +729,7 @@
       "hokkaido",
       "tohoku",
       "kanto",
-      "tokai",
+      "chubu",
       "kansai",
       "chugoku",
       "shikoku",
@@ -794,7 +794,7 @@
       "hokkaido",
       "tohoku",
       "kanto",
-      "tokai",
+      "chubu",
       "kansai",
       "chugoku",
       "shikoku",
@@ -855,7 +855,7 @@
       "mansion_optical"
     ],
     "regions": [
-      "tokai"
+      "chubu"
     ],
     "cashback_text": "高額キャッシュバックキャンペーン実施中！",
     "discounts": [
@@ -905,7 +905,7 @@
       "mansion_optical"
     ],
     "regions": [
-      "tokai"
+      "chubu"
     ],
     "cashback_text": "高額キャッシュバックキャンペーン実施中！",
     "discounts": [
@@ -1362,7 +1362,7 @@
       "hokkaido",
       "tohoku",
       "kanto",
-      "tokai",
+      "chubu",
       "kansai",
       "chugoku",
       "shikoku",
@@ -1415,7 +1415,7 @@
       "hokkaido",
       "tohoku",
       "kanto",
-      "tokai",
+      "chubu",
       "kansai",
       "chugoku",
       "shikoku",
