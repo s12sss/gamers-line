@@ -282,14 +282,7 @@ export default function ComparePage() {
                 const isBest = isp.avg_ping_ms === bestPingValue;
                 return (
                   <div key={isp.id} className={`flex flex-col items-center justify-center py-2 border-b border-white/5 border-x ${isBest ? 'border-cyan/20 bg-cyan/[0.04]' : 'border-white/10 bg-white/[0.015]'} text-center gap-1`}>
-                    <div className="flex items-center gap-1">
-                      <span className="text-[0.6rem] text-text-muted px-1 py-0.5 bg-white/5 rounded leading-none">戸建</span>
-                      <span className="font-mono font-bold text-[0.85rem] text-text leading-none">¥{isp.actual_monthly_fee_jpy.toLocaleString()}</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <span className="text-[0.6rem] text-text-muted px-1 py-0.5 bg-white/5 rounded leading-none">ﾏﾝｼｮﾝ</span>
-                      <span className="font-mono font-bold text-[0.85rem] text-text leading-none">¥{isp.mansion_monthly_fee_jpy.toLocaleString()}</span>
-                    </div>
+                    <span className="font-mono font-bold text-[0.85rem] text-text leading-none">¥{isp.actual_monthly_fee_jpy.toLocaleString()}</span>
                   </div>
                 );
               })}

@@ -36,16 +36,7 @@ function ISPCard({ isp, idx }: { isp: ISP; idx: number }) {
           </div>
           <div className="p-4 rounded-xl bg-black/40 border border-white/5">
             <div className="text-xs text-text-muted mb-1.5">月額料金</div>
-            <div className="flex flex-col gap-1.5">
-              <div className="flex items-center gap-2">
-                <span className="text-[0.6rem] text-text-muted px-1.5 py-0.5 bg-white/5 rounded leading-none">戸建</span>
-                <span className="text-lg font-bold text-cyan font-mono leading-none">¥{isp.actual_monthly_fee_jpy.toLocaleString()}〜</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-[0.6rem] text-text-muted px-1.5 py-0.5 bg-white/5 rounded leading-none">ﾏﾝｼｮﾝ</span>
-                <span className="text-lg font-bold text-cyan font-mono leading-none">¥{isp.mansion_monthly_fee_jpy.toLocaleString()}〜</span>
-              </div>
-            </div>
+            <div className="text-lg font-bold text-cyan font-mono leading-none">¥{isp.actual_monthly_fee_jpy.toLocaleString()}〜</div>
           </div>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -77,6 +68,9 @@ export default function ISPTabs({ standardISPs, tenGISPs }: Props) {
 
   return (
     <section>
+      {/* 注記 */}
+      <p className="text-[0.7rem] text-text-muted mb-4">※表示料金は戸建ての標準月額です。マンションや各社キャンペーン適用で実際の負担額はさらに下がります。</p>
+
       {/* タブ */}
       <div className="flex gap-2 mb-6">
         <button

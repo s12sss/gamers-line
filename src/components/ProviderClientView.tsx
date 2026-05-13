@@ -100,12 +100,6 @@ export default function ProviderClientView({ detail, isps, allProviders }: Props
                 <span className="text-xs mr-1 text-purple-400/80">¥</span>{activeIsp.actual_monthly_fee_jpy.toLocaleString()}
               </div>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="text-[0.6rem] text-text-muted px-1.5 py-0.5 bg-white/5 rounded leading-none shrink-0">ﾏﾝｼｮﾝ</span>
-              <div className="text-2xl font-black text-purple-400 leading-none">
-                <span className="text-xs mr-1 text-purple-400/80">¥</span>{activeIsp.mansion_monthly_fee_jpy.toLocaleString()}
-              </div>
-            </div>
           </div>
         </div>
         <div className="bg-[#050505] border border-white/10 rounded-2xl p-6 relative overflow-hidden group hover:border-yellow-500/30 transition-colors">
