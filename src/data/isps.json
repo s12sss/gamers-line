@@ -152,7 +152,7 @@
       "okinawa",
       "hokuriku_koshinetsu"
     ],
-    "actual_monthly_fee_jpy": 7480,
+    "actual_monthly_fee_jpy": 7590,
     "stability_score": 96,
     "vdsl_support": true,
     "cashback_text": "31日間月額料金無料キャンペーン実施中！",
@@ -178,7 +178,7 @@
     ],
     "affiliateLink": "https://h.accesstrade.net/sp/cc?rk=0100pau800os5p",
     "detailLink": "/provider/hi-ho",
-    "mansion_monthly_fee_jpy": 6160
+    "mansion_monthly_fee_jpy": 7590
   },
   {
     "id": "hi-ho_with_games_1g",
@@ -285,7 +285,7 @@
     ],
     "affiliateLink": "https://gamewith-hikari.gamewith.co.jp/",
     "detailLink": "/provider",
-    "mansion_monthly_fee_jpy": 6050
+    "mansion_monthly_fee_jpy": 7370
   },
   {
     "id": "gamewith_hikari_1g",
