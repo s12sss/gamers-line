@@ -215,7 +215,7 @@ export default async function Home() {
       {/* Stats Bar */}
       <div className="relative z-10 flex flex-wrap sm:flex-nowrap justify-center border-y border-white/10 bg-cyan/5 overflow-hidden animate-[fadeUp_0.6s_ease_0.4s_both]">
         {[
-          { num: "7ms", label: "BEST PING記録" },
+          { num: "11ms", label: "BEST PING記録" },
           { num: `${ispsData.length}件`, label: "ゲーマー推奨プラン厳選" },
           { num: "30秒", label: "診断所要時間" },
           { num: "100%", label: "無料・登録不要" },
