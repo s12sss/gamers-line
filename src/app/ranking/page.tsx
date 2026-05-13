@@ -133,7 +133,7 @@ export default function RankingPage() {
                   </div>
                   <div className="flex flex-col gap-0.5">
                     <span className="font-mono text-[0.62rem] text-text-dim tracking-[0.08em] uppercase">実質月額</span>
-                    <span className="font-mono font-bold text-[0.85rem] sm:text-[0.95rem] text-text leading-none mt-0.5">¥{isp.actual_monthly_fee_jpy.toLocaleString()}〜</span>
+                    <span className="font-mono font-bold text-[0.85rem] sm:text-[0.95rem] text-text leading-none mt-0.5">¥{isp.actual_monthly_fee_jpy.toLocaleString()}</span>
                   </div>
                   <div className="flex flex-col gap-0.5">
                     <span className="font-mono text-[0.62rem] text-text-dim tracking-[0.08em] uppercase">最大速度</span>

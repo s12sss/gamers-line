@@ -36,7 +36,7 @@ function ISPCard({ isp, idx }: { isp: ISP; idx: number }) {
           </div>
           <div className="p-4 rounded-xl bg-black/40 border border-white/5">
             <div className="text-xs text-text-muted mb-1.5">月額料金</div>
-            <div className="text-lg font-bold text-cyan font-mono leading-none">¥{isp.actual_monthly_fee_jpy.toLocaleString()}〜</div>
+            <div className="text-lg font-bold text-cyan font-mono leading-none">¥{isp.actual_monthly_fee_jpy.toLocaleString()}</div>
           </div>
         </div>
         <div className="flex flex-wrap gap-2">

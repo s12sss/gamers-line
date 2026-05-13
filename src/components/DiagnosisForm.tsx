@@ -186,7 +186,7 @@ function ResultCard({ result, index, delay, requires10G }: { result: {isp: ISP, 
             </div>
             <div className="flex justify-start sm:justify-end items-baseline gap-1.5 mt-2">
               <span className="font-mono text-[1.1rem] sm:text-[1.2rem] font-bold text-text leading-none">
-                ¥{result.isp.actual_monthly_fee_jpy.toLocaleString()}〜
+                ¥{result.isp.actual_monthly_fee_jpy.toLocaleString()}
               </span>
             </div>
           </div>
