@@ -129,7 +129,7 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
     catchphrase: 'ゲーマー専用帯域×高性能ルーター。設定不要で手に入る圧倒的低遅延',
     heroDescription: '株式会社ハイホーが提供する、オンラインゲーム特化型の光コラボ回線です。通常の光回線とは異なる「ゲーム専用帯域」を確保しており、さらにゲームに最適な高性能ゲーミングルーターが標準でセットになるため、ネットワークの知識がなくても最高のゲーム環境が手に入ります。',
     ispIds: ['hi-ho_with_games_10g', 'hi-ho_with_games_1g'],
-    stats: { ping: 4, stability: 4, speed: 4, cost: 3, installation: 5, benefit: 3 },
+    stats: { ping: 4, stability: 4, speed: 4, cost: 2, installation: 5, benefit: 3 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>
@@ -182,7 +182,7 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
     catchphrase: 'ゲーム攻略メディアが本気で作った「ゲーマー専用」光コラボ',
     heroDescription: '国内最大級のゲームメディア「GameWith」が提供するゲーミング専用回線です。全国どこでも使える「光コラボ」でありながら、ゲームの通信を優先する専用帯域を確保しているため、光コラボ特有のラグや遅延を極限まで抑え込みます。',
     ispIds: ['gamewith_hikari_10g', 'gamewith_hikari_1g'],
-    stats: { ping: 5, stability: 4, speed: 4, cost: 3, installation: 5, benefit: 2 },
+    stats: { ping: 5, stability: 4, speed: 4, cost: 2, installation: 5, benefit: 2 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>
@@ -419,7 +419,7 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
     catchphrase: '九州ゲーマーの特権。電力系ネットワークで圧倒的な安定感',
     heroDescription: '九州エリア（福岡・佐賀・長崎・熊本・大分・宮崎・鹿児島）にお住まいなら、九州電力グループのQTnetが提供する独自回線「BBIQ」が強力な選択肢となります。フレッツ光とは異なる独自の光ファイバー網を使用しているため、夜間の混雑時でもPingが安定しやすく、FPSや格闘ゲームにおいて絶大な威力を発揮します。',
     ispIds: ['bbiq_hikari_10g', 'bbiq_hikari_1g'],
-    stats: { ping: 5, stability: 5, speed: 4, cost: 4, installation: 2, benefit: 4 },
+    stats: { ping: 5, stability: 5, speed: 4, cost: 3, installation: 2, benefit: 4 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>
@@ -446,7 +446,7 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
     catchphrase: '回線工事不要。プロバイダ乗り換えだけで手に入る圧倒的低遅延',
     heroDescription: '「光回線の工事ができない」「今のフレッツ光やドコモ光のままでPingを良くしたい」というゲーマーのための、eスポーツ特化型プロバイダです。次世代のIPv6 IPoE接続を利用した専用帯域により、夜間の混雑時でもラグのない快適なプレイ環境を実現します。',
     ispIds: ['gaming-plus_10g', 'gaming-plus_1g'],
-    stats: { ping: 4, stability: 4, speed: 3, cost: 2, installation: 5, benefit: 3 },
+    stats: { ping: 4, stability: 4, speed: 3, cost: 1, installation: 5, benefit: 3 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>
