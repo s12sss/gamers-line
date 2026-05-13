@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from 'next/link';
 import { ChevronRight, Play } from 'lucide-react';
-import { getColumnsList } from '@/libs/microcms';
+import { getColumnsList, getColumnsPage } from '@/libs/microcms';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const revalidate = 60;
@@ -13,30 +13,40 @@ export default async function ColumnList({ searchParams }: { searchParams: Promi
   const tag = params.tag as string | undefined;
   const q = params.q as string | undefined;
   const month = params.month as string | undefined;
-  
-  // Get all columns to check total count, and filtered columns for display
-  const allColumns = await getColumnsList();
+  const page = Math.max(1, parseInt(params.page as string || '1', 10));
 
-  // ----------------------------------------------------
-  // 絞り込み処理
-  // ----------------------------------------------------
-  let displayColumns = allColumns;
-  if (tag) {
-    displayColumns = displayColumns.filter(c => c.category?.includes(tag));
-  }
-  if (month) {
-    displayColumns = displayColumns.filter(c => {
-      const date = new Date(c.publishedAt);
-      const filterKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
-      return filterKey === month;
-    });
-  }
-  if (q) {
-    const query = q.toLowerCase();
-    displayColumns = displayColumns.filter(c => 
-      c.title.toLowerCase().includes(query) || 
-      (c.content && c.content.toLowerCase().includes(query))
-    );
+  const isFiltered = !!(tag || q || month);
+
+  // フィルターなし → ページネーション
+  // フィルターあり → 全件取得して絞り込み
+  let displayColumns: any[] = [];
+  let totalPages = 1;
+  let totalCount = 0;
+
+  if (isFiltered) {
+    const allColumns = await getColumnsList(tag);
+    let filtered = allColumns;
+    if (month) {
+      filtered = filtered.filter(c => {
+        const date = new Date(c.publishedAt);
+        const filterKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+        return filterKey === month;
+      });
+    }
+    if (q) {
+      const query = q.toLowerCase();
+      filtered = filtered.filter(c =>
+        c.title.toLowerCase().includes(query) ||
+        (c.content && c.content.toLowerCase().includes(query))
+      );
+    }
+    displayColumns = filtered;
+    totalCount = filtered.length;
+  } else {
+    const paged = await getColumnsPage(page);
+    displayColumns = paged.contents;
+    totalPages = paged.totalPages;
+    totalCount = paged.totalCount;
   }
 
   return (
@@ -69,7 +79,7 @@ export default async function ColumnList({ searchParams }: { searchParams: Promi
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-heading font-bold text-white tracking-wide">
               {q ? `「${q}」の検索結果` : month ? `「${month.replace('-', '年')}月」の記事一覧` : tag ? `「${tag}」の記事一覧` : '最新の記事一覧'}
-              <span className="ml-3 text-sm text-text-muted font-mono bg-white/5 px-2 py-0.5 rounded-full">{displayColumns.length}件</span>
+              <span className="ml-3 text-sm text-text-muted font-mono bg-white/5 px-2 py-0.5 rounded-full">{totalCount}件</span>
             </h2>
           </div>
           
@@ -93,7 +103,7 @@ export default async function ColumnList({ searchParams }: { searchParams: Promi
                   </div>
                   <div className="p-4 sm:p-5 flex flex-col flex-1">
                     <div className="flex items-center gap-2.5 mb-3.5 flex-wrap">
-                      {column.category?.map(cat => (
+                      {column.category?.map((cat: string) => (
                         <span key={cat} className="px-2.5 py-1 rounded-full bg-cyan/10 border border-cyan/20 text-cyan text-[0.68rem] font-semibold tracking-[0.06em] uppercase">{cat}</span>
                       ))}
                       <span className="font-mono text-[0.68rem] text-text-dim tracking-[0.05em] ml-auto">{new Date(column.publishedAt).toLocaleDateString('ja-JP')}</span>
@@ -117,6 +127,31 @@ export default async function ColumnList({ searchParams }: { searchParams: Promi
               </div>
             )}
           </div>
+
+          {/* ページネーション */}
+          {!isFiltered && totalPages > 1 && (
+            <div className="flex items-center justify-center gap-3 mt-10">
+              {page > 1 && (
+                <Link
+                  href={`/column?page=${page - 1}`}
+                  className="px-5 py-2.5 rounded-full border border-white/10 text-sm font-mono text-text-muted hover:border-cyan/30 hover:text-white transition-all"
+                >
+                  ← 前のページ
+                </Link>
+              )}
+              <span className="font-mono text-sm text-text-muted">
+                {page} / {totalPages}
+              </span>
+              {page < totalPages && (
+                <Link
+                  href={`/column?page=${page + 1}`}
+                  className="px-5 py-2.5 rounded-full border border-white/10 text-sm font-mono text-text-muted hover:border-cyan/30 hover:text-white transition-all"
+                >
+                  次のページ →
+                </Link>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Sidebar */}

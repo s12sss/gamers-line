@@ -45,6 +45,36 @@ export async function getColumnsList(tag?: string) {
   }
 }
 
+// ページネーション付き一覧取得（コラム一覧ページで使用）
+const COLUMNS_PER_PAGE = 30;
+
+export async function getColumnsPage(page: number = 1, tag?: string) {
+  try {
+    const offset = (page - 1) * COLUMNS_PER_PAGE;
+    const queries: any = {
+      orders: '-publishedAt',
+      limit: COLUMNS_PER_PAGE,
+      offset,
+    };
+    if (tag) {
+      queries.filters = `category[contains]${tag}`;
+    }
+    const data = await client.getList<Column>({
+      endpoint: 'columns',
+      queries,
+    });
+    return {
+      contents: data.contents,
+      totalCount: data.totalCount,
+      totalPages: Math.ceil(Math.min(data.totalCount, 210) / COLUMNS_PER_PAGE),
+      currentPage: page,
+    };
+  } catch (error) {
+    console.error('Failed to fetch columns page:', error);
+    return { contents: [], totalCount: 0, totalPages: 0, currentPage: 1 };
+  }
+}
+
 // 詳細取得
 export async function getColumnDetail(slugOrId: string) {
   try {
