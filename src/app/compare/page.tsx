@@ -33,7 +33,7 @@ export default function ComparePage() {
     }
   };
   
-  let compareIsps = ispsData.filter((isp: any) => !isp.hidden).filter(isp => {
+  let compareIsps = (ispsData as any[]).filter(isp => !isp.hidden).filter((isp: any) => {
     // Speed Filter
     if (activeFilters.includes('10G') && isp.max_speed_gbps < 10) return false;
     if (activeFilters.includes('1G') && isp.max_speed_gbps >= 10) return false;
@@ -334,7 +334,7 @@ export default function ComparePage() {
               </div>
               {compareIsps.map((isp) => {
                 const isBest = isp.avg_ping_ms === bestPingValue;
-                const discountText = isp.discounts && isp.discounts.length > 0 ? isp.discounts.map(d => `${d.carrier}利用で割引`).join(', ') : '—';
+                const discountText = isp.discounts && isp.discounts.length > 0 ? isp.discounts.map((d: any) => `${d.carrier}利用で割引`).join(', ') : '—';
                 return (
                   <div key={isp.id} className={`flex items-center justify-center py-3.5 border-b border-white/5 border-x ${isBest ? 'border-cyan/20 bg-cyan/[0.03]' : 'border-white/10 bg-white/[0.01]'} text-center`}>
                     <span className={`font-mono text-[0.65rem] sm:text-[0.75rem] ${isp.discounts && isp.discounts.length > 0 ? 'text-emerald' : 'text-red-400'}`}>{discountText}</span>
