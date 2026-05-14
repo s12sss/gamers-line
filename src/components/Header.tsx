@@ -29,7 +29,6 @@ export default function Header() {
       links: [
         { name: "条件で比較する", href: "/compare" },
         { name: "回線一覧・詳細", href: "/provider" },
-        { name: "おすすめランキング", href: "/ranking" },
         { name: "エリアMAPから探す", href: "/area" },
       ]
     },
