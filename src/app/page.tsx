@@ -345,14 +345,14 @@ export default async function Home() {
               num: '01',
               href: '/compare',
               title: '回線を比較する',
-              desc: '10G・スマホ割・エリアなど各種条件で絞り込み、複数回線を横並びで徹底比較',
+              desc: '回線性能、料金、キャンペーン、対応地域がひと目で',
               color: 'cyan' as const,
             },
             {
               num: '02',
               href: '/provider',
               title: 'プロバイダ一覧',
-              desc: 'Ping値・月額料金・安定性スコアを一覧で確認',
+              desc: 'プロバイダ別の詳細情報を一覧で確認',
               color: 'white' as const,
             },
             {
@@ -385,10 +385,12 @@ export default async function Home() {
                   {title}
                 </div>
                 <div className="text-xs text-text-muted leading-relaxed flex-1">{desc}</div>
-                <ChevronRight className={`w-4 h-4 mt-5 transition-all group-hover:translate-x-0.5
+                <div className={`flex items-center gap-1 mt-5 text-xs font-bold transition-all group-hover:translate-x-0.5
                   ${color === 'cyan' ? 'text-cyan/30 group-hover:text-cyan' :
                     color === 'emerald' ? 'text-emerald/30 group-hover:text-emerald' :
-                    'text-white/20 group-hover:text-white/60'}`} />
+                    'text-white/20 group-hover:text-white/60'}`}>
+                  詳しく見る <ChevronRight className="w-3.5 h-3.5" />
+                </div>
               </div>
             </Link>
           ))}
