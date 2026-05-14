@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { Activity, ShieldCheck, ChevronRight, Play, ChevronDown, BarChart2, LayoutList, MapPin } from 'lucide-react';
-import ispsData from "@/data/isps.json";
+import { Activity, ChevronRight, Play, ChevronDown, BarChart2, LayoutList, MapPin } from 'lucide-react';
 import { getColumnsList } from "@/libs/microcms";
 
 export const revalidate = 60; // 60 seconds ISR
@@ -211,21 +210,37 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Stats Bar */}
-      <div className="relative z-10 flex flex-wrap sm:flex-nowrap justify-center border-y border-white/10 bg-cyan/5 overflow-hidden animate-[fadeUp_0.6s_ease_0.4s_both]">
+      {/* Diagnosis Value Bar */}
+      <div className="relative z-10 border-y border-white/10 bg-cyan/[0.035] overflow-hidden animate-[fadeUp_0.6s_ease_0.4s_both]">
+        <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(90deg,transparent,rgba(0,229,255,0.06),transparent)]" />
+        <div className="relative mx-auto grid max-w-[1100px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         {[
-          { num: "11ms", label: "BEST PING記録" },
-          { num: `${(ispsData as any[]).filter(i => !i.hidden).length}件`, label: "ゲーマー推奨プラン厳選" },
-          { num: "30秒", label: "診断所要時間" },
-          { num: "100%", label: "無料・登録不要" },
-        ].map((stat, i) => (
-          <div key={i} className="flex-1 min-w-[50%] sm:min-w-0 max-w-none sm:max-w-[220px] p-6 sm:p-7 text-center border-b sm:border-b-0 border-r border-white/10 last:border-r-0 even:border-r-0 sm:even:border-r [&:nth-last-child(-n+2)]:border-b-0 sm:[&:nth-last-child(-n+2)]:border-b-0">
-            <div className="font-mono text-2xl sm:text-[2rem] font-bold text-cyan drop-shadow-[0_0_20px_rgba(0,229,255,0.4)] leading-none mb-1">
-              {stat.num}
+          { num: "01", title: "エリア判定", label: "あなたの地域で選べる回線を先に絞り込み" },
+          { num: "02", title: "Ping目安", label: "FPS・格ゲー向けに遅延の低さを比較" },
+          { num: "03", title: "スマホ割", label: "キャリア割込みで候補のコスパを確認" },
+          { num: "04", title: "10G判断", label: "本当に10Gが必要か用途からチェック" },
+        ].map((item) => (
+          <div key={item.num} className="group relative min-h-[132px] border-b border-white/10 p-5 sm:p-6 lg:border-b-0 lg:border-r lg:last:border-r-0">
+            <div className="absolute inset-0 bg-cyan/[0.035] opacity-0 transition-opacity group-hover:opacity-100" />
+            <div className="relative z-10 flex h-full flex-col justify-between gap-5">
+              <div className="flex items-center justify-between gap-4">
+                <span className="font-mono text-[0.68rem] font-bold tracking-[0.18em] text-cyan/70">
+                  CHECK {item.num}
+                </span>
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald shadow-[0_0_14px_rgba(0,230,118,0.7)]" />
+              </div>
+              <div>
+                <div className="font-heading text-[1rem] font-bold text-white mb-1.5">
+                  {item.title}
+                </div>
+                <div className="text-[0.78rem] leading-relaxed text-text-muted">
+                  {item.label}
+                </div>
+              </div>
             </div>
-            <div className="text-xs text-text-muted tracking-widest">{stat.label}</div>
           </div>
         ))}
+        </div>
       </div>
 
 
@@ -406,9 +421,6 @@ export default async function Home() {
                   </div>
                   <div className="flex flex-col gap-2">
                     <div className="flex items-center gap-3">
-                      <span className="text-[0.65rem] text-cyan font-mono tracking-wider px-2 py-0.5 rounded border border-cyan/30 bg-cyan/10">
-                        {column.category?.name || 'コラム'}
-                      </span>
                       <span className="text-[0.7rem] text-text-muted font-mono">
                         {new Date(column.publishedAt || column.createdAt).toLocaleDateString('ja-JP')}
                       </span>
@@ -457,34 +469,6 @@ export default async function Home() {
               </details>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* VPN Promo Banner */}
-      <section className="relative z-10 px-4 sm:px-10 py-8 bg-background border-b border-white/5">
-        <div className="max-w-[1100px] mx-auto w-full">
-          <Link href="/vpn" className="group relative overflow-hidden rounded-2xl bg-[#050508] border border-cyan/20 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 transition-all hover:border-cyan/50 hover:shadow-[0_0_30px_rgba(0,229,255,0.15)]">
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center opacity-5 mix-blend-overlay" />
-            <div className="absolute top-0 right-0 w-64 h-64 bg-cyan/10 rounded-full blur-3xl group-hover:bg-cyan/20 transition-colors" />
-            
-            <div className="relative z-10 flex items-center gap-5">
-              <div className="hidden sm:flex w-14 h-14 rounded-xl bg-gradient-to-br from-cyan to-blue-600 items-center justify-center shadow-lg shadow-cyan/20 flex-shrink-0">
-                <ShieldCheck className="w-7 h-7 text-black" />
-              </div>
-              <div>
-                <div className="text-cyan text-xs font-mono font-bold tracking-widest mb-1">SPECIAL FEATURE</div>
-                <h3 className="text-xl sm:text-2xl font-heading font-bold text-white mb-2">ゲーマーのための最強VPNガイド</h3>
-                <p className="text-sm text-text-muted">回線を変えずにPingを改善・SBMM回避・DDoS対策を行う裏技</p>
-              </div>
-            </div>
-            
-            <div className="relative z-10 w-full sm:w-auto">
-              <div className="flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white/10 text-white font-bold text-sm border border-white/10 group-hover:bg-cyan group-hover:text-black group-hover:border-cyan transition-all w-full">
-                特集を見る
-                <ChevronRight className="w-4 h-4" />
-              </div>
-            </div>
-          </Link>
         </div>
       </section>
 
