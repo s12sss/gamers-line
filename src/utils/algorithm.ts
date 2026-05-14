@@ -81,11 +81,6 @@ function calculateScore(isp: ISP, answers: UserAnswers): number {
     score += 40;
   }
 
-  // アフィリエイト提携待ちのため、GameWith光の表示優先度を意図的に下げるペナルティ
-  if (isp.id.includes('gamewith_hikari')) {
-    score -= 30;
-  }
-
   // BBIQのアフィリエイト防衛ロジック：マンションの申し込みは公式のみとなり報酬が発生しないため、マンションユーザーには一切提案しない（他社へ誘導する）
   if (isp.id.includes('bbiq_hikari')) {
     if (answers.housingType === 'mansion_optical' || answers.housingType === 'mansion_vdsl') {
