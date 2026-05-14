@@ -332,9 +332,9 @@ export default async function Home() {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {[
-            { href: '/compare', Icon: BarChart2, color: 'cyan' as const, title: '回線を比較する', desc: '速度・Ping・料金・10G対応・スマホ割を条件で絞り込み、複数回線を横並びで比較できる' },
-            { href: '/provider', Icon: LayoutList, color: 'white' as const, title: 'プロバイダ一覧', desc: 'Ping値・月額料金・安定性スコア・キャンペーン情報をプロバイダごとに詳しく確認できる' },
-            { href: '/area', Icon: MapPin, color: 'emerald' as const, title: 'エリアから探す', desc: '都道府県を選んで対応回線をチェック。地域ごとのおすすめ回線と各社のエリア展開がわかる' },
+            { href: '/compare', Icon: BarChart2, color: 'cyan' as const, title: '回線を比較する', desc: '速度・Ping・料金・10G対応・スマホ割を条件で絞り込み、複数回線を横並びで比較できます。' },
+            { href: '/provider', Icon: LayoutList, color: 'white' as const, title: 'プロバイダ一覧', desc: 'Ping値・月額料金・安定性スコア・キャンペーン情報をプロバイダごとに詳しく確認できます。' },
+            { href: '/area', Icon: MapPin, color: 'emerald' as const, title: 'エリアから探す', desc: '都道府県を選ぶだけで対応回線がわかります。地域ごとのおすすめ回線と各社のエリア展開を確認できます。' },
           ].map(({ href, Icon, color, title, desc }) => (
             <Link
               key={href}
