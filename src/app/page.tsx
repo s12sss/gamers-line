@@ -243,7 +243,7 @@ export default async function Home() {
           {[
             { num: '01', color: 'cyan' as const, title: '30秒で最適な回線がわかる', desc: 'プレイしているゲームやお住まいの環境を選ぶだけ。専門知識は不要で、あなたに合った回線がすぐにわかります。' },
             { num: '02', color: 'emerald' as const, title: 'ゲームにおすすめの回線を厳選', desc: 'オンラインゲームのプレイに本当に適したプロバイダだけを厳選。スマホセット割にも対応し、コスパと性能を両立した回線が見つかります。' },
-            { num: '03', color: 'purple' as const, title: '攻略サイトのように比較できる', desc: 'Ping値・料金・安定性が一目でわかる比較コンテンツを完備。装備を選ぶ感覚で、自分に合った回線を見つけられます。' },
+            { num: '03', color: 'purple' as const, title: '攻略サイトのように比較できる', desc: 'Ping値・料金・安定性が一目でわかる比較コンテンツを完備。装備を選ぶ感覚で、自分に合った回線を探せます。' },
           ].map(({ num, color, title, desc }) => (
             <div
               key={num}
