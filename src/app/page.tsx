@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { Activity, ShieldCheck, Wallet, ChevronRight, Play, ChevronDown } from 'lucide-react';
+import { Activity, ShieldCheck, ChevronRight, Play, ChevronDown } from 'lucide-react';
 import ispsData from "@/data/isps.json";
 import { getColumnsList } from "@/libs/microcms";
 
@@ -241,10 +241,10 @@ export default async function Home() {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {[
-            { num: '01', color: 'cyan' as const, Icon: Activity, title: '30秒で最適な回線がわかる', desc: 'プレイしているゲームやお住まいの環境を選ぶだけ。専門知識は不要で、あなたに合った回線がすぐにわかります。' },
-            { num: '02', color: 'emerald' as const, Icon: ShieldCheck, title: 'ゲームにおすすめの回線を厳選', desc: 'オンラインゲームのプレイに本当に適したプロバイダだけを厳選。スマホセット割にも対応し、コスパと性能を両立した回線が見つかります。' },
-            { num: '03', color: 'purple' as const, Icon: Wallet, title: '攻略サイトのように比較できる', desc: 'Ping値・料金・安定性が一目でわかる比較コンテンツを完備。装備を選ぶ感覚で、自分に合った回線を見つけられます。' },
-          ].map(({ num, color, Icon, title, desc }) => (
+            { num: '01', color: 'cyan' as const, title: '30秒で最適な回線がわかる', desc: 'プレイしているゲームやお住まいの環境を選ぶだけ。専門知識は不要で、あなたに合った回線がすぐにわかります。' },
+            { num: '02', color: 'emerald' as const, title: 'ゲームにおすすめの回線を厳選', desc: 'オンラインゲームのプレイに本当に適したプロバイダだけを厳選。スマホセット割にも対応し、コスパと性能を両立した回線が見つかります。' },
+            { num: '03', color: 'purple' as const, title: '攻略サイトのように比較できる', desc: 'Ping値・料金・安定性が一目でわかる比較コンテンツを完備。装備を選ぶ感覚で、自分に合った回線を見つけられます。' },
+          ].map(({ num, color, title, desc }) => (
             <div
               key={num}
               className={`group relative flex flex-col p-6 sm:p-8 rounded-[20px] border overflow-hidden transition-all duration-300 hover:-translate-y-1
@@ -261,10 +261,6 @@ export default async function Home() {
                   ${color === 'cyan' ? 'text-cyan/50' : color === 'emerald' ? 'text-emerald/50' : 'text-purple-400/50'}`}>
                   {num}
                 </span>
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4
-                  ${color === 'cyan' ? 'bg-cyan/10 text-cyan' : color === 'emerald' ? 'bg-emerald/10 text-emerald' : 'bg-purple-500/10 text-purple-400'}`}>
-                  <Icon className="w-5 h-5" />
-                </div>
                 <h3 className="font-heading font-bold text-base text-white mb-2">{title}</h3>
                 <p className="text-sm text-text-muted leading-[1.7] flex-1">{desc}</p>
               </div>
