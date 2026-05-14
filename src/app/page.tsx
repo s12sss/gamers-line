@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import Tooltip from "@/components/Tooltip";
-import { Activity, ShieldCheck, Wallet, ChevronRight, Play, MapPin, ChevronDown } from 'lucide-react';
+import { Activity, ShieldCheck, Wallet, ChevronRight, Play, ChevronDown } from 'lucide-react';
 import ispsData from "@/data/isps.json";
 import { getColumnsList } from "@/libs/microcms";
 
@@ -247,24 +246,21 @@ export default async function Home() {
             <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-cyan/10 text-cyan">
               <Activity className="w-6 h-6" />
             </div>
-            <h3 className="font-heading text-lg font-bold tracking-tight mb-3">Ping値特化の評価ロジック</h3>
+            <h3 className="font-heading text-lg font-bold tracking-tight mb-3">30秒で最適な回線がわかる</h3>
             <p className="text-sm text-text-muted leading-[1.7]">
-              FPSや格ゲーの勝敗を分ける「<Tooltip text="データが往復する時間の遅延を示す指標。FPSでは15ms以下が理想的とされます。">実測Ping値</Tooltip>（ラグの少なさ）」を基準に、ゲーマーにとって最適な回線を最短30秒で診断。あなたの環境に最も適したストレスのない選択肢をご提案します。
+              プレイしているゲームやお住まいの環境を選ぶだけ。専門知識は不要で、あなたに合った回線がすぐにわかります。
             </p>
           </div>
 
           {/* Card 2 (Featured) */}
           <div className="group relative p-6 sm:p-9 rounded-[20px] bg-cyan/5 border border-cyan/20 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-cyan/40 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(0,229,255,0.07)] hover:z-50">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(0,229,255,0.06),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-[20px] pointer-events-none" />
-            <div className="absolute top-0 right-0 px-3.5 py-1.5 bg-cyan text-black text-[0.65rem] font-bold tracking-widest rounded-bl-xl rounded-tr-[18px]">
-              NEW
-            </div>
             <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-emerald/10 text-emerald">
               <ShieldCheck className="w-6 h-6" />
             </div>
-            <h3 className="font-heading text-lg font-bold tracking-tight mb-3">無駄な提案を完全ブロック</h3>
+            <h3 className="font-heading text-lg font-bold tracking-tight mb-3">ゲームにおすすめの回線を厳選</h3>
             <p className="text-sm text-text-muted leading-[1.7]">
-              「おすすめされたのに、うちのマンションでは契約できなかった…」という悲劇を防ぐため、住居タイプ（<Tooltip text="マンションの共用部から各部屋まで電話線を使う配線方式。最大速度が100Mbps程度に制限されるためゲームには不向きです。">VDSL</Tooltip>など）から物理的に導入不可な回線を自動で除外します。
+              オンラインゲームのプレイに本当に適した（Ping値が低く安定している）プロバイダだけを厳選。スマホセット割にも対応し、コスパと性能を両立した回線が見つかります。
             </p>
           </div>
 
@@ -274,9 +270,9 @@ export default async function Home() {
             <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-purple-500/10 text-purple-400">
               <Wallet className="w-6 h-6" />
             </div>
-            <h3 className="font-heading text-lg font-bold tracking-tight mb-3">忖度なしの厳選プロバイダ</h3>
+            <h3 className="font-heading text-lg font-bold tracking-tight mb-3">攻略サイトのように比較できる</h3>
             <p className="text-sm text-text-muted leading-[1.7]">
-              無数にある光回線の中から、オンラインゲームのプレイに本当に適した（Ping値が低く安定している）プロバイダだけを厳選。<Tooltip text="お使いのスマートフォンと同じキャリアの回線を選ぶことで、月額料金が毎月割引されるお得な制度です。">スマホセット割</Tooltip>にも対応し、コスパと性能を両立した回線が見つかります。
+              Ping値・料金・安定性が一目でわかる比較コンテンツを完備。装備を選ぶ感覚で、自分に合った回線を見つけられます。
             </p>
           </div>
         </div>
@@ -343,39 +339,61 @@ export default async function Home() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          <Link href="/compare" className="group relative p-8 rounded-[20px] bg-cyan/5 border border-cyan/20 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-cyan/40 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(0,229,255,0.07)]">
-            <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-cyan/10 text-cyan">
-              <Activity className="w-6 h-6" />
-            </div>
-            <h3 className="font-heading text-xl font-bold tracking-tight mb-2 group-hover:text-cyan transition-colors">回線を比較する</h3>
-            <p className="text-sm text-text-muted mb-6">10Gプランやスマホセット割、提供エリアなど複数の条件で絞り込んで徹底比較。</p>
-            <div className="flex items-center text-cyan text-sm font-bold font-mono tracking-widest">
-              COMPARE <ChevronRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
-            </div>
-          </Link>
-
-          <Link href="/provider" className="group relative p-8 rounded-[20px] bg-white/5 border border-white/10 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-cyan/30 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(0,229,255,0.07)]">
-            <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-white/10 text-white">
-              <Wallet className="w-6 h-6" />
-            </div>
-            <h3 className="font-heading text-xl font-bold tracking-tight mb-2 group-hover:text-white transition-colors">プロバイダ一覧</h3>
-            <p className="text-sm text-text-muted mb-6">主要なゲーミング回線の基本情報、月額料金、Ping値などを一覧で確認。</p>
-            <div className="flex items-center text-white/70 text-sm font-bold font-mono tracking-widest group-hover:text-white transition-colors">
-              PROVIDERS <ChevronRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
-            </div>
-          </Link>
-
-          <Link href="/area" className="group relative p-8 rounded-[20px] bg-emerald/5 border border-emerald/20 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-emerald/40 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(0,230,118,0.07)]">
-            <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-emerald/10 text-emerald">
-              <MapPin className="w-6 h-6" />
-            </div>
-            <h3 className="font-heading text-xl font-bold tracking-tight mb-2 group-hover:text-emerald transition-colors">エリアから探す</h3>
-            <p className="text-sm text-text-muted mb-6">お住まいの地域で利用できるゲーミング回線や、地域限定の強力なローカル回線をチェック。</p>
-            <div className="flex items-center text-emerald text-sm font-bold font-mono tracking-widest group-hover:text-emerald transition-colors">
-              COVERAGE MAP <ChevronRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
-            </div>
-          </Link>
+        <div className="flex flex-col gap-3">
+          {[
+            {
+              num: '01',
+              href: '/compare',
+              title: '回線を比較する',
+              desc: '10G・スマホ割・エリアなど各種条件で絞り込み、複数回線を横並びで徹底比較',
+              color: 'cyan' as const,
+            },
+            {
+              num: '02',
+              href: '/provider',
+              title: 'プロバイダ一覧',
+              desc: 'Ping値・月額料金・安定性スコアを一覧で確認',
+              color: 'white' as const,
+            },
+            {
+              num: '03',
+              href: '/area',
+              title: 'エリアから探す',
+              desc: 'お住まいのエリアで対応している回線と、地域別のおすすめ回線を確認',
+              color: 'emerald' as const,
+            },
+          ].map(({ num, href, title, desc, color }) => (
+            <Link
+              key={href}
+              href={href}
+              className={`group relative flex items-center justify-between px-7 py-5 rounded-2xl border overflow-hidden transition-all duration-300
+                ${color === 'cyan' ? 'border-cyan/20 bg-cyan/[0.03] hover:bg-cyan/[0.06] hover:border-cyan/40' :
+                  color === 'emerald' ? 'border-emerald/20 bg-emerald/[0.03] hover:bg-emerald/[0.06] hover:border-emerald/40' :
+                  'border-white/10 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/20'}`}
+            >
+              <div className={`absolute right-6 top-1/2 -translate-y-1/2 font-mono font-black text-[4rem] leading-none pointer-events-none select-none opacity-[0.04]
+                ${color === 'cyan' ? 'text-cyan' : color === 'emerald' ? 'text-emerald' : 'text-white'}`}>
+                {num}
+              </div>
+              <div className="flex items-center gap-5 relative z-10">
+                <span className={`font-mono font-bold text-2xl leading-none
+                  ${color === 'cyan' ? 'text-cyan/40' : color === 'emerald' ? 'text-emerald/40' : 'text-white/20'}`}>
+                  {num}
+                </span>
+                <div>
+                  <div className={`font-heading font-bold text-base text-white transition-colors
+                    ${color === 'cyan' ? 'group-hover:text-cyan' : color === 'emerald' ? 'group-hover:text-emerald' : ''}`}>
+                    {title}
+                  </div>
+                  <div className="text-xs text-text-muted mt-0.5">{desc}</div>
+                </div>
+              </div>
+              <ChevronRight className={`w-4 h-4 shrink-0 relative z-10 transition-all group-hover:translate-x-0.5
+                ${color === 'cyan' ? 'text-cyan/30 group-hover:text-cyan' :
+                  color === 'emerald' ? 'text-emerald/30 group-hover:text-emerald' :
+                  'text-white/20 group-hover:text-white/60'}`} />
+            </Link>
+          ))}
         </div>
       </section>
 
