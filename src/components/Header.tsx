@@ -24,15 +24,16 @@ export default function Header() {
   }, [isOpen]);
 
   const navItems = [
-    { title: "速度チェック", href: "/speedtest" },
     {
-      title: "回線比較",
+      title: "回線を探す",
       links: [
         { name: "条件で比較する", href: "/compare" },
         { name: "回線一覧・詳細", href: "/provider" },
+        { name: "おすすめランキング", href: "/ranking" },
         { name: "エリアMAPから探す", href: "/area" },
       ]
     },
+    { title: "速度チェック", href: "/speedtest" },
     {
       title: "コラム",
       links: [
@@ -40,7 +41,7 @@ export default function Header() {
         { name: "ゲーミングVPN特集", href: "/vpn" },
       ]
     },
-    { title: "便利ツール", href: "/tools" },
+    { title: "乗り換えツール", href: "/tools" },
   ];
 
   return (
