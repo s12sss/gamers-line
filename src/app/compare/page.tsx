@@ -271,7 +271,7 @@ export default function ComparePage() {
                 onClick={() => handleSort('price')}
                 className="flex items-center gap-2 py-3.5 px-2 pl-1 border-b border-white/5 text-[0.8rem] font-medium text-white/70 hover:text-white hover:bg-white/5 transition-all outline-none text-left w-full cursor-pointer"
               >
-                <Wallet className="w-3.5 h-3.5 opacity-50" /> <Tooltip text="月額料金に加えて、初期費用やキャッシュバックなどを全て含めて月割にした、本当の月額料金です。" position="left">実質月額</Tooltip>
+                <Wallet className="w-3.5 h-3.5 opacity-50" /> <Tooltip text="標準月額（税込）です。キャンペーンや割引適用で実際の負担額は変動します。詳細は公式サイトをご確認ください。" position="left">月額料金</Tooltip>
                 {sortConfig?.key === 'price' ? (
                   sortConfig.direction === 'asc' ? <ChevronDown className="w-3.5 h-3.5 text-cyan ml-auto" /> : <ChevronUp className="w-3.5 h-3.5 text-cyan ml-auto" />
                 ) : (

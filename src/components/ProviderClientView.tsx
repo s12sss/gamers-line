@@ -111,7 +111,7 @@ export default function ProviderClientView({ detail, isps, allProviders }: Props
           ※ <strong className="text-yellow-500/80">STABILITY（安定性スコア）</strong> は、Ping値の変動幅・パケットロスト率・夜間帯の混雑による速度低下率など、ゲーマーにとって致命的となる要素を総合的に評価した100点満点の独自指標です。
         </p>
         <p className="text-[0.7rem] sm:text-xs text-text-muted/80 leading-relaxed">
-          ※ <strong className="text-purple-400/80">実質月額</strong> は各種キャンペーンを考慮した目安です。建物の設備や各社の期間限定キャンペーン・スマホセット割の適用状況により、実際の負担額は変動する場合があります。
+          ※ 表示料金は標準月額（税込）です。キャンペーン・割引適用で実際の負担額は変動します。詳細は公式サイトをご確認ください。
         </p>
       </div>
 

@@ -122,7 +122,7 @@ export default function ProviderPage() {
                       <span className={`font-mono font-bold text-[1.3rem] leading-none ${isp.avg_ping_ms <= 15 ? 'text-emerald drop-shadow-[0_0_14px_rgba(0,230,118,0.4)]' : isp.avg_ping_ms <= 20 ? 'text-cyan' : 'text-amber-500'}`}>{isp.avg_ping_ms} ms</span>
                     </div>
                     <div className="flex flex-col gap-1">
-                      <span className="font-mono text-[0.7rem] text-white/75 tracking-[0.1em] uppercase"><Tooltip text="月額料金に加えて、初期費用やキャッシュバックなどを全て含めて月割にした、本当の月額料金です。">実質月額</Tooltip></span>
+                      <span className="font-mono text-[0.7rem] text-white/75 tracking-[0.1em] uppercase"><Tooltip text="標準月額（税込）です。キャンペーンや割引適用で実際の負担額は変動します。詳細は公式サイトをご確認ください。">月額料金</Tooltip></span>
                       <span className="font-mono font-bold text-[1.1rem] sm:text-[1.2rem] leading-none text-text mt-0.5">¥{isp.actual_monthly_fee_jpy.toLocaleString()}</span>
                     </div>
                     <div className="flex flex-col gap-1">

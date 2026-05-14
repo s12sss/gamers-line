@@ -11,7 +11,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function DiagnosisPage() {
+export default async function DiagnosisPage({ searchParams }: { searchParams: Promise<{ genre?: string }> }) {
+  const { genre } = await searchParams;
   const softwareAppJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
@@ -47,7 +48,7 @@ export default function DiagnosisPage() {
           </p>
         </div>
 
-        <DiagnosisForm />
+        <DiagnosisForm initialGenre={genre} />
       </div>
     </div>
   );

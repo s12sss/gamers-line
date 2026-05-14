@@ -33,7 +33,7 @@ export default function RankingPage() {
           <span className="gradient-text">おすすめランキング</span>
         </h1>
         <p className="text-text-muted text-base max-w-[520px] leading-[1.7]">
-          Ping値・実質月額・安定性を独自スコアリングで総合評価。FPSゲーマーが今すぐ契約すべき回線TOP5。
+          Ping値・月額料金・安定性を独自スコアリングで総合評価。FPSゲーマーが今すぐ契約すべき回線TOP5。
         </p>
       </div>
 
@@ -132,7 +132,7 @@ export default function RankingPage() {
                     <span className={`font-mono text-[0.95rem] sm:text-[1.1rem] font-bold ${isp.avg_ping_ms <= 15 ? 'text-emerald drop-shadow-[0_0_12px_rgba(0,230,118,0.4)]' : isp.avg_ping_ms <= 20 ? 'text-cyan' : 'text-amber-500'}`}>{isp.avg_ping_ms} ms</span>
                   </div>
                   <div className="flex flex-col gap-0.5">
-                    <span className="font-mono text-[0.62rem] text-text-dim tracking-[0.08em] uppercase">実質月額</span>
+                    <span className="font-mono text-[0.62rem] text-text-dim tracking-[0.08em] uppercase">月額料金</span>
                     <span className="font-mono font-bold text-[0.85rem] sm:text-[0.95rem] text-text leading-none mt-0.5">¥{isp.actual_monthly_fee_jpy.toLocaleString()}</span>
                   </div>
                   <div className="flex flex-col gap-0.5">

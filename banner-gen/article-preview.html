@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gamer's Line — 記事プレビュー</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet"/>
+<style>
+/* ===== RESET ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ===== DESIGN TOKENS ===== */
+:root {
+  --cyan: #00E5FF;
+  --emerald: #00E676;
+  --amber: #fbbf24;
+  --red: #f87171;
+  --green: #4ade80;
+  --bg: #050508;
+  --bg-2: #0a0a12;
+  --bg-card: #0e0e18;
+  --border: rgba(255,255,255,0.08);
+  --border-cyan: rgba(0,229,255,0.25);
+  --text: #f0f0f8;
+  --text-muted: #7a7a9a;
+  --text-dim: #3a3a5a;
+  --font-mono: 'Space Mono', 'Courier New', monospace;
+  --font-sans: 'Space Grotesk', 'Noto Sans JP', sans-serif;
+  --font-jp: 'Noto Sans JP', 'Hiragino Kaku Gothic Pro', sans-serif;
+}
+
+/* ===== SHELL ===== */
+body {
+  background: var(--bg-2);
+  color: var(--text);
+  font-family: var(--font-jp);
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  grid-template-rows: auto 1fr;
+}
+
+/* ===== TOP BAR ===== */
+.topbar {
+  grid-column: 1 / -1;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border-cyan);
+  padding: 14px 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.topbar-logo {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  white-space: nowrap;
+}
+.topbar-logo span { color: var(--cyan); }
+.topbar-badge {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--cyan);
+  border: 1px solid var(--border-cyan);
+  padding: 3px 8px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.topbar-title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  margin-left: auto;
+}
+
+/* ===== EDITOR PANEL ===== */
+.editor-panel {
+  background: #080810;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 53px);
+  position: sticky;
+  top: 53px;
+}
+.editor-header {
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.editor-header-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--cyan);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.editor-hint {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: var(--text-dim);
+  padding: 8px 20px;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.6;
+}
+textarea {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  resize: none;
+  color: #8888aa;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  line-height: 1.7;
+  padding: 16px 20px;
+  caret-color: var(--cyan);
+}
+textarea::selection { background: rgba(0,229,255,0.15); }
+.editor-footer {
+  padding: 12px 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.btn-render {
+  background: linear-gradient(90deg, var(--cyan), #00B8D4);
+  color: #050508;
+  border: none;
+  padding: 8px 20px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  flex: 1;
+  transition: opacity 0.15s;
+}
+.btn-render:hover { opacity: 0.85; }
+.btn-clear {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  padding: 8px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+.btn-clear:hover { border-color: var(--red); color: var(--red); }
+
+/* ===== PREVIEW PANEL ===== */
+.preview-panel {
+  background: var(--bg-2);
+  overflow-y: auto;
+  height: calc(100vh - 53px);
+}
+.preview-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 48px 32px 80px;
+}
+
+/* ===== ARTICLE STYLES ===== */
+.article-body h1 {
+  font-family: var(--font-jp);
+  font-weight: 900;
+  font-size: 1.85rem;
+  line-height: 1.3;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-cyan);
+}
+.article-body h2 {
+  font-family: var(--font-jp);
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  color: var(--text);
+  margin: 48px 0 16px;
+  padding-left: 14px;
+  border-left: 3px solid var(--cyan);
+  position: relative;
+}
+.article-body h3 {
+  font-family: var(--font-jp);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--text);
+  margin: 32px 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.article-body h3::before {
+  content: '';
+  width: 14px;
+  height: 1px;
+  background: var(--cyan);
+  box-shadow: 0 0 8px var(--cyan);
+  flex-shrink: 0;
+}
+.article-body p {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: #c8c8d8;
+  margin-bottom: 16px;
+}
+.article-body strong { color: var(--text); font-weight: 700; }
+.article-body a { color: var(--cyan); text-decoration: none; }
+.article-body a:hover { text-decoration: underline; }
+.article-body ul, .article-body ol {
+  margin: 12px 0 20px 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.article-body li {
+  font-size: 0.93rem;
+  line-height: 1.7;
+  color: #c8c8d8;
+}
+.article-body ul li::marker { color: var(--cyan); }
+
+/* ===== TABLES ===== */
+.article-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0 28px;
+  font-size: 0.85rem;
+}
+.article-body th {
+  background: rgba(0,229,255,0.06);
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 10px 14px;
+  border: 1px solid var(--border-cyan);
+  text-align: left;
+}
+.article-body td {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  color: #c8c8d8;
+  vertical-align: top;
+  line-height: 1.5;
+}
+.article-body tr:hover td { background: rgba(255,255,255,0.02); }
+
+/* ===== BOX VARIANTS ===== */
+.article-body .box-tip,
+.article-body .box-check,
+.article-body .box-warning {
+  margin: 20px 0;
+  padding: 16px 20px;
+  border-radius: 2px;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+.article-body .box-tip {
+  border: 1px solid rgba(0,229,255,0.3);
+  background: rgba(0,229,255,0.04);
+}
+.article-body .box-tip strong {
+  color: var(--cyan);
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+.article-body .box-check {
+  border: 1px solid rgba(74,222,128,0.3);
+  background: rgba(74,222,128,0.04);
+}
+.article-body .box-check strong {
+  color: var(--green);
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+.article-body .box-warning {
+  border: 1px solid rgba(248,113,113,0.3);
+  background: rgba(248,113,113,0.04);
+}
+.article-body .box-warning strong {
+  color: var(--red);
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+.article-body .box-tip p,
+.article-body .box-check p,
+.article-body .box-warning p {
+  color: #c0c0d0;
+  margin: 0;
+  font-size: 0.88rem;
+}
+
+/* ===== BTN TAG ===== */
+.article-body .btn-signup {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, var(--cyan), #00B8D4);
+  color: #050508 !important;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  padding: 14px 28px;
+  margin: 16px 0;
+  width: 100%;
+  text-decoration: none !important;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  box-shadow: 0 0 18px rgba(0,229,255,0.2);
+}
+.article-body .btn-signup:hover { opacity: 0.85; text-decoration: none !important; }
+
+/* ===== AFFI FRAME ===== */
+.article-body .affi-frame {
+  border: 1px solid var(--border-cyan);
+  background: var(--bg-card);
+  padding: 24px;
+  margin: 32px 0;
+}
+.article-body .affi-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.article-body .affi-title {
+  font-family: var(--font-jp);
+  font-weight: 700;
+  font-size: 1rem;
+}
+.article-body .affi-title .accent { color: var(--cyan); }
+.article-body .affi-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  letter-spacing: 0.15em;
+}
+.article-body .affi-grid { display: grid; gap: 16px; }
+.article-body .affi-grid.cols-1 { grid-template-columns: 1fr; }
+.article-body .affi-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+.article-body .affi-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+.article-body .affi-card {
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+}
+.article-body .affi-card.featured { border-color: var(--border-cyan); }
+.article-body .affi-thumb {
+  background: rgba(0,229,255,0.03);
+  border-bottom: 1px solid var(--border);
+  padding: 20px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+}
+.article-body .affi-thumb img { max-width: 100%; max-height: 200px; object-fit: contain; }
+.article-body .affi-card-body { padding: 16px 18px; }
+.article-body .affi-card-head {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+.article-body .affi-rank {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: var(--cyan);
+  border: 1px solid var(--border-cyan);
+  padding: 2px 7px;
+  letter-spacing: 0.1em;
+}
+.article-body .affi-best {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  background: var(--cyan);
+  color: #050508;
+  padding: 2px 8px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.article-body .affi-name {
+  font-family: var(--font-jp);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.article-body .affi-spec {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.article-body .affi-spec-tag {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  letter-spacing: 0.06em;
+}
+.article-body .affi-desc {
+  font-size: 0.85rem;
+  color: #a0a0b8;
+  line-height: 1.65;
+  margin-bottom: 14px;
+}
+.article-body .affi-btn-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.article-body .affi-price-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+.article-body .affi-btn {
+  display: block;
+  text-align: center;
+  padding: 12px 20px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+.article-body .affi-btn:hover { opacity: 0.85; }
+.article-body .btn-amazon {
+  display: block;
+  text-align: center;
+  padding: 10px 16px;
+  background: linear-gradient(90deg, #FF9900, #e88800);
+  color: #1a0a00;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+.article-body .btn-rakuten {
+  display: block;
+  text-align: center;
+  padding: 10px 16px;
+  background: linear-gradient(90deg, #BF0000, #990000);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+
+/* ===== PLACEHOLDER IMAGES ===== */
+.article-body .img-placeholder {
+  background: rgba(0,229,255,0.03);
+  border: 1px dashed rgba(0,229,255,0.2);
+  padding: 24px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  margin: 16px 0;
+}
+
+/* ===== EMPTY STATE ===== */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 16px;
+  color: var(--text-dim);
+  text-align: center;
+}
+.empty-state .icon {
+  font-size: 2rem;
+  opacity: 0.4;
+}
+.empty-state p {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--text-dim);
+  line-height: 1.8;
+}
+.empty-state .hint {
+  font-size: 0.62rem;
+  opacity: 0.6;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0,229,255,0.2); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0,229,255,0.4); }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="topbar">
+  <div class="topbar-logo">Gamer's <span>Line</span></div>
+  <div class="topbar-badge">Article Preview</div>
+  <div class="topbar-title">// PASTE HTML → CLICK RENDER</div>
+</header>
+
+<!-- EDITOR -->
+<aside class="editor-panel">
+  <div class="editor-header">
+    <span class="editor-header-label">HTML INPUT</span>
+  </div>
+  <div class="editor-hint">
+    microCMS用のHTMLをそのままペーストしてRENDERを押してください。<br>
+    [btn]タグ・box-tip/check/warning・affi-frameに対応しています。
+  </div>
+  <textarea id="htmlInput" placeholder="<h2>記事タイトル</h2>&#10;<p>ここに本文HTMLを貼り付けてください...</p>&#10;&#10;<div class=&quot;box-tip&quot;><strong>TIP: タイトル</strong><p>本文</p></div>"></textarea>
+  <div class="editor-footer">
+    <button class="btn-render" onclick="renderArticle()">▶ RENDER</button>
+    <button class="btn-clear" onclick="clearAll()">CLEAR</button>
+  </div>
+</aside>
+
+<!-- PREVIEW -->
+<main class="preview-panel" id="previewPanel">
+  <div class="preview-inner" id="previewInner">
+    <div class="empty-state">
+      <div class="icon">⌨</div>
+      <p>LEFT PANEL に記事HTMLを貼り付けて<br>RENDER ボタンを押してください</p>
+      <p class="hint">box-tip / box-check / box-warning / affi-frame / [btn] 対応</p>
+    </div>
+  </div>
+</main>
+
+<script>
+function renderArticle() {
+  const raw = document.getElementById('htmlInput').value.trim();
+  if (!raw) return;
+
+  // [btn]タグをボタンに変換
+  let html = raw.replace(
+    /<a\s+([^>]*?)>\s*\[btn\](.*?)<\/a>/gs,
+    (match, attrs, text) => {
+      return `<a ${attrs} class="btn-signup">${text.trim()}</a>`;
+    }
+  );
+
+  // 画像プレースホルダーを表示
+  html = html.replace(
+    /\[ここに画像を挿入：(.*?)\]/g,
+    '<div class="img-placeholder">📷 $1</div>'
+  );
+
+  const wrapper = document.createElement('div');
+  wrapper.className = 'article-body';
+  wrapper.innerHTML = html;
+
+  const inner = document.getElementById('previewInner');
+  inner.innerHTML = '';
+  inner.appendChild(wrapper);
+
+  document.getElementById('previewPanel').scrollTop = 0;
+}
+
+function clearAll() {
+  document.getElementById('htmlInput').value = '';
+  const inner = document.getElementById('previewInner');
+  inner.innerHTML = `
+    <div class="empty-state">
+      <div class="icon">⌨</div>
+      <p>LEFT PANEL に記事HTMLを貼り付けて<br>RENDER ボタンを押してください</p>
+      <p class="hint">box-tip / box-check / box-warning / affi-frame / [btn] 対応</p>
+    </div>`;
+}
+
+// Ctrl+Enter でもレンダー
+document.getElementById('htmlInput').addEventListener('keydown', function(e) {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') renderArticle();
+});
+</script>
+</body>
+</html>

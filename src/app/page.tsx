@@ -321,7 +321,7 @@ export default async function Home() {
                 03
               </div>
               <h4 className="font-heading font-semibold text-base mb-2">Ping値・料金を比較</h4>
-              <p className="text-[0.8rem] text-text-muted leading-relaxed">推測Ping値と実質月額料金を並べて表示。その場で申し込みも可能</p>
+              <p className="text-[0.8rem] text-text-muted leading-relaxed">推測Ping値と月額料金を並べて表示。その場で申し込みも可能</p>
             </div>
           </div>
         </div>

@@ -176,7 +176,7 @@ function ResultCard({ result, index, delay, requires10G }: { result: {isp: ISP, 
 
           {/* Stats Box */}
           <div className="shrink-0 p-3.5 sm:p-4 bg-black/40 rounded-[14px] border border-white/5 text-left sm:text-right w-full sm:w-auto min-w-0 sm:min-w-[160px]">
-            <div className="text-[0.65rem] sm:text-[0.7rem] text-text-muted mb-2 tracking-wider">推測Ping / 実質月額</div>
+            <div className="text-[0.65rem] sm:text-[0.7rem] text-text-muted mb-2 tracking-wider">推測Ping / 月額料金</div>
             <div className="flex justify-start sm:justify-end items-baseline gap-1 mb-1">
               <Activity className="w-[14px] h-[14px] text-emerald relative top-[2px]" />
               <span className="font-mono text-2xl sm:text-3xl font-bold text-emerald drop-shadow-[0_0_20px_rgba(0,230,118,0.4)] leading-none">
@@ -225,10 +225,10 @@ function ResultCard({ result, index, delay, requires10G }: { result: {isp: ISP, 
   );
 }
 
-export default function DiagnosisForm() {
-  const [step, setStep] = useState(1);
+export default function DiagnosisForm({ initialGenre }: { initialGenre?: string }) {
+  const [step, setStep] = useState(initialGenre ? 2 : 1);
   const [answers, setAnswers] = useState<UserAnswers>({
-    gameGenre: '',
+    gameGenre: (initialGenre as UserAnswers['gameGenre']) || '',
     housingType: '',
     mobileCarrier: '',
     priority: '',
