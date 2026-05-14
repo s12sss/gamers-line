@@ -357,7 +357,7 @@ export default function DiagnosisForm({ initialGenre }: { initialGenre?: string 
               <OptionCard onClick={() => handleNext('region', 'tohoku')} title="東北" />
               <OptionCard onClick={() => handleNext('region', 'kanto')} title="関東" />
               <OptionCard onClick={() => handleNext('region', 'hokuriku_koshinetsu')} title="信越・北陸" />
-              <OptionCard onClick={() => handleNext('region', 'tokai')} title="東海" />
+              <OptionCard onClick={() => handleNext('region', 'chubu')} title="東海" />
               <OptionCard onClick={() => handleNext('region', 'kansai')} title="関西" />
               <OptionCard onClick={() => handleNext('region', 'chugoku')} title="中国" />
               <OptionCard onClick={() => handleNext('region', 'shikoku')} title="四国" />

@@ -51,7 +51,7 @@ export default function ComparePage() {
     if (activeFilters.includes('softbank') && !isp.mobile_discount.includes('softbank')) return false;
     
     // Regions
-    const selectedRegions = activeFilters.filter(f => ['hokkaido', 'tohoku', 'kanto', 'tokai', 'kansai', 'chugoku', 'shikoku', 'kyushu'].includes(f));
+    const selectedRegions = activeFilters.filter(f => ['hokkaido', 'tohoku', 'kanto', 'chubu', 'kansai', 'chugoku', 'shikoku', 'kyushu'].includes(f));
     if (selectedRegions.length > 0) {
       const supportsSelectedRegion = selectedRegions.some(r => isp.regions.includes(r));
       if (!supportsSelectedRegion) return false;
@@ -184,7 +184,7 @@ export default function ComparePage() {
                 { id: 'hokkaido', label: '北海道' },
                 { id: 'tohoku', label: '東北' },
                 { id: 'kanto', label: '関東' },
-                { id: 'tokai', label: '東海' },
+                { id: 'chubu', label: '東海' },
                 { id: 'kansai', label: '関西' },
                 { id: 'chugoku', label: '中国' },
                 { id: 'shikoku', label: '四国' },
