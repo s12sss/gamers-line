@@ -210,40 +210,6 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Diagnosis Value Bar */}
-      <div className="relative z-10 border-y border-white/10 bg-cyan/[0.035] overflow-hidden animate-[fadeUp_0.6s_ease_0.4s_both]">
-        <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(90deg,transparent,rgba(0,229,255,0.06),transparent)]" />
-        <div className="relative mx-auto grid max-w-[1100px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-        {[
-          { num: "01", title: "エリア判定", label: "あなたの地域で選べる回線を先に絞り込み" },
-          { num: "02", title: "Ping目安", label: "FPS・格ゲー向けに遅延の低さを比較" },
-          { num: "03", title: "スマホ割", label: "キャリア割込みで候補のコスパを確認" },
-          { num: "04", title: "10G判断", label: "本当に10Gが必要か用途からチェック" },
-        ].map((item) => (
-          <div key={item.num} className="group relative min-h-[132px] border-b border-white/10 p-5 sm:p-6 lg:border-b-0 lg:border-r lg:last:border-r-0">
-            <div className="absolute inset-0 bg-cyan/[0.035] opacity-0 transition-opacity group-hover:opacity-100" />
-            <div className="relative z-10 flex h-full flex-col justify-between gap-5">
-              <div className="flex items-center justify-between gap-4">
-                <span className="font-mono text-[0.68rem] font-bold tracking-[0.18em] text-cyan/70">
-                  CHECK {item.num}
-                </span>
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald shadow-[0_0_14px_rgba(0,230,118,0.7)]" />
-              </div>
-              <div>
-                <div className="font-heading text-[1rem] font-bold text-white mb-1.5">
-                  {item.title}
-                </div>
-                <div className="text-[0.78rem] leading-relaxed text-text-muted">
-                  {item.label}
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-        </div>
-      </div>
-
-
       {/* Features Section */}
       <section id="features" className="relative z-10 px-4 sm:px-10 py-[60px] sm:py-[100px] max-w-[1100px] mx-auto w-full">
         <div className="font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase mb-3 opacity-70">
