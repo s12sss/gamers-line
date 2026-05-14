@@ -68,11 +68,7 @@ export default function LPPage() {
             <button
               key={game.id}
               onClick={() => handleGame(game.genre)}
-              className={`group relative px-4 py-4 rounded-2xl border text-sm font-bold tracking-tight text-left transition-all duration-200
-                ${selected === game.id
-                  ? 'bg-cyan/15 border-cyan text-cyan shadow-[0_0_20px_rgba(0,229,255,0.2)]'
-                  : 'bg-white/[0.03] border-white/10 text-text-muted hover:border-cyan/40 hover:bg-cyan/5 hover:text-white'
-                }`}
+              className="group relative px-4 py-4 rounded-2xl border border-white/10 bg-white/[0.03] text-sm font-bold tracking-tight text-left text-text-muted transition-all duration-200 hover:border-cyan/40 hover:bg-cyan/5 hover:text-white"
             >
               <span className="font-mono text-[0.55rem] text-cyan/50 uppercase tracking-widest block mb-1">
                 {game.genre === 'fps' ? 'FPS/TPS' : game.genre === 'fighting' ? '格ゲー' : game.genre === 'mmo' ? 'MMO' : game.genre === 'moba' ? 'MOBA' : ''}
