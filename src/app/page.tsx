@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { Activity, ShieldCheck, ChevronRight, Play, ChevronDown } from 'lucide-react';
+import { Activity, ShieldCheck, ChevronRight, Play, ChevronDown, BarChart2, LayoutList, MapPin } from 'lucide-react';
 import ispsData from "@/data/isps.json";
 import { getColumnsList } from "@/libs/microcms";
 
@@ -330,22 +330,38 @@ export default async function Home() {
           </p>
         </div>
 
-        <div className="flex flex-col gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {[
-            { href: '/compare', title: '回線を比較する', desc: '回線性能、料金、キャンペーン、対応地域がひと目で' },
-            { href: '/provider', title: 'プロバイダ一覧', desc: 'プロバイダ別の詳細情報を一覧で確認' },
-            { href: '/area', title: 'エリアから探す', desc: 'お住まいのエリアで対応している回線と、地域別のおすすめ回線を確認' },
-          ].map(({ href, title, desc }) => (
+            { href: '/compare', Icon: BarChart2, color: 'cyan' as const, title: '回線を比較する', desc: '回線性能、料金、キャンペーン、対応地域がひと目で' },
+            { href: '/provider', Icon: LayoutList, color: 'white' as const, title: 'プロバイダ一覧', desc: 'プロバイダ別の詳細情報を一覧で確認' },
+            { href: '/area', Icon: MapPin, color: 'emerald' as const, title: 'エリアから探す', desc: 'お住まいのエリアで対応している回線と、地域別のおすすめ回線を確認' },
+          ].map(({ href, Icon, color, title, desc }) => (
             <Link
               key={href}
               href={href}
-              className="group flex items-center justify-between px-6 py-5 rounded-2xl border border-white/10 bg-white/[0.02] hover:border-cyan/20 hover:bg-white/[0.04] transition-all duration-200"
+              className={`group relative flex flex-col justify-between p-6 sm:p-8 rounded-2xl border overflow-hidden transition-all duration-300 hover:-translate-y-1 min-h-[180px]
+                ${color === 'cyan' ? 'border-cyan/20 bg-cyan/[0.03] hover:border-cyan/40 hover:bg-cyan/[0.06]' :
+                  color === 'emerald' ? 'border-emerald/20 bg-emerald/[0.03] hover:border-emerald/40 hover:bg-emerald/[0.06]' :
+                  'border-white/10 bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.05]'}`}
             >
-              <div>
-                <div className="font-heading font-bold text-base text-white group-hover:text-cyan transition-colors">{title}</div>
-                <div className="text-xs text-text-muted mt-0.5">{desc}</div>
+              {/* デコレーションアイコン */}
+              <Icon className={`absolute right-5 bottom-5 w-20 h-20 opacity-[0.06] pointer-events-none
+                ${color === 'cyan' ? 'text-cyan' : color === 'emerald' ? 'text-emerald' : 'text-white'}`} />
+              <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-5
+                ${color === 'cyan' ? 'bg-cyan/10 text-cyan' : color === 'emerald' ? 'bg-emerald/10 text-emerald' : 'bg-white/5 text-white/60'}`}>
+                <Icon className="w-5 h-5" />
               </div>
-              <ChevronRight className="w-4 h-4 text-white/20 group-hover:text-cyan group-hover:translate-x-0.5 transition-all shrink-0" />
+              <div>
+                <div className={`font-heading font-bold text-base text-white mb-1.5 transition-colors
+                  ${color === 'cyan' ? 'group-hover:text-cyan' : color === 'emerald' ? 'group-hover:text-emerald' : ''}`}>
+                  {title}
+                </div>
+                <div className="text-xs text-text-muted leading-relaxed">{desc}</div>
+              </div>
+              <div className={`flex items-center gap-1 mt-5 text-xs font-bold transition-all group-hover:translate-x-0.5
+                ${color === 'cyan' ? 'text-cyan/40 group-hover:text-cyan' : color === 'emerald' ? 'text-emerald/40 group-hover:text-emerald' : 'text-white/20 group-hover:text-white/60'}`}>
+                詳しく見る <ChevronRight className="w-3.5 h-3.5" />
+              </div>
             </Link>
           ))}
         </div>
