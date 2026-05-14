@@ -123,6 +123,7 @@ export default async function PrefecturePage({ params }: Props) {
   const regionData = REGION_COVERAGE[prefData.regionId];
   
   const regionalISPs = (ispsData as ISP[])
+    .filter(isp => !isp.hidden)
     .filter(isp => isp.regions.includes(prefData.regionId) || isp.regions.includes('all'))
     .sort((a, b) => a.avg_ping_ms - b.avg_ping_ms);
 

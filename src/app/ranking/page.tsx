@@ -12,7 +12,7 @@ export default function RankingPage() {
   const [speedFilter, setSpeedFilter] = useState<'all' | '10g' | '1g'>('all');
   
   // Sort ISPs by ping (ascending) and filter by speed
-  const rankedIsps = [...ispsData]
+  const rankedIsps = [...ispsData.filter((isp: any) => !isp.hidden)]
     .filter(isp => {
       if (speedFilter === 'all') return true;
       if (speedFilter === '10g') return isp.max_speed_gbps >= 10;

@@ -33,7 +33,7 @@ export default function ComparePage() {
     }
   };
   
-  let compareIsps = ispsData.filter(isp => {
+  let compareIsps = ispsData.filter((isp: any) => !isp.hidden).filter(isp => {
     // Speed Filter
     if (activeFilters.includes('10G') && isp.max_speed_gbps < 10) return false;
     if (activeFilters.includes('1G') && isp.max_speed_gbps >= 10) return false;

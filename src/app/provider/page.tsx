@@ -13,7 +13,7 @@ export default function ProviderPage() {
   const [speedFilter, setSpeedFilter] = useState<'all' | '10g' | '1g'>('all');
   
   // Create a filtered version of ispsData
-  const filteredIsps = ispsData.filter(isp => {
+  const filteredIsps = ispsData.filter((isp: any) => !isp.hidden).filter(isp => {
     if (speedFilter === 'all') return true;
     if (speedFilter === '10g') return isp.max_speed_gbps >= 10;
     if (speedFilter === '1g') return isp.max_speed_gbps < 10;

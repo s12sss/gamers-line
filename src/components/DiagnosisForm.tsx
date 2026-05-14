@@ -2,13 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Gamepad2, Home, Smartphone, Zap, Wallet, ChevronRight, ChevronLeft, Activity, Check, MapPin, Download, Gift } from 'lucide-react';
+import { Gamepad2, Home, Smartphone, Zap, Wallet, ChevronRight, ChevronLeft, Activity, Check, MapPin, Download } from 'lucide-react';
 import { UserAnswers, recommendISPs, ISP } from '@/utils/algorithm';
 import ispsData from '@/data/isps.json';
-import Link from 'next/link';
 import AffiliateLink from './AffiliateLink';
 
-const isps = ispsData as ISP[];
+const isps = (ispsData as ISP[]).filter(isp => !isp.hidden);
 
 function OptionCard({ title, desc, onClick }: { title: string, desc?: string, onClick: () => void }) {
   return (

@@ -1345,6 +1345,7 @@
   },
   {
     "id": "gaming-plus_10g",
+    "hidden": true,
     "name": "Gaming+ 10G (ゲーミングプラス)",
     "providerName": "株式会社ネットフォレスト",
     "type": "プロバイダ乗換",
@@ -1397,6 +1398,7 @@
   },
   {
     "id": "gaming-plus_1g",
+    "hidden": true,
     "name": "Gaming+ 1G (ゲーミングプラス)",
     "providerName": "株式会社ネットフォレスト",
     "type": "プロバイダ乗換",

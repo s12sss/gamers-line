@@ -1,5 +1,6 @@
 export interface ISP {
   id: string;
+  hidden?: boolean;
   name: string;
   providerName?: string;
   type: string;
@@ -102,7 +103,7 @@ function calculateScore(isp: ISP, answers: UserAnswers): number {
 
 export function recommendISPs(isps: ISP[], answers: UserAnswers): { isp: ISP, score: number }[] {
   // 1. ハードフィルター (絶対的な提供条件による足切り)
-  let filteredISPs = isps.filter(isp => {
+  let filteredISPs = isps.filter(isp => !isp.hidden).filter(isp => {
     // ユーザーがVDSLと答えた場合、VDSL対応していない回線（NURO等）を弾く
     if (answers.housingType === 'mansion_vdsl' && !isp.available_housing.includes('mansion_vdsl')) {
       return false;
