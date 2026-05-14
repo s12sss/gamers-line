@@ -239,42 +239,37 @@ export default async function Home() {
           <span className="gradient-text">選ばれる理由</span>
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {/* Card 1 */}
-          <div className="group relative p-6 sm:p-9 rounded-[20px] bg-white/5 border border-white/10 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-cyan/30 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(0,229,255,0.07)] hover:z-50">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(0,229,255,0.06),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-[20px] pointer-events-none" />
-            <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-cyan/10 text-cyan">
-              <Activity className="w-6 h-6" />
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {[
+            { num: '01', color: 'cyan' as const, Icon: Activity, title: '30秒で最適な回線がわかる', desc: 'プレイしているゲームやお住まいの環境を選ぶだけ。専門知識は不要で、あなたに合った回線がすぐにわかります。' },
+            { num: '02', color: 'emerald' as const, Icon: ShieldCheck, title: 'ゲームにおすすめの回線を厳選', desc: 'オンラインゲームのプレイに本当に適したプロバイダだけを厳選。スマホセット割にも対応し、コスパと性能を両立した回線が見つかります。' },
+            { num: '03', color: 'purple' as const, Icon: Wallet, title: '攻略サイトのように比較できる', desc: 'Ping値・料金・安定性が一目でわかる比較コンテンツを完備。装備を選ぶ感覚で、自分に合った回線を見つけられます。' },
+          ].map(({ num, color, Icon, title, desc }) => (
+            <div
+              key={num}
+              className={`group relative flex flex-col p-6 sm:p-8 rounded-[20px] border overflow-hidden transition-all duration-300 hover:-translate-y-1
+                ${color === 'cyan' ? 'border-cyan/20 bg-cyan/[0.03] hover:bg-cyan/[0.06] hover:border-cyan/40' :
+                  color === 'emerald' ? 'border-emerald/20 bg-emerald/[0.03] hover:bg-emerald/[0.06] hover:border-emerald/40' :
+                  'border-purple-500/20 bg-purple-500/[0.03] hover:bg-purple-500/[0.06] hover:border-purple-500/40'}`}
+            >
+              <div className={`absolute right-4 bottom-4 font-mono font-black text-[5rem] leading-none pointer-events-none select-none opacity-[0.05]
+                ${color === 'cyan' ? 'text-cyan' : color === 'emerald' ? 'text-emerald' : 'text-purple-400'}`}>
+                {num}
+              </div>
+              <div className="relative z-10 flex flex-col h-full">
+                <span className={`font-mono font-bold text-3xl leading-none mb-5
+                  ${color === 'cyan' ? 'text-cyan/50' : color === 'emerald' ? 'text-emerald/50' : 'text-purple-400/50'}`}>
+                  {num}
+                </span>
+                <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4
+                  ${color === 'cyan' ? 'bg-cyan/10 text-cyan' : color === 'emerald' ? 'bg-emerald/10 text-emerald' : 'bg-purple-500/10 text-purple-400'}`}>
+                  <Icon className="w-5 h-5" />
+                </div>
+                <h3 className="font-heading font-bold text-base text-white mb-2">{title}</h3>
+                <p className="text-sm text-text-muted leading-[1.7] flex-1">{desc}</p>
+              </div>
             </div>
-            <h3 className="font-heading text-lg font-bold tracking-tight mb-3">30秒で最適な回線がわかる</h3>
-            <p className="text-sm text-text-muted leading-[1.7]">
-              プレイしているゲームやお住まいの環境を選ぶだけ。専門知識は不要で、あなたに合った回線がすぐにわかります。
-            </p>
-          </div>
-
-          {/* Card 2 (Featured) */}
-          <div className="group relative p-6 sm:p-9 rounded-[20px] bg-cyan/5 border border-cyan/20 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-cyan/40 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(0,229,255,0.07)] hover:z-50">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(0,229,255,0.06),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-[20px] pointer-events-none" />
-            <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-emerald/10 text-emerald">
-              <ShieldCheck className="w-6 h-6" />
-            </div>
-            <h3 className="font-heading text-lg font-bold tracking-tight mb-3">ゲームにおすすめの回線を厳選</h3>
-            <p className="text-sm text-text-muted leading-[1.7]">
-              オンラインゲームのプレイに本当に適したプロバイダだけを厳選。スマホセット割にも対応し、コスパと性能を両立した回線が見つかります。
-            </p>
-          </div>
-
-          {/* Card 3 */}
-          <div className="group relative p-6 sm:p-9 rounded-[20px] bg-white/5 border border-white/10 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-cyan/30 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(0,229,255,0.07)] hover:z-50">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(0,229,255,0.06),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-[20px] pointer-events-none" />
-            <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-purple-500/10 text-purple-400">
-              <Wallet className="w-6 h-6" />
-            </div>
-            <h3 className="font-heading text-lg font-bold tracking-tight mb-3">攻略サイトのように比較できる</h3>
-            <p className="text-sm text-text-muted leading-[1.7]">
-              Ping値・料金・安定性が一目でわかる比較コンテンツを完備。装備を選ぶ感覚で、自分に合った回線を見つけられます。
-            </p>
-          </div>
+          ))}
         </div>
       </section>
 
@@ -339,59 +334,22 @@ export default async function Home() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="flex flex-col gap-3">
           {[
-            {
-              num: '01',
-              href: '/compare',
-              title: '回線を比較する',
-              desc: '回線性能、料金、キャンペーン、対応地域がひと目で',
-              color: 'cyan' as const,
-            },
-            {
-              num: '02',
-              href: '/provider',
-              title: 'プロバイダ一覧',
-              desc: 'プロバイダ別の詳細情報を一覧で確認',
-              color: 'white' as const,
-            },
-            {
-              num: '03',
-              href: '/area',
-              title: 'エリアから探す',
-              desc: 'お住まいのエリアで対応している回線と、地域別のおすすめ回線を確認',
-              color: 'emerald' as const,
-            },
-          ].map(({ num, href, title, desc, color }) => (
+            { href: '/compare', title: '回線を比較する', desc: '回線性能、料金、キャンペーン、対応地域がひと目で' },
+            { href: '/provider', title: 'プロバイダ一覧', desc: 'プロバイダ別の詳細情報を一覧で確認' },
+            { href: '/area', title: 'エリアから探す', desc: 'お住まいのエリアで対応している回線と、地域別のおすすめ回線を確認' },
+          ].map(({ href, title, desc }) => (
             <Link
               key={href}
               href={href}
-              className={`group relative flex flex-col p-6 sm:p-8 rounded-2xl border overflow-hidden transition-all duration-300 hover:-translate-y-1
-                ${color === 'cyan' ? 'border-cyan/20 bg-cyan/[0.03] hover:bg-cyan/[0.06] hover:border-cyan/40' :
-                  color === 'emerald' ? 'border-emerald/20 bg-emerald/[0.03] hover:bg-emerald/[0.06] hover:border-emerald/40' :
-                  'border-white/10 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/20'}`}
+              className="group flex items-center justify-between px-6 py-5 rounded-2xl border border-white/10 bg-white/[0.02] hover:border-cyan/20 hover:bg-white/[0.04] transition-all duration-200"
             >
-              <div className={`absolute right-4 bottom-4 font-mono font-black text-[5rem] leading-none pointer-events-none select-none opacity-[0.05]
-                ${color === 'cyan' ? 'text-cyan' : color === 'emerald' ? 'text-emerald' : 'text-white'}`}>
-                {num}
+              <div>
+                <div className="font-heading font-bold text-base text-white group-hover:text-cyan transition-colors">{title}</div>
+                <div className="text-xs text-text-muted mt-0.5">{desc}</div>
               </div>
-              <div className="relative z-10 flex flex-col h-full">
-                <span className={`font-mono font-bold text-3xl leading-none mb-5
-                  ${color === 'cyan' ? 'text-cyan/50' : color === 'emerald' ? 'text-emerald/50' : 'text-white/25'}`}>
-                  {num}
-                </span>
-                <div className={`font-heading font-bold text-base text-white mb-2 transition-colors
-                  ${color === 'cyan' ? 'group-hover:text-cyan' : color === 'emerald' ? 'group-hover:text-emerald' : ''}`}>
-                  {title}
-                </div>
-                <div className="text-xs text-text-muted leading-relaxed flex-1">{desc}</div>
-                <div className={`flex items-center gap-1 mt-5 text-xs font-bold transition-all group-hover:translate-x-0.5
-                  ${color === 'cyan' ? 'text-cyan/30 group-hover:text-cyan' :
-                    color === 'emerald' ? 'text-emerald/30 group-hover:text-emerald' :
-                    'text-white/20 group-hover:text-white/60'}`}>
-                  詳しく見る <ChevronRight className="w-3.5 h-3.5" />
-                </div>
-              </div>
+              <ChevronRight className="w-4 h-4 text-white/20 group-hover:text-cyan group-hover:translate-x-0.5 transition-all shrink-0" />
             </Link>
           ))}
         </div>
