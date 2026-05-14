@@ -260,7 +260,7 @@ export default async function Home() {
             </div>
             <h3 className="font-heading text-lg font-bold tracking-tight mb-3">ゲームにおすすめの回線を厳選</h3>
             <p className="text-sm text-text-muted leading-[1.7]">
-              オンラインゲームのプレイに本当に適した（Ping値が低く安定している）プロバイダだけを厳選。スマホセット割にも対応し、コスパと性能を両立した回線が見つかります。
+              オンラインゲームのプレイに本当に適したプロバイダだけを厳選。スマホセット割にも対応し、コスパと性能を両立した回線が見つかります。
             </p>
           </div>
 
@@ -339,7 +339,7 @@ export default async function Home() {
           </p>
         </div>
 
-        <div className="flex flex-col gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {[
             {
               num: '01',
@@ -366,32 +366,30 @@ export default async function Home() {
             <Link
               key={href}
               href={href}
-              className={`group relative flex items-center justify-between px-7 py-5 rounded-2xl border overflow-hidden transition-all duration-300
+              className={`group relative flex flex-col p-6 sm:p-8 rounded-2xl border overflow-hidden transition-all duration-300 hover:-translate-y-1
                 ${color === 'cyan' ? 'border-cyan/20 bg-cyan/[0.03] hover:bg-cyan/[0.06] hover:border-cyan/40' :
                   color === 'emerald' ? 'border-emerald/20 bg-emerald/[0.03] hover:bg-emerald/[0.06] hover:border-emerald/40' :
                   'border-white/10 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/20'}`}
             >
-              <div className={`absolute right-6 top-1/2 -translate-y-1/2 font-mono font-black text-[4rem] leading-none pointer-events-none select-none opacity-[0.04]
+              <div className={`absolute right-4 bottom-4 font-mono font-black text-[5rem] leading-none pointer-events-none select-none opacity-[0.05]
                 ${color === 'cyan' ? 'text-cyan' : color === 'emerald' ? 'text-emerald' : 'text-white'}`}>
                 {num}
               </div>
-              <div className="flex items-center gap-5 relative z-10">
-                <span className={`font-mono font-bold text-2xl leading-none
-                  ${color === 'cyan' ? 'text-cyan/40' : color === 'emerald' ? 'text-emerald/40' : 'text-white/20'}`}>
+              <div className="relative z-10 flex flex-col h-full">
+                <span className={`font-mono font-bold text-3xl leading-none mb-5
+                  ${color === 'cyan' ? 'text-cyan/50' : color === 'emerald' ? 'text-emerald/50' : 'text-white/25'}`}>
                   {num}
                 </span>
-                <div>
-                  <div className={`font-heading font-bold text-base text-white transition-colors
-                    ${color === 'cyan' ? 'group-hover:text-cyan' : color === 'emerald' ? 'group-hover:text-emerald' : ''}`}>
-                    {title}
-                  </div>
-                  <div className="text-xs text-text-muted mt-0.5">{desc}</div>
+                <div className={`font-heading font-bold text-base text-white mb-2 transition-colors
+                  ${color === 'cyan' ? 'group-hover:text-cyan' : color === 'emerald' ? 'group-hover:text-emerald' : ''}`}>
+                  {title}
                 </div>
+                <div className="text-xs text-text-muted leading-relaxed flex-1">{desc}</div>
+                <ChevronRight className={`w-4 h-4 mt-5 transition-all group-hover:translate-x-0.5
+                  ${color === 'cyan' ? 'text-cyan/30 group-hover:text-cyan' :
+                    color === 'emerald' ? 'text-emerald/30 group-hover:text-emerald' :
+                    'text-white/20 group-hover:text-white/60'}`} />
               </div>
-              <ChevronRight className={`w-4 h-4 shrink-0 relative z-10 transition-all group-hover:translate-x-0.5
-                ${color === 'cyan' ? 'text-cyan/30 group-hover:text-cyan' :
-                  color === 'emerald' ? 'text-emerald/30 group-hover:text-emerald' :
-                  'text-white/20 group-hover:text-white/60'}`} />
             </Link>
           ))}
         </div>
