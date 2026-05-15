@@ -210,6 +210,24 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* Announcement Bar */}
+      <div className="relative z-10 border-y border-white/10 bg-gradient-to-r from-cyan/[0.04] via-transparent to-emerald/[0.03] overflow-hidden">
+        <div className="max-w-[1100px] mx-auto px-4 sm:px-10 py-3 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <span className="font-mono text-[0.6rem] text-cyan tracking-[0.2em] uppercase shrink-0">5月最新</span>
+            <span className="text-sm font-bold text-white">NURO光 最大75,000円キャッシュバック実施中</span>
+          </div>
+          <div className="flex items-center gap-2 shrink-0">
+            <Link href="/campaign" className="text-[0.75rem] font-bold text-cyan border border-cyan/30 bg-cyan/10 px-4 py-1.5 rounded-full hover:bg-cyan/20 transition-all whitespace-nowrap">
+              キャンペーン一覧 →
+            </Link>
+            <Link href="/tools" className="text-[0.75rem] font-bold text-text-muted border border-white/10 px-4 py-1.5 rounded-full hover:border-white/20 hover:text-white transition-all whitespace-nowrap">
+              乗り換えツール
+            </Link>
+          </div>
+        </div>
+      </div>
+
       {/* Features Section */}
       <section id="features" className="relative z-10 px-4 sm:px-10 py-[60px] sm:py-[100px] max-w-[1100px] mx-auto w-full">
         <div className="font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase mb-3 opacity-70">

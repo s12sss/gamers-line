@@ -21,10 +21,10 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
   'eo': {
     slug: 'eo',
     name: 'eo光',
-    catchphrase: '関西ゲーマーの特権。圧倒的な安さとPing一桁を叩き出す最強の独自回線',
-    heroDescription: '関西エリア（大阪・京都・兵庫・奈良・滋賀・和歌山・福井）にお住まいなら、迷わずeo光一択です。NTT網を使わない「独自回線」のため混雑に強く、特にゲーム用途においては圧倒的なコストパフォーマンスを誇る「eo光シンプルプラン」が最強の選択肢となります。',
+    catchphrase: '関西エリア限定。低Pingと高コスパを両立する地域独自回線',
+    heroDescription: '関西エリア（大阪・京都・兵庫・奈良・滋賀・和歌山・福井）限定で提供されている独自回線です。NTT網を使わないため混雑に強く、コストパフォーマンスの高さが特徴です。エリア内であれば有力な選択肢の一つです。',
     ispIds: ['eo_hikari_10g', 'eo_hikari_1g'],
-    stats: { ping: 5, stability: 5, speed: 4, cost: 5, installation: 2, benefit: 4 },
+    stats: { ping: 4, stability: 5, speed: 4, cost: 5, installation: 2, benefit: 4 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>
@@ -349,8 +349,8 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
   'commufa': {
     slug: 'commufa',
     name: 'コミュファ光',
-    catchphrase: '東海エリア最強の独自回線',
-    heroDescription: '東海エリア（愛知・岐阜・三重・静岡・長野）限定で提供されている独自回線です。ゲーマーに特化した専用プランがあり、低Ping・パケットロストゼロの最強環境を構築できます。',
+    catchphrase: '東海エリア限定の地域独自回線。低Pingと安定性が強み',
+    heroDescription: '東海エリア（愛知・岐阜・三重・静岡・長野）限定で提供されている独自回線です。NTT網を使わない独自インフラで混雑に強く、Ping値・安定性ともに地域内では上位の実力を持ちます。',
     ispIds: ['commufa_hikari_10g', 'commufa_hikari_1g'],
     stats: { ping: 5, stability: 5, speed: 4, cost: 5, installation: 2, benefit: 4 },
     bodyContent: (
@@ -371,10 +371,10 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
   'pikara': {
     slug: 'pikara',
     name: 'ピカラ光',
-    catchphrase: '四国エリアで安定感抜群の独自網',
-    heroDescription: '四国電力グループが提供する四国エリア限定の独自回線です。四国地方での圧倒的なシェアと、auスマホとのセット割が魅力の地域密着型サービスです。',
+    catchphrase: '四国エリア限定の地域独自回線',
+    heroDescription: '四国電力グループが提供する四国エリア限定の独自回線です。四国地方での高いシェアとauスマホとのセット割が特徴の地域密着型サービスです。Ping値は20ms前後で標準的な水準です。',
     ispIds: ['pikara_hikari_10g', 'pikara_hikari_1g'],
-    stats: { ping: 5, stability: 5, speed: 4, cost: 4, installation: 2, benefit: 3 },
+    stats: { ping: 3, stability: 4, speed: 4, cost: 4, installation: 2, benefit: 3 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>
@@ -393,10 +393,10 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
   'megaegg': {
     slug: 'megaegg',
     name: 'メガ・エッグ',
-    catchphrase: '中国エリアの快適ゲームライフを支える独自回線',
-    heroDescription: '中国電力グループが提供する中国エリア限定の光回線サービスです。他県からの影響を受けにくい独自のネットワーク網で、安定した通信と低Pingを実現します。',
+    catchphrase: '中国エリア限定の地域独自回線',
+    heroDescription: '中国電力グループが提供する中国エリア限定の光回線サービスです。独自のネットワーク網で混雑の影響を受けにくい点が強みです。Ping値は29ms前後で、他の独自回線と比較すると速度面では控えめな水準です。',
     ispIds: ['megaegg_hikari_10g', 'megaegg_hikari_1g'],
-    stats: { ping: 5, stability: 5, speed: 4, cost: 4, installation: 2, benefit: 3 },
+    stats: { ping: 2, stability: 4, speed: 3, cost: 4, installation: 2, benefit: 3 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>
@@ -416,10 +416,10 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
   'bbiq': {
     slug: 'bbiq',
     name: 'BBIQ（ビビック）',
-    catchphrase: '九州ゲーマーの特権。電力系ネットワークで圧倒的な安定感',
-    heroDescription: '九州エリア（福岡・佐賀・長崎・熊本・大分・宮崎・鹿児島）にお住まいなら、九州電力グループのQTnetが提供する独自回線「BBIQ」が強力な選択肢となります。フレッツ光とは異なる独自の光ファイバー網を使用しているため、夜間の混雑時でもPingが安定しやすく、FPSや格闘ゲームにおいて絶大な威力を発揮します。',
+    catchphrase: '九州エリア限定の地域独自回線。安定性が強み',
+    heroDescription: '九州エリア（福岡・佐賀・長崎・熊本・大分・宮崎・鹿児島）限定で提供されている独自回線です。九州電力グループのインフラを活用しており、夜間の混雑によるPingスパイクが起きにくい安定性が強みです。ただしPing値は25ms前後で、FPS向けとしては速度面での優位性は限定的です。',
     ispIds: ['bbiq_hikari_10g', 'bbiq_hikari_1g'],
-    stats: { ping: 5, stability: 5, speed: 4, cost: 3, installation: 2, benefit: 4 },
+    stats: { ping: 2, stability: 4, speed: 3, cost: 3, installation: 2, benefit: 4 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>

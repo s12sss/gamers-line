@@ -13,13 +13,13 @@ function getPrefectureDescription(prefName: string, region: { name: string; stat
   const { status } = region;
 
   const nueroText = status.hasNuro === 'COVERED'
-    ? `${prefName}ではNURO光が広くサービス提供されており、独自インフラによる低Ping（平均6〜8ms）がゲーマーに人気です。`
+    ? `${prefName}ではNURO光が広くサービス提供されており、独自インフラによる低Ping（平均12ms前後）がゲーマーに人気です。`
     : status.hasNuro === 'LIMITED'
     ? `${prefName}はNURO光の提供エリアが一部地域に限られます。申し込み前に公式サイトでのエリア確認が必須です。`
     : `${prefName}はNURO光の提供エリア外ですが、GameWith光など全国対応のゲーミング回線で十分カバーできます。`;
 
   const localText = status.localIsp
-    ? `${region.name}エリアでは独自光ファイバー網を持つ「${status.localIsp}」が夜間の混雑にも強く、特に安定性で高評価を得ています。エリア内であれば最有力候補の一つです。`
+    ? `${region.name}エリア限定で「${status.localIsp}」が提供されています。独自回線でエリア内の安定性は高い傾向がありますが、速度はプランや時間帯によって異なります。`
     : '';
 
   const tenGText = status.has10G === 'AVAILABLE'
@@ -35,7 +35,7 @@ function getPrefectureFaqs(prefName: string, region: { name: string; status: Cov
   const { status } = region;
 
   const nuroAnswer = status.hasNuro === 'COVERED'
-    ? `はい、${prefName}ではNURO光が広く対応しています。独自インフラによる低Ping（平均6〜8ms）が特徴で、FPS・TPSゲームに最適です。ただし集合住宅（マンション）には対応していないため、戸建てにお住まいの方向けです。`
+    ? `はい、${prefName}ではNURO光が広く対応しています。独自インフラによる低Ping（平均12ms前後）が特徴で、FPS・TPSゲームに最適です。ただし集合住宅（マンション）には対応していないため、戸建てにお住まいの方向けです。`
     : status.hasNuro === 'LIMITED'
     ? `${prefName}は一部エリアでNURO光が使えますが、対応地域が限られます。まず公式サイトでエリア確認を行うことをおすすめします。`
     : `残念ながら${prefName}はNURO光の提供エリア外です。代わりにGameWith光やauひかりなど全国対応のゲーミング回線を検討してください。`;
@@ -164,7 +164,7 @@ export default async function PrefecturePage({ params }: Props) {
             のゲーミング回線 徹底比較
           </h1>
           <p className="text-text-muted text-sm sm:text-base max-w-2xl mx-auto leading-[1.7]">
-            {prefData.name}にお住まいで「ApexやVALORANTでラグい…」と悩んでいる方向けに、地域限定の最強ローカル回線から定番の10Gプランまで、本当におすすめできる光回線だけを厳選しました。
+            {prefData.name}にお住まいで「ApexやVALORANTでラグい…」と悩んでいる方向けに、地域対応の回線から定番の10Gプランまで、本当におすすめできる光回線だけを厳選しました。
           </p>
           <p className="text-text-muted/80 text-sm max-w-2xl mx-auto leading-[1.8] mt-4">
             {prefDesc}
@@ -205,7 +205,7 @@ export default async function PrefecturePage({ params }: Props) {
               </div>
               {regionData.status.localIsp && (
                 <div className="flex flex-col gap-1 col-span-2 sm:col-span-3 mt-2">
-                  <span className="font-mono text-[0.7rem] text-cyan tracking-[0.1em] uppercase">最強ローカル回線</span>
+                  <span className="font-mono text-[0.7rem] text-cyan tracking-[0.1em] uppercase">地域限定回線</span>
                   <div className="flex items-center gap-1.5 text-[1.1rem]">
                     <ShieldCheck className="w-5 h-5 text-emerald" />
                     <span className="text-emerald font-bold">{regionData.status.localIsp}</span>
