@@ -84,10 +84,22 @@ function LoadingScreen({ onDone }: { onDone: () => void }) {
   );
 }
 
-function ResultCard({ result, index, delay, requires10G }: { result: {isp: ISP, score: number}, index: number, delay: number, requires10G: boolean }) {
+function ResultCard({ result, index, delay, requires10G, answers, allResults }: { result: {isp: ISP, score: number}, index: number, delay: number, requires10G: boolean, answers: UserAnswers, allResults: {isp: ISP, score: number}[] }) {
   const isBest = index === 0;
   const displayName = result.isp.name.replace(/\s*\([0-9]+G\)/i, '');
-  const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
+
+  const minFee = Math.min(...allResults.map(r => r.isp.actual_monthly_fee_jpy));
+  const tags: { label: string; color: 'cyan' | 'emerald' | 'muted' | 'purple' }[] = [];
+  if (result.isp.avg_ping_ms <= 17) tags.push({ label: '低Ping', color: 'cyan' });
+  if (result.isp.stability_score >= 90) tags.push({ label: '安定性抜群', color: 'emerald' });
+  if (result.isp.actual_monthly_fee_jpy === minFee) tags.push({ label: '高コスパ', color: 'emerald' });
+  if (requires10G && result.isp.max_speed_gbps >= 10) tags.push({ label: '10G対応', color: 'purple' });
+  if (result.isp.tags.includes('専用帯域')) tags.push({ label: '専用帯域', color: 'cyan' });
+  if (result.isp.regions.length < 8) tags.push({ label: '地域限定', color: 'muted' });
+  if (answers.mobileCarrier !== 'other' && result.isp.mobile_discount.includes(answers.mobileCarrier)) {
+    const label = answers.mobileCarrier === 'docomo' ? 'docomo割あり' : answers.mobileCarrier === 'au' ? 'au割あり' : 'SoftBank割あり';
+    tags.push({ label, color: 'muted' });
+  }
 
   return (
     <motion.div
@@ -122,55 +134,20 @@ function ResultCard({ result, index, delay, requires10G }: { result: {isp: ISP, 
               </span>
             </div>
 
-            <div className="flex flex-wrap gap-1.5 mt-2">
-              {requires10G && result.isp.max_speed_gbps >= 10 && (
-                <span className="px-2.5 sm:px-3 py-1 bg-gradient-to-r from-purple-600 to-cyan-500 rounded-full text-[0.65rem] sm:text-[0.7rem] text-white font-bold tracking-wider shadow-[0_0_10px_rgba(0,229,255,0.3)]">
-                  ✨ 10Gプラン推奨
-                </span>
-              )}
-              {result.isp.discounts && result.isp.discounts.length > 0 && (
-                <span className="px-2.5 sm:px-3 py-1 bg-emerald/10 border border-emerald/20 rounded-full text-[0.65rem] sm:text-[0.7rem] text-emerald font-medium">
-                  {result.isp.discounts[0].carrier}利用で割引
-                </span>
-              )}
-              {result.isp.tags.map(tag => {
-                let tooltip = '';
-                if (tag === '独自回線') tooltip = 'NTT回線を使わない独立したネットワーク。混雑しにくく通信が安定しやすい。';
-                if (tag === 'FPS最適') tooltip = 'Ping値が低く、FPSゲームなどの激しい撃ち合いで有利になりやすい。';
-                if (tag === '低Ping') tooltip = '通信の遅延（ラグ）が非常に少ない回線。';
-                if (tag === '専用帯域') tooltip = 'ゲーマー専用の通信経路を利用し、混雑時間帯でもラグを防ぐ。';
-                if (tag === 'プロゲーマー仕様') tooltip = 'プロeスポーツチームも採用する高品質な通信環境。';
-                if (tag === 'ラグゼロ') tooltip = '遅延を感じさせない極めて安定した通信。';
-                
-                return (
-                  <div key={tag} className="relative inline-block">
-                    <button 
-                      onClick={() => setActiveTooltip(activeTooltip === tag ? null : tag)}
-                      onMouseEnter={() => setActiveTooltip(tag)}
-                      onMouseLeave={() => setActiveTooltip(null)}
-                      onBlur={() => setActiveTooltip(null)}
-                      className="px-2.5 sm:px-3 py-1 bg-cyan/10 border border-cyan/20 rounded-full text-[0.65rem] sm:text-[0.7rem] text-cyan font-medium cursor-help hover:bg-cyan/20 transition-colors"
-                    >
-                      {tag}
-                    </button>
-                    <AnimatePresence>
-                      {activeTooltip === tag && tooltip && (
-                        <motion.div 
-                          initial={{ opacity: 0, y: 5 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 5 }}
-                          transition={{ duration: 0.15 }}
-                          className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-[180px] p-2 sm:p-2.5 bg-black/95 border border-cyan/20 rounded-lg text-[0.65rem] sm:text-[0.7rem] text-text leading-relaxed text-left shadow-[0_0_15px_rgba(0,229,255,0.15)] z-50 pointer-events-none"
-                        >
-                          {tooltip}
-                          <div className="absolute top-full left-1/2 -translate-x-1/2 border-[5px] border-transparent border-t-cyan/20"></div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                );
-              })}
-            </div>
+            {tags.length > 0 && (
+              <div className="flex flex-wrap gap-x-3 gap-y-0.5 mt-2">
+                {tags.map(tag => (
+                  <span key={tag.label} className={`font-mono text-[0.7rem] ${
+                    tag.color === 'cyan' ? 'text-cyan/70' :
+                    tag.color === 'emerald' ? 'text-emerald/70' :
+                    tag.color === 'purple' ? 'text-purple-400/70' :
+                    'text-white/35'
+                  }`}>
+                    #{tag.label}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Stats Box */}
@@ -471,7 +448,7 @@ export default function DiagnosisForm({ initialGenre }: { initialGenre?: string 
 
             <div className="flex flex-col gap-4 sm:gap-5">
               {results?.map((res, index) => (
-                <ResultCard key={res.isp.id} result={res} index={index} delay={index * 150} requires10G={answers.requires10G} />
+                <ResultCard key={res.isp.id} result={res} index={index} delay={index * 150} requires10G={answers.requires10G} answers={answers} allResults={results} />
               ))}
             </div>
             
