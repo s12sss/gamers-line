@@ -4,16 +4,20 @@ import { useState } from 'react';
 import { Calculator, AlertTriangle, ArrowRight, CheckCircle2 } from 'lucide-react';
 import Link from 'next/link';
 
-export default function SwitchingSimulator() {
+export default function SwitchingSimulator({ hideProviderLink }: { hideProviderLink?: boolean } = {}) {
   const [currentFee, setCurrentFee] = useState<number>(5000);
   const [penaltyFee, setPenaltyFee] = useState<number>(10000);
   const [monthsLeft, setMonthsLeft] = useState<number>(5);
   const [newFee, setNewFee] = useState<number>(4500);
   const [cashback, setCashback] = useState<number>(40000);
+  const [penaltyCover, setPenaltyCover] = useState<number>(0);
+
+  // 実質違約金 = 違約金 - 他社負担額（マイナスにはならない）
+  const effectivePenalty = Math.max(0, penaltyFee - penaltyCover);
 
   // A: 今すぐ乗り換えるパターンのコスト（更新月までの期間で計算）
-  // = 違約金 + (新しい月額 * 残り月数) - キャッシュバック
-  const costIfSwitchNow = penaltyFee + (newFee * monthsLeft) - cashback;
+  // = 実質違約金 + (新しい月額 * 残り月数) - キャッシュバック
+  const costIfSwitchNow = effectivePenalty + (newFee * monthsLeft) - cashback;
 
   // B: 更新月まで待つパターンのコスト
   // = 現在の月額 * 残り月数
@@ -87,6 +91,14 @@ export default function SwitchingSimulator() {
               </div>
               <input type="range" min="0" max="100000" step="5000" value={cashback} onChange={(e) => setCashback(Number(e.target.value))} className="w-full accent-emerald" />
             </div>
+
+            <div className="space-y-2">
+              <div className="flex justify-between">
+                <label className="text-xs text-text-muted">他社違約金負担（新回線の還元額）</label>
+                <span className="text-sm font-mono text-emerald">{penaltyCover.toLocaleString()}円</span>
+              </div>
+              <input type="range" min="0" max="200000" step="10000" value={penaltyCover} onChange={(e) => setPenaltyCover(Number(e.target.value))} className="w-full accent-emerald" />
+            </div>
           </div>
         </div>
 
@@ -128,7 +140,7 @@ export default function SwitchingSimulator() {
               </div>
             </div>
 
-            {isSwitchBetter && (
+            {isSwitchBetter && !hideProviderLink && (
               <Link href="/provider" className="group relative w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-cyan text-black font-bold text-sm transition-all hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] hover:-translate-y-0.5 no-underline">
                 <CheckCircle2 className="w-5 h-5" />
                 乗り換え先プロバイダを探す
