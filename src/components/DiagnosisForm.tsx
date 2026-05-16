@@ -271,7 +271,7 @@ export default function DiagnosisForm({ initialGenre }: { initialGenre?: string 
   const stepTitles = [null,
     '普段プレイするゲームは？',
     'ゲームをプレイする頻度はどのくらいですか？',
-    'ゲームの配信や、大容量の通信は？',
+    '以下にあてはまるものはありますか？',
     'お住まいの地域は？',
     '現在の住居タイプは？',
     'お使いのスマホキャリアは？',
@@ -299,16 +299,11 @@ export default function DiagnosisForm({ initialGenre }: { initialGenre?: string 
               {stepTitles[1]}
             </div>
             <div className="flex flex-col gap-3">
-              <div className="text-[0.65rem] sm:text-[0.7rem] font-bold text-cyan tracking-wider mb-[-0.25rem] mt-2">▼ Ping値（応答速度）を超重視</div>
-              <OptionCard onClick={() => handleNext('gameGenre', 'fps')} title="FPS / TPS" desc="VALORANT, APEXなど — コンマ1秒の遅延も許さない" />
-              <OptionCard onClick={() => handleNext('gameGenre', 'fighting')} title="格闘ゲーム" desc="スト6, 鉄拳など — 一瞬のラグが勝敗を分ける" />
-              
-              <div className="text-[0.65rem] sm:text-[0.7rem] font-bold text-emerald tracking-wider mb-[-0.25rem] mt-2">▼ 安定性（パケットロスト防止）を重視</div>
-              <OptionCard onClick={() => handleNext('gameGenre', 'mmo')} title="MMO / RPG" desc="FF14, ドラクエ10など — 回線落ちを防ぎたい" />
-              <OptionCard onClick={() => handleNext('gameGenre', 'moba')} title="MOBA / マルチプレイ" desc="LoL, モンハンなど — 安定したマルチプレイ環境" />
-              
-              <div className="text-[0.65rem] sm:text-[0.7rem] font-bold text-text-muted tracking-wider mb-[-0.25rem] mt-2">▼ コスパ・バランス重視</div>
-              <OptionCard onClick={() => handleNext('gameGenre', 'casual')} title="スマホゲーム / オフラインタイトル" desc="原神, 鳴潮, 買い切りゲーム全般" />
+              <OptionCard onClick={() => handleNext('gameGenre', 'fps')} title="FPS / TPS" desc="VALORANT・Apex Legends・Overwatch 2 など" />
+              <OptionCard onClick={() => handleNext('gameGenre', 'fighting')} title="格闘ゲーム" desc="ストリートファイター6・鉄拳8 など" />
+              <OptionCard onClick={() => handleNext('gameGenre', 'mmo')} title="MMO / オンラインRPG" desc="ファイナルファンタジーXIV・ドラゴンクエストX など" />
+              <OptionCard onClick={() => handleNext('gameGenre', 'moba')} title="MOBA / 協力プレイ" desc="League of Legends・モンスターハンター など" />
+              <OptionCard onClick={() => handleNext('gameGenre', 'casual')} title="その他ジャンル" desc="スマートフォン向けタイトル・オフラインタイトル など" />
             </div>
           </motion.div>
         );
@@ -338,8 +333,8 @@ export default function DiagnosisForm({ initialGenre }: { initialGenre?: string 
               {stepTitles[3]}
             </div>
             <div className="flex flex-col gap-3">
-              <OptionCard onClick={() => handleNext('requires10G', true)} title="はい" desc="大容量ゲームのDLや、高画質での生配信を行う" />
-              <OptionCard onClick={() => handleNext('requires10G', false)} title="いいえ" desc="大容量通信行う頻度は低い" />
+              <OptionCard onClick={() => handleNext('requires10G', true)} title="あてはまる" desc="配信をする・同居人がヘビーユーザー・大容量ファイルのDLが頻繁にある" />
+              <OptionCard onClick={() => handleNext('requires10G', false)} title="あてはまらない" desc="自分のゲームプレイのみ" />
             </div>
           </motion.div>
         );
@@ -425,9 +420,9 @@ export default function DiagnosisForm({ initialGenre }: { initialGenre?: string 
               {stepTitles[8]}
             </div>
             <div className="flex flex-col gap-3">
+              <OptionCard onClick={() => handleNext('priority', 'balance')} title="バランスよく選びたい" desc="品質と料金のバランスで選ぶ（迷ったらこれ）" />
               <OptionCard onClick={() => handleNext('priority', 'ping')} title="とにかくラグを無くしたい" desc="料金より通信品質を最優先" />
-              <OptionCard onClick={() => handleNext('priority', 'price')} title="月額料金を抑えたい" desc="安くてそこそこ遊べる回線が良い" />
-              <OptionCard onClick={() => handleNext('priority', 'balance')} title="バランスよく選びたい" desc="品質も料金も妥協したくない" />
+              <OptionCard onClick={() => handleNext('priority', 'price')} title="月額料金を抑えたい" desc="できるだけ安い回線が良い" />
             </div>
           </motion.div>
         );

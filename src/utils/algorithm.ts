@@ -50,10 +50,9 @@ function calculateScore(isp: ISP, answers: UserAnswers): number {
   let wPing = 0, wPrice = 0, wStability = 0;
   if (answers.gameGenre === 'fps' || answers.gameGenre === 'fighting') {
     wPing = 0.7; wPrice = 0.2; wStability = 0.1;
-  } else if (answers.gameGenre === 'mmo' || answers.gameGenre === 'moba') {
-    wStability = 0.5; wPing = 0.3; wPrice = 0.2;
   } else {
-    wPrice = 0.7; wPing = 0.1; wStability = 0.2;
+    // mmo / moba / casual すべて安定性重視
+    wStability = 0.5; wPing = 0.3; wPrice = 0.2;
   }
 
   // プレイ頻度による微調整
