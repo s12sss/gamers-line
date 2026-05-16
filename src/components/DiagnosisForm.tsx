@@ -188,6 +188,13 @@ function ResultCard({ result, index, delay, requires10G }: { result: {isp: ISP, 
                 ¥{result.isp.actual_monthly_fee_jpy.toLocaleString()}
               </span>
             </div>
+            <div className="flex justify-start sm:justify-end items-center gap-1 mt-2">
+              <span className="text-[0.65rem] text-text-muted mr-1">安定性</span>
+              {Array.from({ length: 5 }).map((_, i) => {
+                const stars = result.isp.stability_score >= 90 ? 5 : result.isp.stability_score >= 80 ? 4 : result.isp.stability_score >= 70 ? 3 : result.isp.stability_score >= 60 ? 2 : 1;
+                return <span key={i} className={`text-sm ${i < stars ? 'text-cyan' : 'text-white/15'}`}>★</span>;
+              })}
+            </div>
           </div>
         </div>
 
