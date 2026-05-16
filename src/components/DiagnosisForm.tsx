@@ -94,8 +94,13 @@ function ResultCard({ result, index, delay, requires10G, answers, allResults }: 
   if (result.isp.stability_score >= 90) tags.push({ label: '安定性抜群', color: 'emerald', desc: '混雑時間帯でも接続が安定' });
   if (result.isp.actual_monthly_fee_jpy === minFee) tags.push({ label: '高コスパ', color: 'emerald', desc: '比較的安い月額料金' });
   if (requires10G && result.isp.max_speed_gbps >= 10) tags.push({ label: '10G対応', color: 'purple', desc: '最大10Gbpsの超高速プラン' });
-  if (result.isp.tags.includes('専用帯域')) tags.push({ label: '専用帯域', color: 'cyan', desc: 'ゲーマー専用の通信経路を確保' });
-  if (result.isp.regions.length < 8) tags.push({ label: '地域限定', color: 'muted', desc: '特定エリアのみ提供' });
+  if (result.isp.type === '独自回線') tags.push({ label: '独自回線', color: 'cyan', desc: 'NTT網を使わない独自インフラ' });
+  if (result.isp.tags.includes('専用帯域')) tags.push({ label: '専用帯域', color: 'cyan', desc: 'ゲーム専用の通信経路' });
+  if (result.isp.regions.length >= 8) tags.push({ label: '全国対応', color: 'muted', desc: '全国どこでも利用可能' });
+  else tags.push({ label: '地域限定', color: 'muted', desc: '特定エリアのみ提供' });
+  if ((answers.housingType === 'mansion_optical' || answers.housingType === 'mansion_vdsl') &&
+      result.isp.available_housing.some(h => h.includes('mansion')))
+    tags.push({ label: 'マンション対応', color: 'muted', desc: '集合住宅でも導入可能' });
   if (answers.mobileCarrier !== 'other' && result.isp.mobile_discount.includes(answers.mobileCarrier)) {
     const carrier = answers.mobileCarrier === 'docomo' ? 'docomo' : answers.mobileCarrier === 'au' ? 'au' : 'SoftBank';
     tags.push({ label: `${carrier}割あり`, color: 'muted', desc: `${carrier}スマホでセット割適用` });
