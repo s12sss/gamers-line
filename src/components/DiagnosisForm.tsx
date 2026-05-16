@@ -97,7 +97,7 @@ function ResultCard({ result, index, delay, requires10G, answers, allResults }: 
   if (result.isp.type === '独自回線') tags.push({ label: '独自回線', color: 'cyan', desc: 'NTT網を使わない独自インフラ' });
   if (result.isp.tags.includes('専用帯域')) tags.push({ label: '専用帯域', color: 'cyan', desc: 'ゲーム専用の通信経路' });
   if (result.isp.regions.length >= 8) tags.push({ label: '全国対応', color: 'muted', desc: '全国どこでも利用可能' });
-  else tags.push({ label: '地域限定', color: 'muted', desc: '特定エリアのみ提供' });
+  else if (result.isp.regions.length <= 2) tags.push({ label: '地域限定', color: 'muted', desc: '特定エリアのみ提供' });
   if ((answers.housingType === 'mansion_optical' || answers.housingType === 'mansion_vdsl') &&
       result.isp.available_housing.some(h => h.includes('mansion')))
     tags.push({ label: 'マンション対応', color: 'muted', desc: '集合住宅でも導入可能' });
