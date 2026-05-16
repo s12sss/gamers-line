@@ -8,8 +8,6 @@ type Row = {
   name: string;
   tag: string;
   ping: number;
-  flag: 'best' | 'new' | 'trial' | null;
-  flagLabel?: string;
   cb: string;
   cbNum: number;
   cbSub: string;
@@ -24,48 +22,42 @@ type Row = {
 const ROWS: Row[] = [
   {
     name: 'NURO光', tag: 'FTTH · 戸建/対応マンション',
-    ping: 12, flag: null,
-    cb: '最大 75,000円', cbNum: 75000, cbSub: 'SO-NET特典',
+    ping: 12, cb: '最大 75,000円', cbNum: 75000, cbSub: '代理店特典',
     monthlyFee: 5500, monthlyDiscount: '—', constructionFee: '工事費実質無料',
     receiveTime: '開通後6〜12ヶ月', penaltyCover: '最大20万円',
     href: '/provider/nuro',
   },
   {
     name: 'au ひかり', tag: 'FTTH · 戸建/マンション',
-    ping: 17, flag: null,
-    cb: '最大 63,000円', cbNum: 63000, cbSub: 'GMOとくとくBB',
+    ping: 17, cb: '最大 63,000円', cbNum: 63000, cbSub: '代理店特典',
     monthlyFee: 5610, monthlyDiscount: '—', constructionFee: '工事費実質無料',
     receiveTime: '開通後12〜24ヶ月', penaltyCover: '最大10万円',
     href: '/provider/au-hikari',
   },
   {
-    name: 'ドコモ光', tag: 'FTTH · GMOとくとくBB',
-    ping: 23, flag: 'new', flagLabel: '5月増額',
-    cb: '最大 52,000円', cbNum: 52000, cbSub: '5月限定 +12,000円',
+    name: 'ドコモ光', tag: 'FTTH · 戸建/マンション',
+    ping: 23, cb: '最大 52,000円', cbNum: 52000, cbSub: '代理店特典',
     monthlyFee: 5720, monthlyDiscount: '—', constructionFee: '—',
     receiveTime: '開通後5ヶ月', penaltyCover: '最大10万円',
     href: '/provider/docomo-hikari',
   },
   {
     name: 'ソフトバンク光', tag: 'FTTH · 戸建/マンション',
-    ping: 17, flag: null,
-    cb: '最大 50,000円', cbNum: 50000, cbSub: 'NEXT特典',
+    ping: 17, cb: '最大 50,000円', cbNum: 50000, cbSub: '代理店特典',
     monthlyFee: 5720, monthlyDiscount: '—', constructionFee: '—',
     receiveTime: '開通後6ヶ月', penaltyCover: '最大10万円',
     href: '/provider/softbank-hikari',
   },
   {
     name: 'hi-ho ひかり with games', tag: 'FTTH · ゲーマー特化帯域',
-    ping: 20, flag: 'trial', flagLabel: '3ヶ月無料',
-    cb: '最大 40,000円', cbNum: 40000, cbSub: '提携代理店経由',
+    ping: 20, cb: '最大 40,000円', cbNum: 40000, cbSub: '代理店特典',
     monthlyFee: 6160, monthlyDiscount: '3ヶ月無料（-¥6,160×3）', constructionFee: '—',
     receiveTime: '開通後3ヶ月', penaltyCover: 'なし',
     href: '/provider/hi-ho',
   },
   {
     name: 'GameWith光', tag: 'FTTH · ゲーマー特化帯域',
-    ping: 16, flag: null,
-    cb: '最大 40,000円', cbNum: 40000, cbSub: '代理店特典',
+    ping: 16, cb: '最大 40,000円', cbNum: 40000, cbSub: '代理店特典',
     monthlyFee: 6160, monthlyDiscount: '—', constructionFee: '—',
     receiveTime: '開通後3ヶ月', penaltyCover: 'なし',
     href: '/provider/gamewith',
@@ -170,10 +162,8 @@ export default function CampaignTable() {
               {sorted.map((row) => (
                 <tr key={row.name} className="border-b border-white/[0.06] transition-colors hover:bg-white/[0.03] last:border-b-0">
                   <td className="px-4 py-4">
-                    <div className="font-bold text-white flex items-center gap-2 flex-wrap">
+                    <div className="font-bold text-white">
                       {row.name}
-                      {row.flag === 'new' && <span className="text-[0.6rem] font-bold border border-yellow-400/40 text-yellow-400 bg-yellow-400/10 px-1.5 py-0.5 rounded">{row.flagLabel}</span>}
-                      {row.flag === 'trial' && <span className="text-[0.6rem] font-bold border border-emerald/40 text-emerald bg-emerald/10 px-1.5 py-0.5 rounded">{row.flagLabel}</span>}
                     </div>
                     <div className="text-[0.65rem] text-text-muted mt-0.5 font-mono">{row.tag}</div>
                   </td>

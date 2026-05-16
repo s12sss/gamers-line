@@ -40,7 +40,6 @@ export default function Header() {
         { name: "ゲーミングVPN特集", href: "/vpn" },
       ]
     },
-    { title: "乗り換えツール", href: "/tools" },
   ];
 
   return (
