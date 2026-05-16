@@ -221,9 +221,12 @@ function ResultCard({ result, index, delay, requires10G }: { result: {isp: ISP, 
           </span>
         )}
         
-        <div className="mt-4 pt-4 border-t border-white/5">
+        <div className="mt-4 pt-4 border-t border-white/5 flex flex-col gap-1">
           <p className="text-[0.6rem] sm:text-[0.65rem] text-text-muted leading-relaxed">
             ※表示料金は「戸建て」の標準月額です。マンションにお住まいの場合や、各社のキャンペーン適用で実際の負担額はさらに下がります。
+          </p>
+          <p className="text-[0.6rem] sm:text-[0.65rem] text-text-muted leading-relaxed">
+            ※安定性はPing変動幅・パケットロス率・夜間帯の混雑耐性を総合した独自評価です（★5が最高）。
           </p>
         </div>
       </div>
