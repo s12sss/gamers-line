@@ -11,7 +11,7 @@ const SERVICE_TAGS = [
 const KNOWLEDGE_TAGS = ['回線の基礎知識', '失敗しない選び方'];
 const REVIEW_TAGS = ['回線・プロバイダ比較', 'サービス実測・検証', 'ゲーミング製品レビュー', 'ルーター・周辺機器'];
 const GENRE_TAGS = ['FPS / TPS', '格闘ゲーム', 'MOBA', 'MMO', 'スマホゲーム', 'その他ゲーム'];
-const PLAYER_TAGS = ['プロ・ストリーマー'];
+const PLAYER_TAGS = ['プロゲーマー・ストリーマー'];
 const OTHER_TAGS = ['ネットワーク設定', 'SIM・スマホ', 'お得なキャンペーン', 'VPN'];
 
 type Props = {
