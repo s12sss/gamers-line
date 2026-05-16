@@ -299,7 +299,7 @@ export default function DiagnosisForm({ initialGenre }: { initialGenre?: string 
               {stepTitles[1]}
             </div>
             <div className="flex flex-col gap-3">
-              <OptionCard onClick={() => handleNext('gameGenre', 'fps')} title="FPS / TPS" desc="VALORANT・Apex Legends・Overwatch 2 など" />
+              <OptionCard onClick={() => handleNext('gameGenre', 'fps')} title="FPS / TPS" desc="VALORANT・Apex Legends・Counter-Strike 2 など" />
               <OptionCard onClick={() => handleNext('gameGenre', 'fighting')} title="格闘ゲーム" desc="ストリートファイター6・鉄拳8 など" />
               <OptionCard onClick={() => handleNext('gameGenre', 'mmo')} title="MMO / オンラインRPG" desc="ファイナルファンタジーXIV・ドラゴンクエストX など" />
               <OptionCard onClick={() => handleNext('gameGenre', 'moba')} title="MOBA / 協力プレイ" desc="League of Legends・モンスターハンター など" />
