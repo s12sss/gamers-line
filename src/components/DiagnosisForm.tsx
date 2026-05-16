@@ -89,16 +89,16 @@ function ResultCard({ result, index, delay, requires10G, answers, allResults }: 
   const displayName = result.isp.name.replace(/\s*\([0-9]+G\)/i, '');
 
   const minFee = Math.min(...allResults.map(r => r.isp.actual_monthly_fee_jpy));
-  const tags: { label: string; color: 'cyan' | 'emerald' | 'muted' | 'purple' }[] = [];
-  if (result.isp.avg_ping_ms <= 17) tags.push({ label: '低Ping', color: 'cyan' });
-  if (result.isp.stability_score >= 90) tags.push({ label: '安定性抜群', color: 'emerald' });
-  if (result.isp.actual_monthly_fee_jpy === minFee) tags.push({ label: '高コスパ', color: 'emerald' });
-  if (requires10G && result.isp.max_speed_gbps >= 10) tags.push({ label: '10G対応', color: 'purple' });
-  if (result.isp.tags.includes('専用帯域')) tags.push({ label: '専用帯域', color: 'cyan' });
-  if (result.isp.regions.length < 8) tags.push({ label: '地域限定', color: 'muted' });
+  const tags: { label: string; color: 'cyan' | 'emerald' | 'muted' | 'purple'; desc: string }[] = [];
+  if (result.isp.avg_ping_ms <= 17) tags.push({ label: '低Ping', color: 'cyan', desc: '遅延が特に少ない回線' });
+  if (result.isp.stability_score >= 90) tags.push({ label: '安定性抜群', color: 'emerald', desc: '混雑時間帯でも接続が安定' });
+  if (result.isp.actual_monthly_fee_jpy === minFee) tags.push({ label: '高コスパ', color: 'emerald', desc: '比較的安い月額料金' });
+  if (requires10G && result.isp.max_speed_gbps >= 10) tags.push({ label: '10G対応', color: 'purple', desc: '最大10Gbpsの超高速プラン' });
+  if (result.isp.tags.includes('専用帯域')) tags.push({ label: '専用帯域', color: 'cyan', desc: 'ゲーマー専用の通信経路を確保' });
+  if (result.isp.regions.length < 8) tags.push({ label: '地域限定', color: 'muted', desc: '特定エリアのみ提供' });
   if (answers.mobileCarrier !== 'other' && result.isp.mobile_discount.includes(answers.mobileCarrier)) {
-    const label = answers.mobileCarrier === 'docomo' ? 'docomo割あり' : answers.mobileCarrier === 'au' ? 'au割あり' : 'SoftBank割あり';
-    tags.push({ label, color: 'muted' });
+    const carrier = answers.mobileCarrier === 'docomo' ? 'docomo' : answers.mobileCarrier === 'au' ? 'au' : 'SoftBank';
+    tags.push({ label: `${carrier}割あり`, color: 'muted', desc: `${carrier}スマホでセット割適用` });
   }
 
   return (
@@ -135,16 +135,17 @@ function ResultCard({ result, index, delay, requires10G, answers, allResults }: 
             </div>
 
             {tags.length > 0 && (
-              <div className="flex flex-wrap gap-x-3 gap-y-0.5 mt-2">
+              <div className="flex flex-col gap-1 mt-2">
                 {tags.map(tag => (
-                  <span key={tag.label} className={`font-mono text-[0.7rem] ${
-                    tag.color === 'cyan' ? 'text-cyan/70' :
-                    tag.color === 'emerald' ? 'text-emerald/70' :
-                    tag.color === 'purple' ? 'text-purple-400/70' :
-                    'text-white/35'
-                  }`}>
-                    #{tag.label}
-                  </span>
+                  <div key={tag.label} className="flex items-center gap-2">
+                    <span className={`font-mono text-[0.68rem] shrink-0 ${
+                      tag.color === 'cyan' ? 'text-cyan/70' :
+                      tag.color === 'emerald' ? 'text-emerald/70' :
+                      tag.color === 'purple' ? 'text-purple-400/70' :
+                      'text-white/35'
+                    }`}>#{tag.label}</span>
+                    <span className="text-[0.65rem] text-text-muted/70">{tag.desc}</span>
+                  </div>
                 ))}
               </div>
             )}
