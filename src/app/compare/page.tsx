@@ -89,7 +89,7 @@ export default function ComparePage() {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground font-sans">
       {/* Page Header */}
-      <div className="relative z-10 max-w-[1200px] mx-auto w-full px-4 sm:px-10 py-10 sm:py-16 border-b border-white/10">
+      <div className="relative z-10 max-w-[1400px] mx-auto w-full px-4 sm:px-10 py-10 sm:py-16 border-b border-white/10">
         <Breadcrumbs items={[
           { name: 'HOME', path: '/' },
           { name: '回線比較', path: '/compare' }
@@ -108,7 +108,7 @@ export default function ComparePage() {
       </div>
 
       {/* Comparison Table Section */}
-      <div className="relative z-10 max-w-[1200px] mx-auto w-full px-4 sm:px-10 py-10 sm:py-16 pb-24">
+      <div className="relative z-10 max-w-[1400px] mx-auto w-full px-4 sm:px-10 py-10 sm:py-16 pb-24">
         
         {/* Filters */}
         <div className="flex flex-col gap-4 mb-8 p-4 rounded-2xl bg-white/[0.02] border border-white/5">
