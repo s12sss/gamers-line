@@ -1253,7 +1253,7 @@
     "regions": [
       "kyushu"
     ],
-    "cashback_text": "最大30,000円還元！",
+    "cashback_text": "CBキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "au",
@@ -1305,7 +1305,7 @@
     "regions": [
       "kyushu"
     ],
-    "cashback_text": "最大30,000円還元！",
+    "cashback_text": "CBキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "au",
@@ -1373,7 +1373,7 @@
     "mansion_monthly_fee_jpy": 8778,
     "stability_score": 90,
     "vdsl_support": false,
-    "cashback_text": "最大25日間お試し無料！",
+    "cashback_text": "25日間お試し無料",
     "discounts": [],
     "tags": [
       "全国対応",
@@ -1427,7 +1427,7 @@
     "mansion_monthly_fee_jpy": 8778,
     "stability_score": 88,
     "vdsl_support": true,
-    "cashback_text": "最大25日間お試し無料！",
+    "cashback_text": "25日間お試し無料",
     "discounts": [],
     "tags": [
       "全国対応",
