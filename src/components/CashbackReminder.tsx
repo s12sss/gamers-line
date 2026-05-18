@@ -23,70 +23,50 @@ export default function CashbackReminder() {
       {/* Cyber Decor */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-emerald/5 rounded-full blur-3xl pointer-events-none" />
       
-      <div className="flex items-center gap-3 mb-8 relative z-10">
-        <div className="w-10 h-10 rounded-xl bg-emerald/10 flex items-center justify-center border border-emerald/20 text-emerald">
-          <ShieldCheck className="w-5 h-5" />
+      <div className="pb-5 mb-6 border-b border-white/10 relative z-10">
+        <div className="font-mono text-[0.62rem] text-cyan tracking-[0.2em] uppercase mb-2 opacity-80">
+          TOOL 02 · CASHBACK REMINDER
         </div>
-        <div>
-          <h2 className="font-heading text-xl font-bold">キャッシュバックリマインダー</h2>
-          <p className="text-sm text-text-muted">「数ヶ月後」など忘れた頃に来る手続きをGoogleカレンダーに登録します</p>
-        </div>
+        <h2 className="font-heading text-xl font-bold text-white mb-1">キャッシュバックリマインダー</h2>
+        <p className="text-sm text-text-muted">「数ヶ月後」に来る手続きを忘れないよう、Googleカレンダーに登録します。</p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 relative z-10">
-        {/* Form */}
-        <div className="space-y-6">
-          <div className="space-y-2">
-            <label className="text-sm font-bold text-text">キャッシュバックの条件・やること</label>
-            <textarea 
-              value={taskDetails}
-              onChange={(e) => setTaskDetails(e.target.value)}
-              placeholder="例：〇〇のマイページで口座情報を登録する"
-              rows={3}
-              className="w-full bg-[#050508] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald/50 focus:ring-1 focus:ring-emerald/50 resize-none"
-            />
-          </div>
-
-          <div className="space-y-2">
-            <label className="text-sm font-bold text-text">手続きの予定日（メールが届く日など）</label>
-            <input 
-              type="date" 
-              value={scheduledDate}
-              onChange={(e) => setScheduledDate(e.target.value)}
-              className="w-full bg-[#050508] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald/50 focus:ring-1 focus:ring-emerald/50 [color-scheme:dark]"
-            />
-          </div>
-          
-          <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 text-xs text-text-muted leading-relaxed">
-            <p>※個人情報やGoogleアカウント情報が当サイトに保存されることはありません。Googleカレンダーの登録画面が安全に開くだけです。</p>
-          </div>
+      <div className="flex flex-col gap-5 relative z-10">
+        <div className="space-y-2">
+          <label className="text-xs font-bold text-text-muted tracking-wider uppercase">キャッシュバックの条件・やること</label>
+          <textarea
+            value={taskDetails}
+            onChange={(e) => setTaskDetails(e.target.value)}
+            placeholder="例：〇〇のマイページで口座情報を登録する"
+            rows={3}
+            className="w-full bg-[#050508] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald/50 focus:ring-1 focus:ring-emerald/50 resize-none"
+          />
         </div>
 
-        {/* Action Card */}
-        <div className="flex flex-col">
-          <div className="flex-1 bg-gradient-to-br from-[#050508] to-emerald/5 border border-emerald/20 rounded-2xl p-6 sm:p-8 flex flex-col items-center justify-center text-center">
-            
-            <div className="w-16 h-16 rounded-full bg-emerald/10 flex items-center justify-center mb-4 border border-emerald/20">
-              <Calendar className="w-8 h-8 text-emerald" />
-            </div>
-
-            <h3 className="text-lg font-bold text-white mb-2">未来の自分に通知を設定</h3>
-            <p className="text-sm text-text-muted mb-6">
-              指定した日付でカレンダーに予定を登録します。これで受け取り忘れの心配はありません。
-            </p>
-
-            <a 
-              href={generateCalendarUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-white text-black font-bold text-sm transition-all hover:bg-emerald hover:shadow-[0_0_20px_rgba(16,185,129,0.4)] hover:-translate-y-0.5 no-underline"
-            >
-              <Bell className="w-4 h-4" />
-              Googleカレンダーに登録する
-              <ExternalLink className="w-4 h-4 ml-1 opacity-50" />
-            </a>
-          </div>
+        <div className="space-y-2">
+          <label className="text-xs font-bold text-text-muted tracking-wider uppercase">手続きの予定日（メールが届く日など）</label>
+          <input
+            type="date"
+            value={scheduledDate}
+            onChange={(e) => setScheduledDate(e.target.value)}
+            className="w-full bg-[#050508] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald/50 focus:ring-1 focus:ring-emerald/50 [color-scheme:dark]"
+          />
         </div>
+
+        <a
+          href={generateCalendarUrl()}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-white text-black font-bold text-sm transition-all hover:bg-emerald hover:shadow-[0_0_20px_rgba(0,230,118,0.4)] hover:-translate-y-0.5 no-underline"
+        >
+          <Bell className="w-4 h-4" />
+          Googleカレンダーに登録する
+          <ExternalLink className="w-4 h-4 ml-1 opacity-50" />
+        </a>
+
+        <p className="text-xs text-text-muted leading-relaxed">
+          ※個人情報・Googleアカウント情報は当サイトに一切保存されません。ボタンを押すと、Google公式の登録画面が新しいタブで開くだけです。
+        </p>
       </div>
     </div>
   );
