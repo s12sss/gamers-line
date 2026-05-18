@@ -153,7 +153,7 @@ export default async function ColumnArticle({ params }: Props) {
       {column ? (
         <>
           {/* Article Hero */}
-          <div className="relative z-10 max-w-[1000px] mx-auto px-3 sm:px-10 py-8 sm:py-16 w-full">
+          <div className="relative z-10 max-w-[1000px] mx-auto px-4 md:px-10 py-8 sm:py-16 w-full">
             <Breadcrumbs items={[
               { name: 'HOME', path: '/' },
               { name: 'COLUMN', path: '/column' },
@@ -197,7 +197,7 @@ export default async function ColumnArticle({ params }: Props) {
           </div>
 
           {/* Main Content & Sidebar Wrapper */}
-          <div className="relative z-10 max-w-[1140px] mx-auto px-3 sm:px-10 pb-20 sm:pb-24 w-full xl:flex xl:gap-12 xl:items-stretch">
+          <div className="relative z-10 max-w-[1140px] mx-auto px-4 md:px-10 pb-20 sm:pb-24 w-full xl:flex xl:gap-12 xl:items-stretch">
 
             {/* Center: Article Body */}
             <div className="min-w-0 flex-1">
@@ -278,7 +278,7 @@ export default async function ColumnArticle({ params }: Props) {
         /* モックデータ（フォールバック） */
         <>
           {/* Article Hero */}
-          <div className="relative z-10 max-w-[1000px] mx-auto px-3 sm:px-10 py-8 sm:py-16 w-full">
+          <div className="relative z-10 max-w-[1000px] mx-auto px-4 md:px-10 py-8 sm:py-16 w-full">
             <Breadcrumbs items={[
               { name: 'HOME', path: '/' },
               { name: 'COLUMN', path: '/column' },
@@ -316,7 +316,7 @@ export default async function ColumnArticle({ params }: Props) {
           </div>
 
           {/* Main Content Wrapper */}
-          <div className="relative z-10 max-w-[760px] mx-auto px-3 sm:px-10 pb-20 sm:pb-24 w-full article-body">
+          <div className="relative z-10 max-w-[760px] mx-auto px-4 md:px-10 pb-20 sm:pb-24 w-full article-body">
             
             {/* TOC */}
             <div className="mb-10 sm:mb-14 p-5 sm:p-8 rounded-[16px] border border-cyan/15 bg-cyan/[0.04] relative overflow-hidden">
