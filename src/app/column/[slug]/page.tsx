@@ -197,9 +197,10 @@ export default async function ColumnArticle({ params }: Props) {
           </div>
 
           {/* Main Content & Sidebar Wrapper */}
-          <div className="relative z-10 max-w-[760px] mx-auto px-4 sm:px-10 pb-20 sm:pb-24 w-full">
-            
+          <div className="relative z-10 max-w-[1140px] mx-auto px-4 sm:px-10 pb-20 sm:pb-24 w-full xl:flex xl:gap-12 xl:items-start">
+
             {/* Center: Article Body */}
+            <div className="min-w-0 flex-1">
             <div className="article-body">
             {/* 目次（TOC） */}
             {headings.length > 0 && (
@@ -255,21 +256,22 @@ export default async function ColumnArticle({ params }: Props) {
             </div>
 
             {/* Mobile Sidebar (Bottom) */}
-            <div className="mt-16 sm:mt-24 lg:hidden">
+            <div className="mt-16 sm:mt-24 xl:hidden">
               <h2 className="text-xl font-bold text-text mb-6 flex items-center gap-3">
                 <span className="w-1.5 h-1.5 rounded-full bg-cyan shadow-[0_0_8px_var(--cyan)]"></span>
                 その他の記事を探す
               </h2>
               <ColumnSidebar />
             </div>
+            </div>
 
           {/* Right: Desktop Sidebar */}
-          <div className="hidden xl:block absolute left-full ml-12 top-0 bottom-0 w-[300px]">
+          <div className="hidden xl:block w-[300px] shrink-0">
             <div className="sticky top-[100px] pb-10 max-h-[calc(100vh-100px)] overflow-y-auto custom-scrollbar">
               <ColumnSidebar />
             </div>
           </div>
-          
+
         </div>
         </>
       ) : (
