@@ -90,7 +90,8 @@ export default function CampaignTable() {
         </div>
       )}
       <div className="border border-white/10 rounded-[20px] bg-[#050505] overflow-hidden">
-        <table className="w-full border-collapse text-sm">
+        <div className="overflow-x-auto custom-scrollbar">
+        <table className="w-full min-w-[640px] border-collapse text-sm">
           <thead>
             <tr className="border-b border-white/10 bg-white/[0.03]">
               <ColHeader label="回線" />
@@ -131,6 +132,7 @@ export default function CampaignTable() {
             ))}
           </tbody>
         </table>
+        </div>
         <div className="px-5 py-4 border-t border-white/10 bg-white/[0.015] text-[0.75rem] text-text-muted leading-relaxed">
           ※ 掲載金額は税込・{new Date().getFullYear()}年{new Date().getMonth() + 1}月時点の代理店特典を含みます。実際の金額・条件は申込前に各社公式サイトでご確認ください。キャッシュバックは申請期限を過ぎると無効になる場合があります。
         </div>
