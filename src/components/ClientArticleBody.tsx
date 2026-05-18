@@ -12,6 +12,14 @@ export default function ClientArticleBody({ content }: { content: string }) {
       const src = (target as HTMLImageElement).src;
       setLightboxImg(src);
     }
+    const link = target.closest('a.btn-signup') as HTMLAnchorElement | null;
+    if (link) {
+      window.gtag?.('event', 'affiliate_click', {
+        isp_name: link.textContent?.trim() ?? 'unknown',
+        isp_id: 'column',
+        link_url: link.href,
+      });
+    }
   };
 
   return (
