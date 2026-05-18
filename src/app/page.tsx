@@ -304,8 +304,7 @@ export default async function Home() {
           >
             <div className="flex items-center gap-3">
               <span className="font-mono text-[0.65rem] text-yellow-400 tracking-widest uppercase shrink-0">2026年5月版</span>
-              <span className="text-sm font-bold text-white hidden sm:inline">主要回線のキャッシュバック・工事費・違約金負担などキャンペーン・特典情報をまとめました</span>
-              <span className="text-sm font-bold text-white sm:hidden">各社のCB・工事費・違約金負担まとめ</span>
+              <span className="text-sm font-bold text-white">主要回線のキャッシュバック情報まとめ</span>
             </div>
             <span className="text-[0.75rem] font-bold text-yellow-400 shrink-0 group-hover:translate-x-0.5 transition-transform whitespace-nowrap">
               キャンペーン一覧 →
