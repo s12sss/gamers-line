@@ -13,7 +13,7 @@ export default function ClientArticleBody({ content }: { content: string }) {
       setLightboxImg(src);
     }
     const link = target.closest('a.btn-signup') as HTMLAnchorElement | null;
-    if (link) {
+    if (link && link.hostname !== window.location.hostname) {
       window.gtag?.('event', 'affiliate_click', {
         isp_name: link.textContent?.trim() ?? 'unknown',
         isp_id: 'column',
