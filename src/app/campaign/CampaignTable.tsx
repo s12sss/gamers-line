@@ -16,13 +16,13 @@ type Row = {
 };
 
 const ROWS: Row[] = [
-  { name: 'NURO光', tag: '独自回線 · 全国', ping: 12, cb: '最大 75,000円', cbNum: 75000, feature: '工事費実質無料 / 24ヶ月月額割引', penaltyCover: '最大6万円', href: 'https://px.a8.net/svt/ejp?a8mat=4B3JAM+86PL82+2VMU+5YJRM' },
+  { name: 'NURO光', tag: '独自回線 · 全国', ping: 12, cb: '最大 75,000円', cbNum: 75000, cbNote: '※マンションは45,000円', feature: '工事費実質無料 / 24ヶ月月額割引', penaltyCover: '最大6万円', href: 'https://px.a8.net/svt/ejp?a8mat=4B3JAM+86PL82+2VMU+5YJRM' },
   { name: 'au ひかり', tag: '独自回線 · 全国', ping: 17, cb: '最大 126,000円', cbNum: 126000, cbNote: '※オプション全加入の場合', feature: '工事費実質無料', penaltyCover: '最大5万円', href: 'https://px.a8.net/svt/ejp?a8mat=4B3K2L+48EZN6+42Y0+5ZMCH' },
   { name: 'eo光', tag: '独自回線 · 関西限定', ping: 16, cb: '—', cbNum: 0, feature: '工事費実質無料 / 1年間月額割引', penaltyCover: '最大6万円', href: 'https://px.a8.net/svt/ejp?a8mat=4B3K2L+5Q0036+3IIQ+5YRHE' },
   { name: 'メガ・エッグ', tag: '独自回線 · 中国地方限定', ping: 29, cb: '最大 25,000円', cbNum: 25000, cbNote: '※10Gは最大50,000円', feature: '工事費実質無料 / 2年間月額割引', penaltyCover: '最大8万円', href: 'https://px.a8.net/svt/ejp?a8mat=4B3K2L+5R6VAQ+348K+2BDR9U' },
   { name: 'ソフトバンク光', tag: 'コラボ光 · 全国', ping: 17, cb: '最大 50,000円', cbNum: 50000, cbNote: '※1Gは40,000円', feature: '工事費実質無料', penaltyCover: '最大10万円', href: 'https://px.a8.net/svt/ejp?a8mat=4B3K2L+4HXXBM+348K+1BP8ZM' },
   { name: 'ドコモ光', tag: 'コラボ光 · 全国', ping: 23, cb: '最大 10,500円', cbNum: 10500, cbNote: '※10Gは最大85,000円', feature: '工事費dポイント還元', penaltyCover: '最大10万円相当', href: 'https://h.accesstrade.net/sp/cc?rk=0100ki0f00os5p' },
-  { name: 'ビッグローブ光', tag: 'コラボ光 · 全国', ping: 18, cb: '最大 70,000円', cbNum: 70000, cbNote: '※クーポン適用必須', feature: '工事費実質無料 / 開通月無料', penaltyCover: '最大4万円', href: 'https://px.a8.net/svt/ejp?a8mat=4B3K2L+4FK6WI+B4+2NBPO2' },
+  { name: 'ビッグローブ光', tag: 'コラボ光 · 全国', ping: 18, cb: '最大 85,000円', cbNum: 85000, cbNote: '※1Gは70,000円・クーポン必須', feature: '工事費実質無料 / 開通月無料', penaltyCover: '最大4万円', href: 'https://px.a8.net/svt/ejp?a8mat=4B3K2L+4FK6WI+B4+2NBPO2' },
   { name: 'コミュファ光', tag: '独自回線 · 東海限定', ping: 16, cb: '最大 25,000円', cbNum: 25000, feature: '1年目月額割引あり', penaltyCover: '全額還元', href: 'https://px.a8.net/svt/ejp?a8mat=4B3K2L+41V7ZM+42Y0+BX3J6' },
   { name: 'ピカラ光', tag: '独自回線 · 四国限定', ping: 20, cb: '最大 30,000円', cbNum: 30000, feature: '工事費無料 / 開通月無料', penaltyCover: 'なし', href: 'https://px.a8.net/svt/ejp?a8mat=4B3K2L+5QLFOY+348K+1ZGG0Y' },
   { name: 'BBIQ', tag: '独自回線 · 九州限定', ping: 25, cb: '最大 30,000円', cbNum: 30000, feature: '工事費実質無料 / 開通月無料', penaltyCover: 'なし', href: 'https://px.a8.net/svt/ejp?a8mat=4B3K2L+54KEB6+348K+2Z861U' },
