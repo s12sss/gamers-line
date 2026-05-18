@@ -197,7 +197,7 @@ export default async function ColumnArticle({ params }: Props) {
           </div>
 
           {/* Main Content & Sidebar Wrapper */}
-          <div className="relative z-10 max-w-[1140px] mx-auto px-4 sm:px-10 pb-20 sm:pb-24 w-full xl:flex xl:gap-12 xl:items-start">
+          <div className="relative z-10 max-w-[1140px] mx-auto px-4 sm:px-10 pb-20 sm:pb-24 w-full xl:flex xl:gap-12 xl:items-stretch">
 
             {/* Center: Article Body */}
             <div className="min-w-0 flex-1">
