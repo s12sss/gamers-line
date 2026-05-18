@@ -25,7 +25,7 @@
     "actual_monthly_fee_jpy": 6050,
     "stability_score": 96,
     "vdsl_support": false,
-    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
+    "cashback_text": "CBキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "SoftBank",
@@ -88,7 +88,7 @@
     "actual_monthly_fee_jpy": 5500,
     "stability_score": 94,
     "vdsl_support": false,
-    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
+    "cashback_text": "CBキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "SoftBank",
@@ -153,7 +153,7 @@
     "actual_monthly_fee_jpy": 7590,
     "stability_score": 96,
     "vdsl_support": true,
-    "cashback_text": "31日間月額料金無料キャンペーン実施中！",
+    "cashback_text": "31日間月額無料",
     "discounts": [],
     "tags": [
       "専用帯域",
@@ -207,7 +207,7 @@
     "actual_monthly_fee_jpy": 6160,
     "stability_score": 94,
     "vdsl_support": true,
-    "cashback_text": "31日間月額料金無料キャンペーン実施中！",
+    "cashback_text": "31日間月額無料",
     "discounts": [],
     "tags": [
       "専用帯域",
@@ -260,7 +260,7 @@
     "actual_monthly_fee_jpy": 7370,
     "stability_score": 95,
     "vdsl_support": true,
-    "cashback_text": "月額料金1ヶ月間無料！！",
+    "cashback_text": "1ヶ月月額無料",
     "discounts": [],
     "tags": [
       "専用帯域",
@@ -314,7 +314,7 @@
     "actual_monthly_fee_jpy": 6160,
     "stability_score": 92,
     "vdsl_support": true,
-    "cashback_text": "月額料金1ヶ月間無料！！",
+    "cashback_text": "1ヶ月月額無料",
     "discounts": [],
     "tags": [
       "専用帯域",
@@ -361,7 +361,7 @@
     "actual_monthly_fee_jpy": 6468,
     "stability_score": 90,
     "vdsl_support": false,
-    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
+    "cashback_text": "CBキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "au",
@@ -423,7 +423,7 @@
     "actual_monthly_fee_jpy": 5610,
     "stability_score": 88,
     "vdsl_support": false,
-    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
+    "cashback_text": "CBキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "au",
@@ -488,7 +488,7 @@
     "actual_monthly_fee_jpy": 6380,
     "stability_score": 82,
     "vdsl_support": false,
-    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
+    "cashback_text": "CBキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "docomo",
@@ -549,7 +549,7 @@
     "actual_monthly_fee_jpy": 5720,
     "stability_score": 75,
     "vdsl_support": true,
-    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
+    "cashback_text": "CBキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "docomo",
@@ -611,7 +611,7 @@
     "actual_monthly_fee_jpy": 6380,
     "stability_score": 80,
     "vdsl_support": false,
-    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
+    "cashback_text": "CBキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "SoftBank",
@@ -677,7 +677,7 @@
     "actual_monthly_fee_jpy": 5720,
     "stability_score": 73,
     "vdsl_support": true,
-    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
+    "cashback_text": "CBキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "SoftBank",
@@ -735,7 +735,7 @@
       "hokuriku_koshinetsu",
       "okinawa"
     ],
-    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
+    "cashback_text": "CBキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "au",
@@ -800,7 +800,7 @@
       "hokuriku_koshinetsu",
       "okinawa"
     ],
-    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
+    "cashback_text": "CBキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "au",
@@ -855,7 +855,7 @@
     "regions": [
       "chubu"
     ],
-    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
+    "cashback_text": "CBキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "au",
@@ -905,7 +905,7 @@
     "regions": [
       "chubu"
     ],
-    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
+    "cashback_text": "CBキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "au",
@@ -963,7 +963,7 @@
     "actual_monthly_fee_jpy": 7370,
     "stability_score": 91,
     "vdsl_support": false,
-    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
+    "cashback_text": "CBキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "au",
@@ -1012,7 +1012,7 @@
     "actual_monthly_fee_jpy": 5720,
     "stability_score": 88,
     "vdsl_support": false,
-    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
+    "cashback_text": "CBキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "au",
@@ -1061,7 +1061,7 @@
     "actual_monthly_fee_jpy": 6750,
     "stability_score": 90,
     "vdsl_support": false,
-    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
+    "cashback_text": "CBキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "au",
@@ -1109,7 +1109,7 @@
     "actual_monthly_fee_jpy": 5720,
     "stability_score": 87,
     "vdsl_support": false,
-    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
+    "cashback_text": "CBキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "au",
@@ -1151,7 +1151,7 @@
       "kansai",
       "hokuriku_koshinetsu"
     ],
-    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
+    "cashback_text": "CBキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "au",
@@ -1203,7 +1203,7 @@
       "kansai",
       "hokuriku_koshinetsu"
     ],
-    "cashback_text": "高額キャッシュバックキャンペーン実施中！",
+    "cashback_text": "CBキャンペーン実施中！",
     "discounts": [
       {
         "carrier": "au",
