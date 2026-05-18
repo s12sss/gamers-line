@@ -171,8 +171,7 @@ export default function ProviderPage() {
 
                   <div className="flex flex-wrap gap-2 mt-auto pt-4">
                     {[
-                      isp.avg_ping_ms <= 15 ? '低Ping' : isp.avg_ping_ms <= 20 ? 'Ping良好' : null,
-                      isp.max_speed_gbps >= 10 ? '10G対応' : null,
+                      isp.avg_ping_ms <= 15 ? '低Ping' : null,
                       isp.vdsl_support ? 'VDSL対応' : null,
                       isp.regions && isp.regions.length >= 8 ? '全国対応' : null,
                       isp.regions && isp.regions.length <= 3 ? '地域限定' : null,
