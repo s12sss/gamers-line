@@ -7,8 +7,9 @@ import CashbackReminder from '@/components/CashbackReminder';
 
 export const revalidate = 86400;
 
+const _now = new Date();
 export const metadata: Metadata = {
-  title: '2026年5月 ゲーミング回線 最新キャンペーン情報 | Gamer\'s Line',
+  title: `${_now.getFullYear()}年${_now.getMonth() + 1}月 ゲーミング回線 最新キャンペーン情報 | Gamer's Line`,
   description: '各社の申し込みキャッシュバック・月額割引・工事費無料などの特典をまとめました。毎月初に更新。',
   alternates: { canonical: '/campaign' },
 };
@@ -81,6 +82,11 @@ const FAQS = [
 ];
 
 export default function CampaignPage() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const monthPadded = String(month).padStart(2, '0');
+
   return (
     <div className="min-h-screen bg-background text-foreground font-sans">
 
@@ -95,7 +101,7 @@ export default function CampaignPage() {
               // CAMPAIGN INFO
             </div>
             <h1 className="font-heading font-black text-[clamp(2.2rem,5vw,3.8rem)] leading-[1.05] tracking-tight mb-5">
-              2026年5月<br />
+              {year}年{month}月<br />
               <span className="bg-gradient-to-br from-cyan to-emerald bg-clip-text text-transparent">
                 最新キャンペーン情報
               </span>
@@ -109,8 +115,8 @@ export default function CampaignPage() {
             <div className="border border-cyan/25 rounded-[20px] bg-cyan/[0.04] shadow-[0_0_60px_rgba(0,229,255,0.12)] px-8 py-6 text-center">
               <div className="font-mono text-[0.65rem] text-cyan tracking-[0.3em] uppercase mb-1">// THIS MONTH</div>
               <div className="font-mono font-bold leading-none text-white" style={{ fontSize: 'clamp(6rem,10vw,9rem)', textShadow: '0 0 40px rgba(0,229,255,0.3)' }}>
-                05
-                <span className="text-2xl text-cyan align-top ml-1">/2026</span>
+                {monthPadded}
+                <span className="text-2xl text-cyan align-top ml-1">/{year}</span>
               </div>
             </div>
           </div>
@@ -168,27 +174,27 @@ export default function CampaignPage() {
         <h2 className="font-heading font-bold text-[clamp(1.6rem,4vw,2.5rem)] tracking-tight mb-3">
           <span className="bg-gradient-to-r from-cyan to-emerald bg-clip-text text-transparent">キャンペーン</span>早見表
         </h2>
-        <p className="text-text-muted text-sm mb-2">キャッシュバック額はネットのみ契約でもらえる最大額。詳細は各回線ページで確認してください。</p>
+        <p className="text-text-muted text-sm mb-2">キャッシュバック額はネットのみ契約でもらえる最大額。詳細は公式ページで確認してください。</p>
         <p className="text-text-muted text-sm mb-8">列ヘッダーのクリックでPing・キャッシュバック額のソートができます。<Info className="inline w-3 h-3 mb-0.5 ml-1 text-white/30" />マークで用語の説明を表示。</p>
         <CampaignTable />
       </section>
 
       {/* Tools */}
       <section className="px-4 sm:px-10 py-16 sm:py-20 border-y border-white/10">
-        <div className="max-w-[1000px] mx-auto">
+        <div className="max-w-[1100px] mx-auto mb-10">
           <div className="font-mono text-[0.65rem] text-cyan tracking-[0.25em] uppercase opacity-70 mb-3">
             // SUPPORT TOOLS
           </div>
           <h2 className="font-heading font-bold text-[clamp(1.6rem,4vw,2.5rem)] tracking-tight mb-3">
             乗り換えを<span className="bg-gradient-to-r from-cyan to-emerald bg-clip-text text-transparent">サポートするツール</span>
           </h2>
-          <p className="text-text-muted text-sm leading-[1.8] mb-10 max-w-[560px]">
+          <p className="text-text-muted text-sm leading-[1.8] max-w-[560px]">
             今すぐ乗り換えるべきか損益を計算できるシミュレーターと、キャッシュバックの受け取り忘れを防ぐリマインダーを用意しました。
           </p>
-          <div className="flex flex-col gap-10">
-            <SwitchingSimulator hideProviderLink />
-            <CashbackReminder />
-          </div>
+        </div>
+        <div className="max-w-[1400px] mx-auto grid xl:grid-cols-[1.3fr_1fr] gap-6 items-start">
+          <SwitchingSimulator hideProviderLink />
+          <CashbackReminder />
         </div>
       </section>
 
