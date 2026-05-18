@@ -295,6 +295,24 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* Campaign Banner */}
+      <div className="relative z-10 px-4 sm:px-10 py-6 border-y border-white/10 bg-yellow-400/[0.02]">
+        <div className="max-w-[1100px] mx-auto">
+          <Link
+            href="/campaign"
+            className="group flex items-center justify-between gap-4"
+          >
+            <div className="flex items-center gap-3">
+              <span className="font-mono text-[0.65rem] text-yellow-400 tracking-widest uppercase shrink-0">2026年5月版</span>
+              <span className="text-sm font-bold text-white">主要回線のキャッシュバック・工事費・違約金負担などキャンペーン・特典情報をまとめました</span>
+            </div>
+            <span className="text-[0.75rem] font-bold text-yellow-400 shrink-0 group-hover:translate-x-0.5 transition-transform whitespace-nowrap">
+              キャンペーン一覧 →
+            </span>
+          </Link>
+        </div>
+      </div>
+
             {/* Compare & Providers Section */}
       <section className="relative z-10 px-4 sm:px-10 py-[60px] sm:py-[100px] max-w-[1100px] mx-auto w-full">
         <div className="font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase mb-3 opacity-70">
