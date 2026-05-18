@@ -107,11 +107,14 @@ export default function ProviderPage() {
                       <div className="text-[0.75rem] text-text-muted">{isp.providerName}</div>
                     </div>
                     <div className="flex flex-col items-end gap-1.5 shrink-0">
-                      {isp.badges && isp.badges.map(badge => (
-                        <span key={badge} className={`px-3 py-1 rounded-full font-mono text-[0.6rem] font-bold tracking-[0.1em] whitespace-nowrap ${isFirst ? 'bg-cyan text-black' : 'bg-cyan/10 text-cyan border border-cyan/25'}`}>{badge}</span>
-                      ))}
-                      {!isp.vdsl_support && (
-                        <span className="px-3 py-1 rounded-full bg-red-500/10 text-red-400 border border-red-500/20 font-mono text-[0.6rem] font-bold tracking-[0.1em] whitespace-nowrap">VDSL 不可</span>
+                      {isp.type === '独自回線' && (
+                        <span className="px-3 py-1 rounded-full bg-cyan/10 text-cyan border border-cyan/25 font-mono text-[0.6rem] font-bold tracking-[0.1em] whitespace-nowrap">独自回線</span>
+                      )}
+                      {isp.type === '専用帯域' && (
+                        <span className="px-3 py-1 rounded-full bg-purple-400/10 text-purple-400 border border-purple-400/25 font-mono text-[0.6rem] font-bold tracking-[0.1em] whitespace-nowrap">専用帯域</span>
+                      )}
+                      {isp.regions && isp.regions.length <= 3 && (
+                        <span className="px-3 py-1 rounded-full bg-emerald/10 text-emerald border border-emerald/25 font-mono text-[0.6rem] font-bold tracking-[0.1em] whitespace-nowrap">地方限定</span>
                       )}
                     </div>
                   </div>
@@ -167,8 +170,16 @@ export default function ProviderPage() {
                   </div>
 
                   <div className="flex flex-wrap gap-2 mt-auto pt-4">
-                    {isp.tags.map(tag => (
-                      <span key={tag} className="px-[11px] py-1 bg-cyan/10 border border-cyan/15 rounded-full text-[0.72rem] text-cyan font-medium">{tag}</span>
+                    {[
+                      isp.avg_ping_ms <= 15 ? '低Ping' : isp.avg_ping_ms <= 20 ? 'Ping良好' : null,
+                      isp.max_speed_gbps >= 10 ? '10G対応' : null,
+                      isp.vdsl_support ? 'VDSL対応' : null,
+                      isp.regions && isp.regions.length >= 8 ? '全国対応' : null,
+                      isp.regions && isp.regions.length <= 3 ? '地域限定' : null,
+                      isp.type === '専用帯域' ? 'ゲーム専用帯域' : null,
+                      isp.mobile_discount && isp.mobile_discount.length > 0 ? 'スマホ割あり' : null,
+                    ].filter(Boolean).map(tag => (
+                      <span key={tag} className="px-[11px] py-1 bg-white/[0.04] border border-white/10 rounded-full text-[0.72rem] text-text-muted font-mono">#{tag}</span>
                     ))}
                   </div>
 
