@@ -368,8 +368,8 @@ export default function ComparePage() {
               {compareIsps.map((isp, index) => {
                 const isBest = index === 0;
                 const normPing = Math.max(0, Math.min(100, (40 - isp.avg_ping_ms) / 30 * 100));
-                const normPrice = Math.max(0, Math.min(100, (8000 - isp.actual_monthly_fee_jpy) / 5000 * 100));
-                const totalScore = Math.round(normPing * 0.5 + isp.stability_score * 0.25 + normPrice * 0.25);
+                const normPrice = Math.max(0, Math.min(100, (8000 - isp.actual_monthly_fee_jpy) / 4000 * 90 + 10));
+                const totalScore = Math.round(normPing * 0.5 + isp.stability_score * 0.3 + normPrice * 0.2);
                 const scoreColor = totalScore >= 80 ? 'cyan' : totalScore >= 70 ? 'emerald' : totalScore >= 60 ? 'purple-400' : 'amber-500';
                 const bgClass = scoreColor === 'cyan' ? 'bg-cyan' : scoreColor === 'emerald' ? 'bg-emerald' : scoreColor === 'purple-400' ? 'bg-purple-400' : 'bg-amber-500';
                 const textClass = scoreColor === 'cyan' ? 'text-cyan' : scoreColor === 'emerald' ? 'text-emerald' : scoreColor === 'purple-400' ? 'text-purple-400' : 'text-amber-500';
@@ -420,7 +420,7 @@ export default function ComparePage() {
 
         <p className="text-[0.72rem] text-text-dim text-center mt-10 leading-[1.7]">
           ※ Ping値は東京リージョン・VALORANTサーバーに対する第三者統計データの推計値です。実際の値はご利用環境により異なります。<br />
-          総合スコアはGamer's Lineの独自算出値（Ping値50%・安定性25%・料金25%）です。
+          総合スコアはGamer's Lineの独自算出値（Ping値50%・安定性30%・料金20%）です。
         </p>
 
         {/* Diag CTA */}
