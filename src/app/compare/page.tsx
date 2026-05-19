@@ -367,7 +367,7 @@ export default function ComparePage() {
               </div>
               {compareIsps.map((isp, index) => {
                 const isBest = index === 0;
-                const normPing = Math.max(0, Math.min(100, (40 - isp.avg_ping_ms) / 30 * 100));
+                const normPing = Math.max(0, Math.min(100, (50 - isp.avg_ping_ms) / 40 * 100));
                 const normPrice = Math.max(0, Math.min(100, (8000 - isp.actual_monthly_fee_jpy) / 4000 * 90 + 10));
                 const totalScore = Math.round(normPing * 0.5 + isp.stability_score * 0.3 + normPrice * 0.2);
                 const scoreColor = totalScore >= 80 ? 'cyan' : totalScore >= 70 ? 'emerald' : totalScore >= 60 ? 'purple-400' : 'amber-500';
