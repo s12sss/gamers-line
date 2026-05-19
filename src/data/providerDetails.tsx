@@ -330,7 +330,7 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
     catchphrase: 'au・UQユーザーのもう一つの選択肢',
     heroDescription: 'KDDIグループの老舗プロバイダ「BIGLOBE」が提供する光コラボ回線です。auひかりの提供エリア外でも、auやUQモバイルのセット割を適用できる全国対応の回線です。',
     ispIds: ['biglobe_hikari_10g', 'biglobe_hikari_1g'],
-    stats: { ping: 3, stability: 4, speed: 3, cost: 4, installation: 5, benefit: 4 },
+    stats: { ping: 3, stability: 4, speed: 4, cost: 4, installation: 5, benefit: 4 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>
