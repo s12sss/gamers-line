@@ -288,7 +288,7 @@ export default async function Home() {
                 <div className="absolute inset-0 rounded-full bg-cyan/10" />
                 03
               </div>
-              <h4 className="font-heading font-semibold text-base mb-2">Ping値・料金を比較</h4>
+              <h4 className="font-heading font-semibold text-base mb-2">回線スペック・料金を比較</h4>
               <p className="text-[0.8rem] text-text-muted leading-relaxed">ゲームに必要な要素や月額料金を並べて表示。その場で申し込みも可能</p>
             </div>
           </div>
