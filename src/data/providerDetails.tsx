@@ -82,7 +82,7 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
     catchphrase: '標準で2Gbps。プロゲーマーも愛用する圧倒的なスピード',
     heroDescription: 'ソニーネットワークコミュニケーションズが提供するNURO光は、標準プランで「下り最大2Gbps」という驚異的なスピードを誇ります。プロeスポーツチームも採用するほどの回線品質と、高額なキャッシュバックが魅力です。',
     ispIds: ['nuro_hikari_10g', 'nuro_hikari_2g'],
-    stats: { ping: 5, stability: 4, speed: 5, cost: 4, installation: 2, benefit: 5 },
+    stats: { ping: 5, stability: 5, speed: 5, cost: 4, installation: 2, benefit: 5 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>
@@ -129,7 +129,7 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
     catchphrase: 'ゲーマー専用帯域×高性能ルーター。設定不要で手に入る圧倒的低遅延',
     heroDescription: '株式会社ハイホーが提供する、オンラインゲーム特化型の光コラボ回線です。通常の光回線とは異なる「ゲーム専用帯域」を確保しており、さらにゲームに最適な高性能ゲーミングルーターが標準でセットになるため、ネットワークの知識がなくても最高のゲーム環境が手に入ります。',
     ispIds: ['hi-ho_with_games_10g', 'hi-ho_with_games_1g'],
-    stats: { ping: 4, stability: 4, speed: 4, cost: 2, installation: 5, benefit: 3 },
+    stats: { ping: 4, stability: 5, speed: 4, cost: 2, installation: 5, benefit: 3 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>
@@ -182,7 +182,7 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
     catchphrase: 'ゲーム攻略メディアが本気で作った「ゲーマー専用」光コラボ',
     heroDescription: '国内最大級のゲームメディア「GameWith」が提供するゲーミング専用回線です。全国どこでも使える「光コラボ」でありながら、ゲームの通信を優先する専用帯域を確保しているため、光コラボ特有のラグや遅延を極限まで抑え込みます。',
     ispIds: ['gamewith_hikari_10g', 'gamewith_hikari_1g'],
-    stats: { ping: 5, stability: 4, speed: 4, cost: 2, installation: 5, benefit: 2 },
+    stats: { ping: 5, stability: 5, speed: 4, cost: 2, installation: 5, benefit: 2 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>
@@ -219,7 +219,7 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
     catchphrase: '独自網による圧倒的安定感。auユーザーならさらに神コスパ',
     heroDescription: 'KDDIが自社で保有する独自の光ファイバー網を利用した光回線です。NTT回線とは異なるネットワークを使用しているため、夜間の混雑時でもパケットロストが少なく、安定したPing値を維持できます。auユーザーなら割引の恩恵が絶大です。',
     ispIds: ['au_hikari_10g', 'au_hikari_1g'],
-    stats: { ping: 5, stability: 5, speed: 4, cost: 4, installation: 3, benefit: 5 },
+    stats: { ping: 5, stability: 4, speed: 4, cost: 4, installation: 3, benefit: 5 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>
@@ -308,7 +308,7 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
     catchphrase: 'ソフトバンクユーザーなら外せない、定番の光コラボ',
     heroDescription: 'ソフトバンク・ワイモバイルユーザーならセット割でお得になる光コラボレーション回線です。全国どこでも利用でき、他社からの乗り換え時の違約金満額還元など、手厚いキャンペーンが魅力です。',
     ispIds: ['softbank_hikari_10g', 'softbank_hikari_1g'],
-    stats: { ping: 3, stability: 3, speed: 3, cost: 4, installation: 5, benefit: 4 },
+    stats: { ping: 3, stability: 4, speed: 3, cost: 4, installation: 5, benefit: 4 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>
@@ -330,7 +330,7 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
     catchphrase: 'au・UQユーザーのもう一つの選択肢',
     heroDescription: 'KDDIグループの老舗プロバイダ「BIGLOBE」が提供する光コラボ回線です。auひかりの提供エリア外でも、auやUQモバイルのセット割を適用できる全国対応の回線です。',
     ispIds: ['biglobe_hikari_10g', 'biglobe_hikari_1g'],
-    stats: { ping: 3, stability: 3, speed: 3, cost: 4, installation: 5, benefit: 4 },
+    stats: { ping: 3, stability: 4, speed: 3, cost: 4, installation: 5, benefit: 4 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>
@@ -352,7 +352,7 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
     catchphrase: '東海エリア限定の地域独自回線。低Pingと安定性が強み',
     heroDescription: '東海エリア（愛知・岐阜・三重・静岡・長野）限定で提供されている独自回線です。NTT網を使わない独自インフラで混雑に強く、Ping値・安定性ともに地域内では上位の実力を持ちます。',
     ispIds: ['commufa_hikari_10g', 'commufa_hikari_1g'],
-    stats: { ping: 5, stability: 5, speed: 4, cost: 5, installation: 2, benefit: 4 },
+    stats: { ping: 5, stability: 4, speed: 4, cost: 5, installation: 2, benefit: 4 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>
@@ -396,7 +396,7 @@ export const PROVIDER_DETAILS: Record<string, ProviderDetail> = {
     catchphrase: '中国エリア限定の地域独自回線',
     heroDescription: '中国電力グループが提供する中国エリア限定の光回線サービスです。独自のネットワーク網で混雑の影響を受けにくい点が強みです。Ping値は29ms前後で、他の独自回線と比較すると速度面では控えめな水準です。',
     ispIds: ['megaegg_hikari_10g', 'megaegg_hikari_1g'],
-    stats: { ping: 2, stability: 4, speed: 3, cost: 4, installation: 2, benefit: 3 },
+    stats: { ping: 2, stability: 3, speed: 3, cost: 4, installation: 2, benefit: 3 },
     bodyContent: (
       <div className="space-y-12 text-text-muted leading-relaxed">
         <section>
