@@ -69,7 +69,7 @@
     "type": "独自回線",
     "max_speed_gbps": 2,
     "avg_ping_ms": 12,
-    "avg_dl_speed_mbps": 842,
+    "avg_dl_speed_mbps": 920,
     "mobile_discount": [
       "softbank",
       "nuro_mobile"
@@ -238,7 +238,7 @@
     "type": "専用帯域",
     "max_speed_gbps": 10,
     "avg_ping_ms": 15,
-    "avg_dl_speed_mbps": 1000,
+    "avg_dl_speed_mbps": 850,
     "mobile_discount": [],
     "available_housing": [
       "house",
@@ -292,7 +292,7 @@
     "type": "専用帯域",
     "max_speed_gbps": 1,
     "avg_ping_ms": 16,
-    "avg_dl_speed_mbps": 909,
+    "avg_dl_speed_mbps": 780,
     "mobile_discount": [],
     "available_housing": [
       "house",
