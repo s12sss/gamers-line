@@ -367,17 +367,20 @@ export default function ComparePage() {
               </div>
               {compareIsps.map((isp, index) => {
                 const isBest = index === 0;
-                const scoreColor = isp.stability_score >= 90 ? 'cyan' : isp.stability_score >= 85 ? 'emerald' : isp.stability_score >= 80 ? 'purple-400' : 'amber-500';
+                const normPing = Math.max(0, Math.min(100, (40 - isp.avg_ping_ms) / 30 * 100));
+                const normPrice = Math.max(0, Math.min(100, (8000 - isp.actual_monthly_fee_jpy) / 5000 * 100));
+                const totalScore = Math.round(normPing * 0.5 + isp.stability_score * 0.25 + normPrice * 0.25);
+                const scoreColor = totalScore >= 80 ? 'cyan' : totalScore >= 70 ? 'emerald' : totalScore >= 60 ? 'purple-400' : 'amber-500';
                 const bgClass = scoreColor === 'cyan' ? 'bg-cyan' : scoreColor === 'emerald' ? 'bg-emerald' : scoreColor === 'purple-400' ? 'bg-purple-400' : 'bg-amber-500';
                 const textClass = scoreColor === 'cyan' ? 'text-cyan' : scoreColor === 'emerald' ? 'text-emerald' : scoreColor === 'purple-400' ? 'text-purple-400' : 'text-amber-500';
-                
+
                 return (
                   <div key={isp.id} className={`flex items-center justify-center py-4 px-2 border-b border-white/10 border-x ${isBest ? 'border-cyan/20 bg-cyan/[0.04]' : 'border-white/10 bg-white/[0.015]'} text-center ${isBest ? 'rounded-bl-none' : index === compareIsps.length - 1 ? 'rounded-br-none' : ''}`}>
                     <div className="flex flex-col items-center gap-1 w-full px-2">
                       <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
-                        <div className={`h-full rounded-full ${bgClass}`} style={{ width: `${isp.stability_score}%` }}></div>
+                        <div className={`h-full rounded-full ${bgClass}`} style={{ width: `${totalScore}%` }}></div>
                       </div>
-                      <span className={`font-mono text-[0.75rem] font-bold ${textClass}`}>{isp.stability_score}</span>
+                      <span className={`font-mono text-[0.75rem] font-bold ${textClass}`}>{totalScore}</span>
                     </div>
                   </div>
                 );
@@ -417,7 +420,7 @@ export default function ComparePage() {
 
         <p className="text-[0.72rem] text-text-dim text-center mt-10 leading-[1.7]">
           ※ Ping値は東京リージョン・VALORANTサーバーに対する第三者統計データの推計値です。実際の値はご利用環境により異なります。<br />
-          総合スコアはGamer's Lineの独自算出値（Ping値60%・料金20%・安定性20%）です。
+          総合スコアはGamer's Lineの独自算出値（Ping値50%・安定性25%・料金25%）です。
         </p>
 
         {/* Diag CTA */}
