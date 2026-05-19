@@ -178,6 +178,14 @@ function ResultCard({ result, index, delay, requires10G, answers, allResults }: 
                 return <span key={i} className={`text-sm ${i < stars ? 'text-cyan' : 'text-white/15'}`}>★</span>;
               })}
             </div>
+            <div className="flex justify-start sm:justify-end items-center gap-1 mt-1">
+              <span className="text-[0.65rem] text-text-muted mr-1">速度</span>
+              {Array.from({ length: 5 }).map((_, i) => {
+                const speed = result.isp.avg_dl_speed_mbps;
+                const stars = speed >= 900 ? 5 : speed >= 700 ? 4 : speed >= 500 ? 3 : speed >= 300 ? 2 : 1;
+                return <span key={i} className={`text-sm ${i < stars ? 'text-emerald' : 'text-white/15'}`}>★</span>;
+              })}
+            </div>
           </div>
         </div>
 
@@ -209,7 +217,7 @@ function ResultCard({ result, index, delay, requires10G, answers, allResults }: 
             ※表示料金は「戸建て」の標準月額です。マンションにお住まいの場合や、各社のキャンペーン適用で実際の負担額はさらに下がります。
           </p>
           <p className="text-[0.6rem] sm:text-[0.65rem] text-text-muted leading-relaxed">
-            ※安定性はPing変動幅・パケットロス率・夜間帯の混雑耐性を総合した独自評価です（★5が最高）。
+            ※安定性はPing変動幅・パケットロス率・夜間帯の混雑耐性を総合した独自評価です（★5が最高）。速度は実測ダウンロード速度の目安です。
           </p>
         </div>
       </div>
