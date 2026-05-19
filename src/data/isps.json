@@ -1,9 +1,9 @@
-[
+﻿[
   {
     "id": "nuro_hikari_10g",
-    "name": "NURO 光 (10G)",
-    "providerName": "ソニーネットワークコミュニケーションズ",
-    "type": "独自回線",
+    "name": "NURO 蜈・(10G)",
+    "providerName": "繧ｽ繝九・繝阪ャ繝医Ρ繝ｼ繧ｯ繧ｳ繝溘Η繝九こ繝ｼ繧ｷ繝ｧ繝ｳ繧ｺ",
+    "type": "迢ｬ閾ｪ蝗樒ｷ・,
     "max_speed_gbps": 10,
     "avg_ping_ms": 11,
     "avg_dl_speed_mbps": 1000,
@@ -23,40 +23,40 @@
       "kyushu"
     ],
     "actual_monthly_fee_jpy": 6050,
-    "stability_score": 96,
+    "stability_score": 95,
     "vdsl_support": false,
-    "cashback_text": "キャッシュバックキャンペーン実施中！",
+    "cashback_text": "繧ｭ繝｣繝・す繝･繝舌ャ繧ｯ繧ｭ繝｣繝ｳ繝壹・繝ｳ螳滓命荳ｭ・・,
     "discounts": [
       {
         "carrier": "SoftBank",
         "amount": 1100,
-        "name": "おうち割 光セット"
+        "name": "縺翫≧縺｡蜑ｲ 蜈峨そ繝・ヨ"
       },
       {
-        "carrier": "NUROモバイル",
+        "carrier": "NURO繝｢繝舌う繝ｫ",
         "amount": 792,
-        "name": "NUROモバイルセット割"
+        "name": "NURO繝｢繝舌う繝ｫ繧ｻ繝・ヨ蜑ｲ"
       }
     ],
     "tags": [
-      "独自回線",
-      "FPS最適",
-      "低Ping"
+      "迢ｬ閾ｪ蝗樒ｷ・,
+      "FPS譛驕ｩ",
+      "菴傘ing"
     ],
     "badges": [
       "BEST PING",
       "Pick UP!"
     ],
-    "description": "圧倒的な通信品質を誇るNUROの10Gプラン。ゲーム・4K配信を同時にこなしても全く遅延を感じない、最高峰のゲーム環境を構築したい方向け。",
+    "description": "蝨ｧ蛟堤噪縺ｪ騾壻ｿ｡蜩∬ｳｪ繧定ｪ・ｋNURO縺ｮ10G繝励Λ繝ｳ縲ゅご繝ｼ繝繝ｻ4K驟堺ｿ｡繧貞酔譎ゅ↓縺薙↑縺励※繧ょ・縺城≦蟒ｶ繧呈─縺倥↑縺・∵怙鬮伜ｳｰ縺ｮ繧ｲ繝ｼ繝迺ｰ蠅・ｒ讒狗ｯ峨＠縺溘＞譁ｹ蜷代￠縲・,
     "pros": [
-      "圧倒的な低Ping値（平均11ms）",
-      "超高速の10Gbps対応",
-      "SoftBankスマホのセット割が使える"
+      "蝨ｧ蛟堤噪縺ｪ菴傘ing蛟､・亥ｹｳ蝮・1ms・・,
+      "雜・ｫ倬溘・10Gbps蟇ｾ蠢・,
+      "SoftBank繧ｹ繝槭・縺ｮ繧ｻ繝・ヨ蜑ｲ縺御ｽｿ縺医ｋ"
     ],
     "cons": [
-      "VDSLマンション不可",
-      "提供エリアが限定的",
-      "開通までに時間がかかる場合がある"
+      "VDSL繝槭Φ繧ｷ繝ｧ繝ｳ荳榊庄",
+      "謠蝉ｾ帙お繝ｪ繧｢縺碁剞螳夂噪",
+      "髢矩壹∪縺ｧ縺ｫ譎る俣縺後°縺九ｋ蝣ｴ蜷医′縺ゅｋ"
     ],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3JAM+86PL82+2VMU+5YJRM",
     "detailLink": "/provider",
@@ -64,9 +64,9 @@
   },
   {
     "id": "nuro_hikari_2g",
-    "name": "NURO 光 (2G)",
-    "providerName": "ソニーネットワークコミュニケーションズ",
-    "type": "独自回線",
+    "name": "NURO 蜈・(2G)",
+    "providerName": "繧ｽ繝九・繝阪ャ繝医Ρ繝ｼ繧ｯ繧ｳ繝溘Η繝九こ繝ｼ繧ｷ繝ｧ繝ｳ繧ｺ",
+    "type": "迢ｬ閾ｪ蝗樒ｷ・,
     "max_speed_gbps": 2,
     "avg_ping_ms": 12,
     "avg_dl_speed_mbps": 842,
@@ -86,39 +86,39 @@
       "kyushu"
     ],
     "actual_monthly_fee_jpy": 5500,
-    "stability_score": 94,
+    "stability_score": 95,
     "vdsl_support": false,
-    "cashback_text": "キャッシュバックキャンペーン実施中！",
+    "cashback_text": "繧ｭ繝｣繝・す繝･繝舌ャ繧ｯ繧ｭ繝｣繝ｳ繝壹・繝ｳ螳滓命荳ｭ・・,
     "discounts": [
       {
         "carrier": "SoftBank",
         "amount": 1100,
-        "name": "おうち割 光セット"
+        "name": "縺翫≧縺｡蜑ｲ 蜈峨そ繝・ヨ"
       },
       {
-        "carrier": "NUROモバイル",
+        "carrier": "NURO繝｢繝舌う繝ｫ",
         "amount": 792,
-        "name": "NUROモバイルセット割"
+        "name": "NURO繝｢繝舌う繝ｫ繧ｻ繝・ヨ蜑ｲ"
       }
     ],
     "tags": [
-      "高コスパ",
-      "独自回線",
-      "FPS最適"
+      "鬮倥さ繧ｹ繝・,
+      "迢ｬ閾ｪ蝗樒ｷ・,
+      "FPS譛驕ｩ"
     ],
     "badges": [
-      "コスパ◎",
+      "繧ｳ繧ｹ繝鯛落",
       "Pick UP!"
     ],
-    "description": "NURO光の標準プラン。2Gbpsの帯域と独自インフラにより、10Gプランに迫る低Pingをリーズナブルな価格で実現。",
+    "description": "NURO蜈峨・讓呎ｺ悶・繝ｩ繝ｳ縲・Gbps縺ｮ蟶ｯ蝓溘→迢ｬ閾ｪ繧､繝ｳ繝輔Λ縺ｫ繧医ｊ縲・0G繝励Λ繝ｳ縺ｫ霑ｫ繧倶ｽ傘ing繧偵Μ繝ｼ繧ｺ繝翫ヶ繝ｫ縺ｪ萓｡譬ｼ縺ｧ螳溽樟縲・,
     "pros": [
-      "業界最高水準のPing値",
-      "独自回線で安定性が高い",
-      "SoftBankスマホとのセット割あり"
+      "讌ｭ逡梧怙鬮俶ｰｴ貅悶・Ping蛟､",
+      "迢ｬ閾ｪ蝗樒ｷ壹〒螳牙ｮ壽ｧ縺碁ｫ倥＞",
+      "SoftBank繧ｹ繝槭・縺ｨ縺ｮ繧ｻ繝・ヨ蜑ｲ縺ゅｊ"
     ],
     "cons": [
-      "VDSLマンション不可",
-      "提供エリアがやや限定的"
+      "VDSL繝槭Φ繧ｷ繝ｧ繝ｳ荳榊庄",
+      "謠蝉ｾ帙お繝ｪ繧｢縺後ｄ繧・剞螳夂噪"
     ],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3JAM+86PL82+2VMU+5YJRM",
     "detailLink": "/provider",
@@ -126,9 +126,9 @@
   },
   {
     "id": "hi-ho_with_games_10g",
-    "name": "hi-ho ひかり with games (10G)",
-    "providerName": "株式会社ハイホー",
-    "type": "専用帯域",
+    "name": "hi-ho 縺ｲ縺九ｊ with games (10G)",
+    "providerName": "譬ｪ蠑丈ｼ夂､ｾ繝上う繝帙・",
+    "type": "蟆ら畑蟶ｯ蝓・,
     "max_speed_gbps": 10,
     "avg_ping_ms": 18,
     "avg_dl_speed_mbps": 1000,
@@ -151,28 +151,28 @@
       "hokuriku_koshinetsu"
     ],
     "actual_monthly_fee_jpy": 7590,
-    "stability_score": 96,
+    "stability_score": 90,
     "vdsl_support": true,
-    "cashback_text": "31日間月額無料",
+    "cashback_text": "31譌･髢捺怦鬘咲┌譁・,
     "discounts": [],
     "tags": [
-      "専用帯域",
-      "ルーター付",
-      "ラグゼロ"
+      "蟆ら畑蟶ｯ蝓・,
+      "繝ｫ繝ｼ繧ｿ繝ｼ莉・,
+      "繝ｩ繧ｰ繧ｼ繝ｭ"
     ],
     "badges": [
-      "ゲーマー特化",
+      "繧ｲ繝ｼ繝槭・迚ｹ蛹・,
       "Pick UP!"
     ],
-    "description": "ゲーマー特化型の専用帯域回線。高性能なゲーミングルーターが標準でセットになっており、届いたその日から圧倒的な低Ping環境でプレイ可能。",
+    "description": "繧ｲ繝ｼ繝槭・迚ｹ蛹門梛縺ｮ蟆ら畑蟶ｯ蝓溷屓邱壹るｫ俶ｧ閭ｽ縺ｪ繧ｲ繝ｼ繝溘Φ繧ｰ繝ｫ繝ｼ繧ｿ繝ｼ縺梧ｨ呎ｺ悶〒繧ｻ繝・ヨ縺ｫ縺ｪ縺｣縺ｦ縺翫ｊ縲∝ｱ翫＞縺溘◎縺ｮ譌･縺九ｉ蝨ｧ蛟堤噪縺ｪ菴傘ing迺ｰ蠅・〒繝励Ξ繧､蜿ｯ閭ｽ縲・,
     "pros": [
-      "ゲーマー専用帯域で夜間も安定",
-      "高性能ゲーミングルーターがセット",
-      "VDSLマンションでも契約可能"
+      "繧ｲ繝ｼ繝槭・蟆ら畑蟶ｯ蝓溘〒螟憺俣繧ょｮ牙ｮ・,
+      "鬮俶ｧ閭ｽ繧ｲ繝ｼ繝溘Φ繧ｰ繝ｫ繝ｼ繧ｿ繝ｼ縺後そ繝・ヨ",
+      "VDSL繝槭Φ繧ｷ繝ｧ繝ｳ縺ｧ繧ょ･醍ｴ・庄閭ｽ"
     ],
     "cons": [
-      "スマホとのセット割引がない",
-      "月額料金がやや高め"
+      "繧ｹ繝槭・縺ｨ縺ｮ繧ｻ繝・ヨ蜑ｲ蠑輔′縺ｪ縺・,
+      "譛磯｡肴侭驥代′繧・ｄ鬮倥ａ"
     ],
     "affiliateLink": "https://h.accesstrade.net/sp/cc?rk=0100pau800os5p",
     "detailLink": "/provider/hi-ho",
@@ -180,9 +180,9 @@
   },
   {
     "id": "hi-ho_with_games_1g",
-    "name": "hi-ho ひかり with games (1G)",
-    "providerName": "株式会社ハイホー",
-    "type": "専用帯域",
+    "name": "hi-ho 縺ｲ縺九ｊ with games (1G)",
+    "providerName": "譬ｪ蠑丈ｼ夂､ｾ繝上う繝帙・",
+    "type": "蟆ら畑蟶ｯ蝓・,
     "max_speed_gbps": 1,
     "avg_ping_ms": 20,
     "avg_dl_speed_mbps": 868,
@@ -205,27 +205,27 @@
       "hokuriku_koshinetsu"
     ],
     "actual_monthly_fee_jpy": 6160,
-    "stability_score": 94,
+    "stability_score": 90,
     "vdsl_support": true,
-    "cashback_text": "31日間月額無料",
+    "cashback_text": "31譌･髢捺怦鬘咲┌譁・,
     "discounts": [],
     "tags": [
-      "専用帯域",
-      "ルーター付",
-      "ラグゼロ"
+      "蟆ら畑蟶ｯ蝓・,
+      "繝ｫ繝ｼ繧ｿ繝ｼ莉・,
+      "繝ｩ繧ｰ繧ｼ繝ｭ"
     ],
     "badges": [
-      "ゲーマー特化",
-      "ルーターセット"
+      "繧ｲ繝ｼ繝槭・迚ｹ蛹・,
+      "繝ｫ繝ｼ繧ｿ繝ｼ繧ｻ繝・ヨ"
     ],
-    "description": "専用帯域による低遅延に加えて、ゲーム環境に最適な高性能ルーターがレンタル可能。設定不要で安定した通信が手に入ります。",
+    "description": "蟆ら畑蟶ｯ蝓溘↓繧医ｋ菴朱≦蟒ｶ縺ｫ蜉縺医※縲√ご繝ｼ繝迺ｰ蠅・↓譛驕ｩ縺ｪ鬮俶ｧ閭ｽ繝ｫ繝ｼ繧ｿ繝ｼ縺後Ξ繝ｳ繧ｿ繝ｫ蜿ｯ閭ｽ縲りｨｭ螳壻ｸ崎ｦ√〒螳牙ｮ壹＠縺滄壻ｿ｡縺梧焔縺ｫ蜈･繧翫∪縺吶・,
     "pros": [
-      "ゲーマー専用帯域で混雑を回避",
-      "マンションでも導入しやすい",
-      "高性能ルーターでWi-Fiも超快適"
+      "繧ｲ繝ｼ繝槭・蟆ら畑蟶ｯ蝓溘〒豺ｷ髮代ｒ蝗樣∩",
+      "繝槭Φ繧ｷ繝ｧ繝ｳ縺ｧ繧ょｰ主・縺励ｄ縺吶＞",
+      "鬮俶ｧ閭ｽ繝ｫ繝ｼ繧ｿ繝ｼ縺ｧWi-Fi繧りｶ・ｿｫ驕ｩ"
     ],
     "cons": [
-      "スマホとのセット割引がない"
+      "繧ｹ繝槭・縺ｨ縺ｮ繧ｻ繝・ヨ蜑ｲ蠑輔′縺ｪ縺・
     ],
     "affiliateLink": "https://h.accesstrade.net/sp/cc?rk=0100pau800os5p",
     "detailLink": "/provider/hi-ho",
@@ -233,9 +233,9 @@
   },
   {
     "id": "gamewith_hikari_10g",
-    "name": "GameWith光 (10G)",
-    "providerName": "株式会社GameWith",
-    "type": "専用帯域",
+    "name": "GameWith蜈・(10G)",
+    "providerName": "譬ｪ蠑丈ｼ夂､ｾGameWith",
+    "type": "蟆ら畑蟶ｯ蝓・,
     "max_speed_gbps": 10,
     "avg_ping_ms": 15,
     "avg_dl_speed_mbps": 1000,
@@ -258,28 +258,28 @@
       "hokuriku_koshinetsu"
     ],
     "actual_monthly_fee_jpy": 7370,
-    "stability_score": 95,
+    "stability_score": 92,
     "vdsl_support": true,
-    "cashback_text": "1ヶ月月額無料",
+    "cashback_text": "1繝ｶ譛域怦鬘咲┌譁・,
     "discounts": [],
     "tags": [
-      "専用帯域",
-      "プロゲーマー仕様",
-      "ラグゼロ"
+      "蟆ら畑蟶ｯ蝓・,
+      "繝励Ο繧ｲ繝ｼ繝槭・莉墓ｧ・,
+      "繝ｩ繧ｰ繧ｼ繝ｭ"
     ],
     "badges": [
-      "GAMER専用",
+      "GAMER蟆ら畑",
       "Pick UP!"
     ],
-    "description": "国内最大級のゲームメディア「GameWith」が提供する、ゲーマーのための専用光回線。専用帯域を確保しているため、夜間の混雑時でもラグが発生しにくい。",
+    "description": "蝗ｽ蜀・怙螟ｧ邏壹・繧ｲ繝ｼ繝繝｡繝・ぅ繧｢縲隈ameWith縲阪′謠蝉ｾ帙☆繧九√ご繝ｼ繝槭・縺ｮ縺溘ａ縺ｮ蟆ら畑蜈牙屓邱壹ょｰら畑蟶ｯ蝓溘ｒ遒ｺ菫昴＠縺ｦ縺・ｋ縺溘ａ縲∝､憺俣縺ｮ豺ｷ髮第凾縺ｧ繧ゅΛ繧ｰ縺檎匱逕溘＠縺ｫ縺上＞縲・,
     "pros": [
-      "ゲーマー専用の帯域確保で混雑に強い",
-      "各ゲームサーバーへの直結ルーティング",
-      "VDSLマンションでも契約可能"
+      "繧ｲ繝ｼ繝槭・蟆ら畑縺ｮ蟶ｯ蝓溽｢ｺ菫昴〒豺ｷ髮代↓蠑ｷ縺・,
+      "蜷・ご繝ｼ繝繧ｵ繝ｼ繝舌・縺ｸ縺ｮ逶ｴ邨舌Ν繝ｼ繝・ぅ繝ｳ繧ｰ",
+      "VDSL繝槭Φ繧ｷ繝ｧ繝ｳ縺ｧ繧ょ･醍ｴ・庄閭ｽ"
     ],
     "cons": [
-      "スマホとのセット割引がない",
-      "月額料金がやや高め"
+      "繧ｹ繝槭・縺ｨ縺ｮ繧ｻ繝・ヨ蜑ｲ蠑輔′縺ｪ縺・,
+      "譛磯｡肴侭驥代′繧・ｄ鬮倥ａ"
     ],
     "affiliateLink": "https://gamewith-hikari.gamewith.co.jp/",
     "detailLink": "/provider",
@@ -287,9 +287,9 @@
   },
   {
     "id": "gamewith_hikari_1g",
-    "name": "GameWith光 (1G)",
-    "providerName": "株式会社GameWith",
-    "type": "専用帯域",
+    "name": "GameWith蜈・(1G)",
+    "providerName": "譬ｪ蠑丈ｼ夂､ｾGameWith",
+    "type": "蟆ら畑蟶ｯ蝓・,
     "max_speed_gbps": 1,
     "avg_ping_ms": 16,
     "avg_dl_speed_mbps": 909,
@@ -312,28 +312,28 @@
       "hokuriku_koshinetsu"
     ],
     "actual_monthly_fee_jpy": 6160,
-    "stability_score": 92,
+    "stability_score": 90,
     "vdsl_support": true,
-    "cashback_text": "1ヶ月月額無料",
+    "cashback_text": "1繝ｶ譛域怦鬘咲┌譁・,
     "discounts": [],
     "tags": [
-      "専用帯域",
-      "プロゲーマー仕様",
-      "ラグゼロ"
+      "蟆ら畑蟶ｯ蝓・,
+      "繝励Ο繧ｲ繝ｼ繝槭・莉墓ｧ・,
+      "繝ｩ繧ｰ繧ｼ繝ｭ"
     ],
     "badges": [
-      "GAMER専用",
+      "GAMER蟆ら畑",
       "Pick UP!"
     ],
-    "description": "国内最大級のゲームメディア「GameWith」が提供する、ゲーマーのための専用光回線。専用帯域を確保しているため、夜間の混雑時でもラグが発生しにくい。",
+    "description": "蝗ｽ蜀・怙螟ｧ邏壹・繧ｲ繝ｼ繝繝｡繝・ぅ繧｢縲隈ameWith縲阪′謠蝉ｾ帙☆繧九√ご繝ｼ繝槭・縺ｮ縺溘ａ縺ｮ蟆ら畑蜈牙屓邱壹ょｰら畑蟶ｯ蝓溘ｒ遒ｺ菫昴＠縺ｦ縺・ｋ縺溘ａ縲∝､憺俣縺ｮ豺ｷ髮第凾縺ｧ繧ゅΛ繧ｰ縺檎匱逕溘＠縺ｫ縺上＞縲・,
     "pros": [
-      "ゲーマー専用の帯域確保で混雑に強い",
-      "各ゲームサーバーへの直結ルーティング",
-      "VDSLマンションでも契約可能"
+      "繧ｲ繝ｼ繝槭・蟆ら畑縺ｮ蟶ｯ蝓溽｢ｺ菫昴〒豺ｷ髮代↓蠑ｷ縺・,
+      "蜷・ご繝ｼ繝繧ｵ繝ｼ繝舌・縺ｸ縺ｮ逶ｴ邨舌Ν繝ｼ繝・ぅ繝ｳ繧ｰ",
+      "VDSL繝槭Φ繧ｷ繝ｧ繝ｳ縺ｧ繧ょ･醍ｴ・庄閭ｽ"
     ],
     "cons": [
-      "スマホとのセット割引がない",
-      "月額料金がやや高め"
+      "繧ｹ繝槭・縺ｨ縺ｮ繧ｻ繝・ヨ蜑ｲ蠑輔′縺ｪ縺・,
+      "譛磯｡肴侭驥代′繧・ｄ鬮倥ａ"
     ],
     "affiliateLink": "https://gamewith-hikari.gamewith.co.jp/",
     "detailLink": "/provider",
@@ -341,9 +341,9 @@
   },
   {
     "id": "au_hikari_10g",
-    "name": "au ひかり (10G)",
-    "providerName": "KDDI株式会社",
-    "type": "独自回線",
+    "name": "au 縺ｲ縺九ｊ (10G)",
+    "providerName": "KDDI譬ｪ蠑丈ｼ夂､ｾ",
+    "type": "迢ｬ閾ｪ蝗樒ｷ・,
     "max_speed_gbps": 10,
     "avg_ping_ms": 15,
     "avg_dl_speed_mbps": 800,
@@ -359,37 +359,37 @@
       "hokuriku_koshinetsu"
     ],
     "actual_monthly_fee_jpy": 6468,
-    "stability_score": 90,
+    "stability_score": 87,
     "vdsl_support": false,
-    "cashback_text": "キャッシュバックキャンペーン実施中！",
+    "cashback_text": "繧ｭ繝｣繝・す繝･繝舌ャ繧ｯ繧ｭ繝｣繝ｳ繝壹・繝ｳ螳滓命荳ｭ・・,
     "discounts": [
       {
         "carrier": "au",
         "amount": 1100,
-        "name": "auスマートバリュー"
+        "name": "au繧ｹ繝槭・繝医ヰ繝ｪ繝･繝ｼ"
       },
       {
-        "carrier": "UQモバイル",
+        "carrier": "UQ繝｢繝舌う繝ｫ",
         "amount": 1100,
-        "name": "自宅セット割"
+        "name": "閾ｪ螳・そ繝・ヨ蜑ｲ"
       }
     ],
     "tags": [
-      "関東限定10G",
-      "超安定"
+      "髢｢譚ｱ髯仙ｮ・0G",
+      "雜・ｮ牙ｮ・
     ],
     "badges": [
-      "関東限定"
+      "髢｢譚ｱ髯仙ｮ・
     ],
-    "description": "auひかりの最高峰10Gbpsプラン。現在は関東エリアの戸建てを中心に提供。auユーザーで最高環境を求めるならコレ一択。",
+    "description": "au縺ｲ縺九ｊ縺ｮ譛鬮伜ｳｰ10Gbps繝励Λ繝ｳ縲ら樟蝨ｨ縺ｯ髢｢譚ｱ繧ｨ繝ｪ繧｢縺ｮ謌ｸ蟒ｺ縺ｦ繧剃ｸｭ蠢・↓謠蝉ｾ帙Ｂu繝ｦ繝ｼ繧ｶ繝ｼ縺ｧ譛鬮倡腸蠅・ｒ豎ゅａ繧九↑繧峨さ繝ｬ荳謚槭・,
     "pros": [
-      "10Gbpsの圧倒的ポテンシャル",
-      "独自回線で夜間も安定",
-      "au・UQユーザーは大幅割引"
+      "10Gbps縺ｮ蝨ｧ蛟堤噪繝昴ユ繝ｳ繧ｷ繝｣繝ｫ",
+      "迢ｬ閾ｪ蝗樒ｷ壹〒螟憺俣繧ょｮ牙ｮ・,
+      "au繝ｻUQ繝ｦ繝ｼ繧ｶ繝ｼ縺ｯ螟ｧ蟷・牡蠑・
     ],
     "cons": [
-      "戸建て・関東エリア中心の提供",
-      "VDSLは当然不可"
+      "謌ｸ蟒ｺ縺ｦ繝ｻ髢｢譚ｱ繧ｨ繝ｪ繧｢荳ｭ蠢・・謠蝉ｾ・,
+      "VDSL縺ｯ蠖鍋┯荳榊庄"
     ],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+48EZN6+42Y0+5ZMCH",
     "detailLink": "/provider",
@@ -397,9 +397,9 @@
   },
   {
     "id": "au_hikari_1g",
-    "name": "au ひかり (1G)",
-    "providerName": "KDDI株式会社",
-    "type": "独自回線",
+    "name": "au 縺ｲ縺九ｊ (1G)",
+    "providerName": "KDDI譬ｪ蠑丈ｼ夂､ｾ",
+    "type": "迢ｬ閾ｪ蝗樒ｷ・,
     "max_speed_gbps": 1,
     "avg_ping_ms": 17,
     "avg_dl_speed_mbps": 624,
@@ -421,37 +421,37 @@
       "hokuriku_koshinetsu"
     ],
     "actual_monthly_fee_jpy": 5610,
-    "stability_score": 88,
+    "stability_score": 87,
     "vdsl_support": false,
-    "cashback_text": "キャッシュバックキャンペーン実施中！",
+    "cashback_text": "繧ｭ繝｣繝・す繝･繝舌ャ繧ｯ繧ｭ繝｣繝ｳ繝壹・繝ｳ螳滓命荳ｭ・・,
     "discounts": [
       {
         "carrier": "au",
         "amount": 1100,
-        "name": "auスマートバリュー"
+        "name": "au繧ｹ繝槭・繝医ヰ繝ｪ繝･繝ｼ"
       },
       {
-        "carrier": "UQモバイル",
+        "carrier": "UQ繝｢繝舌う繝ｫ",
         "amount": 1100,
-        "name": "自宅セット割"
+        "name": "閾ｪ螳・そ繝・ヨ蜑ｲ"
       }
     ],
     "tags": [
-      "低Ping",
-      "戸建て向け"
+      "菴傘ing",
+      "謌ｸ蟒ｺ縺ｦ蜷代￠"
     ],
     "badges": [
-      "au割"
+      "au蜑ｲ"
     ],
-    "description": "KDDIが展開する独自光回線。auスマホとのセット割で実質¥3,850〜と大幅に割安になる。Ping値もNURO光に次ぐ低水準で、auユーザーには最有力候補。",
+    "description": "KDDI縺悟ｱ暮幕縺吶ｋ迢ｬ閾ｪ蜈牙屓邱壹Ｂu繧ｹ繝槭・縺ｨ縺ｮ繧ｻ繝・ヨ蜑ｲ縺ｧ螳溯ｳｪﾂ･3,850縲懊→螟ｧ蟷・↓蜑ｲ螳峨↓縺ｪ繧九１ing蛟､繧・URO蜈峨↓谺｡縺蝉ｽ取ｰｴ貅悶〒縲∥u繝ｦ繝ｼ繧ｶ繝ｼ縺ｫ縺ｯ譛譛牙鴨蛟呵｣懊・,
     "pros": [
-      "au・UQユーザーは大幅割引",
-      "独自回線による高い安定性",
-      "キャッシュバックが豪華"
+      "au繝ｻUQ繝ｦ繝ｼ繧ｶ繝ｼ縺ｯ螟ｧ蟷・牡蠑・,
+      "迢ｬ閾ｪ蝗樒ｷ壹↓繧医ｋ鬮倥＞螳牙ｮ壽ｧ",
+      "繧ｭ繝｣繝・す繝･繝舌ャ繧ｯ縺瑚ｱｪ闖ｯ"
     ],
     "cons": [
-      "VDSLマンション不可",
-      "提供エリアに制限あり"
+      "VDSL繝槭Φ繧ｷ繝ｧ繝ｳ荳榊庄",
+      "謠蝉ｾ帙お繝ｪ繧｢縺ｫ蛻ｶ髯舌≠繧・
     ],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+48EZN6+42Y0+5ZMCH",
     "detailLink": "/provider",
@@ -459,9 +459,9 @@
   },
   {
     "id": "docomo_hikari_10g",
-    "name": "ドコモ光 (10G)",
-    "providerName": "NTTドコモ",
-    "type": "コラボ光",
+    "name": "繝峨さ繝｢蜈・(10G)",
+    "providerName": "NTT繝峨さ繝｢",
+    "type": "繧ｳ繝ｩ繝懷・",
     "max_speed_gbps": 10,
     "avg_ping_ms": 21,
     "avg_dl_speed_mbps": 700,
@@ -486,33 +486,33 @@
       "hokuriku_koshinetsu"
     ],
     "actual_monthly_fee_jpy": 6380,
-    "stability_score": 82,
+    "stability_score": 73,
     "vdsl_support": false,
-    "cashback_text": "キャッシュバックキャンペーン実施中！",
+    "cashback_text": "繧ｭ繝｣繝・す繝･繝舌ャ繧ｯ繧ｭ繝｣繝ｳ繝壹・繝ｳ螳滓命荳ｭ・・,
     "discounts": [
       {
         "carrier": "docomo",
         "amount": 1100,
-        "name": "ドコモ光セット割"
+        "name": "繝峨さ繝｢蜈峨そ繝・ヨ蜑ｲ"
       }
     ],
     "tags": [
-      "VDSL対応",
-      "docomo割",
-      "全国対応"
+      "VDSL蟇ｾ蠢・,
+      "docomo蜑ｲ",
+      "蜈ｨ蝗ｽ蟇ｾ蠢・
     ],
     "badges": [
-      "docomo割"
+      "docomo蜑ｲ"
     ],
-    "description": "docomoユーザーなら最安クラス。VDSLマンションにも対応し、全国広いエリアで利用可能。平均Pingは20ms台前半で、一般的なオンラインゲームには十分な水準。",
+    "description": "docomo繝ｦ繝ｼ繧ｶ繝ｼ縺ｪ繧画怙螳峨け繝ｩ繧ｹ縲７DSL繝槭Φ繧ｷ繝ｧ繝ｳ縺ｫ繧ょｯｾ蠢懊＠縲∝・蝗ｽ蠎・＞繧ｨ繝ｪ繧｢縺ｧ蛻ｩ逕ｨ蜿ｯ閭ｽ縲ょｹｳ蝮⑰ing縺ｯ20ms蜿ｰ蜑榊濠縺ｧ縲∽ｸ闊ｬ逧・↑繧ｪ繝ｳ繝ｩ繧､繝ｳ繧ｲ繝ｼ繝縺ｫ縺ｯ蜊∝・縺ｪ豌ｴ貅悶・,
     "pros": [
-      "docomoスマホとセットで大幅割引",
-      "VDSLマンションでも契約可能",
-      "全国どこでも提供エリア"
+      "docomo繧ｹ繝槭・縺ｨ繧ｻ繝・ヨ縺ｧ螟ｧ蟷・牡蠑・,
+      "VDSL繝槭Φ繧ｷ繝ｧ繝ｳ縺ｧ繧ょ･醍ｴ・庄閭ｽ",
+      "蜈ｨ蝗ｽ縺ｩ縺薙〒繧よ署萓帙お繝ｪ繧｢"
     ],
     "cons": [
-      "Ping値は独自回線にやや劣る",
-      "プロバイダにより品質差あり"
+      "Ping蛟､縺ｯ迢ｬ閾ｪ蝗樒ｷ壹↓繧・ｄ蜉｣繧・,
+      "繝励Ο繝舌う繝縺ｫ繧医ｊ蜩∬ｳｪ蟾ｮ縺ゅｊ"
     ],
     "affiliateLink": "https://h.accesstrade.net/sp/cc?rk=0100ki0f00os5p",
     "detailLink": "/provider",
@@ -520,9 +520,9 @@
   },
   {
     "id": "docomo_hikari_1g",
-    "name": "ドコモ光 (1G)",
-    "providerName": "NTTドコモ",
-    "type": "コラボ光",
+    "name": "繝峨さ繝｢蜈・(1G)",
+    "providerName": "NTT繝峨さ繝｢",
+    "type": "繧ｳ繝ｩ繝懷・",
     "max_speed_gbps": 1,
     "avg_ping_ms": 23,
     "avg_dl_speed_mbps": 477,
@@ -547,33 +547,33 @@
       "hokuriku_koshinetsu"
     ],
     "actual_monthly_fee_jpy": 5720,
-    "stability_score": 75,
+    "stability_score": 72,
     "vdsl_support": true,
-    "cashback_text": "キャッシュバックキャンペーン実施中！",
+    "cashback_text": "繧ｭ繝｣繝・す繝･繝舌ャ繧ｯ繧ｭ繝｣繝ｳ繝壹・繝ｳ螳滓命荳ｭ・・,
     "discounts": [
       {
         "carrier": "docomo",
         "amount": 1100,
-        "name": "ドコモ光セット割"
+        "name": "繝峨さ繝｢蜈峨そ繝・ヨ蜑ｲ"
       }
     ],
     "tags": [
-      "VDSL対応",
-      "docomo割",
-      "全国対応"
+      "VDSL蟇ｾ蠢・,
+      "docomo蜑ｲ",
+      "蜈ｨ蝗ｽ蟇ｾ蠢・
     ],
     "badges": [
-      "docomo割"
+      "docomo蜑ｲ"
     ],
-    "description": "docomoユーザーなら最安クラス。VDSLマンションにも対応し、全国広いエリアで利用可能。平均Pingは20ms台前半で、一般的なオンラインゲームには十分な水準。",
+    "description": "docomo繝ｦ繝ｼ繧ｶ繝ｼ縺ｪ繧画怙螳峨け繝ｩ繧ｹ縲７DSL繝槭Φ繧ｷ繝ｧ繝ｳ縺ｫ繧ょｯｾ蠢懊＠縲∝・蝗ｽ蠎・＞繧ｨ繝ｪ繧｢縺ｧ蛻ｩ逕ｨ蜿ｯ閭ｽ縲ょｹｳ蝮⑰ing縺ｯ20ms蜿ｰ蜑榊濠縺ｧ縲∽ｸ闊ｬ逧・↑繧ｪ繝ｳ繝ｩ繧､繝ｳ繧ｲ繝ｼ繝縺ｫ縺ｯ蜊∝・縺ｪ豌ｴ貅悶・,
     "pros": [
-      "docomoスマホとセットで大幅割引",
-      "VDSLマンションでも契約可能",
-      "全国どこでも提供エリア"
+      "docomo繧ｹ繝槭・縺ｨ繧ｻ繝・ヨ縺ｧ螟ｧ蟷・牡蠑・,
+      "VDSL繝槭Φ繧ｷ繝ｧ繝ｳ縺ｧ繧ょ･醍ｴ・庄閭ｽ",
+      "蜈ｨ蝗ｽ縺ｩ縺薙〒繧よ署萓帙お繝ｪ繧｢"
     ],
     "cons": [
-      "Ping値は独自回線にやや劣る",
-      "プロバイダにより品質差あり"
+      "Ping蛟､縺ｯ迢ｬ閾ｪ蝗樒ｷ壹↓繧・ｄ蜉｣繧・,
+      "繝励Ο繝舌う繝縺ｫ繧医ｊ蜩∬ｳｪ蟾ｮ縺ゅｊ"
     ],
     "affiliateLink": "https://h.accesstrade.net/sp/cc?rk=0100ki0f00os5p",
     "detailLink": "/provider",
@@ -581,9 +581,9 @@
   },
   {
     "id": "softbank_hikari_10g",
-    "name": "ソフトバンク光 (10G)",
-    "providerName": "ソフトバンク株式会社",
-    "type": "コラボ光",
+    "name": "繧ｽ繝輔ヨ繝舌Φ繧ｯ蜈・(10G)",
+    "providerName": "繧ｽ繝輔ヨ繝舌Φ繧ｯ譬ｪ蠑丈ｼ夂､ｾ",
+    "type": "繧ｳ繝ｩ繝懷・",
     "max_speed_gbps": 10,
     "avg_ping_ms": 15,
     "avg_dl_speed_mbps": 700,
@@ -609,37 +609,37 @@
       "hokuriku_koshinetsu"
     ],
     "actual_monthly_fee_jpy": 6380,
-    "stability_score": 80,
+    "stability_score": 83,
     "vdsl_support": false,
-    "cashback_text": "キャッシュバックキャンペーン実施中！",
+    "cashback_text": "繧ｭ繝｣繝・す繝･繝舌ャ繧ｯ繧ｭ繝｣繝ｳ繝壹・繝ｳ螳滓命荳ｭ・・,
     "discounts": [
       {
         "carrier": "SoftBank",
         "amount": 1100,
-        "name": "おうち割 光セット"
+        "name": "縺翫≧縺｡蜑ｲ 蜈峨そ繝・ヨ"
       },
       {
         "carrier": "Y!mobile",
         "amount": 1188,
-        "name": "おうち割 光セット(A)"
+        "name": "縺翫≧縺｡蜑ｲ 蜈峨そ繝・ヨ(A)"
       }
     ],
     "tags": [
-      "VDSL対応",
-      "コスパ◎"
+      "VDSL蟇ｾ蠢・,
+      "繧ｳ繧ｹ繝鯛落"
     ],
     "badges": [
-      "SB割"
+      "SB蜑ｲ"
     ],
-    "description": "SoftBank/Y!mobileユーザーなら実質¥3,080〜とトップクラスのコスパ。Ping値はやや高めだが、料金重視ユーザーには有力候補。",
+    "description": "SoftBank/Y!mobile繝ｦ繝ｼ繧ｶ繝ｼ縺ｪ繧牙ｮ溯ｳｪﾂ･3,080縲懊→繝医ャ繝励け繝ｩ繧ｹ縺ｮ繧ｳ繧ｹ繝代１ing蛟､縺ｯ繧・ｄ鬮倥ａ縺縺後∵侭驥鷹㍾隕悶Θ繝ｼ繧ｶ繝ｼ縺ｫ縺ｯ譛牙鴨蛟呵｣懊・,
     "pros": [
-      "強力なスマホセット割",
-      "VDSLマンションでも契約可能",
-      "違約金還元キャンペーンあり"
+      "蠑ｷ蜉帙↑繧ｹ繝槭・繧ｻ繝・ヨ蜑ｲ",
+      "VDSL繝槭Φ繧ｷ繝ｧ繝ｳ縺ｧ繧ょ･醍ｴ・庄閭ｽ",
+      "驕慕ｴ・≡驍・・繧ｭ繝｣繝ｳ繝壹・繝ｳ縺ゅｊ"
     ],
     "cons": [
-      "オプション加入が必須",
-      "上位陣に比べPingは劣る"
+      "繧ｪ繝励す繝ｧ繝ｳ蜉蜈･縺悟ｿ・・,
+      "荳贋ｽ埼劵縺ｫ豈斐∋Ping縺ｯ蜉｣繧・
     ],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+4HXXBM+348K+1BP8ZM",
     "detailLink": "/provider",
@@ -647,9 +647,9 @@
   },
   {
     "id": "softbank_hikari_1g",
-    "name": "ソフトバンク光 (1G)",
-    "providerName": "ソフトバンク株式会社",
-    "type": "コラボ光",
+    "name": "繧ｽ繝輔ヨ繝舌Φ繧ｯ蜈・(1G)",
+    "providerName": "繧ｽ繝輔ヨ繝舌Φ繧ｯ譬ｪ蠑丈ｼ夂､ｾ",
+    "type": "繧ｳ繝ｩ繝懷・",
     "max_speed_gbps": 1,
     "avg_ping_ms": 17,
     "avg_dl_speed_mbps": 513,
@@ -675,45 +675,45 @@
       "hokuriku_koshinetsu"
     ],
     "actual_monthly_fee_jpy": 5720,
-    "stability_score": 73,
+    "stability_score": 80,
     "vdsl_support": true,
-    "cashback_text": "キャッシュバックキャンペーン実施中！",
+    "cashback_text": "繧ｭ繝｣繝・す繝･繝舌ャ繧ｯ繧ｭ繝｣繝ｳ繝壹・繝ｳ螳滓命荳ｭ・・,
     "discounts": [
       {
         "carrier": "SoftBank",
         "amount": 1100,
-        "name": "おうち割 光セット"
+        "name": "縺翫≧縺｡蜑ｲ 蜈峨そ繝・ヨ"
       },
       {
         "carrier": "Y!mobile",
         "amount": 1188,
-        "name": "おうち割 光セット(A)"
+        "name": "縺翫≧縺｡蜑ｲ 蜈峨そ繝・ヨ(A)"
       }
     ],
     "tags": [
-      "VDSL対応",
-      "コスパ◎"
+      "VDSL蟇ｾ蠢・,
+      "繧ｳ繧ｹ繝鯛落"
     ],
     "badges": [
-      "SB割"
+      "SB蜑ｲ"
     ],
-    "description": "SoftBank/Y!mobileユーザーなら実質¥3,080〜とトップクラスのコスパ。Ping値はやや高めだが、料金重視ユーザーには有力候補。",
+    "description": "SoftBank/Y!mobile繝ｦ繝ｼ繧ｶ繝ｼ縺ｪ繧牙ｮ溯ｳｪﾂ･3,080縲懊→繝医ャ繝励け繝ｩ繧ｹ縺ｮ繧ｳ繧ｹ繝代１ing蛟､縺ｯ繧・ｄ鬮倥ａ縺縺後∵侭驥鷹㍾隕悶Θ繝ｼ繧ｶ繝ｼ縺ｫ縺ｯ譛牙鴨蛟呵｣懊・,
     "pros": [
-      "強力なスマホセット割",
-      "VDSLマンションでも契約可能",
-      "違約金還元キャンペーンあり"
+      "蠑ｷ蜉帙↑繧ｹ繝槭・繧ｻ繝・ヨ蜑ｲ",
+      "VDSL繝槭Φ繧ｷ繝ｧ繝ｳ縺ｧ繧ょ･醍ｴ・庄閭ｽ",
+      "驕慕ｴ・≡驍・・繧ｭ繝｣繝ｳ繝壹・繝ｳ縺ゅｊ"
     ],
     "cons": [
-      "オプション加入が必須",
-      "上位陣に比べPingは劣る"
+      "繧ｪ繝励す繝ｧ繝ｳ蜉蜈･縺悟ｿ・・,
+      "荳贋ｽ埼劵縺ｫ豈斐∋Ping縺ｯ蜉｣繧・
     ],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+4HXXBM+348K+1BP8ZM",
     "detailLink": "/provider",
     "mansion_monthly_fee_jpy": 4180
   },
   {
-    "providerName": "ビッグローブ株式会社",
-    "type": "光コラボ",
+    "providerName": "繝薙ャ繧ｰ繝ｭ繝ｼ繝匁ｪ蠑丈ｼ夂､ｾ",
+    "type": "蜈峨さ繝ｩ繝・,
     "mobile_discount": [
       "au",
       "uq_mobile",
@@ -735,50 +735,50 @@
       "hokuriku_koshinetsu",
       "okinawa"
     ],
-    "cashback_text": "キャッシュバックキャンペーン実施中！",
+    "cashback_text": "繧ｭ繝｣繝・す繝･繝舌ャ繧ｯ繧ｭ繝｣繝ｳ繝壹・繝ｳ螳滓命荳ｭ・・,
     "discounts": [
       {
         "carrier": "au",
         "amount": 1100,
-        "name": "auスマートバリュー"
+        "name": "au繧ｹ繝槭・繝医ヰ繝ｪ繝･繝ｼ"
       },
       {
-        "carrier": "UQモバイル",
+        "carrier": "UQ繝｢繝舌う繝ｫ",
         "amount": 1100,
-        "name": "自宅セット割"
+        "name": "閾ｪ螳・そ繝・ヨ蜑ｲ"
       }
     ],
     "tags": [
-      "IPv6対応",
-      "全国対応",
-      "工事費無料"
+      "IPv6蟇ｾ蠢・,
+      "蜈ｨ蝗ｽ蟇ｾ蠢・,
+      "蟾･莠玖ｲｻ辟｡譁・
     ],
     "badges": [],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+4FK6WI+B4+2NBPO2",
     "detailLink": "/provider",
     "id": "biglobe_hikari_10g",
-    "name": "ビッグローブ光 (10G)",
+    "name": "繝薙ャ繧ｰ繝ｭ繝ｼ繝門・ (10G)",
     "max_speed_gbps": 10,
     "avg_ping_ms": 16,
     "avg_dl_speed_mbps": 700,
     "actual_monthly_fee_jpy": 6270,
-    "stability_score": 82,
+    "stability_score": 88,
     "vdsl_support": false,
-    "description": "通信速度にこだわるゲーマー向けの10Gプラン。提供エリアは限られますが、FPSでのラグを極限まで減らしたいauユーザーに最適です。",
+    "description": "騾壻ｿ｡騾溷ｺｦ縺ｫ縺薙□繧上ｋ繧ｲ繝ｼ繝槭・蜷代￠縺ｮ10G繝励Λ繝ｳ縲よ署萓帙お繝ｪ繧｢縺ｯ髯舌ｉ繧後∪縺吶′縲：PS縺ｧ縺ｮ繝ｩ繧ｰ繧呈･ｵ髯舌∪縺ｧ貂帙ｉ縺励◆縺・u繝ｦ繝ｼ繧ｶ繝ｼ縺ｫ譛驕ｩ縺ｧ縺吶・,
     "pros": [
-      "10Gbpsの超高速通信でアプデが一瞬で終わる",
-      "au・UQモバイルのスマホ料金が安くなる",
-      "1GプランよりPing値が安定しやすい"
+      "10Gbps縺ｮ雜・ｫ倬滄壻ｿ｡縺ｧ繧｢繝励ョ縺御ｸ迸ｬ縺ｧ邨ゅｏ繧・,
+      "au繝ｻUQ繝｢繝舌う繝ｫ縺ｮ繧ｹ繝槭・譁咎≡縺悟ｮ峨￥縺ｪ繧・,
+      "1G繝励Λ繝ｳ繧医ｊPing蛟､縺悟ｮ牙ｮ壹＠繧・☆縺・
     ],
     "cons": [
-      "VDSLマンション不可",
-      "提供エリアが限定的（東名阪の一部など）"
+      "VDSL繝槭Φ繧ｷ繝ｧ繝ｳ荳榊庄",
+      "謠蝉ｾ帙お繝ｪ繧｢縺碁剞螳夂噪・域擲蜷埼亂縺ｮ荳驛ｨ縺ｪ縺ｩ・・
     ],
     "mansion_monthly_fee_jpy": 6270
   },
   {
-    "providerName": "ビッグローブ株式会社",
-    "type": "光コラボ",
+    "providerName": "繝薙ャ繧ｰ繝ｭ繝ｼ繝匁ｪ蠑丈ｼ夂､ｾ",
+    "type": "蜈峨さ繝ｩ繝・,
     "mobile_discount": [
       "au",
       "uq_mobile",
@@ -800,50 +800,50 @@
       "hokuriku_koshinetsu",
       "okinawa"
     ],
-    "cashback_text": "キャッシュバックキャンペーン実施中！",
+    "cashback_text": "繧ｭ繝｣繝・す繝･繝舌ャ繧ｯ繧ｭ繝｣繝ｳ繝壹・繝ｳ螳滓命荳ｭ・・,
     "discounts": [
       {
         "carrier": "au",
         "amount": 1100,
-        "name": "auスマートバリュー"
+        "name": "au繧ｹ繝槭・繝医ヰ繝ｪ繝･繝ｼ"
       },
       {
-        "carrier": "UQモバイル",
+        "carrier": "UQ繝｢繝舌う繝ｫ",
         "amount": 1100,
-        "name": "自宅セット割"
+        "name": "閾ｪ螳・そ繝・ヨ蜑ｲ"
       }
     ],
     "tags": [
-      "IPv6対応",
-      "全国対応",
-      "工事費無料"
+      "IPv6蟇ｾ蠢・,
+      "蜈ｨ蝗ｽ蟇ｾ蠢・,
+      "蟾･莠玖ｲｻ辟｡譁・
     ],
     "badges": [],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+4FK6WI+B4+2NBPO2",
     "detailLink": "/provider",
     "id": "biglobe_hikari_1g",
-    "name": "ビッグローブ光 (1G)",
+    "name": "繝薙ャ繧ｰ繝ｭ繝ｼ繝門・ (1G)",
     "max_speed_gbps": 1,
     "avg_ping_ms": 18,
     "avg_dl_speed_mbps": 529,
     "actual_monthly_fee_jpy": 5478,
-    "stability_score": 75,
+    "stability_score": 85,
     "vdsl_support": true,
-    "description": "auやUQモバイルユーザーに特におすすめの光コラボ。IPv6オプションに標準対応しており、全国どこでも安定した通信が可能。",
+    "description": "au繧ФQ繝｢繝舌う繝ｫ繝ｦ繝ｼ繧ｶ繝ｼ縺ｫ迚ｹ縺ｫ縺翫☆縺吶ａ縺ｮ蜈峨さ繝ｩ繝懊・Pv6繧ｪ繝励す繝ｧ繝ｳ縺ｫ讓呎ｺ門ｯｾ蠢懊＠縺ｦ縺翫ｊ縲∝・蝗ｽ縺ｩ縺薙〒繧ょｮ牙ｮ壹＠縺滄壻ｿ｡縺悟庄閭ｽ縲・,
     "pros": [
-      "au・UQモバイルのスマホ料金が安くなる",
-      "IPv6（次世代通信）が追加料金なしで使える",
-      "日本全国どこでも利用可能（引越し対応がラク）"
+      "au繝ｻUQ繝｢繝舌う繝ｫ縺ｮ繧ｹ繝槭・譁咎≡縺悟ｮ峨￥縺ｪ繧・,
+      "IPv6・域ｬ｡荳紋ｻ｣騾壻ｿ｡・峨′霑ｽ蜉譁咎≡縺ｪ縺励〒菴ｿ縺医ｋ",
+      "譌･譛ｬ蜈ｨ蝗ｽ縺ｩ縺薙〒繧ょ茜逕ｨ蜿ｯ閭ｽ・亥ｼ戊ｶ翫＠蟇ｾ蠢懊′繝ｩ繧ｯ・・
     ],
     "cons": [
-      "NUROやauひかり等の独自回線と比べるとPing値は劣る",
-      "プロバイダがBIGLOBEに固定される"
+      "NURO繧・u縺ｲ縺九ｊ遲峨・迢ｬ閾ｪ蝗樒ｷ壹→豈斐∋繧九→Ping蛟､縺ｯ蜉｣繧・,
+      "繝励Ο繝舌う繝縺沓IGLOBE縺ｫ蝗ｺ螳壹＆繧後ｋ"
     ],
     "mansion_monthly_fee_jpy": 4378
   },
   {
-    "providerName": "中部テレコミュニケーション",
-    "type": "独自回線",
+    "providerName": "荳ｭ驛ｨ繝・Ξ繧ｳ繝溘Η繝九こ繝ｼ繧ｷ繝ｧ繝ｳ",
+    "type": "迢ｬ閾ｪ蝗樒ｷ・,
     "mobile_discount": [
       "au",
       "uq_mobile"
@@ -855,45 +855,45 @@
     "regions": [
       "chubu"
     ],
-    "cashback_text": "キャッシュバックキャンペーン実施中！",
+    "cashback_text": "繧ｭ繝｣繝・す繝･繝舌ャ繧ｯ繧ｭ繝｣繝ｳ繝壹・繝ｳ螳滓命荳ｭ・・,
     "discounts": [
       {
         "carrier": "au",
         "amount": 1100,
-        "name": "auスマートバリュー"
+        "name": "au繧ｹ繝槭・繝医ヰ繝ｪ繝･繝ｼ"
       }
     ],
     "tags": [
-      "東海限定",
-      "独自回線",
-      "超低Ping"
+      "譚ｱ豬ｷ髯仙ｮ・,
+      "迢ｬ閾ｪ蝗樒ｷ・,
+      "雜・ｽ傘ing"
     ],
     "badges": [],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+41V7ZM+42Y0+BX3J6",
     "detailLink": "/provider",
-    "description": "東海地方（愛知・岐阜・三重・静岡）限定の最強ゲーミング回線。自社独自の光ファイバー網を使用しているため、NURO光に匹敵する低Pingと安定性を誇ります。",
+    "description": "譚ｱ豬ｷ蝨ｰ譁ｹ・域・遏･繝ｻ蟯宣・繝ｻ荳蛾㍾繝ｻ髱吝ｲ｡・蛾剞螳壹・譛蠑ｷ繧ｲ繝ｼ繝溘Φ繧ｰ蝗樒ｷ壹り・遉ｾ迢ｬ閾ｪ縺ｮ蜈峨ヵ繧｡繧､繝舌・邯ｲ繧剃ｽｿ逕ｨ縺励※縺・ｋ縺溘ａ縲¨URO蜈峨↓蛹ｹ謨ｵ縺吶ｋ菴傘ing縺ｨ螳牙ｮ壽ｧ繧定ｪ・ｊ縺ｾ縺吶・,
     "pros": [
-      "東海地方でトップクラスのPing値",
-      "au/UQスマホとのセット割あり",
-      "独自回線のため夜間もラグりにくい"
+      "譚ｱ豬ｷ蝨ｰ譁ｹ縺ｧ繝医ャ繝励け繝ｩ繧ｹ縺ｮPing蛟､",
+      "au/UQ繧ｹ繝槭・縺ｨ縺ｮ繧ｻ繝・ヨ蜑ｲ縺ゅｊ",
+      "迢ｬ閾ｪ蝗樒ｷ壹・縺溘ａ螟憺俣繧ゅΛ繧ｰ繧翫↓縺上＞"
     ],
     "cons": [
-      "東海地方（一部長野等）でしか使えない",
-      "解約時の撤去工事費に注意が必要"
+      "譚ｱ豬ｷ蝨ｰ譁ｹ・井ｸ驛ｨ髟ｷ驥守ｭ会ｼ峨〒縺励°菴ｿ縺医↑縺・,
+      "隗｣邏・凾縺ｮ謦､蜴ｻ蟾･莠玖ｲｻ縺ｫ豕ｨ諢上′蠢・ｦ・
     ],
     "id": "commufa_hikari_10g",
-    "name": "コミュファ光 (10G)",
+    "name": "繧ｳ繝溘Η繝輔ぃ蜈・(10G)",
     "max_speed_gbps": 10,
     "avg_ping_ms": 14,
     "avg_dl_speed_mbps": 1000,
     "actual_monthly_fee_jpy": 5940,
-    "stability_score": 94,
+    "stability_score": 86,
     "vdsl_support": false,
     "mansion_monthly_fee_jpy": 5940
   },
   {
-    "providerName": "中部テレコミュニケーション",
-    "type": "独自回線",
+    "providerName": "荳ｭ驛ｨ繝・Ξ繧ｳ繝溘Η繝九こ繝ｼ繧ｷ繝ｧ繝ｳ",
+    "type": "迢ｬ閾ｪ蝗樒ｷ・,
     "mobile_discount": [
       "au",
       "uq_mobile"
@@ -905,47 +905,47 @@
     "regions": [
       "chubu"
     ],
-    "cashback_text": "キャッシュバックキャンペーン実施中！",
+    "cashback_text": "繧ｭ繝｣繝・す繝･繝舌ャ繧ｯ繧ｭ繝｣繝ｳ繝壹・繝ｳ螳滓命荳ｭ・・,
     "discounts": [
       {
         "carrier": "au",
         "amount": 1100,
-        "name": "auスマートバリュー"
+        "name": "au繧ｹ繝槭・繝医ヰ繝ｪ繝･繝ｼ"
       }
     ],
     "tags": [
-      "東海限定",
-      "独自回線",
-      "超低Ping"
+      "譚ｱ豬ｷ髯仙ｮ・,
+      "迢ｬ閾ｪ蝗樒ｷ・,
+      "雜・ｽ傘ing"
     ],
     "badges": [],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+41V7ZM+42Y0+BX3J6",
     "detailLink": "/provider",
-    "description": "東海地方（愛知・岐阜・三重・静岡）限定の最強ゲーミング回線。自社独自の光ファイバー網を使用しているため、NURO光に匹敵する低Pingと安定性を誇ります。",
+    "description": "譚ｱ豬ｷ蝨ｰ譁ｹ・域・遏･繝ｻ蟯宣・繝ｻ荳蛾㍾繝ｻ髱吝ｲ｡・蛾剞螳壹・譛蠑ｷ繧ｲ繝ｼ繝溘Φ繧ｰ蝗樒ｷ壹り・遉ｾ迢ｬ閾ｪ縺ｮ蜈峨ヵ繧｡繧､繝舌・邯ｲ繧剃ｽｿ逕ｨ縺励※縺・ｋ縺溘ａ縲¨URO蜈峨↓蛹ｹ謨ｵ縺吶ｋ菴傘ing縺ｨ螳牙ｮ壽ｧ繧定ｪ・ｊ縺ｾ縺吶・,
     "pros": [
-      "東海地方でトップクラスのPing値",
-      "au/UQスマホとのセット割あり",
-      "独自回線のため夜間もラグりにくい"
+      "譚ｱ豬ｷ蝨ｰ譁ｹ縺ｧ繝医ャ繝励け繝ｩ繧ｹ縺ｮPing蛟､",
+      "au/UQ繧ｹ繝槭・縺ｨ縺ｮ繧ｻ繝・ヨ蜑ｲ縺ゅｊ",
+      "迢ｬ閾ｪ蝗樒ｷ壹・縺溘ａ螟憺俣繧ゅΛ繧ｰ繧翫↓縺上＞"
     ],
     "cons": [
-      "東海地方（一部長野等）でしか使えない",
-      "解約時の撤去工事費に注意が必要"
+      "譚ｱ豬ｷ蝨ｰ譁ｹ・井ｸ驛ｨ髟ｷ驥守ｭ会ｼ峨〒縺励°菴ｿ縺医↑縺・,
+      "隗｣邏・凾縺ｮ謦､蜴ｻ蟾･莠玖ｲｻ縺ｫ豕ｨ諢上′蠢・ｦ・
     ],
     "id": "commufa_hikari_1g",
-    "name": "コミュファ光 (1G)",
+    "name": "繧ｳ繝溘Η繝輔ぃ蜈・(1G)",
     "max_speed_gbps": 1,
     "avg_ping_ms": 16,
     "avg_dl_speed_mbps": 817,
     "actual_monthly_fee_jpy": 5170,
-    "stability_score": 90,
+    "stability_score": 86,
     "vdsl_support": false,
     "mansion_monthly_fee_jpy": 4070
   },
   {
     "id": "pikara_hikari_10g",
-    "name": "ピカラ光 (10G)",
+    "name": "繝斐き繝ｩ蜈・(10G)",
     "providerName": "STNet",
-    "type": "独自回線",
+    "type": "迢ｬ閾ｪ蝗樒ｷ・,
     "max_speed_gbps": 10,
     "avg_ping_ms": 18,
     "avg_dl_speed_mbps": 900,
@@ -963,38 +963,38 @@
     "actual_monthly_fee_jpy": 7370,
     "stability_score": 91,
     "vdsl_support": false,
-    "cashback_text": "キャッシュバックキャンペーン実施中！",
+    "cashback_text": "繧ｭ繝｣繝・す繝･繝舌ャ繧ｯ繧ｭ繝｣繝ｳ繝壹・繝ｳ螳滓命荳ｭ・・,
     "discounts": [
       {
         "carrier": "au",
         "amount": 1100,
-        "name": "auスマートバリュー"
+        "name": "au繧ｹ繝槭・繝医ヰ繝ｪ繝･繝ｼ"
       }
     ],
     "tags": [
-      "四国限定",
-      "独自回線"
+      "蝗帛嵜髯仙ｮ・,
+      "迢ｬ閾ｪ蝗樒ｷ・
     ],
     "badges": [],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+5QLFOY+348K+1ZGG0Y",
     "detailLink": "/provider",
-    "description": "四国地方（香川・徳島・高知・愛媛）にお住まいのゲーマーならコレ一択。四国電力グループの独自回線網を使用し、圧倒的な安定感を実現。",
+    "description": "蝗帛嵜蝨ｰ譁ｹ・磯ｦ吝ｷ昴・蠕ｳ蟲ｶ繝ｻ鬮倡衍繝ｻ諢帛ｪ幢ｼ峨↓縺贋ｽ上∪縺・・繧ｲ繝ｼ繝槭・縺ｪ繧峨さ繝ｬ荳謚槭ょ屁蝗ｽ髮ｻ蜉帙げ繝ｫ繝ｼ繝励・迢ｬ閾ｪ蝗樒ｷ夂ｶｲ繧剃ｽｿ逕ｨ縺励∝悸蛟堤噪縺ｪ螳牙ｮ壽─繧貞ｮ溽樟縲・,
     "pros": [
-      "四国エリアで最強の通信品質",
-      "独自回線のため混雑に強い",
-      "四国電力とのセット割でさらに安くなる"
+      "蝗帛嵜繧ｨ繝ｪ繧｢縺ｧ譛蠑ｷ縺ｮ騾壻ｿ｡蜩∬ｳｪ",
+      "迢ｬ閾ｪ蝗樒ｷ壹・縺溘ａ豺ｷ髮代↓蠑ｷ縺・,
+      "蝗帛嵜髮ｻ蜉帙→縺ｮ繧ｻ繝・ヨ蜑ｲ縺ｧ縺輔ｉ縺ｫ螳峨￥縺ｪ繧・
     ],
     "cons": [
-      "四国エリア外では使えない",
-      "マンションへの導入済み物件が少なめ"
+      "蝗帛嵜繧ｨ繝ｪ繧｢螟悶〒縺ｯ菴ｿ縺医↑縺・,
+      "繝槭Φ繧ｷ繝ｧ繝ｳ縺ｸ縺ｮ蟆主・貂医∩迚ｩ莉ｶ縺悟ｰ代↑繧・
     ],
     "mansion_monthly_fee_jpy": 7370
   },
   {
     "id": "pikara_hikari_1g",
-    "name": "ピカラ光 (1G)",
+    "name": "繝斐き繝ｩ蜈・(1G)",
     "providerName": "STNet",
-    "type": "独自回線",
+    "type": "迢ｬ閾ｪ蝗樒ｷ・,
     "max_speed_gbps": 1,
     "avg_ping_ms": 20,
     "avg_dl_speed_mbps": 747,
@@ -1012,38 +1012,38 @@
     "actual_monthly_fee_jpy": 5720,
     "stability_score": 88,
     "vdsl_support": false,
-    "cashback_text": "キャッシュバックキャンペーン実施中！",
+    "cashback_text": "繧ｭ繝｣繝・す繝･繝舌ャ繧ｯ繧ｭ繝｣繝ｳ繝壹・繝ｳ螳滓命荳ｭ・・,
     "discounts": [
       {
         "carrier": "au",
         "amount": 1100,
-        "name": "auスマートバリュー"
+        "name": "au繧ｹ繝槭・繝医ヰ繝ｪ繝･繝ｼ"
       }
     ],
     "tags": [
-      "四国限定",
-      "独自回線"
+      "蝗帛嵜髯仙ｮ・,
+      "迢ｬ閾ｪ蝗樒ｷ・
     ],
     "badges": [],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+5QLFOY+348K+1ZGG0Y",
     "detailLink": "/provider",
-    "description": "四国地方（香川・徳島・高知・愛媛）にお住まいのゲーマーならコレ一択。四国電力グループの独自回線網を使用し、圧倒的な安定感を実現。",
+    "description": "蝗帛嵜蝨ｰ譁ｹ・磯ｦ吝ｷ昴・蠕ｳ蟲ｶ繝ｻ鬮倡衍繝ｻ諢帛ｪ幢ｼ峨↓縺贋ｽ上∪縺・・繧ｲ繝ｼ繝槭・縺ｪ繧峨さ繝ｬ荳謚槭ょ屁蝗ｽ髮ｻ蜉帙げ繝ｫ繝ｼ繝励・迢ｬ閾ｪ蝗樒ｷ夂ｶｲ繧剃ｽｿ逕ｨ縺励∝悸蛟堤噪縺ｪ螳牙ｮ壽─繧貞ｮ溽樟縲・,
     "pros": [
-      "四国エリアで最強の通信品質",
-      "独自回線のため混雑に強い",
-      "四国電力とのセット割でさらに安くなる"
+      "蝗帛嵜繧ｨ繝ｪ繧｢縺ｧ譛蠑ｷ縺ｮ騾壻ｿ｡蜩∬ｳｪ",
+      "迢ｬ閾ｪ蝗樒ｷ壹・縺溘ａ豺ｷ髮代↓蠑ｷ縺・,
+      "蝗帛嵜髮ｻ蜉帙→縺ｮ繧ｻ繝・ヨ蜑ｲ縺ｧ縺輔ｉ縺ｫ螳峨￥縺ｪ繧・
     ],
     "cons": [
-      "四国エリア外では使えない",
-      "マンションへの導入済み物件が少なめ"
+      "蝗帛嵜繧ｨ繝ｪ繧｢螟悶〒縺ｯ菴ｿ縺医↑縺・,
+      "繝槭Φ繧ｷ繝ｧ繝ｳ縺ｸ縺ｮ蟆主・貂医∩迚ｩ莉ｶ縺悟ｰ代↑繧・
     ],
     "mansion_monthly_fee_jpy": 4400
   },
   {
     "id": "megaegg_hikari_10g",
-    "name": "メガ・エッグ (10G)",
-    "providerName": "エネルギア・コミュニケーションズ",
-    "type": "独自回線",
+    "name": "繝｡繧ｬ繝ｻ繧ｨ繝・げ (10G)",
+    "providerName": "繧ｨ繝阪Ν繧ｮ繧｢繝ｻ繧ｳ繝溘Η繝九こ繝ｼ繧ｷ繝ｧ繝ｳ繧ｺ",
+    "type": "迢ｬ閾ｪ蝗樒ｷ・,
     "max_speed_gbps": 10,
     "avg_ping_ms": 27,
     "avg_dl_speed_mbps": 900,
@@ -1061,37 +1061,37 @@
     "actual_monthly_fee_jpy": 6750,
     "stability_score": 90,
     "vdsl_support": false,
-    "cashback_text": "キャッシュバックキャンペーン実施中！",
+    "cashback_text": "繧ｭ繝｣繝・す繝･繝舌ャ繧ｯ繧ｭ繝｣繝ｳ繝壹・繝ｳ螳滓命荳ｭ・・,
     "discounts": [
       {
         "carrier": "au",
         "amount": 1100,
-        "name": "auスマートバリュー"
+        "name": "au繧ｹ繝槭・繝医ヰ繝ｪ繝･繝ｼ"
       }
     ],
     "tags": [
-      "中国地方限定",
-      "独自回線"
+      "荳ｭ蝗ｽ蝨ｰ譁ｹ髯仙ｮ・,
+      "迢ｬ閾ｪ蝗樒ｷ・
     ],
     "badges": [],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+5R6VAQ+348K+2BDR9U",
     "detailLink": "/provider",
-    "description": "中国地方（広島・岡山・山口・島根・鳥取）のゲーマー定番回線。中国電力グループの独自ファイバーを利用しているため、夜間でも安定したPingを維持します。",
+    "description": "荳ｭ蝗ｽ蝨ｰ譁ｹ・亥ｺ・ｳｶ繝ｻ蟯｡螻ｱ繝ｻ螻ｱ蜿｣繝ｻ蟲ｶ譬ｹ繝ｻ魑･蜿厄ｼ峨・繧ｲ繝ｼ繝槭・螳夂分蝗樒ｷ壹ゆｸｭ蝗ｽ髮ｻ蜉帙げ繝ｫ繝ｼ繝励・迢ｬ閾ｪ繝輔ぃ繧､繝舌・繧貞茜逕ｨ縺励※縺・ｋ縺溘ａ縲∝､憺俣縺ｧ繧ょｮ牙ｮ壹＠縺蘖ing繧堤ｶｭ謖√＠縺ｾ縺吶・,
     "pros": [
-      "中国エリアで非常に高い安定性",
-      "中国電力とのセットで永年割引",
-      "独自回線ならではの低Ping"
+      "荳ｭ蝗ｽ繧ｨ繝ｪ繧｢縺ｧ髱槫ｸｸ縺ｫ鬮倥＞螳牙ｮ壽ｧ",
+      "荳ｭ蝗ｽ髮ｻ蜉帙→縺ｮ繧ｻ繝・ヨ縺ｧ豌ｸ蟷ｴ蜑ｲ蠑・,
+      "迢ｬ閾ｪ蝗樒ｷ壹↑繧峨〒縺ｯ縺ｮ菴傘ing"
     ],
     "cons": [
-      "中国エリア外では使えない"
+      "荳ｭ蝗ｽ繧ｨ繝ｪ繧｢螟悶〒縺ｯ菴ｿ縺医↑縺・
     ],
     "mansion_monthly_fee_jpy": 6750
   },
   {
     "id": "megaegg_hikari_1g",
-    "name": "メガ・エッグ (1G)",
-    "providerName": "エネルギア・コミュニケーションズ",
-    "type": "独自回線",
+    "name": "繝｡繧ｬ繝ｻ繧ｨ繝・げ (1G)",
+    "providerName": "繧ｨ繝阪Ν繧ｮ繧｢繝ｻ繧ｳ繝溘Η繝九こ繝ｼ繧ｷ繝ｧ繝ｳ繧ｺ",
+    "type": "迢ｬ閾ｪ蝗樒ｷ・,
     "max_speed_gbps": 1,
     "avg_ping_ms": 29,
     "avg_dl_speed_mbps": 753,
@@ -1109,35 +1109,35 @@
     "actual_monthly_fee_jpy": 5720,
     "stability_score": 87,
     "vdsl_support": false,
-    "cashback_text": "キャッシュバックキャンペーン実施中！",
+    "cashback_text": "繧ｭ繝｣繝・す繝･繝舌ャ繧ｯ繧ｭ繝｣繝ｳ繝壹・繝ｳ螳滓命荳ｭ・・,
     "discounts": [
       {
         "carrier": "au",
         "amount": 1100,
-        "name": "auスマートバリュー"
+        "name": "au繧ｹ繝槭・繝医ヰ繝ｪ繝･繝ｼ"
       }
     ],
     "tags": [
-      "中国地方限定",
-      "独自回線"
+      "荳ｭ蝗ｽ蝨ｰ譁ｹ髯仙ｮ・,
+      "迢ｬ閾ｪ蝗樒ｷ・
     ],
     "badges": [],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+5R6VAQ+348K+2BDR9U",
     "detailLink": "/provider",
-    "description": "中国地方（広島・岡山・山口・島根・鳥取）のゲーマー定番回線。中国電力グループの独自ファイバーを利用しているため、夜間でも安定したPingを維持します。",
+    "description": "荳ｭ蝗ｽ蝨ｰ譁ｹ・亥ｺ・ｳｶ繝ｻ蟯｡螻ｱ繝ｻ螻ｱ蜿｣繝ｻ蟲ｶ譬ｹ繝ｻ魑･蜿厄ｼ峨・繧ｲ繝ｼ繝槭・螳夂分蝗樒ｷ壹ゆｸｭ蝗ｽ髮ｻ蜉帙げ繝ｫ繝ｼ繝励・迢ｬ閾ｪ繝輔ぃ繧､繝舌・繧貞茜逕ｨ縺励※縺・ｋ縺溘ａ縲∝､憺俣縺ｧ繧ょｮ牙ｮ壹＠縺蘖ing繧堤ｶｭ謖√＠縺ｾ縺吶・,
     "pros": [
-      "中国エリアで非常に高い安定性",
-      "中国電力とのセットで永年割引",
-      "独自回線ならではの低Ping"
+      "荳ｭ蝗ｽ繧ｨ繝ｪ繧｢縺ｧ髱槫ｸｸ縺ｫ鬮倥＞螳牙ｮ壽ｧ",
+      "荳ｭ蝗ｽ髮ｻ蜉帙→縺ｮ繧ｻ繝・ヨ縺ｧ豌ｸ蟷ｴ蜑ｲ蠑・,
+      "迢ｬ閾ｪ蝗樒ｷ壹↑繧峨〒縺ｯ縺ｮ菴傘ing"
     ],
     "cons": [
-      "中国エリア外では使えない"
+      "荳ｭ蝗ｽ繧ｨ繝ｪ繧｢螟悶〒縺ｯ菴ｿ縺医↑縺・
     ],
     "mansion_monthly_fee_jpy": 3520
   },
   {
-    "providerName": "株式会社オプテージ",
-    "type": "独自回線",
+    "providerName": "譬ｪ蠑丈ｼ夂､ｾ繧ｪ繝励ユ繝ｼ繧ｸ",
+    "type": "迢ｬ閾ｪ蝗樒ｷ・,
     "mobile_discount": [
       "au",
       "uq_mobile",
@@ -1151,34 +1151,34 @@
       "kansai",
       "hokuriku_koshinetsu"
     ],
-    "cashback_text": "1年間月額割引",
+    "cashback_text": "1蟷ｴ髢捺怦鬘榊牡蠑・,
     "discounts": [
       {
         "carrier": "au",
         "amount": 1100,
-        "name": "auスマートバリュー"
+        "name": "au繧ｹ繝槭・繝医ヰ繝ｪ繝･繝ｼ"
       }
     ],
     "tags": [
-      "関西限定",
-      "独自回線",
-      "超低Ping"
+      "髢｢隘ｿ髯仙ｮ・,
+      "迢ｬ閾ｪ蝗樒ｷ・,
+      "雜・ｽ傘ing"
     ],
     "badges": [],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+5Q0036+3IIQ+5YRHE",
     "detailLink": "/provider",
-    "description": "関西地方（大阪・京都・兵庫・奈良・滋賀・和歌山）で圧倒的なシェアを誇る独自回線。NURO光と同等の低遅延で、関西ゲーマーのド定番です。",
+    "description": "髢｢隘ｿ蝨ｰ譁ｹ・亥､ｧ髦ｪ繝ｻ莠ｬ驛ｽ繝ｻ蜈ｵ蠎ｫ繝ｻ螂郁憶繝ｻ貊玖ｳ繝ｻ蜥梧ｭ悟ｱｱ・峨〒蝨ｧ蛟堤噪縺ｪ繧ｷ繧ｧ繧｢繧定ｪ・ｋ迢ｬ閾ｪ蝗樒ｷ壹・URO蜈峨→蜷檎ｭ峨・菴朱≦蟒ｶ縺ｧ縲・未隘ｿ繧ｲ繝ｼ繝槭・縺ｮ繝牙ｮ夂分縺ｧ縺吶・,
     "pros": [
-      "関西エリア最強クラスのPing値",
-      "独自ファイバー網で混雑しにくい",
-      "au・UQスマホのセット割対応"
+      "髢｢隘ｿ繧ｨ繝ｪ繧｢譛蠑ｷ繧ｯ繝ｩ繧ｹ縺ｮPing蛟､",
+      "迢ｬ閾ｪ繝輔ぃ繧､繝舌・邯ｲ縺ｧ豺ｷ髮代＠縺ｫ縺上＞",
+      "au繝ｻUQ繧ｹ繝槭・縺ｮ繧ｻ繝・ヨ蜑ｲ蟇ｾ蠢・
     ],
     "cons": [
-      "関西エリア外では使えない",
-      "マンションの設備によっては契約できない"
+      "髢｢隘ｿ繧ｨ繝ｪ繧｢螟悶〒縺ｯ菴ｿ縺医↑縺・,
+      "繝槭Φ繧ｷ繝ｧ繝ｳ縺ｮ險ｭ蛯吶↓繧医▲縺ｦ縺ｯ螂醍ｴ・〒縺阪↑縺・
     ],
     "id": "eo_hikari_10g",
-    "name": "eo光 (10G)",
+    "name": "eo蜈・(10G)",
     "max_speed_gbps": 10,
     "avg_ping_ms": 14,
     "avg_dl_speed_mbps": 1000,
@@ -1188,8 +1188,8 @@
     "mansion_monthly_fee_jpy": 6530
   },
   {
-    "providerName": "株式会社オプテージ",
-    "type": "独自回線",
+    "providerName": "譬ｪ蠑丈ｼ夂､ｾ繧ｪ繝励ユ繝ｼ繧ｸ",
+    "type": "迢ｬ閾ｪ蝗樒ｷ・,
     "mobile_discount": [
       "au",
       "uq_mobile",
@@ -1203,45 +1203,45 @@
       "kansai",
       "hokuriku_koshinetsu"
     ],
-    "cashback_text": "1年間月額割引",
+    "cashback_text": "1蟷ｴ髢捺怦鬘榊牡蠑・,
     "discounts": [
       {
         "carrier": "au",
         "amount": 1100,
-        "name": "auスマートバリュー"
+        "name": "au繧ｹ繝槭・繝医ヰ繝ｪ繝･繝ｼ"
       }
     ],
     "tags": [
-      "関西限定",
-      "独自回線",
-      "超低Ping"
+      "髢｢隘ｿ髯仙ｮ・,
+      "迢ｬ閾ｪ蝗樒ｷ・,
+      "雜・ｽ傘ing"
     ],
     "badges": [],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+5Q0036+3IIQ+5YRHE",
     "detailLink": "/provider",
-    "description": "関西地方（大阪・京都・兵庫・奈良・滋賀・和歌山）で圧倒的なシェアを誇る独自回線。NURO光と同等の低遅延で、関西ゲーマーのド定番です。",
+    "description": "髢｢隘ｿ蝨ｰ譁ｹ・亥､ｧ髦ｪ繝ｻ莠ｬ驛ｽ繝ｻ蜈ｵ蠎ｫ繝ｻ螂郁憶繝ｻ貊玖ｳ繝ｻ蜥梧ｭ悟ｱｱ・峨〒蝨ｧ蛟堤噪縺ｪ繧ｷ繧ｧ繧｢繧定ｪ・ｋ迢ｬ閾ｪ蝗樒ｷ壹・URO蜈峨→蜷檎ｭ峨・菴朱≦蟒ｶ縺ｧ縲・未隘ｿ繧ｲ繝ｼ繝槭・縺ｮ繝牙ｮ夂分縺ｧ縺吶・,
     "pros": [
-      "関西エリア最強クラスのPing値",
-      "独自ファイバー網で混雑しにくい",
-      "au・UQスマホのセット割対応"
+      "髢｢隘ｿ繧ｨ繝ｪ繧｢譛蠑ｷ繧ｯ繝ｩ繧ｹ縺ｮPing蛟､",
+      "迢ｬ閾ｪ繝輔ぃ繧､繝舌・邯ｲ縺ｧ豺ｷ髮代＠縺ｫ縺上＞",
+      "au繝ｻUQ繧ｹ繝槭・縺ｮ繧ｻ繝・ヨ蜑ｲ蟇ｾ蠢・
     ],
     "cons": [
-      "関西エリア外では使えない",
-      "マンションの設備によっては契約できない"
+      "髢｢隘ｿ繧ｨ繝ｪ繧｢螟悶〒縺ｯ菴ｿ縺医↑縺・,
+      "繝槭Φ繧ｷ繝ｧ繝ｳ縺ｮ險ｭ蛯吶↓繧医▲縺ｦ縺ｯ螂醍ｴ・〒縺阪↑縺・
     ],
     "id": "eo_hikari_1g",
-    "name": "eo光 (1G)",
+    "name": "eo蜈・(1G)",
     "max_speed_gbps": 1,
     "avg_ping_ms": 16,
     "avg_dl_speed_mbps": 873,
     "actual_monthly_fee_jpy": 5500,
-    "stability_score": 89,
+    "stability_score": 92,
     "vdsl_support": false,
     "mansion_monthly_fee_jpy": 3326
   },
   {
-    "providerName": "株式会社QTnet",
-    "type": "独自回線",
+    "providerName": "譬ｪ蠑丈ｼ夂､ｾQTnet",
+    "type": "迢ｬ閾ｪ蝗樒ｷ・,
     "mobile_discount": [
       "au",
       "uq_mobile"
@@ -1253,33 +1253,33 @@
     "regions": [
       "kyushu"
     ],
-    "cashback_text": "キャッシュバックキャンペーン実施中！",
+    "cashback_text": "繧ｭ繝｣繝・す繝･繝舌ャ繧ｯ繧ｭ繝｣繝ｳ繝壹・繝ｳ螳滓命荳ｭ・・,
     "discounts": [
       {
         "carrier": "au",
         "amount": 1100,
-        "name": "auスマートバリュー"
+        "name": "au繧ｹ繝槭・繝医ヰ繝ｪ繝･繝ｼ"
       }
     ],
     "tags": [
-      "九州限定",
-      "独自回線",
-      "低Ping"
+      "荵晏ｷ樣剞螳・,
+      "迢ｬ閾ｪ蝗樒ｷ・,
+      "菴傘ing"
     ],
     "badges": [
-      "九州エリアNo.1"
+      "荵晏ｷ槭お繝ｪ繧｢No.1"
     ],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+54KEB6+348K+2Z861U",
     "detailLink": "/provider/bbiq",
-    "description": "九州電力グループのQTnetが提供する九州エリア限定の独自回線。安定したPing値と速度で九州のゲーマーに絶大な人気を誇ります。",
+    "description": "荵晏ｷ樣崕蜉帙げ繝ｫ繝ｼ繝励・QTnet縺梧署萓帙☆繧倶ｹ晏ｷ槭お繝ｪ繧｢髯仙ｮ壹・迢ｬ閾ｪ蝗樒ｷ壹ょｮ牙ｮ壹＠縺蘖ing蛟､縺ｨ騾溷ｺｦ縺ｧ荵晏ｷ槭・繧ｲ繝ｼ繝槭・縺ｫ邨ｶ螟ｧ縺ｪ莠ｺ豌励ｒ隱・ｊ縺ｾ縺吶・,
     "pros": [
-      "九州エリア限定の独自網で混雑に強く安定性が高い",
-      "au・UQスマホとのセット割対応でお得",
-      "九州ゲーマーの定番回線"
+      "荵晏ｷ槭お繝ｪ繧｢髯仙ｮ壹・迢ｬ閾ｪ邯ｲ縺ｧ豺ｷ髮代↓蠑ｷ縺丞ｮ牙ｮ壽ｧ縺碁ｫ倥＞",
+      "au繝ｻUQ繧ｹ繝槭・縺ｨ縺ｮ繧ｻ繝・ヨ蜑ｲ蟇ｾ蠢懊〒縺雁ｾ・,
+      "荵晏ｷ槭ご繝ｼ繝槭・縺ｮ螳夂分蝗樒ｷ・
     ],
     "cons": [
-      "九州エリア以外では契約不可",
-      "10Gプランの提供エリアが限定的"
+      "荵晏ｷ槭お繝ｪ繧｢莉･螟悶〒縺ｯ螂醍ｴ・ｸ榊庄",
+      "10G繝励Λ繝ｳ縺ｮ謠蝉ｾ帙お繝ｪ繧｢縺碁剞螳夂噪"
     ],
     "id": "bbiq_hikari_10g",
     "name": "BBIQ (10G)",
@@ -1287,13 +1287,13 @@
     "avg_ping_ms": 23,
     "avg_dl_speed_mbps": 800,
     "actual_monthly_fee_jpy": 7370,
-    "stability_score": 93,
+    "stability_score": 82,
     "vdsl_support": false,
     "mansion_monthly_fee_jpy": 6380
   },
   {
-    "providerName": "株式会社QTnet",
-    "type": "独自回線",
+    "providerName": "譬ｪ蠑丈ｼ夂､ｾQTnet",
+    "type": "迢ｬ閾ｪ蝗樒ｷ・,
     "mobile_discount": [
       "au",
       "uq_mobile"
@@ -1305,33 +1305,33 @@
     "regions": [
       "kyushu"
     ],
-    "cashback_text": "キャッシュバックキャンペーン実施中！",
+    "cashback_text": "繧ｭ繝｣繝・す繝･繝舌ャ繧ｯ繧ｭ繝｣繝ｳ繝壹・繝ｳ螳滓命荳ｭ・・,
     "discounts": [
       {
         "carrier": "au",
         "amount": 1100,
-        "name": "auスマートバリュー"
+        "name": "au繧ｹ繝槭・繝医ヰ繝ｪ繝･繝ｼ"
       }
     ],
     "tags": [
-      "九州限定",
-      "独自回線",
-      "低Ping"
+      "荵晏ｷ樣剞螳・,
+      "迢ｬ閾ｪ蝗樒ｷ・,
+      "菴傘ing"
     ],
     "badges": [
-      "九州エリアNo.1"
+      "荵晏ｷ槭お繝ｪ繧｢No.1"
     ],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+54KEB6+348K+2Z861U",
     "detailLink": "/provider/bbiq",
-    "description": "九州電力グループのQTnetが提供する九州エリア限定の独自回線。安定したPing値と速度で九州のゲーマーに絶大な人気を誇ります。",
+    "description": "荵晏ｷ樣崕蜉帙げ繝ｫ繝ｼ繝励・QTnet縺梧署萓帙☆繧倶ｹ晏ｷ槭お繝ｪ繧｢髯仙ｮ壹・迢ｬ閾ｪ蝗樒ｷ壹ょｮ牙ｮ壹＠縺蘖ing蛟､縺ｨ騾溷ｺｦ縺ｧ荵晏ｷ槭・繧ｲ繝ｼ繝槭・縺ｫ邨ｶ螟ｧ縺ｪ莠ｺ豌励ｒ隱・ｊ縺ｾ縺吶・,
     "pros": [
-      "九州エリア限定の独自網で混雑に強く安定性が高い",
-      "au・UQスマホとのセット割対応でお得",
-      "九州ゲーマーの定番回線"
+      "荵晏ｷ槭お繝ｪ繧｢髯仙ｮ壹・迢ｬ閾ｪ邯ｲ縺ｧ豺ｷ髮代↓蠑ｷ縺丞ｮ牙ｮ壽ｧ縺碁ｫ倥＞",
+      "au繝ｻUQ繧ｹ繝槭・縺ｨ縺ｮ繧ｻ繝・ヨ蜑ｲ蟇ｾ蠢懊〒縺雁ｾ・,
+      "荵晏ｷ槭ご繝ｼ繝槭・縺ｮ螳夂分蝗樒ｷ・
     ],
     "cons": [
-      "九州エリア以外では契約不可",
-      "10Gプランの提供エリアが限定的"
+      "荵晏ｷ槭お繝ｪ繧｢莉･螟悶〒縺ｯ螂醍ｴ・ｸ榊庄",
+      "10G繝励Λ繝ｳ縺ｮ謠蝉ｾ帙お繝ｪ繧｢縺碁剞螳夂噪"
     ],
     "id": "bbiq_hikari_1g",
     "name": "BBIQ (1G)",
@@ -1339,16 +1339,16 @@
     "avg_ping_ms": 25,
     "avg_dl_speed_mbps": 638,
     "actual_monthly_fee_jpy": 6380,
-    "stability_score": 88,
+    "stability_score": 80,
     "vdsl_support": false,
     "mansion_monthly_fee_jpy": 4290
   },
   {
     "id": "gaming-plus_10g",
     "hidden": true,
-    "name": "Gaming+ 10G (ゲーミングプラス)",
-    "providerName": "株式会社ネットフォレスト",
-    "type": "プロバイダ乗換",
+    "name": "Gaming+ 10G (繧ｲ繝ｼ繝溘Φ繧ｰ繝励Λ繧ｹ)",
+    "providerName": "譬ｪ蠑丈ｼ夂､ｾ繝阪ャ繝医ヵ繧ｩ繝ｬ繧ｹ繝・,
+    "type": "繝励Ο繝舌う繝荵玲鋤",
     "max_speed_gbps": 10,
     "avg_ping_ms": 14,
     "avg_dl_speed_mbps": 1990,
@@ -1373,35 +1373,35 @@
     "mansion_monthly_fee_jpy": 8778,
     "stability_score": 90,
     "vdsl_support": false,
-    "cashback_text": "25日間お試し無料",
+    "cashback_text": "25譌･髢薙♀隧ｦ縺礼┌譁・,
     "discounts": [],
     "tags": [
-      "全国対応",
-      "プロバイダ乗換",
-      "10G(クロス)対応"
+      "蜈ｨ蝗ｽ蟇ｾ蠢・,
+      "繝励Ο繝舌う繝荵玲鋤",
+      "10G(繧ｯ繝ｭ繧ｹ)蟇ｾ蠢・
     ],
     "badges": [
-      "ゲーマー特化"
+      "繧ｲ繝ｼ繝槭・迚ｹ蛹・
     ],
     "affiliateLink": "#",
     "detailLink": "/provider/gaming-plus",
-    "description": "フレッツ光クロスなどの10G回線を利用中の方で、プロバイダのみを乗り換えてPing値を改善したい場合に最適なゲーマー専用プロバイダです。",
+    "description": "繝輔Ξ繝・ヤ蜈峨け繝ｭ繧ｹ縺ｪ縺ｩ縺ｮ10G蝗樒ｷ壹ｒ蛻ｩ逕ｨ荳ｭ縺ｮ譁ｹ縺ｧ縲√・繝ｭ繝舌う繝縺ｮ縺ｿ繧剃ｹ励ｊ謠帙∴縺ｦPing蛟､繧呈隼蝟・＠縺溘＞蝣ｴ蜷医↓譛驕ｩ縺ｪ繧ｲ繝ｼ繝槭・蟆ら畑繝励Ο繝舌う繝縺ｧ縺吶・,
     "pros": [
-      "今あるフレッツ回線のまま乗り換え可能",
-      "eスポーツ特化の専用帯域で夜間も低Ping",
-      "最大25日間の無料お試し期間あり"
+      "莉翫≠繧九ヵ繝ｬ繝・ヤ蝗樒ｷ壹・縺ｾ縺ｾ荵励ｊ謠帙∴蜿ｯ閭ｽ",
+      "e繧ｹ繝昴・繝・音蛹悶・蟆ら畑蟶ｯ蝓溘〒螟憺俣繧ゆｽ傘ing",
+      "譛螟ｧ25譌･髢薙・辟｡譁吶♀隧ｦ縺玲悄髢薙≠繧・
     ],
     "cons": [
-      "回線料金とは別にプロバイダ料がかかる",
-      "独自回線(NURO等)ほどの効果は出ない事も"
+      "蝗樒ｷ壽侭驥代→縺ｯ蛻･縺ｫ繝励Ο繝舌う繝譁吶′縺九°繧・,
+      "迢ｬ閾ｪ蝗樒ｷ・NURO遲・縺ｻ縺ｩ縺ｮ蜉ｹ譫懊・蜃ｺ縺ｪ縺・ｺ九ｂ"
     ]
   },
   {
     "id": "gaming-plus_1g",
     "hidden": true,
-    "name": "Gaming+ 1G (ゲーミングプラス)",
-    "providerName": "株式会社ネットフォレスト",
-    "type": "プロバイダ乗換",
+    "name": "Gaming+ 1G (繧ｲ繝ｼ繝溘Φ繧ｰ繝励Λ繧ｹ)",
+    "providerName": "譬ｪ蠑丈ｼ夂､ｾ繝阪ャ繝医ヵ繧ｩ繝ｬ繧ｹ繝・,
+    "type": "繝励Ο繝舌う繝荵玲鋤",
     "max_speed_gbps": 1,
     "avg_ping_ms": 15,
     "avg_dl_speed_mbps": 500,
@@ -1427,26 +1427,26 @@
     "mansion_monthly_fee_jpy": 8778,
     "stability_score": 88,
     "vdsl_support": true,
-    "cashback_text": "25日間お試し無料",
+    "cashback_text": "25譌･髢薙♀隧ｦ縺礼┌譁・,
     "discounts": [],
     "tags": [
-      "全国対応",
-      "プロバイダ乗換"
+      "蜈ｨ蝗ｽ蟇ｾ蠢・,
+      "繝励Ο繝舌う繝荵玲鋤"
     ],
     "badges": [
-      "ゲーマー特化"
+      "繧ｲ繝ｼ繝槭・迚ｹ蛹・
     ],
     "affiliateLink": "#",
     "detailLink": "/provider/gaming-plus",
-    "description": "フレッツ光やドコモ光などを利用中の方で、回線工事なしでPing値を改善したい場合に最適なゲーマー専用プロバイダです。",
+    "description": "繝輔Ξ繝・ヤ蜈峨ｄ繝峨さ繝｢蜈峨↑縺ｩ繧貞茜逕ｨ荳ｭ縺ｮ譁ｹ縺ｧ縲∝屓邱壼ｷ･莠九↑縺励〒Ping蛟､繧呈隼蝟・＠縺溘＞蝣ｴ蜷医↓譛驕ｩ縺ｪ繧ｲ繝ｼ繝槭・蟆ら畑繝励Ο繝舌う繝縺ｧ縺吶・,
     "pros": [
-      "今あるフレッツ回線のまま乗り換え可能",
-      "eスポーツ特化の専用帯域で夜間も低Ping",
-      "最大25日間の無料お試し期間あり"
+      "莉翫≠繧九ヵ繝ｬ繝・ヤ蝗樒ｷ壹・縺ｾ縺ｾ荵励ｊ謠帙∴蜿ｯ閭ｽ",
+      "e繧ｹ繝昴・繝・音蛹悶・蟆ら畑蟶ｯ蝓溘〒螟憺俣繧ゆｽ傘ing",
+      "譛螟ｧ25譌･髢薙・辟｡譁吶♀隧ｦ縺玲悄髢薙≠繧・
     ],
     "cons": [
-      "回線料金とは別にプロバイダ料がかかる",
-      "独自回線(NURO等)ほどの効果は出ない事も"
+      "蝗樒ｷ壽侭驥代→縺ｯ蛻･縺ｫ繝励Ο繝舌う繝譁吶′縺九°繧・,
+      "迢ｬ閾ｪ蝗樒ｷ・NURO遲・縺ｻ縺ｩ縺ｮ蜉ｹ譫懊・蜃ｺ縺ｪ縺・ｺ九ｂ"
     ]
   }
 ]
