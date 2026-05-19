@@ -271,7 +271,7 @@ export default async function Home() {
                 01
               </div>
               <h4 className="font-heading font-semibold text-base mb-2">8つの質問に答える</h4>
-              <p className="text-[0.8rem] text-text-muted leading-relaxed">ゲームジャンルや住まいの環境、スマホキャリアなど簡単な質問に答えるだけ</p>
+              <p className="text-[0.8rem] text-text-muted leading-relaxed">遊んでいるゲームや住環境のほか、回線に求めるものなど簡単な質問に答えるだけ</p>
             </div>
 
             <div className="text-center px-6">
@@ -280,7 +280,7 @@ export default async function Home() {
                 02
               </div>
               <h4 className="font-heading font-semibold text-base mb-2">AIが最適解を算出</h4>
-              <p className="text-[0.8rem] text-text-muted leading-relaxed">独自スコアリングであなたに最適な3件を選出</p>
+              <p className="text-[0.8rem] text-text-muted leading-relaxed">独自スコアリングであなたの環境に最適なプロバイダを3件ピックアップ</p>
             </div>
 
             <div className="text-center px-6">
@@ -289,7 +289,7 @@ export default async function Home() {
                 03
               </div>
               <h4 className="font-heading font-semibold text-base mb-2">Ping値・料金を比較</h4>
-              <p className="text-[0.8rem] text-text-muted leading-relaxed">推測Ping値と月額料金を並べて表示。その場で申し込みも可能</p>
+              <p className="text-[0.8rem] text-text-muted leading-relaxed">ゲームに必要な要素や月額料金を並べて表示。その場で申し込みも可能</p>
             </div>
           </div>
         </div>
