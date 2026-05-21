@@ -73,7 +73,7 @@ export const REGION_COVERAGE: Record<RegionId, { name: string, status: CoverageS
       hasGameWith: 'COVERED',
       hasHiHo: 'COVERED',
       localIsp: 'メガ・エッグ',
-      advice: '中国地方にお住まいなら、地域密着型の「メガ・エッグ」がかなり安定していておすすめできます！もちろん広島や岡山ならNURO光も広く対応しているので、ご自宅が10Gプランに対応しているかどうかも含めて、この2つを中心に探してみると良いですよ！'
+      advice: '中国地方は広島・岡山を中心にNURO光が対応しており、独自インフラによる低Pingが期待できます。全国どこでも使えるGameWith光も安定した選択肢です。メガ・エッグは中国地方の地域回線ですが、Ping値・速度ともに上記2回線を優先して検討することをおすすめします。'
     }
   },
   shikoku: {
@@ -84,7 +84,7 @@ export const REGION_COVERAGE: Record<RegionId, { name: string, status: CoverageS
       hasGameWith: 'COVERED',
       hasHiHo: 'COVERED',
       localIsp: 'ピカラ光',
-      advice: '四国はまだNURO光が来ていないんですよね…。でも大丈夫です！四国にお住まいなら、強力な独自回線の「ピカラ光」か、全国対応でPingも安定している「GameWith光」のどちらかを選べば、快適なゲーミング環境が作れるので安心してください！'
+      advice: '四国はNURO光の提供エリア外ですが、全国対応のGameWith光が安定した選択肢です。ピカラ光は四国の地域回線として存在しますが、ゲーミング性能ではGameWith光やhi-ho ひかり with gamesを優先して検討することをおすすめします。'
     }
   },
   kyushu: {
@@ -95,7 +95,7 @@ export const REGION_COVERAGE: Record<RegionId, { name: string, status: CoverageS
       hasGameWith: 'COVERED',
       hasHiHo: 'COVERED',
       localIsp: 'BBIQ',
-      advice: '九州（沖縄除く）は、NURO光と地域回線の「BBIQ」の両方が選べるうらやましいエリアです！まずはBBIQが引けるか確認して、難しければNURO光を検討するのがおすすめです。沖縄にお住まいの場合は、GameWith光やauひかりを中心に探すと失敗しにくいですよ！'
+      advice: '九州はNURO光が広く対応しており、独自インフラによる低Pingが期待できます。GameWith光も全国対応で安定した選択肢です。BBIQは九州の地域回線ですが、ゲーミング性能ではNURO光・GameWith光を優先して検討することをおすすめします。沖縄にお住まいの場合はGameWith光やauひかりが有力です。'
     }
   }
 };

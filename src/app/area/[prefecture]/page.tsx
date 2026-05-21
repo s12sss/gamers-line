@@ -18,8 +18,11 @@ function getPrefectureDescription(prefName: string, region: { name: string; stat
     ? `${prefName}はNURO光の提供エリアが一部地域に限られます。申し込み前に公式サイトでのエリア確認が必須です。`
     : `${prefName}はNURO光の提供エリア外ですが、GameWith光など全国対応のゲーミング回線で十分カバーできます。`;
 
+  const strongLocalIsps = ['eo光', 'コミュファ光'];
   const localText = status.localIsp
-    ? `${region.name}エリア限定で「${status.localIsp}」が提供されています。独自回線でエリア内の安定性は高い傾向がありますが、速度はプランや時間帯によって異なります。`
+    ? strongLocalIsps.includes(status.localIsp)
+      ? `${region.name}エリア限定で「${status.localIsp}」が提供されています。独自インフラによる低Pingと夜間の安定性が高く評価されており、エリア内なら最優先で検討する価値があります。`
+      : `${region.name}エリアには地域回線「${status.localIsp}」も提供されています。ただしPing値・安定性ではNURO光・GameWith光を優先して比較することをおすすめします。`
     : '';
 
   const tenGText = status.has10G === 'AVAILABLE'
