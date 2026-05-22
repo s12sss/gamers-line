@@ -25,6 +25,7 @@ export default function Header() {
 
   const navItems = [
     { title: "速度チェック", href: "/speedtest" },
+    { title: "キャンペーン", href: "/campaign" },
     {
       title: "回線を探す",
       links: [
@@ -33,7 +34,6 @@ export default function Header() {
         { name: "エリアMAPから探す", href: "/area" },
       ]
     },
-    { title: "キャンペーン", href: "/campaign" },
     {
       title: "コラム",
       links: [
