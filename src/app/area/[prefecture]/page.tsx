@@ -48,7 +48,7 @@ function getPrefectureFaqs(prefName: string, region: { name: string; status: Cov
     : `${prefName}のマンション向けには、建物の配線タイプを先に確認することが重要です。光配線対応であればGameWith光やauひかりが安定しており、VDSL環境でも使えます。ゲーミング特化プロバイダを選ぶことで遅延は最小化できます。`;
 
   const fpsAnswer = status.hasNuro === 'COVERED'
-    ? `${prefName}でFPSにおすすめなのはNURO光（平均Ping 6〜8ms）です。戸建て専用のため、マンションにお住まいの場合はGameWith光やauひかりが次点となります。いずれも有線LAN（Cat6以上）での接続が前提です。`
+    ? `${prefName}でFPSにおすすめなのはNURO光（平均Ping 12ms前後）です。戸建て専用のため、マンションにお住まいの場合はGameWith光やauひかりが次点となります。いずれも有線LAN（Cat6以上）での接続が前提です。`
     : `${prefName}でFPS・TPSにおすすめなのは、GameWith光や${status.localIsp ? status.localIsp : 'auひかり'}です。Ping値の低さと夜間の安定性を重視して選びましょう。Wi-Fiより有線LANでの接続が勝率に直結します。`;
 
   return [
