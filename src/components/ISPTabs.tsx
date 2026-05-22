@@ -7,10 +7,13 @@ import AffiliateLink from './AffiliateLink';
 interface ISP {
   id: string;
   name: string;
+  type?: string;
   avg_ping_ms: number;
+  avg_dl_speed_mbps?: number;
+  stability_score?: number;
   actual_monthly_fee_jpy: number;
   mansion_monthly_fee_jpy: number;
-  badges?: string[];
+  regions?: string[];
   affiliateLink?: string;
 }
 
@@ -40,9 +43,16 @@ function ISPCard({ isp, idx }: { isp: ISP; idx: number }) {
           </div>
         </div>
         <div className="flex flex-wrap gap-2">
-          {isp.badges?.map(badge => (
-            <span key={badge} className="px-3 py-1 bg-cyan/10 border border-cyan/20 text-cyan text-xs font-bold rounded-full">
-              {badge}
+          {[
+            isp.avg_ping_ms <= 15 ? { label: '#低Ping', color: 'text-cyan border-cyan/20 bg-cyan/10' } : isp.avg_ping_ms <= 20 ? { label: '#Ping良好', color: 'text-cyan/70 border-cyan/10 bg-cyan/5' } : null,
+            isp.stability_score && isp.stability_score >= 90 ? { label: '#安定性抜群', color: 'text-emerald border-emerald/20 bg-emerald/10' } : null,
+            isp.avg_dl_speed_mbps && isp.avg_dl_speed_mbps >= 900 ? { label: '#高速', color: 'text-white/60 border-white/10 bg-white/5' } : null,
+            isp.type === '専用帯域' ? { label: '#ゲーム専用帯域', color: 'text-purple-400 border-purple-400/20 bg-purple-400/10' } : null,
+            isp.type === '独自回線' ? { label: '#独自回線', color: 'text-white/60 border-white/10 bg-white/5' } : null,
+            isp.regions && isp.regions.length <= 3 ? { label: '#地域限定', color: 'text-amber-400 border-amber-400/20 bg-amber-400/10' } : null,
+          ].filter(Boolean).map(tag => tag && (
+            <span key={tag.label} className={`px-3 py-1 border text-xs font-mono rounded-full ${tag.color}`}>
+              {tag.label}
             </span>
           ))}
         </div>
