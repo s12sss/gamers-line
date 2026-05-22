@@ -73,7 +73,7 @@ function calculateScore(isp: ISP, answers: UserAnswers): number {
   // 夜間帯の混雑を回避できる専用帯域の価値を加点
   // ただしNUROのPing・安定性優位を逆転させない範囲に固定
   if (isp.type === '専用帯域') {
-    score += isp.id.startsWith('gamewith') ? 5 : 3;
+    score += isp.id.startsWith('gamewith') ? 5 : 1;
   }
 
   // ユーザーがセット割を希望している場合のみ加点する
