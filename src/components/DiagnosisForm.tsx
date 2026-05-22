@@ -11,24 +11,26 @@ const isps = (ispsData as ISP[]).filter(isp => !isp.hidden);
 
 function OptionCard({ title, desc, onClick }: { title: string, desc?: string, onClick: () => void }) {
   return (
-    <button 
+    <motion.button
       onClick={onClick}
+      whileTap={{ scale: 0.97, x: 4 }}
+      transition={{ type: 'spring', stiffness: 400, damping: 20 }}
       className="group relative w-full text-left p-4 sm:p-5 rounded-[14px] border border-white/5 bg-white/[0.03] transition-all duration-200 hover:border-cyan/40 hover:bg-cyan/5 hover:translate-x-1 hover:shadow-[0_0_20px_rgba(0,229,255,0.08),inset_0_0_20px_rgba(0,229,255,0.03)] overflow-hidden flex items-center gap-3.5"
     >
       {/* Scanline on hover */}
       <div className="absolute top-0 -left-full w-[60%] h-full bg-gradient-to-r from-transparent via-cyan/10 to-transparent -skew-x-12 opacity-0 group-hover:opacity-100 group-hover:animate-[scanline_0.6s_ease_forwards]" />
-      
+
       <div className="flex-1 relative z-10">
         <div className="font-heading font-semibold text-base text-text group-hover:text-cyan transition-colors tracking-tight mb-1">
           {title}
         </div>
         {desc && <div className="text-[0.8rem] sm:text-sm text-text-muted leading-relaxed">{desc}</div>}
       </div>
-      
+
       <div className="text-text-dim group-hover:text-cyan group-hover:translate-x-0.5 transition-all relative z-10">
         <ChevronRight className="w-5 h-5" />
       </div>
-    </button>
+    </motion.button>
   );
 }
 

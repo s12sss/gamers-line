@@ -69,7 +69,23 @@ function calculateScore(isp: ISP, answers: UserAnswers): number {
   // 基本スコア計算
   score = (normPing * wPing) + (normPrice * wPrice) + (normStability * wStability);
 
-  // 特殊条件による加点・減点
+  // 専用帯域ボーナス（GameWith: 基礎10点, hi-ho: 基礎5点）
+  // 夜間帯の混雑を回避できる専用帯域の価値を、頻度・優先度に応じて加点
+  if (isp.type === '専用帯域') {
+    const baseBonus = isp.id.startsWith('gamewith') ? 10 : 5;
+    const isHighFreq = answers.playFrequency === 'everyday' || answers.playFrequency === 'often';
+    const isPerformance = answers.priority === 'ping';
+    const isBalance = answers.priority === 'balance';
+
+    let multiplier = 0.3; // デフォルト小
+    if (isHighFreq && isPerformance) {
+      multiplier = 1.5; // 高頻度×性能重視 → 加点大
+    } else if (isPerformance || (isHighFreq && isBalance)) {
+      multiplier = 1.0; // 性能重視 or 高頻度×バランス → 加点中
+    }
+    score += Math.round(baseBonus * multiplier);
+  }
+
   // ユーザーがセット割を希望している場合のみ加点する
   if (answers.wantsDiscount !== false && isp.mobile_discount.includes(answers.mobileCarrier)) {
     // 料金重視でない場合（性能重視・バランス）はセット割の重要度を下げる
