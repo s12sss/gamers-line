@@ -33,6 +33,7 @@ export default function Header() {
         { name: "エリアMAPから探す", href: "/area" },
       ]
     },
+    { title: "キャンペーン", href: "/campaign" },
     {
       title: "コラム",
       links: [
