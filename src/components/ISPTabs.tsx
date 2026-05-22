@@ -30,11 +30,33 @@ function ISPCard({ isp, idx }: { isp: ISP; idx: number }) {
           <span className="text-4xl font-black text-white/10 italic">0{idx + 1}</span>
           <h4 className="text-2xl font-bold text-white">{isp.name}</h4>
         </div>
-        <div className="grid grid-cols-2 gap-4 mb-6">
+        <div className="grid grid-cols-3 gap-4 mb-6">
           <div className="p-4 rounded-xl bg-black/40 border border-white/5">
             <div className="text-xs text-text-muted mb-1">推測Ping値</div>
             <div className="text-2xl font-bold text-emerald font-mono">
               {isp.avg_ping_ms}<span className="text-sm text-text-muted ml-1">ms</span>
+            </div>
+          </div>
+          <div className="p-4 rounded-xl bg-black/40 border border-white/5 flex flex-col gap-2.5">
+            <div>
+              <div className="text-xs text-text-muted mb-1">速度</div>
+              <div className="flex gap-0.5">
+                {Array.from({ length: 5 }).map((_, i) => {
+                  const spd = isp.avg_dl_speed_mbps ?? 0;
+                  const stars = spd >= 900 ? 5 : spd >= 700 ? 4 : spd >= 500 ? 3 : spd >= 300 ? 2 : 1;
+                  return <span key={i} className={`text-sm ${i < stars ? 'text-emerald' : 'text-white/15'}`}>★</span>;
+                })}
+              </div>
+            </div>
+            <div>
+              <div className="text-xs text-text-muted mb-1">安定性</div>
+              <div className="flex gap-0.5">
+                {Array.from({ length: 5 }).map((_, i) => {
+                  const s = isp.stability_score ?? 0;
+                  const stars = s >= 90 ? 5 : s >= 80 ? 4 : s >= 70 ? 3 : s >= 60 ? 2 : 1;
+                  return <span key={i} className={`text-sm ${i < stars ? 'text-cyan' : 'text-white/15'}`}>★</span>;
+                })}
+              </div>
             </div>
           </div>
           <div className="p-4 rounded-xl bg-black/40 border border-white/5">
