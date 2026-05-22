@@ -107,14 +107,6 @@ export default function JapanCoveragePage() {
                   </div>
 
                   <div className="flex flex-col gap-1">
-                    <span className="font-mono text-[0.7rem] text-white/75 tracking-[0.1em] uppercase">hi-ho ひかり 対応状況</span>
-                    <div className="flex items-center gap-1.5 font-bold text-[1.1rem]">
-                      {renderStatusIcon(regionData.status.hasHiHo)}
-                      {renderStatusText(regionData.status.hasHiHo)}
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col gap-1">
                     <span className="font-mono text-[0.7rem] text-white/75 tracking-[0.1em] uppercase">地域最強ローカル回線</span>
                     <div className="flex items-center gap-1.5 font-bold text-[1.1rem]">
                       {regionData.status.localIsp ? (
