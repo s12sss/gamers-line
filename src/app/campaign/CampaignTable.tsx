@@ -27,7 +27,7 @@ const ROWS: Row[] = [
   { name: 'ピカラ光', tag: '独自回線 · 四国限定', ping: 20, cb: '最大 30,000円', cbNum: 30000, feature: '工事費無料 / 開通月無料', penaltyCover: 'なし', href: 'https://px.a8.net/svt/ejp?a8mat=4B3K2L+5QLFOY+348K+1ZGG0Y' },
   { name: 'BBIQ', tag: '独自回線 · 九州限定', ping: 25, cb: '最大 30,000円', cbNum: 30000, feature: '工事費実質無料 / 開通月無料', penaltyCover: 'なし', href: 'https://px.a8.net/svt/ejp?a8mat=4B3K2L+54KEB6+348K+2Z861U' },
   { name: 'hi-ho ひかり with games', tag: 'ゲーム専用帯域 · 全国', ping: 20, cb: '—', cbNum: 0, feature: '31日間月額無料 / 初期費用0円', penaltyCover: 'なし', href: 'https://h.accesstrade.net/sp/cc?rk=0100pau800os5p' },
-  { name: 'GameWith光', tag: 'ゲーム専用帯域 · 全国', ping: 16, cb: '—', cbNum: 0, feature: '1ヶ月無料 / 転用無料', penaltyCover: 'なし', href: 'https://gamewith-hikari.gamewith.co.jp/' },
+  { name: 'GameWith光', tag: 'ゲーム専用帯域 · 全国', ping: 16, cb: '—', cbNum: 0, feature: '1ヶ月無料 / 転用無料', penaltyCover: 'なし', href: 'https://h.accesstrade.net/sp/cc?rk=0100pyge00os5p' },
 ];
 
 const TOOLTIPS: Record<string, string> = {
