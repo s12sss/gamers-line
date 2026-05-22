@@ -125,113 +125,6 @@
     "mansion_monthly_fee_jpy": 3850
   },
   {
-    "id": "hi-ho_with_games_10g",
-    "name": "hi-ho ひかり with games (10G)",
-    "providerName": "株式会社ハイホー",
-    "type": "専用帯域",
-    "max_speed_gbps": 10,
-    "avg_ping_ms": 18,
-    "avg_dl_speed_mbps": 1000,
-    "mobile_discount": [],
-    "available_housing": [
-      "house",
-      "mansion_optical",
-      "mansion_vdsl"
-    ],
-    "regions": [
-      "hokkaido",
-      "tohoku",
-      "kanto",
-      "chubu",
-      "kansai",
-      "chugoku",
-      "shikoku",
-      "kyushu",
-      "okinawa",
-      "hokuriku_koshinetsu"
-    ],
-    "actual_monthly_fee_jpy": 7590,
-    "stability_score": 96,
-    "vdsl_support": true,
-    "cashback_text": "31日間月額無料",
-    "discounts": [],
-    "tags": [
-      "専用帯域",
-      "ルーター付",
-      "ラグゼロ"
-    ],
-    "badges": [
-      "ゲーマー特化",
-      "Pick UP!"
-    ],
-    "description": "ゲーマー特化型の専用帯域回線。高性能なゲーミングルーターが標準でセットになっており、届いたその日から圧倒的な低Ping環境でプレイ可能。",
-    "pros": [
-      "ゲーマー専用帯域で夜間も安定",
-      "高性能ゲーミングルーターがセット",
-      "VDSLマンションでも契約可能"
-    ],
-    "cons": [
-      "スマホとのセット割引がない",
-      "月額料金がやや高め"
-    ],
-    "affiliateLink": "https://h.accesstrade.net/sp/cc?rk=0100pau800os5p",
-    "detailLink": "/provider/hi-ho",
-    "mansion_monthly_fee_jpy": 7590
-  },
-  {
-    "id": "hi-ho_with_games_1g",
-    "name": "hi-ho ひかり with games (1G)",
-    "providerName": "株式会社ハイホー",
-    "type": "専用帯域",
-    "max_speed_gbps": 1,
-    "avg_ping_ms": 20,
-    "avg_dl_speed_mbps": 868,
-    "mobile_discount": [],
-    "available_housing": [
-      "house",
-      "mansion_optical",
-      "mansion_vdsl"
-    ],
-    "regions": [
-      "hokkaido",
-      "tohoku",
-      "kanto",
-      "chubu",
-      "kansai",
-      "chugoku",
-      "shikoku",
-      "kyushu",
-      "okinawa",
-      "hokuriku_koshinetsu"
-    ],
-    "actual_monthly_fee_jpy": 6160,
-    "stability_score": 94,
-    "vdsl_support": true,
-    "cashback_text": "31日間月額無料",
-    "discounts": [],
-    "tags": [
-      "専用帯域",
-      "ルーター付",
-      "ラグゼロ"
-    ],
-    "badges": [
-      "ゲーマー特化",
-      "ルーターセット"
-    ],
-    "description": "専用帯域による低遅延に加えて、ゲーム環境に最適な高性能ルーターがレンタル可能。設定不要で安定した通信が手に入ります。",
-    "pros": [
-      "ゲーマー専用帯域で混雑を回避",
-      "マンションでも導入しやすい",
-      "高性能ルーターでWi-Fiも超快適"
-    ],
-    "cons": [
-      "スマホとのセット割引がない"
-    ],
-    "affiliateLink": "https://h.accesstrade.net/sp/cc?rk=0100pau800os5p",
-    "detailLink": "/provider/hi-ho",
-    "mansion_monthly_fee_jpy": 4840
-  },
-  {
     "id": "gamewith_hikari_10g",
     "name": "GameWith光 (10G)",
     "providerName": "株式会社GameWith",
@@ -337,6 +230,113 @@
     ],
     "affiliateLink": "https://h.accesstrade.net/sp/cc?rk=0100pyge00os5p",
     "detailLink": "/provider",
+    "mansion_monthly_fee_jpy": 4840
+  },
+  {
+    "id": "hi-ho_with_games_10g",
+    "name": "hi-ho ひかり with games (10G)",
+    "providerName": "株式会社ハイホー",
+    "type": "専用帯域",
+    "max_speed_gbps": 10,
+    "avg_ping_ms": 18,
+    "avg_dl_speed_mbps": 1000,
+    "mobile_discount": [],
+    "available_housing": [
+      "house",
+      "mansion_optical",
+      "mansion_vdsl"
+    ],
+    "regions": [
+      "hokkaido",
+      "tohoku",
+      "kanto",
+      "chubu",
+      "kansai",
+      "chugoku",
+      "shikoku",
+      "kyushu",
+      "okinawa",
+      "hokuriku_koshinetsu"
+    ],
+    "actual_monthly_fee_jpy": 7590,
+    "stability_score": 96,
+    "vdsl_support": true,
+    "cashback_text": "31日間月額無料",
+    "discounts": [],
+    "tags": [
+      "専用帯域",
+      "ルーター付",
+      "ラグゼロ"
+    ],
+    "badges": [
+      "ゲーマー特化",
+      "Pick UP!"
+    ],
+    "description": "ゲーマー特化型の専用帯域回線。高性能なゲーミングルーターが標準でセットになっており、届いたその日から圧倒的な低Ping環境でプレイ可能。",
+    "pros": [
+      "ゲーマー専用帯域で夜間も安定",
+      "高性能ゲーミングルーターがセット",
+      "VDSLマンションでも契約可能"
+    ],
+    "cons": [
+      "スマホとのセット割引がない",
+      "月額料金がやや高め"
+    ],
+    "affiliateLink": "https://h.accesstrade.net/sp/cc?rk=0100pau800os5p",
+    "detailLink": "/provider/hi-ho",
+    "mansion_monthly_fee_jpy": 7590
+  },
+  {
+    "id": "hi-ho_with_games_1g",
+    "name": "hi-ho ひかり with games (1G)",
+    "providerName": "株式会社ハイホー",
+    "type": "専用帯域",
+    "max_speed_gbps": 1,
+    "avg_ping_ms": 20,
+    "avg_dl_speed_mbps": 868,
+    "mobile_discount": [],
+    "available_housing": [
+      "house",
+      "mansion_optical",
+      "mansion_vdsl"
+    ],
+    "regions": [
+      "hokkaido",
+      "tohoku",
+      "kanto",
+      "chubu",
+      "kansai",
+      "chugoku",
+      "shikoku",
+      "kyushu",
+      "okinawa",
+      "hokuriku_koshinetsu"
+    ],
+    "actual_monthly_fee_jpy": 6160,
+    "stability_score": 94,
+    "vdsl_support": true,
+    "cashback_text": "31日間月額無料",
+    "discounts": [],
+    "tags": [
+      "専用帯域",
+      "ルーター付",
+      "ラグゼロ"
+    ],
+    "badges": [
+      "ゲーマー特化",
+      "ルーターセット"
+    ],
+    "description": "専用帯域による低遅延に加えて、ゲーム環境に最適な高性能ルーターがレンタル可能。設定不要で安定した通信が手に入ります。",
+    "pros": [
+      "ゲーマー専用帯域で混雑を回避",
+      "マンションでも導入しやすい",
+      "高性能ルーターでWi-Fiも超快適"
+    ],
+    "cons": [
+      "スマホとのセット割引がない"
+    ],
+    "affiliateLink": "https://h.accesstrade.net/sp/cc?rk=0100pau800os5p",
+    "detailLink": "/provider/hi-ho",
     "mansion_monthly_fee_jpy": 4840
   },
   {
