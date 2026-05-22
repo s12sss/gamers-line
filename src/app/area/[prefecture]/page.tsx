@@ -134,9 +134,9 @@ export default async function PrefecturePage({ params }: Props) {
   const tenGISPs = regionalISPs.filter(isp => isp.max_speed_gbps >= 10);
 
   const breadcrumbs = [
-    { name: 'HOME', href: '/' },
-    { name: 'エリアから探す', href: '/area' },
-    { name: `${prefData.name}のゲーミング回線`, href: `/area/${prefecture}` }
+    { name: 'HOME', path: '/' },
+    { name: 'エリアから探す', path: '/area' },
+    { name: `${prefData.name}のゲーミング回線` }
   ];
 
   const prefDesc = getPrefectureDescription(prefData.name, regionData);
