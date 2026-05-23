@@ -119,7 +119,6 @@ export default function ComparePage() {
                 { id: 'srv_nuro', label: 'NURO光' },
                 { id: 'srv_gamewith', label: 'GameWith光' },
                 { id: 'srv_hi-ho', label: 'hi-ho ひかり' },
-                { id: 'srv_gaming-plus', label: 'Gaming+' },
                 { id: 'srv_au', label: 'auひかり' },
                 { id: 'srv_docomo', label: 'ドコモ光' },
                 { id: 'srv_softbank', label: 'ソフトバンク光' },
