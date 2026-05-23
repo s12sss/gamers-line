@@ -19,7 +19,7 @@ type Props = {
 
 export async function generateMetadata(
   { params }: Props,
-  parent: ResolvingMetadata
+  _parent: ResolvingMetadata
 ): Promise<Metadata> {
   const resolvedParams = await params;
   const column = await getColumnDetail(resolvedParams.slug).catch(() => null);
@@ -104,9 +104,17 @@ export default async function ColumnArticle({ params }: Props) {
     processedContent = $.html();
   }
 
-  // 他の最新記事を取得（現在の記事は除外して最大3件）
   const allColumns = await getColumnsList().catch(() => []);
-  const relatedColumns = allColumns.filter(c => c.id !== column?.id).slice(0, 3);
+  const others = allColumns.filter(c => c.id !== column?.id);
+  const sameCategory = others.filter(c =>
+    c.category?.some(cat => column?.category?.includes(cat))
+  );
+  const relatedColumns = sameCategory.length >= 3
+    ? sameCategory.slice(0, 3)
+    : [
+        ...sameCategory,
+        ...others.filter(c => !sameCategory.includes(c)).slice(0, 3 - sameCategory.length),
+      ];
 
   const jsonLd = column ? {
     '@context': 'https://schema.org',
@@ -442,7 +450,7 @@ export default async function ColumnArticle({ params }: Props) {
               <div className="mt-16 sm:mt-24 pt-10 border-t border-white/10">
                 <h2 className="text-xl font-bold text-text mb-6 flex items-center gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald shadow-[0_0_8px_var(--emerald)]"></span>
-                  最新のコラムを読む
+                  関連記事
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {relatedColumns.map(related => (

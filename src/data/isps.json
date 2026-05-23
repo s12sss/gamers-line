@@ -59,7 +59,7 @@
       "開通までに時間がかかる場合がある"
     ],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3JAM+86PL82+2VMU+5YJRM",
-    "detailLink": "/provider",
+    "detailLink": "/provider/nuro",
     "mansion_monthly_fee_jpy": 4400
   },
   {
@@ -121,7 +121,7 @@
       "提供エリアがやや限定的"
     ],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3JAM+86PL82+2VMU+5YJRM",
-    "detailLink": "/provider",
+    "detailLink": "/provider/nuro",
     "mansion_monthly_fee_jpy": 3850
   },
   {
@@ -175,7 +175,7 @@
       "月額料金がやや高め"
     ],
     "affiliateLink": "https://h.accesstrade.net/sp/cc?rk=0100pyge00os5p",
-    "detailLink": "/provider",
+    "detailLink": "/provider/gamewith",
     "mansion_monthly_fee_jpy": 7370
   },
   {
@@ -229,7 +229,7 @@
       "月額料金がやや高め"
     ],
     "affiliateLink": "https://h.accesstrade.net/sp/cc?rk=0100pyge00os5p",
-    "detailLink": "/provider",
+    "detailLink": "/provider/gamewith",
     "mansion_monthly_fee_jpy": 4840
   },
   {
@@ -392,7 +392,7 @@
       "VDSLは当然不可"
     ],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+48EZN6+42Y0+5ZMCH",
-    "detailLink": "/provider",
+    "detailLink": "/provider/au",
     "mansion_monthly_fee_jpy": 6468
   },
   {
@@ -454,7 +454,7 @@
       "提供エリアに制限あり"
     ],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+48EZN6+42Y0+5ZMCH",
-    "detailLink": "/provider",
+    "detailLink": "/provider/au",
     "mansion_monthly_fee_jpy": 4180
   },
   {
@@ -515,7 +515,7 @@
       "プロバイダにより品質差あり"
     ],
     "affiliateLink": "https://h.accesstrade.net/sp/cc?rk=0100ki0f00os5p",
-    "detailLink": "/provider",
+    "detailLink": "/provider/docomo",
     "mansion_monthly_fee_jpy": 6380
   },
   {
@@ -576,7 +576,7 @@
       "プロバイダにより品質差あり"
     ],
     "affiliateLink": "https://h.accesstrade.net/sp/cc?rk=0100ki0f00os5p",
-    "detailLink": "/provider",
+    "detailLink": "/provider/docomo",
     "mansion_monthly_fee_jpy": 4400
   },
   {
@@ -642,7 +642,7 @@
       "上位陣に比べPingは劣る"
     ],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+4HXXBM+348K+1BP8ZM",
-    "detailLink": "/provider",
+    "detailLink": "/provider/softbank",
     "mansion_monthly_fee_jpy": 6380
   },
   {
@@ -708,7 +708,7 @@
       "上位陣に比べPingは劣る"
     ],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+4HXXBM+348K+1BP8ZM",
-    "detailLink": "/provider",
+    "detailLink": "/provider/softbank",
     "mansion_monthly_fee_jpy": 4180
   },
   {
@@ -755,7 +755,7 @@
     ],
     "badges": [],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+4FK6WI+B4+2NBPO2",
-    "detailLink": "/provider",
+    "detailLink": "/provider/biglobe",
     "id": "biglobe_hikari_10g",
     "name": "ビッグローブ光 (10G)",
     "max_speed_gbps": 10,
@@ -820,7 +820,7 @@
     ],
     "badges": [],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+4FK6WI+B4+2NBPO2",
-    "detailLink": "/provider",
+    "detailLink": "/provider/biglobe",
     "id": "biglobe_hikari_1g",
     "name": "ビッグローブ光 (1G)",
     "max_speed_gbps": 1,
@@ -870,7 +870,7 @@
     ],
     "badges": [],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+41V7ZM+42Y0+BX3J6",
-    "detailLink": "/provider",
+    "detailLink": "/provider/commufa",
     "description": "東海地方（愛知・岐阜・三重・静岡）限定の最強ゲーミング回線。自社独自の光ファイバー網を使用しているため、NURO光に匹敵する低Pingと安定性を誇ります。",
     "pros": [
       "東海地方でトップクラスのPing値",
@@ -920,7 +920,7 @@
     ],
     "badges": [],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+41V7ZM+42Y0+BX3J6",
-    "detailLink": "/provider",
+    "detailLink": "/provider/commufa",
     "description": "東海地方（愛知・岐阜・三重・静岡）限定の最強ゲーミング回線。自社独自の光ファイバー網を使用しているため、NURO光に匹敵する低Pingと安定性を誇ります。",
     "pros": [
       "東海地方でトップクラスのPing値",
@@ -977,7 +977,7 @@
     ],
     "badges": [],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+5QLFOY+348K+1ZGG0Y",
-    "detailLink": "/provider",
+    "detailLink": "/provider/pikara",
     "description": "四国地方（香川・徳島・高知・愛媛）にお住まいのゲーマーならコレ一択。四国電力グループの独自回線網を使用し、圧倒的な安定感を実現。",
     "pros": [
       "四国エリアで最強の通信品質",
@@ -1026,7 +1026,7 @@
     ],
     "badges": [],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+5QLFOY+348K+1ZGG0Y",
-    "detailLink": "/provider",
+    "detailLink": "/provider/pikara",
     "description": "四国地方（香川・徳島・高知・愛媛）にお住まいのゲーマーならコレ一択。四国電力グループの独自回線網を使用し、圧倒的な安定感を実現。",
     "pros": [
       "四国エリアで最強の通信品質",
@@ -1075,7 +1075,7 @@
     ],
     "badges": [],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+5R6VAQ+348K+2BDR9U",
-    "detailLink": "/provider",
+    "detailLink": "/provider/megaegg",
     "description": "中国地方（広島・岡山・山口・島根・鳥取）のゲーマー定番回線。中国電力グループの独自ファイバーを利用しているため、夜間でも安定したPingを維持します。",
     "pros": [
       "中国エリアで非常に高い安定性",
@@ -1123,7 +1123,7 @@
     ],
     "badges": [],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+5R6VAQ+348K+2BDR9U",
-    "detailLink": "/provider",
+    "detailLink": "/provider/megaegg",
     "description": "中国地方（広島・岡山・山口・島根・鳥取）のゲーマー定番回線。中国電力グループの独自ファイバーを利用しているため、夜間でも安定したPingを維持します。",
     "pros": [
       "中国エリアで非常に高い安定性",
@@ -1166,7 +1166,7 @@
     ],
     "badges": [],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+5Q0036+3IIQ+5YRHE",
-    "detailLink": "/provider",
+    "detailLink": "/provider/eo",
     "description": "関西地方（大阪・京都・兵庫・奈良・滋賀・和歌山）で圧倒的なシェアを誇る独自回線。NURO光と同等の低遅延で、関西ゲーマーのド定番です。",
     "pros": [
       "関西エリア最強クラスのPing値",
@@ -1218,7 +1218,7 @@
     ],
     "badges": [],
     "affiliateLink": "https://px.a8.net/svt/ejp?a8mat=4B3K2L+5Q0036+3IIQ+5YRHE",
-    "detailLink": "/provider",
+    "detailLink": "/provider/eo",
     "description": "関西地方（大阪・京都・兵庫・奈良・滋賀・和歌山）で圧倒的なシェアを誇る独自回線。NURO光と同等の低遅延で、関西ゲーマーのド定番です。",
     "pros": [
       "関西エリア最強クラスのPing値",

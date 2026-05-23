@@ -1,4 +1,4 @@
-import { PREFECTURES, getPrefectureById } from '@/utils/prefectureData';
+import { PREFECTURES, getPrefectureById, type Prefecture } from '@/utils/prefectureData';
 import { REGION_COVERAGE, CoverageStatus } from '@/utils/regionData';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
@@ -34,22 +34,29 @@ function getPrefectureDescription(prefName: string, region: { name: string; stat
   return `${prefName}のゲーマー向け光回線事情を解説します。${nueroText}${localText ? ' ' + localText : ''}${tenGText ? ' ' + tenGText : ''}回線選びに迷ったら、下の無料診断ツールで住居タイプとキャリアを入力するだけで最適解が見つかります。`;
 }
 
-function getPrefectureFaqs(prefName: string, region: { name: string; status: CoverageStatus }) {
+function getPrefectureFaqs(prefData: Prefecture, region: { name: string; status: CoverageStatus }) {
+  const prefName = prefData.name;
   const { status } = region;
 
-  const nuroAnswer = status.hasNuro === 'COVERED'
-    ? `はい、${prefName}ではNURO光が広く対応しています。独自インフラによる低Ping（平均12ms前後）が特徴で、FPS・TPSゲームに最適です。ただし集合住宅（マンション）には対応していないため、戸建てにお住まいの方向けです。`
-    : status.hasNuro === 'LIMITED'
-    ? `${prefName}は一部エリアでNURO光が使えますが、対応地域が限られます。まず公式サイトでエリア確認を行うことをおすすめします。`
-    : `残念ながら${prefName}はNURO光の提供エリア外です。代わりにGameWith光やauひかりなど全国対応のゲーミング回線を検討してください。`;
+  const nuroAnswer = prefData.faqNuro ?? (
+    status.hasNuro === 'COVERED'
+      ? `はい、${prefName}ではNURO光が広く対応しています。独自インフラによる低Ping（平均12ms前後）が特徴で、FPS・TPSゲームに最適です。ただし集合住宅（マンション）には対応していないため、戸建てにお住まいの方向けです。`
+      : status.hasNuro === 'LIMITED'
+      ? `${prefName}は一部エリアでNURO光が使えますが、対応地域が限られます。まず公式サイトでエリア確認を行うことをおすすめします。`
+      : `残念ながら${prefName}はNURO光の提供エリア外です。代わりにGameWith光やauひかりなど全国対応のゲーミング回線を検討してください。`
+  );
 
-  const mansionAnswer = status.localIsp
-    ? `${prefName}のマンション向けには、まず建物の配線方式（光配線 or VDSL）の確認が重要です。${region.name}エリアでは「${status.localIsp}」がマンションにも対応しており安定性が高く評価されています。GameWith光やauひかりも選択肢として有力です。`
-    : `${prefName}のマンション向けには、建物の配線タイプを先に確認することが重要です。光配線対応であればGameWith光やauひかりが安定しており、VDSL環境でも使えます。ゲーミング特化プロバイダを選ぶことで遅延は最小化できます。`;
+  const mansionAnswer = prefData.faqMansion ?? (
+    status.localIsp
+      ? `${prefName}のマンション向けには、まず建物の配線方式（光配線 or VDSL）の確認が重要です。${region.name}エリアでは「${status.localIsp}」がマンションにも対応しており安定性が高く評価されています。GameWith光やauひかりも選択肢として有力です。`
+      : `${prefName}のマンション向けには、建物の配線タイプを先に確認することが重要です。光配線対応であればGameWith光やauひかりが安定しており、VDSL環境でも使えます。ゲーミング特化プロバイダを選ぶことで遅延は最小化できます。`
+  );
 
-  const fpsAnswer = status.hasNuro === 'COVERED'
-    ? `${prefName}でFPSにおすすめなのはNURO光（平均Ping 12ms前後）です。戸建て専用のため、マンションにお住まいの場合はGameWith光やauひかりが次点となります。いずれも有線LAN（Cat6以上）での接続が前提です。`
-    : `${prefName}でFPS・TPSにおすすめなのは、GameWith光や${status.localIsp ? status.localIsp : 'auひかり'}です。Ping値の低さと夜間の安定性を重視して選びましょう。Wi-Fiより有線LANでの接続が勝率に直結します。`;
+  const fpsAnswer = prefData.faqFps ?? (
+    status.hasNuro === 'COVERED'
+      ? `${prefName}でFPSにおすすめなのはNURO光（平均Ping 12ms前後）です。戸建て専用のため、マンションにお住まいの場合はGameWith光やauひかりが次点となります。いずれも有線LAN（Cat6以上）での接続が前提です。`
+      : `${prefName}でFPS・TPSにおすすめなのは、GameWith光や${status.localIsp ? status.localIsp : 'auひかり'}です。Ping値の低さと夜間の安定性を重視して選びましょう。Wi-Fiより有線LANでの接続が勝率に直結します。`
+  );
 
   return [
     { q: `${prefName}でNURO光は使えますか？`, a: nuroAnswer },
@@ -140,7 +147,7 @@ export default async function PrefecturePage({ params }: Props) {
   ];
 
   const prefDesc = getPrefectureDescription(prefData.name, regionData);
-  const faqs = getPrefectureFaqs(prefData.name, regionData);
+  const faqs = getPrefectureFaqs(prefData, regionData);
   const faqJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -170,6 +177,9 @@ export default async function PrefecturePage({ params }: Props) {
             {prefData.name}にお住まいで「ApexやVALORANTでラグい…」と悩んでいる方向けに、地域対応の回線から定番の10Gプランまで、本当におすすめできる光回線だけを厳選しました。
           </p>
           <p className="text-text-muted/80 text-sm max-w-2xl mx-auto leading-[1.8] mt-4">
+            {prefData.gamingNote}
+          </p>
+          <p className="text-text-muted/60 text-sm max-w-2xl mx-auto leading-[1.8] mt-2">
             {prefDesc}
           </p>
         </div>
@@ -217,6 +227,14 @@ export default async function PrefecturePage({ params }: Props) {
               )}
             </div>
 
+            {prefData.coverageNote && (
+              <div className="p-4 rounded-xl bg-white/5 border border-white/10 mb-3">
+                <div className="font-mono text-[0.65rem] tracking-[0.1em] text-white/40 mb-2">// {prefData.name}のエリア特性</div>
+                <p className="text-sm text-text-muted leading-relaxed">
+                  {prefData.coverageNote}
+                </p>
+              </div>
+            )}
             <div className="p-4 rounded-xl bg-cyan/5 border border-cyan/10">
               <div className="font-mono text-[0.65rem] tracking-[0.1em] text-cyan mb-2">// 専門家のアドバイス</div>
               <p className="text-sm text-text/90 leading-relaxed">

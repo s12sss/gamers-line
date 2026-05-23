@@ -4,64 +4,242 @@ export interface Prefecture {
   id: string;
   name: string;
   regionId: RegionId;
+  gamingNote: string;
+  coverageNote?: string;
+  faqNuro?: string;
+  faqMansion?: string;
+  faqFps?: string;
 }
 
 export const PREFECTURES: Prefecture[] = [
   // 北海道
-  { id: 'hokkaido', name: '北海道', regionId: 'hokkaido' },
+  {
+    id: 'hokkaido', name: '北海道', regionId: 'hokkaido',
+    gamingNote: '札幌市を中心に光ファイバーの整備が進んでおり、NURO光の対応エリアも拡大中。ただし道内は面積が広大なため、郊外・地方部では光コラボ回線が現実的な選択肢になる。',
+  },
   // 東北
-  { id: 'aomori', name: '青森県', regionId: 'tohoku' },
-  { id: 'iwate', name: '岩手県', regionId: 'tohoku' },
-  { id: 'miyagi', name: '宮城県', regionId: 'tohoku' },
-  { id: 'akita', name: '秋田県', regionId: 'tohoku' },
-  { id: 'yamagata', name: '山形県', regionId: 'tohoku' },
-  { id: 'fukushima', name: '福島県', regionId: 'tohoku' },
+  {
+    id: 'aomori', name: '青森県', regionId: 'tohoku',
+    gamingNote: '青森市・八戸市などの主要都市部では光ファイバー整備が進んでいるが、県全体の人口密度が低いため独自インフラの対応エリアは限られる。全国対応の光コラボ回線が安定した選択肢。',
+  },
+  {
+    id: 'iwate', name: '岩手県', regionId: 'tohoku',
+    gamingNote: '盛岡市など主要都市は光ファイバーが整備されているが、県土が広く人口が分散しているため、独自インフラ系の対応エリアは都市部に集中する。',
+  },
+  {
+    id: 'miyagi', name: '宮城県', regionId: 'tohoku',
+    gamingNote: '仙台市は東北最大の都市圏で光ファイバー整備が進んでおり、NURO光も対応エリアを拡大中。仙台市外では光コラボ回線が主流になる。',
+  },
+  {
+    id: 'akita', name: '秋田県', regionId: 'tohoku',
+    gamingNote: '秋田市など中心部は光ファイバーが整備されているが、県全体の人口密度が低く、独自インフラ系ISPの対応エリアは限定的。',
+  },
+  {
+    id: 'yamagata', name: '山形県', regionId: 'tohoku',
+    gamingNote: '山形市・鶴岡市など主要都市では光環境が整っているが、全体的に戸建て比率が高く人口分散型のため、全国対応の光コラボ回線が現実的な主力選択肢となる。',
+  },
+  {
+    id: 'fukushima', name: '福島県', regionId: 'tohoku',
+    gamingNote: '福島市・郡山市など県北・県中エリアは光ファイバー整備が進んでいるが、県土が広いため地域によってインフラ水準に差がある。NURO光の対応は主要都市中心。',
+  },
   // 関東
-  { id: 'ibaraki', name: '茨城県', regionId: 'kanto' },
-  { id: 'tochigi', name: '栃木県', regionId: 'kanto' },
-  { id: 'gunma', name: '群馬県', regionId: 'kanto' },
-  { id: 'saitama', name: '埼玉県', regionId: 'kanto' },
-  { id: 'chiba', name: '千葉県', regionId: 'kanto' },
-  { id: 'tokyo', name: '東京都', regionId: 'kanto' },
-  { id: 'kanagawa', name: '神奈川県', regionId: 'kanto' },
+  {
+    id: 'ibaraki', name: '茨城県', regionId: 'kanto',
+    gamingNote: '水戸市など主要都市ではNURO光が対応しているが、戸建て比率が高く郊外も広いため、エリア外の場合は光コラボ回線が現実的。',
+  },
+  {
+    id: 'tochigi', name: '栃木県', regionId: 'kanto',
+    gamingNote: '宇都宮市では光ファイバー整備が進んでいるが、県全体の人口密度が関東の中では低めで、NURO光の対応は都市部中心になる。戸建て比率が高くNURO光の恩恵を受けやすいエリアも多い。',
+  },
+  {
+    id: 'gunma', name: '群馬県', regionId: 'kanto',
+    gamingNote: '前橋市・高崎市を中心にNURO光が対応しているが、山間部・郊外では光コラボが主流。戸建て比率が高いため、NURO対応エリアなら戸建てプランを活かしやすい。',
+  },
+  {
+    id: 'saitama', name: '埼玉県', regionId: 'kanto',
+    gamingNote: 'さいたま市・川口市・川越市など主要都市は人口が密集しており、NURO光の対応エリアが広い。戸建て・集合住宅ともに整備が進んでいる。',
+    coverageNote: '埼玉県は都市部（さいたま市周辺）と郊外・農村部で光インフラ整備状況に差がある。都市部は選択肢が豊富だが、郊外では対応エリアの事前確認が重要。',
+    faqNuro: 'はい、埼玉県の都市部を中心にNURO光が対応しています。独自インフラによる低Ping（平均12ms前後）が特徴です。ただし県内でもエリアによって対応状況が異なるため、公式サイトでの住所検索を先に行うことをおすすめします。郊外・農村部ではGameWith光など全国対応回線が現実的な選択肢になる場合があります。',
+    faqMansion: '埼玉県の都市部はマンション・戸建て混在エリアです。まず建物の配線方式（光配線 or VDSL）を確認してください。光配線対応であればGameWith光やhi-ho光など全国対応のゲーミング回線が安定した選択肢です。都市部の光配線マンションではNURO光のマンションプランも検討できます。',
+    faqFps: '埼玉県でFPS・TPSにおすすめなのは、都市部ではNURO光（Ping 12ms前後）、対応エリア外ではGameWith光が有力です。郊外の戸建てにお住まいの場合はNURO光の戸建てプランが対応しているケースも多く、エリア確認の価値があります。有線LAN（Cat6以上）接続が勝率に直結します。',
+  },
+  {
+    id: 'chiba', name: '千葉県', regionId: 'kanto',
+    gamingNote: '千葉市・船橋市・松戸市など北西部の都市圏はNURO光の対応が手厚いが、房総半島南部など東部は対応エリアが限られる場合がある。',
+    coverageNote: '千葉県は北西部（東京隣接エリア）と東部・南部で光インフラの整備水準が大きく異なる。東部・内房・外房エリアでは全国対応回線が主力になるケースが多い。',
+    faqNuro: '千葉県の北西部（東京都と隣接するエリア）を中心にNURO光が対応しています。一方、東部や房総半島方面は対応エリアが限られる場合があるため、公式サイトの住所検索で事前確認が必須です。対応エリア外の場合はGameWith光が安定した代替選択肢です。',
+    faqMansion: '千葉県の都市部はマンション・戸建て混在です。まず建物の配線方式（光配線 or VDSL）を確認してください。光配線対応であればGameWith光やhi-ho光が安定した選択肢です。北西部の都市圏ではNURO光のマンションプランも対応物件が増えています。',
+    faqFps: '千葉県でFPS・TPSにおすすめなのは、北西部の都市圏ではNURO光（Ping 12ms前後）、対応エリア外や東部エリアではGameWith光が有力です。戸建てにお住まいの場合、NURO光の対応エリア内であれば最有力候補になります。有線LANでの接続が前提です。',
+  },
+  {
+    id: 'tokyo', name: '東京都', regionId: 'kanto',
+    gamingNote: '全国トップクラスの光ファイバー整備率を誇り、NURO光の対応マンションも急速に拡大中。集合住宅が多いため、NURO光の戸建てプランよりマンションプランの需要が高いエリア。',
+    coverageNote: '東京都はマンション・集合住宅の比率が全国最高水準。NURO光のマンションプラン対応物件が増加しており、申し込み前に建物単位でのエリア確認を推奨。',
+    faqNuro: 'はい、東京都ではNURO光が都内全域を広くカバーしています。独自インフラによる低Ping（平均12ms前後）が特徴で、FPS・TPSゲームに最適です。また東京都内はマンションプランの対応物件が拡大しており、集合住宅でも利用できるケースが増えています。お住まいの建物が対応しているかは公式サイトの建物検索で確認できます。',
+    faqMansion: '東京都は集合住宅の比率が非常に高く、マンション向けの回線選びが特に重要です。まず建物の配線方式（光配線 or VDSL）を確認してください。光配線対応であればNURO光のマンションプランが第一候補になります。対応外の場合はGameWith光やhi-ho光など全国対応のゲーミング回線が安定した選択肢です。',
+    faqFps: '東京都でFPS・TPSにおすすめなのはNURO光（平均Ping 12ms前後）です。戸建て・マンション問わず都内では対応エリアが広く、選択肢に入れやすい環境です。マンションでNURO光が使えない場合はGameWith光が次点として有力です。いずれも有線LAN（Cat6以上）での接続が前提です。',
+  },
+  {
+    id: 'kanagawa', name: '神奈川県', regionId: 'kanto',
+    gamingNote: '横浜市・川崎市は人口密度が高く光ファイバー整備が充実、NURO光の対応エリアも広い。相模原・藤沢など郊外も比較的カバーされており、関東の中でも選択肢が多い。',
+    coverageNote: '横浜市・川崎市はマンション比率が高く都市部の整備が進んでいる。内陸部・西部（山北・山間部など）は対応エリアが限られるケースがあり事前確認を推奨。',
+    faqNuro: 'はい、神奈川県はNURO光の対応エリアが比較的広く、横浜市・川崎市など都市部を中心に利用できます。ただし内陸部・西部の一部エリアでは非対応の場合もあるため、公式サイトでの住所確認を先に行うことをおすすめします。',
+    faqMansion: '横浜市・川崎市はマンション比率が高いエリアです。建物の配線方式（光配線 or VDSL）を先に確認し、光配線対応であればNURO光のマンションプランやGameWith光が有力な選択肢になります。VDSL環境の場合はGameWith光・hi-ho光など全国対応のゲーミング回線を選ぶのが安全です。',
+    faqFps: '神奈川県でFPS・TPSにおすすめなのはNURO光（Ping 12ms前後）です。横浜・川崎など都市部は対応エリアが広く選択肢に入れやすい環境です。対応エリア外や郊外の場合はGameWith光が次点として有力です。有線LAN（Cat6以上）接続が前提です。',
+  },
   // 中部・東海
-  { id: 'niigata', name: '新潟県', regionId: 'chubu' },
-  { id: 'toyama', name: '富山県', regionId: 'chubu' },
-  { id: 'ishikawa', name: '石川県', regionId: 'chubu' },
-  { id: 'fukui', name: '福井県', regionId: 'chubu' },
-  { id: 'yamanashi', name: '山梨県', regionId: 'chubu' },
-  { id: 'nagano', name: '長野県', regionId: 'chubu' },
-  { id: 'gifu', name: '岐阜県', regionId: 'chubu' },
-  { id: 'shizuoka', name: '静岡県', regionId: 'chubu' },
-  { id: 'aichi', name: '愛知県', regionId: 'chubu' },
-  { id: 'mie', name: '三重県', regionId: 'chubu' },
+  {
+    id: 'niigata', name: '新潟県', regionId: 'chubu',
+    gamingNote: '新潟市は政令指定都市で光整備が進んでいるが、県土が縦に長く人口分散のため地方部では光コラボが主流。コミュファ光のエリア外のため全国対応回線が基本の選択肢になる。',
+  },
+  {
+    id: 'toyama', name: '富山県', regionId: 'chubu',
+    gamingNote: '富山市・高岡市は光ファイバーが整備されているが、コミュファ光のサービスエリア外のため、NURO光や全国対応の光コラボ回線が選択肢の中心になる。',
+  },
+  {
+    id: 'ishikawa', name: '石川県', regionId: 'chubu',
+    gamingNote: '金沢市は北陸の中核都市として光インフラが充実している。コミュファ光のエリア外のためNURO光や全国対応回線が主な選択肢になる。',
+  },
+  {
+    id: 'fukui', name: '福井県', regionId: 'chubu',
+    gamingNote: '福井市など主要都市では光整備が進んでいるが、人口規模が小さく独自インフラ系の普及は限られる。コミュファ光のエリア外のため全国対応の光コラボ回線が現実的。',
+  },
+  {
+    id: 'yamanashi', name: '山梨県', regionId: 'chubu',
+    gamingNote: '甲府市など盆地の市街地は光整備が進んでいるが、山岳地帯が多く人口分散型のため独自インフラの対応は都市部に集中。コミュファ光のエリア外のため全国対応回線が主力。',
+  },
+  {
+    id: 'nagano', name: '長野県', regionId: 'chubu',
+    gamingNote: '長野市・松本市など主要都市は光整備が進んでいるが、県土が広く山間部も多いため地域差が大きい。コミュファ光エリア外のため全国対応の光コラボ回線が安定した選択肢になる。',
+  },
+  {
+    id: 'gifu', name: '岐阜県', regionId: 'chubu',
+    gamingNote: '岐阜市・各務原市など濃尾平野側の都市部はコミュファ光の対応エリアが充実しており、独自インフラによる安定した低Pingが期待できる。山間部は対応エリア外となる場合がある。',
+  },
+  {
+    id: 'shizuoka', name: '静岡県', regionId: 'chubu',
+    gamingNote: '浜松市・静岡市など主要都市はコミュファ光が対応しており安定した独自インフラを利用できる。ただし県の東部（沼津・富士など）はコミュファ光のエリア外のため全国対応回線が主力になる。',
+  },
+  {
+    id: 'aichi', name: '愛知県', regionId: 'chubu',
+    gamingNote: '名古屋市を中心に人口が密集し光ファイバー整備が全国トップクラス。コミュファ光の対応エリアが広く、独自インフラによる夜間帯の安定性が高く評価されている。NURO光も名古屋市内で対応。',
+    coverageNote: '名古屋市内はコミュファ光・NURO光ともに対応が充実。郊外（三河・知多半島など）はコミュファ光のカバーは続くが、エリア境界付近では事前確認が必要。',
+    faqNuro: 'はい、愛知県（特に名古屋市内）ではNURO光が対応しています。ただし愛知県ではコミュファ光という独自インフラの地域回線も同様の低Pingと夜間安定性を持っており、エリア内であればコミュファ光を先に比較することをおすすめします。郊外のNURO光対応状況は公式サイトで確認してください。',
+    faqMansion: '愛知県のマンション向けには、コミュファ光が独自インフラを持ちつつ集合住宅にも対応しているため第一候補になります。コミュファ光エリア外や建物が非対応の場合はGameWith光・hi-ho光など全国対応のゲーミング回線を検討してください。建物の配線方式（光配線 or VDSL）の確認は必須です。',
+    faqFps: '愛知県でFPS・TPSにおすすめなのはコミュファ光（独自インフラ・低Ping）です。NURO光も名古屋市内では選択肢に入ります。郊外でコミュファ光エリア外の場合はGameWith光が有力です。いずれも有線LAN（Cat6以上）での接続が前提です。',
+  },
+  {
+    id: 'mie', name: '三重県', regionId: 'chubu',
+    gamingNote: '津市・四日市市など北勢エリアはコミュファ光が対応しており独自インフラの恩恵を受けやすい。南部の山間部・海岸沿いは対応エリアが限られるため全国対応回線を確認する必要がある。',
+  },
   // 関西
-  { id: 'shiga', name: '滋賀県', regionId: 'kansai' },
-  { id: 'kyoto', name: '京都府', regionId: 'kansai' },
-  { id: 'osaka', name: '大阪府', regionId: 'kansai' },
-  { id: 'hyogo', name: '兵庫県', regionId: 'kansai' },
-  { id: 'nara', name: '奈良県', regionId: 'kansai' },
-  { id: 'wakayama', name: '和歌山県', regionId: 'kansai' },
+  {
+    id: 'shiga', name: '滋賀県', regionId: 'kansai',
+    gamingNote: '大津市・草津市など湖南エリアは人口が集中し光整備が進んでおり、eo光の対応エリアも充実している。琵琶湖北部・山間部は対応が限られる場合がある。',
+  },
+  {
+    id: 'kyoto', name: '京都府', regionId: 'kansai',
+    gamingNote: '京都市内は人口密度が高く光ファイバーの整備が進んでおり、eo光の独自インフラが広くカバーしている。北部（丹後・山間部）はインフラ整備が遅れている地域もある。',
+  },
+  {
+    id: 'osaka', name: '大阪府', regionId: 'kansai',
+    gamingNote: '全国屈指の人口密度を誇り、光ファイバー整備率・eo光の対応カバレッジともに高い。NURO光も大阪市内を中心に広く対応しており、選択肢が最も豊富なエリアのひとつ。',
+    coverageNote: '大阪府はeo光の独自インフラが府内を広くカバーしており、マンション対応物件も多い。NURO光も大阪市内を中心に対応。集合住宅比率が高く、eo光のマンションプランが多くのケースで第一候補になる。',
+    faqNuro: 'はい、大阪府（特に大阪市内）ではNURO光が対応しています。ただし大阪府ではeo光という独自インフラの地域回線が府内を広くカバーしており、マンション対応も充実しているため、まずeo光のエリア・対応物件を確認することをおすすめします。eo光エリア外や非対応建物の場合にNURO光を次の選択肢として検討するのが効率的です。',
+    faqMansion: '大阪府は集合住宅比率が高く、マンション向けの回線選びが重要です。eo光は独自インフラを持ちつつ集合住宅にも対応が充実しているため、まずeo光の対応物件かどうかを確認してください。eo光が対応していない場合はGameWith光・hi-ho光などの全国対応ゲーミング回線が安定した選択肢です。',
+    faqFps: '大阪府でFPS・TPSにおすすめなのはeo光（独自インフラ・低Ping）です。NURO光も大阪市内では有力ですが、eo光がエリア内であれば夜間の安定性の観点でも優位です。どちらも対応外の場合はGameWith光を選ぶのが無難です。有線LAN（Cat6以上）接続が前提です。',
+  },
+  {
+    id: 'hyogo', name: '兵庫県', regionId: 'kansai',
+    gamingNote: '神戸市・西宮市など阪神エリアはeo光・NURO光ともに対応が充実している。但馬・丹波など山間部は光インフラの整備密度が下がるため対応エリアの事前確認が必要。',
+    coverageNote: '兵庫県は阪神・神戸エリアと但馬・丹波・播磨などでインフラ水準に大きな差がある。阪神エリアはeo光・NURO光ともに選択肢が多いが、内陸・山間部は全国対応回線が現実的。',
+    faqNuro: 'はい、兵庫県の阪神エリア（神戸市・西宮市・尼崎市など）を中心にNURO光が対応しています。ただしeo光も同エリアで独自インフラを展開しており、まずeo光の対応状況を確認するのが効率的です。播磨（姫路方面）・但馬・丹波エリアはNURO光の対応が限られる場合があるため、公式サイトでの住所確認を先に行ってください。',
+    faqMansion: '兵庫県のマンション向けには、阪神・神戸エリアはeo光が独自インフラでマンションにも対応しており第一候補です。eo光が対応していない場合はGameWith光・hi-ho光を検討してください。建物の配線方式（光配線 or VDSL）の確認は必須です。内陸・山間部では全国対応の光コラボ回線が主力になります。',
+    faqFps: '兵庫県でFPS・TPSにおすすめなのは、阪神・神戸エリアではeo光（独自インフラ・低Ping）またはNURO光が有力です。どちらもエリア外の場合や播磨・丹波エリアではGameWith光を選ぶのが無難です。有線LAN（Cat6以上）接続が前提です。',
+  },
+  {
+    id: 'nara', name: '奈良県', regionId: 'kansai',
+    gamingNote: '奈良市・大和郡山市など県北部は大阪都市圏と隣接しており光整備が進んでいるが、吉野など南部山間部は光コラボが主力となる。eo光の対応エリアを事前に確認したい。',
+  },
+  {
+    id: 'wakayama', name: '和歌山県', regionId: 'kansai',
+    gamingNote: '和歌山市など沿岸部の都市は光整備が進んでいるが、人口規模が小さく山間部も多いため独自インフラ系の対応は限られる。eo光のエリア内かどうかの確認が最初のステップになる。',
+  },
   // 中国
-  { id: 'tottori', name: '鳥取県', regionId: 'chugoku' },
-  { id: 'shimane', name: '島根県', regionId: 'chugoku' },
-  { id: 'okayama', name: '岡山県', regionId: 'chugoku' },
-  { id: 'hiroshima', name: '広島県', regionId: 'chugoku' },
-  { id: 'yamaguchi', name: '山口県', regionId: 'chugoku' },
+  {
+    id: 'tottori', name: '鳥取県', regionId: 'chugoku',
+    gamingNote: '鳥取市・米子市は光整備が進んでいるが、全国で最も人口が少ない県のひとつで独自インフラの普及は限定的。全国対応のGameWith光や光コラボ回線が現実的な選択肢になる。',
+  },
+  {
+    id: 'shimane', name: '島根県', regionId: 'chugoku',
+    gamingNote: '松江市・出雲市など東部を中心に光整備が進んでいるが、人口が少なく面積が広いため独自インフラ系の対応は都市部中心。全国対応回線が安定した選択肢になる。',
+  },
+  {
+    id: 'okayama', name: '岡山県', regionId: 'chugoku',
+    gamingNote: '岡山市は政令指定都市で人口が集中しており光インフラが充実。NURO光も岡山市内を中心に対応しており、倉敷市など周辺都市も整備が進んでいる。',
+  },
+  {
+    id: 'hiroshima', name: '広島県', regionId: 'chugoku',
+    gamingNote: '広島市は中国地方最大の政令指定都市で光ファイバー整備が進んでおり、NURO光の対応も充実している。呉・福山など主要都市でも選択肢が広い。',
+  },
+  {
+    id: 'yamaguchi', name: '山口県', regionId: 'chugoku',
+    gamingNote: '山口市・下関市・宇部市など主要都市では光整備が進んでいるが、県全体の人口規模が小さく独自インフラの対応は限られる。全国対応の光コラボ回線が基本の選択肢になる。',
+  },
   // 四国
-  { id: 'tokushima', name: '徳島県', regionId: 'shikoku' },
-  { id: 'kagawa', name: '香川県', regionId: 'shikoku' },
-  { id: 'ehime', name: '愛媛県', regionId: 'shikoku' },
-  { id: 'kochi', name: '高知県', regionId: 'shikoku' },
+  {
+    id: 'tokushima', name: '徳島県', regionId: 'shikoku',
+    gamingNote: '徳島市など主要都市では光整備が進んでいるが、NURO光の提供エリア外のため全国対応回線が主力。ピカラ光のエリア外のため、GameWith光やhi-ho光が選択肢の中心になる。',
+  },
+  {
+    id: 'kagawa', name: '香川県', regionId: 'shikoku',
+    gamingNote: '高松市など人口が集中するエリアは光整備が進んでいる。四国の中では比較的人口密度が高く、ピカラ光の対応エリアも充実している。NURO光は対応エリア外。',
+  },
+  {
+    id: 'ehime', name: '愛媛県', regionId: 'shikoku',
+    gamingNote: '松山市を中心に光整備が進んでいるが、NURO光は対応エリア外。ピカラ光が四国の地域回線として選択肢に入るが、ゲーミング性能ではGameWith光との比較を推奨。',
+  },
+  {
+    id: 'kochi', name: '高知県', regionId: 'shikoku',
+    gamingNote: '高知市など都市部は光整備が進んでいるが、全国でも人口密度が低い県のひとつで山間部も多く独自インフラの対応は限られる。全国対応の光コラボ回線が現実的な主力選択肢。',
+  },
   // 九州・沖縄
-  { id: 'fukuoka', name: '福岡県', regionId: 'kyushu' },
-  { id: 'saga', name: '佐賀県', regionId: 'kyushu' },
-  { id: 'nagasaki', name: '長崎県', regionId: 'kyushu' },
-  { id: 'kumamoto', name: '熊本県', regionId: 'kyushu' },
-  { id: 'oita', name: '大分県', regionId: 'kyushu' },
-  { id: 'miyazaki', name: '宮崎県', regionId: 'kyushu' },
-  { id: 'kagoshima', name: '鹿児島県', regionId: 'kyushu' },
-  { id: 'okinawa', name: '沖縄県', regionId: 'kyushu' },
+  {
+    id: 'fukuoka', name: '福岡県', regionId: 'kyushu',
+    gamingNote: '福岡市は九州最大の都市圏で人口密度が高く光ファイバー整備が充実。NURO光の対応エリアも広く、北九州市なども整備が進んでいる。九州の中で最も選択肢が豊富なエリア。',
+    coverageNote: '福岡市・北九州市などの都市部はNURO光・BBIQ光ともに対応が充実しており、九州で最も選択肢が多いエリア。郊外・筑後・筑豊エリアは対応回線の確認が必要。',
+    faqNuro: 'はい、福岡県（福岡市・北九州市など都市部）を中心にNURO光が対応しています。独自インフラによる低Ping（平均12ms前後）が特徴でFPS向けに最適です。郊外・筑後・筑豊エリアは対応状況が異なる場合があるため、公式サイトで住所確認を行ってください。',
+    faqMansion: '福岡市は集合住宅比率が比較的高いエリアです。まず建物の配線方式（光配線 or VDSL）を確認してください。光配線対応であればNURO光のマンションプランやGameWith光が選択肢になります。BBIQ光も九州の独自回線として集合住宅向けプランを提供しているため、エリア確認してみる価値があります。',
+    faqFps: '福岡県でFPS・TPSにおすすめなのはNURO光（Ping 12ms前後）です。福岡市・北九州市など都市部は対応エリアが広く選択肢に入れやすい環境です。NURO光が使えない場合はGameWith光またはBBIQ光が次点として有力です。有線LAN（Cat6以上）接続が前提です。',
+  },
+  {
+    id: 'saga', name: '佐賀県', regionId: 'kyushu',
+    gamingNote: '佐賀市など主要都市では光整備が進んでいるが、九州の中では人口が少なくNURO光の対応は都市部中心。BBIQ光の対応エリアも確認しながら選択肢を絞りたい。',
+  },
+  {
+    id: 'nagasaki', name: '長崎県', regionId: 'kyushu',
+    gamingNote: '長崎市など主要都市は光整備が進んでいるが、半島・離島が多く地形的に光インフラの整備密度に差がある。NURO光の対応は都市部中心で、離島は光コラボが現実的な選択肢になる。',
+  },
+  {
+    id: 'kumamoto', name: '熊本県', regionId: 'kyushu',
+    gamingNote: '熊本市は政令指定都市で光ファイバー整備が進んでおり、NURO光も市内を中心に対応。BBIQ光も熊本エリアでサービスを提供しており、独自インフラ系の選択肢が比較的揃っているエリア。',
+  },
+  {
+    id: 'oita', name: '大分県', regionId: 'kyushu',
+    gamingNote: '大分市など沿岸部の主要都市は光整備が進んでいるが、山間部が多く地域差がある。NURO光・BBIQともに大分市周辺が中心となるため、まず対応エリアの確認が必要。',
+  },
+  {
+    id: 'miyazaki', name: '宮崎県', regionId: 'kyushu',
+    gamingNote: '宮崎市など沿岸部の都市は光整備が進んでいるが、全体的に人口密度が低く独自インフラの対応は限られる。全国対応のGameWith光や光コラボ回線が安定した選択肢になる。',
+  },
+  {
+    id: 'kagoshima', name: '鹿児島県', regionId: 'kyushu',
+    gamingNote: '鹿児島市など本土の主要都市は光整備が進んでいるが、離島が多く（奄美・種子島など）、光コラボ回線のみ対応というエリアも存在する。本土では選択肢が増えてきている。',
+  },
+  {
+    id: 'okinawa', name: '沖縄県', regionId: 'kyushu',
+    gamingNote: '沖縄本島は那覇市を中心に光ファイバーの整備が進んでいるが、NURO光はエリア外。GameWith光・auひかりなど全国対応回線が主な選択肢になる。離島では対応回線がさらに限られる。',
+  },
 ];
 
 export function getPrefectureById(id: string): Prefecture | undefined {
