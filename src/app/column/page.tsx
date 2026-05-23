@@ -66,7 +66,7 @@ export default async function ColumnList({ searchParams }: { searchParams: Promi
           ゲーマーのための<br />
           <span className="gradient-text">回線攻略ガイド</span>
         </h1>
-        <p className="text-text-muted text-[0.9rem] sm:text-base max-w-[520px] leading-[1.7]">
+        <p className="text-text-muted text-[0.9rem] sm:text-base leading-[1.7]">
           Ping値の仕組みからプロバイダ比較まで。勝率に直結する回線知識をすべて解説。
         </p>
       </div>
