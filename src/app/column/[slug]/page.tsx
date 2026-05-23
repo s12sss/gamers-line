@@ -261,46 +261,7 @@ export default async function ColumnArticle({ params }: Props) {
                 無料診断スタート
               </Link>
             </div>
-
-            {/* Related Columns */}
-            {relatedColumns.length > 0 && (
-              <div className="mt-16 sm:mt-20 pt-10 border-t border-white/10">
-                <h2 className="text-xl font-bold text-text mb-6 flex items-center gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald shadow-[0_0_8px_var(--emerald)]"></span>
-                  関連記事
-                </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {relatedColumns.map(related => (
-                    <Link key={related.id} href={`/column/${related.slug || related.id}`} className="group flex flex-col sm:flex-row gap-4 p-4 rounded-2xl border border-white/10 bg-white/[0.02] transition-all hover:bg-white/[0.05] hover:border-cyan/30 no-underline">
-                      <div className="w-full sm:w-[120px] aspect-video sm:aspect-square bg-black/50 rounded-xl overflow-hidden shrink-0 border border-white/5 relative">
-                        {related.thumbnail ? (
-                          <img src={related.thumbnail.url} alt={related.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                        ) : (
-                          <div className="absolute inset-0 flex items-center justify-center font-mono text-[0.55rem] text-text-dim tracking-widest">NO IMAGE</div>
-                        )}
-                      </div>
-                      <div className="flex flex-col justify-center">
-                        <div className="flex gap-2 mb-2 flex-wrap">
-                          {related.category?.slice(0, 2).map(cat => (
-                            <span key={cat} className="px-2 py-0.5 rounded-full text-[0.6rem] font-semibold tracking-wider bg-cyan/10 text-cyan border border-cyan/20">{cat}</span>
-                          ))}
-                        </div>
-                        <h3 className="font-heading text-[0.9rem] font-bold leading-[1.4] text-text group-hover:text-cyan transition-colors line-clamp-2">{related.title}</h3>
-                        <div className="font-mono text-[0.65rem] text-text-muted mt-2">
-                          {new Date(related.publishedAt || related.createdAt).toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/\//g, '.')}
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-                <div className="mt-6 text-center">
-                  <Link href="/column" className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded-full border border-white/10 text-[0.85rem] font-bold text-text-muted transition-all hover:text-white hover:bg-white/5 hover:border-white/20 no-underline">
-                    すべてのコラムを見る <ChevronRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              </div>
-            )}
-            </div>
+</div>
 
             {/* Mobile Sidebar (Bottom) */}
             <div className="mt-16 sm:mt-24 xl:hidden">
