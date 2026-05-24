@@ -26,12 +26,12 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://gamers-line.jp'),
   title: {
     template: "%s | Gamer's Line",
-    default: "ゲーマー向け光回線診断 - Gamer's Line",
+    default: "ゲーム向け光回線診断・おすすめ比較 | Gamer's Line",
   },
-  description: "Ping値と実質料金の最適解を導き出す、FPSゲーマー特化型の光回線・Ping改善診断メディア。",
+  description: "Ping・安定性・速度・料金の4軸でゲーミング光回線をTier別ランキング比較。都道府県別おすすめ回線・30秒診断で自分に合う回線がすぐわかる。",
   openGraph: {
-    title: "ゲーマー向け光回線診断 - Gamer's Line",
-    description: "Ping値と実質料金の最適解を導き出す、FPSゲーマー特化型の光回線・Ping改善診断メディア。",
+    title: "ゲーム向け光回線診断・おすすめ比較 | Gamer's Line",
+    description: "Ping・安定性・速度・料金の4軸でゲーミング光回線をTier別ランキング比較。都道府県別おすすめ回線・30秒診断で自分に合う回線がすぐわかる。",
     url: 'https://gamers-line.jp',
     siteName: "Gamer's Line",
     locale: 'ja_JP',
@@ -39,8 +39,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "ゲーマー向け光回線診断 - Gamer's Line",
-    description: "Ping値と実質料金の最適解を導き出す、FPSゲーマー特化型の光回線・Ping改善診断メディア。",
+    title: "ゲーム向け光回線診断・おすすめ比較 | Gamer's Line",
+    description: "Ping・安定性・速度・料金の4軸でゲーミング光回線をTier別ランキング比較。都道府県別おすすめ回線・30秒診断で自分に合う回線がすぐわかる。",
   },
   verification: {
     google: "e6ITBNtCcTDLYsqRfX5CZrjpS6iYsh_KHRtdzagsXY8",

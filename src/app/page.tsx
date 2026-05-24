@@ -14,7 +14,7 @@ export default async function Home() {
     '@type': 'WebSite',
     name: "Gamer's Line",
     url: 'https://gamers-line.jp/',
-    description: 'Ping値と実質料金の最適解を導き出す、FPSゲーマー特化型の光回線・Ping改善診断メディア。',
+    description: 'Ping・安定性・速度・料金の4軸でゲーミング光回線をTier別ランキング比較。都道府県別おすすめ回線・30秒診断で自分に合う回線がすぐわかる。',
     publisher: {
       '@type': 'Organization',
       name: "Gamer's Line 編集部",
