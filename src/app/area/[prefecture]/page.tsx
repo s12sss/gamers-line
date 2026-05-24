@@ -2,11 +2,9 @@ import { PREFECTURES, getPrefectureById, type Prefecture } from '@/utils/prefect
 import { REGION_COVERAGE, CoverageStatus } from '@/utils/regionData';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import ispsData from '@/data/isps.json';
-import { ISP } from '@/utils/algorithm';
 import { ShieldCheck, AlertTriangle, XCircle, MapPin, Play } from 'lucide-react';
+import TierRankingTable from '@/components/TierRankingTable';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import ISPTabs from '@/components/ISPTabs';
 import Link from 'next/link';
 
 function getPrefectureDescription(prefName: string, region: { name: string; status: CoverageStatus }): string {
@@ -131,14 +129,6 @@ export default async function PrefecturePage({ params }: Props) {
   }
 
   const regionData = REGION_COVERAGE[prefData.regionId];
-  
-  const regionalISPs = (ispsData as ISP[])
-    .filter(isp => !isp.hidden)
-    .filter(isp => isp.regions.includes(prefData.regionId) || isp.regions.includes('all'))
-    .sort((a, b) => a.avg_ping_ms - b.avg_ping_ms);
-
-  const standardISPs = regionalISPs.filter(isp => isp.max_speed_gbps < 10);
-  const tenGISPs = regionalISPs.filter(isp => isp.max_speed_gbps >= 10);
 
   const breadcrumbs = [
     { name: 'HOME', path: '/' },
@@ -258,11 +248,11 @@ export default async function PrefecturePage({ params }: Props) {
 
           {/* ISP Ranking */}
           <div>
-            <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-              <span className="w-4 h-4 rounded-full bg-cyan shadow-[0_0_10px_#00e5ff]" />
-              {prefData.name}のおすすめ回線一覧
+            <div className="font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase opacity-70 mb-3">RANKING</div>
+            <h2 className="font-heading text-2xl font-bold mb-6 text-white">
+              {prefData.name}のおすすめ回線<span className="gradient-text">ランキング</span>
             </h2>
-            <ISPTabs standardISPs={standardISPs} tenGISPs={tenGISPs} />
+            <TierRankingTable regionId={prefData.regionId} prefName={prefData.name} showExplanation />
           </div>
           {/* FAQ */}
           <section>

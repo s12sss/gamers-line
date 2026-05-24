@@ -7,6 +7,7 @@ import { REGION_COVERAGE, RegionId } from '@/utils/regionData';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldCheck, AlertTriangle, XCircle, Zap, MapPin, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 
 export default function JapanCoveragePage() {
@@ -40,7 +41,8 @@ export default function JapanCoveragePage() {
       {/* Page Header */}
       <div className="relative z-10 max-w-[1100px] mx-auto w-full px-4 sm:px-10 pt-10 pb-8 sm:pt-16 sm:pb-12 overflow-hidden">
         <div className="absolute -top-[60px] -right-[80px] w-[400px] h-[300px] bg-[radial-gradient(ellipse,rgba(0,229,255,0.08),transparent_70%)] blur-[40px] pointer-events-none" />
-        <div className="relative z-10 font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase opacity-70 mb-4">
+        <Breadcrumbs items={[{ name: 'HOME', path: '/' }, { name: 'エリアで探す', path: '/area' }]} />
+        <div className="relative z-10 font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase opacity-70 mb-4 mt-4">
           AREA COVERAGE
         </div>
         <h1 className="relative z-10 font-heading text-[clamp(2rem,5vw,3.25rem)] font-bold tracking-tight leading-[1.1] mb-4">

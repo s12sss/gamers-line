@@ -30,9 +30,9 @@ export default function Header() {
       title: "回線を探す",
       links: [
         { name: "回線ランキング", href: "/ranking" },
-        { name: "条件で比較する", href: "/compare" },
-        { name: "回線一覧・詳細", href: "/provider" },
-        { name: "エリアMAPから探す", href: "/area" },
+        { name: "条件で比較", href: "/compare" },
+        { name: "プロバイダ一覧", href: "/provider" },
+        { name: "エリアから探す", href: "/area" },
       ]
     },
     {

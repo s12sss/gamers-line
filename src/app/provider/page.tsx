@@ -6,6 +6,7 @@ import ispsData from "@/data/isps.json";
 import Tooltip from "@/components/Tooltip";
 import { PROVIDER_DETAILS } from "@/data/providerDetails";
 import AffiliateLink from "@/components/AffiliateLink";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 type ProviderCard = {
   key: string;
@@ -157,7 +158,8 @@ export default function ProviderPage() {
       {/* Page Header */}
       <div className="relative z-10 max-w-[1100px] mx-auto w-full px-4 sm:px-10 pt-10 pb-8 sm:pt-16 sm:pb-12 overflow-hidden">
         <div className="absolute -top-[60px] -right-[80px] w-[400px] h-[300px] bg-[radial-gradient(ellipse,rgba(0,229,255,0.08),transparent_70%)] blur-[40px] pointer-events-none" />
-        <div className="relative z-10 font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase opacity-70 mb-4">
+        <Breadcrumbs items={[{ name: 'HOME', path: '/' }, { name: '回線一覧', path: '/provider' }]} />
+        <div className="relative z-10 font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase opacity-70 mb-4 mt-4">
           PROVIDER FEATURE
         </div>
         <h1 className="relative z-10 font-heading text-[clamp(2rem,5vw,3.25rem)] font-bold tracking-tight leading-[1.1] mb-4">
@@ -276,7 +278,7 @@ export default function ProviderPage() {
                             <span className="font-mono text-emerald leading-snug">
                               {plan.discounts?.[0] ? (
                                 <>
-                                  <span className="block text-[0.62rem] text-white/55">{formatCarrier(plan.discounts[0].carrier)}で</span>
+                                  <span className="block text-[0.62rem] text-white/55">{formatCarrier(plan.discounts[0].carrier)}利用で</span>
                                   <span>-¥{plan.discounts[0].amount.toLocaleString()}</span>
                                 </>
                               ) : '—'}

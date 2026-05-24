@@ -370,8 +370,10 @@ export default function ComparePage() {
                 const normSpeed = Math.min(100, isp.avg_dl_speed_mbps / 10);
                 const normPrice = Math.max(0, Math.min(100, (8000 - isp.actual_monthly_fee_jpy) / 4000 * 90 + 10));
                 const pingBonus = isp.avg_ping_ms < 20 ? 5 : 0;
-                const dedicatedBonus = isp.type === '専用帯域' ? 3 : 0;
-                const totalScore = Math.min(100, Math.round(normPing * 0.45 + isp.stability_score * 0.25 + normSpeed * 0.15 + normPrice * 0.15 + pingBonus + dedicatedBonus));
+                const isDedicatedBandwidth = isp.type === '専用帯域' || isp.id.startsWith('gamewith') || isp.id.startsWith('hi-ho');
+                const dedicatedBonus = isDedicatedBandwidth ? 3 : 0;
+                const gameWithBonus = isp.id.startsWith('gamewith') ? 3 : 0;
+                const totalScore = Math.min(100, Math.round(normPing * 0.45 + isp.stability_score * 0.25 + normSpeed * 0.15 + normPrice * 0.15 + pingBonus + dedicatedBonus + gameWithBonus));
                 const scoreColor = totalScore >= 80 ? 'cyan' : totalScore >= 70 ? 'emerald' : totalScore >= 60 ? 'purple-400' : 'amber-500';
                 const bgClass = scoreColor === 'cyan' ? 'bg-cyan' : scoreColor === 'emerald' ? 'bg-emerald' : scoreColor === 'purple-400' ? 'bg-purple-400' : 'bg-amber-500';
                 const textClass = scoreColor === 'cyan' ? 'text-cyan' : scoreColor === 'emerald' ? 'text-emerald' : scoreColor === 'purple-400' ? 'text-purple-400' : 'text-amber-500';

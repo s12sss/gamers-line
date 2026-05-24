@@ -4,6 +4,7 @@ import { ChevronRight, Info } from 'lucide-react';
 import CampaignTable from './CampaignTable';
 import SwitchingSimulator from '@/components/SwitchingSimulator';
 import CashbackReminder from '@/components/CashbackReminder';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const revalidate = 86400;
 
@@ -97,7 +98,8 @@ export default function CampaignPage() {
 
         <div className="relative max-w-[1100px] mx-auto grid sm:grid-cols-[1.4fr_1fr] gap-12 items-center">
           <div>
-            <div className="font-mono text-[0.65rem] text-cyan tracking-[0.25em] uppercase opacity-70 mb-4">
+            <Breadcrumbs items={[{ name: 'HOME', path: '/' }, { name: 'キャンペーン', path: '/campaign' }]} />
+            <div className="font-mono text-[0.65rem] text-cyan tracking-[0.25em] uppercase opacity-70 mb-4 mt-4">
               CAMPAIGN INFO
             </div>
             <h1 className="font-heading font-black text-[clamp(2.2rem,5vw,3.8rem)] leading-[1.05] tracking-tight mb-5">

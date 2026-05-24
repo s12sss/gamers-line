@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import { Shield, Zap, Globe, ArrowRight, ExternalLink, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import Tooltip from '@/components/Tooltip';
 
@@ -42,9 +43,9 @@ export default function VpnPage() {
   return (
     <div className="min-h-screen pt-24 pb-16 px-4 sm:px-6">
       <div className="max-w-4xl mx-auto">
-        
+        <Breadcrumbs items={[{ name: 'HOME', path: '/' }, { name: 'VPN特集', path: '/vpn' }]} />
         {/* Header Section */}
-        <div className="text-center mb-16 relative">
+        <div className="text-center mb-16 relative mt-4">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-cyan/20 rounded-full blur-[100px] -z-10" />
 
           <h1 className="text-4xl sm:text-5xl font-heading font-bold mb-6 tracking-tight">

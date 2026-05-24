@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { Activity, ChevronRight, Play, ChevronDown, BarChart2, LayoutList, MapPin } from 'lucide-react';
+import { Activity, ChevronRight, Play, ChevronDown, BarChart2, LayoutList, MapPin, Trophy } from 'lucide-react';
 import { getColumnsList } from "@/libs/microcms";
 
 export const revalidate = 60; // 60 seconds ISR
@@ -321,7 +321,7 @@ export default async function Home() {
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6 mb-[40px]">
           <h2 className="font-heading text-[clamp(1.75rem,4vw,2.75rem)] font-bold tracking-tight">
             主要ゲーミング回線を<br />
-            <span className="gradient-text">一覧・比較する</span>
+            <span className="gradient-text">詳しく見る</span>
           </h2>
           <p className="text-sm text-text-muted max-w-[400px] leading-[1.7]">
             「まずはどんな回線があるか知りたい」<br className="hidden sm:block" />
@@ -329,9 +329,27 @@ export default async function Home() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* ランキング — おすすめ */}
+          <Link
+            href="/ranking"
+            className="group relative flex flex-col justify-between p-6 sm:p-8 rounded-2xl border overflow-hidden transition-all duration-300 hover:-translate-y-1 min-h-[180px] border-[#ff8270]/30 bg-[#ff8270]/[0.04] hover:border-[#ff8270]/60 hover:bg-[#ff8270]/[0.08]"
+          >
+            <Trophy className="absolute right-5 bottom-5 w-20 h-20 opacity-[0.06] pointer-events-none text-[#ff8270]" />
+            <span className="absolute right-4 top-4 font-mono text-[0.6rem] font-black tracking-[0.1em] text-black bg-[#ff8270] px-2 py-0.5 rounded-full">PICK UP</span>
+            <div>
+              <div className="font-heading font-bold text-base text-white mb-1.5 group-hover:text-[#ff8270] transition-colors">
+                回線ランキング
+              </div>
+              <div className="text-xs text-text-muted leading-relaxed">Ping・安定性・速度・料金の4軸でS〜Cにランク化しています。</div>
+            </div>
+            <div className="flex items-center gap-1 mt-5 text-xs font-bold text-[#ff8270]/40 group-hover:text-[#ff8270] transition-all group-hover:translate-x-0.5">
+              詳しく見る <ChevronRight className="w-3.5 h-3.5" />
+            </div>
+          </Link>
+
           {[
-            { href: '/compare', Icon: BarChart2, color: 'cyan' as const, title: '回線を比較する', desc: '速度・Ping・料金・10G対応・スマホ割を条件で絞り込み、複数回線を横並びで比較できます。' },
+            { href: '/compare', Icon: BarChart2, color: 'cyan' as const, title: '条件で比較', desc: '速度・Ping・料金・10G対応・スマホ割を条件で絞り込み、複数回線を横並びで比較できます。' },
             { href: '/provider', Icon: LayoutList, color: 'white' as const, title: 'プロバイダ一覧', desc: 'Ping値・月額料金・安定性スコア・キャンペーン情報をプロバイダごとに詳しく確認できます。' },
             { href: '/area', Icon: MapPin, color: 'emerald' as const, title: 'エリアから探す', desc: '都道府県を選ぶだけで対応回線がわかります。地域ごとのおすすめ回線と各社のエリア展開を確認できます。' },
           ].map(({ href, Icon, color, title, desc }) => (
@@ -343,7 +361,6 @@ export default async function Home() {
                   color === 'emerald' ? 'border-emerald/20 bg-emerald/[0.03] hover:border-emerald/40 hover:bg-emerald/[0.06]' :
                   'border-white/10 bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.05]'}`}
             >
-              {/* デコレーションアイコン */}
               <Icon className={`absolute right-5 bottom-5 w-20 h-20 opacity-[0.06] pointer-events-none
                 ${color === 'cyan' ? 'text-cyan' : color === 'emerald' ? 'text-emerald' : 'text-white'}`} />
               <div>
