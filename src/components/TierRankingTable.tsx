@@ -97,15 +97,17 @@ function TierRow({ tier, isps }: { tier: TierLabel; isps: RankedISP[] }) {
   const cfg = TIER_CONFIG[tier];
   return (
     <section className="grid overflow-hidden rounded-[2px] border border-black bg-[#151715] md:grid-cols-[92px_1fr]">
-      <div className="flex items-center justify-center border-b border-black px-4 py-4 md:border-b-0 md:border-r" style={{ backgroundColor: cfg.labelBg }}>
+      <div className="flex items-center justify-center border-b border-black px-4 py-3 md:border-b-0 md:border-r md:py-4" style={{ backgroundColor: cfg.labelBg }}>
         <div className="font-heading text-[2rem] font-black leading-none" style={{ color: cfg.color }}>{tier}</div>
       </div>
-      <div className="grid min-h-[138px] grid-cols-[repeat(auto-fill,minmax(210px,1fr))] gap-3 bg-[#151715] p-3 md:p-4">
+      <div className="overflow-x-auto">
+      <div className="flex min-h-[138px] gap-3 bg-[#151715] p-3 md:flex-wrap md:p-4">
         {isps.length > 0 ? (
           isps.map(isp => <TierCard key={isp.id} isp={isp} tierColor={cfg.labelBg} />)
         ) : (
           <div className="flex items-center text-sm text-text-dim">この条件では該当なし</div>
         )}
+      </div>
       </div>
     </section>
   );
