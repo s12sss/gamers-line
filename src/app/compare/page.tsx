@@ -95,7 +95,7 @@ export default function ComparePage() {
           { name: '回線比較', path: '/compare' }
         ]} />
         <div className="font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase opacity-70 mb-4 mt-4">
-          // COMPARE
+          COMPARE
         </div>
         <h1 className="font-heading text-[clamp(2rem,5vw,3.25rem)] font-bold tracking-tight leading-[1.1] mb-4">
           主要ゲーミング回線を<br />
@@ -219,7 +219,7 @@ export default function ComparePage() {
           {/* Column Headers */}
           <div className="grid gap-2 mb-2" style={{ gridTemplateColumns: `200px repeat(${compareIsps.length}, minmax(180px, 1fr))` }}>
             <div className="flex items-end pb-3 pl-1 font-mono text-[0.65rem] text-white/60 tracking-[0.1em] uppercase">
-              // ISP
+              ISP
             </div>
             {compareIsps.map((isp) => {
               const isBest = isp.avg_ping_ms === bestPingValue;

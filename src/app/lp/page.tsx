@@ -46,7 +46,7 @@ export default function LPPage() {
       <div className="relative flex flex-col items-center text-center px-4 pt-14 pb-10 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,rgba(0,229,255,0.08),transparent_70%)]" />
         <div className="font-mono text-[0.65rem] text-cyan tracking-[0.3em] uppercase opacity-70 mb-4">
-          // FIND YOUR BEST LINE
+          FIND YOUR BEST LINE
         </div>
         <h1 className="font-heading font-black text-[clamp(2rem,5vw,3.5rem)] leading-[1.1] tracking-tight mb-4">
           そのラグ、<span className="text-cyan drop-shadow-[0_0_18px_rgba(0,229,255,0.5)]">回線</span>のせいかも。

@@ -99,6 +99,17 @@ body {
     box-shadow: 0 0 15px rgba(0, 229, 255, 0.15);
 }
 
+.input-group input[type="file"] {
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.input-group input[type="range"] {
+    padding: 0;
+    accent-color: var(--brand-cyan);
+    cursor: pointer;
+}
+
 .primary-btn {
     background: linear-gradient(135deg, var(--brand-cyan), var(--brand-emerald));
     color: #000;

@@ -98,7 +98,7 @@ export default function CampaignPage() {
         <div className="relative max-w-[1100px] mx-auto grid sm:grid-cols-[1.4fr_1fr] gap-12 items-center">
           <div>
             <div className="font-mono text-[0.65rem] text-cyan tracking-[0.25em] uppercase opacity-70 mb-4">
-              // CAMPAIGN INFO
+              CAMPAIGN INFO
             </div>
             <h1 className="font-heading font-black text-[clamp(2.2rem,5vw,3.8rem)] leading-[1.05] tracking-tight mb-5">
               {year}年{month}月<br />
@@ -113,7 +113,7 @@ export default function CampaignPage() {
 
           <div className="hidden sm:flex justify-center">
             <div className="border border-cyan/25 rounded-[20px] bg-cyan/[0.04] shadow-[0_0_60px_rgba(0,229,255,0.12)] px-8 py-6 text-center">
-              <div className="font-mono text-[0.65rem] text-cyan tracking-[0.3em] uppercase mb-1">// THIS MONTH</div>
+              <div className="font-mono text-[0.65rem] text-cyan tracking-[0.3em] uppercase mb-1">THIS MONTH</div>
               <div className="font-mono font-bold leading-none text-white" style={{ fontSize: 'clamp(6rem,10vw,9rem)', textShadow: '0 0 40px rgba(0,229,255,0.3)' }}>
                 {monthPadded}
                 <span className="text-2xl text-cyan align-top ml-1">/{year}</span>
@@ -127,7 +127,7 @@ export default function CampaignPage() {
       <section className="px-4 sm:px-10 py-16 sm:py-20 border-b border-white/10 bg-white/[0.01]">
         <div className="max-w-[1100px] mx-auto">
           <div className="font-mono text-[0.65rem] text-cyan tracking-[0.25em] uppercase opacity-70 mb-3">
-            // BASICS · キャッシュバックとは
+            BASICS · キャッシュバックとは
           </div>
           <h2 className="font-heading font-bold text-[clamp(1.6rem,4vw,2.5rem)] tracking-tight mb-3">
             申し込む前に知っておく<span className="bg-gradient-to-r from-cyan to-emerald bg-clip-text text-transparent">3つのパターン</span>
@@ -169,7 +169,7 @@ export default function CampaignPage() {
       {/* Table */}
       <section className="px-4 sm:px-10 py-16 sm:py-20 max-w-[1100px] mx-auto">
         <div className="font-mono text-[0.65rem] text-cyan tracking-[0.25em] uppercase opacity-70 mb-3">
-          // FULL LIST
+          FULL LIST
         </div>
         <h2 className="font-heading font-bold text-[clamp(1.6rem,4vw,2.5rem)] tracking-tight mb-3">
           <span className="bg-gradient-to-r from-cyan to-emerald bg-clip-text text-transparent">キャンペーン</span>早見表
@@ -183,7 +183,7 @@ export default function CampaignPage() {
       <section className="px-4 sm:px-10 py-16 sm:py-20 border-y border-white/10">
         <div className="max-w-[1100px] mx-auto mb-10">
           <div className="font-mono text-[0.65rem] text-cyan tracking-[0.25em] uppercase opacity-70 mb-3">
-            // SUPPORT TOOLS
+            SUPPORT TOOLS
           </div>
           <h2 className="font-heading font-bold text-[clamp(1.6rem,4vw,2.5rem)] tracking-tight mb-3">
             乗り換えを<span className="bg-gradient-to-r from-cyan to-emerald bg-clip-text text-transparent">サポートするツール</span>
@@ -202,7 +202,7 @@ export default function CampaignPage() {
       <section className="px-4 sm:px-10 py-16 sm:py-20 border-y border-white/10 bg-cyan/[0.015]">
         <div className="max-w-[800px] mx-auto">
           <div className="font-mono text-[0.65rem] text-cyan tracking-[0.25em] uppercase opacity-70 mb-3">
-            // FAQ
+            FAQ
           </div>
           <h2 className="font-heading font-bold text-[clamp(1.6rem,4vw,2.5rem)] tracking-tight mb-10">
             申し込み前に<span className="bg-gradient-to-r from-cyan to-emerald bg-clip-text text-transparent">確認したい</span>こと。
@@ -233,7 +233,7 @@ export default function CampaignPage() {
       <section className="relative px-4 sm:px-10 py-20 sm:py-24 text-center overflow-hidden">
         <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_70%_60%_at_50%_50%,rgba(0,229,255,0.08),transparent_70%)]" />
         <div className="relative z-10 max-w-[600px] mx-auto">
-          <div className="font-mono text-[0.65rem] text-cyan tracking-[0.25em] uppercase opacity-70 mb-4">// NEXT STEP</div>
+          <div className="font-mono text-[0.65rem] text-cyan tracking-[0.25em] uppercase opacity-70 mb-4">NEXT STEP</div>
           <h2 className="font-heading font-bold text-[clamp(1.8rem,4vw,2.8rem)] tracking-tight mb-4">
             どの回線が自分に合うか<br />
             <span className="bg-gradient-to-r from-cyan to-emerald bg-clip-text text-transparent">迷っているなら。</span>

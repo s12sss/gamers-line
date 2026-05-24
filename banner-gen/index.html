@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gamer Lab - Banner Generator</title>
+    <title>ギアセレクト - Banner Generator</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -13,14 +13,17 @@
         <div class="sidebar">
             <div class="sidebar-header">
                 <h2>GL Banner Gen</h2>
-                <p>Gamer Lab サムネイル自動生成</p>
+                <p>ギアセレクト サムネイル自動生成</p>
             </div>
 
             <div class="input-group">
                 <label>バナーの種類</label>
                 <select id="input_banner_type">
-                    <option value="rakuten">楽天セール攻略まとめ</option>
-                    <option value="bestbuy">買ってよかったモノ (BEST BUY)</option>
+                    <option value="feature">ギア特集（自由入力）</option>
+                    <option value="bestbuy">買ってよかったもの（月次）</option>
+                    <option value="review">個別商品レビュー</option>
+                    <option value="rakuten">楽天セール（月次）</option>
+                    <option value="custom">自由テキスト / 汎用</option>
                 </select>
             </div>
 
@@ -42,6 +45,26 @@
             <div class="input-group">
                 <label>カスタムサブテキスト (任意)</label>
                 <input type="text" id="input_custom_sub" placeholder="例: デスク周り・ゲーミングガジェット厳選">
+            </div>
+
+            <div class="input-group">
+                <label>バッジ / 英字ラベル (任意)</label>
+                <input type="text" id="input_custom_badge" placeholder="例: GEAR FEATURE / DEVICE REVIEW">
+            </div>
+
+            <div class="input-group">
+                <label>ブランド署名</label>
+                <input type="text" id="input_brand_name" value="ギアセレクト" placeholder="例: ギアセレクト / Gamer's Line">
+            </div>
+
+            <div class="input-group">
+                <label>背景画像 (任意)</label>
+                <input type="file" id="input_bg_image" accept="image/*">
+            </div>
+
+            <div class="input-group">
+                <label>背景画像の濃さ</label>
+                <input type="range" id="input_bg_opacity" value="0.22" min="0" max="0.55" step="0.01">
             </div>
 
             <button id="download_btn" class="primary-btn">
@@ -76,6 +99,8 @@
                             </linearGradient>
                         </defs>
                         <rect width="1280" height="670" fill="url(#bg_rakuten)"/>
+                        <image id="bg_image_rakuten" x="0" y="0" width="1280" height="670" preserveAspectRatio="xMidYMid slice" opacity="0"/>
+                        <rect width="1280" height="670" fill="#020408" opacity="0.68"/>
                         <circle cx="640" cy="335" r="400" fill="url(#glow_rakuten)"/>
                         <g stroke="#00E5FF" stroke-opacity="0.05" stroke-width="1.5">
                             <line x1="0" y1="134" x2="1280" y2="134"/>
@@ -92,13 +117,62 @@
                         <rect x="120" y="590" width="40" height="3" fill="#00E676" opacity="0.6"/>
                         <rect x="1120" y="590" width="40" height="3" fill="#00E5FF" opacity="0.6"/>
 
-                        <text x="640" y="300" font-family="'Arial Black', sans-serif" font-size="110" font-weight="900" font-style="italic" fill="url(#primaryGlow_rakuten)" opacity="0.95" text-anchor="middle" letter-spacing="6">RAKUTEN SALE</text>
+                        <text id="text_badge_rakuten" x="640" y="300" font-family="'Arial Black', sans-serif" font-size="110" font-weight="900" font-style="italic" fill="url(#primaryGlow_rakuten)" opacity="0.95" text-anchor="middle" letter-spacing="6">RAKUTEN SALE</text>
                         
                         <!-- Dynamic Text Area -->
                         <text id="text_main_rakuten" x="640" y="420" font-family="'Noto Sans JP', sans-serif" font-size="64" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="2">【2026年5月版】楽天セール攻略まとめ</text>
                         
                         <text id="text_sub_rakuten" x="640" y="490" font-family="'Noto Sans JP', sans-serif" font-size="28" font-weight="700" fill="#00E5FF" opacity="0.8" text-anchor="middle" letter-spacing="6">ゲーマーの部屋をアップグレードする最適解</text>
-                        <text x="640" y="610" font-family="'Arial Black', sans-serif" font-size="24" font-weight="900" fill="#ffffff" opacity="0.4" text-anchor="middle" letter-spacing="8">Gamer Lab</text>
+                        <text id="text_brand_rakuten" x="640" y="610" font-family="'Arial Black', sans-serif" font-size="24" font-weight="900" fill="#ffffff" opacity="0.4" text-anchor="middle" letter-spacing="8">ギアセレクト</text>
+                    </svg>
+                </div>
+
+                <!-- Feature SVG Template -->
+                <div id="wrapper_feature" class="svg-wrapper">
+                    <svg id="svg_feature" width="1280" height="670" viewBox="0 0 1280 670" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <style>
+                                @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&amp;family=Noto+Sans+JP:wght@400;700;900&amp;display=swap');
+                            </style>
+                            <radialGradient id="bg_feature" cx="65%" cy="45%" r="85%">
+                            <stop offset="0%" stop-color="#1c1304"/>
+                            <stop offset="48%" stop-color="#07101c"/>
+                            <stop offset="100%" stop-color="#020408"/>
+                            </radialGradient>
+                            <radialGradient id="glow_feature" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#FF9900" stop-opacity="0.18"/>
+                            <stop offset="100%" stop-color="#FF9900" stop-opacity="0"/>
+                            </radialGradient>
+                            <linearGradient id="primaryGlow_feature" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#FFB84D"/>
+                            <stop offset="45%" stop-color="#FF9900"/>
+                            <stop offset="100%" stop-color="#00E5FF"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="1280" height="670" fill="url(#bg_feature)"/>
+                        <image id="bg_image_feature" x="0" y="0" width="1280" height="670" preserveAspectRatio="xMidYMid slice" opacity="0"/>
+                        <rect width="1280" height="670" fill="#020408" opacity="0.72"/>
+                        <circle cx="640" cy="335" r="430" fill="url(#glow_feature)"/>
+                        <g stroke="#FF9900" stroke-opacity="0.06" stroke-width="1.5">
+                            <line x1="0" y1="120" x2="1280" y2="120"/>
+                            <line x1="0" y1="240" x2="1280" y2="240"/>
+                            <line x1="0" y1="360" x2="1280" y2="360"/>
+                            <line x1="0" y1="480" x2="1280" y2="480"/>
+                            <line x1="180" y1="0" x2="180" y2="670"/>
+                            <line x1="420" y1="0" x2="420" y2="670"/>
+                            <line x1="660" y1="0" x2="660" y2="670"/>
+                            <line x1="900" y1="0" x2="900" y2="670"/>
+                            <line x1="1140" y1="0" x2="1140" y2="670"/>
+                        </g>
+                        <rect x="110" y="78" width="54" height="3" fill="#FF9900" opacity="0.8"/>
+                        <rect x="1116" y="78" width="54" height="3" fill="#00E5FF" opacity="0.7"/>
+                        <rect x="110" y="590" width="54" height="3" fill="#00E5FF" opacity="0.7"/>
+                        <rect x="1116" y="590" width="54" height="3" fill="#FF9900" opacity="0.8"/>
+
+                        <text id="text_badge_feature" x="640" y="292" font-family="'Arial Black', sans-serif" font-size="112" font-weight="900" font-style="italic" fill="url(#primaryGlow_feature)" opacity="0.96" text-anchor="middle" letter-spacing="5">GEAR FEATURE</text>
+                        <text id="text_main_feature" x="640" y="418" font-family="'Noto Sans JP', sans-serif" font-size="64" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="2">ゲーム部屋ギア特集</text>
+                        <text id="text_sub_feature" x="640" y="492" font-family="'Noto Sans JP', sans-serif" font-size="28" font-weight="700" fill="#FFB84D" opacity="0.88" text-anchor="middle" letter-spacing="5">テーマ別に選ぶデスク周りのおすすめ</text>
+                        <text id="text_brand_feature" x="640" y="610" font-family="'Arial Black', sans-serif" font-size="24" font-weight="900" fill="#ffffff" opacity="0.4" text-anchor="middle" letter-spacing="8">ギアセレクト</text>
                     </svg>
                 </div>
 
@@ -123,6 +197,8 @@
                             </linearGradient>
                         </defs>
                         <rect width="1280" height="670" fill="url(#bg_bestbuy)"/>
+                        <image id="bg_image_bestbuy" x="0" y="0" width="1280" height="670" preserveAspectRatio="xMidYMid slice" opacity="0"/>
+                        <rect width="1280" height="670" fill="#020408" opacity="0.7"/>
                         <circle cx="640" cy="335" r="450" fill="url(#glow_bestbuy)"/>
                         <g stroke="#A78BFA" stroke-opacity="0.08" stroke-width="2">
                             <line x1="-200" y1="0" x2="1480" y2="840"/>
@@ -137,13 +213,96 @@
                         <circle cx="150" cy="550" r="4" fill="#00E5FF" opacity="0.8"/>
                         <circle cx="1130" cy="550" r="4" fill="#A78BFA" opacity="0.8"/>
 
-                        <text x="640" y="290" font-family="'Arial Black', sans-serif" font-size="130" font-weight="900" font-style="italic" fill="url(#primaryGlow_bestbuy)" opacity="0.95" text-anchor="middle" letter-spacing="8">BEST BUY</text>
+                        <text id="text_badge_bestbuy" x="640" y="290" font-family="'Arial Black', sans-serif" font-size="130" font-weight="900" font-style="italic" fill="url(#primaryGlow_bestbuy)" opacity="0.95" text-anchor="middle" letter-spacing="8">BEST BUY</text>
                         
                         <!-- Dynamic Text Area -->
                         <text id="text_main_bestbuy" x="640" y="420" font-family="'Noto Sans JP', sans-serif" font-size="68" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="4">【2026年5月版】買ってよかったモノ</text>
                         
                         <text id="text_sub_bestbuy" x="640" y="500" font-family="'Noto Sans JP', sans-serif" font-size="28" font-weight="700" fill="#A78BFA" opacity="0.8" text-anchor="middle" letter-spacing="6">デスク周り・ゲーミングガジェット厳選</text>
-                        <text x="640" y="620" font-family="'Arial Black', sans-serif" font-size="24" font-weight="900" fill="#ffffff" opacity="0.4" text-anchor="middle" letter-spacing="8">Gamer Lab</text>
+                        <text id="text_brand_bestbuy" x="640" y="620" font-family="'Arial Black', sans-serif" font-size="24" font-weight="900" fill="#ffffff" opacity="0.4" text-anchor="middle" letter-spacing="8">ギアセレクト</text>
+                    </svg>
+                </div>
+
+                <!-- Review SVG Template -->
+                <div id="wrapper_review" class="svg-wrapper">
+                    <svg id="svg_review" width="1280" height="670" viewBox="0 0 1280 670" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <style>
+                                @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&amp;family=Noto+Sans+JP:wght@400;700;900&amp;display=swap');
+                            </style>
+                            <radialGradient id="bg_review" cx="50%" cy="48%" r="84%">
+                            <stop offset="0%" stop-color="#101827"/>
+                            <stop offset="48%" stop-color="#06131b"/>
+                            <stop offset="100%" stop-color="#020408"/>
+                            </radialGradient>
+                            <linearGradient id="primaryGlow_review" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#00E5FF"/>
+                            <stop offset="55%" stop-color="#FFFFFF"/>
+                            <stop offset="100%" stop-color="#00E676"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="1280" height="670" fill="url(#bg_review)"/>
+                        <image id="bg_image_review" x="0" y="0" width="1280" height="670" preserveAspectRatio="xMidYMid slice" opacity="0"/>
+                        <rect width="1280" height="670" fill="#020408" opacity="0.7"/>
+                        <g stroke="#00E5FF" stroke-opacity="0.06" stroke-width="1.5">
+                            <line x1="0" y1="158" x2="1280" y2="158"/>
+                            <line x1="0" y1="335" x2="1280" y2="335"/>
+                            <line x1="0" y1="512" x2="1280" y2="512"/>
+                            <line x1="230" y1="0" x2="230" y2="670"/>
+                            <line x1="640" y1="0" x2="640" y2="670"/>
+                            <line x1="1050" y1="0" x2="1050" y2="670"/>
+                        </g>
+                        <rect x="110" y="92" width="58" height="3" fill="#00E5FF" opacity="0.85"/>
+                        <rect x="1112" y="92" width="58" height="3" fill="#00E676" opacity="0.85"/>
+                        <rect x="110" y="575" width="58" height="3" fill="#00E676" opacity="0.85"/>
+                        <rect x="1112" y="575" width="58" height="3" fill="#00E5FF" opacity="0.85"/>
+
+                        <text id="text_badge_review" x="640" y="278" font-family="'Arial Black', sans-serif" font-size="96" font-weight="900" font-style="italic" fill="url(#primaryGlow_review)" opacity="0.95" text-anchor="middle" letter-spacing="7">DEVICE REVIEW</text>
+                        <text id="text_main_review" x="640" y="410" font-family="'Noto Sans JP', sans-serif" font-size="68" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="2">買ってよかったガジェットレビュー</text>
+                        <text id="text_sub_review" x="640" y="488" font-family="'Noto Sans JP', sans-serif" font-size="28" font-weight="700" fill="#00E5FF" opacity="0.84" text-anchor="middle" letter-spacing="5">実際に使って分かった良いところ・微妙なところ</text>
+                        <text id="text_brand_review" x="640" y="610" font-family="'Arial Black', sans-serif" font-size="24" font-weight="900" fill="#ffffff" opacity="0.4" text-anchor="middle" letter-spacing="8">ギアセレクト</text>
+                    </svg>
+                </div>
+
+                <!-- Custom SVG Template -->
+                <div id="wrapper_custom" class="svg-wrapper">
+                    <svg id="svg_custom" width="1280" height="670" viewBox="0 0 1280 670" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <style>
+                                @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&amp;family=Noto+Sans+JP:wght@400;700;900&amp;display=swap');
+                            </style>
+                            <radialGradient id="bg_custom" cx="50%" cy="50%" r="80%">
+                            <stop offset="0%" stop-color="#0b1728"/>
+                            <stop offset="100%" stop-color="#020408"/>
+                            </radialGradient>
+                            <linearGradient id="primaryGlow_custom" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#00E5FF"/>
+                            <stop offset="48%" stop-color="#A78BFA"/>
+                            <stop offset="100%" stop-color="#00E676"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="1280" height="670" fill="url(#bg_custom)"/>
+                        <image id="bg_image_custom" x="0" y="0" width="1280" height="670" preserveAspectRatio="xMidYMid slice" opacity="0"/>
+                        <rect width="1280" height="670" fill="#020408" opacity="0.72"/>
+                        <g stroke="#00E5FF" stroke-opacity="0.055" stroke-width="1.5">
+                            <line x1="0" y1="134" x2="1280" y2="134"/>
+                            <line x1="0" y1="268" x2="1280" y2="268"/>
+                            <line x1="0" y1="402" x2="1280" y2="402"/>
+                            <line x1="0" y1="536" x2="1280" y2="536"/>
+                            <line x1="256" y1="0" x2="256" y2="670"/>
+                            <line x1="512" y1="0" x2="512" y2="670"/>
+                            <line x1="768" y1="0" x2="768" y2="670"/>
+                            <line x1="1024" y1="0" x2="1024" y2="670"/>
+                        </g>
+                        <circle cx="160" cy="120" r="4" fill="#00E5FF" opacity="0.8"/>
+                        <circle cx="1120" cy="120" r="4" fill="#00E676" opacity="0.8"/>
+                        <circle cx="160" cy="550" r="4" fill="#A78BFA" opacity="0.8"/>
+                        <circle cx="1120" cy="550" r="4" fill="#00E5FF" opacity="0.8"/>
+
+                        <text id="text_badge_custom" x="640" y="245" font-family="'Arial Black', sans-serif" font-size="72" font-weight="900" font-style="italic" fill="url(#primaryGlow_custom)" opacity="0.94" text-anchor="middle" letter-spacing="8">GEAR GUIDE</text>
+                        <text id="text_main_custom" x="640" y="382" font-family="'Noto Sans JP', sans-serif" font-size="72" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="2">自由にタイトルを入力</text>
+                        <text id="text_sub_custom" x="640" y="470" font-family="'Noto Sans JP', sans-serif" font-size="28" font-weight="700" fill="#00E5FF" opacity="0.86" text-anchor="middle" letter-spacing="4">サブコピーも自由に変更できます</text>
+                        <text id="text_brand_custom" x="640" y="610" font-family="'Arial Black', sans-serif" font-size="24" font-weight="900" fill="#ffffff" opacity="0.4" text-anchor="middle" letter-spacing="8">ギアセレクト</text>
                     </svg>
                 </div>
 

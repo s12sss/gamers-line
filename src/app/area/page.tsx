@@ -41,7 +41,7 @@ export default function JapanCoveragePage() {
       <div className="relative z-10 max-w-[1100px] mx-auto w-full px-4 sm:px-10 pt-10 pb-8 sm:pt-16 sm:pb-12 overflow-hidden">
         <div className="absolute -top-[60px] -right-[80px] w-[400px] h-[300px] bg-[radial-gradient(ellipse,rgba(0,229,255,0.08),transparent_70%)] blur-[40px] pointer-events-none" />
         <div className="relative z-10 font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase opacity-70 mb-4">
-          // AREA COVERAGE
+          AREA COVERAGE
         </div>
         <h1 className="relative z-10 font-heading text-[clamp(2rem,5vw,3.25rem)] font-bold tracking-tight leading-[1.1] mb-4">
           エリアから<br />
@@ -155,7 +155,7 @@ export default function JapanCoveragePage() {
         {/* SEO Prefecture Links */}
         <section className="mt-20 pt-10 border-t border-white/10">
           <div className="font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase mb-6 text-center">
-            // PREFECTURE LIST
+            PREFECTURE LIST
           </div>
           <h2 className="font-heading text-2xl font-bold tracking-tight text-center mb-8">
             都道府県別の回線事情とPing値比較

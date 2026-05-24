@@ -213,7 +213,7 @@ export default async function Home() {
       {/* Features Section */}
       <section id="features" className="relative z-10 px-4 sm:px-10 py-[60px] sm:py-[100px] max-w-[1100px] mx-auto w-full">
         <div className="font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase mb-3 opacity-70">
-          // WHY GAMER'S LINE
+          WHY GAMER'S LINE
         </div>
         <h2 className="font-heading text-[clamp(1.75rem,4vw,2.75rem)] font-bold tracking-tight mb-[60px]">
           Gamer's Line が<br />
@@ -255,7 +255,7 @@ export default async function Home() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[radial-gradient(ellipse,rgba(0,229,255,0.05)_0%,transparent_70%)] pointer-events-none" />
         <div className="max-w-[1000px] mx-auto relative">
           <div className="font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase mb-3 opacity-70">
-            // HOW IT WORKS
+            HOW IT WORKS
           </div>
           <h2 className="font-heading text-[clamp(1.75rem,4vw,2.75rem)] font-bold tracking-tight">
             診断の流れ
@@ -316,7 +316,7 @@ export default async function Home() {
             {/* Compare & Providers Section */}
       <section className="relative z-10 px-4 sm:px-10 py-[60px] sm:py-[100px] max-w-[1100px] mx-auto w-full">
         <div className="font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase mb-3 opacity-70">
-          // COMPARE & PROVIDERS
+          COMPARE & PROVIDERS
         </div>
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6 mb-[40px]">
           <h2 className="font-heading text-[clamp(1.75rem,4vw,2.75rem)] font-bold tracking-tight">
@@ -346,10 +346,6 @@ export default async function Home() {
               {/* デコレーションアイコン */}
               <Icon className={`absolute right-5 bottom-5 w-20 h-20 opacity-[0.06] pointer-events-none
                 ${color === 'cyan' ? 'text-cyan' : color === 'emerald' ? 'text-emerald' : 'text-white'}`} />
-              <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-5
-                ${color === 'cyan' ? 'bg-cyan/10 text-cyan' : color === 'emerald' ? 'bg-emerald/10 text-emerald' : 'bg-white/5 text-white/60'}`}>
-                <Icon className="w-5 h-5" />
-              </div>
               <div>
                 <div className={`font-heading font-bold text-base text-white mb-1.5 transition-colors
                   ${color === 'cyan' ? 'group-hover:text-cyan' : color === 'emerald' ? 'group-hover:text-emerald' : ''}`}>
@@ -370,7 +366,7 @@ export default async function Home() {
       <section className="relative z-10 px-4 sm:px-10 py-[60px] sm:py-[100px] bg-black/40 border-y border-white/10">
         <div className="max-w-[1100px] mx-auto w-full">
           <div className="font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase mb-3 opacity-70">
-            // LATEST ARTICLES
+            LATEST ARTICLES
           </div>
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6 mb-[40px]">
             <h2 className="font-heading text-[clamp(1.75rem,4vw,2.75rem)] font-bold tracking-tight">
@@ -428,7 +424,7 @@ export default async function Home() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[radial-gradient(ellipse,rgba(0,229,255,0.03)_0%,transparent_70%)] pointer-events-none" />
         <div className="max-w-[800px] mx-auto relative z-10">
           <div className="font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase mb-3 opacity-70 text-center">
-            // FAQ
+            FAQ
           </div>
           <h2 className="font-heading text-[clamp(1.75rem,4vw,2.75rem)] font-bold tracking-tight mb-[40px] text-center">
             よくある質問

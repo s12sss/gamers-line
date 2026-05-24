@@ -60,7 +60,7 @@ export default async function ColumnList({ searchParams }: { searchParams: Promi
           { name: 'コラム記事', path: '/column' }
         ]} />
         <div className="font-mono text-[0.7rem] text-cyan tracking-[0.2em] uppercase opacity-70 mb-4 mt-4">
-          // COLUMN
+          COLUMN
         </div>
         <h1 className="relative z-10 font-heading text-[clamp(2rem,5vw,3.25rem)] font-bold tracking-tight leading-[1.1] mb-4">
           ゲーマーのための<br />
