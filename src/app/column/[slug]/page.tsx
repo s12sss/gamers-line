@@ -165,7 +165,7 @@ export default async function ColumnArticle({ params }: Props) {
             <Breadcrumbs items={[
               { name: 'HOME', path: '/' },
               { name: 'COLUMN', path: '/column' },
-              { name: column.title }
+              { name: column.title, path: `/column/${resolvedParams.slug}` }
             ]} />
 
             <div className="flex gap-2 mb-4 sm:mb-5 mt-2 flex-wrap">
@@ -290,7 +290,7 @@ export default async function ColumnArticle({ params }: Props) {
             <Breadcrumbs items={[
               { name: 'HOME', path: '/' },
               { name: 'COLUMN', path: '/column' },
-              { name: 'VALORANT PING GUIDE' }
+              { name: 'VALORANT PING GUIDE', path: `/column/${resolvedParams.slug}` }
             ]} />
 
             <div className="flex gap-2 mb-4 sm:mb-5 mt-2 flex-wrap">

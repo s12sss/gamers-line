@@ -143,7 +143,7 @@ export default async function PrefecturePage({ params }: Props) {
   const breadcrumbs = [
     { name: 'HOME', path: '/' },
     { name: 'エリアから探す', path: '/area' },
-    { name: `${prefData.name}のゲーミング回線` }
+    { name: `${prefData.name}のゲーミング回線`, path: `/area/${prefData.id}` }
   ];
 
   const prefDesc = getPrefectureDescription(prefData.name, regionData);
