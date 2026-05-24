@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
-import { MapPin, SlidersHorizontal } from 'lucide-react';
+import { Gauge, MapPin, ShieldCheck, Signal, SlidersHorizontal, Wallet } from 'lucide-react';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Tooltip from '@/components/Tooltip';
 import { PREFECTURES } from '@/utils/prefectureData';
@@ -252,6 +252,22 @@ export default function RankingClient() {
               <SlidersHorizontal className="h-4 w-4" />
               {rankedISPs.length}件表示
             </div>
+          </div>
+          <div className="mb-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
+            {([
+              { icon: Gauge,      name: 'Ping',  desc: '応答速度。低いほどラグが少ない',    color: 'text-emerald' },
+              { icon: ShieldCheck,name: '安定性', desc: '夜間・混雑時の通信品質維持',       color: 'text-cyan'    },
+              { icon: Signal,     name: '速度',   desc: '実測ダウンロード速度の高さ',       color: 'text-cyan'    },
+              { icon: Wallet,     name: '料金',   desc: '月額の安さ・コスパ',              color: 'text-white/60'},
+            ] as const).map(item => (
+              <div key={item.name} className="flex items-start gap-2 rounded-[8px] border border-white/[0.08] bg-white/[0.02] px-3 py-2.5">
+                <item.icon className={`mt-0.5 h-3.5 w-3.5 shrink-0 ${item.color}`} />
+                <div>
+                  <div className={`text-[0.72rem] font-bold ${item.color}`}>{item.name}</div>
+                  <div className="text-[0.68rem] leading-[1.5] text-white/45">{item.desc}</div>
+                </div>
+              </div>
+            ))}
           </div>
           <p className="mb-4 rounded-[8px] border border-white/10 bg-white/[0.03] px-3 py-2 text-[0.78rem] leading-[1.8] text-text-muted">
             ※表示料金は戸建ての標準月額です。マンションや各社キャンペーン適用で実際の負担額は変わります。<br />
