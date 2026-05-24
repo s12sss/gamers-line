@@ -2,8 +2,9 @@
 
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
-import { ChevronRight, Gauge, MapPin, ShieldCheck, Signal, SlidersHorizontal } from 'lucide-react';
+import { MapPin, SlidersHorizontal } from 'lucide-react';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import Tooltip from '@/components/Tooltip';
 import { PREFECTURES } from '@/utils/prefectureData';
 import { getRankedISPs, groupByTier, TIER_CONFIG, TIER_ORDER } from '@/utils/tierRanking';
 import type { RankedISP, TierLabel } from '@/utils/tierRanking';
@@ -212,7 +213,7 @@ export default function RankingClient() {
                 <span className="gradient-text">最強ランキング</span>
               </h1>
               <p className="text-sm text-text-muted max-w-[500px] leading-[1.7]">
-                Ping値・安定性・速度・料金の4軸でゲーマー目線に評価。<br className="hidden sm:block" />
+                <Tooltip text="オンラインゲームで重要な応答速度。低いほどラグを感じにくくなります。">Ping値</Tooltip>・<Tooltip text="夜間帯や混雑時でも通信品質を維持しやすいかを評価します。">安定性</Tooltip>・<Tooltip text="実測速度と最大速度をもとに、配信や大容量DLへの余裕を確認します。">速度</Tooltip>・料金の4軸でゲーマー目線に評価。<br className="hidden sm:block" />
                 総合スコアでS〜Cにランク化しています。
               </p>
             </div>
@@ -241,20 +242,6 @@ export default function RankingClient() {
       </header>
 
       <main className="relative z-10 mx-auto max-w-[1180px] px-4 py-10 sm:px-10 sm:py-14">
-        <section className="mb-8 grid gap-3 md:grid-cols-3">
-          {[
-            { icon: Gauge, title: 'Ping', body: 'オンラインゲームで重要な応答速度。低いほどラグを感じにくくなります。' },
-            { icon: ShieldCheck, title: '安定性', body: '夜間帯や混雑時でも通信品質を維持しやすいかを評価します。' },
-            { icon: Signal, title: '通信速度', body: '実測速度と最大速度をもとに、配信や大容量DLへの余裕を確認します。' },
-          ].map(item => (
-            <div key={item.title} className="rounded-[12px] border border-white/10 bg-white/[0.025] p-4">
-              <item.icon className="mb-3 h-5 w-5 text-cyan" />
-              <h2 className="font-heading text-base font-bold text-white">{item.title}</h2>
-              <p className="mt-1 text-[0.82rem] leading-[1.7] text-text-muted">{item.body}</p>
-            </div>
-          ))}
-        </section>
-
         <section className="mb-12">
           <div className="mb-4 flex items-center justify-between gap-4">
             <div>
