@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { ChevronRight, Play } from "lucide-react";
 import ispsData from "@/data/isps.json";
-import { useState } from "react";
 import Tooltip from "@/components/Tooltip";
 import { PROVIDER_DETAILS } from "@/data/providerDetails";
 import AffiliateLink from "@/components/AffiliateLink";
@@ -36,6 +35,13 @@ const getBaseProviderName = (name: string) => name.replace(/\s*\((?:10G|2G|1G)\)
 const formatPlanLabel = (speed: number) => `${speed}G`;
 
 const formatYen = (value: number) => `¥${value.toLocaleString()}`;
+
+const formatCarrier = (carrier: string) => {
+  if (carrier === 'SoftBank') return 'SoftBank';
+  if (carrier === 'au') return 'au';
+  if (carrier === 'docomo') return 'docomo';
+  return carrier;
+};
 
 const formatNumberRange = (values: number[], suffix = '') => {
   const sorted = Array.from(new Set(values)).sort((a, b) => a - b);
@@ -143,15 +149,8 @@ const buildProviderCards = (items: any[]): ProviderCard[] => {
 
 
 export default function ProviderPage() {
-  const [speedFilter, setSpeedFilter] = useState<'all' | '10g' | '1g'>('all');
-  
   const providerCards = buildProviderCards((ispsData as any[]).filter((isp: any) => !isp.hidden));
-  const filteredCards = providerCards.filter(card => {
-    if (speedFilter === 'all') return true;
-    if (speedFilter === '10g') return card.has10G;
-    if (speedFilter === '1g') return card.hasStandard;
-    return true;
-  });
+  const filteredCards = providerCards;
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground font-sans">
@@ -180,34 +179,6 @@ export default function ProviderPage() {
         
         <div className="flex flex-col gap-6">
           <h2 className="font-heading text-2xl sm:text-3xl font-bold">主要プロバイダ詳細一覧</h2>
-          
-          {/* Tabs */}
-          <div className="flex border-b border-white/10 overflow-x-auto no-scrollbar pt-2">
-            <button 
-              onClick={() => setSpeedFilter('all')} 
-              className={`relative px-6 py-3 font-bold text-sm transition-all whitespace-nowrap overflow-hidden ${speedFilter === 'all' ? 'text-cyan bg-[#0a0a12] rounded-t-lg border-t border-x border-cyan/30 -mb-px z-10' : 'text-text-muted hover:text-white hover:bg-white/5 rounded-t-lg border-t border-x border-transparent'}`}
-            >
-              {speedFilter === 'all' && <div className="absolute inset-0 bg-cyan/10 pointer-events-none" />}
-              <span className="relative z-10">すべて</span>
-              {speedFilter === 'all' && <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-cyan shadow-[0_0_10px_rgba(0,229,255,0.8)] z-20" />}
-            </button>
-            <button 
-              onClick={() => setSpeedFilter('10g')} 
-              className={`relative px-6 py-3 font-bold text-sm transition-all whitespace-nowrap overflow-hidden ${speedFilter === '10g' ? 'text-cyan bg-[#0a0a12] rounded-t-lg border-t border-x border-cyan/30 -mb-px z-10' : 'text-text-muted hover:text-white hover:bg-white/5 rounded-t-lg border-t border-x border-transparent'}`}
-            >
-              {speedFilter === '10g' && <div className="absolute inset-0 bg-cyan/10 pointer-events-none" />}
-              <span className="relative z-10">10Gプラン</span>
-              {speedFilter === '10g' && <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-cyan shadow-[0_0_10px_rgba(0,229,255,0.8)] z-20" />}
-            </button>
-            <button 
-              onClick={() => setSpeedFilter('1g')} 
-              className={`relative px-6 py-3 font-bold text-sm transition-all whitespace-nowrap overflow-hidden ${speedFilter === '1g' ? 'text-cyan bg-[#0a0a12] rounded-t-lg border-t border-x border-cyan/30 -mb-px z-10' : 'text-text-muted hover:text-white hover:bg-white/5 rounded-t-lg border-t border-x border-transparent'}`}
-            >
-              {speedFilter === '1g' && <div className="absolute inset-0 bg-cyan/10 pointer-events-none" />}
-              <span className="relative z-10">1G・標準プラン</span>
-              {speedFilter === '1g' && <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-cyan shadow-[0_0_10px_rgba(0,229,255,0.8)] z-20" />}
-            </button>
-          </div>
         </div>
         
         <div className="flex items-center justify-end mb-4">
@@ -280,9 +251,9 @@ export default function ProviderPage() {
                       </div>
                     )}
                     */}
-                    {isp.discounts && isp.discounts.length > 0 && (
+                    {card.plans.length === 1 && isp.discounts && isp.discounts.length > 0 && (
                       <div className="flex flex-col gap-1">
-                        <span className="font-mono text-[0.65rem] text-white/75 tracking-[0.05em] uppercase">{isp.discounts[0].carrier}利用で</span>
+                        <span className="font-mono text-[0.65rem] text-white/75 tracking-[0.05em] uppercase">{formatCarrier(isp.discounts[0].carrier)}利用で</span>
                         <span className="font-mono font-bold text-[1.3rem] leading-none text-emerald drop-shadow-[0_0_14px_rgba(0,230,118,0.4)]">-¥{isp.discounts[0].amount.toLocaleString()}</span>
                       </div>
                     )}
@@ -302,8 +273,13 @@ export default function ProviderPage() {
                             <span className="font-mono font-bold text-cyan">{formatPlanLabel(plan.max_speed_gbps)}</span>
                             <span className="font-mono text-emerald">{plan.avg_ping_ms}ms</span>
                             <span className="font-mono text-text">{formatYen(plan.actual_monthly_fee_jpy)}</span>
-                            <span className="font-mono text-emerald">
-                              {plan.discounts?.[0] ? `-${formatYen(plan.discounts[0].amount)}` : '—'}
+                            <span className="font-mono text-emerald leading-snug">
+                              {plan.discounts?.[0] ? (
+                                <>
+                                  <span className="block text-[0.62rem] text-white/55">{formatCarrier(plan.discounts[0].carrier)}で</span>
+                                  <span>-¥{plan.discounts[0].amount.toLocaleString()}</span>
+                                </>
+                              ) : '—'}
                             </span>
                           </div>
                         ))}
@@ -319,19 +295,19 @@ export default function ProviderPage() {
                 
                 <div className="flex-1 p-6 sm:p-8 pt-6 flex flex-col gap-5">
                   <p className="text-[0.875rem] text-text/90 leading-[1.75]">
-                    {isp.description}
+                    {card.description}
                   </p>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="flex flex-col gap-2">
                       <div className="font-mono text-[0.62rem] tracking-[0.12em] uppercase text-emerald mb-1">// メリット</div>
-                      {isp.pros && isp.pros.map((pro: string, i: number) => (
+                      {card.pros.map((pro: string, i: number) => (
                         <div key={i} className="flex items-start gap-2 text-[0.82rem] text-text/80 leading-[1.5]"><span className="w-1.5 h-1.5 rounded-full bg-emerald shrink-0 mt-1.5" />{pro}</div>
                       ))}
                     </div>
                     <div className="flex flex-col gap-2">
                       <div className="font-mono text-[0.62rem] tracking-[0.12em] uppercase text-red-400 mb-1">// デメリット</div>
-                      {isp.cons && isp.cons.map((con: string, i: number) => (
+                      {card.cons.map((con: string, i: number) => (
                         <div key={i} className="flex items-start gap-2 text-[0.82rem] text-text/80 leading-[1.5]"><span className="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-1.5" />{con}</div>
                       ))}
                     </div>
