@@ -15,7 +15,7 @@ function OptionCard({ title, desc, onClick }: { title: string, desc?: string, on
       onClick={onClick}
       whileTap={{ scale: 0.97, x: 4 }}
       transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-      className="group relative w-full text-left p-4 sm:p-5 rounded-[14px] border border-white/5 bg-white/[0.03] transition-all duration-200 hover:border-cyan/40 hover:bg-cyan/5 hover:translate-x-1 hover:shadow-[0_0_20px_rgba(0,229,255,0.08),inset_0_0_20px_rgba(0,229,255,0.03)] overflow-hidden flex items-center gap-3.5"
+      className="group relative w-full text-left p-3 sm:p-4 rounded-[14px] border border-white/5 bg-white/[0.03] transition-all duration-200 hover:border-cyan/40 hover:bg-cyan/5 hover:translate-x-1 hover:shadow-[0_0_20px_rgba(0,229,255,0.08),inset_0_0_20px_rgba(0,229,255,0.03)] overflow-hidden flex items-center gap-3.5"
     >
       {/* Scanline on hover */}
       <div className="absolute top-0 -left-full w-[60%] h-full bg-gradient-to-r from-transparent via-cyan/10 to-transparent -skew-x-12 opacity-0 group-hover:opacity-100 group-hover:animate-[scanline_0.6s_ease_forwards]" />
@@ -295,13 +295,13 @@ export default function DiagnosisForm({ initialGenre }: { initialGenre?: string 
       case 1:
         return (
           <motion.div key="step1" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.25 }}>
-            <div className="font-heading text-xl sm:text-[1.6rem] font-bold tracking-tight mb-5 sm:mb-7 flex items-center gap-3 text-text">
+            <div className="font-heading text-xl sm:text-[1.6rem] font-bold tracking-tight mb-3 sm:mb-4 flex items-center gap-3 text-text">
               <div className="w-10 h-10 rounded-[10px] bg-cyan/10 border border-cyan/20 flex items-center justify-center text-cyan shrink-0">
                 {stepIcons[1]}
               </div>
               {stepTitles[1]}
             </div>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-2">
               <OptionCard onClick={() => handleNext('gameGenre', 'fps')} title="FPS / TPS" desc="VALORANT・Apex Legends・Counter-Strike 2 など" />
               <OptionCard onClick={() => handleNext('gameGenre', 'fighting')} title="格闘ゲーム" desc="ストリートファイター6・鉄拳8 など" />
               <OptionCard onClick={() => handleNext('gameGenre', 'mmo')} title="MMO / オンラインRPG" desc="ファイナルファンタジーXIV・ドラゴンクエストX など" />
@@ -313,13 +313,13 @@ export default function DiagnosisForm({ initialGenre }: { initialGenre?: string 
       case 2:
         return (
           <motion.div key="step2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.25 }}>
-            <div className="font-heading text-xl sm:text-[1.6rem] font-bold tracking-tight mb-5 sm:mb-7 flex items-center gap-3 text-text">
+            <div className="font-heading text-xl sm:text-[1.6rem] font-bold tracking-tight mb-3 sm:mb-4 flex items-center gap-3 text-text">
               <div className="w-10 h-10 rounded-[10px] bg-cyan/10 border border-cyan/20 flex items-center justify-center text-cyan shrink-0">
                 {stepIcons[2]}
               </div>
               {stepTitles[2]}
             </div>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-2">
               <OptionCard onClick={() => handleNext('playFrequency', 'everyday')} title="毎日ガッツリ" desc="平日も休日も長時間プレイする" />
               <OptionCard onClick={() => handleNext('playFrequency', 'often')} title="週に数回程度" desc="仕事や学校の合間にプレイする" />
               <OptionCard onClick={() => handleNext('playFrequency', 'weekend')} title="たまに週末だけ" desc="気分転換に軽く遊ぶ程度" />
@@ -329,13 +329,13 @@ export default function DiagnosisForm({ initialGenre }: { initialGenre?: string 
       case 3:
         return (
           <motion.div key="step3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.25 }}>
-            <div className="font-heading text-xl sm:text-[1.6rem] font-bold tracking-tight mb-5 sm:mb-7 flex items-center gap-3 text-text">
+            <div className="font-heading text-xl sm:text-[1.6rem] font-bold tracking-tight mb-3 sm:mb-4 flex items-center gap-3 text-text">
               <div className="w-10 h-10 rounded-[10px] bg-cyan/10 border border-cyan/20 flex items-center justify-center text-cyan shrink-0">
                 {stepIcons[3]}
               </div>
               {stepTitles[3]}
             </div>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-2">
               <OptionCard onClick={() => handleNext('requires10G', true)} title="あてはまる" desc="配信をする・同居人がヘビーユーザー・大容量ファイルのDLが頻繁にある" />
               <OptionCard onClick={() => handleNext('requires10G', false)} title="あてはまらない" desc="自分のゲームプレイのみ" />
             </div>
@@ -344,7 +344,7 @@ export default function DiagnosisForm({ initialGenre }: { initialGenre?: string 
       case 4:
         return (
           <motion.div key="step4" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.25 }}>
-            <div className="font-heading text-xl sm:text-[1.6rem] font-bold tracking-tight mb-5 sm:mb-7 flex items-center gap-3 text-text">
+            <div className="font-heading text-xl sm:text-[1.6rem] font-bold tracking-tight mb-3 sm:mb-4 flex items-center gap-3 text-text">
               <div className="w-10 h-10 rounded-[10px] bg-cyan/10 border border-cyan/20 flex items-center justify-center text-cyan shrink-0">
                 {stepIcons[4]}
               </div>
@@ -367,13 +367,13 @@ export default function DiagnosisForm({ initialGenre }: { initialGenre?: string 
       case 5:
         return (
           <motion.div key="step5" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.25 }}>
-            <div className="font-heading text-xl sm:text-[1.6rem] font-bold tracking-tight mb-5 sm:mb-7 flex items-center gap-3 text-text">
+            <div className="font-heading text-xl sm:text-[1.6rem] font-bold tracking-tight mb-3 sm:mb-4 flex items-center gap-3 text-text">
               <div className="w-10 h-10 rounded-[10px] bg-cyan/10 border border-cyan/20 flex items-center justify-center text-cyan shrink-0">
                 {stepIcons[5]}
               </div>
               {stepTitles[5]}
             </div>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-2">
               <OptionCard onClick={() => handleNext('housingType', 'house')} title="戸建て" desc="専用線を引ける可能性が高いです" />
               <OptionCard onClick={() => handleNext('housingType', 'mansion_optical')} title="マンション（光配線）" desc="多くの光回線が導入可能です" />
               <OptionCard onClick={() => handleNext('housingType', 'mansion_vdsl')} title="マンション（VDSL）" desc="電話線方式。一部の独自回線は導入不可" />
@@ -384,7 +384,7 @@ export default function DiagnosisForm({ initialGenre }: { initialGenre?: string 
       case 6:
         return (
           <motion.div key="step6" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.25 }}>
-            <div className="font-heading text-xl sm:text-[1.6rem] font-bold tracking-tight mb-5 sm:mb-7 flex items-center gap-3 text-text">
+            <div className="font-heading text-xl sm:text-[1.6rem] font-bold tracking-tight mb-3 sm:mb-4 flex items-center gap-3 text-text">
               <div className="w-10 h-10 rounded-[10px] bg-cyan/10 border border-cyan/20 flex items-center justify-center text-cyan shrink-0">
                 {stepIcons[6]}
               </div>
@@ -401,13 +401,13 @@ export default function DiagnosisForm({ initialGenre }: { initialGenre?: string 
       case 7:
         return (
           <motion.div key="step7" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.25 }}>
-            <div className="font-heading text-xl sm:text-[1.6rem] font-bold tracking-tight mb-5 sm:mb-7 flex items-center gap-3 text-text">
+            <div className="font-heading text-xl sm:text-[1.6rem] font-bold tracking-tight mb-3 sm:mb-4 flex items-center gap-3 text-text">
               <div className="w-10 h-10 rounded-[10px] bg-cyan/10 border border-cyan/20 flex items-center justify-center text-cyan shrink-0">
                 {stepIcons[7]}
               </div>
               {stepTitles[7]}
             </div>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-2">
               <OptionCard onClick={() => handleNext('wantsDiscount', true)} title="はい" desc="できれば割引を受けたい" />
               <OptionCard onClick={() => handleNext('wantsDiscount', false)} title="いいえ" desc="割引よりも回線の性能を優先したい" />
             </div>
@@ -416,13 +416,13 @@ export default function DiagnosisForm({ initialGenre }: { initialGenre?: string 
       case 8:
         return (
           <motion.div key="step8" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.25 }}>
-            <div className="font-heading text-xl sm:text-[1.6rem] font-bold tracking-tight mb-5 sm:mb-7 flex items-center gap-3 text-text">
+            <div className="font-heading text-xl sm:text-[1.6rem] font-bold tracking-tight mb-3 sm:mb-4 flex items-center gap-3 text-text">
               <div className="w-10 h-10 rounded-[10px] bg-cyan/10 border border-cyan/20 flex items-center justify-center text-cyan shrink-0">
                 {stepIcons[8]}
               </div>
               {stepTitles[8]}
             </div>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-2">
               <OptionCard onClick={() => handleNext('priority', 'balance')} title="バランスよく選びたい" desc="品質と料金のバランスで選ぶ（迷ったらこれ）" />
               <OptionCard onClick={() => handleNext('priority', 'ping')} title="とにかくラグを無くしたい" desc="料金より通信品質を最優先" />
               <OptionCard onClick={() => handleNext('priority', 'price')} title="月額料金を抑えたい" desc="できるだけ安い回線が良い" />

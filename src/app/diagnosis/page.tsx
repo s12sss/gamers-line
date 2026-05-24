@@ -28,7 +28,7 @@ export default async function DiagnosisPage({ searchParams }: { searchParams: Pr
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans selection:bg-neon-cyan selection:text-black py-12 px-4">
+    <div className="min-h-screen bg-background text-foreground font-sans selection:bg-neon-cyan selection:text-black py-6 px-4">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppJsonLd) }}
@@ -38,8 +38,8 @@ export default async function DiagnosisPage({ searchParams }: { searchParams: Pr
           { name: 'HOME', path: '/' },
           { name: '回線診断', path: '/diagnosis' }
         ]} />
-        
-        <div className="text-center mb-12 mt-4">
+
+        <div className="text-center mb-5 mt-3">
           <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
             最適な回線を<span className="gradient-text">見つける</span>
           </h1>

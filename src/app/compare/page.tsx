@@ -98,7 +98,7 @@ export default function ComparePage() {
           COMPARE
         </div>
         <h1 className="font-heading text-[clamp(2rem,5vw,3.25rem)] font-bold tracking-tight leading-[1.1] mb-4">
-          主要ゲーミング回線を<br />
+          ゲーミング回線を<br />
           <span className="gradient-text">徹底比較</span>
         </h1>
         <p className="text-sm text-text-muted max-w-[500px] leading-[1.7]">

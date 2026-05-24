@@ -7,6 +7,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import { PREFECTURES } from '@/utils/prefectureData';
 import { getRankedISPs, groupByTier, TIER_CONFIG, TIER_ORDER } from '@/utils/tierRanking';
 import type { RankedISP, TierLabel } from '@/utils/tierRanking';
+import AffiliateLink from '@/components/AffiliateLink';
 
 function formatYen(value: number) {
   return `¥${value.toLocaleString()}`;
@@ -137,14 +138,24 @@ function TierExplanation({ tier, isps }: { tier: TierLabel; isps: RankedISP[] })
                 <h3 className="font-heading text-base font-bold text-white">{isp.name}</h3>
                 <div className="mt-1 text-[0.72rem] text-text-dim">{isp.providerName}</div>
               </div>
-              <div className="flex shrink-0 items-center gap-5">
+              <div className="flex shrink-0 items-center gap-4">
                 <div className="text-right">
                   <div className="font-mono text-[0.6rem] uppercase tracking-[0.12em] text-white/40">Score</div>
                   <div className="font-mono text-[1.4rem] font-black leading-none text-cyan">{isp.score}</div>
                 </div>
-                <Link href={isp.detailLink} className="inline-flex items-center gap-1 rounded-[8px] border border-cyan/30 bg-cyan/[0.08] px-3 py-1.5 text-[0.72rem] font-bold text-cyan transition-all hover:bg-cyan/20 hover:border-cyan/60">
-                  詳細 →
-                </Link>
+                <div className="flex flex-col gap-1.5">
+                  <AffiliateLink
+                    href={isp.affiliateLink}
+                    ispName={isp.name}
+                    ispId={isp.id}
+                    className="inline-flex items-center justify-center gap-1 rounded-[8px] bg-cyan px-4 py-2 text-[0.76rem] font-bold text-black transition-all hover:bg-cyan/80 hover:shadow-[0_0_16px_rgba(0,229,255,0.4)]"
+                  >
+                    申込む
+                  </AffiliateLink>
+                  <Link href={isp.detailLink} className="text-center text-[0.68rem] text-white/40 hover:text-white/70 transition-colors">
+                    詳細を見る
+                  </Link>
+                </div>
               </div>
             </div>
             <p className="mt-3 text-[0.86rem] leading-[1.75] text-text-muted">{getIspNote(isp)}</p>

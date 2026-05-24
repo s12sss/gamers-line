@@ -320,7 +320,7 @@ export default async function Home() {
         </div>
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6 mb-[40px]">
           <h2 className="font-heading text-[clamp(1.75rem,4vw,2.75rem)] font-bold tracking-tight">
-            主要ゲーミング回線を<br />
+            ゲーミング回線を<br />
             <span className="gradient-text">詳しく見る</span>
           </h2>
           <p className="text-sm text-text-muted max-w-[400px] leading-[1.7]">
@@ -333,17 +333,17 @@ export default async function Home() {
           {/* ランキング — おすすめ */}
           <Link
             href="/ranking"
-            className="group relative flex flex-col justify-between p-6 sm:p-8 rounded-2xl border overflow-hidden transition-all duration-300 hover:-translate-y-1 min-h-[180px] border-[#ff8270]/30 bg-[#ff8270]/[0.04] hover:border-[#ff8270]/60 hover:bg-[#ff8270]/[0.08]"
+            className="group relative flex flex-col justify-between p-6 sm:p-8 rounded-2xl border overflow-hidden transition-all duration-300 hover:-translate-y-1 min-h-[180px] border-[#a78bfa]/30 bg-[#a78bfa]/[0.04] hover:border-[#a78bfa]/60 hover:bg-[#a78bfa]/[0.08]"
           >
-            <Trophy className="absolute right-5 bottom-5 w-20 h-20 opacity-[0.06] pointer-events-none text-[#ff8270]" />
-            <span className="absolute right-4 top-4 font-mono text-[0.6rem] font-black tracking-[0.1em] text-black bg-[#ff8270] px-2 py-0.5 rounded-full">PICK UP</span>
+            <Trophy className="absolute right-5 bottom-5 w-20 h-20 opacity-[0.06] pointer-events-none text-[#a78bfa]" />
+            <span className="absolute right-4 top-4 font-mono text-[0.6rem] font-black tracking-[0.1em] text-black bg-[#a78bfa] px-2 py-0.5 rounded-full">PICK UP</span>
             <div>
-              <div className="font-heading font-bold text-base text-white mb-1.5 group-hover:text-[#ff8270] transition-colors">
+              <div className="font-heading font-bold text-base text-white mb-1.5 group-hover:text-[#a78bfa] transition-colors">
                 回線ランキング
               </div>
               <div className="text-xs text-text-muted leading-relaxed">Ping・安定性・速度・料金の4軸でS〜Cにランク化しています。</div>
             </div>
-            <div className="flex items-center gap-1 mt-5 text-xs font-bold text-[#ff8270]/40 group-hover:text-[#ff8270] transition-all group-hover:translate-x-0.5">
+            <div className="flex items-center gap-1 mt-5 text-xs font-bold text-[#a78bfa]/40 group-hover:text-[#a78bfa] transition-all group-hover:translate-x-0.5">
               詳しく見る <ChevronRight className="w-3.5 h-3.5" />
             </div>
           </Link>
