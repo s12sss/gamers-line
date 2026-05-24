@@ -8,15 +8,148 @@ import Tooltip from "@/components/Tooltip";
 import { PROVIDER_DETAILS } from "@/data/providerDetails";
 import AffiliateLink from "@/components/AffiliateLink";
 
+type ProviderCard = {
+  key: string;
+  slug: string;
+  name: string;
+  providerName: string;
+  representative: any;
+  plans: any[];
+  pingText: string;
+  feeText: string;
+  speedText: string;
+  bestPing: number;
+  has10G: boolean;
+  hasStandard: boolean;
+  areaNote: string | null;
+  description: string;
+  pros: string[];
+  cons: string[];
+};
+
+const getProviderKey = (isp: any) => isp.detailLink || `/provider/${isp.id.split('_')[0]}`;
+
+const getProviderSlug = (key: string) => key.replace(/^\/provider\//, '');
+
+const getBaseProviderName = (name: string) => name.replace(/\s*\((?:10G|2G|1G)\)\s*$/i, '');
+
+const formatPlanLabel = (speed: number) => `${speed}G`;
+
+const formatYen = (value: number) => `¥${value.toLocaleString()}`;
+
+const formatNumberRange = (values: number[], suffix = '') => {
+  const sorted = Array.from(new Set(values)).sort((a, b) => a - b);
+  if (sorted.length === 0) return '—';
+  if (sorted.length === 1) return `${sorted[0]}${suffix}`;
+  return `${sorted[0]}〜${sorted[sorted.length - 1]}${suffix}`;
+};
+
+const formatYenRange = (values: number[]) => {
+  const sorted = Array.from(new Set(values)).sort((a, b) => a - b);
+  if (sorted.length === 0) return '—';
+  if (sorted.length === 1) return formatYen(sorted[0]);
+  return `${formatYen(sorted[0])}〜${formatYen(sorted[sorted.length - 1])}`;
+};
+
+const getAreaNote = (key: string, plans: any[]) => {
+  const has10G = plans.some(plan => plan.max_speed_gbps >= 10);
+  if (!has10G) return null;
+  if (key.includes('/gamewith')) return '10Gはフレッツ光クロス提供エリアのみ';
+  if (key.includes('/nuro')) return '10Gは提供エリア・建物設備の確認が必要';
+  if (key.includes('/au')) return '10Gは一部エリアの戸建て中心';
+  return '10Gは提供エリア・建物設備により利用できない場合あり';
+};
+
+const getMergedCopy = (key: string, representative: any, plans: any[]) => {
+  if (plans.length === 1) {
+    return {
+      description: representative.description,
+      pros: representative.pros || [],
+      cons: representative.cons || [],
+    };
+  }
+
+  if (key.includes('/nuro')) {
+    return {
+      description: 'NURO光は2G/10Gを選べる独自回線。低PingとSoftBankスマホ割が強みで、コスパ重視なら2G、配信や家族利用まで余裕を見たいなら10Gが候補です。',
+      pros: [
+        '平均11〜12msの低Ping',
+        '2G/10Gから用途で選べる',
+        'SoftBankスマホとのセット割が使える',
+      ],
+      cons: [
+        'VDSLマンション不可',
+        '提供エリア・建物設備の確認が必要',
+        '10Gはエリアや設備により申し込めない場合がある',
+      ],
+    };
+  }
+
+  if (key.includes('/gamewith')) {
+    return {
+      description: 'GameWith光はゲーム向けの専用帯域を使える回線。標準的に使うなら1G、配信・大容量DL・家族利用まで見たいなら10Gが候補です。',
+      pros: [
+        'ゲーム向け専用帯域で混雑に強い',
+        '1G/10Gから用途で選べる',
+        'VDSLマンションでも候補に入る',
+      ],
+      cons: [
+        'スマホとのセット割がない',
+        '月額料金はやや高め',
+        '10Gはフレッツ光クロス提供エリアのみ',
+      ],
+    };
+  }
+
+  return {
+    description: representative.description,
+    pros: representative.pros || [],
+    cons: representative.cons || [],
+  };
+};
+
+const buildProviderCards = (items: any[]): ProviderCard[] => {
+  const grouped = new Map<string, any[]>();
+
+  items.forEach((isp) => {
+    const key = getProviderKey(isp);
+    grouped.set(key, [...(grouped.get(key) || []), isp]);
+  });
+
+  return Array.from(grouped.entries()).map(([key, plans]) => {
+    const sortedPlans = [...plans].sort((a, b) => a.max_speed_gbps - b.max_speed_gbps);
+    const fastestPlan = [...plans].sort((a, b) => b.max_speed_gbps - a.max_speed_gbps)[0];
+    const representative = fastestPlan || plans[0];
+    const mergedCopy = getMergedCopy(key, representative, sortedPlans);
+
+    return {
+      key,
+      slug: getProviderSlug(key),
+      name: getBaseProviderName(representative.name),
+      providerName: representative.providerName,
+      representative,
+      plans: sortedPlans,
+      pingText: formatNumberRange(plans.map(plan => plan.avg_ping_ms), ' ms'),
+      feeText: formatYenRange(plans.map(plan => plan.actual_monthly_fee_jpy)),
+      speedText: sortedPlans.map(plan => formatPlanLabel(plan.max_speed_gbps)).join(' / '),
+      bestPing: Math.min(...plans.map(plan => plan.avg_ping_ms)),
+      has10G: plans.some(plan => plan.max_speed_gbps >= 10),
+      hasStandard: plans.some(plan => plan.max_speed_gbps < 10),
+      areaNote: getAreaNote(key, plans),
+      ...mergedCopy,
+    };
+  });
+};
+
 
 export default function ProviderPage() {
   const [speedFilter, setSpeedFilter] = useState<'all' | '10g' | '1g'>('all');
   
-  // Create a filtered version of ispsData
-  const filteredIsps = ispsData.filter((isp: any) => !isp.hidden).filter(isp => {
+  const providerCards = buildProviderCards((ispsData as any[]).filter((isp: any) => !isp.hidden));
+  const filteredCards = providerCards.filter(card => {
     if (speedFilter === 'all') return true;
-    if (speedFilter === '10g') return isp.max_speed_gbps >= 10;
-    if (speedFilter === '1g') return isp.max_speed_gbps < 10;
+    if (speedFilter === '10g') return card.has10G;
+    if (speedFilter === '1g') return card.hasStandard;
     return true;
   });
 
@@ -85,14 +218,15 @@ export default function ProviderPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
-          {filteredIsps.map((isp, index) => {
+          {filteredCards.map((card, index) => {
+            const isp = card.representative;
             const isFirst = index === 0;
             const borderClass = isFirst ? 'border-cyan/25' : 'border-white/10';
             const bgClass = isFirst ? 'bg-cyan/[0.03]' : 'bg-white/[0.035]';
             const shadowClass = isFirst ? 'hover:shadow-[0_24px_64px_rgba(0,0,0,0.4),0_0_30px_rgba(0,229,255,0.07)]' : 'hover:shadow-[0_24px_64px_rgba(0,0,0,0.4),0_0_30px_rgba(255,255,255,0.05)]';
             
             return (
-              <div key={isp.id} className={`flex flex-col rounded-[24px] border ${borderClass} ${bgClass} transition-all duration-300 hover:border-cyan/30 hover:-translate-y-1 ${shadowClass} animate-[fadeUp_0.5s_ease_both]`} style={{ animationDelay: `${index * 100}ms` }}>
+              <div key={card.key} className={`flex flex-col rounded-[24px] border ${borderClass} ${bgClass} transition-all duration-300 hover:border-cyan/30 hover:-translate-y-1 ${shadowClass} animate-[fadeUp_0.5s_ease_both]`} style={{ animationDelay: `${index * 100}ms` }}>
                 <div className="p-7 sm:p-8 pb-6 border-b border-white/10 relative">
                   {isFirst && (
                     <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_100%_0%,rgba(0,229,255,0.1),transparent_60%)] rounded-t-[24px] pointer-events-none" />
@@ -103,8 +237,8 @@ export default function ProviderPage() {
                   
                   <div className="relative z-10 flex items-start justify-between gap-4 mb-4">
                     <div className="flex flex-col gap-1.5 min-w-0">
-                      <div className="font-heading text-[1.4rem] sm:text-[1.5rem] font-bold tracking-tight leading-tight break-keep">{isp.name}</div>
-                      <div className="text-[0.75rem] text-text-muted">{isp.providerName}</div>
+                      <div className="font-heading text-[1.4rem] sm:text-[1.5rem] font-bold tracking-tight leading-tight break-keep">{card.name}</div>
+                      <div className="text-[0.75rem] text-text-muted">{card.providerName}</div>
                     </div>
                     <div className="flex flex-col items-end gap-1.5 shrink-0">
                       {isp.type === '独自回線' && (
@@ -120,18 +254,24 @@ export default function ProviderPage() {
                   </div>
 
                   <div className="relative z-10 flex gap-6 flex-wrap mt-6">
-                    <div className="flex flex-col gap-1">
-                      <span className="font-mono text-[0.7rem] text-white/75 tracking-[0.1em] uppercase"><Tooltip text="データが往復する時間の遅延を示す指標。FPSでは15ms以下が理想的とされます。">平均Ping</Tooltip></span>
-                      <span className={`font-mono font-bold text-[1.3rem] leading-none ${isp.avg_ping_ms <= 15 ? 'text-emerald drop-shadow-[0_0_14px_rgba(0,230,118,0.4)]' : isp.avg_ping_ms <= 20 ? 'text-cyan' : 'text-amber-500'}`}>{isp.avg_ping_ms} ms</span>
-                    </div>
-                    <div className="flex flex-col gap-1">
-                      <span className="font-mono text-[0.7rem] text-white/75 tracking-[0.1em] uppercase"><Tooltip text="標準月額（税込）です。キャンペーンや割引適用で実際の負担額は変動します。詳細は公式サイトをご確認ください。">月額料金</Tooltip></span>
-                      <span className="font-mono font-bold text-[1.1rem] sm:text-[1.2rem] leading-none text-text mt-0.5">¥{isp.actual_monthly_fee_jpy.toLocaleString()}</span>
-                    </div>
-                    <div className="flex flex-col gap-1">
-                      <span className="font-mono text-[0.7rem] text-white/75 tracking-[0.1em] uppercase"><Tooltip text="理論上の最も速い通信速度のこと。実際の速度とは異なる場合が多いです。">最大速度</Tooltip></span>
-                      <span className={`font-mono font-bold text-[1.3rem] leading-none text-cyan ${isp.max_speed_gbps >= 10 ? 'drop-shadow-[0_0_14px_rgba(0,229,255,0.4)]' : ''}`}>{isp.max_speed_gbps} Gbps</span>
-                    </div>
+                    {card.plans.length === 1 && (
+                      <div className="flex flex-col gap-1">
+                        <span className="font-mono text-[0.7rem] text-white/75 tracking-[0.1em] uppercase"><Tooltip text="データが往復する時間の遅延を示す指標。FPSでは15ms以下が理想的とされます。">平均Ping</Tooltip></span>
+                        <span className={`font-mono font-bold text-[1.3rem] leading-none ${card.bestPing <= 15 ? 'text-emerald drop-shadow-[0_0_14px_rgba(0,230,118,0.4)]' : card.bestPing <= 20 ? 'text-cyan' : 'text-amber-500'}`}>{card.pingText}</span>
+                      </div>
+                    )}
+                    {card.plans.length === 1 && (
+                      <>
+                        <div className="flex flex-col gap-1">
+                          <span className="font-mono text-[0.7rem] text-white/75 tracking-[0.1em] uppercase"><Tooltip text="標準月額（税込）です。キャンペーンや割引適用で実際の負担額は変動します。詳細は公式サイトをご確認ください。">月額料金</Tooltip></span>
+                          <span className="font-mono font-bold text-[1.1rem] sm:text-[1.2rem] leading-none text-text mt-0.5">{card.feeText}</span>
+                        </div>
+                        <div className="flex flex-col gap-1">
+                          <span className="font-mono text-[0.7rem] text-white/75 tracking-[0.1em] uppercase"><Tooltip text="理論上の最も速い通信速度のこと。実際の速度とは異なる場合が多いです。">最大速度</Tooltip></span>
+                          <span className={`font-mono font-bold text-[1.3rem] leading-none text-cyan ${card.has10G ? 'drop-shadow-[0_0_14px_rgba(0,229,255,0.4)]' : ''}`}>{card.speedText}</span>
+                        </div>
+                      </>
+                    )}
                     {/*
                     {isp.cashback_text && isp.cashback_text !== "キャンペーンなし" && (
                       <div className="flex flex-col gap-1">
@@ -147,6 +287,34 @@ export default function ProviderPage() {
                       </div>
                     )}
                   </div>
+
+                  {card.plans.length > 1 && (
+                    <div className="relative z-10 mt-5 rounded-2xl border border-white/10 bg-black/20 p-3">
+                      <div className="grid grid-cols-[58px_1fr_1fr_1fr] gap-2 px-2 pb-2 font-mono text-[0.62rem] tracking-[0.08em] text-white/45">
+                        <span>プラン</span>
+                        <span>Ping</span>
+                        <span>月額</span>
+                        <span>スマホ割</span>
+                      </div>
+                      <div className="flex flex-col gap-1.5">
+                        {card.plans.map((plan) => (
+                          <div key={plan.id} className="grid grid-cols-[58px_1fr_1fr_1fr] gap-2 rounded-xl bg-white/[0.035] px-2 py-2 text-[0.78rem]">
+                            <span className="font-mono font-bold text-cyan">{formatPlanLabel(plan.max_speed_gbps)}</span>
+                            <span className="font-mono text-emerald">{plan.avg_ping_ms}ms</span>
+                            <span className="font-mono text-text">{formatYen(plan.actual_monthly_fee_jpy)}</span>
+                            <span className="font-mono text-emerald">
+                              {plan.discounts?.[0] ? `-${formatYen(plan.discounts[0].amount)}` : '—'}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                      {card.areaNote && (
+                        <p className="mt-2 px-2 text-[0.72rem] leading-relaxed text-amber-500/85">
+                          ※ {card.areaNote}
+                        </p>
+                      )}
+                    </div>
+                  )}
                 </div>
                 
                 <div className="flex-1 p-6 sm:p-8 pt-6 flex flex-col gap-5">
@@ -157,13 +325,13 @@ export default function ProviderPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="flex flex-col gap-2">
                       <div className="font-mono text-[0.62rem] tracking-[0.12em] uppercase text-emerald mb-1">// メリット</div>
-                      {isp.pros && isp.pros.map((pro, i) => (
+                      {isp.pros && isp.pros.map((pro: string, i: number) => (
                         <div key={i} className="flex items-start gap-2 text-[0.82rem] text-text/80 leading-[1.5]"><span className="w-1.5 h-1.5 rounded-full bg-emerald shrink-0 mt-1.5" />{pro}</div>
                       ))}
                     </div>
                     <div className="flex flex-col gap-2">
                       <div className="font-mono text-[0.62rem] tracking-[0.12em] uppercase text-red-400 mb-1">// デメリット</div>
-                      {isp.cons && isp.cons.map((con, i) => (
+                      {isp.cons && isp.cons.map((con: string, i: number) => (
                         <div key={i} className="flex items-start gap-2 text-[0.82rem] text-text/80 leading-[1.5]"><span className="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-1.5" />{con}</div>
                       ))}
                     </div>
