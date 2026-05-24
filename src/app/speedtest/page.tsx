@@ -230,7 +230,7 @@ export default function SpeedTestPage() {
 
   const shareOnX = () => {
     if (!result) return;
-    const text = `私のゲーミング回線ランクは【${result.tier}】でした！\nPing: ${result.ping}ms / ダウンロード: ${Math.round(result.speed)}Mbps\n\nゲームおすすめ回線 探すならGamer's Line！`;
+    const text = `私のゲーミング回線ランクは【${result.tier}】でした！\nPing: ${result.ping}ms / ダウンロード: ${Math.round(result.speed)}Mbps\n\nゲームおすすめ回線探すならGamer's Line！`;
     const url = `https://gamers-line.jp/speedtest/result?ping=${result.ping}&tier=${result.tier}&dl=${Math.round(result.speed)}&v=1`;
     window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
   };
