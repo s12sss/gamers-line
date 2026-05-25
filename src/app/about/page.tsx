@@ -5,8 +5,15 @@ import AuthorProfile from "@/components/AuthorProfile";
 
 
 export const metadata: Metadata = {
+  title: "運営者情報",
+  description: "Gamer's Lineの運営者情報。ゲーマー向けにPing値や通信の安定性を重視したインターネット回線選びをサポートしています。",
   alternates: {
     canonical: '/about',
+  },
+  openGraph: {
+    title: "運営者情報 | Gamer's Line",
+    description: "Gamer's Lineの運営者情報。ゲーマー向けにPing値や通信の安定性を重視したインターネット回線選びをサポートしています。",
+    url: "https://gamers-line.jp/about",
   },
 };
 
