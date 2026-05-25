@@ -1,11 +1,26 @@
 const https = require('https');
+const fs = require('fs');
+
+function readEnvFile() {
+  const env = {};
+  const envFile = fs.readFileSync('.env.local', 'utf8');
+  envFile.split('\n').forEach((line) => {
+    const match = line.match(/^([^=]+)=(.*)$/);
+    if (match) {
+      env[match[1].trim()] = match[2].trim().replace(/^"|"$/g, '');
+    }
+  });
+  return env;
+}
+
+const env = readEnvFile();
 
 const options = {
-  hostname: 'gamers-line-blog.microcms.io',
+  hostname: `${env.MICROCMS_SERVICE_DOMAIN}.microcms.io`,
   path: '/api/v1/columns?limit=1',
   method: 'GET',
   headers: {
-    'X-MICROCMS-API-KEY': 'iX8ZnvUWwwaPhQdWA6PjawROnNF44nPqHEMp'
+    'X-MICROCMS-API-KEY': env.MICROCMS_API_KEY
   }
 };
 

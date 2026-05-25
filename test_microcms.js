@@ -1,8 +1,23 @@
 const { createClient } = require('microcms-js-sdk');
+const fs = require('fs');
+
+function readEnvFile() {
+  const env = {};
+  const envFile = fs.readFileSync('.env.local', 'utf8');
+  envFile.split('\n').forEach((line) => {
+    const match = line.match(/^([^=]+)=(.*)$/);
+    if (match) {
+      env[match[1].trim()] = match[2].trim().replace(/^"|"$/g, '');
+    }
+  });
+  return env;
+}
+
+const env = readEnvFile();
 
 const client = createClient({
-  serviceDomain: 'gamers-line-blog',
-  apiKey: 'iX8ZnvUWwwaPhQdWA6PjawROnNF44nPqHEMp',
+  serviceDomain: env.MICROCMS_SERVICE_DOMAIN,
+  apiKey: env.MICROCMS_API_KEY,
 });
 
 client.getList({ endpoint: 'columns', queries: { limit: 1 } })
