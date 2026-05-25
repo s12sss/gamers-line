@@ -141,7 +141,7 @@ function TierExplanation({ tier, isps }: { tier: TierLabel; isps: RankedISP[] })
                 <h3 className="font-heading text-base font-bold text-white">{isp.name}</h3>
                 <div className="mt-1 text-[0.72rem] text-text-dim">{isp.providerName}</div>
               </div>
-              <div className="flex shrink-0 items-center gap-4">
+              <div className="flex shrink-0 items-start gap-4">
                 <div className="text-right">
                   <div className="font-mono text-[0.6rem] uppercase tracking-[0.12em] text-white/40">Score</div>
                   <div className="font-mono text-[1.4rem] font-black leading-none text-cyan">{isp.score}</div>
