@@ -1,9 +1,9 @@
 "use client";
 
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Activity, Download, Trophy, ChevronRight, Share2, AlertTriangle } from 'lucide-react';
+import { Activity, Download, ChevronRight, Share2, AlertTriangle } from 'lucide-react';
 import ispsData from '@/data/isps.json';
 import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -16,15 +16,6 @@ interface TestResult {
   tier: Tier;
 }
 
-interface RankingEntry {
-  id: string;
-  isp: string;
-  plan: string;
-  ping: number;
-  speed: number;
-  tier: Tier;
-  date: string;
-}
 
 const TIER_COLORS = {
   GOD: 'text-[#ffeb3b] drop-shadow-[0_0_15px_rgba(255,235,59,0.8)]',
@@ -43,31 +34,6 @@ export default function SpeedTestPage() {
   const [speed, setSpeed] = useState(0);
   const [result, setResult] = useState<TestResult | null>(null);
   
-  const [selectedIsp, setSelectedIsp] = useState('');
-  const [selectedPlan, setSelectedPlan] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [hasSubmitted, setHasSubmitted] = useState(false);
-  const [percentile, setPercentile] = useState<number | null>(null);
-  const [rankings, setRankings] = useState<RankingEntry[]>([]);
-
-  // 拡張された主要プロバイダリスト
-  const MAJOR_ISPS = [
-    "hi-ho ひかり with games",
-    "NURO光",
-    "GameWith光",
-    "Gaming+",
-    "ドコモ光",
-    "ソフトバンク光",
-    "auひかり",
-    "楽天ひかり",
-    "ビッグローブ光",
-    "OCN光",
-    "eo光",
-    "コミュファ光",
-    "J:COM",
-    "その他"
-  ];
-
   // 階級判定ロジック（Ping 70% + DL速度 30% の重み付けスコア）
   // DIAMOND以上はPing 20ms未満が必須条件
   const calculateTier = (pingResult: number, speedResult: number): Tier => {
@@ -89,8 +55,6 @@ export default function SpeedTestPage() {
     setStatus('TESTING_PING');
     setProgress(0);
     setResult(null);
-    setHasSubmitted(false);
-
     // 1. ウォームアップ (TCP/SSLコネクションを事前に確立してPingのブレを無くす)
     await fetch('/api/ping', { cache: 'no-store' }).catch(() => {});
     await new Promise(resolve => setTimeout(resolve, 200));
@@ -184,50 +148,6 @@ export default function SpeedTestPage() {
     }
   };
 
-  const fetchRankings = async () => {
-    try {
-      const res = await fetch('/api/ranking');
-      const data = await res.json();
-      if (data.rankings) {
-        setRankings(data.rankings);
-      }
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
-  useEffect(() => {
-    fetchRankings();
-  }, []);
-
-  const submitScore = async () => {
-    if (!result) return;
-    setIsSubmitting(true);
-    try {
-      const res = await fetch('/api/ranking', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          isp: selectedIsp,
-          plan: selectedPlan,
-          ping: result.ping,
-          speed: result.speed,
-          tier: result.tier
-        })
-      });
-      const data = await res.json();
-      if (data.percentile) {
-        setPercentile(data.percentile);
-      }
-      setHasSubmitted(true);
-      fetchRankings(); // ランキング再取得
-    } catch (e) {
-      console.error(e);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   const shareOnX = () => {
     if (!result) return;
     const text = `私のゲーミング回線ランクは【${result.tier}】でした！\nPing: ${result.ping}ms / ダウンロード: ${Math.round(result.speed)}Mbps\n\nゲームおすすめ回線探すならGamer's Line！`;
@@ -270,7 +190,7 @@ export default function SpeedTestPage() {
           <span className="gradient-text">測定</span>
         </h1>
         <p className="relative z-10 text-sm text-text-muted max-w-[520px] leading-[1.7]">
-          ブラウザ上でPingとダウンロード速度を簡易測定し、ゲーマー階級を判定します。上位を目指してランキングに挑戦しましょう。
+          ブラウザ上でPingとダウンロード速度を簡易測定し、ゲーマー階級を判定します。結果をXでシェアしよう。
         </p>
       </div>
 
@@ -409,54 +329,6 @@ export default function SpeedTestPage() {
                   </div>
                 </div>
 
-                {/* ランキング登録フォーム / 送信完了画面 */}
-                {!hasSubmitted ? (
-                  <div className="mt-12 pt-10 border-t border-white/10 w-full max-w-md text-left mx-auto">
-                    <h3 className="font-bold text-lg mb-4 flex items-center gap-2"><Trophy className="w-5 h-5 text-[#ffd700]" /> ランキングに登録する</h3>
-                    <div className="space-y-3.5">
-                      <div>
-                        <select 
-                          value={selectedIsp} onChange={(e) => setSelectedIsp(e.target.value)}
-                          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-cyan focus:bg-white/10 focus:outline-none appearance-none font-medium text-[0.85rem] transition-colors"
-                        >
-                          <option value="" className="bg-[#0a0a12] text-white">利用している回線を選択（必須）</option>
-                          {MAJOR_ISPS.map(isp => (
-                            <option key={isp} value={isp} className="bg-[#0a0a12] text-white">{isp}</option>
-                          ))}
-                        </select>
-                      </div>
-
-                      <div>
-                        <select 
-                          value={selectedPlan} onChange={(e) => setSelectedPlan(e.target.value)}
-                          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-cyan focus:bg-white/10 focus:outline-none appearance-none font-medium text-[0.85rem] transition-colors"
-                        >
-                          <option value="" className="bg-[#0a0a12] text-white">プラン/最大速度を選択（必須）</option>
-                          <option value="1G" className="bg-[#0a0a12] text-white">1Gbps</option>
-                          <option value="2G" className="bg-[#0a0a12] text-white">2Gbps</option>
-                          <option value="5G" className="bg-[#0a0a12] text-white">5Gbps</option>
-                          <option value="10G" className="bg-[#0a0a12] text-white">10Gbps</option>
-                          <option value="VDSL/100M以下" className="bg-[#0a0a12] text-white">VDSL/100Mbps以下</option>
-                          <option value="不明" className="bg-[#0a0a12] text-white">不明</option>
-                        </select>
-                      </div>
-
-                      <button 
-                        onClick={submitScore} disabled={isSubmitting || !selectedIsp || !selectedPlan}
-                        className="w-full py-3.5 bg-gradient-to-r from-cyan to-emerald text-black font-bold rounded-xl hover:shadow-[0_0_20px_rgba(0,230,118,0.4)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed mt-2 relative overflow-hidden group"
-                      >
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-12 -translate-x-full group-hover:animate-[scanline_0.6s_ease_forwards]" />
-                        <span className="relative z-10 drop-shadow-[0_0_5px_rgba(0,0,0,0.2)]">{isSubmitting ? '登録中...' : 'データを登録する'}</span>
-                      </button>
-                    </div>
-                  </div>
-                ) : (
-                  <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-12 pt-10 border-t border-white/10 w-full max-w-md text-center mx-auto">
-                    <div className="text-emerald font-bold flex items-center justify-center gap-2 mb-4">
-                      <Activity className="w-5 h-5" /> ランキングへの登録が完了しました！
-                    </div>
-                  </motion.div>
-                )}
               </motion.div>
             )}
           </AnimatePresence>
@@ -509,78 +381,6 @@ export default function SpeedTestPage() {
         </div>
       </div>
 
-      {/* Leaderboard Section */}
-      <div className="max-w-4xl mx-auto px-4">
-        <div className="mb-8 mt-4 flex items-end justify-between border-b border-white/10 pb-4">
-          <div>
-            <h2 className="font-heading text-2xl sm:text-3xl font-black mb-1 flex items-center gap-3 tracking-tight text-text">
-              <Trophy className="w-6 h-6 sm:w-7 sm:h-7 text-cyan drop-shadow-[0_0_10px_rgba(0,229,255,0.5)]" /> 
-              HALL OF FAME
-            </h2>
-            <p className="font-mono text-[0.65rem] sm:text-xs text-text-muted tracking-widest uppercase">全国ゲーマー回線実測データ (Top 50)</p>
-          </div>
-        </div>
-        
-        <div className="bg-[#0a0a12] border border-white/10 rounded-[20px] overflow-hidden">
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse min-w-[500px]">
-              <thead>
-                <tr className="bg-white/5 border-b border-white/10">
-                  <th className="px-6 py-4 font-mono text-[0.65rem] text-white/40 tracking-widest uppercase font-normal w-[80px]">Rank</th>
-                  <th className="px-6 py-4 font-mono text-[0.65rem] text-white/40 tracking-widest uppercase font-normal">ISP / Plan</th>
-                  <th className="px-6 py-4 font-mono text-[0.65rem] text-white/40 tracking-widest uppercase font-normal">Ping</th>
-                  <th className="px-6 py-4 font-mono text-[0.65rem] text-white/40 tracking-widest uppercase font-normal">Speed</th>
-                  <th className="px-6 py-4 font-mono text-[0.65rem] text-white/40 tracking-widest uppercase font-normal">Tier</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-white/5">
-                {rankings.length === 0 ? (
-                  <tr>
-                    <td colSpan={5} className="px-6 py-12 text-center text-text-muted text-sm font-medium">
-                      データがありません。最初のチャレンジャーになりましょう！
-                    </td>
-                  </tr>
-                ) : (
-                  rankings.map((entry, idx) => (
-                    <tr key={entry.id || idx} className={`group transition-all duration-300 ${idx === 0 ? 'bg-gradient-to-r from-[#ffeb3b]/10 to-transparent' : idx === 1 ? 'bg-gradient-to-r from-[#c0c0c0]/10 to-transparent' : idx === 2 ? 'bg-gradient-to-r from-[#cd7f32]/10 to-transparent' : 'hover:bg-white/[0.02]'}`}>
-                      <td className="px-6 py-4">
-                        <div className="flex items-center gap-2">
-                          {idx === 0 && <Trophy className="w-4 h-4 text-[#ffeb3b] drop-shadow-[0_0_8px_rgba(255,235,59,0.5)] animate-pulse" />}
-                          <span className={`font-mono font-black text-xl sm:text-2xl tracking-tighter italic ${idx === 0 ? 'text-[#ffeb3b] drop-shadow-[0_0_10px_rgba(255,235,59,0.4)]' : idx === 1 ? 'text-[#c0c0c0]' : idx === 2 ? 'text-[#cd7f32]' : 'text-white/20'}`}>
-                            #{idx + 1}
-                          </span>
-                        </div>
-                      </td>
-                      <td className="px-6 py-4">
-                        <div className="flex flex-col gap-1">
-                          <span className="font-medium text-[0.75rem] sm:text-[0.8rem] text-text-dim group-hover:text-text transition-colors tracking-tight leading-tight">{entry.isp === '不明' ? '匿名プレイヤー' : entry.isp}</span>
-                          {entry.plan && entry.plan !== '不明' && (
-                            <span className="text-[0.6rem] text-cyan/70 bg-cyan/5 border border-cyan/10 px-1.5 py-0.5 rounded inline-block w-fit font-mono">{entry.plan}</span>
-                          )}
-                        </div>
-                      </td>
-                      <td className="px-6 py-4">
-                        <div className="flex items-center gap-1.5">
-                          <Activity className={`w-3.5 h-3.5 ${entry.ping <= 15 ? 'text-emerald' : 'text-text-muted'}`} />
-                          <span className={`font-mono font-bold ${entry.ping <= 15 ? 'text-emerald' : 'text-white'}`}>{entry.ping} <span className="text-[0.65rem] text-white/50 font-sans">ms</span></span>
-                        </div>
-                      </td>
-                      <td className="px-6 py-4">
-                        <span className="font-mono font-bold text-white">{entry.speed} <span className="text-[0.65rem] text-white/50 font-sans">Mbps</span></span>
-                      </td>
-                      <td className="px-6 py-4">
-                        <span className={`font-mono text-sm font-bold ${TIER_COLORS[entry.tier] || 'text-white'}`}>
-                          {entry.tier}
-                        </span>
-                      </td>
-                    </tr>
-                  ))
-                )}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
