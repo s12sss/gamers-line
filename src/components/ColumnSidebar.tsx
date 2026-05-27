@@ -6,7 +6,7 @@ import ColumnSearch from '@/components/ColumnSearch';
 
 const SERVICE_TAGS = [
   'NURO光', 'GameWith光', 'hi-ho ひかり', 'auひかり', 'ドコモ光', 'ソフトバンク光',
-  'ビッグローブ光', 'コミュファ光', 'eo光', 'メガ・エッグ', 'ピカラ光', 'BBIQ',
+  'ビッグローブ光', 'コミュファ光', 'eo光', 'メガ・エッグ', 'ピカラ光', 'BBIQ', 'Gaming+',
 ];
 const KNOWLEDGE_TAGS = ['回線の基礎知識', '失敗しない選び方'];
 const REVIEW_TAGS = ['回線・プロバイダ比較', 'サービス実測・検証', 'ゲーミング製品レビュー', 'ルーター・周辺機器', '体験談', 'キャッシュバック'];
