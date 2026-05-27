@@ -12,7 +12,7 @@ const KNOWLEDGE_TAGS = ['回線の基礎知識', '失敗しない選び方'];
 const REVIEW_TAGS = ['回線・プロバイダ比較', 'サービス実測・検証', 'ゲーミング製品レビュー', 'ルーター・周辺機器', '体験談', 'キャッシュバック'];
 const GENRE_TAGS = ['FPS / TPS', '格闘ゲーム', 'MOBA', 'MMO', 'スマホゲーム', 'その他ゲーム'];
 const PLAYER_TAGS: string[] = [];
-const OTHER_TAGS = ['プロゲーマー・ストリーマー', 'ネットワーク設定', 'SIM・スマホ', 'お得なキャンペーン', 'VPN'];
+const OTHER_TAGS = ['プロゲーマー・ストリーマー', 'ネットワーク設定', 'SIM・スマホ', 'お得なキャンペーン', 'VPN', '10G回線'];
 
 type Props = {
   tag?: string;

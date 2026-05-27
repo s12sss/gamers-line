@@ -46,7 +46,7 @@ export async function getColumnsList(tag?: string) {
 }
 
 // ページネーション付き一覧取得（コラム一覧ページで使用）
-const COLUMNS_PER_PAGE = 30;
+const COLUMNS_PER_PAGE = 29;
 
 export async function getColumnsPage(page: number = 1, tag?: string) {
   try {
