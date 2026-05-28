@@ -86,7 +86,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `【2026年最新】${prefData.name}のゲーミング回線ランキング・おすすめ比較 | Gamer's Line`,
+    title: `【2026年最新】${prefData.name}のゲーミング回線ランキング・おすすめ比較`,
     description: `${prefData.name}のゲーミング回線ランキングを掲載。FPSやMMOでラグを無くすための光回線をTier別に比較。10Gプランの対応状況や${prefData.name}特有のローカル回線情報も網羅しています。`,
     alternates: {
       canonical: `/area/${prefecture}`,

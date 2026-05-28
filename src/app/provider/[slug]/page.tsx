@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${detail.name}の評判・Ping値・料金を徹底解説 | Gamer's Line`,
+    title: `${detail.name}の評判・Ping値・料金を徹底解説`,
     description: detail.heroDescription,
     alternates: {
       canonical: `/provider/${resolvedParams.slug}`,

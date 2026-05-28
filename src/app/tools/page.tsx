@@ -4,7 +4,7 @@ import CashbackReminder from '@/components/CashbackReminder';
 import { PenTool } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: '回線乗り換え支援ツール | Gamer\'s Line',
+  title: '回線乗り換え支援ツール',
   description: '違約金とキャッシュバックを天秤にかける乗り換え損益シミュレーターと、キャッシュバック受け取り忘れ防止のためのGoogleカレンダーリマインダーツール。',
   alternates: {
     canonical: '/tools',

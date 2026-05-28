@@ -14,19 +14,19 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   const ogImageUrl = `https://gamers-line.jp/og-image/speedtest.png?ping=${ping}&tier=${tier}&dl=${dl}`;
 
   return {
-    title: `私の回線ランクは【${tier}】でした！ | Gamer's Line`,
+    title: `私の回線ランクは【${tier}】でした！`,
     description: `Ping: ${ping}ms / DL: ${dl}Mbps — ゲーマー回線ランク診断の結果です。あなたのランクは？`,
     alternates: {
       canonical: `https://gamers-line.jp/speedtest/result?ping=${ping}&tier=${tier}&dl=${dl}`,
     },
     openGraph: {
-      title: `私の回線ランクは【${tier}】でした！ | Gamer's Line`,
+      title: `私の回線ランクは【${tier}】でした！`,
       description: `Ping: ${ping}ms / DL: ${dl}Mbps — ゲーマー回線ランク診断の結果です。あなたのランクは？`,
       images: [ogImageUrl],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `私の回線ランクは【${tier}】でした！ | Gamer's Line`,
+      title: `私の回線ランクは【${tier}】でした！`,
       description: `Ping: ${ping}ms / DL: ${dl}Mbps — ゲーマー回線ランク診断の結果です。あなたのランクは？`,
       images: [ogImageUrl],
     },
