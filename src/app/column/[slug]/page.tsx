@@ -275,7 +275,7 @@ export default async function ColumnArticle({ params }: Props) {
 
           {/* Right: Desktop Sidebar */}
           <div className="hidden xl:block w-[300px] shrink-0">
-            <div className="sticky top-[100px] pb-10">
+            <div className="pb-10">
               <ColumnSidebar />
             </div>
           </div>
