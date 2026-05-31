@@ -6,7 +6,7 @@ import SwitchingSimulator from '@/components/SwitchingSimulator';
 import CashbackReminder from '@/components/CashbackReminder';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
-export const revalidate = 86400;
+export const dynamic = 'force-dynamic';
 
 const _now = new Date();
 export const metadata: Metadata = {
