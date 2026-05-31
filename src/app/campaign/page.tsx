@@ -8,12 +8,14 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
 
-const _now = new Date();
-export const metadata: Metadata = {
-  title: `${_now.getFullYear()}年${_now.getMonth() + 1}月 ゲーミング回線 最新キャンペーン情報`,
-  description: '各社の申し込みキャッシュバック・月額割引・工事費無料などの特典をまとめました。毎月初に更新。',
-  alternates: { canonical: '/campaign' },
-};
+export function generateMetadata(): Metadata {
+  const now = new Date();
+  return {
+    title: `${now.getFullYear()}年${now.getMonth() + 1}月 ゲーミング回線 最新キャンペーン情報`,
+    description: '各社の申し込みキャッシュバック・月額割引・工事費無料などの特典をまとめました。毎月初に更新。',
+    alternates: { canonical: '/campaign' },
+  };
+}
 
 const CB_TYPES = [
   {
