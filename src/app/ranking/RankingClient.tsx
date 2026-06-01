@@ -2,9 +2,10 @@
 
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
-import { Gauge, MapPin, ShieldCheck, Signal, SlidersHorizontal, Wallet } from 'lucide-react';
+import { ChevronRight, Gauge, MapPin, ShieldCheck, Signal, SlidersHorizontal, Wallet } from 'lucide-react';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Tooltip from '@/components/Tooltip';
+import './ranking.css';
 import { PREFECTURES } from '@/utils/prefectureData';
 import { getRankedISPs, groupByTier, TIER_CONFIG, TIER_ORDER } from '@/utils/tierRanking';
 import type { RankedISP, TierLabel } from '@/utils/tierRanking';
@@ -55,65 +56,72 @@ function getIspNote(isp: RankedISP) {
   return `一般的な用途では候補になりますが、ゲーム目的では上位Tierを優先して比較したい回線です。月額は${price}。`;
 }
 
-function TierCard({ isp, tierColor }: { isp: RankedISP; tierColor: string }) {
+function Pips({ rating, type }: { rating: number; type: 'stab' | 'speed' }) {
   return (
-    <Link
-      href={isp.detailLink}
-      className="group relative min-w-[210px] max-w-[232px] overflow-hidden rounded-[10px] border border-white/14 bg-[#0b0f12] p-3.5 transition-all duration-200 hover:-translate-y-0.5 hover:border-cyan/40 hover:bg-[#10161a]"
-    >
-      <div className="absolute inset-x-0 top-0 h-[3px] opacity-90" style={{ backgroundColor: tierColor }} />
-      <div className="flex min-h-[44px] items-start justify-between gap-3">
-        <div className="font-heading text-[0.92rem] font-bold leading-[1.35] text-white transition-colors group-hover:text-cyan">
-          {shortPlanName(isp.name)}
+    <div className="pips">
+      {[1,2,3,4,5].map(i => (
+        <span key={i} className={`pip ${i <= rating ? `on-${type}` : ''}`} />
+      ))}
+    </div>
+  );
+}
+
+function TierCard({ isp, tier }: { isp: RankedISP; tier: TierLabel }) {
+  return (
+    <Link href={isp.detailLink} className="tcard">
+      {/* Desktop */}
+      <div className="tcard-desktop">
+        <div className="tc-head">
+          <div>
+            <div className="tc-name">{shortPlanName(isp.name)}</div>
+            <span className="tc-isp">{isp.providerName}</span>
+          </div>
+          <div className="tc-score">
+            <div className="tc-score-num">{isp.score}</div>
+            <span className="tc-score-lbl">SCORE</span>
+          </div>
         </div>
-        <div className="shrink-0 text-right">
-          <div className="font-mono text-[0.58rem] uppercase tracking-[0.08em] text-white/70">Score</div>
-          <div className="font-mono text-[0.86rem] font-black text-cyan">{isp.score}</div>
+        <div className="tc-bar"><span style={{ width: `${isp.score}%` }} /></div>
+        <div className="tc-metrics">
+          <div className="tc-m"><div className="tc-m-lbl">PING</div><div className="tc-m-val ping">{isp.ping}ms</div></div>
+          <div className="tc-m"><div className="tc-m-lbl">月額</div><div className="tc-m-val price">{formatYen(isp.monthlyFee)}</div></div>
+          <div className="tc-m"><div className="tc-m-lbl">安定</div><Pips rating={isp.stabilityRating} type="stab" /></div>
+          <div className="tc-m"><div className="tc-m-lbl">速度</div><Pips rating={isp.speedRating} type="speed" /></div>
         </div>
       </div>
-      <div className="mt-2 h-1 overflow-hidden rounded-full bg-white/10">
-        <div className="h-full rounded-full" style={{ width: `${isp.score}%`, backgroundColor: tierColor }} />
-      </div>
-      <div className="mt-3 grid grid-cols-3 gap-1.5">
-        <div className="rounded-[7px] bg-white/[0.075] px-2 py-1.5">
-          <div className="font-mono text-[0.6rem] uppercase tracking-[0.08em] text-white/60">Ping</div>
-          <div className="font-mono text-[0.78rem] font-bold text-emerald">{isp.ping}ms</div>
+      {/* Mobile */}
+      <div className="tcard-mobile">
+        <div className="tcm-left">
+          <div className="tcm-name">{isp.name}</div>
+          <div className="tcm-isp">{isp.providerName}</div>
         </div>
-        <div className="rounded-[7px] bg-white/[0.075] px-2 py-1.5">
-          <div className="font-mono text-[0.6rem] uppercase tracking-[0.08em] text-white/60">安定</div>
-          <div className="font-mono text-[0.78rem] font-bold text-white">{isp.stabilityRating}/5</div>
+        <div className="tcm-right">
+          <div className="tcm-stats">
+            <div className="tcm-stat"><span className="lbl">PING</span><span className="val ping">{isp.ping}ms</span></div>
+            <div className="tcm-stat"><span className="lbl">SCORE</span><span className={`val score`}>{isp.score}</span></div>
+          </div>
+          <div className="tcm-price">{formatYen(isp.monthlyFee)}<span className="u">/月</span></div>
         </div>
-        <div className="rounded-[7px] bg-white/[0.075] px-2 py-1.5">
-          <div className="font-mono text-[0.6rem] uppercase tracking-[0.08em] text-white/60">速度</div>
-          <div className="font-mono text-[0.78rem] font-bold text-cyan">{isp.speedRating}/5</div>
-        </div>
-      </div>
-      <div className="mt-3 flex items-end justify-between border-t border-white/[0.06] pt-2">
-        <span className="text-[0.7rem] font-medium text-white/60">月額目安</span>
-        <span className="font-mono text-[0.8rem] font-bold text-white">{formatYen(isp.monthlyFee)}</span>
+        <ChevronRight className="tcm-chev" size={14} />
       </div>
     </Link>
   );
 }
 
-function TierRow({ tier, isps }: { tier: TierLabel; isps: RankedISP[] }) {
-  const cfg = TIER_CONFIG[tier];
+const TIER_LABELS: Record<TierLabel, string> = { S: '最高クラス', A: '優秀', B: '標準以上', C: '要検討' };
 
+function TierRow({ tier, isps }: { tier: TierLabel; isps: RankedISP[] }) {
   return (
-    <section className="grid overflow-hidden rounded-[2px] border border-black bg-[#151715] md:grid-cols-[92px_1fr]">
-      <div className="flex items-center justify-center border-b border-black px-4 py-4 md:border-b-0 md:border-r" style={{ backgroundColor: cfg.labelBg }}>
-        <div className="font-heading text-[2rem] font-black leading-none" style={{ color: cfg.color }}>{tier}</div>
+    <div className={`tier-row-wrap tier-${tier}`}>
+      <div className="tier-badge" data-label={TIER_LABELS[tier]}>{tier}</div>
+      <div className="tier-cards-grid">
+        {isps.length > 0 ? (
+          isps.map(isp => <TierCard key={isp.id} isp={isp} tier={tier} />)
+        ) : (
+          <div className="flex items-center text-sm text-text-dim py-4">この条件では該当なし</div>
+        )}
       </div>
-      <div className="overflow-x-auto">
-        <div className="flex min-h-[138px] gap-3 bg-[#151715] p-3 md:flex-wrap md:p-4">
-          {isps.length > 0 ? (
-            isps.map(isp => <TierCard key={isp.id} isp={isp} tierColor={cfg.labelBg} />)
-          ) : (
-            <div className="flex items-center text-sm text-text-dim">この条件では該当なし</div>
-          )}
-        </div>
-      </div>
-    </section>
+    </div>
   );
 }
 

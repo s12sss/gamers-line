@@ -1,0 +1,148 @@
+/* ── TIER BADGE ── */
+.tier-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  border: 1px solid rgba(255,255,255,0.08);
+  flex-shrink: 0;
+  position: sticky;
+  top: 80px;
+  align-self: flex-start;
+}
+.tier-S .tier-badge { color: #00E5FF; background: rgba(0,229,255,0.08); border-color: rgba(0,229,255,0.3); text-shadow: 0 0 18px rgba(0,229,255,0.5); }
+.tier-A .tier-badge { color: #00E676; background: rgba(0,230,118,0.07); border-color: rgba(0,230,118,0.28); }
+.tier-B .tier-badge { color: #a78bfa; background: rgba(167,139,250,0.07); border-color: rgba(167,139,250,0.25); }
+.tier-C .tier-badge { color: #fbbf24; background: rgba(251,191,36,0.06); border-color: rgba(251,191,36,0.22); }
+
+/* ── TIER ROW ── */
+.tier-row-wrap {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+/* ── CARDS GRID ── */
+.tier-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 11px;
+}
+
+/* ── TIER CARD ── */
+.tcard {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 15px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.035);
+  transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s;
+  overflow: hidden;
+}
+.tcard:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
+.tier-S .tcard:hover { border-color: rgba(0,229,255,0.4); box-shadow: 0 16px 40px rgba(0,0,0,0.4), 0 0 24px rgba(0,229,255,0.08); }
+.tier-A .tcard:hover { border-color: rgba(0,230,118,0.38); }
+.tier-B .tcard:hover { border-color: rgba(167,139,250,0.38); }
+.tier-C .tcard:hover { border-color: rgba(251,191,36,0.35); }
+
+/* ── DESKTOP CARD INNARDS ── */
+.tcard-desktop { padding: 16px 15px 14px; }
+.tc-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+.tc-name { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; line-height: 1.25; }
+.tc-isp { display: block; font-size: 0.65rem; color: #7a7a9a; margin-top: 3px; line-height: 1.4; }
+.tc-score { flex-shrink: 0; text-align: center; line-height: 1; }
+.tc-score-num { font-family: 'Space Mono', monospace; font-size: 1.5rem; font-weight: 700; }
+.tier-S .tc-score-num { color: #00E5FF; text-shadow: 0 0 12px rgba(0,229,255,0.4); }
+.tier-A .tc-score-num { color: #00E676; text-shadow: 0 0 12px rgba(0,230,118,0.4); }
+.tier-B .tc-score-num { color: #a78bfa; }
+.tier-C .tc-score-num { color: #fbbf24; }
+.tc-score-lbl { display: block; font-family: 'Space Mono', monospace; font-size: 0.48rem; color: #3a3a5a; letter-spacing: 0.16em; margin-top: 3px; }
+.tc-bar { height: 4px; border-radius: 3px; background: rgba(255,255,255,0.07); overflow: hidden; margin-bottom: 12px; }
+.tc-bar > span { display: block; height: 100%; border-radius: 3px; }
+.tier-S .tc-bar > span, .tier-A .tc-bar > span { background: linear-gradient(90deg, #00E5FF, #00E676); }
+.tier-B .tc-bar > span { background: linear-gradient(90deg, #a78bfa, #00E5FF); }
+.tier-C .tc-bar > span { background: linear-gradient(90deg, #fbbf24, #00E676); }
+.tc-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 10px; }
+.tc-m { display: flex; flex-direction: column; gap: 3px; }
+.tc-m-lbl { font-family: 'Space Mono', monospace; font-size: 0.56rem; color: #3a3a5a; letter-spacing: 0.1em; text-transform: uppercase; }
+.tc-m-val { font-family: 'Space Mono', monospace; font-size: 0.88rem; font-weight: 700; }
+.tc-m-val.ping  { color: #00E676; }
+.tc-m-val.price { color: #f0f0f8; }
+
+/* pips */
+.pips { display: inline-flex; gap: 2px; }
+.pip { width: 7px; height: 7px; border-radius: 2px; background: rgba(255,255,255,0.1); }
+.pip.on-stab  { background: #00E5FF; box-shadow: 0 0 5px rgba(0,229,255,0.4); }
+.pip.on-speed { background: #a78bfa; }
+
+/* ── MOBILE CARD ── */
+.tcard-mobile { display: none; }
+
+/* ── MOBILE ── */
+@media (max-width: 767px) {
+  .tier-row-wrap {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .tier-badge {
+    position: static;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 8px 14px;
+    font-size: 1.1rem;
+  }
+  .tier-cards-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .tcard-desktop { display: none; }
+  .tcard-mobile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 15px;
+  }
+  .tcm-left { flex: 1; min-width: 0; }
+  .tcm-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.97rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .tcm-isp { font-size: 0.68rem; color: #7a7a9a; margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .tcm-right { flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+  .tcm-stats { display: flex; align-items: baseline; gap: 10px; }
+  .tcm-stat { display: flex; flex-direction: column; align-items: flex-end; }
+  .tcm-stat .lbl { font-family: 'Space Mono', monospace; font-size: 0.56rem; color: #3a3a5a; letter-spacing: 0.1em; }
+  .tcm-stat .val { font-family: 'Space Mono', monospace; font-size: 0.85rem; font-weight: 700; }
+  .tcm-stat .val.ping  { color: #00E676; }
+  .tcm-stat .val.score { color: #00E5FF; }
+  .tier-A .tcm-stat .val.score { color: #00E676; }
+  .tier-B .tcm-stat .val.score { color: #a78bfa; }
+  .tier-C .tcm-stat .val.score { color: #fbbf24; }
+  .tcm-price { font-family: 'Space Mono', monospace; font-size: 0.88rem; font-weight: 700; color: #f0f0f8; white-space: nowrap; }
+  .tcm-price .u { font-size: 0.65rem; color: #7a7a9a; font-weight: 400; }
+  .tcm-chev { color: #3a3a5a; flex-shrink: 0; margin-left: 4px; }
+}
+@media (max-width: 380px) {
+  .tcm-name { font-size: 0.9rem; }
+  .tcm-stat .val { font-size: 0.78rem; }
+  .tcm-price { font-size: 0.82rem; }
+}
